@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ELSA-2011-1241.nasl 11688 2018-09-28 13:36:28Z cfischer $
 #
 # Oracle Linux Local Check
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.122096");
-  script_version("$Revision: 11688 $");
+  script_version("2019-05-01T16:02:02+0000");
   script_tag(name:"creation_date", value:"2015-10-06 14:13:00 +0300 (Tue, 06 Oct 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-01 16:02:02 +0000 (Wed, 01 May 2019)");
   script_name("Oracle Linux Local Check: ELSA-2011-1241");
   script_tag(name:"insight", value:"ELSA-2011-1241 - ecryptfs-utils security update. Please see the references for more insight.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
@@ -37,8 +36,8 @@ if(description)
   script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2011-1241");
   script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2011-1241.html");
   script_cve_id("CVE-2011-1831", "CVE-2011-1832", "CVE-2011-1834", "CVE-2011-1835", "CVE-2011-1837", "CVE-2011-3145");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux(5|6)");

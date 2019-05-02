@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883030");
-  script_version("2019-04-26T08:24:31+0000");
+  script_version("2019-05-01T16:02:02+0000");
   script_cve_id("CVE-2019-9810", "CVE-2019-9813");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-05-01 16:02:02 +0000 (Wed, 01 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:38:58 +0000 (Wed, 03 Apr 2019)");
   script_name("CentOS Update for firefox CESA-2019:0672 centos6 ");
   script_category(ACT_GATHER_INFO);

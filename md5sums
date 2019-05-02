@@ -159,7 +159,7 @@ d9580cfe5ee85c8ac3c216a19ec8962d  secpod_usebb_detect.nasl
 d6adcde28bbd3b4965a6de55918def50  gb_ibh_opc_ua_server_client_detect_win.nasl
 3686a5d34f80ab81ab45ae899f1acf2d  gb_postgres_tls_support.nasl
 a5113e64d5232a24cd6f5636674b6fd4  gb_nedi_detect.nasl
-9969df6fdb8254ba6991c35b025a3303  oracle_webLogic_server_detect.nasl
+095e0762049dfcb841a9b2b61ae028c1  oracle_webLogic_server_detect.nasl
 c555f38be7be2f555b2dc04dccb9ddc5  secpod_smartftp_client_detect.nasl
 af1013c298c08118ee31f7fe810762a4  gb_axis_camera_station_detect.nasl
 1afe1deedc8ffb644644a75052d5a530  gb_riverbed_steelcentral_ssh_detect.nasl
@@ -8197,7 +8197,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 569372e634dac843f3eb1d55567d5fd6  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-547e4ad06bd0ff7be7d2f56b18eaf628  plugin_feed_info.inc
+99f22e40bad1ce490594875f323b515c  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -11045,7 +11045,7 @@ f0e632091643817b49d69268c8f8ab93  2012/gb_ms_unauth_digital_cert_spoofing_vuln.n
 e7a30bf4923e3a17e647d1275a951b14  2012/esoft_slk_ssa_2012_326_02.nasl
 f65288d10065ae550bd08cf5434482e9  2012/gb_fedora_2012_14046_spice-gtk_fc16.nasl
 f531bc1205a29c8fafa448e988f48d76  2012/deb_2498_1.nasl
-e2e0f82c72a7dacb0ae27e800587fa8a  2012/gb_fedora_2011_11871_ecryptfs-utils_fc16.nasl
+6c1c8e023a0161fc351aa287814a91cd  2012/gb_fedora_2011_11871_ecryptfs-utils_fc16.nasl
 0b55fa81e2ab8eb5a7dfdb1a3a9a666b  2012/gb_fedora_2012_6282_bugzilla_fc17.nasl
 7b125576ff06be68e0b21832b7f8498a  2012/esoft_slk_ssa_2006_178_02.nasl
 e5aa4c8005c3dafd0da18f305659e971  2012/glsa_201209_06.nasl
@@ -12067,7 +12067,7 @@ c752617d135845ac8c34c256e4c9dbad  2012/esoft_slk_ssa_2006_155_02.nasl
 5e0404efb948a8d5bbb2f0e93ec13ddb  2012/gb_manageengine_support_center_plus_mult_vuln.nasl
 6b174c73b4bafb6d7bbde9a21c306f24  2012/gb_adobe_flash_player_mult_vuln_sep12_lin.nasl
 9a0801aeca9ed52fed252d45334d095f  2012/gb_media_player_classic_webserver_mult_vuln.nasl
-0ef2c2ff6a937310080730ec7d8b315f  2012/gb_CESA-2011_1241_ecryptfs-utils-75-5.el5__centos5_x86_64.nasl
+e390e1bf87749873e3ba2a295b63161a  2012/gb_CESA-2011_1241_ecryptfs-utils-75-5.el5__centos5_x86_64.nasl
 494a1087adf03c658227902c14c08ca8  2012/glsa_201209_18.nasl
 f46c705fd8d6b902d617d8190ba76a7a  2012/gb_CESA-2012_0939_xorg-x11-server-common_centos6.nasl
 7bc77bced8c3f0abdd873f4510419436  2012/esoft_slk_ssa_2012_237_01.nasl
@@ -15927,7 +15927,7 @@ a0f304b1de46e2c78720cd7d85f0d5ee  2018/ubuntu/gb_ubuntu_USN_3848_2.nasl
 1d62064b8f9ab598aeeb4c77f75f4485  2018/ubuntu/gb_ubuntu_USN_3657_1.nasl
 d22fb9ae8ba727574340e297f59222ef  2018/ubuntu/gb_ubuntu_USN_3148_1.nasl
 8220cb919080c7c00792d5534f3fd593  2018/ubuntu/gb_ubuntu_USN_3803_1.nasl
-cc6bd50749ddccde650f3d1d229b322f  2018/ubuntu/gb_ubuntu_USN_3552_1.nasl
+e5a265194202347f0525c6c9649b5bf0  2018/ubuntu/gb_ubuntu_USN_3552_1.nasl
 fdf3815ae6e2c8fa6b392534c9e28793  2018/ubuntu/gb_ubuntu_USN_3771_1.nasl
 945b15265b1d075dfc491c539fec2d91  2018/ubuntu/gb_ubuntu_USN_3601_1.nasl
 015b9111736e4cd1953c73cd2a9d137d  2018/ubuntu/gb_ubuntu_USN_3799_1.nasl
@@ -16426,10 +16426,10 @@ a74bae183a54b225ef43677eb82a5ed2  2018/nodejs/gb_nodejs_aug18_02_win.nasl
 c4f592198f63616374f6345143f8e331  2018/hughes/gb_hughes_broadband_satellite_modems_mult_vuln.nasl
 4dd97b169a1aa0c4cbb55698f28339c9  2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-06_2018-07_macosx.nasl
 ed0db3e4959f7013a6268deeadf42c39  2018/mozilla/gb_mozilla_firefox_mfsa_2018-06_2018-07_win.nasl
-c0f734eb481d148c9d2e112d38911e73  2018/mozilla/gb_mozilla_firefox_mfsa_2018-05_2018-05_macosx.nasl
+ddd2f1b88fff855b7a87624908f62bb4  2018/mozilla/gb_mozilla_firefox_mfsa_2018-05_2018-05_macosx.nasl
 f2bf061b11515ea79b0449f1daa3ce51  2018/mozilla/gb_mozilla_firefox_mfsa_2018-28_2018-30_win.nasl
 1d2ab902c14fb5892f8b4993429507b1  2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-25_2018-27_macosx.nasl
-30028d06a5155cd1f7f191369990c372  2018/mozilla/gb_mozilla_firefox_mfsa_2018-05_2018-05_win.nasl
+b62e08056c7cbfd61569457d1a47c7ed  2018/mozilla/gb_mozilla_firefox_mfsa_2018-05_2018-05_win.nasl
 a2579f98b6ae1ea3d3c7ebd9bccfccd3  2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-15_2018-17_macosx.nasl
 c8f17e77b3e27cdcce5768df8ad12311  2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-08_2018-08_macosx.nasl
 3956c2c761df8ed9f0596e5cc1d243dc  2018/mozilla/gb_mozilla_firefox_mfsa_2018-10_2018-10_win.nasl
@@ -21610,7 +21610,7 @@ fbd102e57839cfc23cd1d82bdf4621ce  gb_dlink_wifimanger_detect_win.nasl
 bcb50a2c8a04721b64355b02da1b2961  gb_opensc_detect.nasl
 ccea86f70ad0f155b0b579ae4fa63975  FreeWebShop_detect.nasl
 3e36d0aa48b9d3fee4e9071b399d883a  secpod_google_sketchup_detect_macosx.nasl
-1bb218aa1f6664c96c6331c2715c44ff  sw_http_os_detection.nasl
+3f7ead8d7421aed8f2c5770e09c8a510  sw_http_os_detection.nasl
 c84250462ad151ae0c82382f217afea6  gb_serimux_ssh_console_switch_detect.nasl
 8a5105be4ae55159dbb66651de578273  default_account.inc
 08a02ac888633b5c9e554232c55ee527  webapp_detect.nasl
@@ -27253,7 +27253,7 @@ b1cada627d25440a5e2e5335549a5bd1  2015/gb_fedora_2015_5766_python-django_fc22.na
 dc57c063a60d44c079b012b9df9d11c8  2015/gb_RHSA-2015_2108-03_cpio.nasl
 533ed4060e3d669817b3db99c17c21c5  2015/gb_fedora_2015_7730_suricata_fc22.nasl
 036fbdb9e23a7d1390101fe7bc883b0a  2015/deb_3392.nasl
-550687e3df417eacd2b531e040436ab7  2015/ELSA-2011-1241.nasl
+81e1243510fe2317fbf3552c77f27a6e  2015/ELSA-2011-1241.nasl
 195ea2faba67eac8c5e2ae30783f795b  2015/deb_3409.nasl
 3e9ae53a2f8a671640c39b0c47408d36  2015/gb_ms_wordview_ms15-012.nasl
 325a2090d408483820d8c47098032c19  2015/glsa-201402-25.nasl
@@ -30658,7 +30658,7 @@ c7954d5311542a0a77880759427a2d5d  2015/deb_3403.nasl
 4926ce47d5af1508297a95cb9223bb74  2015/gb_ubuntu_USN_2579_1.nasl
 a31ecdd02940d5444afa9545ef507b85  2015/mgasa-2015-0327.nasl
 51ad895b268785649f711326dfa8c8ba  2015/gb_suse_2014_0824_3.nasl
-7d9475ed840c3a1a88e4b508efaf0330  2015/gb_ubuntu_USN_2782_1.nasl
+619b5a74ef40c56183930886edafa7a4  2015/gb_ubuntu_USN_2782_1.nasl
 042f90da7c4e493bd7fcf27064363bb7  2015/gb_fedora_2015_6759_ikiwiki_fc22.nasl
 83be64223e566398b8927608a356c7ed  2015/gb_ubuntu_USN_2540_1.nasl
 e382e454a161b6df7ca5fa2d45410724  2015/glsa-201506-01.nasl
@@ -38548,7 +38548,7 @@ bb3a79d7b629898495bbb4678ca7e241  2011/gb_google_chrome_mult_info_disc_vuln_maco
 eae69970a3dcebd1558c694f25ed7bf4  2011/gb_phpmyadmin_49306.nasl
 9fda9d63ef0b039de495721075edc362  2011/gb_mandriva_MDVSA_2011_120.nasl
 c6990301ef2f0cb80509d9e87e97b834  2011/secpod_xymon_monitor_unspecified_mult_vuln.nasl
-2e45e6bdb6cdf6c6425302f4d589279f  2011/gb_CESA-2011_1241_ecryptfs-utils-75-5.el5__centos5_i386.nasl
+4f69a9f644391425afd74ac15a2cbf6c  2011/gb_CESA-2011_1241_ecryptfs-utils-75-5.el5__centos5_i386.nasl
 ba3be90d59383b3f3cf00c746d8a9d0b  2011/gb_mandriva_MDVSA_2011_096.nasl
 7720d6637c1d62bb7e3c03f69fd03640  2011/gb_quickphp_45603.nasl
 90632a61ad4e71ddeb685094c032bf6f  2011/gb_ubuntu_USN_1182_1.nasl
@@ -39390,7 +39390,7 @@ ffe5500e59cb2635051836104917d9c7  2011/gb_ubuntu_USN_1147_1.nasl
 c51aa11cf6546756a749274f7ad3e358  2011/gb_cacti_51048.nasl
 8a932c2504594814e04a95a379d120da  2011/secpod_ms11-068.nasl
 89b0979de0f0ac064296cd66bce487e5  2011/gb_ubuntu_USN_1160_1.nasl
-84140d4286de515b900be78543df416a  2011/gb_fedora_2011_11979_ecryptfs-utils_fc14.nasl
+f4799d8e07d804b068dee8a6558cd5d4  2011/gb_fedora_2011_11979_ecryptfs-utils_fc14.nasl
 9fe71e294ecfc454f94ac72d96723cd5  2011/secpod_macosx_java_10_5_upd_10.nasl
 6cf677bffb0b14462e32e87fb58f7650  2011/gb_search_network_xss_vuln.nasl
 608cec4f4ed5537f595137e49d57f848  2011/gb_wireshark_mac_lte_dissector_bof_vuln_win.nasl
@@ -40851,7 +40851,7 @@ ee2cfeac2bf3aeff03ce77b5ae53a641  2011/gb_php_46056.nasl
 126f974d65c9b02aec89741073b4943a  2011/gb_python_mult_vuln_win.nasl
 482cbf44fbaacce25cccea85cc838cf0  2011/gb_ibm_was_jndi_imp_info_disclosure_vuln.nasl
 5c1182fec24be6a6812c13004fb756fd  2011/glsa_201006_19.nasl
-5747e031b2d38503c9d1dcaf3220620a  2011/gb_RHSA-2011_1241-01_ecryptfs-utils.nasl
+adf3ecf44f9be6072426f304e2045aa8  2011/gb_RHSA-2011_1241-01_ecryptfs-utils.nasl
 f3ebe93788c21678d80799444273a70e  2011/gb_CESA-2009_1529_samba_centos5_i386.nasl
 4cd3002bb49c77e1b4f6dc5c94c7b409  2011/gb_RHSA-2011_0471-01_firefox.nasl
 94d8ef308c07f6c5bec3052e9cd7dbe7  2011/gb_apple_safari_mult_vuln_july11_macosx.nasl
@@ -41584,7 +41584,7 @@ d2cb21db8b2d0b18cb4bd1ab0306d955  2011/deb_2239_1.nasl
 15473eeb69d2a0b5972d49a224406bb4  2011/gb_fedora_2011_8647_perl-Gtk2-MozEmbed_fc14.nasl
 f6c7258afeaf4054d6acd6991bfdca0b  2011/secpod_ms11-024.nasl
 63913ec539f856a5fe3af2e645d45b28  2011/gb_CESA-2009_0046_ntp_centos5_i386.nasl
-36f598bf214aa474619aab6c4be76fdd  2011/gb_fedora_2011_11936_ecryptfs-utils_fc15.nasl
+5743f624f8c8293733b7146b4c3312f8  2011/gb_fedora_2011_11936_ecryptfs-utils_fc15.nasl
 a3e1f3e78e0b06cdfaee08fa4c39845a  2011/gb_digital_scribe_mult_xss_vuln.nasl
 a316aef6e58f8c60b8278f9a4f3f450e  2011/secpod_ms11-074.nasl
 87cb0b72f7f735cb2f97386344ef8c8d  2011/gb_fedora_2011_3666_php_fc13.nasl
@@ -50189,10 +50189,13 @@ f8ca1470a37f732623025ef71b1e26ad  2019/debian/deb_dla_1734.nasl
 5aa3c99258d38b359ef94069bec96b8d  2019/debian/deb_dla_1738.nasl
 8476d05a8cb72d6c19a5b56fc5c2499d  2019/debian/deb_4363.nasl
 fc278516e342a803812333346e443461  2019/debian/deb_dla_1675.nasl
+f1d269f042c37841bb6460350429ed31  2019/debian/deb_dla_1773.nasl
 02cf635b5bfd3b005371d79ecaa5e3a5  2019/debian/deb_dla_1741.nasl
 a120f4adbd2cfea8370b03f42f8d8061  2019/debian/deb_4388.nasl
 6d195226ab92fa5a9a7678ee141a3f7a  2019/debian/deb_4398.nasl
 ebd6410274484a4cbe264083c4844a69  2019/debian/deb_dla_1716.nasl
+747c745d3578e711eb40bf503afb9f6e  2019/debian/deb_4437.nasl
+597dbcb09ef6c35e6980d6715eadd975  2019/debian/deb_dla_1772.nasl
 3b472174ba5d5b577354880ab58c20f9  2019/debian/deb_4412.nasl
 dafa6c71209a9c41dc4a744b62b70ade  2019/debian/deb_dla_1748.nasl
 7b264c889e96d36292e496541231853b  2019/debian/deb_dla_1724.nasl
@@ -50244,7 +50247,7 @@ d3fd9d3a920696b6646dbc3556fe7a34  2019/debian/deb_dla_1736.nasl
 cf1a4f7d3d000049e3fe869caddd2fe3  2019/debian/deb_dla_1658.nasl
 0f819be2f9d95bb035fe8cc413bb245a  2019/debian/deb_4376.nasl
 499505b0c6cfb370dae8b08a47de3364  2019/debian/deb_4408.nasl
-6b9da7dd73630cc2460ae28cc544592f  2019/debian/deb_4417.nasl
+45b716ba266ce421335ea2d622ac21fd  2019/debian/deb_4417.nasl
 8800d936bf52815c8df7d16aa12a1bb3  2019/debian/deb_dla_1705.nasl
 3c57fb729006d81407af82765ac78a4b  2019/debian/deb_dla_1759.nasl
 423261ddb5409422eaf7d571b0488c6f  2019/debian/deb_dla_1655.nasl
@@ -50252,7 +50255,7 @@ af616f380f20dc4a0b58a34a782f335c  2019/debian/deb_dla_1760.nasl
 89f40a559a52972afcecad9609690ccd  2019/debian/deb_dla_1691.nasl
 9431ae96a842a9cabdf6634c78dcc469  2019/debian/deb_dla_1638.nasl
 de7bc129f147b4c53c69791ac534574e  2019/debian/deb_dla_1751.nasl
-a3e32935079383746408e1e13246cda9  2019/debian/deb_dla_1764.nasl
+f226c752211a2c4a4f97f0e2f9f0dc15  2019/debian/deb_dla_1764.nasl
 f4c4f6d12a37db62b630e650563ef3e4  2019/debian/deb_4414.nasl
 34d1ebbe89058ecb89a013c85364e3aa  2019/debian/deb_dla_1714.nasl
 5be359f7a0a0146c3b947a07377d6c38  2019/debian/deb_dla_1681.nasl
@@ -50337,7 +50340,7 @@ daf215e4fe976fc2d390781046ed5db7  2019/debian/deb_dla_1677.nasl
 044582ebc1971641bf524d86c0459c1f  2019/debian/deb_dla_1640.nasl
 2657142ce45b774cf6dcd54489d51f4a  2019/debian/deb_4404.nasl
 2661cfe5279bb70631ca42c2472f947d  2019/debian/deb_dla_1739.nasl
-97c52a53f0ef6325c938e91f14f69f3a  2019/debian/deb_dla_1727.nasl
+7a05ed915bec5e111732e5a24875d8dd  2019/debian/deb_dla_1727.nasl
 5e000403823fa6e9767dd4c0e73e5904  2019/debian/deb_dla_1762.nasl
 25c6a21660270f917e5b6c8593d0a478  2019/debian/deb_dla_1689.nasl
 e4a450e743eca6f16b9c86bed134ccba  2019/debian/deb_dla_1668.nasl
@@ -50441,7 +50444,7 @@ b23befa394fc7353de6d58037dab88db  2019/centos/gb_CESA-2019_0159_thunderbird_cent
 deb788a8909362b4b8b31d6db70ba25e  2019/centos/gb_CESA-2019_0774_java_centos6.nasl
 cf0a53dcb01fcbef9f58bb876bc675e5  2019/centos/gb_CESA-2019_0420_polkit_centos6.nasl
 b2c15ae2ce327d0cc0a84f47588d7163  2019/centos/gb_CESA-2019_0512_bpftool_centos7.nasl
-7095e84cf42faca7029bcff90ca5a13c  2019/centos/gb_CESA-2019_0672_firefox_centos6.nasl
+a846b6ad006f222d191938cd25ff904e  2019/centos/gb_CESA-2019_0672_firefox_centos6.nasl
 54a38bb8c1a9e02e4182c0978dcb5329  2019/centos/gb_CESA-2019_0230_polkit_centos7.nasl
 909b33106137c1ad09b0896e0d84e4b9  2019/centos/gb_CESA-2019_0368_libgudev1-219-62.el7_centos7.nasl
 d57da4ec772e08280749bfb94f8e8084  2019/centos/gb_CESA-2019_0717_kernel_centos6.nasl
@@ -50452,19 +50455,19 @@ b8325beaac18e9fe26088c5aa9c7b7f9  2019/centos/gb_CESA-2019_0633_ghostscript_cent
 fb8d9b3e23a20f57cb357edcc4c8a42e  2019/centos/gb_CESA-2019_0218_firefox_centos6.nasl
 25a2bad6921ebd5076dead13d5a81a6e  2019/centos/gb_CESA-2019_0775_java_centos7.nasl
 b3307797cfda917add36f33224811401  2019/centos/gb_CESA-2019_0269_thunderbird_centos6.nasl
-881be70eddc01156384653f15946c39d  2019/centos/gb_CESA-2019_0790_java_centos6.nasl
+0b271eb50ab16f95ec71d2a467953bf1  2019/centos/gb_CESA-2019_0790_java_centos6.nasl
 7c6a6fd793fd0796f2348d78178cf3ef  2019/centos/gb_CESA-2019_0163_bpftool_centos7.nasl
 d483ca0af99a3c5267386bb91f9b1672  2019/centos/gb_CESA-2019_0219_firefox_centos7.nasl
 cee3606b9c5e063cf8083adf13600fc7  2019/centos/gb_CESA-2019_0232_spice-server_centos6.nasl
 0aa55e054743dc789b6b36f2fbb18508  2019/centos/gb_CESA-2019_0436_java-11-openjdk_centos7.nasl
 0e3944f0eb6fec5eefc9441448f9b2a4  2019/centos/gb_CESA-2019_0680_thunderbird_centos6.nasl
 6bd90f8ff225f99d5b834309832aceb9  2019/centos/gb_CESA-2019_0194_bind_centos7.nasl
-247bd0c5420fd33e715014f0495dfefb  2019/centos/gb_CESA-2019_0671_firefox_centos7.nasl
+8794bf0c6a8ae137def3749ebf089307  2019/centos/gb_CESA-2019_0671_firefox_centos7.nasl
 a4fc48009c4dcb1f19012538d391c8a3  2019/centos/gb_CESA-2019_0415_kernel_centos6.nasl
 06f9fd0e77bf4f998e1d995052736226  2019/centos/gb_CESA-2019_0109_perl_centos7.nasl
 731de7da56b19c8e44ab11df1902750d  2019/centos/gb_CESA-2019_0483_openssl_centos7.nasl
 f136752f2affab06762682ca790e44bb  2019/centos/gb_CESA-2019_0049_libgudev1-219-62.el7__centos7.nasl
-ea7d63a2736e9d252bee04d494afdd2e  2019/centos/gb_CESA-2019_0791_java_centos7.nasl
+1e4f8a0966ccd145e284185173bb8b4b  2019/centos/gb_CESA-2019_0791_java_centos7.nasl
 e0a0c336f24510137d1ad5c58c5843de  2019/centos/gb_CESA-2019_0375_flatpak_centos7.nasl
 7741ebdeae0ed311f5b31ce5a5be507e  2019/centos/gb_CESA-2019_0059_libvncserver_centos7.nasl
 e2e32ea9efbf9f248ff585a32e0521b4  2019/centos/gb_CESA-2019_0679_libssh2_centos7.nasl
@@ -50543,7 +50546,7 @@ ef8ecf86d653148ca6300c88bba34616  2019/ubuntu/gb_ubuntu_USN_3882_1.nasl
 82481fc6d93a3af07e4f3f323ae2b7d4  2019/ubuntu/gb_ubuntu_USN_3904_1.nasl
 5a6e8a4db7f070cc1e08763b280d0b9d  2019/ubuntu/gb_ubuntu_USN_3887_1.nasl
 46ad9bb4e33064f495f91358165e7b83  2019/ubuntu/gb_ubuntu_USN_3924_1.nasl
-8a17e7290e716fcf89a1d6954a0a442f  2019/ubuntu/gb_ubuntu_USN_3919_1.nasl
+2998667429e69c11edd75ca98b2e3d70  2019/ubuntu/gb_ubuntu_USN_3919_1.nasl
 2a2326a4ce04bada303d76abe61a0895  2019/ubuntu/gb_ubuntu_USN_3862_1.nasl
 491117355d77e2fe51ff39761106cc66  2019/ubuntu/gb_ubuntu_USN_3916_1.nasl
 8e19eb782334930a188e2eb939bb8038  2019/ubuntu/gb_ubuntu_USN_3932_1.nasl
@@ -50605,8 +50608,8 @@ dc7c4c2399e266d556e470177ac55e57  2019/ubuntu/gb_ubuntu_USN_3871_5.nasl
 6f309e211658723632526fcf6086ac5d  2019/adminer/gb_adminer_CVE-2018-7667_lin.nasl
 5e55859c836daf232ec773d6c3f19de7  2019/adminer/gb_adminer_file_disclosure_0119_win.nasl
 154f6508baed26398ddcca99bbba1be6  2019/mozilla/gb_mozilla_thunderbird_mfsa_2018-31_2018-31_macosx.nasl
-3434600f4fac96ae1a9b7fc55792971e  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-12_2019-12_win.nasl
-19ba6775fd0f4e6e9d297ea300f6acd8  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2019-09_2019-10_win.nasl
+a4b3897639a31a5938a28cd2e750679a  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-12_2019-12_win.nasl
+d7027b7228c7b7ae43ebb2c6e7bc525c  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2019-09_2019-10_win.nasl
 7811553cbafb22e92601738e77db5dfb  2019/mozilla/gb_mozilla_thunderbird_mfsa_2018-31_2018-31_win.nasl
 2542c99a4ddad27c44e9c014e9cf3a2b  2019/mozilla/gb_mozilla_firefox_mfsa_2019-06_2019-08_win.nasl
 2f2162175e6080e32bcec46def2bd93a  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-07_2019-11_win.nasl
@@ -50616,7 +50619,7 @@ d1b3b94ba5dce0db43a18da91000d52c  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2018-
 1e4affd6aba88e06abaa1bbc243ac80b  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-01_2019-03_win.nasl
 25a6ad67da6be3aca6758adec6922d4f  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-07_2019-11_macosx.nasl
 ee226e5e9a1e22dd88b238ae7eef1fe9  2019/mozilla/gb_mozilla_firefox_mfsa_2018-31_2019-03_win.nasl
-32c9a27f08989bf28a33f84d0e2fe17a  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-12_2019-12_macosx.nasl
+a22e8d6db4ec201121fc01ae9d03ee82  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-12_2019-12_macosx.nasl
 086ee0883bc3df67b74647cc6bcdafa7  2019/mozilla/gb_mozilla_firefox_mfsa_2019-04_2019-05_win.nasl
 6bfad3cc6d5fa90daee403be2b3af042  2019/mozilla/gb_mozilla_firefox_mfsa_2018-31_2019-03_macosx.nasl
 4be6bfe511cdf777fa5d9e6554f3e14a  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-01_2019-03_macosx.nasl
@@ -50624,12 +50627,12 @@ ee226e5e9a1e22dd88b238ae7eef1fe9  2019/mozilla/gb_mozilla_firefox_mfsa_2018-31_2
 993469343473ab67b79bfa95bbed33d1  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2019-06_2019-08_macosx.nasl
 588cfdd3f740101f43aa44c0e8b04985  2019/mozilla/gb_mozilla_firefox_mfsa_2019-06_2019-08_macosx.nasl
 35dd7854983907dc4bddcc7eaac7abd0  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2019-06_2019-08_win.nasl
-ebfd83eeaf1fa953b1213ee7ca4a819e  2019/mozilla/gb_mozilla_firefox_mfsa_2019-09_2019-10_macosx.nasl
-64ce19904b558b1e1a35af7a5ed9ea6b  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2019-09_2019-10_macosx.nasl
+97012c84c2e6a509688a3f943258372a  2019/mozilla/gb_mozilla_firefox_mfsa_2019-09_2019-10_macosx.nasl
+d91c7dbbcedccb7a594980efd29744fb  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2019-09_2019-10_macosx.nasl
 349f83291e8fa2739d4f0f99ee17dfb4  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-06_2019-06_macosx.nasl
 9c1bb3f234a36c1840a4c0f5aa8e71d5  2019/mozilla/gb_mozilla_firefox_esr_mfsa_2019-04_2019-05_win.nasl
 b7a9e60427953ba998bd4ec5946d550f  2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-06_2019-06_win.nasl
-4f25191684616aeb1d715ed23122d992  2019/mozilla/gb_mozilla_firefox_mfsa_2019-09_2019-10_win.nasl
+5302b825d54eed763d1705c1bdbc66da  2019/mozilla/gb_mozilla_firefox_mfsa_2019-09_2019-10_win.nasl
 03299d0622a0b8ecab53325fa00198db  2019/microsoft/gb_ms_kb4493474.nasl
 a486e3ef60465bfb8a5dd5819e840809  2019/microsoft/gb_ms_kb4493472.nasl
 00ba71a45252f79e685f390858a7964f  2019/microsoft/gb_ms_kb4462186.nasl
@@ -51060,7 +51063,7 @@ eed944ac1fe1ae84a4bb4c4f9cde6988  2019/opensuse/gb_suse_2019_0081_1.nasl
 5aea97613ed7f90d6131cf3d7ef7d071  2019/opensuse/gb_opensuse_2019_0275_1.nasl
 6cd55df01f4e7ae601f0c0e1da2a5f2a  2019/opensuse/gb_suse_2018_4313_1.nasl
 466aa58245834c8f9fcb64e92c42e53b  2019/opensuse/gb_suse_2019_0044_1.nasl
-fcc75cbc0f5c7804eb73f326c02a1b0f  2019/opensuse/gb_opensuse_2019_1152_1.nasl
+cac85fb9b6e8dd2ca2e38b4858978d94  2019/opensuse/gb_opensuse_2019_1152_1.nasl
 9bf1298d31aa68004e062cdea67540ac  2019/opensuse/gb_opensuse_2019_1108_1.nasl
 ad9164c08d7195e9027269bab3c1de5d  2019/opensuse/gb_suse_2019_0054_1.nasl
 3b7035adb61db70a486648dc118241e3  2019/opensuse/gb_opensuse_2019_1109_1.nasl

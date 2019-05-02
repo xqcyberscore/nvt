@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-05_2018-05_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Firefox Security Updates( mfsa_2018-05_2018-05 )-Windows
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812750");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-01T16:02:02+0000");
   script_cve_id("CVE-2018-5124");
   script_bugtraq_id(102843);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-05-01 16:02:02 +0000 (Wed, 01 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-31 11:31:34 +0530 (Wed, 31 Jan 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-05_2018-05 )-Windows");
 

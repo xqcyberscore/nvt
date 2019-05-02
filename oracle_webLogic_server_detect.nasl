@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_webLogic_server_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
 #
 # Oracle WebLogic Server Detection
 #
@@ -28,12 +27,14 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100493");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11407 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
+  script_version("2019-05-02T04:12:14+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 04:12:14 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2010-02-14 12:35:00 +0100 (Sun, 14 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
+
   script_name("Oracle WebLogic Server Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
@@ -45,46 +46,80 @@ if(description)
 
   The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
+  script_xref(name:"URL", value:"https://www.oracle.com/middleware/weblogic/");
+
   exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-port = get_http_port(default:7001);
+port = get_http_port(default: 7001);
+banner = get_http_banner(port: port);
 
-url = "/console/login/LoginForm.jsp";
+if (banner =~ "Server: WebLogic ") {
+  version = "unknown";
+  servicepack = "unknown";
 
-buf = http_get_cache(item:url, port:port);
-
-if (buf && ("<title>Oracle WebLogic Server Administration Console" >< buf ||
-    egrep(pattern: "<TITLE>WebLogic Server.*Console Login", string: buf))) {
-  vers = "unknown";
-
-  version = eregmatch(string: buf, pattern: "WebLogic Server ([0-9.]+)",icase:TRUE);
-  if (!isnull(version[1])){
-    vers = version[1];
+  # Server: WebLogic Server 7.0 SP5 Wed Mar 31 23:12:50 PST 2004 363281
+  # Server: Weblogic 12.2.1.1
+  # Server: WebLogic Server 10.3.6.0.171017 PSU Patch for BUG26519424 TUE SEP 12 18:34:42 IST 2017
+  # Server: WebLogic 5.1.0 Service Pack 6 09/20/2000 21:03:19 #84511
+  # Server: WebLogic WebLogic Server 6.1 SP2  12/18/2001 11:13:46 #154529
+  vers = eregmatch(pattern: "WebLogic (Server )?([0-9.]+)( (SP|Service Pack )([0-9]+))?", string: banner,
+         icase: TRUE);
+  if (!isnull(vers[2])) {
+    version = vers[2];
+    url = "/";
+    if (!isnull(vers[5]))
+      servicepack = vers[5];
   }
-  else {
-    version = eregmatch(string: buf, pattern: "WebLogic Server Version: ([0-9.]+)",icase:TRUE);
-    if (!isnull(version[1]))
-      vers = version[1];
+}
+else {
+  url = "/console/login/LoginForm.jsp";
+
+  buf = http_get_cache(item: url, port: port);
+
+  if (buf && ("<title>Oracle WebLogic Server Administration Console" >< buf ||
+      egrep(pattern: "<TITLE>WebLogic Server.*Console Login", string: buf))) {
+    version = "unknown";
+
+    vers = eregmatch(string: buf, pattern: "WebLogic Server ([0-9.]+)", icase: TRUE);
+    if (!isnull(vers[1])){
+      version = vers[1];
+    }
+    else {
+      vers = eregmatch(string: buf, pattern: "WebLogic Server Version: ([0-9.]+)", icase: TRUE);
+      if (!isnull(vers[1]))
+        version = vers[1];
+    }
   }
-
-  set_kb_item(name:"OracleWebLogicServer/installed", value:TRUE);
-
-  cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:bea:weblogic_server:");
-  if (!cpe)
-    cpe = 'cpe:/a:bea:weblogic_server';
-
-  register_product(cpe:cpe, location: "/", port:port);
-
-  log_message(data: build_detection_report(app: "Oracle WebLogic Server", version: vers, install: "/", cpe: cpe,
-                                           concluded: version[0], concludedUrl: url),
-              port: port);
-  exit(0);
+  else
+    exit(0);
 }
 
+conclurl = report_vuln_url(port: port, url: url, url_only: TRUE);
+
+set_kb_item(name: "OracleWebLogicServer/installed", value: TRUE);
+
+CPE1 = "cpe:/a:bea:weblogic_server";
+CPE2 = "cpe:/a:oracle:weblogic_server";
+if (version != "unknown") {
+  CPE1 += ":" + version;
+  CPE2 += ":" + version;
+
+  if (servicepack != "unknown") {
+    CPE1 += ":sp" + servicepack;
+    CPE2 += ":sp" + servicepack;
+    version += " SP" + servicepack;
+  }
+}
+
+register_product(cpe: CPE1, location: "/", port: port, service: "www");
+register_product(cpe: CPE2, location: "/", port: port, service: "www");
+
+log_message(data: build_detection_report(app: "Oracle WebLogic Server", version: version, install: "/", cpe: CPE1,
+                                         concluded: vers[0], concludedUrl: conclurl),
+            port: port);
 exit(0);

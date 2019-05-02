@@ -27,12 +27,12 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2011-September/066577.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863844");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-05-01T16:02:02+0000");
+  script_tag(name:"last_modification", value:"2019-05-01 16:02:02 +0000 (Wed, 01 May 2019)");
   script_tag(name:"creation_date", value:"2012-03-19 12:24:54 +0530 (Mon, 19 Mar 2012)");
   script_cve_id("CVE-2011-3145");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_xref(name:"FEDORA", value:"2011-11871");
   script_name("Fedora Update for ecryptfs-utils FEDORA-2011-11871");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'ecryptfs-utils'
