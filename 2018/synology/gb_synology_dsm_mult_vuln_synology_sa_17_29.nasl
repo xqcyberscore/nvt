@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_mult_vuln_synology_sa_17_29.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Synology DiskStation Manager (DSM) Multiple Vulnerabilities(Synology-SA-17:29)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813737");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-9553", "CVE-2017-9554");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-31 12:20:00 +0530 (Tue, 31 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Synology DiskStation Manager (DSM) Multiple Vulnerabilities(Synology-SA-17:29)");
@@ -59,8 +58,7 @@ if(description)
   5.2, 6.0 and 6.1");
 
   script_tag(name:"solution", value:"Upgrade to Synology DiskStation Manager (DSM)
-  version 6.1.3-15152 or 6.0.3-8754-4 or 5.2-5967-04 or later. For updates refer
-  to Reference links");
+  version 6.1.3-15152 or 6.0.3-8754-4 or 5.2-5967-04 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.synology.com/en-global/support/security/Synology_SA_17_29_DSM");

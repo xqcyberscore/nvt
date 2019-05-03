@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_security_bypass_vuln_PMASA-2017-8.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # phpMyAdmin Security Bypass Vulnerability-PMASA-2017-8
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813163");
-  script_version("$Revision: 12025 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-18264");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-03 12:01:22 +0530 (Thu, 03 May 2018)");
   script_name("phpMyAdmin Security Bypass Vulnerability-PMASA-2017-8");
 
@@ -54,8 +53,7 @@ if (description)
   4.4.x, 4.6.x, 4.7.0-beta1 and 4.7.0-rc1");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.0.10.20 or
-  4.7.0 or newer or apply patch as provided by vendor. For updates refer to
-  Reference links.");
+  4.7.0 or newer or apply patch as provided by vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

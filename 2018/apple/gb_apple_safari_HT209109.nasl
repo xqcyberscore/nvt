@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT209109.nasl 11471 2018-09-19 11:17:08Z santu $
 #
 # Apple Safari Security Updates(HT209109)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814020");
-  script_version("2019-04-10T08:04:05+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4307", "CVE-2018-4329", "CVE-2018-4195");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-10 08:04:05 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-18 10:35:42 +0530 (Tue, 18 Sep 2018)");
   script_name("Apple Safari Security Updates(HT209109)");
 
@@ -57,8 +56,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple Safari versions before 12");
 
-  script_tag(name:"solution", value:"Upgrade to Apple Safari 12 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari 12 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

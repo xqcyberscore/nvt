@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_priv_esc_vuln_nov09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # VMware Products Guest Privilege Escalation Vulnerability - Nov09 (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801142");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -39,6 +38,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3062");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2009/Oct/1023082.html");
   script_xref(name:"URL", value:"http://lists.vmware.com/pipermail/security-announce/2009/000069.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2009-0015.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -55,15 +55,13 @@ if(description)
   script_tag(name:"insight", value:"An error occurs while setting the exception code when a '#PF' (page fault)
   exception arises which can be exploited to gain escalated privileges within
   VMware guest.");
-  script_tag(name:"solution", value:"Upgrade your VMWares according to the below link,
-  http://www.vmware.com/security/advisories/VMSA-2009-0015.html");
+  script_tag(name:"solution", value:"Upgrade your VMWare according to the referenced vendor advisory.");
   script_tag(name:"summary", value:"The host is installed with VMWare product(s) and is prone to
   Privilege Escalation vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("version_func.inc");
 

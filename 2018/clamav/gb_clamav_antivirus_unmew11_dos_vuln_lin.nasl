@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_antivirus_unmew11_dos_vuln_lin.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Clam AntiVirus 'unmew11()' Denial of Service Vulnerability (Linux)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814147");
-  script_version("$Revision: 12637 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-15378");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-17 15:04:36 +0530 (Wed, 17 Oct 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Clam AntiVirus 'unmew11()' Denial of Service Vulnerability (Linux)");
@@ -53,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"ClamAV AntiVirus versions before 0.100.2 on Linux.");
 
-  script_tag(name:"solution", value:"Update to version 0.100.2 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update to version 0.100.2 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://bugzilla.clamav.net/show_bug.cgi?id=12170");

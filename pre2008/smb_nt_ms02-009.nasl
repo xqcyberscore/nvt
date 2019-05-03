@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-009.nasl 10200 2018-06-14 14:39:20Z cfischer $
 #
 # IE VBScript Handling patch (Q318089)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10926");
-  script_version("$Revision: 10200 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 16:39:20 +0200 (Thu, 14 Jun 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4158);
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,16 +53,14 @@ if(description)
 
   Microsoft Internet Explorer 6.0");
 
-  script_tag(name:"solution", value:"See:
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.
 
-  http://www.microsoft.com/technet/security/bulletin/ms02-009.mspx
-
-  and:
-
-  Microsoft Article Q319847 MS02-009 May Cause Incompatibility Problems Between VBScript and Third-Party Applications");
+  Also see Microsoft Article Q319847 MS02-009 May Cause Incompatibility Problems Between VBScript and Third-Party Applications");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms02-009.mspx");
 
   exit(0);
 }

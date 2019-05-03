@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bsplayer_bls_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # BSPlayer Stack Overflow Vulnerability BLS
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800269");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"BSPlayer Version prior to 2.36.990 on Windows.");
   script_tag(name:"insight", value:"This flaw is due to boundary check error while the user supplies input data
   in the context of the application.");
-  script_tag(name:"solution", value:"Upgrade to the latest version 2.36.990
-  http://www.bsplayer.org/en/bs.player/download");
+  script_tag(name:"solution", value:"Upgrade to the latest version 2.36.990.");
   script_tag(name:"summary", value:"This host is running BSPlayer Free Edition and is prone to Stack
   Overflow Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker craft a malicious arbitrary
@@ -62,13 +60,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 playerVer = get_kb_item("BSPlayer/Ver");
-if(playerVer != NULL)
-{
-  if(version_is_less(version:playerVer, test_version:"2.36.990")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!playerVer)
+  exit(0);
+
+if(version_is_less(version:playerVer, test_version:"2.36.990")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

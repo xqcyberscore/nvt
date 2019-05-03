@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_norton_utilities_dll_preloading_vuln.nasl 12203 2018-11-02 14:42:44Z bshakeel $
 #
 # Norton Utilities DLL Preloading Vulnerability (Windows)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:symantec:norton_utilities";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814309");
-  script_version("$Revision: 12203 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-5235");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 15:42:44 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-02 16:40:08 +0530 (Fri, 02 Nov 2018)");
   script_name("Norton Utilities DLL Preloading Vulnerability (Windows)");
 
@@ -57,8 +56,7 @@ if(description)
 
   script_tag(name:"affected", value:"Norton Utilities versions prior to 16.0.3.44");
 
-  script_tag(name:"solution", value:"Upgrade to version 16.0.3.44. For updates
-  refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to version 16.0.3.44. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

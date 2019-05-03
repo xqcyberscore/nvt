@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_vuln_apsb18-27_win.nasl 12687 2018-12-06 13:46:21Z mmartin $
 #
 # Adobe Digital Editions Multiple Vulnerabilities(APSB18-27)-Windows
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814088");
-  script_version("$Revision: 12687 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12814", "CVE-2018-12813", "CVE-2018-12823", "CVE-2018-12816",
                 "CVE-2018-12818", "CVE-2018-12819", "CVE-2018-12820", "CVE-2018-12821",
                 "CVE-2018-12822");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-11 10:27:04 +0530 (Thu, 11 Oct 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Digital Editions Multiple Vulnerabilities(APSB18-27)-Windows");
@@ -60,7 +59,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Digital Edition versions prior to 4.5.9 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition version
-  4.5.9 or later. For updates refer to Reference links.");
+  4.5.9 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.adobe.com/in/solutions/ebook/digital-editions/download.html");

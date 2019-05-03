@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208397.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apple MacOSX Security Updates (HT208397)
 #
@@ -28,12 +27,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812629");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-5753", "CVE-2017-5715");
   script_bugtraq_id(102371, 102376);
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-12 16:38:44 +0530 (Fri, 12 Jan 2018)");
   script_name("Apple MacOSX Security Updates (HT208397)");
 
@@ -53,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Mac OS X 10.13.x through 10.13.2");
 
   script_tag(name:"solution", value:"Apply Apple Mac OS X 10.13.2 Supplemental
-  Update. For updates refer to Reference links.");
+  Update. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

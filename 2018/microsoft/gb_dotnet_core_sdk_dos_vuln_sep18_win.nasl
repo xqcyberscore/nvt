@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_core_sdk_dos_vuln_sep18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # ASP.NET Core SDK 'System.IO.Pipelines' Denial of Service Vulnerability Sep18 (Windows)
 #
@@ -28,11 +27,11 @@ CPE = "cpe:/a:microsoft:.netcore_sdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814209");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8409");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-14 11:39:31 +0530 (Fri, 14 Sep 2018)");
   script_name("ASP.NET Core SDK 'System.IO.Pipelines' Denial of Service Vulnerability Sep18 (Windows)");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"ASP.NET Core SDK 2.1 prior to version 2.1.402");
 
-  script_tag(name:"solution", value:"Upgrade to ASP.NET Core 2.1.402 or later. For
-  updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to ASP.NET Core 2.1.402 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

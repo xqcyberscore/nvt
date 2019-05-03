@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms99-33_remote.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:ftp_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802440");
-  script_version("$Revision: 13494 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-1999-0349");
   script_bugtraq_id(192);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-07-04 16:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability");
   script_category(ACT_DENIAL);
@@ -56,8 +55,7 @@ if(description)
   'list' commands. A constructed 'list' request could cause arbitrary code to
   execute on the server via a classic buffer overrun technique.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory / references.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing important security update according to
   Microsoft Bulletin MS99-033.");

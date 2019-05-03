@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_multiple_vuln_win_nov18.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Node.js Multiple Vulnerabilities-Nov18 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814516");
-  script_version("$Revision: 12938 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12121", "CVE-2018-12122", "CVE-2018-12123");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-29 12:56:10 +0530 (Thu, 29 Nov 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js Multiple Vulnerabilities-Nov18 (Windows)");
@@ -65,7 +64,7 @@ if(description)
   8.14.0, 10.14.0 and 11.3.0 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Node.js 6.15.0, 8.14.0,
-  or 10.14.0, 11.3.0 or later. For updates refer to Reference links.");
+  or 10.14.0, 11.3.0 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://nodejs.org/en/blog/vulnerability/november-2018-security-releases");

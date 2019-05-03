@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_mult_bof_vuln_apsb10-01_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Illustrator Multiple Buffer Overflow Vulnerabilities-Mac OS X (apsb10-01)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:illustrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813494");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2009-3952", "CVE-2009-4195");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 15:35:32 +0530 (Thu, 12 Jul 2018)");
   script_tag(name:"qod", value:"30"); ## Solution is Mitigation
   script_name("Adobe Illustrator Multiple Buffer Overflow Vulnerabilities-Mac OS X (apsb10-01)");
@@ -57,7 +56,7 @@ if(description)
   Illustrator CS3 versions 13.0.3 and earlier on Mac OS X.");
 
   script_tag(name:"solution", value:"Patch is available as a solution from
-  vendor. For updates refer to Reference links.");
+  vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_java_sdk_priv_esca_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # IBM Java SDK Remote Privilege Escalation Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ibm:java_sdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813819");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1417");
   script_bugtraq_id(103216);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-09 14:03:02 +0530 (Thu, 09 Aug 2018)");
   script_name("IBM Java SDK Remote Privilege Escalation Vulnerability (Linux)");
 
@@ -54,7 +53,7 @@ if(description)
   7.1.4.20 and 8.0 before 8.0.5.10.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Java SDK 7.1.4.20 or 8.0.5.10
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://www.securitytracker.com/id/1040403");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg1IJ04021");

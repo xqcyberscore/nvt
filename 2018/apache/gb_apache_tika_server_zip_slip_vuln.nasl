@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_zip_slip_vuln.nasl 12512 2018-11-23 14:21:52Z mmartin $
 #
 # Apache Tika Server Zip Slip Arbitrary File Overwrite Vulnerability
 #
@@ -28,11 +27,11 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814055");
-  script_version("$Revision: 12512 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11762");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:21:52 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-27 15:38:59 +0530 (Thu, 27 Sep 2018)");
   script_name("Apache Tika Server Zip Slip Arbitrary File Overwrite Vulnerability");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Tika Server from versions 0.9 to 1.18");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Tika Server 1.19 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apache Tika Server 1.19 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

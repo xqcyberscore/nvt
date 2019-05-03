@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-14_2018-18_macosx.nasl 12912 2018-12-31 08:46:47Z asteins $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-14_2018-18)-MAC OS X
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813550");
-  script_version("$Revision: 12912 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12372", "CVE-2018-12373",
                 "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364", "CVE-2018-12365",
                 "CVE-2018-12366", "CVE-2018-12368", "CVE-2018-12374", "CVE-2018-5188");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-31 09:46:47 +0100 (Mon, 31 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-04 12:05:34 +0530 (Wed, 04 Jul 2018)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2018-14_2018-18 )-MAC OS X");
 
@@ -78,8 +77,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Thunderbird version before
   52.9 on MAC OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 52.9
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 52.9. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

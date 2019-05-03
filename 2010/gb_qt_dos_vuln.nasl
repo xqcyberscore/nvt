@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qt_dos_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Qt 'QSslSocketBackendPrivate::transmit()' Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801235");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(41250);
   script_cve_id("CVE-2010-2621");
@@ -53,21 +52,19 @@ service.");
 'src/network/ssl/qsslsocket_openssl.cpp'. This can be exploited to
 exhaust CPU resources in server applications using the QSslSocket class.");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to version 4.6.4 or later,
-For updates refer to ftp://ftp.qt.nokia.com/qt/source");
+  script_tag(name:"solution", value:"Upgrade to version 4.6.4 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Qt and is prone to denial of service
 vulnerability.");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 ver = get_kb_item("Qt/Ver");
+if(!ver)
+  exit(0);
 
-if(ver != NULL)
-{
-  if(version_is_less_equal(version:ver, test_version:"4.6.3") ){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(version_is_less_equal(version:ver, test_version:"4.6.3") ){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

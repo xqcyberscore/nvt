@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_mult_vuln_june18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Trend Micro OfficeScan Multiple Vulnerabilities June18
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813615");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10358", "CVE-2018-10359", "CVE-2018-10505", "CVE-2018-10506",
                 "CVE-2018-10507", "CVE-2018-10508", "CVE-2018-10509");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-26 10:57:13 +0530 (Tue, 26 Jun 2018)");
   script_name("Trend Micro OfficeScan Multiple Vulnerabilities June18");
 
@@ -68,8 +67,7 @@ if(description)
   SP1 prior to 11.0 SP1 CP 6540.");
 
   script_tag(name:"solution", value:"Upgrade to OfficeScan XG SP1 CP 5147 or
-  XG CP 1876 (Pre-SP1) or 110.0 SP1 CP 6540 or later.
-  For updates refer to Reference links.");
+  XG CP 1876 (Pre-SP1) or 110.0 SP1 CP 6540 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

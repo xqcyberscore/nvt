@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_dos_vuln_may18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # ASP.NET Core Denial of Service Vulnerability May18 (Windows)
 #
@@ -28,11 +27,11 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813189");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-0765");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-15 14:16:59 +0530 (Tue, 15 May 2018)");
   script_name("ASP.NET Core Denial of Service Vulnerability May18 (Windows)");
 
@@ -50,7 +49,7 @@ if(description)
   script_tag(name:"affected", value:"ASP.NET Core 2.0 prior to version 2.0.8");
 
   script_tag(name:"solution", value:"Upgrade to ASP.NET Core 2.0 to version
-  2.0.8 or later. For updates refer to Reference links.");
+  2.0.8 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_antivirus_premium_mult_vuln_sep18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # K7 Anti-Virus Premium Multiple Vulnerabilities Sep18
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:k7computing:antivirus_premium";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813922");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-17429", "CVE-2017-16557", "CVE-2017-16555", "CVE-2017-16556",
                 "CVE-2017-16553", "CVE-2017-16554", "CVE-2017-16551", "CVE-2017-16552",
                 "CVE-2017-16550", "CVE-2017-16549");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-03 15:24:05 +0530 (Mon, 03 Sep 2018)");
   script_name("K7 Anti-Virus Premium Multiple Vulnerabilities Sep18");
 
@@ -60,8 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"K7 Anti-Virus Premium before 15.1.0.53");
 
-  script_tag(name:"solution", value:"K7 Anti-Virus Premium version 15.1.0.53.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"K7 Anti-Virus Premium version 15.1.0.53. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

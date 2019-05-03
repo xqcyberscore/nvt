@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finger_redirection_remote_dos_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Finger Redirection Remote Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802231");
-  script_version("$Revision: 12006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_cve_id("CVE-1999-0106");
   script_tag(name:"cvss_base", value:"2.1");
@@ -52,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to finger daemon allows redirecting a finger request to
   remote sites using the form finger 'username@hostname1@hostname2'.");
 
-  script_tag(name:"solution", value:"Upgrade to GNU finger 1.37 or later,
-  For updates refer, ftp://prep.ai.mit.edu/old-gnu/finger/finger-1.37.tar.gz");
+  script_tag(name:"solution", value:"Upgrade to GNU finger 1.37 or later.");
 
   script_tag(name:"summary", value:"This host is running Finger service and is prone to denial of
   service vulnerability.");

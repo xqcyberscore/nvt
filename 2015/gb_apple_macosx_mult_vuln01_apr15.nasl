@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_apr15.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 Apr15
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805601");
-  script_version("$Revision: 14304 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2015-1130", "CVE-2015-1131", "CVE-2015-1132", "CVE-2015-1133",
                 "CVE-2015-1134", "CVE-2015-1135", "CVE-2015-1136", "CVE-2015-1088",
                 "CVE-2015-1089", "CVE-2015-1091", "CVE-2015-1093", "CVE-2015-1137",
@@ -40,7 +39,7 @@ if(description)
   script_bugtraq_id(73982, 73984, 72328, 73981);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-04-24 15:41:40 +0530 (Fri, 24 Apr 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 Apr15");
 
@@ -64,8 +63,7 @@ if(description)
   10.8.5, 10.9 through 10.9.5, and 10.10.x through 10.10.2");
 
   script_tag(name:"solution", value:"Upgrade to Apple Mac OS X version 10.10.3
-  or later or apply security update 2015-004 for 10.8 and 10.9 versions.
-  For updates refer to Reference links.");
+  or later or apply security update 2015-004 for 10.8 and 10.9 versions. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

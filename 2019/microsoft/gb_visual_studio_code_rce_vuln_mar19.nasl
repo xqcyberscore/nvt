@@ -23,11 +23,11 @@ CPE = "cpe:/a:microsoft:visual_studio_code:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814769");
-  script_version("$Revision: 14182 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-0728");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:01:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-13 19:24:43 +0530 (Wed, 13 Mar 2019)");
   script_name("Microsoft Visual Studio Code Remote Code Execution Vulnerability Mar19");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"affected", value:"Visual Studio Code before version 1.32");
 
   script_tag(name:"solution", value:"Update Visual Studio Code to version 1.32
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

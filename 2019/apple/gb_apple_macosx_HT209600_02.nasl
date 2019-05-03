@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815007");
-  script_version("2019-03-26T12:22:04+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-8508", "CVE-2019-8540", "CVE-2019-8530");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-03-26 12:22:04 +0000 (Tue, 26 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-26 15:43:22 +0530 (Tue, 26 Mar 2019)");
   script_name("Apple MacOSX Security Updates(HT209600)-02");
 
@@ -51,7 +51,7 @@ if(description)
   10.12.x through 10.12.6, 10.14.x through 10.14.3");
 
   script_tag(name:"solution", value:"Upgrade to Apple Mac OS X 10.14.4 or later
-  pr apply Security Update 2019-002 Sierra. For updates refer to Reference links.");
+  pr apply Security Update 2019-002 Sierra. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

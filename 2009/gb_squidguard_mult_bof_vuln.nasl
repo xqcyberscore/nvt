@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squidguard_mult_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # SquidGuard Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800965");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-04 07:03:36 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -39,6 +38,8 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53922");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3013");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2009/Oct/1023079.html");
+  script_xref(name:"URL", value:"http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091019");
+  script_xref(name:"URL", value:"http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091015");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -58,23 +59,15 @@ if(description)
     processing overly long URLs and can be exploited to bypass the URL filter.");
   script_tag(name:"summary", value:"The host is installed with SquidGuard and is prone to multiple
   Buffer Overflow vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the following patches.
-  http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091019
-  http://www.squidguard.org/Downloads/Patches/1.4/Readme.Patch-20091015
-
-  *****
-  NOTE: Please ignore this warning if the above mentioned patches are already applied.
-  *****");
+  script_tag(name:"solution", value:"Apply the referenced patches.");
   exit(0);
 }
-
 
 include("version_func.inc");
 
 sgVer = get_kb_item("SquidGuard/Ver");
-if(!sgVer){
+if(!sgVer)
   exit(0);
-}
 
 if(version_is_equal(version:sgVer, test_version:"1.4")||
    version_is_equal(version:sgVer, test_version:"1.3")){

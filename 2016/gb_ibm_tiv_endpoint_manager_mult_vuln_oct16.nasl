@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_endpoint_manager_mult_vuln_oct16.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # IBM BigFix (Formerly Tivoli Endpoint Manager) Multiple Vulnerabilities Oct16
 #
@@ -32,12 +31,12 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809368");
-  script_version("$Revision: 11725 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2016-0292", "CVE-2016-0397", "CVE-2016-0295");
   script_bugtraq_id(92467, 92468, 92464);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-10-18 13:23:56 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM BigFix (Formerly Tivoli Endpoint Manager) Multiple Vulnerabilities Oct16");
@@ -65,8 +64,7 @@ if (description)
   Manager) versions 9.x before 9.5.2.");
 
   script_tag(name:"solution", value:"Upgrade to IBM BigFix (Formerly Tivoli
-  Endpoint Manager) version 9.5.2, or later,
-  For updates refer to Reference links.");
+  Endpoint Manager) version 9.5.2, or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21985907");

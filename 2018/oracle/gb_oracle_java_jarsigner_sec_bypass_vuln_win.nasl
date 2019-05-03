@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jarsigner_sec_bypass_vuln_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle Java SE 'jarsigner' Security Bypass Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813376");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2013-4578");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-23 16:10:50 +0530 (Wed, 23 May 2018)");
   script_name("Oracle Java SE 'jarsigner' Security Bypass Vulnerability (Windows)");
 
@@ -53,7 +52,7 @@ if(description)
   Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle Java SE version 7u51 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

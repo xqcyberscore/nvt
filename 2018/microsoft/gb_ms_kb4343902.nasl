@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4343902.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (KB4343902)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813835");
-  script_version("$Revision: 12193 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12824", "CVE-2018-12825", "CVE-2018-12826", "CVE-2018-12827",
                 "CVE-2018-12828");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 10:00:20 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (KB4343902)");
 
@@ -72,14 +71,12 @@ if(description)
 
   Windows Server 2012/2012 R2/2016");
 
-  script_tag(name:"solution", value:"Run Windows update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the reference link. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4343902");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

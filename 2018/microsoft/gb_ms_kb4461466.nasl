@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461466.nasl 12568 2018-11-29 07:50:34Z mmartin $
 #
 # Microsoft Excel 2010 Remote Code Execution Vulnerability (KB4461466)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814117");
-  script_version("$Revision: 12568 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8502");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 08:50:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-10 10:27:54 +0530 (Wed, 10 Oct 2018)");
   script_name("Microsoft Excel 2010 Remote Code Execution Vulnerability (KB4461466)");
 
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Excel 2010");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory.
-  For updates refer to Reference links.");
+  hotfixes or download and update mentioned hotfixes in the advisory. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

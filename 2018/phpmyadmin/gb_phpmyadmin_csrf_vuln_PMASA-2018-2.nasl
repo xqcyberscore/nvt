@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_csrf_vuln_PMASA-2018-2.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # phpMyAdmin Cross-Site Request Forgery Vulnerability-PMASA-2018-2
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813158");
-  script_version("$Revision: 12025 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10188");
   script_bugtraq_id(103936);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-02 17:13:20 +0530 (Wed, 02 May 2018)");
   script_name("phpMyAdmin Cross-Site Request Forgery Vulnerability-PMASA-2018-2");
 
@@ -54,8 +53,7 @@ if (description)
   script_tag(name:"affected", value:"phpMyAdmin version 4.8.0");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.8.0-1 or
-  newer version or apply patch from vendor. For updates refer to
-  Reference links.");
+  newer version or apply patch from vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -23,11 +23,11 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814860");
-  script_version("$Revision: 13749 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-18356", "CVE-2019-5785", "CVE-2018-18335", "CVE-2018-18509");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 06:33:45 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-18 10:51:25 +0530 (Mon, 18 Feb 2019)");
   script_name("Mozilla Thunderbird Security Updates(mfsa2019-06)-MAC OS X");
 
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Thunderbird version before 60.5.1 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 60.5.1
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

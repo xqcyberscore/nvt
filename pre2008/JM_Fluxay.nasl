@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: JM_Fluxay.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # Fluxay Sensor Detection
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11880");
-  script_version("$Revision: 14336 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,7 +40,9 @@ if(description)
   script_dependencies("find_service2.nasl");
   script_require_ports("Services/fluxay");
 
-  script_tag(name:"solution", value:"See www.rapter.net/jm3.htm for details on removal");
+  script_xref(name:"URL", value:"http://www.rapter.net/jm3.htm");
+
+  script_tag(name:"solution", value:"See the references for details on the removal.");
   script_tag(name:"summary", value:"This host appears to be running Fluxay Sensor on this port.
 
   Fluxay Sensor is a Backdoor which allows an intruder gain

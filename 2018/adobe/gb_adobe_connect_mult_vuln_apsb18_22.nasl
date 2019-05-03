@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_mult_vuln_apsb18_22.nasl 11513 2018-09-21 03:48:51Z ckuersteiner $
 #
 # Adobe Connect Multiple Vulnerabilities (APSB18-22)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813659");
-  script_version("$Revision: 11513 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4994", "CVE-2018-12804", "CVE-2018-12805");
   script_bugtraq_id(104102, 104697, 104696);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 10:36:00 +0530 (Thu, 12 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Multiple Vulnerabilities (APSB18-22)");
@@ -57,7 +56,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Connect versions 9.7.5 and earlier");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Connect version 9.8.1 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/connect/apsb18-22.html");

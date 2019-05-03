@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_lzh_dos_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # ClamAV LZH File Unpacking Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800596");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"ClamAV 0.93.3 and prior on Windows.");
   script_tag(name:"insight", value:"A segmentation fault ocurs in the unpack feature when processing malicious
   LZH file.");
-  script_tag(name:"solution", value:"Upgrade to ClamAV 0.94 or later
-  http://www.clamav.net/download");
+  script_tag(name:"solution", value:"Upgrade to ClamAV 0.94 or later.");
   script_tag(name:"summary", value:"The host is installed with ClamAV and is prone to Denial of Service
   Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -56,13 +54,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 clamavVer = get_kb_item("ClamAV/Win/Ver");
-if(clamavVer == NULL){
+if(!clamavVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:clamavVer, test_version:"0.93.3")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

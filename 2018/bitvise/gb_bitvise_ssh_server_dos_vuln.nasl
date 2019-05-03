@@ -1,6 +1,5 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitvise_ssh_server_dos_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Bitvise SSH Server Denial of Service Vulnerability
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:bitvise:winsshd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813384");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-04 13:54:02 +0530 (Mon, 04 Jun 2018)");
   script_name("Bitvise SSH Server Denial of Service Vulnerability");
 
@@ -52,7 +51,7 @@ if(description)
   and 7.xx before 7.41.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.51 or 7.41 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

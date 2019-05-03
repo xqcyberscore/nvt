@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_aug09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Google Chrome 'JavaScript' And 'HTTPS' Multiple Vulnerabilities - Aug09
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900832");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-02 09:58:59 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,22 +56,18 @@ if(description)
     certificate signed with the MD2 or MD4 algorithm, which makes it easier for
     man-in-the-middle attackers to spoof arbitrary HTTPS servers via a crafted
     certificate.");
-  script_tag(name:"solution", value:"Upgrade to version 2.0.172.43 or later.
-  http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to version 2.0.172.43 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
-
-if(isnull(chromeVer)){
+if(!chromeVer)
   exit(0);
-}
 
 if(version_is_less(version:chromeVer, test_version:"2.0.172.43")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

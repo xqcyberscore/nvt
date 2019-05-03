@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_mar09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Wireshark Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800374");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-18 05:31:55 +0100 (Wed, 18 Mar 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -47,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version prior to 1.0.5 on Windows");
   script_tag(name:"insight", value:"Error in the WLCCP and SMTP dissector allows to exploit by triggering the
   execution into an infinite loop through specially crafted packets.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.0.5
-  http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.0.5.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial
   of service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -56,13 +54,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 sharkVer = get_kb_item("Wireshark/Win/Ver");
-if(!sharkVer){
+if(!sharkVer)
   exit(0);
-}
 
 if(version_is_less(version:sharkVer, test_version:"1.0.5")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

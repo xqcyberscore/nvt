@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upnp_xp.nasl 10415 2018-07-05 10:51:54Z cfischer $
 #
 # scan for UPNP hosts
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10829");
-  script_version("$Revision: 10415 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:51:54 +0200 (Thu, 05 Jul 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3723);
   script_tag(name:"cvss_base", value:"7.5");
@@ -43,10 +42,12 @@ if(description)
   script_require_ports(5000);
   script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
+  script_xref(name:"URL", value:"http://grc.com/UnPnP/UnPnP.htm");
+
   script_tag(name:"summary", value:"Microsoft Universal Plug n Play is running on this machine. This service is dangerous for many
   different reasons.");
 
-  script_tag(name:"solution", value:"To disable UPNP, see http://grc.com/UnPnP/UnPnP.htm");
+  script_tag(name:"solution", value:"To disable UPNP see the references.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"Mitigation");

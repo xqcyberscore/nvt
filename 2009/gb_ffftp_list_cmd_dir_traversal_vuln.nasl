@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffftp_list_cmd_dir_traversal_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # FFFTP LIST Command Directory Traversal Vulnerability.
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800533");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-13 14:39:10 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"8.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
@@ -51,8 +50,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to input validation error when processing FTP
   responses to a LIST command with a filename and is followed by ../ (dot dot
   forward-slash).");
-  script_tag(name:"solution", value:"Upgrade to version 1.96d or later from,
-  http://www2.biglobe.ne.jp/~sota/ffftp-e.html");
+  script_tag(name:"solution", value:"Upgrade to version 1.96d or later.");
   script_tag(name:"summary", value:"This host is installed with FFFTP Client and is prone to directory
   traversal vulnerability.");
 
@@ -61,13 +59,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 ffftpVer = get_kb_item("FFFTP/Ver");
-if(!ffftpVer){
+if(!ffftpVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:ffftpVer, test_version:"1.96.2.0")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

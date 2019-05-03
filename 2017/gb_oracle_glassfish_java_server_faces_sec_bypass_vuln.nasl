@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_java_server_faces_sec_bypass_vuln.nasl 12166 2018-10-30 10:10:44Z santu $
 #
 # Oracle GlassFish Server Multiple Security Vulnerabilities
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810747");
-  script_version("$Revision: 12166 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-3626", "CVE-2017-10400", "CVE-2016-3092", "CVE-2018-2911",
                 "CVE-2018-3152");
   script_bugtraq_id(97896, 101383, 91453);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 11:10:44 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-19 13:45:58 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle GlassFish Server Multiple Security Vulnerabilities");
 
@@ -56,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 3.1.2");
 
-  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

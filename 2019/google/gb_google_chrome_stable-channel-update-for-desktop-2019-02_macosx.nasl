@@ -23,11 +23,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814836");
-  script_version("$Revision: 13540 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-5784");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:07:49 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-08 10:49:28 +0530 (Fri, 08 Feb 2019)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2019-02)-MAC OS X");
 
@@ -47,7 +47,7 @@ if(description)
   on MAC OS X");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version 72.0.3626.96
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

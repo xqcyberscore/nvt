@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814764");
-  script_version("$Revision: 14151 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:00:15 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-13 09:30:21 +0530 (Wed, 13 Mar 2019)");
   script_name("Microsoft SHA-2 Code Sign Support Defense in Depth (KB4474419)");
 
@@ -44,9 +44,7 @@ if(description)
 
   Microsoft Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

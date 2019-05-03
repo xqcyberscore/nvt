@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_cont_apsb18-40_macosx.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Adobe Acrobat DC Information Disclosure Vulnerability(apsb18-40)-MAC OS X
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814189");
-  script_version("$Revision: 12938 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-15979");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-15 12:20:16 +0530 (Thu, 15 Nov 2018)");
   script_name("Adobe Acrobat DC Information Disclosure Vulnerability(apsb18-40)-MAC OS X");
 
@@ -53,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Acrobat DC version 2019.x before 2019.008.20081 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat DC version
-  2019.008.20081 or later. For updates refer to Reference links.");
+  2019.008.20081 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

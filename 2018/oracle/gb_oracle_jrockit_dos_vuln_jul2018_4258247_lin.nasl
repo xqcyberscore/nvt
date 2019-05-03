@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_jrockit_dos_vuln_jul2018_4258247_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle JRocKit Denial of Service Vulnerability (jul2018-4258247) Linux
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:oracle:jrockit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813734");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-2952");
   script_bugtraq_id(104765);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-30 14:56:48 +0530 (Mon, 30 Jul 2018)");
   script_name("Oracle JRocKit Denial of Service Vulnerability (jul2018-4258247) Linux");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle JRockit version R28.3.18 and prior");
 
-  script_tag(name:"solution", value:"Update to Oracle JRockit R28.3.19 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update to Oracle JRockit R28.3.19 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

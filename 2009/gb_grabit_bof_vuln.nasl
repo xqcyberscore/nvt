@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grabit_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # GrabIt Stack Based Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800713");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-18 09:37:31 +0200 (Mon, 18 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"GrabIt version 1.7.2 Beta 3 and prior.");
   script_tag(name:"insight", value:"This flaw is due to a boundary check error when processing the DOCTYPE
   declaration within '.NZB' files.");
-  script_tag(name:"solution", value:"Upgrade to the latest version 1.7.2 Beta 4
-  http://www.shemes.com/index.php?p=download");
+  script_tag(name:"solution", value:"Upgrade to the latest version 1.7.2 Beta 4.");
   script_tag(name:"summary", value:"This host is installed with GrabIt and is prone to stack-based
   buffer overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause stack overflow by
@@ -60,13 +58,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 grabitVer = get_kb_item("GrabIt/Ver");
-if(grabitVer == NULL){
+if(!grabitVer)
   exit(0);
-}
 
 if(version_is_less(version:grabitVer, test_version:"1.7.2.4")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_dc_classic_apsb18-09_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Reader DC (Classic Track) Security Updates(apsb18-09)-MAC OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813241");
-  script_version("2019-03-29T14:43:50+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4990", "CVE-2018-4947", "CVE-2018-4948", "CVE-2018-4966",
                 "CVE-2018-4968", "CVE-2018-4978", "CVE-2018-4982", "CVE-2018-4984",
                 "CVE-2018-4946", "CVE-2018-4952", "CVE-2018-4954", "CVE-2018-4958",
@@ -45,7 +44,7 @@ if(description)
                 "CVE-2018-12815");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-03-29 14:43:50 +0000 (Fri, 29 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-15 12:13:55 +0530 (Tue, 15 May 2018)");
   script_name("Adobe Reader DC (Classic Track) Security Updates(apsb18-09)-MAC OS X");
 
@@ -68,7 +67,7 @@ if(description)
   2015.006.30418 and earlier on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader DC (Classic Track) version
-  2015.006.30418 or later. For updates refer to Reference links.");
+  2015.006.30418 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

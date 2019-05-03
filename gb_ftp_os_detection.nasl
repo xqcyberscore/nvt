@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("2019-04-09T12:20:38+0000");
-  script_tag(name:"last_modification", value:"2019-04-09 12:20:38 +0000 (Tue, 09 Apr 2019)");
+  script_version("2019-05-02T04:45:21+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -78,6 +77,12 @@ if( banner == "220 Welcome message" ||
 # Some broken FTP server
 if( "500 OOPS: could not bind listening IPv4 socket" >< banner )
   exit( 0 );
+
+# nb: More detailed OS Detection coverd in gb_netapp_data_ontap_consolidation.nasl
+if( "FTP server (Data ONTAP" >< banner ) {
+  register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
 
 # 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
 # 220 VxWorks (VxWorks5.4.2) FTP server ready

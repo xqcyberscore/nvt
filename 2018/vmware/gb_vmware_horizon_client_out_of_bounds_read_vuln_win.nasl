@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_horizon_client_out_of_bounds_read_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # VMware Horizon Client Out-of-bounds Read Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:vmware:horizon_view_client";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813822");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-6970");
   script_bugtraq_id(105031);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-10 10:11:02 +0530 (Fri, 10 Aug 2018)");
   script_name("VMware Horizon Client Out-of-bounds Read Vulnerability (Windows)");
 
@@ -52,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"VMware Horizon Client prior to 4.8.1");
 
   script_tag(name:"solution", value:"Upgrade to VMware Horizon Client version
-  4.8.1 or later. For updates refer to Reference links.");
+  4.8.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

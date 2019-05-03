@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_password_info_disc_vuln_win.nasl 12697 2018-12-07 07:56:28Z mmartin $
 #
 # Mozilla Firefox 'Password' Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813894");
-  script_version("$Revision: 12697 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12383");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:56:28 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-06 13:22:59 +0530 (Thu, 06 Sep 2018)");
   script_name("Mozilla Firefox 'Password' Information Disclosure Vulnerability (Windows)");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Mozilla Firefox version 58 through 61.0.2 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 62 or later,
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 62 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

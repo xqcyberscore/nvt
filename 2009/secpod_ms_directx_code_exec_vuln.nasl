@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_directx_code_exec_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Vulnerability in Microsoft DirectShow Could Allow Remote Code Execution
 #
@@ -26,9 +25,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900097");
-  script_version("$Revision: 12490 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,8 +59,7 @@ if(description)
 
   This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.900588.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory  Workaround: Apply workaround steps mentioned in the reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

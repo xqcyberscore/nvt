@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4092434.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office Word Viewer Information Disclosure Vulnerability (KB4092434)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813293");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8378");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 11:39:50 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Office Word Viewer Information Disclosure Vulnerability (KB4092434)");
 
@@ -49,9 +48,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office Word Viewer");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -64,7 +61,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");

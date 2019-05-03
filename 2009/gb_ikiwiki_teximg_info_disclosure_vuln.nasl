@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_teximg_info_disclosure_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # ikiwiki Teximg Plugin TeX Command Arbitrary File Disclosure Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800689");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-03 16:18:01 +0200 (Thu, 03 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -51,9 +50,7 @@ if(description)
   script_tag(name:"affected", value:"ikiwiki versions 2.x through 2.53.3 and 3.x through 3.1415925");
   script_tag(name:"insight", value:"The vulnerability is due to error in 'teximg' plugin. It incorrectly
   allows the usage of unsafe TeX commands.");
-  script_tag(name:"solution", value:"Upgrade to ikiwiki version 3.1415926 or 2.53.4
-
-  http://ikiwiki.info/download/");
+  script_tag(name:"solution", value:"Upgrade to ikiwiki version 3.1415926 or 2.53.4.");
   script_tag(name:"summary", value:"This host has ikiwiki installed and is prone to Information Disclosure
   Vulnerability.");
 

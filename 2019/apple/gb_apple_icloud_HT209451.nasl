@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_HT209451.nasl 13245 2019-01-23 14:22:53Z santu $
 #
 # Apple iCloud Security Updates (HT209451)-Windows
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814821");
-  script_version("$Revision: 13245 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-20346", "CVE-2018-20505", "CVE-2018-20506", "CVE-2019-6215",
                 "CVE-2019-6212", "CVE-2019-6216", "CVE-2019-6217", "CVE-2019-6226",
                 "CVE-2019-6227", "CVE-2019-6233", "CVE-2019-6234", "CVE-2019-6229");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 13:00:19 +0530 (Wed, 23 Jan 2019)");
   script_name("Apple iCloud Security Updates (HT209451)-Windows");
 
@@ -60,8 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iCloud versions before 7.10 om Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iCloud 7.10 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apple iCloud 7.10 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_mult_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # GraphicsMagick Multiple Vulnerabilities (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800517");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,25 +58,22 @@ if(description)
 
   - error exists while processing malformed data in DPX which causes input
     validation vulnerability.");
-  script_tag(name:"solution", value:"Update to version 1.1.14 or 1.2.3,
-  http://sourceforge.net/projects/graphicsmagick");
+  script_tag(name:"solution", value:"Update to version 1.1.14 or 1.2.3.");
   script_tag(name:"summary", value:"This host is running GraphicsMagick graphics tool and is prone
   to multiple buffer overflow/underflow vulnerabilities.");
   script_tag(name:"impact", value:"A remote user could execute arbitrary code on the target system and can
   cause denial-of-service or compromise a vulnerable system via specially
   crafted PALM, PICT, XCF, DPX and CINEON images.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 gmVer = get_kb_item("GraphicsMagick/Linux/Ver");
-if(gmVer == NULL){
+if(!gmVer)
   exit(0);
-}
 
 if(version_in_range(version:gmVer, test_version:"1.0", test_version2:"1.1.13") ||
    version_in_range(version:gmVer, test_version:"1.2", test_version2:"1.2.2")){

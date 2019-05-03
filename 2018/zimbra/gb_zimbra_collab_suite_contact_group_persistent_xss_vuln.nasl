@@ -1,6 +1,5 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_collab_suite_contact_group_persistent_xss_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Zimbra Collaboration Suite Contact Group Persistent XSS Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:zimbra:zimbra_collaboration_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813507");
-  script_version("$Revision: 12026 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10939");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:30 +0530 (Tue, 05 Jun 2018)");
   script_name("Zimbra Collaboration Suite Contact Group Persistent XSS Vulnerability");
 
@@ -53,7 +52,7 @@ if(description)
   8.7 before 8.7.11.Patch4 and 8.8.x before 8.8.8.Patch4.");
 
   script_tag(name:"solution", value:"Upgrade to 8.7.11.Patch4 or 8.8.8.Patch4
-  or later. For updates refer to Reference links");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

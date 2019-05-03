@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4480056.nasl 13111 2019-01-17 07:49:10Z mmartin $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (KB4480056)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814730");
-  script_version("$Revision: 13111 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-0545");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:49:10 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-09 16:36:42 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (KB4480056)");
 
@@ -50,9 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.5 and 4.7.2 for
   Windows 10 version 1809");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-027.nasl 11846 2018-10-11 15:26:58Z cfischer $
 #
 # Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804295");
-  script_version("$Revision: 11846 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2014-1807");
   script_bugtraq_id(67276);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 17:26:58 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-05-14 08:27:46 +0530 (Wed, 14 May 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)");
@@ -65,9 +64,7 @@ if(description)
 
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  references.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

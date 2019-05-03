@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814960");
-  script_version("2019-04-15T07:08:44+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-0828");
   script_bugtraq_id(107751);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2019-04-10 12:11:44 +0530 (Wed, 10 Apr 2019)");
-  script_tag(name:"last_modification", value:"2019-04-15 07:08:44 +0000 (Mon, 15 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_name("Microsoft Excel 2016 Remote Code Execution Vulnerability (KB4462236)");
 
   script_tag(name:"summary", value:"This host is missing an important security
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Excel 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory.
-  For updates refer to Reference links.");
+  listed hotfixes or download and update mentioned hotfixes in the advisory. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

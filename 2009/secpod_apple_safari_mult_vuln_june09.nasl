@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_mult_vuln_june09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900723");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari version prior to 3.2.3 and 4 Beta on Windows");
   script_tag(name:"insight", value:"Browser faces input validation error while handing 'feed:' protocol based
   URLs which causes injection of arbitrary codes.");
-  script_tag(name:"solution", value:"Upgrade to Safari version 3.2.3 or later
-  http://www.apple.com/safari/download");
+  script_tag(name:"solution", value:"Upgrade to Safari version 3.2.3 or later.");
   script_tag(name:"summary", value:"The host is running Apple Safari web browser and is prone to
   multiple vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes and can
@@ -62,13 +60,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 safariVer = get_kb_item("AppleSafari/Version");
-if(!safariVer){
+if(!safariVer)
   exit(0);
-}
 
 if(version_is_less(version:safariVer, test_version:"3.525.29.0") ||
    version_in_range(version:safariVer, test_version:"4.0",

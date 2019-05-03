@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_azure_ad_connect_priv_elev_vuln_4033453.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Azure AD Connect Privilege Elevation Vulnerability (4033453)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811425");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-8613");
   script_bugtraq_id(99294);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-07-05 13:42:34 +0530 (Wed, 05 Jul 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Azure AD Connect Privilege Elevation Vulnerability (4033453)");
@@ -51,9 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Azure AD Connect prior to 1.1.553.0");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/4033453");

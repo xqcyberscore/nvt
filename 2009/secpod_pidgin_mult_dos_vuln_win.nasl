@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_mult_dos_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Pidgin Multiple Denial Of Service Vulnerabilities (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900940");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,8 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code, corrupt memory
   and cause the application to crash.");
   script_tag(name:"affected", value:"Pidgin version prior to 2.6.2 on Windows.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.6.2
-  http://pidgin.im/download");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.6.2.");
   script_tag(name:"summary", value:"This host has Pidgin installed and is prone to multiple Denial of
   Service vulnerabilities.
 
@@ -78,14 +76,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 pidginVer = get_kb_item("Pidgin/Win/Ver");
+if(!pidginVer)
+  exit(0);
 
-if(pidginVer != NULL)
-{
-  if(version_is_less(version:pidginVer, test_version:"2.6.2")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(version_is_less(version:pidginVer, test_version:"2.6.2")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

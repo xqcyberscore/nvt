@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_apr18_macosx.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities Apr18 (Mac OS X)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813067");
-  script_version("$Revision: 12026 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-9274", "CVE-2018-9272", "CVE-2018-9273", "CVE-2018-9270",
                 "CVE-2018-9271", "CVE-2018-9268", "CVE-2018-9269", "CVE-2018-9267",
                 "CVE-2018-9265", "CVE-2018-9266", "CVE-2018-9263", "CVE-2018-9264",
@@ -37,7 +36,7 @@ if(description)
                 "CVE-2018-9256");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-05 16:18:35 +0530 (Thu, 05 Apr 2018)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities Apr18 (Mac OS X)");
 
@@ -65,8 +64,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version 2.4.0 to 2.4.5,
   2.2.0 to 2.2.13 on Mac OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.4.6, 2.2.14 or later.
-  For updates refer to reference links.");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.4.6, 2.2.14 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://www.wireshark.org/#download");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-15");

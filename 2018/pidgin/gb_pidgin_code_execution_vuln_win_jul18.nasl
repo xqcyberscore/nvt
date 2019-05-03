@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_code_execution_vuln_win_jul18.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # Pidgin 'Out-of-Bounds Write' Code Execution Vulnerability-(Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813735");
-  script_version("$Revision: 11661 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-2640");
   script_bugtraq_id(96775);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-30 16:05:18 +0530 (Mon, 30 Jul 2018)");
   script_name("Pidgin 'Out-of-Bounds Write' Code Execution Vulnerability-(Windows)");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Pidgin before version 2.12.0 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.12.0 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.12.0 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

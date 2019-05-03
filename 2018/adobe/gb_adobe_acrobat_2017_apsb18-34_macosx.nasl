@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_2017_apsb18-34_macosx.nasl 13384 2019-01-31 14:06:40Z santu $
 #
 # Adobe Acrobat 2017 Security Updates(apsb18-34)-MAC OS X
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814025");
-  script_version("$Revision: 13384 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12848", "CVE-2018-12849", "CVE-2018-12850", "CVE-2018-12801",
                 "CVE-2018-12840", "CVE-2018-12778", "CVE-2018-12775", "CVE-2018-19721",
                 "CVE-2018-19723");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 15:06:40 +0100 (Thu, 31 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-20 10:19:20 +0530 (Thu, 20 Sep 2018)");
   script_name("Adobe Acrobat 2017 Security Updates(apsb18-34)-MAC OS X");
 
@@ -59,7 +58,7 @@ if(description)
   and earlier on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat 2017 version
-  2017.011.30102 or later. For updates refer to Reference links.");
+  2017.011.30102 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magnicomp_sysinfo_info_disc_vuln_lin.nasl 11789 2018-10-09 08:34:17Z santu $
 #
 # MagniComp SysInfo Information Disclosure Vulnerability (Linux)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:magnicomp:sysinfo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814060");
-  script_version("$Revision: 11789 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-7268");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-28 18:07:19 +0530 (Fri, 28 Sep 2018)");
   script_name("MagniComp SysInfo Information Disclosure Vulnerability (Linux)");
 
@@ -50,7 +49,7 @@ if(description)
   script_tag(name:"affected", value:"MagniComp SysInfo before version 10-H81.");
 
   script_tag(name:"solution", value:"Upgrade to MagniComp SysInfo 10-H81 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

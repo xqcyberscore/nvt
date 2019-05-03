@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_mem_corr_vuln_apsb18-28_macosx.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # Adobe Photoshop CC Multiple Memory Corruption Vulnerabilities - APSB18-28 (Mac OS X)
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813871");
-  script_version("$Revision: 12164 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12810", "CVE-2018-12811");
   script_bugtraq_id(105123);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-23 11:02:24 +0530 (Thu, 23 Aug 2018)");
   script_name("Adobe Photoshop CC Multiple Memory Corruption Vulnerabilities - APSB18-28 (Mac OS X)");
 
@@ -56,8 +55,7 @@ if(description)
   and Adobe Photoshop CC 2018 19.1.5 and earlier versions on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Photoshop CC 2017
-  18.1.6 or Photoshop CC 2018 19.1.6 or later. For updates refer to Reference
-  links.");
+  18.1.6 or Photoshop CC 2018 19.1.6 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

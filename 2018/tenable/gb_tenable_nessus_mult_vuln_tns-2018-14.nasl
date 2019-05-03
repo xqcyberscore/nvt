@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_mult_vuln_tns-2018-14.nasl 13699 2019-02-15 14:29:50Z cfischer $
 #
 # Tenable Nessus Multiple Vulnerabilities (tns-2018-14)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:tenable:nessus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107358");
-  script_version("$Revision: 13699 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-0732", "CVE-2018-0737");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-30 16:07:49 +0100 (Tue, 30 Oct 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Tenable Nessus Multiple Vulnerabilities(tns-2018-14)");
@@ -52,8 +51,7 @@ Additionally a flaw in the library's RSA Key generation algorithm of OpenSSL all
 
   script_tag(name:"affected", value:"Nessus versions prior to version 8.0.0.");
 
-  script_tag(name:"solution", value:"Upgrade to nessus version 8.0.0 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to nessus version 8.0.0 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.tenable.com");

@@ -23,12 +23,12 @@ CPE = "cpe:/a:adobe:bridge_cc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814795");
-  script_version("2019-04-11T13:19:56+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-7130", "CVE-2019-7132", "CVE-2019-7133", "CVE-2019-7134",
                 "CVE-2019-7135", "CVE-2019-7138", "CVE-2019-7136", "CVE-2019-7137");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-11 13:19:56 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 13:48:50 +0530 (Thu, 11 Apr 2019)");
   script_name("Adobe Bridge CC Security Updates (apsb19-25)-Windows");
 
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Adobe Bridge CC before version 9.0.3");
 
-  script_tag(name:"solution", value:"Upgrade to Adobe Bridge CC 9.0.3 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Bridge CC 9.0.3 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_virtualbox_dos_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Sun VirtualBox or xVM VirtualBox Denial Of Service Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901055");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,27 +50,23 @@ if(description)
   Sun xVM VirtualBox 1.6.x and 2.0.x before 2.0.12, 2.1.x, and 2.2.x");
   script_tag(name:"insight", value:"The flaw is due to the unspecified vulnerability in Guest Additions,
   via unknown vectors.");
-  script_tag(name:"solution", value:"Upgrade to Sun VirtualBox version 3.0.10 or Sun xVM VirtualBox 2.0.12
-  http://www.virtualbox.org/wiki/Downloads");
+  script_tag(name:"solution", value:"Upgrade to Sun VirtualBox version 3.0.10 or Sun xVM VirtualBox 2.0.12.");
   script_tag(name:"summary", value:"This host is installed with Sun VirtualBox or xVM VirtualBox and is
   prone to Denial Of Service vulnerability.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 vmVer = get_kb_item("Sun/VirtualBox/Lin/Ver");
-if(!vmVer){
+if(!vmVer)
   exit(0);
-}
 
 vmVer = eregmatch(pattern:"([0-9]\.[0-9]+\.[0-9]+)", string:vmVer);
-if(!vmVer[1]){
+if(!vmVer[1])
   exit(0);
-}
 
 if(version_in_range(version:vmVer[1], test_version:"1.6.0", test_version2:"1.6.6")||
    version_in_range(version:vmVer[1], test_version:"2.0.0", test_version2:"2.0.11")||

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-15_2018-17_macosx.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Mozilla Firefox Security Updates(mfsa_2018-15_2018-17)-MAC OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813620");
-  script_version("$Revision: 12767 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-5156", "CVE-2018-12370",
                 "CVE-2018-5186", "CVE-2018-5187", "CVE-2018-5188", "CVE-2018-12361",
                 "CVE-2018-12358", "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364",
@@ -37,7 +36,7 @@ if(description)
                 "CVE-2018-12369");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-27 16:01:29 +0530 (Wed, 27 Jun 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-15_2018-17 )-MAC OS X");
 
@@ -79,7 +78,7 @@ if(description)
   61 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 61
-  or later, For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

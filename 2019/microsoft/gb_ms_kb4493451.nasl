@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815036");
-  script_version("2019-04-10T14:27:48+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-0671", "CVE-2019-0673", "CVE-2019-0674", "CVE-2019-0688",
                 "CVE-2019-0730", "CVE-2019-0731", "CVE-2019-0732", "CVE-2019-0735",
                 "CVE-2019-0752", "CVE-2019-0753", "CVE-2019-0764", "CVE-2019-0790",
@@ -34,7 +34,7 @@ if(description)
                 "CVE-2019-0862", "CVE-2019-0877", "CVE-2019-0879");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-10 14:27:48 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-10 13:00:26 +0530 (Wed, 10 Apr 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4493451)");
 
@@ -62,9 +62,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

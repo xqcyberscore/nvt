@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wiretap_dos_vuln_nov09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Wireshark 'wiretap/erf.c' Unsigned Integer Wrap Vulnerability - Nov09 (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801036");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-04 07:03:36 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version prior to 1.2.2 on Windows.");
   script_tag(name:"insight", value:"The flaw exists due to an integer overflow error in 'wiretap/erf.c' when
   processing an 'erf' file causes Wireshark to allocate a very large buffer.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.2
-  http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.2.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to unsigned integer
   wrap vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -57,13 +55,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 sharkVer = get_kb_item("Wireshark/Win/Ver");
-if(!sharkVer){
+if(!sharkVer)
   exit(0);
-}
 
 if(version_is_less(version:sharkVer, test_version:"1.2.2")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

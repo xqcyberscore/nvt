@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_newlistname_sql_injec_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # OpenEMR 'newlistname' Parameter SQL Injection Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813198");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-9250");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-21 11:43:58 +0530 (Mon, 21 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenEMR 'newlistname' Parameter SQL Injection Vulnerability");
@@ -52,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenEMR versions before 5.0.1.1");
 
-  script_tag(name:"solution", value:"Upgrade to OpenEMR version 5.0.1.1 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to OpenEMR version 5.0.1.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.open-emr.org");

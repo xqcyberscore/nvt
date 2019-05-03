@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_mult_dos_vuln_june18_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Python Multiple Denial of Service Vulnerabilities June18 (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813547");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1060", "CVE-2018-1061");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-28 18:47:01 +0530 (Thu, 28 Jun 2018)");
   script_name("Python Multiple Denial of Service Vulnerabilities June18 (Mac OS X)");
 
@@ -57,7 +56,7 @@ if(description)
   and 3.7.0.beta3 on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Python 2.7.15 or 3.4.9 or 3.5.6
-  or 3.7.0.beta3 For updates refer to Reference links.");
+  or 3.7.0.beta3. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://bugs.python.org/issue32981");

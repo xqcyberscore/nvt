@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_apr2018-3678067_04_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle Mysql Security Updates (apr2018-3678067) 04 - Linux
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813149");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-2761", "CVE-2018-2771", "CVE-2018-2781", "CVE-2018-2773",
                 "CVE-2018-2817", "CVE-2018-2813", "CVE-2018-2755", "CVE-2018-2819",
                 "CVE-2018-2818");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-19 10:38:34 +0530 (Thu, 19 Apr 2018)");
   script_name("Oracle Mysql Security Updates (apr2018-3678067) 04 - Linux");
 
@@ -67,8 +66,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL version 5.5.59 and earlier,
   5.6.39 and earlier, 5.7.21 and earlier on Linux");
 
-  script_tag(name:"solution", value:"Apply the latest patch from vendor. For
-  updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the latest patch from vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_code_exec_vuln_apsa08-07_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Illustrator Remote Code Execution Vulnerability-Mac OS X (apsa08-07)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:illustrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813495");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2008-3961");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 15:41:49 +0530 (Thu, 12 Jul 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Illustrator Remote Code Execution Vulnerability-Mac OS X (apsa08-07)");
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Adobe Illustrator CS2 all versions.");
 
-  script_tag(name:"solution", value:"Upgrade to Adobe Illustrator CS3 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Illustrator CS3 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_av_mult_bof_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # avast! AntiVirus Multiple BOF Vulnerabilities (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800599");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"insight", value:"Multiple buffer overflow errors occur while processing malformed ISO or
   RPM files as the application fails to perform adequate bounds check on
   files before copying them into an insufficiently sized buffer.");
-  script_tag(name:"solution", value:"Upgrade to avast! Linux Home Edition latest version
-  http://www.avast.com/index.html");
+  script_tag(name:"solution", value:"Upgrade to avast! Linux Home Edition latest version.");
   script_tag(name:"summary", value:"The host is installed with avast! AntiVirus and is prone to
   multiple Buffer Overflow Vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
@@ -59,13 +57,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 avastVer = get_kb_item("Avast!/AV/Linux/Ver");
-if(avastVer == NULL){
+if(!avastVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:avastVer, test_version:"1.0.8")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

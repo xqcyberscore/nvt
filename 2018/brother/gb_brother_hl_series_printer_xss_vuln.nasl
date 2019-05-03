@@ -1,6 +1,5 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brother_hl_series_printer_xss_vuln.nasl 12986 2019-01-09 07:58:52Z cfischer $
 #
 # Brother HL Series Printer Cross-Site Scripting Vulnerability
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813391");
-  script_version("$Revision: 12986 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11581");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 08:58:52 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-06 15:18:41 +0530 (Wed, 06 Jun 2018)");
   script_name("Brother HL Series Printer Cross-Site Scripting Vulnerability");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -60,7 +59,7 @@ if(description)
   printers Firmware prior to 1.16.");
 
   script_tag(name:"solution", value:"Update the printer to Firmware 1.16 or
-  later and set a new password. For updates refer to Reference links.");
+  later and set a new password. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

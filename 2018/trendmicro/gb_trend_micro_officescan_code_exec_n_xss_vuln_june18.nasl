@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_code_exec_n_xss_vuln_june18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Trend Micro OfficeScan RCE And XSS Vulnerabilities June18
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813616");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-11393", "CVE-2017-11394");
   script_bugtraq_id(100127);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-27 11:07:13 +0530 (Wed, 27 Jun 2018)");
   script_name("Trend Micro OfficeScan RCE And XSS Vulnerabilities June18");
 
@@ -60,8 +59,7 @@ if(description)
   prior to XG CP 1641 r1 and 11.0 SP1 prior to 11.0 SP1 CP 6392 r1.");
 
   script_tag(name:"solution", value:"Upgrade to OfficeScan XG CP 1708 or
-  11.0 SP1 CP 6392 r1 or later.
-  For updates refer to Reference links.");
+  11.0 SP1 CP 6392 r1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

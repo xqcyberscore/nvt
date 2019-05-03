@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_deny_answer_aliases_dos_vuln.nasl 13721 2019-02-18 07:47:09Z asteins $
 #
 # ISC BIND 'deny-answer-aliases' Denial of Service Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813750");
-  script_version("$Revision: 13721 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-5740");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-10 12:14:44 +0530 (Fri, 10 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND 'deny-answer-aliases' Denial of Service Vulnerability");
@@ -54,8 +53,7 @@ if(description)
   9.12.0 through 9.12.2 and 9.13.0 through 9.13.2.");
 
   script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.9.13-P1 or
-  9.10.8-P1 or 9.11.4-P1 or 9.12.2-P1 or 9.11.3-S3 or later. For updates refer
-  to Reference links.");
+  9.10.8-P1 or 9.11.4-P1 or 9.12.2-P1 or 9.11.3-S3 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01639/0");

@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804061");
-  script_version("$Revision: 14304 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2013-0982", "CVE-2013-0983", "CVE-2012-5519", "CVE-2013-0985",
                 "CVE-2013-0989", "CVE-2012-4929", "CVE-2011-1945", "CVE-2011-3207",
                 "CVE-2011-3210", "CVE-2011-4108", "CVE-2011-4109", "CVE-2011-4576",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2013-0988", "CVE-2013-0990", "CVE-2013-0975", "CVE-2013-1024");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-01-20 19:13:47 +0530 (Mon, 20 Jan 2014)");
   script_name("Apple Mac OS X Multiple Vulnerabilities - 02 Jan14");
 
@@ -86,8 +86,7 @@ if(description)
   10.7 to 10.7.5 and 10.6.8");
 
   script_tag(name:"solution", value:"Upgrade to Apple Mac OS X version 10.8.4
-  or later or apply appropriate security update for 10.7 and 10.6 versions.
-  For updates refer to Reference links.");
+  or later or apply appropriate security update for 10.7 and 10.6 versions. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: java_jre_jdk_dos.nasl 11570 2018-09-24 11:54:11Z cfischer $
 #
 # Sun Java Runtime Environment < 1.4.2_04 DoS
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:sun:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12244");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0651");
   script_bugtraq_id(10301);
@@ -43,7 +42,7 @@ if(description)
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
 
-  script_tag(name:"solution", value:"Upgrade to SDK and JRE 1.4.2_04, http://java.sun.com/j2se/");
+  script_tag(name:"solution", value:"Upgrade to SDK and JRE 1.4.2_04.");
 
   script_tag(name:"summary", value:"The remote Windows machine is running a Java SDK or JRE version
   1.4.2_03 and prior which is vulnerable to a DoS attack.");

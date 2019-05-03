@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891767");
-  script_version("2019-04-27T02:00:08+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-11454", "CVE-2019-11455");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-27 02:00:08 +0000 (Sat, 27 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-27 02:00:08 +0000 (Sat, 27 Apr 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1767-1] monit security update)");
   script_category(ACT_GATHER_INFO);
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Zack Flack found several issues in monit, a utility for monitoring and 
+  script_tag(name:"insight", value:"Zack Flack found several issues in monit, a utility for monitoring and
 managing daemons or similar programs.
 
 CVE-2019-11454

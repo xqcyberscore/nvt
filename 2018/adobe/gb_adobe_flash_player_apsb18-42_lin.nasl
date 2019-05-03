@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb18-42_lin.nasl 12699 2018-12-07 08:17:18Z asteins $
 #
 # Adobe Flash Player Security Updates(apsb18-42)-Linux
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814525");
-  script_version("$Revision: 12699 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-15982", "CVE-2018-15983");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 09:17:18 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-12-06 11:21:11 +0530 (Thu, 06 Dec 2018)");
   script_name("Adobe Flash Player Security Updates(apsb18-42)-Linux");
 
@@ -55,7 +54,7 @@ if(description)
   on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player 32.0.0.101,
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

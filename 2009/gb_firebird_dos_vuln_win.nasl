@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firebird_dos_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Firebird SQL 'op_connect_request' Denial Of Service Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800852");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -43,16 +42,15 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("find_service.nasl", "gb_firebird_detect_win.nasl");
   script_mandatory_keys("Firebird-SQL/Ver");
-  script_require_ports(3050);
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause Denial of Service in
   the affected application.");
   script_tag(name:"affected", value:"Firebird SQL version 1.5 before 1.5.6, 2.0 before 2.0.6, 2.1 before 2.1.3,
-                   and 2.5 before 2.5 Beta 2 on Windows.");
+  and 2.5 before 2.5 Beta 2 on Windows.");
   script_tag(name:"insight", value:"The flaw is due to error in the 'rc/remote/server.cpp' in fbserver.exe.
   It fails to sanitise the input sent via a malformed op_connect_request
   message that triggers an infinite loop or NULL pointer dereference.");
-  script_tag(name:"solution", value:"Upgrade to version 1.5.6, 2.0.6, 2.1.3, or 2.5 Beta 2 or later
-  http://www.firebirdsql.org/index.php?op=files");
+  script_tag(name:"solution", value:"Upgrade to version 1.5.6, 2.0.6, 2.1.3, or 2.5 Beta 2 or later.");
   script_tag(name:"summary", value:"The host is running Firebird and is prone to Denial of Service
   Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -60,17 +58,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
 firebird_port = 3050;
 
-if(!get_port_state(firebird_port)){
-  exit(0);
-}
-
-if(!safe_checks())
+if(!safe_checks() && get_port_state(firebird_port))
 {
   firebird_soc = http_open_socket(firebird_port);
   if(firebird_soc)
@@ -92,13 +85,12 @@ if(!safe_checks())
 }
 
 ver = get_kb_item("Firebird-SQL/Ver");
+if(!ver)
+  exit(0);
 
-if(!isnull(ver))
-{
-  if(version_in_range(version:ver, test_version:"1.5", test_version2:"1.5.5.4926") ||
-     version_in_range(version:ver, test_version:"2.0", test_version2:"2.0.5.13206")||
-     version_in_range(version:ver, test_version:"2.1", test_version2:"2.1.2.18118")||
-     version_in_range(version:ver, test_version:"2.5", test_version2:"2.5.0.23247")){
-     security_message(firebird_port);
-  }
+if(version_in_range(version:ver, test_version:"1.5", test_version2:"1.5.5.4926") ||
+   version_in_range(version:ver, test_version:"2.0", test_version2:"2.0.5.13206")||
+   version_in_range(version:ver, test_version:"2.1", test_version2:"2.1.2.18118")||
+   version_in_range(version:ver, test_version:"2.5", test_version2:"2.5.0.23247")){
+   security_message(firebird_port);
 }

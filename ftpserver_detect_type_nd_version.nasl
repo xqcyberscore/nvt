@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftpserver_detect_type_nd_version.nasl 13637 2019-02-13 12:46:42Z cfischer $
 #
 # FTP Banner Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("$Revision: 13637 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:46:42 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-05-02T04:45:21+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -498,6 +497,11 @@ foreach port( ports ) {
   if( "Buffy" >< banner ) {
     set_kb_item( name:"ftp/buffy/detected", value:TRUE );
     guess += '\n- Buffy';
+  }
+
+  if( "Data ONTAP" >< banner ) {
+    set_kb_item( name:"ftp/netapp/data_ontap/detected", value:TRUE );
+    guess += '\n- NetApp Data ONTAP';
   }
 
   report = 'Remote FTP server banner:\n\n' + banner;

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_app_center_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # QNAP QTS App Center XSS Vulnerability
 #
@@ -27,11 +26,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813521");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-13072");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-12 11:14:29 +0530 (Tue, 12 Jun 2018)");
   script_name("QNAP QTS App Center XSS Vulnerability");
 
@@ -50,8 +49,7 @@ if (description)
   earlier, 4.3.3 build 20171213 and earlier, 4.3.4 build 20171223 and earlier.");
 
   script_tag(name:"solution", value:"Upgrade to QNAP QTS 4.2.6 build 20180504,
-  4.3.3 build 20180126 or 4.3.4 build 20171230 or later. For updates refer to
-  Reference links.");
+  4.3.3 build 20180126 or 4.3.4 build 20171230 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

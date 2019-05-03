@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_heap_bof_vuln_lin_dec09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Ruby Interpreter Heap Overflow Vulnerability (Linux) - Dec09
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900726");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,25 +54,18 @@ if(description)
   'String#rjust' methods.");
   script_tag(name:"summary", value:"This host is installed with Ruby Interpreter and is prone to Heap
   Overflow vulnerability.");
-  script_tag(name:"solution", value:"Apply the patch
-  ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.1-p376.tar.bz2
-
-  *****
-  NOTE: Please ignore this warning if the patch is applied.
-  *****");
+  script_tag(name:"solution", value:"Update to 1.9.1-p376 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
-
 include("version_func.inc");
 
 rubyVer = get_kb_item("Ruby/Lin/Ver");
-if(!rubyVer){
+if(!rubyVer)
   exit(0);
-}
 
 if(version_in_range(version:rubyVer, test_version:"1.9.1",
                                      test_version2:"1.9.1.p375")){

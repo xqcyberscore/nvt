@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-05-02T05:00:19+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 05:00:19 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -361,7 +361,7 @@ set_mandatory_key( key:"debut", regex:"Server: debut/", banner:banner );
 set_mandatory_key( key:"libsoup", regex:"Server: (soup-transcode-proxy )?libsoup", banner:banner );
 set_mandatory_key( key:"spidercontrol-scada", regex:"Server: SCADA.*(powered by SpiderControl TM)", banner:banner );
 set_mandatory_key( key:"StorageGRID", regex:"Server: StorageGRID", banner:banner );
-set_mandatory_key( key:"NetApp", regex: "Server: NetApp", banner:banner );
+set_mandatory_key( key:"NetApp", regex: "Server: (NetApp|Data ONTAP)", banner:banner );
 set_mandatory_key( key:"App-webs", regex: "Server: App-webs/", banner:banner );
 set_mandatory_key( key:"Kannel", regex: "Server: Kannel/", banner:banner );
 set_mandatory_key( key:"akka", regex: "Server: akka-http/", banner:banner );

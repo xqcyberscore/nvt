@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_HT209198.nasl 12176 2018-10-31 07:39:16Z santu $
 #
 # Apple iCloud Security Updates(HT209198)-Windows
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814149");
-  script_version("2019-04-09T07:15:29+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4374", "CVE-2018-4377", "CVE-2018-4372", "CVE-2018-4373",
                 "CVE-2018-4375", "CVE-2018-4376", "CVE-2018-4382", "CVE-2018-4386",
                 "CVE-2018-4392", "CVE-2018-4416", "CVE-2018-4409", "CVE-2018-4378");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-09 07:15:29 +0000 (Tue, 09 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-31 10:29:04 +0530 (Wed, 31 Oct 2018)");
   script_name("Apple iCloud Security Updates(HT209198)-Windows");
 
@@ -60,8 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iCloud versions before 7.8 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iCloud 7.7 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apple iCloud 7.7 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

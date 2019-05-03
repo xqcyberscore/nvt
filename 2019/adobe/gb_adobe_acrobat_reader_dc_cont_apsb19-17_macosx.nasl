@@ -23,7 +23,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814794");
-  script_version("2019-04-11T13:19:56+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-7061", "CVE-2019-7109", "CVE-2019-7110", "CVE-2019-7114",
                 "CVE-2019-7115", "CVE-2019-7116", "CVE-2019-7121", "CVE-2019-7122",
                 "CVE-2019-7123", "CVE-2019-7127", "CVE-2019-7111", "CVE-2019-7118",
@@ -32,7 +32,7 @@ if(description)
                 "CVE-2019-7125");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-11 13:19:56 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 12:09:50 +0530 (Thu, 11 Apr 2019)");
   script_name("Adobe Acrobat Reader DC (Continuous Track) Security Updates(apsb19-17)-Mac OS X");
 
@@ -62,7 +62,7 @@ if(description)
   2019.010.20098 and earlier versions on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat Reader DC Continuous
-  version 2019.010.20099 or later. For updates refer to Reference links.");
+  version 2019.010.20099 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

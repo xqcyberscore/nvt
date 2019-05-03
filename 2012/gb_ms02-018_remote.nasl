@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms02-018_remote.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Microsoft IIS FTP Connection Status Request Denial of Service Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:ftp_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802441");
-  script_version("$Revision: 13494 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2002-0073");
   script_bugtraq_id(4482);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-07-04 18:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Connection Status Request Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -60,8 +59,7 @@ if(description)
   an access violation error could occur that would cause the termination of
   FTP and Web services on the affected server.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory / references.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing important security update according to
   Microsoft Bulletin MS02-018.");

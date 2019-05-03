@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mult_vuln_jun09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities Jun-09 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800639");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -73,22 +72,20 @@ if(description)
     js_LeaveSharpObject, ParseXMLSource, and a certain assertion in jsinterp.c.
 
   - Error exists via vectors involving 'double frame construction.'");
-  script_tag(name:"solution", value:"Upgrade to Firefox version 2.0.0.22
-  http://www.mozilla.com/en-US/thunderbird/all.html");
+  script_tag(name:"solution", value:"Upgrade to Firefox version 2.0.0.22.");
   script_tag(name:"summary", value:"The host is installed with Thunderbird, which is prone to multiple
   vulnerabilities.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 thunderbirdVer = get_kb_item("Thunderbird/Linux/Ver");
-if(thunderbirdVer != NULL)
-{
-  if(version_is_less(version:thunderbirdVer ,test_version:"2.0.0.22")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!thunderbirdVer)
+  exit(0);
+
+if(version_is_less(version:thunderbirdVer ,test_version:"2.0.0.22")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

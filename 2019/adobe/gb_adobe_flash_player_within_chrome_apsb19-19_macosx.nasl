@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815032");
-  script_version("2019-04-10T14:27:48+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-7108", "CVE-2019-7096");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-10 14:27:48 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-10 11:01:46 +0530 (Wed, 10 Apr 2019)");
   script_name("Adobe Flash Player Within Google Chrome Security Update(apsb19-19)- MAC OS X");
 
@@ -50,7 +50,7 @@ if(description)
   within Google Chrome on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player for Google Chrome
-  32.0.0.171, or later. For updates refer to Reference links.");
+  32.0.0.171, or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

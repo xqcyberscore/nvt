@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silc_prdts_nickname_format_string_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # SILC Client Nickname Field Format String Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900951");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,8 +54,6 @@ if(description)
   script_tag(name:"summary", value:"This host has SILC Client/Toolkit installed, and is prone
   to Format String vulnerability.");
   script_tag(name:"solution", value:"Apply the patch or upgrade to SILC Client 1.1.8.
-  http://silcnet.org/
-  http://www.securityfocus.com/bid/35940/solution
 
   *****
   NOTE: Please ignore this warning if the patch is already applied.
@@ -67,15 +64,14 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 clntVer = get_kb_item("SILC/Client/Ver");
-if(clntVer)
+if(!clntVer)
+  exit(0);
+
+if(version_is_less(version:clntVer, test_version:"1.1.8"))
 {
-  if(version_is_less(version:clntVer, test_version:"1.1.8"))
-  {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-    exit(0);
-  }
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }

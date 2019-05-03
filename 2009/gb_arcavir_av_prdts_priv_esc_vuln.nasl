@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcavir_av_prdts_priv_esc_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # ArcaVir AntiVirus Products Privilege Escalation Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800720");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-04 07:18:37 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,14 +46,16 @@ if(description)
   script_dependencies("gb_arcavir_av_prdts_detect.nasl");
   script_mandatory_keys("ArcaVir/AntiVirus/Ver");
   script_tag(name:"affected", value:"ArcaBit 2009 Home Protection prior to 9.4.3204.9
+
   ArcaVir 2009 System Protection prior to 9.4.3203.9
+
   ArcaVir 2009 Internet Security prior to 9.4.3202.9
+
   ArcaBit ArcaVir 2009 Antivirus Protection prior to 9.4.3201.9");
   script_tag(name:"insight", value:"This flaw is due to vulnerability in ps_drv.sys driver, which allows any users
   to open the device '\\Device\\ps_drv' and issue IOCTLs with a buffering mode of
   METHOD_NEITHER.");
-  script_tag(name:"solution", value:"Apply the security updates accordingly.
-  http://www.arcabit.pl");
+  script_tag(name:"solution", value:"Apply the security updates accordingly.");
   script_tag(name:"summary", value:"This host is running ArcaVir AntiVirus Products and is prone to Privilege
   Escalation Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker pass kernel addresses as the
@@ -66,14 +67,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-# ArcaVir AntiVirus Product version prior to 9.4.3201.9
 arvaavVer = get_kb_item("ArcaVir/AntiVirus/Ver");
-if(arvaavVer != NULL)
-{
-  if(version_is_less(version:arvaavVer, test_version:"9.4.3201.9")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!arvaavVer)
+  exit(0);
+
+if(version_is_less(version:arvaavVer, test_version:"9.4.3201.9")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_mailman_host_name_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # GNU Mailman 'host_name' Cross-Site Scripting vulnerability
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:gnu:mailman';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813268");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-0618");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-27 12:20:44 +0530 (Fri, 27 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("GNU Mailman 'host_name' Cross-Site Scripting vulnerability");
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"GNU Mailman version 2.1.26 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to GNU Mailman 2.1.27 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to GNU Mailman 2.1.27 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN00846677/index.html");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_cont_apsb18-30_macosx.nasl 13320 2019-01-28 08:28:49Z mmartin $
 #
 # Adobe Acrobat DC Security Updates(apsb18-30)-MAC OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814229");
-  script_version("$Revision: 13320 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-15955", "CVE-2018-15954", "CVE-2018-15952", "CVE-2018-15945",
                 "CVE-2018-15944", "CVE-2018-15941", "CVE-2018-15940", "CVE-2018-15939",
                 "CVE-2018-15938", "CVE-2018-15936", "CVE-2018-15935", "CVE-2018-15934",
@@ -54,7 +53,7 @@ if(description)
                 "CVE-2018-15930", "CVE-2018-15966", "CVE-2018-19722");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 09:28:49 +0100 (Mon, 28 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 16:53:22 +0530 (Wed, 03 Oct 2018)");
   script_name("Adobe Acrobat DC Security Updates(apsb18-30)-MAC OS X");
 
@@ -78,7 +77,7 @@ if(description)
   2019.008.20071 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat DC version
-  2019.008.20071 or later. For updates refer to Reference links.");
+  2019.008.20071 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

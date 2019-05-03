@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_code_exec_vuln_jul09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Firefox Remote Code Execution Vulnerabilities July-09 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900399");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-23 21:05:26 +0200 (Thu, 23 Jul 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,22 +50,19 @@ if(description)
   dialog, and the page is navigated while the dialog is still visible to the
   user, the Flash plugin is unloaded resulting in a crash due to a call to the
   deleted object.");
-  script_tag(name:"solution", value:"Upgrade to Firefox version 3.0.12 or 3.5.1 or later
-  http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.0.12 or 3.5.1 or later.");
   script_tag(name:"summary", value:"The host is installed with Firefox browser and is prone to Remote
   Code Execution vulnerabilities.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 ffVer = get_kb_item("Firefox/Linux/Ver");
-if(!ffVer){
+if(!ffVer)
   exit(0);
-}
 
 if(version_is_less(version:ffVer, test_version:"3.0.12") ||
    version_is_equal(version:ffVer, test_version:"3.5")){

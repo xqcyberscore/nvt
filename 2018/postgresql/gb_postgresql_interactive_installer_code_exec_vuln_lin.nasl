@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_interactive_installer_code_exec_vuln_lin.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # PostgreSQL 'Interactive Installer' Arbitrary Code Execution Vulnerability (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814222");
-  script_version("$Revision: 11933 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2016-7048");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-28 11:44:36 +0530 (Fri, 28 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL 'Interactive Installer' Arbitrary Code Execution Vulnerability (Linux)");
@@ -54,7 +53,7 @@ if(description)
   9.4.x prior to 9.4.10 and 9.5.x prior to 9.5.5 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to PostgreSQL version 9.3.15 or
-  9.4.10 or 9.5.5 or later. For updates refer to Reference links.");
+  9.4.10 or 9.5.5 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

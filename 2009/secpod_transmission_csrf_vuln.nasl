@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_transmission_csrf_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Transmission Client Cross Site Request Forgery Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900715");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-29 07:35:11 +0200 (Fri, 29 May 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -36,7 +35,7 @@ if(description)
   script_name("Transmission Client Cross Site Request Forgery Vulnerability");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/05/21/1");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
@@ -47,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"Transmission Client version 1.5 before 1.53 and 1.6 before 1.61");
   script_tag(name:"insight", value:"This flaw is due to Cross-site request forgery error which causes hijacking
   the authentication of unspecified victims via unknown vectors.");
-  script_tag(name:"solution", value:"Upgrade to version 1.53 or 1.61
-  http://www.transmissionbt.com/download.php");
+  script_tag(name:"solution", value:"Upgrade to version 1.53 or 1.61.");
   script_tag(name:"summary", value:"This host is installed with Transmission Client and is prone to
   Cross Site Request Forgery Vulnerability.");
 
@@ -57,13 +55,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 transVer = get_kb_item("Transmission/Ver");
-if(!transVer){
+if(!transVer)
   exit(0);
-}
 
 if(version_in_range(version:transVer, test_version:"1.5", test_version2:"1.52") ||
    version_in_range(version:transVer, test_version:"1.6", test_version2:"1.60")){

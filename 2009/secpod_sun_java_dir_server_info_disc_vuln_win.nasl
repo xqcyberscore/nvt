@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_dir_server_info_disc_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Sun Java Directory Server Information Disclosure Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900497");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"insight", value:"This flaw is due to unspecified error which can be exploited to determine
   the existence of a file on a system and disclose a single line of the file's
   content.");
-  script_tag(name:"solution", value:"Upgrade to Sun Java Directory Server Enterprise 6.0 or later
-  http://www.sun.com/software/products/directory_srvr_ee/get.jsp");
+  script_tag(name:"solution", value:"Upgrade to Sun Java Directory Server Enterprise 6.0 or later.");
   script_tag(name:"summary", value:"This host is running Sun Java Directory Server and is prone to Information
   Disclosure Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes in the
@@ -60,13 +58,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 appVer = get_kb_item("Sun/JavaDirServer/Win/Ver");
-if(!appVer){
+if(!appVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:appVer, test_version:"5.2")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

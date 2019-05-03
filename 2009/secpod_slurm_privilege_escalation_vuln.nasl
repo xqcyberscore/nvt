@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_slurm_privilege_escalation_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Privilege Escalation Vulnerability in SLURM
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900375");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-23 10:30:45 +0200 (Tue, 23 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,7 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=524980");
   script_xref(name:"URL", value:"http://sourceforge.net/project/shownotes.php?release_id=676055&group_id=157944");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Privilege escalation");
@@ -57,8 +56,7 @@ if(description)
     when handling the 'strigger' command, which can be exploited to
     e.g. access files with the supplemental group privileges of the
     slurmctld daemon.");
-  script_tag(name:"solution", value:"Upgrade to SLURM version 1.3.14 or later
-  https://computing.llnl.gov/linux/slurm/download.html");
+  script_tag(name:"solution", value:"Upgrade to SLURM version 1.3.14 or later.");
   script_tag(name:"summary", value:"This host has SLURM (Simple Linux Utility for Resource Management)
   installed and is prone to Privilege Escalation vulnerability.");
 
@@ -67,13 +65,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 slurmVer = get_kb_item("SLURM/Ver");
-if(slurmVer)
-{
-  if(version_in_range(version:slurmVer, test_version:"1.2", test_version2:"1.3.13")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!slurmVer)
+  exit(0);
+
+if(version_in_range(version:slurmVer, test_version:"1.2", test_version2:"1.3.13")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

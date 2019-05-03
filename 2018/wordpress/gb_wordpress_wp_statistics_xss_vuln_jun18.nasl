@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_statistics_xss_vuln_jun18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress WP Statistics Cross Site Scripting (XSS) Vulnerability-June18
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813453");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1000556");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-27 12:29:51 +0530 (Wed, 27 Jun 2018)");
   script_name("WordPress WP Statistics Cross Site Scripting (XSS) Vulnerability-June18");
 
@@ -54,7 +53,7 @@ if(description)
   version 12.0.6");
 
   script_tag(name:"solution", value:"Upgrade to WordPress WP Statistics plugin
-  12.0.6 or later. For updates refer to Reference links.");
+  12.0.6 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

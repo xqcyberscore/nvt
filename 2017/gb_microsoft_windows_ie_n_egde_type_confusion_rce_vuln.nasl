@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810577");
-  script_version("$Revision: 12768 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-0037");
   script_bugtraq_id(96088);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-01 14:28:21 +0530 (Wed, 01 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability");
@@ -62,8 +61,7 @@ if(description)
 
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory below.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://bugs.chromium.org/p/project-zero/issues/detail?id=1011");

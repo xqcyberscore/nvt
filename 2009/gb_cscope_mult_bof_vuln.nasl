@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cscope_mult_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Cscope Multiple Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800611");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-18 09:37:31 +0200 (Mon, 18 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -38,7 +37,7 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=490667");
   script_xref(name:"URL", value:"http://sourceforge.net/project/shownotes.php?release_id=679527");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Cscope version prior to 15.7a");
   script_tag(name:"insight", value:"Boundary error exists in various functions using insecure sprintf, snprintf
   via long strings in input such as source-code tokens and pathnames.");
-  script_tag(name:"solution", value:"Upgrade to Cscope version 15.7a
-  http://sourceforge.net/projects/cscope");
+  script_tag(name:"solution", value:"Upgrade to Cscope version 15.7a.");
   script_tag(name:"summary", value:"This host has installed Cscope and is prone to Multiple Buffer
   Overflow vulnerability.");
 
@@ -60,13 +58,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 cscopeVer = get_kb_item("Cscope/Ver");
-if(!cscopeVer){
+if(!cscopeVer)
   exit(0);
-}
 
 if(version_is_less(version:cscopeVer, test_version:"15.7a")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

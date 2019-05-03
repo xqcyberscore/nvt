@@ -23,12 +23,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814881");
-  script_version("2019-04-15T10:53:26+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-10901", "CVE-2019-10903", "CVE-2019-10894", "CVE-2019-10895",
                 "CVE-2019-10896", "CVE-2019-10899");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-15 10:53:26 +0000 (Mon, 15 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-12 15:52:43 +0530 (Fri, 12 Apr 2019)");
   script_name("Wireshark Security Updates April 2019 (Mac OS X)-01");
 
@@ -51,7 +51,7 @@ if(description)
   2.6.0 to 2.6.7 and 3.0.0 on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.4.14 or
-  2.6.8 or 3.0.1 or later. For updates refer to Reference links.");
+  2.6.8 or 3.0.1 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://www.wireshark.org");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2019-14.html");

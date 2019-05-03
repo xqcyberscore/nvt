@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple Xcode Code Execution And Information Disclosure Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apple:xcode";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813606");
-  script_version("$Revision: 14292 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11235", "CVE-2018-11233");
   script_bugtraq_id(104345, 104346);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-14 10:59:39 +0530 (Thu, 14 Jun 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apple Xcode Code Execution And Information Disclosure Vulnerabilities");
@@ -59,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple Xcode prior to version 9.4.1");
 
-  script_tag(name:"solution", value:"Upgrade to Apple Xcode 9.4.1 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apple Xcode 9.4.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208895");

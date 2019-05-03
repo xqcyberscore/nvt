@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_mult_unspecified_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # IBM DB2 Multiple Unspecified Vulnerabilities (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901075");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,6 +38,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3520");
   script_xref(name:"URL", value:"ftp://ftp.software.ibm.com/ps/products/db2/fixes/english-us/aparlist/db2_v95/APARLIST.TXT");
   script_xref(name:"URL", value:"ftp://ftp.software.ibm.com/ps/products/db2/fixes/english-us/aparlist/db2_v97/APARLIST.TXT");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=0&uid=swg24022678");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -60,22 +60,21 @@ if(description)
 
   - An error in install component when configures the High Availability (HA)
     scripts with incorrect file-permission and authorization settings.");
-  script_tag(name:"solution", value:"Update IBM DB2 9.5 FP 5 or 9.7 FP 1,
-  http://www-01.ibm.com/support/docview.wss?rs=0&uid=swg24022678");
+  script_tag(name:"solution", value:"Update IBM DB2 9.5 FP 5 or 9.7 FP 1.");
+
   script_tag(name:"summary", value:"The host is installed with IBM DB2 and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
 ibmVer = get_kb_item("Linux/IBM_db2/Ver");
-if(!ibmVer){
+if(!ibmVer)
   exit(0);
-}
 
 if(version_is_equal(version:ibmVer, test_version:"9.7.0.0") ||
    version_in_range(version:ibmVer, test_version:"9.5", test_version2:"9.5.0.4")){

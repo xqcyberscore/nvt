@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mult_vuln_nov18_macosx.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Microsoft Office Multiple Vulnerabilities-November18 (Mac OS X)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814282");
-  script_version("$Revision: 13072 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8574", "CVE-2018-8577");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-14 13:12:24 +0530 (Wed, 14 Nov 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-November18 (Mac OS X)");
@@ -57,7 +56,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Microsoft Office 2016 version
   16.16.4 (Build 18111001) or Microsoft Office 2019 version 16.19.0 (Build 18110915)
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/officeupdates/release-notes-office-2016-mac");

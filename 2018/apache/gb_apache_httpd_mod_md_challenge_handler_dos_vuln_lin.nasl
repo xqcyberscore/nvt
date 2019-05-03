@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mod_md_challenge_handler_dos_vuln_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache HTTP Server 'mod_md' Denial of Service Vulnerability (Linux)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813266");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8011");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-20 15:33:08 +0530 (Fri, 20 Jul 2018)");
   script_name("Apache HTTP Server 'mod_md' Denial of Service Vulnerability (Linux)");
 
@@ -52,8 +51,7 @@ if (description)
 
   script_tag(name:"affected", value:"Apache HTTP server version 2.4.33 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.4.34 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to version 2.4.34 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

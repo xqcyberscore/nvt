@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_oscar_dos_vuln_oct09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Pidgin Oscar Protocol Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801030");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"insight", value:"This issue is caused by an error in the Oscar protocol plugin when processing
   malformed ICQ or AIM contacts sent by the SIM IM client, which could cause an
   invalid memory access leading to a crash.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.6.3
-  http://pidgin.im/download");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.6.3.");
   script_tag(name:"summary", value:"This host has Pidgin installed and is prone to Denial of Service
   vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -59,13 +57,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 pidginVer = get_kb_item("Pidgin/Win/Ver");
-if(pidginVer != NULL)
-{
-  if(version_is_less(version:pidginVer, test_version:"2.6.3")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!pidginVer)
+  exit(0);
+
+if(version_is_less(version:pidginVer, test_version:"2.6.3")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

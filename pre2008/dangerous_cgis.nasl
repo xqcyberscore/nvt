@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dangerous_cgis.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # Various dangerous cgi scripts
 #
@@ -34,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11748");
-  script_version("$Revision: 11663 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1784, 2177, 2197, 2705, 4211, 4579, 5078);
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +54,7 @@ if(description)
 
   By default this script only checks for this CGIs within the /cgi-bin directory. You can change
   this behavior with the script preference to check all detected CGI directories.");
-  script_tag(name:"solution", value:"Please take the time to visit http://cve.mitre.org and check the
+  script_tag(name:"solution", value:"Please take the time to visit cve.mitre.org and check the
   associated CVE ID for each cgi found. If you are running a vulnerable
   version, then delete or upgrade the CGI.");
 

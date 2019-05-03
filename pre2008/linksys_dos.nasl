@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: linksys_dos.nasl 10322 2018-06-26 06:37:28Z cfischer $
 #
 # LinkSys EtherFast Router Denial of Service Attack
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11891");
-  script_version("$Revision: 10322 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
@@ -45,10 +44,9 @@ if(description)
   script_mandatory_keys("linksys/banner");
 
   script_xref(name:"URL", value:"http://www.digitalpranksters.com/advisories/linksys/LinksysBEFSX41DoSa.html");
+  script_xref(name:"URL", value:"http://www.linksys.com/download/firmware.asp?fwid=172");
 
-  script_tag(name:"solution", value:"Update firmware to version 1.45.3
-
-  http://www.linksys.com/download/firmware.asp?fwid=172.");
+  script_tag(name:"solution", value:"Update firmware to version 1.45.3.");
 
   script_tag(name:"summary", value:"The remote host seems to be a Linksys EtherFast Cable Firewall/Router.
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-027.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft IE Developer Tools WMITools and Windows Messenger ActiveX Control Vulnerability (2508272)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900281");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T08:55:39+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_bugtraq_id(40490, 45546, 47197);
   script_cve_id("CVE-2010-0811", "CVE-2010-3973", "CVE-2011-1243", "CVE-2010-4588");
@@ -64,10 +63,11 @@ if(description)
   a user into visiting a specially crafted web page.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-027.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory  Workaround:
-  Set the killbit for the following CLSIDs,
-  {1a6fe369-f28c-4ad9-a3e6-2bcb50807cf1}, {2745E5F5-D234-11D0-847A-00C04FD7BB08}
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.
+
+  As a workaround set the killbit for the following CLSIDs:
+
+  {1a6fe369-f28c-4ad9-a3e6-2bcb50807cf1}, {2745E5F5-D234-11D0-847A-00C04FD7BB08},
   {FB7199AB-79BF-11d2-8D94-0000F875C541}");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/240797");
@@ -76,7 +76,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS11-027.mspx");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_remote_code_exec_vuln_may18_macosx.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Mac OS X)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812890");
-  script_version("$Revision: 12025 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4946");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-16 11:46:20 +0530 (Wed, 16 May 2018)");
   script_name("Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Mac OS X)");
 
@@ -54,8 +53,7 @@ if(description)
   and Adobe Photoshop CC 2018 19.1.3 and earlier versions on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Photoshop CC 2017
-  18.1.4 or Photoshop CC 2018 19.1.4 or later. For updates refer to Reference
-  links.");
+  18.1.4 or Photoshop CC 2018 19.1.4 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

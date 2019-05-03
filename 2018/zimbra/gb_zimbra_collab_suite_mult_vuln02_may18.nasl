@@ -1,6 +1,5 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_collab_suite_mult_vuln02_may18.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Zimbra Collaboration Suite Multiple Vulnerabilities(02)-May18
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:zimbra:zimbra_collaboration_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812894");
-  script_version("$Revision: 12026 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10951", "CVE-2018-10949", "CVE-2018-10950");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-31 11:07:20 +0530 (Thu, 31 May 2018)");
   script_name("Zimbra Collaboration Suite Multiple Vulnerabilities(02)-May18");
 
@@ -61,7 +60,7 @@ if(description)
 
   script_tag(name:"solution", value:"For versions 8.7.x upgrade to version
   8.7.11.Patch3 or later, for versions 8.6.x upgrade to version 8.6.0.Patch10
-  or later. For updates refer to Reference links");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

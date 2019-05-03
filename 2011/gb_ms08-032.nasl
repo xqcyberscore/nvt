@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-032.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Description: Microsoft Windows Speech Components Voice Recognition Command Execution Vulnerability (950760)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801486");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T08:55:39+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_bugtraq_id(22359);
   script_cve_id("CVE-2007-0675");
@@ -51,9 +50,13 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers execute commands on
   a victim user's computer.");
   script_tag(name:"affected", value:"Microsoft Windows 2K  Service Pack 4 and prior
+
   Microsoft Windows XP  Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
-  Microsoft Windows Vista Service Pack 1 and prior.
+
+  Microsoft Windows Vista Service Pack 1 and prior
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name:"insight", value:"The flaw is caused by an error in the the Speech Components 'sapi.dll' when
   playing audio files in Internet Explorer, which could allow attackers to issue
@@ -61,15 +64,15 @@ if(description)
   system with the speech recognition feature activated and configured.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-032.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory  Workaround:
-  Set the killbit for the following CLSIDs,
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.
+
+  As a workaround set the killbit for the following CLSIDs:
+
   {47206204-5eca-11d2-960f-00c04f8ee628}, {3bee4890-4fe9-4a37-8c1e-5e7e12791c1f}");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/240797");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

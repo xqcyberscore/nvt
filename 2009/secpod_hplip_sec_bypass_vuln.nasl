@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hplip_sec_bypass_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # HP Linux Imaging and Printing System Security Bypass Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900429");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-01-23 16:33:16 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -36,8 +35,7 @@ if(description)
   script_cve_id("CVE-2009-0122");
   script_name("HP Linux Imaging and Printing System Security Bypass Vulnerability");
 
-
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Privilege escalation");
@@ -50,12 +48,7 @@ if(description)
   to change the permissions of user config files in an insecure manner.");
   script_tag(name:"summary", value:"This host is installed with HP Linux Imaging and Printing System
   and is prone to Security Bypass vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Higher version,
-  http://security.ubuntu.com/ubuntu/pool/main/h/hplip/
-
-  *****
-  NOTE: Please ignore the warning, if patch is applied.
-  *****");
+  script_tag(name:"solution", value:"Upgrade to a later version.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/33539");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-708-1");
   script_xref(name:"URL", value:"https://bugs.launchpad.net/ubuntu/+source/hplip/+bug/191299");
@@ -65,11 +58,10 @@ if(description)
   exit(0);
 }
 
-
 hplipVer = get_kb_item("HP-LIP/Linux/Ver");
-if(hplipVer != NULL)
-{
-  if(hplipVer =~ "2.7.7|2.8.2"){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!hplipVer)
+  exit(0);
+
+if(hplipVer =~ "(2\.7\.7|2\.8\.2)"){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814863");
-  script_version("$Revision: 13849 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-7815");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-25 12:37:22 +0530 (Mon, 25 Feb 2019)");
   script_name("Adobe Acrobat Reader DC (Classic Track) Security Updates (apsb19-13)-Windows");
 
@@ -46,7 +46,7 @@ if(description)
   2015.006.30475 and earlier versions on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat Reader DC (Classic Track)
-  version 2015.006.30482 or later. For updates refer to Reference links.");
+  version 2015.006.30482 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

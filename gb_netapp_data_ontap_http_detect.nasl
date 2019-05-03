@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_http_detect.nasl 13280 2019-01-25 07:45:24Z ckuersteiner $
 #
 # NetApp Data ONTAP Detection (HTTP)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140348");
-  script_version("$Revision: 13280 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 08:45:24 +0100 (Fri, 25 Jan 2019) $");
+  script_version("2019-05-02T05:02:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 05:02:27 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2017-09-05 08:44:27 +0700 (Tue, 05 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,18 +60,16 @@ port = get_http_port(default: 80);
 
 banner = get_http_banner(port: port);
 
-if (egrep(pattern: "NetApp/", string: banner)) {
+if (egrep(pattern: "(NetApp|Data ONTAP)/", string: banner)) {
   set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
   set_kb_item(name: "netapp_data_ontap/http/detected", value: TRUE);
   set_kb_item(name: "netapp_data_ontap/http/port", value: port);
 
-  vers = eregmatch(pattern: "Server: NetApp/(/)?([0-9P.]+)", string: banner);
+  vers = eregmatch(pattern: "Server: (NetApp|Data ONTAP)//?([0-9P.]+)", string: banner);
   if (!isnull(vers[2])) {
     version = vers[2];
     set_kb_item(name: "netapp_data_ontap/http/" + port + "/version", value: version);
   }
-
-  exit(0);
 }
 
 exit(0);

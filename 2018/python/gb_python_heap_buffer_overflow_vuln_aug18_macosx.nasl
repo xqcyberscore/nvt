@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_heap_buffer_overflow_vuln_aug18_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Python Heap Buffer Overflow Vulnerability Aug18 (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813920");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1000030");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-22 13:24:04 +0530 (Wed, 22 Aug 2018)");
   script_name("Python Heap Buffer Overflow Vulnerability Aug18 (Mac OS X)");
 
@@ -56,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Python 2.7.x before version 2.7.15 on Mac OS X");
 
-  script_tag(name:"solution", value:"Upgrade to Python 2.7.15 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Python 2.7.15 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://bugs.python.org/issue31530");

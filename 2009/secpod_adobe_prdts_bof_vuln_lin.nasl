@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_bof_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Buffer Overflow Vulnerability in Adobe Reader (Linux)
 #
@@ -28,12 +27,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900321");
-  script_version("$Revision: 11554 $");
+  script_version("2019-04-29T15:08:03+0000");
   script_cve_id("CVE-2009-0658", "CVE-2009-0927");
   script_bugtraq_id(33751, 34169, 34229);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_name("Buffer Overflow Vulnerability in Adobe Reader (Linux)");
 
@@ -47,8 +46,7 @@ and unspecified vulnerability related to a JavaScript method.");
 file, related to a non-JavaScript function call and to execute arbitrary code
 in context of the affected application.");
   script_tag(name:"affected", value:"Adobe Reader version 9.x < 9.1, 8.x < 8.1.4, 7.x < 7.1.1 on Linux");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.1 or 8.1.4 or later.
-http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Unix");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.1 or 8.1.4 or later.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -57,6 +55,7 @@ http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Unix");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb09-04.html");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/advisories/apsa09-01.html");
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/33751-PoC.pl");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Unix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
@@ -68,15 +67,14 @@ http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Unix");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!readerVer = get_app_version(cpe:CPE)){
+if(!readerVer = get_app_version(cpe:CPE))
   exit(0);
-}
 
-if(readerVer =~ "^(7|8|9)")
+if(readerVer =~ "^[7-9]\.")
 {
   if(version_in_range(version:readerVer, test_version:"7.0", test_version2:"7.1.0")||
      version_in_range(version:readerVer, test_version:"8.0", test_version2:"8.1.3")||
-     readerVer =~ "9.0")
+     readerVer =~ "^9\.0")
   {
     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);

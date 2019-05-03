@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_mult_vuln_aug09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities - Aug09
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900912");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-08-19 06:49:38 +0200 (Wed, 19 Aug 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -64,8 +63,7 @@ if(description)
   - An error in WebKit in the handling of the 'pluginspage' attribute of the
     'embed' element can be exploited to launch arbitrary file: URLs and obtain
     sensitive information via a crafted HTML document.");
-  script_tag(name:"solution", value:"Upgrade to Safari version 4.0.3
-  http://www.apple.com/support/downloads");
+  script_tag(name:"solution", value:"Upgrade to Safari version 4.0.3.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone
   to multiple vulnerabilities.");
 
@@ -74,14 +72,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 safariVer = get_kb_item("AppleSafari/Version");
-
-if(!safariVer){
+if(!safariVer)
   exit(0);
-}
 
 if(version_is_less(version:safariVer, test_version:"4.31.9.1")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

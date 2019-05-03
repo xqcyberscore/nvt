@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_multiple_vuln_sep18.nasl 11471 2018-09-19 11:17:08Z santu $
 #
 # MyBB Multiple Vulnerabilities-Sep 2018
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:mybb:mybb";
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814216");
-  script_version("$Revision: 11471 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-17128");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:17:08 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-18 16:04:20 +0530 (Tue, 18 Sep 2018)");
   script_name("MyBB Multiple Vulnerabilities-Sep 2018");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -59,8 +58,7 @@ if( description )
 
   script_tag(name:"affected", value:"MyBB versions prior to 1.8.19");
 
-  script_tag(name:"solution", value:"Upgrade MyBB to version 1.8.19 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade MyBB to version 1.8.19 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://mybb.com/versions/1.8.19");
   script_xref(name:"URL", value:"https://mybb.com");

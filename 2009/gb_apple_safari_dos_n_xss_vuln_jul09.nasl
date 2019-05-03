@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_dos_n_xss_vuln_jul09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Apple Safari DoS or XSS Vulnerability - July09
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800834");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-12 15:16:55 +0200 (Sun, 12 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -53,8 +52,7 @@ if(description)
 
   - Error in 'WebKit' is fails to handle numeric character references via a
     crafted HTML document.");
-  script_tag(name:"solution", value:"Upgrade to Safari version 4.0.2 (4.30.19.1)
-  http://www.apple.com/support/downloads");
+  script_tag(name:"solution", value:"Upgrade to Safari version 4.0.2 (4.30.19.1).");
   script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to Denial
   of Service or Cross-Site Scripting vulnerability.");
 
@@ -63,13 +61,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 safariVer = get_kb_item("AppleSafari/Version");
-if(!safariVer){
+if(!safariVer)
   exit(0);
-}
 
 if(version_is_less(version:safariVer, test_version:"4.30.19.1")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

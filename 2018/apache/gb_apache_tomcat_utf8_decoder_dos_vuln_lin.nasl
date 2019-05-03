@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_utf8_decoder_dos_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tomcat 'UTF-8 Decoder' Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813725");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1336");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-24 13:21:03 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'UTF-8 Decoder' Denial of Service Vulnerability (Linux)");
@@ -55,7 +54,7 @@ if(description)
   Apache Tomcat 7.0.28 to 7.0.86 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Tomcat version 9.0.8 or
-  8.5.31 or 8.0.52 or 7.0.90 or later. For updates refer to Reference links.");
+  8.5.31 or 8.0.52 or 7.0.90 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

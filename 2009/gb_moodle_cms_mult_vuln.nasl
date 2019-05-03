@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_cms_mult_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Moodle CMS Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800240");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -63,8 +62,7 @@ if(description)
 
   - XSS Vulnerability in blocks/html/block_html.php which allows injection
     of arbitracy scripts of malformed HTML codes injection.");
-  script_tag(name:"solution", value:"Upgrade to latest version 1.6.9, 1.7.7, 1.8.8 and 1.9.4
-  http://moodle.org/downloads");
+  script_tag(name:"solution", value:"Upgrade to latest version 1.6.9, 1.7.7, 1.8.8 and 1.9.4.");
   script_tag(name:"summary", value:"This host is running Moodle CMS and is prone to Multiple
   Vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause Cross Site
@@ -75,21 +73,16 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
 moodlePort = get_http_port(default:80);
-if(!moodlePort){
+if(!get_kb_item(string("www/", moodlePort, "/moodle")))
   exit(0);
-}
-
-if(!get_kb_item(string("www/", moodlePort, "/moodle")))exit(0);
 
 moodleVer = get_kb_item("Moodle/Version");
-if(!moodleVer){
+if(!moodleVer)
   exit(0);
-}
 
 if(version_in_range(version:moodleVer, test_version:"1.6", test_version2:"1.6.8") ||
    version_in_range(version:moodleVer, test_version:"1.7", test_version2:"1.7.6") ||

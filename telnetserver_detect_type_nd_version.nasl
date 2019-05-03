@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnetserver_detect_type_nd_version.nasl 14176 2019-03-14 11:29:33Z tpassfeld $
 #
 # Telnet Banner Reporting
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10281");
-  script_version("$Revision: 14176 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:29:33 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-05-02T04:45:21+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -334,6 +333,11 @@ if( strlen( banner ) ) {
   if( "IPmux-2L" >< banner ) {
     set_kb_item( name:"telnet/ipmux-2l/tdm/detected", value:TRUE );
     guess += '\n- IPmux-2L TDM Pseudowire Access Gateway';
+  }
+
+  if( banner == '\r\nToo many users logged in!  Please try again later.\r\n' || banner =~ '^\r\n\r\nData ONTAP' ) {
+    set_kb_item( name:"telnet/netapp/data_ontap/detected", value:TRUE );
+    guess += '\n- NetApp Data ONTAP';
   }
 
   report = 'Remote Telnet banner:\n\n' + banner;

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_pcanywhere_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Symantec pcAnywhere Format String DoS Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900333");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Symantec pcAnywhere version 12.5 and prior on Windows.");
   script_tag(name:"insight", value:"Issue exists due to improper processing of format strings within '.CHF'
   remote control file names or associated file path.");
-  script_tag(name:"solution", value:"Upgrade to pcAnywhere version 12.5 SP1
-  http://www.symantec.com/norton/symantec-pcanywhere");
+  script_tag(name:"solution", value:"Upgrade to pcAnywhere version 12.5 SP1.");
   script_tag(name:"summary", value:"This host is installed with Symantec pcAnywhere and is prone
   to denial of service vulnerability.");
 
@@ -60,13 +58,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 pcawVer = get_kb_item("Symantec/pcAnywhere/Ver");
-if(!pcawVer){
+if(!pcawVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:pcawVer, test_version:"12.5.0.442")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

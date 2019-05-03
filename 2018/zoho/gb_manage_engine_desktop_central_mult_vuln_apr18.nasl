@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_mult_vuln_apr18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # ZOHO ManageEngine Desktop Central Multiple Vulnerabilities-Apr18
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813213");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-5337", "CVE-2018-5338", "CVE-2018-5339", "CVE-2018-5341");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-19 15:26:06 +0530 (Thu, 19 Apr 2018)");
   script_name("ZOHO ManageEngine Desktop Central Multiple Vulnerabilities-Apr18");
 
@@ -64,7 +63,7 @@ if (description)
   10.0.184 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to ManageEngine Desktop Central build
-  version 10.0.208 or later. For updates refer to Reference links.");
+  version 10.0.208 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");

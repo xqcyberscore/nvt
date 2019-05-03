@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_null_dacl_access_ctrl_vuln_win.nasl 13700 2019-02-15 15:07:10Z cfischer $
 #
 # Wireshark 'non-NULL DACL' Access Control Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813590");
-  script_version("$Revision: 13700 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-14438");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 16:07:10 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-30 16:30:27 +0530 (Mon, 30 Jul 2018)");
 
   script_name("Wireshark 'non-NULL DACL' Access Control Vulnerability (Windows)");
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version through 2.6.6 on Windows.");
 
   script_tag(name:"solution", value:"No known solution is available as of 18th February, 2019.
-  Information regarding this issue will be updated once solution details are available. For updates refer to
-  Reference links.");
+  Information regarding this issue will be updated once solution details are available. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14921");
   script_xref(name:"URL", value:"https://www.wireshark.org");

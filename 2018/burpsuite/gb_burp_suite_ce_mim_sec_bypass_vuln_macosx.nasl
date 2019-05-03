@@ -1,6 +1,5 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burp_suite_ce_mim_sec_bypass_vuln_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Burp Suite CE Man in the Middle Security Bypass Vulnerability (Mac OS X)
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:portswigger:burp_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813612");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-19 16:08:53 +0530 (Tue, 19 Jun 2018)");
   script_name("Burp Suite CE Man in the Middle Security Bypass Vulnerability (Mac OS X)");
 
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Burp Suite Community Edition 1.7.32
   and 1.7.33.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.7.34 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to version 1.7.34 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

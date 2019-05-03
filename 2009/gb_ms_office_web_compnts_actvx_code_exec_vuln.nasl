@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_compnts_actvx_code_exec_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Office Web Components ActiveX Control Code Execution Vulnerability
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800845");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-03T08:55:39+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -83,21 +82,17 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Microsoft Office Web Components ActiveX Control
   and is prone to code execution vulnerability.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory  Workaround:
-  Set the killbit for the CLSID
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.
 
-  {0002E541-0000-0000-C000-000000000046}
+  As a workaround set the killbit for the following CLSIDs:
 
-  {0002E559-0000-0000-C000-000000000046}
-
+  {0002E541-0000-0000-C000-000000000046}, {0002E559-0000-0000-C000-000000000046},
   {0002E55B-0000-0000-C000-000000000046}");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/240797");
 
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

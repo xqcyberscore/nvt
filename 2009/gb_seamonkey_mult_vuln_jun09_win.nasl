@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_mult_vuln_jun09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Seamonkey Multiple Vulnerabilities Jun-09 (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800640");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could result in remote arbitrary JavaScript code
   execution, spoofing attacks, sensitive information disclosure, and can cause
   denial of service.");
-  script_tag(name:"affected", value:"Firefox version prior to 1.1.17 on Windows.");
+  script_tag(name:"affected", value:"Seamonkey version prior to 1.1.17 on Windows.");
   script_tag(name:"insight", value:"- Error in js/src/xpconnect/src/xpcwrappedjsclass.cpp file will allow attacker
     to execute arbitrary web script.
 
@@ -82,8 +81,7 @@ if(description)
 
   - Error exists in JavaScript engine is caused via vectors related to
     js_LeaveSharpObject, ParseXMLSource, and a certain assertion in jsinterp.c.");
-  script_tag(name:"solution", value:"Upgrade to Firefox version 1.1.17
-  http://www.seamonkey-project.org/releases/");
+  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.17.");
   script_tag(name:"summary", value:"The host is installed with Seamonkey, which is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
@@ -91,13 +89,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 seamonkeyVer = get_kb_item("Seamonkey/Win/Ver");
-if(seamonkeyVer != NULL)
-{
-  if(version_is_less(version:seamonkeyVer ,test_version:"1.1.17")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!seamonkeyVer)
+  exit(0);
+
+if(version_is_less(version:seamonkeyVer ,test_version:"1.1.17")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

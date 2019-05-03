@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_player_code_exec_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Adobe Shockwave Player Remote Code Execution Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900582");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Shockwave Player before 11.5.0.600 on Windows.");
   script_tag(name:"insight", value:"The flaw exists when processing crafted Shockwave Player 10 content, and this
   can be exploited to cause memory corruption.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player 11.5.0.600
-  http://get.adobe.com/shockwave");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player 11.5.0.600.");
   script_tag(name:"summary", value:"This host has Adobe Shockwave Player installed and is prone to
   Remote Code Execution vulnerability.");
 
@@ -59,13 +57,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 shockVer = get_kb_item("Adobe/ShockwavePlayer/Ver");
-if(!shockVer){
+if(!shockVer)
   exit(0);
-}
 
 if(version_is_less(version:shockVer, test_version:"11.5.0.600")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

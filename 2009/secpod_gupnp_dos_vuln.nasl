@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gupnp_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # GUPnP Message Handling Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900682");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -38,7 +37,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/35482");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1597");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"GUPnP Version 0.12.7 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an error when processing subscription or control
   messages with an empty content.");
-  script_tag(name:"solution", value:"Upgrade to version 0.12.8 or later.
-  http://www.gupnp.org/sources/");
+  script_tag(name:"solution", value:"Upgrade to version 0.12.8 or later.");
   script_tag(name:"summary", value:"This host has installed GUPnP is prone to Denial Of Service
   Vulnerability");
 
@@ -59,13 +57,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 gupnpVer = get_kb_item("GUPnP/Ver");
-if(gupnpVer != NULL)
-{
-  if(version_is_less(version:gupnpVer, test_version:"0.12.8")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!gupnpVer)
+  exit(0);
+
+if(version_is_less(version:gupnpVer, test_version:"0.12.8")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

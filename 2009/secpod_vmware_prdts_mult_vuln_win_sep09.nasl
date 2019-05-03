@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_prdts_mult_vuln_win_sep09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # VMware Products Multiple Vulnerabilities (Windows) sep09
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901020");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-30T06:12:35+0000");
+  script_tag(name:"last_modification", value:"2019-04-30 06:12:35 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -39,6 +38,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2009-25/");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2553");
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2009-0012.html");
+  script_xref(name:"URL", value:"http://lists.vmware.com/pipermail/security-announce/2009/000065.html");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
@@ -59,24 +59,20 @@ if(description)
     with a height of less than 8 pixels.");
   script_tag(name:"summary", value:"The host is installed with VMWare products and are prone to multiple
   vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade your VMWares according to the below link.
-  http://lists.vmware.com/pipermail/security-announce/2009/000065.html");
+  script_tag(name:"solution", value:"Upgrade the VMWare product(s) according to the referenced vendor announcement.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
-
 include("version_func.inc");
 
 if(!get_kb_item("VMware/Win/Installed"))
-{
   exit(0);
-}
 
 vmplayerVer = get_kb_item("VMware/Player/Win/Ver");
-if(vmplayerVer != NULL )
+if(vmplayerVer)
 {
   if(version_is_less(version:vmplayerVer, test_version:"2.5.3"))
   {
@@ -86,7 +82,7 @@ if(vmplayerVer != NULL )
 }
 
 vmworkstnVer = get_kb_item("VMware/Workstation/Win/Ver");
-if(vmworkstnVer != NULL)
+if(vmworkstnVer)
 {
   if(version_is_less(version:vmworkstnVer, test_version:"6.5.3")){
     security_message( port: 0, data: "The target host was found to be vulnerable" );

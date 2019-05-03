@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_may18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP Multiple Vulnerabilities May18 (Linux)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813160");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10549", "CVE-2018-10546", "CVE-2018-10548", "CVE-2018-10547");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-02 18:02:28 +0530 (Wed, 02 May 2018)");
   script_name("PHP Multiple Vulnerabilities May18 (Linux)");
 
@@ -71,7 +70,7 @@ if (description)
   PHP versions 7.1.x prior to 7.1.17 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 7.2.5 or 7.0.30 or
-  5.6.36 or 7.1.17 or later. For updates refer to Reference links.");
+  5.6.36 or 7.1.17 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

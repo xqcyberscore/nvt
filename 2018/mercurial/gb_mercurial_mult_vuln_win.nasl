@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mercurial_mult_vuln_win.nasl 11698 2018-09-29 03:57:28Z santu $
 #
 # Mercurial Multiple Vulnerabilities (Windows)
 #
@@ -31,8 +30,8 @@ CPE = "cpe:/a:mercurial:mercurial";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814059");
-  script_version("$Revision: 11698 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 05:57:28 +0200 (Sat, 29 Sep 2018) $");
+  script_version("2019-05-03T08:55:39+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-28 15:46:56 +0530 (Fri, 28 Sep 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -71,8 +70,7 @@ if (description)
 
   script_tag(name:"affected", value:"Mercurial before version 4.6.1");
 
-  script_tag(name:"solution", value:"Upgrade to Mercurial 4.6.1 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Mercurial 4.6.1 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://www.mercurial-scm.org/wiki/WhatsNew#Mercurial_4.6.1_.282018-06-06.29");
   script_xref(name:"URL", value:"https://www.mercurial-scm.org");

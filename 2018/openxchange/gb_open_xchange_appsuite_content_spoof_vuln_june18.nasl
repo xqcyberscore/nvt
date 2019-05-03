@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Content Spoofing Vulnerability(June18)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813444");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-5753");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-19 11:58:29 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Content Spoofing Vulnerability(June18)");
@@ -54,8 +53,7 @@ if(description)
   7.8.x before 7.8.2-rev31, 7.8.3 before 7.8.3-rev41 and 7.8.4 before 7.8.4-rev20");
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) AppSuite
-  version 7.6.3-rev31 or 7.8.2-rev31 or 7.8.3-rev41 or 7.8.4-rev20 or later.
-  For updates refer to Reference links.");
+  version 7.6.3-rev31 or 7.8.2-rev31 or 7.8.3-rev41 or 7.8.4-rev20 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

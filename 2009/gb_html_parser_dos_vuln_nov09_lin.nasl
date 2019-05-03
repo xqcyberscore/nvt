@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_html_parser_dos_vuln_nov09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # HTML-Parser 'decode_entities()' Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801039");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-09 14:01:44 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -53,27 +52,17 @@ if(description)
   processing a specially crafted string using this library.");
   script_tag(name:"summary", value:"This host is installed with HTML-Parser and is prone to Denial of
   Service Vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to HTML-Parser version 3.63 or later
-  http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Parser-3.63.tar.gz
-  (or)
-  Apply the patch,
-  http://github.com/gisle/html-parser/commit/b9aae1e43eb2c8e989510187cff0ba3e996f9a4c
-
-  *****
-  NOTE: Please ignore this warning if the patch is already applied.
-  *****");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"solution", value:"Upgrade to HTML-Parser version 3.63 or later.");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 parserVer = get_kb_item("HTML-Parser/Linux/Ver");
-if(!parserVer){
+if(!parserVer)
   exit(0);
-}
 
 if(version_is_less(version:parserVer, test_version:"3.63")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

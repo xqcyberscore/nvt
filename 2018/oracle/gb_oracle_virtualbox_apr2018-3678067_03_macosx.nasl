@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_apr2018-3678067_03_macosx.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle VirtualBox Security Updates (apr2018-3678067) 03 - MAC OS X
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813304");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-2860", "CVE-2018-0739", "CVE-2018-2842", "CVE-2018-2843",
                 "CVE-2018-2844", "CVE-2018-2845", "CVE-2018-2831", "CVE-2018-2830",
                 "CVE-2018-2837", "CVE-2018-2836", "CVE-2018-2835");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-18 19:09:11 +0530 (Wed, 18 Apr 2018)");
   script_name("Oracle VirtualBox Security Updates (apr2018-3678067) 03 - MAC OS X");
 
@@ -55,7 +54,7 @@ if(description)
   prior to 5.2.10 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox 5.2.10 or
-  5.1.36 or later. For updates refer to reference links.");
+  5.1.36 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

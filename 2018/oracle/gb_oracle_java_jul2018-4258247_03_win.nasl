@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jul2018-4258247_03_win.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Oracle Java SE Security Updates-03 (jul2018-4258247) Windows
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813684");
-  script_version("$Revision: 12045 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-2972");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-18 11:26:47 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle Java SE Security Updates-03 (jul2018-4258247) Windows");
 
@@ -52,8 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE version 10.0 through 10.0.1 on
   Windows");
 
-  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

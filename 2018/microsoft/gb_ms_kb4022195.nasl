@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022195.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Microsoft Excel Viewer 2007 Service Pack 3 Multiple Vulnerabilities (KB4022195)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813277");
-  script_version("$Revision: 14156 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8378", "CVE-2018-8382");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 10:30:29 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Excel Viewer 2007 Service Pack 3 Multiple Vulnerabilities (KB4022195)");
 
@@ -53,9 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Excel Viewer 2007 Service Pack 3");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

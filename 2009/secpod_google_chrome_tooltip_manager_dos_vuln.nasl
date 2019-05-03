@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_tooltip_manager_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Google Chrome 'tooltip_manager.cc' Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900825");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -51,14 +50,12 @@ if(description)
   script_tag(name:"insight", value:"Error occurs in tooltip manager in chrome/views/tooltip_manager.cc caused
   via a tag with a long title attribute, which is not properly handled
   when displaying a tooltip.");
-  script_tag(name:"solution", value:"Upgrade to version 0.2.149.30 or later.
-  http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to version 0.2.149.30 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to Denial of
   Service vulnerability.");
   exit(0);
 }
-
 
 include("version_func.inc");
 

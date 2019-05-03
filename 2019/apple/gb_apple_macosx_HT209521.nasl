@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814670");
-  script_version("$Revision: 14292 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-6223", "CVE-2019-7286", "CVE-2019-7288");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-08 10:02:49 +0530 (Fri, 08 Feb 2019)");
   script_name("Apple MacOSX Security Updates(HT209521)");
 
@@ -50,7 +50,7 @@ if(description)
   10.14.3 build 18D43.");
 
   script_tag(name:"solution", value:"Upgrade to Apple Mac OS X 10.14.3 build
-  18D109 or later. For updates refer to Reference links.");
+  18D109 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

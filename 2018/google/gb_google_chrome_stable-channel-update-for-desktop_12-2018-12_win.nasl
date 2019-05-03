@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_12-2018-12_win.nasl 12808 2018-12-17 13:20:13Z santu $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_12-2018-12)-Windows
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814554");
-  script_version("$Revision: 12808 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1748");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 14:20:13 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-12-14 12:54:35 +0530 (Fri, 14 Dec 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_12-2018-12)-Windows");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Google Chrome versions prior to 71.0.3578.98 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to Google Chrome 71.0.3578.98 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome 71.0.3578.98 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

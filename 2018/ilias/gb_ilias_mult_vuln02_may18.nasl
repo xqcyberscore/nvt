@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_mult_vuln02_may18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # ILIAS LMS Multiple Vulnerabilities-02 May18
 #
@@ -28,11 +27,11 @@ CPE = "cpe:/a:ilias:ilias";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813199");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10306", "CVE-2018-10307", "CVE-2018-10428");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-21 13:56:09 +0530 (Mon, 21 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ILIAS LMS Multiple Vulnerabilities-02 May18");
@@ -61,7 +60,7 @@ if(description)
   prior to 5.2.15");
 
   script_tag(name:"solution", value:"Upgrade to ILIAS LMS 5.3.4 or 5.2.15 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.ilias.de/docu/ilias.php?ref_id=35&obj_id=116792&from_page=116805&cmd=layout&cmdClass=illmpresentationgui&cmdNode=wc&baseClass=ilLMPresentationGUI");

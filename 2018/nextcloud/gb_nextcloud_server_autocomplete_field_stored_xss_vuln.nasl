@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_autocomplete_field_stored_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Nextcloud Server 'Autocomplete field' Stored XSS Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813916");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-3780");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-20 17:29:50 +0530 (Mon, 20 Aug 2018)");
   script_name("Nextcloud Server 'Autocomplete field' Stored XSS Vulnerability");
 
@@ -54,7 +53,7 @@ if (description)
   script_tag(name:"affected", value:"Nextcloud Server before 13.0.5");
 
   script_tag(name:"solution", value:"Upgrade to Nextcloud Server version 13.0.5
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

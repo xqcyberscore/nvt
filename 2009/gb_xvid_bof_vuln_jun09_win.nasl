@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xvid_bof_vuln_jun09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Xvid Buffer Overflow Vulnerability (Windows)
 #
@@ -27,15 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800580");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-09 08:37:33 +0200 (Tue, 09 Jun 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-0893", "CVE-2009-0894");
   script_bugtraq_id(35156, 35158);
   script_name("Xvid Buffer overflow Vulnerability (Windows) - Jun09");
-
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -54,8 +52,7 @@ if(description)
     can be exploited via vectors involving the DirectShow (aka DShow) frontend
     and improper handling of the XVID_ERR_MEMORY return code during processing
     of a crafted movie file");
-  script_tag(name:"solution", value:"Upgrade to Xvid 1.2.2 or later
-  http://www.xvid.org/");
+  script_tag(name:"solution", value:"Upgrade to Xvid 1.2.2 or later.");
   script_tag(name:"summary", value:"This host has Xvid installed, and is prone to Buffer Overflow
   vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -66,13 +63,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 xvidVer = get_kb_item("Xvid/Win/Ver");
-if(xvidVer == NULL){
+if(!xvidVer)
   exit(0);
-}
 
 if(version_is_less(version:xvidVer, test_version:"1.2.2")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

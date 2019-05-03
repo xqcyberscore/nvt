@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4103718.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4103718)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813336");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-0954", "CVE-2018-0955", "CVE-2018-0959", "CVE-2018-1022",
                 "CVE-2018-1025", "CVE-2018-8114", "CVE-2018-8120", "CVE-2018-8122",
                 "CVE-2018-8124", "CVE-2018-8127", "CVE-2018-8136", "CVE-2018-8145",
@@ -36,7 +35,7 @@ if(description)
                 "CVE-2018-0886");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-09 08:12:54 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4103718)");
 
@@ -78,9 +77,7 @@ if(description)
 
   Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

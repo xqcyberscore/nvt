@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_divx_web_player_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # DivX Web Player Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900537");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"DivX Web Player 1.4.2.7 and prior on Windows.");
   script_tag(name:"insight", value:"This flaw is due to the boundary checking error while processing Stream
   Format 'STRF' chunks which causes heap overflow.");
-  script_tag(name:"solution", value:"Update to version 1.4.3.4
-  http://www.divx.com/downloads/divx");
+  script_tag(name:"solution", value:"Update to version 1.4.3.4.");
   script_tag(name:"summary", value:"This host is running DivX Web Player which is prone to buffer
   overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary
@@ -61,13 +59,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 divxVer = get_kb_item("DivX/Web/Player/Ver");
-if(divxVer == NULL){
+if(!divxVer)
   exit(0);
-}
 
 if(version_is_less(version:divxVer, test_version:"1.4.3.4")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

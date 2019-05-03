@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_jul2018-4258247_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle VirtualBox Security Updates (jul2018-4258247) (Linux)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813581");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-3085", "CVE-2018-3087", "CVE-2018-3086", "CVE-2018-3090",
                 "CVE-2018-3091", "CVE-2018-3089", "CVE-2018-3088", "CVE-2018-3055",
                 "CVE-2018-3005");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-18 10:56:08 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle VirtualBox Security Updates (jul2018-4258247) (Linux)");
 
@@ -54,7 +53,7 @@ if(description)
   Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version 5.2.16
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

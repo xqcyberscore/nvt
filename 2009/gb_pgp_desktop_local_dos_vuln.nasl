@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pgp_desktop_local_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # PGP Desktop Local Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800600");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"PGP Desktop prior to version 9.10 on Windows.");
   script_tag(name:"insight", value:"IOCTL handler in 'pgpdisk.sys' and 'pgpwded.sys' files does not adequately
   validate buffer data associated with the Irp object.");
-  script_tag(name:"solution", value:"Upgrade to PGP Desktop 9.10
-  http://www.pgp.com/downloads/desktoptrial/desktoptrial2.html");
+  script_tag(name:"solution", value:"Upgrade to PGP Desktop 9.10.");
   script_tag(name:"summary", value:"This host has PGP Desktop is installed and is prone to Denial of Service
   vulnerability.");
 
@@ -60,13 +58,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 pgpVer = get_kb_item("PGPDesktop/Win/Ver");
-if(!pgpVer){
+if(!pgpVer)
   exit(0);
-}
 
 if(version_is_less(version:pgpVer, test_version:"9.10.0.500")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

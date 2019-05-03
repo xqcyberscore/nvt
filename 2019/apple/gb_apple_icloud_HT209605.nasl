@@ -23,7 +23,7 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815005");
-  script_version("2019-03-28T06:50:51+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-8542", "CVE-2019-6232", "CVE-2019-8506", "CVE-2019-8535",
                 "CVE-2019-6201", "CVE-2019-8518", "CVE-2019-8523", "CVE-2019-8524",
                 "CVE-2019-8558", "CVE-2019-8559", "CVE-2019-8563", "CVE-2019-8515",
@@ -31,7 +31,7 @@ if(description)
                 "CVE-2019-8503", "CVE-2019-7292", "CVE-2019-8551", "CVE-2019-6236");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-03-28 06:50:51 +0000 (Thu, 28 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-26 14:42:55 +0530 (Tue, 26 Mar 2019)");
   script_name("Apple iCloud Security Updates( HT209605 )");
 
@@ -65,8 +65,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iCloud versions before 7.11");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iCloud 7.11 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apple iCloud 7.11 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

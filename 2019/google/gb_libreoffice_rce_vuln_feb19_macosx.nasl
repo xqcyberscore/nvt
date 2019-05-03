@@ -23,11 +23,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814904");
-  script_version("2019-04-26T06:52:17+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-16858");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-26 06:52:17 +0000 (Fri, 26 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-07 10:41:49 +0530 (Thu, 07 Feb 2019)");
   script_name("LibreOffice Remote Code Execution Vulnerability Feb19 (Mac OS X)");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"affected", value:"LibreOffice before 6.0.7 and 6.1.3 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to LibreOffice version 6.0.7 or
-  6.1.3 or later. For updates refer to Reference links.");
+  6.1.3 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

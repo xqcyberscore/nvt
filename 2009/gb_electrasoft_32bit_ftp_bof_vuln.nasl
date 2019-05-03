@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_electrasoft_32bit_ftp_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # ElectraSoft 32bit FTP Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800569");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,8 +58,7 @@ if(description)
   - a overly long 257 reply to a CWD command.
 
   - a overly long 227 reply to a PASV command.");
-  script_tag(name:"solution", value:"Upgrade to 32bit FTP version 09.05.01
-  http://www.electrasoft.com/32ftp.htm");
+  script_tag(name:"solution", value:"Upgrade to 32bit FTP version 09.05.01.");
   script_tag(name:"summary", value:"This host is running ElectraSoft 32bit FTP client which is prone
   to Buffer Overflow vulnerability.");
 
@@ -69,13 +67,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 bitftpVer = get_kb_item("ElectraSoft/FTP/Ver");
-if(!bitftpVer){
+if(!bitftpVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:bitftpVer, test_version:"09.04.24")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

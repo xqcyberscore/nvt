@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipsec-tools_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # IPSec Tools Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800708");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -38,7 +37,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/05/04/3");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/04/29/6");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -47,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"IPsec Tools version prior to 0.7.2");
   script_tag(name:"insight", value:"This flaw is due to a NULL pointer dereference caused when the file
   'racoon/isakmp_frag.c' processes fragmented packets without any payload.");
-  script_tag(name:"solution", value:"Upgrade to the latest version 0.7.2
-  http://ipsec-tools.sourceforge.net");
+  script_tag(name:"solution", value:"Upgrade to the latest version 0.7.2.");
   script_tag(name:"summary", value:"This host is installed with IPSec Tools for Linux and is prone
   to Denial of Service Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause denial if service.");
@@ -58,13 +56,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 ipsecVer = get_kb_item("IPSec/Tools/Ver");
-if(ipsecVer == NULL){
+if(!ipsecVer)
   exit(0);
-}
 
 if(version_is_less(version:ipsecVer, test_version:"0.7.2")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

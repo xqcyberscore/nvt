@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_2017_apsb18-41_win.nasl 13384 2019-01-31 14:06:40Z santu $
 #
 # Adobe Acrobat 2017 Security Updates(apsb18-41)-Windows
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814390");
-  script_version("$Revision: 13384 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-15998", "CVE-2018-15987", "CVE-2018-16004", "CVE-2018-19720",
                 "CVE-2018-16045", "CVE-2018-16044", "CVE-2018-16018", "CVE-2018-19715",
                 "CVE-2018-19713", "CVE-2018-19708", "CVE-2018-19707", "CVE-2018-19700",
@@ -54,7 +53,7 @@ if(description)
                 "CVE-2018-15986", "CVE-2018-16042", "CVE-2018-19728");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 15:06:40 +0100 (Thu, 31 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-12-13 12:45:21 +0530 (Thu, 13 Dec 2018)");
   script_name("Adobe Acrobat 2017 Security Updates(apsb18-41)-Windows");
 
@@ -89,7 +88,7 @@ if(description)
   and earlier on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat 2017 version
-  2017.011.30110 or later. For updates refer to Reference links.");
+  2017.011.30110 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

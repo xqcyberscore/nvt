@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_consolidation.nasl 13280 2019-01-25 07:45:24Z ckuersteiner $
 #
 # NetApp Data ONTAP Detection Consolidation
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141923");
-  script_version("$Revision: 13280 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 08:45:24 +0100 (Fri, 25 Jan 2019) $");
+  script_version("2019-05-02T04:45:21+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 12:54:35 +0700 (Fri, 25 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -97,6 +96,8 @@ if (snmp_ports = get_kb_list("netapp_data_ontap/snmp/port")) {
     register_product(cpe: cpe, location: '/', port: port, service: "snmp", proto: "udp");
   }
 }
+
+register_and_report_os(os: "NetApp Data ONTAP", cpe: cpe, desc: "NetApp Data ONTAP Detection Consolidation", runs_key:"unixoide" );
 
 report = build_detection_report(app: "NetApp Data ONTAP", version: detected_version, cpe: cpe, install: "/");
 

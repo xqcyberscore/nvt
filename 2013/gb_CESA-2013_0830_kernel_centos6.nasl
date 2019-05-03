@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881731");
-  script_version("$Revision: 14222 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2013-05-17 09:53:11 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-2094");
   script_tag(name:"cvss_base", value:"7.2");
@@ -86,22 +86,6 @@ if(description)
   5. Bugs fixed:
 
   962792 - CVE-2013-2094 kernel: perf_swevent_enabled array out-of-bound access
-
-  6. Package List:
-
-  Red Hat Enterprise Linux Desktop (v. 6):
-
-  Source:
-  ftp://ftp.redhat.com/pub/redhat/linux/enterprise/6Client/en/os/SRPMS/kernel-2.6.32-358.6.2.el6.src.rpm
-
-  i386:
-  kernel-2.6.32-358.6.2.el6.i686.rpm
-  kernel-debug-2.6.32-358.6.2.el6.i686.rpm
-  kernel-debug-debuginfo-2.6.32-358.6.2.el6.i686.rpm
-  kernel-debug-devel-2.6.32-358.6.2.el6.i686.rpm
-  kernel-debuginfo-2.6.32-358.6.2.el6.i686.rpm
-  kernel-debuginfo-common-i686-2.6.32-358.6.2.el6.i686.rpm
-  kernel-devel-2.6.32-358.6.2.el6.i ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

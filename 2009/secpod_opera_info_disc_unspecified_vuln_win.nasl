@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_info_disc_unspecified_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Opera Information Disclosure and Unspecified Vulnerabilities - (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900986");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-30 15:32:46 +0100 (Mon, 30 Nov 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,8 +51,7 @@ if(description)
     script code in a user's browser session.
 
   - A vulnerability is due to an unspecified error.");
-  script_tag(name:"solution", value:"Upgrade to Opera 10.10.
-  http://www.opera.com/download");
+  script_tag(name:"solution", value:"Upgrade to Opera 10.10.");
   script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to
   Information Disclosure and other unspecified vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
@@ -61,13 +59,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 operaVer = get_kb_item("Opera/Win/Version");
-if(!operaVer){
+if(!operaVer)
   exit(0);
-}
 
 if(version_is_less(version:operaVer, test_version:"10.1")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

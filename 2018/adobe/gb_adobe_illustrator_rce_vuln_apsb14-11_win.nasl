@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_rce_vuln_apsb14-11_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Illustrator Remote Code Execution Vulnerability-Windows (apsb14-11)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:illustrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813673");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2014-0513");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 14:32:37 +0530 (Thu, 12 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Illustrator Remote Code Execution Vulnerability-Windows (apsb14-11)");
@@ -53,7 +52,7 @@ if(description)
   16.2.x before 16.2.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Illustrator CS6 version
-  16.0.5 or 16.2.2 or later. For updates refer to Reference links.");
+  16.0.5 or 16.2.2 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

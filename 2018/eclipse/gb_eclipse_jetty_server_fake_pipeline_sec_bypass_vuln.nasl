@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclipse_jetty_server_fake_pipeline_sec_bypass_vuln.nasl 12711 2018-12-07 21:05:48Z cfischer $
 #
 # Eclipse Jetty Server Fake Pipeline Request Security Bypass Vulnerability (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813551");
-  script_version("$Revision: 12711 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-7658");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 22:05:48 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-05 11:10:53 +0530 (Thu, 05 Jul 2018)");
   script_name("Eclipse Jetty Server Fake Pipeline Request Security Bypass Vulnerability (Linux)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -62,7 +61,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Eclipse Jetty Server version
   9.2.25.v20180606 or 9.3.24.v20180605 or 9.4.11.v20180605 or later as per the
-  series. For updates refer to Reference links.");
+  series. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avg_detection_bypass_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # AVG AntiVirus Engine Malware Detection Bypass Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900719");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-29 07:35:11 +0200 (Fri, 29 May 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,8 +49,7 @@ if(description)
   AVG File Server Edition prior to 8.5.323 on Windows");
   script_tag(name:"insight", value:"Error in the file parsing engine can be exploited to bypass the anti-virus
   scanning functionality via a specially crafted ZIP or RAR file.");
-  script_tag(name:"solution", value:"Upgrade to the AVG Anti-Virus Scanning Engine build 8.5.323
-  http://www.avg.com/download");
+  script_tag(name:"solution", value:"Upgrade to the AVG Anti-Virus Scanning Engine build 8.5.323.");
   script_tag(name:"summary", value:"This host is installed with AVG AntiVirus Product Suite for Windows
   and is prone to Malware Detection Bypass Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -59,13 +57,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 version = get_kb_item("AVG/AV/Win/Ver");
-if(!version){
+if(!version)
   exit(0);
-}
 
 if(version_is_less(version:version, test_version:"8.5.323")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

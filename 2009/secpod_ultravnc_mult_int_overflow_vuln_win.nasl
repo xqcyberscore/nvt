@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ultravnc_mult_int_overflow_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # UltraVNC ClientConnection Multiple Integer Overflow Vulnerabilities (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900471");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,15 +40,13 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("secpod_ultravnc_detect_win.nasl", "find_service1.nasl");
-  script_require_ports("Services/vnc", 5800, 5900);
+  script_dependencies("secpod_ultravnc_detect_win.nasl");
   script_mandatory_keys("UltraVNC/Win/Ver");
   script_tag(name:"affected", value:"UltraVNC version prior to 1.0.5.4 on Windows.");
   script_tag(name:"insight", value:"Multiple Integer Overflow due to signedness errors within the functions
   ClientConnection::CheckBufferSize and ClientConnection::CheckFileZipBufferSize
   in ClientConnection.cpp file fails to validate user input.");
-  script_tag(name:"solution", value:"Upgrade to the latest version 1.0.5.4
-  http://www.uvnc.com/download/1054");
+  script_tag(name:"solution", value:"Upgrade to the latest version 1.0.5.4.");
   script_tag(name:"summary", value:"This host is running UltraVNC and is prone to Multiple Integer
   Overflow Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes in the
@@ -60,22 +57,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-vncPort = get_kb_item("Services/vnc");
-if(!vncPort){
-  vncPort = 5900;
-}
+uvncVer = get_kb_item("UltraVNC/Win/Ver");
+if(!uvncVer)
+  exit(0);
 
-if(get_port_state(vncPort))
-{
-  uvncVer = get_kb_item("UltraVNC/Win/Ver");
-  if(!uvncVer){
-    exit(0);
-  }
-
-  if(version_is_less(version:uvncVer, test_version:"1.0.5.4")){
-    security_message(vncPort);
-  }
+if(version_is_less(version:uvncVer, test_version:"1.0.5.4")){
+  security_message(port:0);
 }

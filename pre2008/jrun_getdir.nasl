@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: jrun_getdir.nasl 10741 2018-08-02 14:44:11Z cfischer $
 #
 # Allaire JRun directory browsing vulnerability
 #
@@ -32,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10814");
-  script_version("$Revision: 10741 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:44:11 +0200 (Thu, 02 Aug 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-1510");
   script_bugtraq_id(3592);
@@ -46,8 +45,9 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("IIS/banner");
 
+  script_xref(name:"URL", value:"http://www.allaire.com/handlers/index.cfm?ID=22236&Method=Full");
+
   script_tag(name:"solution", value:"From Macromedia Product Security Bulletin (MPSB01-13)
-  http://www.allaire.com/handlers/index.cfm?ID=22236&Method=Full
 
   Macromedia recommends, as a best practice, turning off directory
   browsing for the JRun Default Server in the following applications:
@@ -95,7 +95,7 @@ if(description)
   script_tag(name:"insight", value:"Upon sending a specially formed request to the web server, containing
   a '.jsp' extension makes the JRun handle the request. Example:
 
-  http://www.victim.com/%3f.jsp");
+  http://example.com/%3f.jsp");
 
   script_tag(name:"impact", value:"This vulnerability allows anyone with remote access to the web server
   to browse it and any directory within the web root.");

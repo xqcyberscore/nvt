@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_xss_n_info_disc_vuln_apr18_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813316");
-  script_version("$Revision: 12761 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1000169", "CVE-2018-1000170");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-23 16:40:26 +0530 (Mon, 23 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Linux)");
@@ -60,7 +59,7 @@ if(description)
   older.");
 
   script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.116 or
-  later, Jenkins LTS to 2.107.2 or later. For updates refer to Reference links.");
+  later, Jenkins LTS to 2.107.2 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2018-04-11/#SECURITY-759");

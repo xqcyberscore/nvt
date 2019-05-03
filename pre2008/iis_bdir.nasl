@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_bdir.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Check for bdir.htr files
 #
 # Authors:
@@ -25,9 +24,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10577");
-  script_version("$Revision: 14336 $");
+  script_version("2019-04-29T15:08:03+0000");
   script_bugtraq_id(2280);
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +51,7 @@ the attacker will be able to use this script to escalate
 privileges and gain 'Administrator' access.
 
 Example,
-http://target/scripts/iisadmin/bdir.htr??c:");
+http://example.com/scripts/iisadmin/bdir.htr??c:");
   exit(0);
 }
 

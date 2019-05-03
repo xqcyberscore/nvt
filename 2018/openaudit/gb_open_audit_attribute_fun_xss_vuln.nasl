@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_audit_attribute_fun_xss_vuln.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
 #
 # Open-AudIT Community 'Attributes' Functionality Cross Site Scripting Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:opmantek:open-audit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813675");
-  script_version("$Revision: 11499 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11124");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-16 12:35:38 +0530 (Mon, 16 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -53,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Open-AudIT Community versions prior to 2.2.2");
 
   script_tag(name:"solution", value:"Upgrade to Open-AudIT Community version 2.2.2
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://docs.google.com/document/d/1dJP1CQupHGXjsMWthgPGepOkcnxYA4mDfdjOE46nrhM");

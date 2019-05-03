@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_creative_cloud_apsb18-32_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Creative Cloud Security Update APSB18-32 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:creative_cloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813878");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12829");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-29 10:49:58 +0530 (Wed, 29 Aug 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Creative Cloud Security Update APSB18-32 (Windows)");
@@ -54,7 +53,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Creative Cloud version
-  4.6.1 or later. For updates refer to Reference links.");
+  4.6.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

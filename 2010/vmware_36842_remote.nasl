@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vmware_36842_remote.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # VMware Products Directory Traversal Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100502");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-04-30T06:12:35+0000");
+  script_tag(name:"last_modification", value:"2019-04-30 06:12:35 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
   script_bugtraq_id(36842);
   script_cve_id("CVE-2009-3733");
@@ -58,7 +57,7 @@ if(description)
   script_tag(name:"insight", value:"An error exists while handling certain requests can be exploited to download
   arbitrary files from the host system via directory traversal attacks.");
 
-  script_tag(name:"solution", value:"Upgrade your VMWares according to the referenced link.");
+  script_tag(name:"solution", value:"Upgrade the VMWare product(s) according to the referenced vendor announcement.");
 
   script_tag(name:"summary", value:"The host is installed with VMWare product(s)and is prone to multiple
   vulnerability.");

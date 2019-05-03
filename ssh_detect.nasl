@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_detect.nasl 13643 2019-02-13 15:33:08Z cfischer $
 #
 # SSH Server type and version
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("2019-03-22T07:02:59+0000");
+  script_version("2019-05-02T04:45:21+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-22 07:02:59 +0000 (Fri, 22 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
@@ -210,6 +209,12 @@ if( server_banner =~ "^SSH-[0-9.]+-Cisco-[0-9.]+" ) {
   set_kb_item( name:"ssh/cisco/ios/detected", value:TRUE );
   set_kb_item( name:"ssh/cisco/ios/" + port + "/detected", value:TRUE );
   guess += '\n- Cisco IOS';
+}
+
+if( egrep( pattern:"SSH.+Data ONTAP SSH", string:server_banner ) ) {
+  set_kb_item( name:"ssh/netapp/data_ontap/detected", value:TRUE );
+  set_kb_item( name:"ssh/netapp/data_ontap/" + port + "/detected", value:TRUE );
+  guess += '\n- NetApp Data ONTAP';
 }
 
 if( strlen( guess ) > 0 )

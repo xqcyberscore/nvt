@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_javascript_rce_vuln_win.nasl 12176 2018-10-31 07:39:16Z santu $
 #
 # Foxit Reader 'JavaScript' Remote Code Execution Vulnerabilities (Windows)
 #
@@ -30,7 +29,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813263");
-  script_version("$Revision: 12176 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11617", "CVE-2018-11618", "CVE-2018-11619", "CVE-2018-11620",
                 "CVE-2018-11621", "CVE-2018-11622", "CVE-2018-11623", "CVE-2018-14241",
                 "CVE-2018-14242", "CVE-2018-14243", "CVE-2018-14244", "CVE-2018-14245",
@@ -57,7 +56,7 @@ if(description)
                 "CVE-2018-17616");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 08:39:16 +0100 (Wed, 31 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-20 15:00:12 +0530 (Fri, 20 Jul 2018)");
   script_name("Foxit Reader 'JavaScript' Remote Code Execution Vulnerabilities (Windows)");
 
@@ -81,7 +80,7 @@ if(description)
   script_tag(name:"affected", value:"Foxit Reader versions before 9.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Foxit Reader version 9.2
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

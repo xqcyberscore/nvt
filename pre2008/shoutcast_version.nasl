@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: shoutcast_version.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: SHOUTcast Server DoS detector vulnerability
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10717");
-  script_version("$Revision: 14336 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-1304");
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,18 +39,17 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_family("General");
-
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.securiteam.com/exploits/5YP031555Q.html");
+
   script_tag(name:"summary", value:"This detects SHOUTcast Server's version. If the version equals
 1.8.2 it is vulnerable to a denial of service attack.");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to the latest version of SHOUTcast Server.
+  script_tag(name:"solution", value:"Upgrade to the latest version of SHOUTcast Server.");
 
-Additional information:
-http://www.securiteam.com/exploits/5YP031555Q.html");
   exit(0);
 }
 

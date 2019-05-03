@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_rce_n_tampering_vuln_lin.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Microsoft PowerShell Core RCE and Tampering Vulnerabilities (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814182");
-  script_version("$Revision: 12832 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8256", "CVE-2018-8415");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-15 11:09:36 +0530 (Thu, 15 Nov 2018)");
   script_name("Microsoft PowerShell Core RCE and Tampering Vulnerabilities (Linux)");
 
@@ -55,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"PowerShell Core versions 6.0 to 6.0.4 and 6.1 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to PowerShell Core 6.0.5 or 6.1.1 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to PowerShell Core 6.0.5 or 6.1.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

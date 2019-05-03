@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_anydesk_dll_preloading_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # AnyDesk DLL Preloading Privilege Escalation Vulnerability (Windows)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:anydesk:anydesk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813554");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-13102");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-06 16:47:10 +0530 (Fri, 06 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("AnyDesk DLL Preloading Privilege Escalation Vulnerability (Windows)");
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"AnyDesk version before 4.1.3 on Windows 7
   SP1");
 
-  script_tag(name:"solution", value:"Update AnyDesk to version 4.1.3 or above.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update AnyDesk to version 4.1.3 or above. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://download.anydesk.com/changelog.txt");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_peazip_code_exec_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # PeaZIP Remote Code Execution Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800593");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"PeaZIP version 2.6.1 and prior on Windows.");
   script_tag(name:"insight", value:"The flaw is due to insufficient sanitation of input data while
   processing the names of archived files.");
-  script_tag(name:"solution", value:"Update to PeaZIP version 2.6.2
-  http://sourceforge.net/projects/peazip/files/");
+  script_tag(name:"solution", value:"Update to PeaZIP version 2.6.2.");
   script_tag(name:"summary", value:"This host is installed with PeaZIP and is prone to Remote
   Code Execution vulnerability.");
 
@@ -59,13 +57,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 version = get_kb_item("PeaZIP/Win/Ver");
-if(!version){
+if(!version)
   exit(0);
-}
 
 if(version_is_less_equal(version:version, test_version:"2.6.1")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

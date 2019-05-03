@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_apr18_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress Multiple Vulnerabilities-April 2018 (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813086");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10100", "CVE-2018-10101", "CVE-2018-10102");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-17 12:10:45 +0530 (Tue, 17 Apr 2018)");
   script_name("WordPress Multiple Vulnerabilities-April 2018 (Linux)");
 
@@ -58,8 +57,7 @@ if(description)
 
   script_tag(name:"affected", value:"WordPress versions prior to 4.9.5 on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress version 4.9.5 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to WordPress version 4.9.5 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

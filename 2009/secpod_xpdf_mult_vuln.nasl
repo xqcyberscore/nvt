@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xpdf_mult_vuln.nasl 12694 2018-12-06 15:28:57Z cfischer $
 #
 # Xpdf Multiple Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:foolabs:xpdf';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900457");
-  script_version("$Revision: 12694 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +53,7 @@ if(description)
 
   - Flaws in Xpdf JBIG2 Decoder which causes buffer overflow, freeing of
   arbitrary memory causing Xpdf application to crash.");
-  script_tag(name:"solution", value:"Apply Xpdf v3.02 pl3 patch: ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.02pl3.patch");
+  script_tag(name:"solution", value:"Apply Xpdf v3.02 pl3 patch.");
   script_tag(name:"summary", value:"The PDF viewer Xpdf is prone to multiple vulnerabilities on Linux
   systems that can lead to arbitrary code execution.");
   script_tag(name:"vuldetect", value:"This test uses the xpdf detection results and checks version of each binary
@@ -63,8 +62,9 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/34755");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=495896");
   script_xref(name:"URL", value:"http://www.redhat.com/support/errata/RHSA-2009-0430.html");
+  script_xref(name:"URL", value:"ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.02pl3.patch");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -73,7 +73,8 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-ver = get_app_version(cpe:CPE);
+if(!ver = get_app_version(cpe:CPE))
+  exit(0);
 
 if(version_is_less_equal(version:ver, test_version:"3.02")){
   report = report_fixed_ver(installed_version:ver, fixed_version:"3.02 pl3");

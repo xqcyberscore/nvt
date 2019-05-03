@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_infiniband_dos_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Wireshark Infiniband Dissector Denial of Service Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900593");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -48,22 +47,19 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version 1.0.6 through 1.2.0 on Linux");
   script_tag(name:"insight", value:"An unspecified error in the infiniband dissector which can be exploited when
   running on unspecified platforms via unknown vectors.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.1 or later
-  http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.1 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 sharkVer = get_kb_item("Wireshark/Linux/Ver");
-if(!sharkVer){
+if(!sharkVer)
   exit(0);
-}
 
 if(version_in_range(version:sharkVer, test_version:"1.0.6",
                                       test_version2:"1.2.0")){

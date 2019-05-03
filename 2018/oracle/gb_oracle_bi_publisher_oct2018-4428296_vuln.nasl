@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_oct2018-4428296_vuln.nasl 12056 2018-10-24 12:04:11Z santu $
 #
 # Oracle BI Publisher Code Execution Vulnerability (oct2018-4428296)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:business_intelligence_publisher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814409");
-  script_version("$Revision: 12056 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-5645");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-18 16:42:53 +0530 (Thu, 18 Oct 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle BI Publisher Code Execution Vulnerability (oct2018-4428296)");
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle BI Publisher versions 11.1.1.7.0,
   11.1.1.9.0, 12.2.1.3.0 and 12.2.1.4.0");
 
-  script_tag(name:"solution", value:"Apply the latest patch from vendor.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the latest patch from vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html");

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-10_macosx.nasl 11941 2018-10-17 12:58:16Z santu $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-10)-Mac OS X
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814096");
-  script_version("$Revision: 11941 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-5179", "CVE-2018-17477", "CVE-2018-17476", "CVE-2018-17475",
                 "CVE-2018-17474", "CVE-2018-17473", "CVE-2018-17462", "CVE-2018-17471",
                 "CVE-2018-17470", "CVE-2018-17469", "CVE-2018-17468", "CVE-2018-17467",
                 "CVE-2018-17466", "CVE-2018-17465", "CVE-2018-17464", "CVE-2018-17463");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-17 11:15:41 +0530 (Wed, 17 Oct 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-10)-Mac OS X");
 
@@ -71,7 +70,7 @@ if(description)
   script_tag(name:"affected", value:"Google Chrome version prior to 70.0.3538.67 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version 70.0.3538.67
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

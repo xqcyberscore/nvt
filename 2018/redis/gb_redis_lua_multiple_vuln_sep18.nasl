@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_lua_multiple_vuln_sep18.nasl 11505 2018-09-20 13:03:00Z santu $
 #
 # Redis LUA Multiple Vulnerabilities-Sep 2018 (Linux)
 #
@@ -30,10 +29,10 @@ CPE = "cpe:/a:redis:redis";
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814022");
-  script_version("$Revision: 11505 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:03:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-19 12:54:11 +0530 (Wed, 19 Sep 2018)");
   script_name("Redis LUA Multiple Vulnerabilities-Sep 2018 (Linux)");
 
@@ -59,7 +58,7 @@ if( description )
   4.0.x before 4.0.10 and 5.0 before 5.0rc2.");
 
   script_tag(name:"solution", value:"Upgrade Redis to version 3.2.12 or 4.0.10
-  or 5.0rc2 or later. For updates refer to Reference links.");
+  or 5.0rc2 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"http://antirez.com/news/119");
   script_xref(name:"URL", value:"http://download.redis.io");

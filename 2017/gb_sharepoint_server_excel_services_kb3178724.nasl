@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_services_kb3178724.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # MS SharePoint Server Excel Services Elevation of Privilege Vulnerability (3178724)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810856");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-0195");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-12 16:20:26 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Elevation of Privilege Vulnerability (3178724)");
@@ -54,9 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2013 Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178724");

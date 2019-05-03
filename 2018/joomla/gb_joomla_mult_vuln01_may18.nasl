@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_vuln01_may18.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
 #
 # Joomla! Core Multiple Vulnerabilities-01 May18 (20180502/20180501)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813408");
-  script_version("$Revision: 11158 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11323", "CVE-2018-11322");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-23 12:35:14 +0530 (Wed, 23 May 2018)");
 
   script_name("Joomla! Core Multiple Vulnerabilities-01 May18 (20180502/20180501)");
@@ -54,8 +53,7 @@ of user groups with higher permissions and use PHAR files as executable PHP scri
 
   script_tag(name:"affected", value:"Joomla core version 2.5.0 through 3.8.7");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla version 3.8.8 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Joomla version 3.8.8 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

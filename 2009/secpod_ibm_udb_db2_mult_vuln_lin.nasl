@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_udb_db2_mult_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # IBM DB2 UDB Multiple Unspecified Vulnerabilities (Linux)
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901083");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,6 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/37759");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3520");
   script_xref(name:"URL", value:"ftp://ftp.software.ibm.com/ps/products/db2/fixes/english-us/aparlist/db2_v95/APARLIST.TXT");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=0&uid=swg24022678");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -73,8 +73,8 @@ if(description)
   - An unspecified vulnerability in the Query Compiler, Rewrite, and Optimizer
     component, allows to cause a denial of service (instance crash) by compiling
     a SQL query");
-  script_tag(name:"solution", value:"Update IBM DB2 9.5 Fixpak 5,
-  http://www-01.ibm.com/support/docview.wss?rs=0&uid=swg24022678");
+  script_tag(name:"solution", value:"Update IBM DB2 9.5 Fixpak 5.");
+
   script_tag(name:"summary", value:"The host is installed with IBM DB2 and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
@@ -82,13 +82,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 ibmVer = get_kb_item("Linux/IBM_db2/Ver");
-if(!ibmVer){
+if(!ibmVer)
   exit(0);
-}
 
 if(version_in_range(version:ibmVer, test_version:"9.5", test_version2:"9.5.0.4")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

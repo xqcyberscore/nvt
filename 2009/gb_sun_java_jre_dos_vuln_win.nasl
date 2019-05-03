@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_dos_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800384");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,21 +51,20 @@ if(description)
   execution, various buffer overflows, bypass security restrictions and can
   cause denial of service attacks inside the context of the affected system.");
   script_tag(name:"affected", value:"Sun Java JRE 6 Update 12 and prior.
+
   Sun Java JRE 5.0 Update 17 and prior.
+
   Sun Java JRE 1.4.2_19 and prior.
+
   Sun Java JRE 1.3.1_24 and prior.");
   script_tag(name:"insight", value:"For more information about vulnerabilities on Sun Java go through reference.");
   script_tag(name:"solution", value:"Upgrade to JRE version 6 Update 13
-  http://java.sun.com/javase/downloads/index.jsp
-  OR
+
   Upgrade to JRE version 5 Update 18
-  http://java.sun.com/javase/downloads/index_jdk5.jsp
-  OR
+
   Upgrade to JRE version 1.4.2_20
-  http://java.sun.com/j2se/1.4.2/download.html
-  OR
-  Upgrade to JRE version 1.3.1_25
-  http://java.sun.com/j2se/1.3/download.html");
+
+  Upgrade to JRE version 1.3.1_25.");
   script_tag(name:"summary", value:"This host is installed with Sun Java JDK/JRE and is prone to
   Multiple Vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
@@ -74,13 +72,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
-if(!jreVer){
+if(!jreVer)
   exit(0);
-}
 
 if(jreVer)
 {

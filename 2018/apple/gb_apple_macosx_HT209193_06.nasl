@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT209193_06.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple MacOSX Security Updates(HT209193)-06
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814426");
-  script_version("$Revision: 14292 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4126", "CVE-2018-4408", "CVE-2018-4310", "CVE-2018-3646",
                 "CVE-2018-4331", "CVE-2018-4406", "CVE-2018-4407", "CVE-2018-4401",
                 "CVE-2018-4348", "CVE-2018-4346", "CVE-2017-12613", "CVE-2017-12618",
@@ -36,7 +35,7 @@ if(description)
                 "CVE-2018-4411", "CVE-2018-4395", "CVE-2018-4295", "CVE-2018-4393");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-02 10:56:30 +0530 (Fri, 02 Nov 2018)");
   script_name("Apple MacOSX Security Updates(HT209193)-06");
 
@@ -67,8 +66,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Mac OS X versions 10.12.x through
   10.12.6 before build 16G1618 and 10.13.x through 10.13.6 before build 17G3025.");
 
-  script_tag(name:"solution", value:"Apply the appropriate security patch.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the appropriate security patch. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

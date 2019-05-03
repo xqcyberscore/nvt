@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_dos_vuln_nov09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Opera Denial Of Service Vulnerability - Nov09 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801141");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-04 07:03:36 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Opera version prior to 10.01 on Linux.");
   script_tag(name:"insight", value:"An error when processing domain names can be exploited to cause a memory
   corruption.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 10.01 or later
-  http://www.opera.com/browser/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 10.01 or later.");
   script_tag(name:"summary", value:"This host is installed with Opera Web Browser and is prone to
   Denial of Service vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
@@ -58,13 +56,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 operaVer = get_kb_item("Opera/Linux/Version");
-if(operaVer)
-{
-  if(version_is_less(version:operaVer, test_version:"10.01")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!operaVer)
+  exit(0);
+
+if(version_is_less(version:operaVer, test_version:"10.01")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

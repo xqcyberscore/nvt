@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814955");
-  script_version("2019-04-15T07:08:44+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-0823", "CVE-2019-0824", "CVE-2019-0825", "CVE-2019-0826",
                 "CVE-2019-0827");
   script_bugtraq_id(107742, 107744, 107745, 107746, 107747);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-15 07:08:44 +0000 (Mon, 15 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-10 11:07:20 +0530 (Wed, 10 Apr 2019)");
   script_name("Microsoft Office 2010 Service Pack 2 Multiple Vulnerabilities (KB4464520)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office 2010 Service Pack 2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814757");
-  script_version("$Revision: 13701 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-0561", "CVE-2019-0585");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2019-02-14 12:56:05 +0530 (Thu, 14 Feb 2019)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 16:13:17 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-January19 (Mac OS X)");
 
@@ -54,7 +54,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Microsoft Office 2016 version
   16.16.6 (Build 19011400) or Microsoft Office 2019 version 16.21.0 (Build
-  190101500) or later. For updates refer to Reference links.");
+  190101500) or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/officeupdates/release-notes-office-2016-mac");

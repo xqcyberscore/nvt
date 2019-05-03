@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ntp_bof_vuln_may09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # NTP 'ntpd' Autokey Stack Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900652");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,12 +45,12 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=499694");
 
   script_tag(name:"affected", value:"NTP version prior to 4.2.4p7
-  NTP version 4.2.5 to 4.2.5p73");
+
+  NTP version 4.2.5 to 4.2.5p73.");
   script_tag(name:"insight", value:"This flaw is due to configuration error in ntp daemon's NTPv4
   authentication code. If ntp daemon is configured to use Public Key Cryptography for NTP Packet
   authentication which lets the attacker send crafted NTP requests.");
-  script_tag(name:"solution", value:"Apply the security update according to the OS version.
-  https://admin.fedoraproject.org/updates/search/ntp");
+  script_tag(name:"solution", value:"Apply the security update according to the OS version.");
   script_tag(name:"summary", value:"This host is running NTP Daemon and is prone to stack overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker craft a specially malicious
   NTP request packet which can crash ntp daemon or can cause arbitrary code
@@ -62,7 +61,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("version_func.inc");
 include("revisions-lib.inc");

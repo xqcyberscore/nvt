@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_owautil.nasl 9328 2018-04-05 11:14:07Z cfischer $
 #
 # Oracle 9iAS OWA UTIL access
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11225");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4294);
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,6 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.cert.org/advisories/CA-2002-08.html");
   script_xref(name:"URL", value:"http://otn.oracle.co.kr/docs/oracle78/was3x/was301/cart/psutil.htm");
   script_xref(name:"URL", value:"http://www.nextgenss.com/papers/hpoas.pdf");
+  script_xref(name:"URL", value:"http://otn.oracle.com/deploy/security/pdf/ias_modplsql_alert.pdf");
 
   script_tag(name:"summary", value:"Oracle 9iAS can provide access to the PL/SQL application OWA_UTIL that
   provides web access to some stored procedures.");
@@ -56,8 +56,9 @@ if(description)
   server.");
 
   script_tag(name:"solution", value:"Apply the appropriate patch listed
-  in http://otn.oracle.com/deploy/security/pdf/ias_modplsql_alert.pdf
-  which details how you can restrict unauthenticated access to procedures
+  in the references.
+
+  Details how you can restrict unauthenticated access to procedures
   using the exclusion_list parameter in the PL/SQL gateway configuration file:
   /Apache/modplsql/cfg/wdbsvr.app.");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_http_content_length_spaces_vuln_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Node.js Spaces in 'HTTP Content-Length Header' Vulnerability (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813482");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-7159");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-10 11:52:15 +0530 (Tue, 10 Jul 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Node.js Spaces in 'HTTP Content-Length Header' Vulnerability (Mac OS X)");
@@ -55,7 +54,7 @@ if(description)
   prior to 6.14.0, 8.x prior to 8.11.0 and 9.x prior to 9.10.0");
 
   script_tag(name:"solution", value:"Upgrade to Node.js version 4.9.0 or 6.14.0
-  or 8.11.0 or 9.10.0 or later. For updates refer to Reference links.");
+  or 8.11.0 or 9.10.0 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 14176 2019-03-14 11:29:33Z tpassfeld $
 #
 # Telnet OS Identification
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 14176 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:29:33 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-05-02T04:45:21+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -217,6 +216,12 @@ if( telnet_has_login_prompt( data:banner ) ) {
     exit( 0 );
   }
 
+  # nb: More detailed OS Detection coverd in gb_netapp_data_ontap_consolidation.nasl
+  if( banner =~ '^\r\n\r\nData ONTAP' ) {
+    register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
   if( "Fabric OS" >< banner )
     exit( 0 ); # Covered by gb_brocade_fabricos_telnet_detect.nasl
 
@@ -232,6 +237,10 @@ if( telnet_has_login_prompt( data:banner ) ) {
   # hostname login:
   #
   if( eregmatch( string:banner, pattern:'^\r\nAuthorized users only\\. All activities may be monitored and reported\\.\r\n[^ ]+ login: $', icase:FALSE ) )
+    exit( 0 );
+
+  # Seen on e.g. NetApp Data ONTAP
+  if( banner == '\r\nToo many users logged in!  Please try again later.\r\n' )
     exit( 0 );
 
   register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"telnet_banner", port:port );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_php_local_file_inclusion_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Joomla! Core 'PHP' Local File Inclusion Vulnerability (20180601)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813458");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12712");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-27 16:36:27 +0530 (Wed, 27 Jun 2018)");
 
   script_name("Joomla! Core 'PHP' Local File Inclusion Vulnerability (20180601)");
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla core versions 2.5.0 through 3.8.8");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla version 3.8.9 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Joomla version 3.8.9 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_code_exe_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Sun Java JRE Remote Code Execution Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800978");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-13 15:48:12 +0100 (Fri, 13 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,13 +47,11 @@ if(description)
   the context of the affected application.");
   script_tag(name:"affected", value:"Sun Java JRE 6 prior to 6 Update 17 on Linux.");
   script_tag(name:"insight", value:"- An error occurs while using security model permissions when removing
-    installer extensions and may allow an untrusted applications to run
-    as a trusted application.
+  installer extensions and may allow an untrusted applications to run as a trusted application.
 
   - An error occurs while handling interaction between a signed JAR file
-    and a JNLP application or applet.");
-  script_tag(name:"solution", value:"Upgrade to JRE version 6 Update 17
-  http://java.sun.com/javase/downloads/index.jsp");
+  and a JNLP application or applet.");
+  script_tag(name:"solution", value:"Upgrade to JRE version 6 Update 17.");
   script_tag(name:"summary", value:"This host is installed with Sun Java JRE and is prone to Remote
   Code Execution Vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
@@ -62,17 +59,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 jreVer = get_kb_item("Sun/Java/JRE/Linux/Ver");
-if(!jreVer){
+if(!jreVer)
   exit(0);
-}
 
-if(jreVer)
-{
-  if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.16")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.16")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

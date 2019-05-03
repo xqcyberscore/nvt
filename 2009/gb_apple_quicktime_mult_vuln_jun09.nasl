@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_jun09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities - Jun09
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800578");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,8 +60,7 @@ if(description)
     atoms in an Apple video file.");
   script_tag(name:"summary", value:"The host is installed with Apple QuickTime which is prone to
   Multiple Vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.6.2 or later,
-  http://www.apple.com/quicktime/download/");
+  script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.6.2 or later.");
   script_tag(name:"impact", value:"Successful exploitation allow attackers to execute arbitrary code,
   cause memory corruption or unexpected application termination via specially
   crafted files, images and videos.");
@@ -74,13 +72,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 quicktimeVer = get_kb_item("QuickTime/Win/Ver");
-if(!quicktimeVer){
+if(!quicktimeVer)
   exit(0);
-}
 
 if(version_is_less(version:quicktimeVer, test_version:"7.6.2")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

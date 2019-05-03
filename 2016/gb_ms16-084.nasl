@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-084.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3169991)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808195");
-  script_version("$Revision: 11969 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2016-3204", "CVE-2016-3240", "CVE-2016-3241", "CVE-2016-3242",
                 "CVE-2016-3243", "CVE-2016-3245", "CVE-2016-3248", "CVE-2016-3259",
                 "CVE-2016-3260", "CVE-2016-3261", "CVE-2016-3264", "CVE-2016-3273",
@@ -38,7 +37,7 @@ if(description)
                     91575, 91598, 91576, 91591, 91593, 91596);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-07-13 08:27:39 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3169991)");
@@ -67,9 +66,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   9.x/10.x/11.x");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  references.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

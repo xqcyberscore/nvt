@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jan2019-5072801_02_lin.nasl 13108 2019-01-17 07:34:03Z santu $
 #
 # Oracle Java SE Denial of Service Vulnerability-02 (jan2019-5072801) Linux
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814916");
-  script_version("$Revision: 13108 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-2449");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-16 13:13:32 +0530 (Wed, 16 Jan 2019)");
   script_name("Oracle Java SE Denial of Service Vulnerability-02 (jan2019-5072801) Linux");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle Java SE version 1.8.0 to 1.8.0.192 on Linux.");
 
-  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

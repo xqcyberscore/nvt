@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_8_udb_mult_vuln_win_900215.nasl 12670 2018-12-05 14:14:20Z cfischer $
 # Description: IBM DB2 Universal Database Multiple Vulnerabilities - Sept08 (Windows)
 #
 # Authors:
@@ -23,13 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900215");
-  script_version("$Revision: 12670 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_bugtraq_id(31058);
   script_cve_id("CVE-2008-2154", "CVE-2008-3958", "CVE-2008-3960");
@@ -52,13 +49,13 @@ if(description)
   script_tag(name:"affected", value:"IBM DB2 version 8 prior to Fixpak 17 on Windows (All).");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Update to Fixpak 17 or later.
- ftp://ftp.software.ibm.com/ps/products/db2/fixes/
 
  *****
  NOTE : Ignore this warning, if above mentioned patch is already applied.
  *****");
   script_tag(name:"impact", value:"Remote exploitation could allow attackers to bypass security
         restrictions, cause a denial of service or gain elevated privileges.");
+  script_xref(name:"URL", value:"ftp://ftp.software.ibm.com/ps/products/db2/fixes/");
   script_xref(name:"URL", value:"http://secunia.com/advisories/31787/");
   script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2517");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2008/Sep/1020826.html");

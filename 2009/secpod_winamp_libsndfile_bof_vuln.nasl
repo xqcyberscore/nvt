@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_libsndfile_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Winamp libsndfile Buffer Overflow Vulnerability
 #
@@ -27,15 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900558");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1788", "CVE-2009-1791");
   script_bugtraq_id(34978);
   script_name("Winamp libsndfile Buffer Overflow Vulnerability");
-
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -52,13 +50,7 @@ if(description)
   and AIFF files with invalid header values.");
   script_tag(name:"summary", value:"This host is installed with Winamp and is prone to Buffer
   Overflow vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to the latest libsndfile version or apply the patch.
-  http://www.mega-nerd.com/libsndfile/
-  http://www.mega-nerd.com/erikd/Blog/CodeHacking/libsndfile/rel_20.html
-
-  *****
-  NOTE : Ignore this warning, if above mentioned patch is already applied.
-  *****");
+  script_tag(name:"solution", value:"Upgrade to the latest libsndfile version.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/35076");
   script_xref(name:"URL", value:"http://trapkit.de/advisories/TKADV2009-006.txt");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1324");
@@ -68,15 +60,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
 winampVer = get_kb_item("Winamp/Version");
-if(!winampVer){
+if(!winampVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:winampVer, test_version:"5.5.5.2435")){
    security_message( port: 0, data: "The target host was found to be vulnerable" );

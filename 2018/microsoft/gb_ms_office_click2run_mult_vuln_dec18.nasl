@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_mult_vuln_dec18.nasl 12777 2018-12-12 16:20:50Z santu $
 #
 # Microsoft Office 365 (2016 Click-to-Run) Multiple Vulnerabilities-December18
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814710");
-  script_version("$Revision: 12777 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8597", "CVE-2018-8598", "CVE-2018-8627", "CVE-2018-8636",
                 "CVE-2018-8587", "CVE-2018-8628");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 17:20:50 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-12-12 13:11:15 +0530 (Wed, 12 Dec 2018)");
   script_name("Microsoft Office 365 (2016 Click-to-Run) Multiple Vulnerabilities-December18");
 
@@ -65,8 +64,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office 365 (2016 Click-to-Run)");
 
   script_tag(name:"solution", value:"Upgrade to latest version of Microsoft Office
-  365 (2016 Click-to-Run) with respect to update channel used. For updates refer
-  to Reference links.");
+  365 (2016 Click-to-Run) with respect to update channel used. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trillian_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Trillian Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800265");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-07 07:29:53 +0200 (Tue, 07 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Trillian IM Client version 3.1.9.0 and prior.");
   script_tag(name:"insight", value:"The application fails to perform adequate boundary checks on user supplied
   data resulting in a parsing error while processing malformed DTD files.");
-  script_tag(name:"solution", value:"Upgrade to Trillian IM Client version 4.2 or later
-  For further updates refer, http://blog.ceruleanstudios.com");
+  script_tag(name:"solution", value:"Upgrade to Trillian IM Client version 4.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Trillian and is prone to buffer
   overflow vulnerability.");
 
@@ -59,13 +57,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 version = get_kb_item("Trillian/Ver");
-if(!version){
+if(!version)
   exit(0);
-}
 
 if(version_is_less(version:version, test_version:"3.1.9.0")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

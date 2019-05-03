@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_win.nasl 12523 2018-11-26 09:24:07Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_24-2018-01)-Windows
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812674");
-  script_version("$Revision: 12523 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-6031", "CVE-2018-6032", "CVE-2018-6033", "CVE-2018-6034",
                 "CVE-2018-6035", "CVE-2018-6036", "CVE-2018-6037", "CVE-2018-6038",
                 "CVE-2018-6039", "CVE-2018-6040", "CVE-2018-6041", "CVE-2018-6042",
@@ -39,7 +38,7 @@ if(description)
                 "CVE-2018-6119");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 10:24:07 +0100 (Mon, 26 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-25 16:11:22 +0530 (Thu, 25 Jan 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_24-2018-01)-Windows");
 
@@ -96,7 +95,7 @@ if(description)
   on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version 64.0.3282.119
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

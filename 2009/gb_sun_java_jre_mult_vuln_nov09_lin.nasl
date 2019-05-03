@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_mult_vuln_nov09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities - Nov09 (LinUx)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800975");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-13 15:48:12 +0100 (Fri, 13 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -50,8 +49,11 @@ if(description)
   gain escalated privileges, bypass security restrictions and cause denial
   of service attacks inside the context of the affected system.");
   script_tag(name:"affected", value:"Sun Java JDK/JRE 6 prior to 6 Update 17
+
   Sun Java JDK/JRE 5 prior to 5 Update 22
+
   Sun Java JDK/JRE 1.4.x prior to 1.4.2_24
+
   Sun Java JDK/JRE 1.3.x prior to 1.3.1_27 on Linux.");
   script_tag(name:"insight", value:"Multiple flaws occur due to,
 
@@ -72,16 +74,12 @@ if(description)
 
   - Three unspecified errors when processing audio or image files.");
   script_tag(name:"solution", value:"Upgrade to JDK/JRE version 6 Update 17 or later,
-  http://java.sun.com/javase/downloads/index.jsp
-  OR
+
   Upgrade to JDK/JRE version 5 Update 22
-  http://java.sun.com/javase/downloads/index_jdk5.jsp
-  OR
+
   Upgrade to JDK/JRE version 1.4.2_24
-  http://java.sun.com/j2se/1.4.2/download.html
-  OR
-  Upgrade to JDK/JRE version 1.3.1_27
-  http://java.sun.com/j2se/1.3/download.html");
+
+  Upgrade to JDK/JRE version 1.3.1_27");
   script_tag(name:"summary", value:"This host is installed with Sun Java JDK/JRE and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
@@ -89,21 +87,16 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 jreVer = get_kb_item("Sun/Java/JRE/Linux/Ver");
-if(!jreVer){
+if(!jreVer)
   exit(0);
-}
 
-if(jreVer)
-{
-  #       and 1.6 < 1.6.0_17 (6 Update 17)
-  if(version_in_range(version:jreVer, test_version:"1.3", test_version2:"1.3.1.26")||
-     version_in_range(version:jreVer, test_version:"1.4", test_version2:"1.4.2.23")||
-     version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.21")||
-     version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.16")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+#       and 1.6 < 1.6.0_17 (6 Update 17)
+if(version_in_range(version:jreVer, test_version:"1.3", test_version2:"1.3.1.26")||
+   version_in_range(version:jreVer, test_version:"1.4", test_version2:"1.4.2.23")||
+   version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.21")||
+   version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.16")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

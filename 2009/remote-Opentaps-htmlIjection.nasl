@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-Opentaps-htmlIjection.nasl 9837 2018-05-15 09:54:15Z cfischer $
 #
 # Opentaps Search_String Parameter HTML Injection Vulnerability (BID 21702)
 #
@@ -26,8 +25,8 @@ CPE = "cpe:/a:apache:opentaps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101022");
-  script_version("$Revision: 9837 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 11:54:15 +0200 (Tue, 15 May 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-24 21:45:26 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -41,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("OpentapsERP/installed");
 
-  script_tag(name:"solution", value:"Download the latest release form opentaps website (http://www.opentaps.org)");
+  script_tag(name:"solution", value:"Download the latest release from the opentaps website.");
 
   script_tag(name:"summary", value:"The running Opentaps ERP + CRM is prone to the HTML Injection Vulnerability.");
 

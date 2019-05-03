@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln_apr18_win.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Foxit PhantomPDF Multiple Vulnerabilities-Apr18 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813157");
-  script_version("$Revision: 12026 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-3842", "CVE-2017-17557", "CVE-2017-14458", "CVE-2018-3853",
                 "CVE-2018-3850", "CVE-2018-3843", "CVE-2018-10302");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-25 14:50:06 +0530 (Wed, 25 Apr 2018)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities-Apr18 (Windows)");
 
@@ -74,8 +73,7 @@ if(description)
   script_tag(name:"affected", value:"Foxit PhantomPDF versions 9.0.1.1049 and
   prior on windows");
 
-  script_tag(name:"solution", value:"Upgrade to Foxit Reader version 9.1 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Foxit Reader version 9.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_bof_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # ImageMagick Buffer Overflow Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900565");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"ImageMagick version prior to 6.5.2-9 on Linux.");
   script_tag(name:"insight", value:"The flaw occurs due to an integer overflow error within the 'XMakeImage()'
   function in magick/xwindow.c file while processing malformed TIFF files.");
-  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.5.2-9 or later.
-  http://www.imagemagick.org/script/download.php");
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.5.2-9 or later.");
   script_tag(name:"summary", value:"The host is installed with ImageMagick and is prone to Buffer
   Overflow Vulnerability.");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
@@ -56,13 +54,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 imageVer = get_kb_item("ImageMagick/Lin/Ver");
-if(!imageVer){
+if(!imageVer)
   exit(0);
-}
 
 if(version_is_less(version:imageVer, test_version:"6.5.2.9")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

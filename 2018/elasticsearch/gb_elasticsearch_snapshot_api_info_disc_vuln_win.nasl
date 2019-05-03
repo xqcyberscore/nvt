@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_snapshot_api_info_disc_vuln_win.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
 #
 # Elasticsearch '_snapshot API' Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814075");
-  script_version("$Revision: 12806 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-3826");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-09 11:12:08 +0530 (Tue, 09 Oct 2018)");
   script_name("Elasticsearch '_snapshot API' Information Disclosure Vulnerability (Windows)");
 
@@ -53,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Elasticsearch versions 6.0.0-beta1 to 6.2.4 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch version 6.3.0 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.elastic.co");

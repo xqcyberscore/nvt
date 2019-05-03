@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_PMASA-2018-3_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # phpMyAdmin Cross-Site Scripting Vulnerability (PMASA-2018-3)-Linux
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813451");
-  script_version("$Revision: 12025 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12581");
   script_bugtraq_id(104530);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-26 15:47:09 +0530 (Tue, 26 Jun 2018)");
   script_name("phpMyAdmin Cross-Site Scripting Vulnerability (PMASA-2018-3)-Linux");
 
@@ -52,8 +51,7 @@ if (description)
 
   script_tag(name:"affected", value:"phpMyAdmin versions prior to 4.8.2 on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to version 4.8.2 or newer. For
-  updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to version 4.8.2 or newer. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_classic_apsb18-29_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Acrobat DC (Classic Track) Multiple Arbitrary Code Execution Vulnerabilities-apsb18-29 (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:acrobat_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813857");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12808", "CVE-2018-12799");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-16 11:03:52 +0530 (Thu, 16 Aug 2018)");
   script_name("Adobe Acrobat DC (Classic Track) Multiple Arbitrary Code Execution Vulnerabilities-apsb18-29 (Mac OS X)");
 
@@ -57,7 +56,7 @@ if(description)
   2015.006.30434 and earlier versions on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat DC (Classic Track)
-  version 2015.006.30448 or later. For updates refer to Reference links.");
+  version 2015.006.30448 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

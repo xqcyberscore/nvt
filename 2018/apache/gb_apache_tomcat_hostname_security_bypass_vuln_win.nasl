@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_hostname_security_bypass_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tomcat 'Hostname Verification' Security Bypass Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813742");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8034");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-03 16:49:49 +0530 (Fri, 03 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'Hostname Verification' Security Bypass Vulnerability (Windows)");
@@ -53,7 +52,7 @@ if(description)
   8.5.0 to 8.5.31, 8.0.0.RC1 to 8.0.52 and 7.0.35 to 7.0.88 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Tomcat version 9.0.10 or
-  8.5.32 or 8.0.53 or 7.0.90 or later. For updates refer to Reference links.");
+  8.5.32 or 8.0.53 or 7.0.90 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

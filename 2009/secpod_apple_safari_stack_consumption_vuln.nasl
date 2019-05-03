@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_stack_consumption_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Apple Safari 'WebKit.dll' Stack Consumption Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900870");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-24 10:05:51 +0200 (Thu, 24 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari version prior to 4.0");
   script_tag(name:"insight", value:"The flaw is due to error in 'WebKit.dll' in WebKit which can be caused via
   JavaScript code that calls eval on a long string composed of 'A/' sequences.");
-  script_tag(name:"solution", value:"Upgrade to Safari version 4.0 or latest version
-  http://www.apple.com/safari/download/");
+  script_tag(name:"solution", value:"Upgrade to Safari version 4.0 or later.");
   script_tag(name:"summary", value:"This host has Apple Safari installed and is prone to Stack
   Consumption vulnerability.");
 
@@ -58,13 +56,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 safariVer = get_kb_item("AppleSafari/Version");
-if(!safariVer){
+if(!safariVer)
   exit(0);
-}
 
 if(version_is_less(version:safariVer, test_version:"4.30.17.0")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS03-018.nasl 10320 2018-06-26 05:43:49Z cfischer $
 #
 # Microsoft Security Bulletin MS03-018
 # Cumulative Patch for Internet Information Service (811114)
@@ -89,8 +88,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101017");
-  script_version("$Revision: 10320 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 07:43:49 +0200 (Tue, 26 Jun 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-16 23:15:41 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -103,31 +102,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=1DBC1914-98E9-4DED-ADBF-E9B374A1F79D&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=2F5D9852-4ADD-44F8-8715-AC3D7D7D94BF&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=77CFE3EF-C5C5-401C-BC12-9F08154A5007&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=86F4407E-B9BF-4490-9421-008407578D11&displaylang=en");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/241211");
+  script_xref(name:"URL", value:"http://www.microsoft.com/windows2000/downloads/servicepacks/sp2/default.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/windows2000/downloads/servicepacks/sp3/default.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/windowsxp/downloads/updates/sp1/default.mspx");
+
   script_tag(name:"solution", value:"Microsoft has released a patch to correct these issues
 
   There is a dependency associated with this patch - it requires the patch from Microsoft Security Bulletin MS02-050 to be installed.
   If this patch is installed and MS02-050 is not present, client side certificates will be rejected.
-  This functionality can be restored by installing the MS02-050 patch.
-
-  IIS 4.0:
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=1DBC1914-98E9-4DED-ADBF-E9B374A1F79D&displaylang=en
-
-  IIS 5.0:
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=2F5D9852-4ADD-44F8-8715-AC3D7D7D94BF&displaylang=en
-
-  IIS 5.1:
-  32-bit Edition: http://www.microsoft.com/downloads/details.aspx?FamilyId=77CFE3EF-C5C5-401C-BC12-9F08154A5007&displaylang=en
-  64-bit Edition: http://www.microsoft.com/downloads/details.aspx?FamilyId=86F4407E-B9BF-4490-9421-008407578D11&displaylang=en
-
-  The IIS 4.0 patch can be installed on systems running Windows NT 4.0 Service Pack 6a.
-  http://support.microsoft.com/kb/241211
-
-  The IIS 5.0 patch can be installed on systems running Windows 2000 Service Pack 2 or Service Pack 3.
-  http://www.microsoft.com/windows2000/downloads/servicepacks/sp2/default.mspx
-  http://www.microsoft.com/windows2000/downloads/servicepacks/sp3/default.mspx
-
-  The IIS 5.1 patch can be installed on systems running Windows XP Professional Gold and Service Pack 1.
-  http://www.microsoft.com/windowsxp/downloads/updates/sp1/default.mspx");
+  This functionality can be restored by installing the MS02-050 patch.");
 
   script_tag(name:"summary", value:"A Cross-Site Scripting(XSS)vulnerability affecting IIS 4.0, 5.0 and 5.1 involving the error message that's returned to advise that a
   requested URL has been redirected. An attacker who was able to lure a user into clicking a link on his or her web site could relay a request containing script to a

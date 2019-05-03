@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_planex_csw50hd_hardcode_cred_vuln.nasl 12523 2018-11-26 09:24:07Z mmartin $
 #
 # PLANEX CS-W50HD Hardcode Credential Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/h:planex:ip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813883");
-  script_version("$Revision: 12523 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-12574");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 10:24:07 +0100 (Mon, 26 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-03 15:43:26 +0530 (Mon, 03 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PLANEX CS-W50HD Hardcode Credential Vulnerability");
@@ -55,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"PLANEX CS-W50HD devices with firmware before 030720");
 
   script_tag(name:"solution", value:"Upgrade to firmware version 030720 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Aug/25");

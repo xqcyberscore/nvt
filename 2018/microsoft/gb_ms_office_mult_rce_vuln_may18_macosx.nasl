@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mult_rce_vuln_may18_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-May18 (Mac OS X)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813379");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8147", "CVE-2018-8162", "CVE-2018-8176");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-25 14:22:04 +0530 (Fri, 25 May 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-May18 (Mac OS X)");
@@ -62,7 +61,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Microsoft Office 2016 version
-  16.13.0 (Build 18051301) or later. For updates refer to Reference links.");
+  16.13.0 (Build 18051301) or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

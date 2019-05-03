@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4032212.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack SP3 RCE and Information Disclosure Vulnerabilities (KB4032212)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813279");
-  script_version("$Revision: 12513 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8375", "CVE-2018-8382");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 10:35:35 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Office Compatibility Pack SP3 RCE and Information Disclosure Vulnerabilities (KB4032212)");
 
@@ -50,9 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

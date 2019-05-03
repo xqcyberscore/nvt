@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_xxe_vuln_aug18.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache Solr XML External Entity Multiple Information Disclosure Vulnerabilities
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813555");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8026");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-02 13:16:18 +0530 (Thu, 02 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Solr XML External Entity Multiple Information Disclosure Vulnerabilities");
@@ -56,7 +55,7 @@ if(description)
   and 7.0.0 to 7.3.1");
 
   script_tag(name:"solution", value:"Upgrade to Apache Solr version 6.6.5 or
-  7.4.0 or later. For updates refer to Reference links.");
+  7.4.0 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://mail-archives.apache.org/mod_mbox/lucene-solr-user/201807.mbox/%3C0cdc01d413b7%24f97ba580%24ec72f080%24%40apache.org%3E");

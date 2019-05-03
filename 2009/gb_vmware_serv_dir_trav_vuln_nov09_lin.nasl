@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_serv_dir_trav_vuln_nov09_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # VMware Server Directory Traversal Vulnerability - Nov09 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801144");
-  script_version("$Revision: 12629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-04-30T06:12:35+0000");
+  script_tag(name:"last_modification", value:"2019-04-30 06:12:35 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +56,7 @@ if(description)
   script_tag(name:"insight", value:"An error exists while handling certain requests can be exploited to download
   arbitrary files from the host system via directory traversal attacks.");
 
-  script_tag(name:"solution", value:"Upgrade your VMWares according to the references.");
+  script_tag(name:"solution", value:"Upgrade the VMWare product(s) according to the referenced vendor announcement.");
 
   script_tag(name:"summary", value:"The host is installed with VMWare product(s) and is prone to multiple
   vulnerability.");

@@ -23,7 +23,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814845");
-  script_version("$Revision: 13677 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-19725", "CVE-2019-7018", "CVE-2019-7019", "CVE-2019-7020",
                 "CVE-2019-7021", "CVE-2019-7022", "CVE-2019-7023", "CVE-2019-7024",
                 "CVE-2019-7025", "CVE-2019-7026", "CVE-2019-7027", "CVE-2019-7028",
@@ -44,7 +44,7 @@ if(description)
                 "CVE-2019-7086", "CVE-2019-7087", "CVE-2019-7089");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 08:42:52 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-14 10:51:34 +0530 (Thu, 14 Feb 2019)");
   script_name("Adobe Acrobat DC (Continuous Track) Security Updates(apsb19-07)-Windows");
 
@@ -60,7 +60,7 @@ if(description)
 
   - A data leakage error.
 
-  - An integer overfow error.
+  - An integer overflow error.
 
   - Multiple out-of-bounds read errors.
 
@@ -82,7 +82,7 @@ if(description)
   2019.010.20069 and earlier versions on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat DC Continuous
-  version 2019.010.20091 or later. For updates refer to Reference links.");
+  version 2019.010.20091 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

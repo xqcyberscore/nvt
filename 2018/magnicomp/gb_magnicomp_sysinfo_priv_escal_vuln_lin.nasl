@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magnicomp_sysinfo_priv_escal_vuln_lin.nasl 11764 2018-10-05 12:21:04Z santu $
 #
 # MagniComp SysInfo Privilege Escalation Vulnerability (Linux)
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:magnicomp:sysinfo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814306");
-  script_version("$Revision: 11764 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-6516");
   script_bugtraq_id(96934);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 14:21:04 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 12:54:15 +0530 (Wed, 03 Oct 2018)");
   script_name("MagniComp SysInfo Privilege Escalation Vulnerability (Linux)");
 
@@ -55,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"All versions of SysInfo prior to version
   10-H64");
-  script_tag(name:"solution", value:"Update SysInfo to version 10-H64 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update SysInfo to version 10-H64 or later. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");

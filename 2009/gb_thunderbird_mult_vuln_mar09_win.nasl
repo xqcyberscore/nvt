@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mult_vuln_mar09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities Mar-09 (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800363");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-03-10 11:59:23 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,8 +76,7 @@ if(description)
   - Error while decoding invisible characters when they are displayed in the
     location bar which causes incorrect address to be displayed in the URL bar
     and causes spoofing attacks.");
-  script_tag(name:"solution", value:"Upgrade to Thunderbird version 2.0.0.21
-  http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Thunderbird version 2.0.0.21.");
   script_tag(name:"summary", value:"The host is installed with Mozilla Thunderbird and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
@@ -86,13 +84,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 tbVer = get_kb_item("Thunderbird/Win/Ver");
-if(!tbVer){
+if(!tbVer)
   exit(0);
-}
 
 if(version_is_less(version:tbVer, test_version:"2.0.0.21")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814061");
-  script_version("$Revision: 12767 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12386", "CVE-2018-12387");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:00 +0530 (Wed, 03 Oct 2018)");
   script_name("Mozilla Firefox Security Updates(mfsa_2018-24_2018-24)-Windows");
 
@@ -57,7 +57,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 62.0.3
-  or later, For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

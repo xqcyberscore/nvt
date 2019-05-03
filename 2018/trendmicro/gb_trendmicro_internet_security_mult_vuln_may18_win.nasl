@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_internet_security_mult_vuln_may18_win.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Trend Micro Internet Security Multiple Vulnerabilities May18 (Windows)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:trendmicro:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813335");
-  script_version("$Revision: 12193 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-6232", "CVE-2018-6233", "CVE-2018-6234", "CVE-2018-6235",
                 "CVE-2018-6236", "CVE-2018-3608", "CVE-2018-10513", "CVE-2018-10514",
                 "CVE-2018-15363");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-08 13:30:09 +0530 (Tue, 08 May 2018)");
   ## Patched version is not available from registry or anywhere, so it can result in FP for 12.0 patched versions
   script_tag(name:"qod", value:"30");
@@ -71,7 +70,7 @@ if(description)
   Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Trend Micro Internet Security 12.0.1226
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://esupport.trendmicro.com/en-us/home/pages/technical-support/1119591.aspx");

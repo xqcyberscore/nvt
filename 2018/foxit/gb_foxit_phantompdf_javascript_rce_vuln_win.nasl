@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_javascript_rce_vuln_win.nasl 12176 2018-10-31 07:39:16Z santu $
 #
 # Foxit PhantomPDF 'JavaScript' Remote Code Execution Vulnerabilities (Windows)
 #
@@ -30,13 +29,13 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813264");
-  script_version("$Revision: 12176 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-14295", "CVE-2018-17706", "CVE-2018-17624", "CVE-2018-17622",
                 "CVE-2018-17620", "CVE-2018-17621", "CVE-2018-17618", "CVE-2018-17619",
                 "CVE-2018-17617", "CVE-2018-17615", "CVE-2018-17616");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 08:39:16 +0100 (Wed, 31 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-20 15:00:12 +0530 (Fri, 20 Jul 2018)");
   script_name("Foxit PhantomPDF 'JavaScript' Remote Code Execution Vulnerabilities (Windows)");
 
@@ -60,7 +59,7 @@ if(description)
   script_tag(name:"affected", value:"Foxit PhantomPDF versions before 9.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Foxit PhantomPDF version 9.2
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

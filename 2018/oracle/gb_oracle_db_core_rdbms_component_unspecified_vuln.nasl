@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813692");
-  script_version("$Revision: 12045 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-2939");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-18 12:59:43 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability");
 
@@ -51,8 +50,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database Server versions 12.2.0.1,
   12.1.0.2, 11.2.0.4, 18.1 and 18.2");
 
-  script_tag(name:"solution", value:"Apply appropriate patch provided by the vendor.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply appropriate patch provided by the vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

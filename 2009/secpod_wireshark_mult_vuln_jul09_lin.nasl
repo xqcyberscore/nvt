@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_jul09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities - July09 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900591");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -52,22 +51,19 @@ if(description)
   - Multiple unspecified vulnerabilities in the Bluetooth L2CAP, MIOP or sFlow
     dissectors and RADIUS which can be exploited via specially crafted network
     packets.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.1 or later.
-  http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.1 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 sharkVer = get_kb_item("Wireshark/Linux/Ver");
-if(!sharkVer){
+if(!sharkVer)
   exit(0);
-}
 
 if(version_is_equal(version:sharkVer, test_version:"1.2.0")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

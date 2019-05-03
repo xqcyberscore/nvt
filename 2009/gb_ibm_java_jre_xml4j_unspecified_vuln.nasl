@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_java_jre_xml4j_unspecified_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # IBM Runtimes for Java Technology XML4J Unspecified Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800974");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-11-09 14:01:44 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,6 +38,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/37210");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/54069");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3106");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg1IZ63920");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
@@ -52,8 +52,7 @@ if(description)
   code.");
   script_tag(name:"summary", value:"This host is installed with IBM Runtime for Java Technology and
   is prone to unspecified vulnerability.");
-  script_tag(name:"solution", value:"Apply the following patch.
-  http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg1IZ63920
+  script_tag(name:"solution", value:"Apply the referenced vendor update.
 
   *****
   NOTE: Ignore this warning if above mentioned patch is already applied.
@@ -64,17 +63,12 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 jreVer = get_kb_item("IBM/Java/JRE/Linux/Ver");
-if(!jreVer){
+if(!jreVer)
   exit(0);
-}
 
-if(jreVer)
-{
-  if(version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.SR9")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.SR9")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

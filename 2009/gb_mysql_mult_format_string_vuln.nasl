@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_format_string_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # MySQL 'sql_parse.cc' Multiple Format String Vulnerabilities
 #
@@ -28,8 +27,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800842");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-07-17 12:47:28 +0200 (Fri, 17 Jul 2009)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to error in the 'dispatch_command' function in sql_parse.cc
   in libmysqld/ which can caused via format string specifiers in a database name
   in a 'COM_CREATE_DB' or 'COM_DROP_DB' request.");
-  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.36 or later
-  http://dev.mysql.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.36 or later.");
   script_tag(name:"summary", value:"The host is running MySQL and is prone to Multiple Format String
   vulnerabilities.");
 
@@ -63,11 +61,9 @@ if(description)
   exit(0);
 }
 
-
 include("misc_func.inc");
 include("version_func.inc");
 include("host_details.inc");
-
 
 sqlPort = get_app_port(cpe:CPE);
 if(!sqlPort){

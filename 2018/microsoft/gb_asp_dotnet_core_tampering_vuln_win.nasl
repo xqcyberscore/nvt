@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_tampering_vuln_win.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # ASP.NET Core Tampering Vulnerability-Nov18 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:asp.net_core" ;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814295");
-  script_version("$Revision: 13072 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8416");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-15 17:09:11 +0530 (Thu, 15 Nov 2018)");
   script_name("ASP.NET Core Tampering Vulnerability-Nov18 (Windows)");
 
@@ -52,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"ASP.NET Core 2.1 prior to version 2.1.6");
 
-  script_tag(name:"solution", value:"Upgrade to ASP.NET Core 2.1.6 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to ASP.NET Core 2.1.6 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

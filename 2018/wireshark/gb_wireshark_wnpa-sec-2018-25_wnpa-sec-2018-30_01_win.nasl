@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018-25_wnpa-sec-2018-30_01_win.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Wireshark Security Updates May18 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813374");
-  script_version("$Revision: 12026 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11362", "CVE-2018-11360", "CVE-2018-11359", "CVE-2018-11358",
                 "CVE-2018-11357", "CVE-2018-11356");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-23 12:18:34 +0530 (Wed, 23 May 2018)");
   script_name("Wireshark Security Updates May18 (Windows)");
 
@@ -65,7 +64,7 @@ if(description)
   and 2.2.0 to 2.2.14 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.6.1 or 2.4.7,
-  or 2.2.15 or later. For updates refer to Reference links.");
+  or 2.2.15 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-25");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-30");

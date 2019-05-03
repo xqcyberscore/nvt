@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_info_disclosure_vuln_sept18.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # Trend Micro OfficeScan Information Disclosure Vulnerability Sep18
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813924");
-  script_version("$Revision: 12343 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-15364");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-04 16:54:20 +0530 (Tue, 04 Sep 2018)");
   script_name("Trend Micro OfficeScan Information Disclosure Vulnerability Sep18");
 
@@ -52,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Trend Micro OfficeScan versions XG 12.0");
 
   script_tag(name:"solution", value:"Upgrade to Trend Micro OfficeScan versions
-  XG SP1 CP 5180 or later. For updates refer to Reference links.");
+  XG SP1 CP 5180 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb18-25_win.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Adobe Flash Player Security Updates(apsb18-25)-Windows
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813829");
-  script_version("$Revision: 12193 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-12824", "CVE-2018-12825", "CVE-2018-12826", "CVE-2018-12827",
                 "CVE-2018-12828");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 09:36:44 +0530 (Wed, 15 Aug 2018)");
   script_name("Adobe Flash Player Security Updates(apsb18-25)-Windows");
 
@@ -58,7 +57,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version before 30.0.0.154 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  30.0.0.154, or later. For updates refer to Reference links.");
+  30.0.0.154, or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

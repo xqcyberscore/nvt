@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2018-11_2018-12_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2018-11_2018-12)-Windows
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813359");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-5183", "CVE-2018-5154", "CVE-2018-5155", "CVE-2018-5157",
                 "CVE-2018-5158", "CVE-2018-5159", "CVE-2018-5168", "CVE-2018-5174",
                 "CVE-2018-5178", "CVE-2018-5150");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-11 12:34:59 +0530 (Fri, 11 May 2018)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-11_2018-12)-Windows");
 
@@ -73,7 +72,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox ESR version before 52.8 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 52.8
-  or later, For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

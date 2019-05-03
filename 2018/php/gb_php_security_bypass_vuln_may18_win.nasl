@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_security_bypass_vuln_may18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP Security Bypass Vulnerability May18 (Windows)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813161");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10545");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-02 17:42:59 +0530 (Wed, 02 May 2018)");
   script_name("PHP Security Bypass Vulnerability May18 (Windows)");
 
@@ -59,7 +58,7 @@ if (description)
   PHP versions 7.1.x prior to 7.1.16 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 7.2.4 or 7.0.29 or
-  5.6.35 or 7.1.16 or later. For updates refer to Reference links.");
+  5.6.35 or 7.1.16 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

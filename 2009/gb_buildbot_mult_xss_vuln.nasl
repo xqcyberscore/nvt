@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buildbot_mult_xss_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Buildbot Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800935");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://buildbot.net/trac#SecurityAlert");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2352");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -53,27 +52,19 @@ if(description)
   data before processing and returning it to the user.");
   script_tag(name:"summary", value:"This host is installed with Buildbot and is prone to multiple
   Cross Site Scripting vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the patches or upgrade to version 0.7.11p3.
-  http://buildbot.net/trac#SecurityAlert
-
-  *****
-  NOTE: Please ignore this warning if the patch is already applied.
-  *****");
+  script_tag(name:"solution", value:"Apply the patches or upgrade to version 0.7.11p3.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
-
 include("version_func.inc");
 
 buildbotVer = get_kb_item("Buildbot/Ver");
+if(!buildbotVer)
+  exit(0);
 
-if(buildbotVer != NULL)
-{
-  if(version_in_range(version:buildbotVer, test_version:"0.7.6",
-                                          test_version2:"0.7.11.p2")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(version_in_range(version:buildbotVer, test_version:"0.7.6", test_version2:"0.7.11.p2")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Connect Authentication Bypass Vulnerability (APSB18-18)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813361");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4994");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-11 12:59:18 +0530 (Fri, 11 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## A mitigation is available to customers by modifying Tomcat filters to
@@ -54,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Connect versions prior to 9.8.1");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Connect version 9.8.1 or
-  later. For updates refer to Reference links.");
+  later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/connect/apsb18-18.html");

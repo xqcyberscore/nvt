@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814797");
-  script_version("2019-04-17T10:35:07+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-17 10:35:07 +0000 (Wed, 17 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 15:48:50 +0530 (Thu, 11 Apr 2019)");
   script_name("Microsoft Windows Latest Servicing Stack Updates-Defense in Depth (KB4493510)");
 
@@ -44,9 +44,7 @@ if(description)
 
   Windows 10 Version 1809 for x64-based Systems");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

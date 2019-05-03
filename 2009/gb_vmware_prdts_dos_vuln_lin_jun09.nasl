@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_dos_vuln_lin_jun09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # VMware Products Descheduled Time Accounting Driver DoS Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800806");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-30T06:12:35+0000");
+  script_tag(name:"last_modification", value:"2019-04-30 06:12:35 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-06-09 08:37:33 +0200 (Tue, 09 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:N/A:C");
@@ -38,6 +37,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/35269");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2009/May/1022300.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/503912/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2009-0007.html");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
@@ -53,8 +53,7 @@ if(description)
   VMware Workstation version prior to 6.5.2 build 156735 on Windows.");
   script_tag(name:"insight", value:"The vulnerability is due to an unspecified error within the VMware
   Descheduled Time Accounting driver.");
-  script_tag(name:"solution", value:"Upgrade your VMWares according to the below link,
-  http://www.vmware.com/security/advisories/VMSA-2009-0007.html");
+  script_tag(name:"solution", value:"Upgrade the VMWare product(s) according to the referenced vendor announcement.");
   script_tag(name:"summary", value:"The host is installed with VMWare product(s) and is prone to
   Denial of Service vulnerability.");
 
@@ -62,7 +61,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("version_func.inc");
 

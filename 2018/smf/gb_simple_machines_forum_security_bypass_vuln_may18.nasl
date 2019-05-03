@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_machines_forum_security_bypass_vuln_may18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Simple Machines Forum Security Bypass Vulnerability May18
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:simplemachines:smf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812886");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-10305");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-14 16:42:36 +0530 (Mon, 14 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Simple Machines Forum Security Bypass Vulnerability May18");
@@ -54,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Simple Machines Forum versions before 2.0.15");
 
   script_tag(name:"solution", value:"Upgrade to Simple Machines Forum version
-  2.0.15 or later. For updates refer to Reference links.");
+  2.0.15 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.simplemachines.org/community/index.php?topic=557176.0");

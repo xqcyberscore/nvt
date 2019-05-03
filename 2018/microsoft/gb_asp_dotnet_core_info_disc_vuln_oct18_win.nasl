@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_info_disc_vuln_oct18_win.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # .NET Core Information Disclosure Vulnerability Oct18 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814093");
-  script_version("$Revision: 12767 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8292");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-11 11:56:04 +0530 (Thu, 11 Oct 2018)");
   script_name(".NET Core Information Disclosure Vulnerability Oct18 (Windows)");
 
@@ -59,8 +58,7 @@ if(description)
  .NET Core SDK prior to version 1.1.11.");
 
   script_tag(name:"solution", value:"Upgrade to 1.0.13, 1.1.10 or 2.1 or later for
-  .NET Core runtimes and to 1.1.11 for .NET Core SDK.
-  For updates refer to Reference links.");
+  .NET Core runtimes and to 1.1.11 for .NET Core SDK. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

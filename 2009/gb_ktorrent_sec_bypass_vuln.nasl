@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ktorrent_sec_bypass_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # KTorrent PHP Code Injection And Security Bypass Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800342");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-01-22 12:00:13 +0100 (Thu, 22 Jan 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -39,7 +38,7 @@ if(description)
   script_xref(name:"URL", value:"https://bugs.gentoo.org/show_bug.cgi?id=244741");
   script_xref(name:"URL", value:"http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=504178");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -56,8 +55,7 @@ if(description)
 
   - web interface plugin does not properly restrict access to the torrent
     upload functionality via HTTP POST request.");
-  script_tag(name:"solution", value:"Upgrade to 3.1.4 or higher version
-  http://ktorrent.org/");
+  script_tag(name:"solution", value:"Upgrade to 3.1.4 or later.");
   script_tag(name:"summary", value:"This host has KTorrent installed and is prone to Security Bypass
   vulnerability.");
 
@@ -66,13 +64,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 ktVer = get_kb_item("KTorrent/Linux/Ver");
-if(!ktVer){
+if(!ktVer)
   exit(0);
-}
 
 if(version_is_less(version:ktVer, test_version:"3.1.4")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_iprint_client_mult_bof_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Novell iPrint Client Multiple BOF Vulnerabilities (Linux)
 #
@@ -27,15 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900728");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1569", "CVE-2009-1568");
   script_bugtraq_id(37242);
   script_name("Novell iPrint Client Multiple BOF Vulnerabilities (Linux)");
-
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -48,8 +46,7 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws are due to inadequate boundary checks on user supplied
   inputs while the application processes the input data into the application
   context.");
-  script_tag(name:"solution", value:"Upgrade Novell iPrint Client version to 5.32
-  http://download.novell.com");
+  script_tag(name:"solution", value:"Upgrade Novell iPrint Client version to 5.32.");
   script_tag(name:"summary", value:"This host is installed with Novell iPrint Client and is prone to
   multiple Buffer Overflow vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
@@ -62,13 +59,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-iPrintVer =  get_kb_item("Novell/iPrint/Client/Linux/Ver");
-if(iPrintVer == NULL){
+iPrintVer = get_kb_item("Novell/iPrint/Client/Linux/Ver");
+if(!iPrintVer)
   exit(0);
-}
 
 if(version_is_less(version:iPrintVer, test_version:"5.32")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_pers_xss_vuln_apr18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Typo3 Persistent Cross Site Scripting Vulnerability Apr18 (Linux)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:typo3:typo3';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813313");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-6905");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-20 13:46:03 +0530 (Fri, 20 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Typo3 Persistent Cross Site Scripting Vulnerability Apr18 (Linux)");
@@ -54,8 +53,7 @@ if(description)
   8.7.11 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to 8.7.11 or later for all versions
-  before 8.7.11.
-  For updates refer to Reference links.");
+  before 8.7.11. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://github.com/pradeepjairamani/TYPO3-XSS-POC");

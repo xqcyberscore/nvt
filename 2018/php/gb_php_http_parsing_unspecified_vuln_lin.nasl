@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_http_parsing_unspecified_vuln_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP 'HTTP Parsing' Function Unspecified Vulnerability (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813904");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-14884");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-07 13:29:04 +0530 (Tue, 07 Aug 2018)");
   script_name("PHP 'HTTP Parsing' Function Unspecified Vulnerability (Linux)");
 
@@ -52,7 +51,7 @@ if(description)
   before 7.1.13, and 7.2.x before 7.2.1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 7.0.27, 7.1.13 or
-  7.2.1 or later. For updates refer to Reference links.");
+  7.2.1 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"http://www.php.net");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=75535");

@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804062");
-  script_version("$Revision: 14304 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2013-0984", "CVE-2013-0155", "CVE-2013-0276", "CVE-2013-0277",
                 "CVE-2013-0333", "CVE-2013-1854", "CVE-2013-1855", "CVE-2013-1856",
                 "CVE-2013-1857");
   script_bugtraq_id(60328);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-01-20 20:19:58 +0530 (Mon, 20 Jan 2014)");
   script_name("Apple Mac OS X Directory Service Remote Buffer Overflow Vulnerability");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple Mac OS X version 10.6.8");
 
-  script_tag(name:"solution", value:"Apply the Mac Security Update 2013-002.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the Mac Security Update 2013-002. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

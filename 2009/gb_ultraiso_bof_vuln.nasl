@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultraiso_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # UltraISO Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800275");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-13 15:50:35 +0200 (Mon, 13 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"UltraISO version 9.3.3.2685 and prior.");
   script_tag(name:"insight", value:"This flaw is due to inadequate boundary check while processing 'CCD'
   or 'IMG' files.");
-  script_tag(name:"solution", value:"Upgrade to UltraISO version 9.3.6.2750 or later
-  updates refer, http://www.ezbsystems.com/ultraiso");
+  script_tag(name:"solution", value:"Upgrade to UltraISO version 9.3.6.2750 or later.");
   script_tag(name:"summary", value:"This host is running UltraISO and is prone to Stack-Based Buffer
   Overflow Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes in the
@@ -60,13 +58,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 ultraVer = get_kb_item("UltraISO/Ver");
-if(!ultraVer){
+if(!ultraVer)
   exit(0);
-}
 
 if(version_is_less_equal(version:ultraVer, test_version:"9.3.3.2685")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-080.nasl 13028 2019-01-10 15:29:22Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2293211)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902264");
-  script_version("$Revision: 13028 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-10 16:29:22 +0100 (Thu, 10 Jan 2019) $");
+  script_version("2019-05-03T08:55:39+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-3230", "CVE-2010-3231", "CVE-2010-3232", "CVE-2010-3233",
                 "CVE-2010-3234", "CVE-2010-3235", "CVE-2010-3236", "CVE-2010-3237",
@@ -86,8 +85,7 @@ if(description)
 
   - A memory corruption error when processing malformed Ghost records");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the referenced link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-080.");

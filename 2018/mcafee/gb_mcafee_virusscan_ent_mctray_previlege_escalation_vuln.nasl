@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_ent_mctray_previlege_escalation_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # McAfee VirusScan Enterprise 'McTray.exe' Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:mcafee:virusscan_enterprise';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813508");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-6674");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:19 +0530 (Tue, 05 Jun 2018)");
   script_name("McAfee VirusScan Enterprise 'McTray.exe' Privilege Escalation Vulnerability (Windows)");
 
@@ -52,7 +51,7 @@ if(description)
   and earlier on Windows.");
 
   script_tag(name:"solution", value:"Update to version 8.8 Patch 11 or later
-  on Windows. For updates refer to Reference links.");
+  on Windows. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

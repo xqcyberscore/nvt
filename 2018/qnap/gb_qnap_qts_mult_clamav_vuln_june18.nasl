@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_mult_clamav_vuln_june18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # QNAP QTS Multiple ClamAV Vulnerabilities-June18
 #
@@ -27,12 +26,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813520");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-12374", "CVE-2017-12375", "CVE-2017-12376", "CVE-2017-12377",
                 "CVE-2017-12378", "CVE-2017-12379", "CVE-2017-12380");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-11 17:13:13 +0530 (Mon, 11 Jun 2018)");
   script_name("QNAP QTS Multiple ClamAV Vulnerabilities-June18");
 
@@ -69,8 +68,7 @@ if (description)
   earlier, 4.3.3 build 20180126 and earlier, 4.3.4 build 20180323 and earlier.");
 
   script_tag(name:"solution", value:"Upgrade to QNAP QTS 4.2.6 build 20180504,
-  4.3.3 build  20180402 or 4.3.4 build 20180413 or later. For updates refer to
-  Reference links.");
+  4.3.3 build  20180402 or 4.3.4 build 20180413 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

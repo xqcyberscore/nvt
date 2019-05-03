@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_n_edit_filters_mult_xss_vuln_lin.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT 'View Filters' And 'Edit Filter' Pages XSS Vulnerabilities
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813814");
-  script_version("$Revision: 12818 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-14504", "CVE-2018-13055");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-06 18:05:16 +0530 (Mon, 06 Aug 2018)");
   script_name("MantisBT 'View Filters' And 'Edit Filter' Pages XSS Vulnerabilities");
 
@@ -55,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"MantisBT version 2.1.0 through 2.15.0 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to MantisBT version 2.15.1 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to MantisBT version 2.15.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

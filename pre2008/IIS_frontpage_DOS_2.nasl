@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: IIS_frontpage_DOS_2.nasl 10826 2018-08-08 07:30:42Z cfischer $
 #
 # IIS FrontPage DoS
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10585");
-  script_version("$Revision: 10826 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:30:42 +0200 (Wed, 08 Aug 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2144);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,7 +43,9 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 
-  script_tag(name:"solution", value:"See http://www.microsoft.com/technet/security/bulletin/MS00-100.mspx");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS00-100.mspx");
 
   script_tag(name:"summary", value:"Microsoft IIS, running Frontpage extensions, is vulnerable
   to a remote DoS attack usually called the 'malformed web submission' vulnerability.");

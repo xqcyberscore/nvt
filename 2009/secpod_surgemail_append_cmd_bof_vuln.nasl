@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_append_cmd_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # SurgeMail 'APPEND' Command Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900840");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -51,8 +50,7 @@ if(description)
   script_tag(name:"affected", value:"SurgeMail version prior to 3.9g2");
   script_tag(name:"insight", value:"Buffer overflow in the IMAP service is caused due the way it handles the
   APPEND command which can be exploited via a long first argument.");
-  script_tag(name:"solution", value:"Upgrade to SurgeMail version 3.9g2 or later
-  http://netwinsite.com/download.htm");
+  script_tag(name:"solution", value:"Upgrade to SurgeMail version 3.9g2 or later.");
   script_tag(name:"summary", value:"This host is running SurgeMail and is prone to Buffer Overflow
   vulnerability.");
 
@@ -61,15 +59,12 @@ if(description)
   exit(0);
 }
 
-
-include("http_func.inc");
 include("version_func.inc");
 
 surgemailVer = get_kb_item("SurgeMail/Ver");
+if(!surgemailVer)
+  exit(0);
 
-if(!isnull(surgemailVer))
-{
-  if(version_is_less(version:surgemailVer, test_version:"3.9.g2")){
-    security_message(port:0);
-  }
+if(version_is_less(version:surgemailVer, test_version:"3.9.g2")){
+  security_message(port:0);
 }

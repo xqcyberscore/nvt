@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_HT209140.nasl 11764 2018-10-05 12:21:04Z santu $
 #
 # Apple iTunes Multiple Vulnerabilities-HT209140 (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:apple:itunes:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814308");
-  script_version("$Revision: 11764 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-4191", "CVE-2018-4311", "CVE-2018-4316", "CVE-2018-4299",
                 "CVE-2018-4323", "CVE-2018-4328", "CVE-2018-4358", "CVE-2018-4359",
                 "CVE-2018-4319", "CVE-2018-4309", "CVE-2018-4197", "CVE-2018-4306",
@@ -37,7 +36,7 @@ if(description)
                 "CVE-2018-4318", "CVE-2018-4345", "CVE-2018-4361");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 14:21:04 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-04 10:51:28 +0530 (Thu, 04 Oct 2018)");
   script_name("Apple iTunes Multiple Vulnerabilities-HT209140");
 
@@ -64,8 +63,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iTunes versions before 12.9 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.9 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.9 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

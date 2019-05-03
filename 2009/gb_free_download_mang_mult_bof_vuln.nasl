@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_free_download_mang_mult_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Multiple Buffer Overflow Vulnerabilities in Free Download Manager
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800349");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,8 +57,7 @@ if(description)
   - a long comment in a torrent file.
 
   - a long Authorization header in an HTTP request.");
-  script_tag(name:"solution", value:"Upgrade to version 3.0 build 848
-  http://www.freedownloadmanager.org/download.htm");
+  script_tag(name:"solution", value:"Upgrade to version 3.0 build 848.");
   script_tag(name:"summary", value:"This host has installed Free Download Manager and is prone to
   multiple buffer overflow vulnerability.");
 
@@ -68,13 +66,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 fdmVer = get_kb_item("FreeDownloadManager/Ver");
-if(!fdmVer){
+if(!fdmVer)
   exit(0);
-}
 
 if(version_is_less(version:fdmVer, test_version:"3.0.848.0")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

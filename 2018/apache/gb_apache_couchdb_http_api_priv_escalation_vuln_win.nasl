@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_couchdb_http_api_priv_escalation_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache CouchDB 'HTTP API' Privilege Escalation Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:couchdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813906");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8007");
   script_bugtraq_id(104741);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-08 16:13:57 +0530 (Wed, 08 Aug 2018)");
   script_name("Apache CouchDB 'HTTP API' Privilege Escalation Vulnerability (Windows)");
 
@@ -55,7 +54,7 @@ if(description)
   and 2.x before 2.1.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache CouchDB version 1.7.2
-  or 2.1.2 or later. For updates refer to Reference links.");
+  or 2.1.2 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

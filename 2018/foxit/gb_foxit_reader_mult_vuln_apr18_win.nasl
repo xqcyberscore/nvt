@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_apr18_win.nasl 12403 2018-11-19 08:36:40Z santu $
 #
 # Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813156");
-  script_version("$Revision: 12403 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2017-14458", "CVE-2017-17557", "CVE-2018-10302", "CVE-2018-10303",
                 "CVE-2018-10473", "CVE-2018-10474", "CVE-2018-10475", "CVE-2018-10476",
                 "CVE-2018-10477", "CVE-2018-10478", "CVE-2018-10479", "CVE-2018-10480",
@@ -58,7 +57,7 @@ if(description)
   script_bugtraq_id(105602);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:36:40 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-25 14:35:06 +0530 (Wed, 25 Apr 2018)");
   script_name("Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)");
 
@@ -108,8 +107,7 @@ if(description)
 
   script_tag(name:"affected", value:"Foxit Reader versions 9.0.1.1049 and prior on windows");
 
-  script_tag(name:"solution", value:"Upgrade to Foxit Reader version 9.1 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Foxit Reader version 9.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

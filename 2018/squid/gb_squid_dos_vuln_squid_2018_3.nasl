@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_dos_vuln_squid_2018_3.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Squid Proxy Cache Denial of Service Vulnerability (SQUID-2018:3)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:squid-cache:squid';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813402");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-1172");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-22 12:25:41 +0530 (Tue, 22 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Proxy Cache Denial of Service Vulnerability (SQUID-2018:3)");
@@ -53,7 +52,7 @@ if(description)
   3.2.0.8 through 3.2.14 and 3.3 through 4.0.12");
 
   script_tag(name:"solution", value:"Upgrade to Squid version 4.0.13 or later.
-  Patch and workaround is also available. For updates refer to Reference links.");
+  Patch and workaround is also available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2018_3.txt");

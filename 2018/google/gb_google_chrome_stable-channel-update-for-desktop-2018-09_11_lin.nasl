@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-09_11_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-09_11)-Linux
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814017");
-  script_version("$Revision: 12025 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-17 11:21:50 +0530 (Mon, 17 Sep 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-09_11)-Linux");
 
@@ -54,7 +53,7 @@ if(description)
   on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  69.0.3497.92 or later. For updates refer to Reference links.");
+  69.0.3497.92 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

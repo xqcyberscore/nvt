@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_dos_vuln03_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Node.js Denial-of-Service Vulnerability-03 (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813477");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-7162");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-10 11:27:56 +0530 (Tue, 10 Jul 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Node.js Denial-of-Service Vulnerability-03 (Mac OS X)");
@@ -54,7 +53,7 @@ if(description)
   10.x prior to 10.4.1");
 
   script_tag(name:"solution", value:"Upgrade to Node.js version 9.11.2 or 10.4.1
-  or later. For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

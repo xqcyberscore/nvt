@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugbear_b.nasl 11637 2018-09-27 06:38:00Z cfischer $
 #
 # Bugbear.B web backdoor
 #
@@ -31,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11707");
-  script_version("$Revision: 11637 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:38:00 +0200 (Thu, 27 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,14 +43,14 @@ if(description)
   script_require_ports("Services/www", 81);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"ftp://ftp.f-secure.com/anti-virus/tools/f-bugbr.zip");
+  script_xref(name:"URL", value:"http://www.f-secure.com/v-descs/bugbear_b.shtml");
+
   script_tag(name:"solution", value:"Use your favorite antivirus to disinfect your
-  system. Standalone disinfection tools also exist :
-  ftp://ftp.f-secure.com/anti-virus/tools/f-bugbr.zip");
+  system. Standalone disinfection tools also exist and is linked in the references.");
 
   script_tag(name:"summary", value:"Your system seems to be infected by the Bugbear.B virus
-  (its backdoor has been detected on port 81..
-
-  More information: http://www.f-secure.com/v-descs/bugbear_b.shtml");
+  (its backdoor has been detected on port 81).");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");

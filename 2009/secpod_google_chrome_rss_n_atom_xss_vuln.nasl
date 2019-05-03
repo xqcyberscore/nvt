@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_rss_n_atom_xss_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Google Chrome RSS Or Atom Feed Cross-Site Scripting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900861");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -52,23 +51,20 @@ if(description)
   script_tag(name:"insight", value:"An XSS vulnerability exists when the application fails to handle 'RSS' and 'Atom'
   feed, related to the rendering of the application/rss+xml content type as
   'scripted content.'.");
-  script_tag(name:"solution", value:"Upgrade to Google Chrom version 3.0.195.21 or later.
-  http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrom version 3.0.195.21 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to Cross-Site
   Scripting vulnerability.");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 chromeVer = get_kb_item("GoogleChrome/Win/Ver");
-if(!chromeVer){
+if(!chromeVer)
   exit(0);
-}
 
-if(chromeVer =~ "^(2|3)\..*")
+if(chromeVer =~ "^[23]\.")
 {
   if(version_is_less(version:chromeVer, test_version:"3.0.195.21")){
     security_message( port: 0, data: "The target host was found to be vulnerable" );

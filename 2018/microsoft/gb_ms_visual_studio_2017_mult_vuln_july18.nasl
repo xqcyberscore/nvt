@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_2017_mult_vuln_july18.nasl 14023 2019-03-07 07:04:38Z cfischer $
 #
 # Microsoft Visual Studio 2017 Multiple Vulnerabilities-July18
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813573");
-  script_version("$Revision: 14023 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-8172", "CVE-2018-8232");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:04:38 +0100 (Thu, 07 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 13:08:27 +0530 (Thu, 12 Jul 2018)");
   script_name("Microsoft Visual Studio 2017 Multiple Vulnerabilities-July18");
 
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Visual Studio 2017");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory.
-  For updates refer to Reference links.");
+  listed hotfixes or download and update mentioned hotfixes in the advisory. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-055.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)
 #
@@ -30,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900880");
-  script_version("$Revision: 12602 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2009-2493");
   script_bugtraq_id(35828);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-14 18:36:58 +0200 (Wed, 14 Oct 2009)");
   script_name("Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)");
 
@@ -70,18 +69,17 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-055.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.
 
-  Workaround:
-  Set the killbit for the following CLSIDs,
-  {0002E531-0000-0000-C000-000000000046}, {4C85388F-1500-11D1-A0DF-00C04FC9E20F}
-  {0002E532-0000-0000-C000-000000000046}, {0002E554-0000-0000-C000-000000000046}
-  {0002E55C-0000-0000-C000-000000000046}, {279D6C9A-652E-4833-BEFC-312CA8887857}
-  {B1F78FEF-3DB7-4C56-AF2B-5DCCC7C42331}, {C832BE8F-4B89-4579-A217-DB92E7A27915}
-  {A9A7297E-969C-43F1-A1EF-51EBEA36F850}, {DD8C2179-1B4A-4951-B432-5DE3D1507142}
-  {4F1E5B1A-2A80-42ca-8532-2D05CB959537}, {27A3D328-D206-4106-8D33-1AA39B13394B}
-  {DB640C86-731C-484A-AAAF-750656C9187D}, {15721a53-8448-4731-8bfc-ed11e128e444}
+  As a workaround set the killbit for the following CLSIDs:
+
+  {0002E531-0000-0000-C000-000000000046}, {4C85388F-1500-11D1-A0DF-00C04FC9E20F},
+  {0002E532-0000-0000-C000-000000000046}, {0002E554-0000-0000-C000-000000000046},
+  {0002E55C-0000-0000-C000-000000000046}, {279D6C9A-652E-4833-BEFC-312CA8887857},
+  {B1F78FEF-3DB7-4C56-AF2B-5DCCC7C42331}, {C832BE8F-4B89-4579-A217-DB92E7A27915},
+  {A9A7297E-969C-43F1-A1EF-51EBEA36F850}, {DD8C2179-1B4A-4951-B432-5DE3D1507142},
+  {4F1E5B1A-2A80-42ca-8532-2D05CB959537}, {27A3D328-D206-4106-8D33-1AA39B13394B},
+  {DB640C86-731C-484A-AAAF-750656C9187D}, {15721a53-8448-4731-8bfc-ed11e128e444},
   {3267123E-530D-4E73-9DA7-79F01D86A89F}");
 
   script_tag(name:"qod_type", value:"registry");
@@ -89,7 +87,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_activex.inc");

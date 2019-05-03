@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_mult_bof_n_mem_corr_vuln.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
 #
 # Intel Active Management Technology Buffer Overflow And Memory Corruption Vulnerabilities
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/h:intel:active_management_technology';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813800");
-  script_version("$Revision: 11416 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-3628", "CVE-2018-3629", "CVE-2018-3632");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-24 13:43:57 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Intel Active Management Technology Buffer Overflow And Memory Corruption Vulnerabilities");
@@ -55,7 +54,7 @@ if(description)
   3.x/4.x/5.x/6.x/7.x/8.x/9.x/10.x/11.x.");
 
   script_tag(name:"solution", value:"Upgrade to appropriate Intel CSME firmware
-  version. For updates refer to Reference links.");
+  version. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00112.html");

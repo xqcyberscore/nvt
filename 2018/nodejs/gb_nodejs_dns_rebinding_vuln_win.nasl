@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_dns_rebinding_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Node.js DNS rebinding vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813471");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-7160");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-09 17:20:49 +0530 (Mon, 09 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js DNS rebinding vulnerability (Windows)");
@@ -53,7 +52,7 @@ if(description)
   prior to 8.11.0 and 9.x prior to 9.10.0");
 
   script_tag(name:"solution", value:"Upgrade to Node.js version 6.14.0 or 8.11.0
-  or 9.10.0 or later. For updates refer to Reference links.");
+  or 9.10.0 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

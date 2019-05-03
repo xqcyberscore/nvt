@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 October-15
 #
@@ -30,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806148");
-  script_version("$Revision: 14304 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2015-5943", "CVE-2015-6983", "CVE-2015-7061", "CVE-2015-7060",
                 "CVE-2015-7059", "CVE-2015-7007", "CVE-2015-5945", "CVE-2015-6563",
                 "CVE-2014-3565", "CVE-2012-6151", "CVE-2015-7988", "CVE-2015-6994",
@@ -40,7 +39,7 @@ if(description)
                 "CVE-2015-7006", "CVE-2015-7003");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-10-29 12:54:16 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 October-15");
 
@@ -62,7 +61,7 @@ if(description)
   10.11.1");
 
   script_tag(name:"solution", value:"Upgrade Apple OS X El Capitan to version
-  10.11.1 or later. For updates refer to Reference links.");
+  10.11.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

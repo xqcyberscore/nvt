@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oxid_eshop_priv_escalation_vuln.nasl 11088 2018-08-23 07:30:11Z ckuersteiner $
 #
 # OXID eShop Community Edition Privilege Escalation Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:oxid:eshop';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900933");
-  script_version("$Revision: 11088 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 09:30:11 +0200 (Thu, 23 Aug 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,8 +59,7 @@ if(description)
   script_tag(name:"insight", value:"User supplied data passed to an unspecified variable is not sanitised
   before processing.");
 
-  script_tag(name:"solution", value:"Apply the patches or upgrade to version 4.1.0
-  http://www.oxidforge.org/wiki/Category:Downloads");
+  script_tag(name:"solution", value:"Apply the patches or upgrade to version 4.1.0.");
 
   script_tag(name:"summary", value:"This host is installed with OXID eShop Community Edition
   and is prone to Privilege Escalation vulnerability.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-024.nasl 10213 2018-06-15 10:04:26Z cfischer $
 #
 # Windows Debugger flaw can Lead to Elevated Privileges (Q320206)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10964");
-  script_version("$Revision: 10213 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:04:26 +0200 (Fri, 15 Jun 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4287);
   script_tag(name:"cvss_base", value:"7.2");
@@ -52,7 +51,9 @@ if(description)
 
   Microsoft Windows 2000");
 
-  script_tag(name:"solution", value:"The vendor has released updates, please see http://www.microsoft.com/technet/security/bulletin/ms02-024.mspx");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms02-024.mspx");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

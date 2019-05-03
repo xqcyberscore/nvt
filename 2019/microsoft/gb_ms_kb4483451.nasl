@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814752");
-  script_version("$Revision: 13642 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-0657", "CVE-2019-0613");
   script_bugtraq_id(106890, 106872);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 16:21:09 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 13:51:58 +0530 (Wed, 13 Feb 2019)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4483451)");
 
@@ -52,9 +52,7 @@ if(description)
 
   Microsoft .NET Framework 4.6 on Server 2008 SP2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_seamonkey_mult_vuln_feb09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Seamonkey Multiple Vulnerabilities Feb-09 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900313");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,22 +57,19 @@ if(description)
   - Cookies marked 'HTTPOnly' are readable by JavaScript through the request
     calls of XMLHttpRequest methods i.e. XMLHttpRequest.getAllResponseHeaders
     and XMLHttpRequest.getResponseHeader.");
-  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.15
-  http://www.seamonkey-project.org/releases");
+  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.15.");
   script_tag(name:"summary", value:"The host is installed with Mozilla Seamonkey browser and is prone
   to multiple vulnerabilities.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 smVer = get_kb_item("Seamonkey/Linux/Ver");
-if(!smVer){
+if(!smVer)
   exit(0);
-}
 
 if(version_is_less(version:smVer, test_version:"1.1.15")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

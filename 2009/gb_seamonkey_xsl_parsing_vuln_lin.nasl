@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_xsl_parsing_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Seamonkey XSL Parsing Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800378");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -52,22 +51,19 @@ if(description)
   script_tag(name:"insight", value:"This flaw is due to improper handling of errors encountered when transforming
   an XML document which can be exploited to cause memory corruption through a
   specially crafted XSLT code.");
-  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.16 or later.
-  http://www.seamonkey-project.org/releases");
+  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.16 or later.");
   script_tag(name:"summary", value:"The host is installed with Mozilla Seamnkey and is prone to XSL
   File Parsing Vulnerability.");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 smVer = get_kb_item("Seamonkey/Linux/Ver");
-if(!smVer){
+if(!smVer)
   exit(0);
-}
 
 if(version_in_range(version:smVer, test_version:"1.0",
                                    test_version2:"1.1.15")){

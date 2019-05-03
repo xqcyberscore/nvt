@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mailman_privatepy_directory_traversal.nasl 11723 2018-10-02 09:59:19Z ckuersteiner $
 #
 # Mailman private.py Directory Traversal Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:gnu:mailman";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16339");
-  script_version("$Revision: 11723 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 11:59:19 +0200 (Tue, 02 Oct 2018) $");
+  script_version("2019-04-29T15:08:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,7 +63,7 @@ if(description)
   example, if '$user' and '$pass' identify a subscriber of the list
   '$listname@$target', then the following URL :
 
-  http://$target/mailman/private/$listname/.../....///mailman?username=$user&password=$pass
+  http://example.com/mailman/private/$listname/.../....///mailman?username=$user&password=$pass
 
   allows access to archives for the mailing list named 'mailman' for
   which the user might not otherwise be entitled.");

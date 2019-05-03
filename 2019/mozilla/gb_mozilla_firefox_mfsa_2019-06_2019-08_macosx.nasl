@@ -23,7 +23,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815003");
-  script_version("2019-03-22T10:32:36+0000");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2019-9790", "CVE-2019-9791", "CVE-2019-9792", "CVE-2019-9793",
                 "CVE-2019-9789", "CVE-2019-9795", "CVE-2019-9796", "CVE-2019-9797",
                 "CVE-2019-9788", "CVE-2019-9799", "CVE-2019-9804", "CVE-2019-9802",
@@ -31,7 +31,7 @@ if(description)
                 "CVE-2019-9807", "CVE-2019-9809");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-03-22 10:32:36 +0000 (Fri, 22 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-20 12:38:52 +0530 (Wed, 20 Mar 2019)");
   script_name("Mozilla Firefox Security Updates(mfsa_2019-06_2019-08)-MAC OS X");
 
@@ -87,7 +87,7 @@ if(description)
   66 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 66
-  or later, For updates refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

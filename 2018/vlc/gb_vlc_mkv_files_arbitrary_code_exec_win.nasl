@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_mkv_files_arbitrary_code_exec_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # VLC Media Player MKV Files Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813579");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-11529");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-17 11:32:20 +0530 (Tue, 17 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player MKV Files Arbitrary Code Execution Vulnerability (Windows)");
@@ -54,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"VideoLAN VLC media player versions through
   2.2.8 on Windows");
 
-  script_tag(name:"solution", value:"Update to version 3.0.3 or above.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update to version 3.0.3 or above. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Jul/28");

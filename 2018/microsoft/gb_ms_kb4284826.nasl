@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4284826.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4284826)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813533");
-  script_version("$Revision: 14156 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-0978", "CVE-2018-1036", "CVE-2018-1040", "CVE-2018-8169",
                 "CVE-2018-8205", "CVE-2018-8207", "CVE-2018-8224", "CVE-2018-8225",
                 "CVE-2018-8249", "CVE-2018-8251", "CVE-2018-8267");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-13 09:20:23 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4284826)");
 
@@ -76,9 +75,7 @@ if(description)
 
   Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

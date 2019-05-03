@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT209450.nasl 13297 2019-01-25 14:07:05Z santu $
 #
 # Apple iTunes Security Updates (HT209450)
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814822");
-  script_version("$Revision: 13297 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-20346", "CVE-2018-20505", "CVE-2019-6212", "CVE-2019-6215",
                 "CVE-2019-6216", "CVE-2019-6221", "CVE-2019-6227", "CVE-2019-6229",
                 "CVE-2019-6233", "CVE-2018-20506", "CVE-2019-6217", "CVE-2019-6234",
                 "CVE-2019-6235", "CVE-2019-6226");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 15:07:05 +0100 (Fri, 25 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 14:09:57 +0530 (Fri, 25 Jan 2019)");
   script_name("Apple iTunes Security Updates (HT209450)");
 
@@ -61,8 +60,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iTunes versions before 12.9.3");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.9.3 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.9.3 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

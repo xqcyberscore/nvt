@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018-57_win.nasl.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Wireshark 'ZigBee ZCL' Dissector Denial of Service Vulnerability (wnpa-sec-2018-57)-Windows
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814506");
-  script_version("$Revision: 12889 $");
+  script_version("2019-05-03T08:55:39+0000");
   script_cve_id("CVE-2018-19628");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-29 11:27:40 +0530 (Thu, 29 Nov 2018)");
   script_name("Wireshark 'ZigBee ZCL' Dissector Denial of Service Vulnerability (wnpa-sec-2018-57)-Windows");
 
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Wireshark versions 2.6.0 to 2.6.4 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.6.5 or later.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.6.5 or later. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-57");
   script_xref(name:"URL", value:"https://www.wireshark.org");
