@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-151.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Microsoft Windows Kernel Mode Drivers Multiple Vulnerabilities (3205651)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810308");
-  script_version("$Revision: 12149 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-7259", "CVE-2016-7260");
   script_bugtraq_id(94785, 94771);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-12-14 08:12:22 +0530 (Wed, 14 Dec 2016)");
   script_name("Microsoft Windows Kernel Mode Drivers Multiple Vulnerabilities (3205651)");
 
@@ -61,8 +60,7 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

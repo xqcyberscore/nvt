@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie9_cookie_hijacking_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Microsoft Internet Explorer Cookie Hijacking Vulnerability
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802203");
-  script_version("$Revision: 12490 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-06-13 15:43:58 +0200 (Mon, 13 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -55,8 +54,7 @@ if(description)
   attackers to read cookie files via vectors involving an IFRAME element with a
   SRC attribute containing an http: URL that redirects to a file: URL.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
-  and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

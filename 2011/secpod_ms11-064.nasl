@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-064.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Microsoft Windows TCP/IP Stack Denial of Service Vulnerability (2563894)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900296");
-  script_version("$Revision: 12006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_bugtraq_id(48987, 48990);
   script_cve_id("CVE-2011-1871", "CVE-2011-1965");
@@ -56,8 +55,7 @@ if(description)
   - when parsing specially crafted URLs.
 
   - when processing  a sequence of specially crafted ICMP messages.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-064.");
   script_tag(name:"qod_type", value:"registry");

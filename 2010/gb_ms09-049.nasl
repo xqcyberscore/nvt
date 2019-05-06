@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-049.nasl 13426 2019-02-04 07:44:48Z cfischer $
 #
 # Microsoft Wireless LAN AutoConfig Service Remote Code Execution Vulnerability (970710)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801481");
-  script_version("$Revision: 13426 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 08:44:48 +0100 (Mon, 04 Feb 2019) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-12-06 10:44:13 +0100 (Mon, 06 Dec 2010)");
   script_cve_id("CVE-2009-1132");
   script_bugtraq_id(36223);
@@ -57,8 +56,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by a heap overflow error in the Windows Wireless LAN
   AutoConfig Service (wlansvc) when processing malformed frames.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms15-080.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Font Drivers Remote Code Execution Vulnerability (3078662)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805083");
-  script_version("$Revision: 12485 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2015-2431", "CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-08-12 12:46:32 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft Office Font Drivers Remote Code Execution Vulnerability (3078662)");
 
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
   Microsoft Office 2010 Service Pack 2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

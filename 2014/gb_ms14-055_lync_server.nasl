@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-055_lync_server.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Microsoft Lync Server Remote Denial of Service Vulnerability (2990928)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804762");
-  script_version("$Revision: 11867 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-4068", "CVE-2014-4070", "CVE-2014-4071");
   script_bugtraq_id(69586, 69579, 69592);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-09-10 11:42:19 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,8 +58,7 @@ if(description)
 
   Microsoft Lync Server 2013");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes
-  or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60984");

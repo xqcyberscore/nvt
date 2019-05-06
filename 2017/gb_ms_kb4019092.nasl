@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4019092.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Microsoft SQL Server Information Disclosure Vulnerability (KB4019092)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811566");
-  script_version("$Revision: 11982 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-08-09 17:30:22 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server Information Disclosure Vulnerability (KB4019092)");
 
@@ -49,8 +48,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft SQL Server 2012 Service Pack 3");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

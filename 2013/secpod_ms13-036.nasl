@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-036.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2829996)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903202");
-  script_version("$Revision: 11876 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-1283", "CVE-2013-1291", "CVE-2013-1292", "CVE-2013-1293");
   script_bugtraq_id(58853, 58858, 58859, 58860);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-04-10 09:30:54 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2829996)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2808735");
@@ -61,8 +60,7 @@ if(description)
   - Improper handling of certain objects in kernel memory.
 
   - Improper parsing of crafted OpenType font files.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-036.");
   script_tag(name:"qod_type", value:"registry");

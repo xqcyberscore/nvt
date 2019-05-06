@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_server_ms13-035.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft SharePoint Server HTML Sanitisation Component XSS Vulnerability (2821818)
 #
@@ -28,12 +27,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902961");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_bugtraq_id(58883);
   script_cve_id("CVE-2013-1289");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-04-10 10:11:54 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft SharePoint Server HTML Sanitisation Component XSS Vulnerability (2821818)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52928/");
@@ -54,8 +53,7 @@ if(description)
   Sanitation component before being returned to the user. This can be
   exploited to execute arbitrary HTML and script code in a user's
   browser session in context of an affected site.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-035.");
   script_tag(name:"qod_type", value:"executable_version");

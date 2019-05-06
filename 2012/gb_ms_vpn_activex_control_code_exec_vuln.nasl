@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_vpn_activex_control_code_exec_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft VPN ActiveX Control Remote Code Execution Vulnerability (2695962)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802774");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-05-10 11:55:58 +0530 (Thu, 10 May 2012)");
   script_name("Microsoft VPN ActiveX Control Remote Code Execution Vulnerability (2695962)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2695962");
@@ -67,8 +66,7 @@ if(description)
   operations. Microsoft ActiveX technology may be affected if the system has
   ever connected to a device that is running the Cisco Clientless VPN solution.");
 
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is installed with Cisco Adaptive Security Appliance and
   is prone to ActiveX control remote code execution vulnerability.");

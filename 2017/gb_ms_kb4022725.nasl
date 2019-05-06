@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022725.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4022725)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811167");
-  script_version("$Revision: 12021 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2017-8474", "CVE-2017-8524", "CVE-2017-8527", "CVE-2017-8475",
                 "CVE-2017-8476", "CVE-2017-8529", "CVE-2017-8530", "CVE-2017-0282",
                 "CVE-2017-0283", "CVE-2017-8477", "CVE-2017-8478", "CVE-2017-8531",
@@ -53,7 +52,7 @@ if(description)
                     98818, 98843, 98833, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-14 13:30:05 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4022725)");
 
@@ -74,9 +73,7 @@ if(description)
   - An issue with the Privacy Separator feature of a Wireless Access Point
     does not block communication between wireless devices on local subnets.
 
-  - Microsoft Edge improperly accesses objects in memory.
-
-  For More Information about thse updates refer to reference links.");
+  - Microsoft Edge improperly accesses objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to execute arbitrary code in the context of the current user,
@@ -87,8 +84,7 @@ if(description)
 
   Microsoft Windows Server 2016");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

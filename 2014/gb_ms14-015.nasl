@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-015.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Escalation Vulnerabilities (2930275)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804409");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-0300", "CVE-2014-0323");
   script_bugtraq_id(66003, 66007);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-03-12 08:24:20 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Kernel Privilege Escalation Vulnerabilities (2930275)");
@@ -56,8 +55,7 @@ Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
 Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
 Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
-  the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57330");

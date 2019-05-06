@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-037.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2975687)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804713");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-2783", "CVE-2014-1763", "CVE-2014-1765", "CVE-2014-2785",
                 "CVE-2014-2786", "CVE-2014-2787", "CVE-2014-2788", "CVE-2014-2789",
                 "CVE-2014-2790", "CVE-2014-2791", "CVE-2014-2792", "CVE-2014-2794",
@@ -41,7 +40,7 @@ if(description)
                     68383, 68384, 68385, 68386, 68387, 68388, 68389, 68390);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-07-09 10:07:32 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2975687)");
@@ -58,8 +57,7 @@ Bulletin MS14-037.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions and compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/59775");

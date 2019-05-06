@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-088.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2888505)
 #
@@ -28,7 +27,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903329");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-3871", "CVE-2013-3908", "CVE-2013-3909", "CVE-2013-3910",
                 "CVE-2013-3911", "CVE-2013-3912", "CVE-2013-3914", "CVE-2013-3915",
                 "CVE-2013-3916", "CVE-2013-3917");
@@ -36,7 +35,7 @@ if(description)
                     63596);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-11-13 08:35:24 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2888505)");
 
@@ -44,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
 Bulletin MS13-088.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error when generating print previews of certain web content.

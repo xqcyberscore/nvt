@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814638");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2018-8599");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-12-28 14:00:04 +0530 (Fri, 28 Dec 2018)");
   script_name("Microsoft Visual Studio 'Diagnostic Hub Standard Collector' Elevation of Privilege Vulnerability");
 
@@ -52,8 +52,7 @@ if(description)
 
   Microsoft Visual Studio 2017 Version 15.9");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory. Please see the references for more information.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

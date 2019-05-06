@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer-ms16-099.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Word Viewer Multiple RCE Vulnerabilities (3177451)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807870");
-  script_version("$Revision: 11969 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-3313", "CVE-2016-3317");
   script_bugtraq_id(92289, 92303);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-08-10 09:57:09 +0530 (Wed, 10 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Multiple RCE Vulnerabilities (3177451)");
@@ -50,8 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Word Viewer 2007");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

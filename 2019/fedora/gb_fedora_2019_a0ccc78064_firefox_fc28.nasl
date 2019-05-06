@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875525");
-  script_version("2019-04-04T14:50:45+0000");
+  script_version("2019-05-03T10:20:18+0000");
   script_cve_id("CVE-2019-9790", "CVE-2019-9791", "CVE-2019-9792", "CVE-2019-9793",
                 "CVE-2019-9794", "CVE-2019-9795", "CVE-2019-9796", "CVE-2019-9801",
                 "CVE-2018-1850", "CVE-2019-9788");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-05-03 10:20:18 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 13:54:37 +0000 (Thu, 28 Mar 2019)");
   script_name("Fedora Update for firefox FEDORA-2019-a0ccc78064");
   script_category(ACT_GATHER_INFO);

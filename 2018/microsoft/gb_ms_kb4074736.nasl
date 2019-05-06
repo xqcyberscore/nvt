@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4074736.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Windows Internet Explorer Multiple RCE Vulnerabilities (KB4074736)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812765");
-  script_version("$Revision: 12410 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2018-0840", "CVE-2018-0866");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-14 08:59:04 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Windows Internet Explorer Multiple RCE Vulnerabilities (KB4074736)");
 
@@ -52,8 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 9.x,
   10.x and 11.x");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

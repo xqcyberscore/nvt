@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814643");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2019-0536", "CVE-2019-0538", "CVE-2019-0539", "CVE-2019-0541",
                 "CVE-2019-0543", "CVE-2019-0545", "CVE-2019-0551", "CVE-2019-0552",
                 "CVE-2019-0553", "CVE-2019-0554", "CVE-2019-0555", "CVE-2019-0565",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2019-0549", "CVE-2019-0550");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-09 10:32:25 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4480966)");
 
@@ -88,8 +88,7 @@ if(description)
 
   Windows 10 Version 1803 for x64-based Systems");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory. Please see the references for more information.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

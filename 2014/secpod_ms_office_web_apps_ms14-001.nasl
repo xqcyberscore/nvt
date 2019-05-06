@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_web_apps_ms14-001.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution vulnerability (2916605)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903428");
-  script_version("$Revision: 14185 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-0258", "CVE-2014-0259", "CVE-2014-0260");
   script_bugtraq_id(64726, 64727, 64728);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-01-15 12:12:54 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft Office Web Apps Remote Code Execution vulnerability (2916605)");
 
@@ -43,8 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to error exists when processing specially crafted
   office file.");

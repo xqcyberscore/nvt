@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_mem_crptn_vuln.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Vulnerability in Internet Explorer Could Allow Remote Code Execution (960714)
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900066");
-  script_version("$Revision: 12404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,8 +54,7 @@ if(description)
   Internet Explorer 7 on MS Windows 2008 server");
   script_tag(name:"insight", value:"The flaw is due to a use-after-free error when HTML elements
   are bound to the same data source.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-078.");
   script_tag(name:"qod_type", value:"registry");

@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902269");
-  script_version("$Revision: 13382 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 12:07:58 +0100 (Thu, 31 Jan 2019) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_cve_id("CVE-2010-0020", "CVE-2010-0021", "CVE-2010-0022", "CVE-2010-0231");
   script_tag(name:"cvss_base", value:"10.0");
@@ -75,8 +75,7 @@ if(description)
   - A lack of cryptographic entropy when the SMB server generates challenges
   during SMB NTLM authentication and can be exploited to bypass the authentication mechanism.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-012.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-088.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Microsoft Office IME (Chinese) Privilege Elevation Vulnerability (2652016)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902496");
-  script_version("$Revision: 12010 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2011-2010");
   script_bugtraq_id(50950);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-12-14 15:59:45 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Office IME (Chinese) Privilege Elevation Vulnerability (2652016)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47062/");
@@ -54,8 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to the Microsoft Pinyin (MSPY) Input Method Editor
   (IME) for Simplified Chinese unsafely exposing certain configuration
   options.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-088.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms07-017.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Microsoft Windows GDI Multiple Vulnerabilities (925902)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102055");
-  script_version("$Revision: 14331 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-03T12:31:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(23273, 23276, 23278, 23275, 20940, 23277);
   script_cve_id("CVE-2006-5586", "CVE-2006-5758", "CVE-2007-1211",
@@ -48,7 +47,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
 
-  script_tag(name:"solution", value:"Run Windows Update or apply available patches.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"Stack-based buffer overflow in the animated cursor code in Microsoft
   Windows 2000 SP4 through Vista allows remote attackers to execute

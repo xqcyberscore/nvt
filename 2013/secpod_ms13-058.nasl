@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-058.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Windows Defender Privilege Elevation Vulnerability (2847927)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902979");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-3154");
   script_bugtraq_id(60981);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-07-10 10:05:39 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Windows Defender Privilege Elevation Vulnerability (2847927)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/54063/");
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an unspecified error within Windows Defender related to
   pathnames and can be exploited to execute arbitrary code with system
   privileges.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-058.");
   script_tag(name:"qod_type", value:"registry");

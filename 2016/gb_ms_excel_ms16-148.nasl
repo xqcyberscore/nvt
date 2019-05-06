@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms16-148.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Excel Multiple Vulnerabilities (3204068)
 #
@@ -26,13 +25,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809749");
-  script_version("$Revision: 11969 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-7262", "CVE-2016-7264", "CVE-2016-7265", "CVE-2016-7266",
                 "CVE-2016-7267");
   script_bugtraq_id(94769, 94721, 94662, 94664);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-12-14 08:28:11 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Multiple Vulnerabilities (3204068)");
@@ -59,8 +58,7 @@ if(description)
   Microsoft Excel 2013 Service Pack 1,
   Microsoft Excel 2016 Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

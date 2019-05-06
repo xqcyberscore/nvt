@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-040.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # MS Active Directory Federation Services Information Disclosure Vulnerability (3045711)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805164");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2015-1638");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-04-15 12:47:54 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Active Directory Federation Services Information Disclosure Vulnerability (3045711)");
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Active Directory Federation Services
   3.0 on Windows Server 2012 R2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

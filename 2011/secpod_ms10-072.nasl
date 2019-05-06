@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-072.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft SharePoint SafeHTML Information Disclosure Vulnerabilities (2412048)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902626");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-2010-3243", "CVE-2010-3324");
   script_bugtraq_id(42467, 43703);
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office SharePoint Server 2007 Service Pack 2
   Microsoft Windows SharePoint Services 3.0 Service Pack 2");
   script_tag(name:"insight", value:"Multiple flaws are due to the way SafeHTML function sanitizes HTML content.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS10-072.");
   script_tag(name:"qod_type", value:"registry");

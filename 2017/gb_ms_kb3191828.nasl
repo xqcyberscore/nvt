@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3191828.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Office Multiple Vulnerabilities (KB3191828)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811091");
-  script_version("$Revision: 12021 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-8528", "CVE-2017-0282", "CVE-2017-0284", "CVE-2017-0285",
                 "CVE-2017-8534");
   script_bugtraq_id(98949, 98885, 98918, 98914, 98822);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-14 10:19:06 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Multiple Vulnerabilities (KB3191828)");
 
@@ -56,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

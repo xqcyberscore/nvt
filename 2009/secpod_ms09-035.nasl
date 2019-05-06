@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-035.nasl 12494 2018-11-22 15:41:52Z cfischer $
 #
 # Microsoft Visual Studio ATL Remote Code Execution Vulnerability (969706)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900809");
-  script_version("$Revision: 12494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 16:41:52 +0100 (Thu, 22 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-03 06:30:10 +0200 (Mon, 03 Aug 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -66,8 +65,7 @@ if(description)
   - An error in ATL may result in a string being read without terminating NULL
   bytes, which can be exploited to disclose memory contents beyond the end of the string.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-035.");

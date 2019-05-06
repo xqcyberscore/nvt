@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814936");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2019-0601", "CVE-2019-0603", "CVE-2019-0609", "CVE-2019-0614",
                 "CVE-2019-0617", "CVE-2019-0665", "CVE-2019-0666", "CVE-2019-0667",
                 "CVE-2019-0680", "CVE-2019-0683", "CVE-2019-0690", "CVE-2019-0702",
@@ -34,7 +34,7 @@ if(description)
   script_bugtraq_id(107285);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-13 10:15:27 +0530 (Wed, 13 Mar 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4489878)");
 
@@ -61,8 +61,7 @@ if(description)
 
   Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory. Please see the references for more information.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_services_ms13-100.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft SharePoint Server Excel Services RCE Vulnerability (2904244)
 #
@@ -29,20 +28,19 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903333");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-5059");
   script_bugtraq_id(64081);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-01-09 13:28:58 +0530 (Thu, 09 Jan 2014)");
   script_name("Microsoft SharePoint Server Excel Services RCE Vulnerability (2904244)");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
 Bulletin MS13-100.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"insight", value:"Flaws is due to some input sanitisation errors related to SharePoint content");
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2013 Excel Services");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code with

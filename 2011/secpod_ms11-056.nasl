@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-056.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Windows CSRSS Privilege Escalation Vulnerabilities (2507938)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902609");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_cve_id("CVE-2011-1281", "CVE-2011-1282", "CVE-2011-1283",
                 "CVE-2011-1284", "CVE-2011-1870");
@@ -66,8 +65,7 @@ if(description)
   - improper verification by SrvSetConsoleNumberOfCommand
 
   - integer overflow in SrvWriteConsoleOutput");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-056.");
   script_tag(name:"qod_type", value:"registry");

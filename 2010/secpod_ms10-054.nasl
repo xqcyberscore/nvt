@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-054.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Windows SMB Code Execution and DoS Vulnerabilities (982214)
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901140");
-  script_version("$Revision: 12404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_cve_id("CVE-2010-2550", "CVE-2010-2551", "CVE-2010-2552");
   script_bugtraq_id(42224);
@@ -69,8 +68,7 @@ if(description)
 
   - An error in the Server Message Block (SMB) Protocol implementation that
     does not properly handle specially crafted compounded requests.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-054.");
   script_tag(name:"qod_type", value:"registry");

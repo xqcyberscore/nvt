@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-078.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Microsoft .NET Framework and Silverlight Remote Code Execution Vulnerability (2604930)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902581");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-1253");
   script_bugtraq_id(49999);
@@ -60,8 +59,7 @@ if(description)
   Microsoft .NET Framework 1.1 Service Pack 1");
   script_tag(name:"insight", value:"The flaw due to an error when restricting inheritance within classes
   and can be exploited via a specially crafted web page.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-078.");
   script_tag(name:"qod_type", value:"registry");

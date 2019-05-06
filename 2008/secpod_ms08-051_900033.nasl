@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-051_900033.nasl 12493 2018-11-22 15:17:57Z cfischer $
 # Description: Microsoft PowerPoint Could Allow Remote Code Execution Vulnerabilities (949785)
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900033");
-  script_version("$Revision: 12493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 16:17:57 +0100 (Thu, 22 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_bugtraq_id(30552, 30554, 30579);
   script_cve_id("CVE-2008-0120", "CVE-2008-0121", "CVE-2008-1455");
@@ -56,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft PowerPoint 2002/XP/2003/2007 on Windows (All).
   Microsoft PowerPoint Viewer 2003/2007 on Windows (All).");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"impact", value:"Remote attackers could be able to corrupt memory locations via
   a specially crafted PowerPoint files.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-028.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2639185)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903017");
-  script_version("$Revision: 12485 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-0177");
   script_bugtraq_id(52867);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-04-11 09:32:29 +0530 (Wed, 11 Apr 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2639185)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48723/");
@@ -56,8 +55,7 @@ if(description)
   exploited to cause a heap-based buffer overflow via a specially crafted
   Works '.wps' file.");
 
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-028.");

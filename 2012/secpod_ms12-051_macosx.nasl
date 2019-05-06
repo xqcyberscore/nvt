@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-051_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Office Privilege Elevation Vulnerability - 2721015 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901210");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-1894");
   script_bugtraq_id(54361);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-07-11 08:54:28 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Office Privilege Elevation Vulnerability - 2721015 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49876/");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office 2011 for Mac");
   script_tag(name:"insight", value:"The application being installed with insecure folder permissions and can
   be exploited to create arbitrary files in certain directories.");
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-051.");
   script_tag(name:"qod_type", value:"package");

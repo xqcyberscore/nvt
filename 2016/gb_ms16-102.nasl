@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-102.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Microsoft Windows PDF Library Remote Code Execution Vulnerability (3182248)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808647");
-  script_version("$Revision: 11922 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-3319");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-08-10 09:19:34 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Windows PDF Library Remote Code Execution Vulnerability (3182248)");
 
@@ -51,8 +50,7 @@ if(description)
   Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

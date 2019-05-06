@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-061.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # MS Windows Remote Privilege Escalation Vulnerability (3155520)
 #
@@ -26,11 +25,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807587");
-  script_version("$Revision: 11961 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-0178");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-05-11 08:26:35 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Remote Privilege Escalation Vulnerability (3155520)");
@@ -55,8 +54,7 @@ if(description)
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-042.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (936227)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801715");
-  script_version("$Revision: 12485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-14 09:03:25 +0100 (Fri, 14 Jan 2011)");
   script_cve_id("CVE-2007-2223");
   script_bugtraq_id(25301);
@@ -70,8 +69,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an integer overflow error in the 'substringData()'
   method of an XMLDOM/TextNode JavaScript object.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS07-042.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_essentials_mal_prot_eng_rce_vuln_apr18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Malware Protection Engine on Security Essentials RCE Vulnerability - Apr 2018
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813117");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2018-0986");
   script_bugtraq_id(103593);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-04 18:34:03 +0530 (Wed, 04 Apr 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Malware Protection Engine on Security Essentials RCE Vulnerability - Apr 2018");
@@ -54,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Security Essentials");
 
-  script_tag(name:"solution", value:"Run Windows update and update the malware
+  script_tag(name:"solution", value:"Run the Windows Update to update the malware
   protection engine to the latest version available. Typically, no action is
   required as the built-in mechanism for the automatic detection and deployment
   of updates will apply the update itself.");

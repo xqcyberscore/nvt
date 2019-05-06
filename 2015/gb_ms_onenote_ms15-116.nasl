@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_onenote_ms15-116.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft OneNote Privilege Elevation Vulnerability (3104540)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806163");
-  script_version("$Revision: 11872 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-11-11 14:34:29 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote Privilege Elevation Vulnerability (3104540)");
@@ -56,8 +55,7 @@ if(description)
   Microsoft OneNote 2007 Service Pack 3
   Microsoft OneNote 2016 Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

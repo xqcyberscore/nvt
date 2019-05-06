@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln03_HT205375.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-03 (HT205375)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813193");
-  script_version("$Revision: 14292 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2015-5944", "CVE-2015-5935", "CVE-2015-5938");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-15 15:17:32 +0530 (Tue, 15 May 2018)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-03 (HT205375)");
 
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Mac OS X version 10.9.x through
   10.9.5 prior to build 13F1134, 10.10.x through 10.10.5 prior to build 14F1021");
 
-  script_tag(name:"solution", value:"Apply the appropriate patch. For details
-  refer to Reference links.");
+  script_tag(name:"solution", value:"Apply the appropriate patch. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-017.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Vulnerabilities in GDI Could Allow Remote Code Execution (925902)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801720");
-  script_version("$Revision: 12006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-14 09:03:25 +0100 (Fri, 14 Jan 2011)");
   script_cve_id("CVE-2007-0038", "CVE-2007-1211", "CVE-2007-1212",
                  "CVE-2007-1213", "CVE-2007-1215");
@@ -65,8 +64,7 @@ if(description)
     image files.
 
   - Error in Windows TrueType Font Rasterizer.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS07-017.");

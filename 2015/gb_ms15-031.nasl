@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-031.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # Microsoft Schannel Security Feature Bypass Vulnerability (3046049)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805490");
-  script_version("$Revision: 14184 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2015-1637");
   script_bugtraq_id(72965);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-03-11 11:44:31 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Schannel Security Feature Bypass Vulnerability (3046049)");
@@ -67,8 +66,7 @@ if(description)
 
   Microsoft Windows Server 2012/2012R2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/3046049");

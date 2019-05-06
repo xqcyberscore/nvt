@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022727.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4022727)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811196");
-  script_version("$Revision: 12021 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2017-0193", "CVE-2017-8473", "CVE-2017-8474", "CVE-2017-8527",
                 "CVE-2017-0218", "CVE-2017-0219", "CVE-2017-0282", "CVE-2017-8475",
                 "CVE-2017-8476", "CVE-2017-8529", "CVE-2017-8530", "CVE-2017-8531",
@@ -53,7 +52,7 @@ if(description)
                     98930, 98843, 98844, 98846, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-15 16:09:05 +0530 (Thu, 15 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4022727)");
 
@@ -79,8 +78,6 @@ if(description)
    (UWF) with DISK mode is enabled causing NTFS errors with ID: 55 & ID: 130
    to be logged in the Event Logs.
 
-  - For more info refer to reference link.
-
   - Microsoft Edge improperly accesses objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
@@ -92,8 +89,7 @@ if(description)
 
   script_tag(name:"affected", value:"Windows 10 for 32bit/x64-based Systems");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -106,7 +102,6 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_viewer_ms16-042.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Microsoft Windows Excel Viewer Remote Code Execution Vulnerabilities (3148775)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807316");
-  script_version("$Revision: 12096 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-0122", "CVE-2016-0139");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-04-13 10:46:16 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Excel Viewer Remote Code Execution Vulnerabilities (3148775)");
@@ -49,8 +48,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Excel Viewer 2007 Service Pack 3 and prior.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

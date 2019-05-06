@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-064_900225.nasl 12404 2018-11-19 08:40:38Z cfischer $
 # Description: Virtual Address Descriptor Manipulation Elevation of Privilege Vulnerability (956841)
 #
 # Authors:
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900225");
-  script_version("$Revision: 12404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31675);
   script_cve_id("CVE-2008-4036");
@@ -51,8 +50,7 @@ if(description)
   and Virtual Address Descriptors (VADs).");
   script_tag(name:"summary", value:"This host is missing important security update according to
   Microsoft Bulletin MS08-064.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS08-064.mspx");

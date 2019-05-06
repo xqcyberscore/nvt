@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-070.nasl 11848 2018-10-11 15:35:17Z cfischer $
 #
 # Microsoft SQL Server Report Manager Cross Site Scripting Vulnerability (2754849)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902689");
-  script_version("$Revision: 11848 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2012-2552");
   script_bugtraq_id(55783);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 17:35:17 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-10-10 09:46:39 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft SQL Server Report Manager Cross Site Scripting Vulnerability (2754849)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50901");
@@ -63,8 +62,7 @@ if(description)
   script_tag(name:"insight", value:"An error exists in the SQL Server Reporting Services (SSRS), which can be
   exploited to insert client-side script code.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host has important security update missing according to
   Microsoft Bulletin MS12-070.");

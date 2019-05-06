@@ -1,6 +1,5 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-124.nasl 12796 2018-12-13 16:19:35Z cfischer $
 #
 # Microsoft Windows Registry Multiple Vulnerabilities (3193227)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809440");
-  script_version("$Revision: 12796 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-0070", "CVE-2016-0073", "CVE-2016-0075", "CVE-2016-0079");
   script_bugtraq_id(93354, 93355, 93356, 93357);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-13 17:19:35 +0100 (Thu, 13 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-10-12 08:40:20 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Windows Registry Multiple Vulnerabilities (3193227)");
 
@@ -67,8 +66,7 @@ if(description)
 
   Microsoft Windows 10 Version 1607 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

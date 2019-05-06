@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-098.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft WinVerifyTrust Signature Validation Vulnerability (2893294)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903228");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-3900");
   script_bugtraq_id(64079);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-12-11 10:31:03 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft WinVerifyTrust Signature Validation Vulnerability (2893294)");
 
@@ -40,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an critical security update according to Microsoft
 Bulletin MS13-098.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"insight", value:"Flaw is due to WinVerifyTrust function which does not properly handles the
 Windows Authenticode signature verification for portable executable(PE) files.");
   script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior

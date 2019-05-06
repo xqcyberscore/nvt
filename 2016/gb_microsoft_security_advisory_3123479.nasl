@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3123479.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Root Certificate Program SHA-1 Deprecation Advisory (3123479)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806663");
-  script_version("$Revision: 12404 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-01-14 13:09:43 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Root Certificate Program SHA-1 Deprecation Advisory (3123479)");
@@ -62,8 +61,7 @@ if(description)
 
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3197869");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3197875");

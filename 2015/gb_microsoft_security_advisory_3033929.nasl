@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3033929.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Windows SHA-2 Code Signing Support Vulnerability (3033929)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805354");
-  script_version("$Revision: 11876 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2015-0073", "CVE-2015-0075");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-03-20 17:53:39 +0530 (Fri, 20 Mar 2015)");
   script_name("MS Windows SHA-2 Code Signing Support Vulnerability (3033929)");
 
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

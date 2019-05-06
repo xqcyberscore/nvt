@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_auth_bypass_vuln_may17.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Cisco Prime Provisioning Multiple Vulnerabilities - May17
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:cisco:prime_collaboration_provisioning";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811050");
-  script_version("$Revision: 11982 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2017-6622", "CVE-2017-6635");
   script_bugtraq_id(98520, 98535);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-05-23 10:50:56 +0530 (Tue, 23 May 2017)");
   script_name("Cisco Prime Provisioning Multiple Vulnerabilities - May17");
 
@@ -64,8 +63,7 @@ if (description)
   Software Releases 9.0.0, 9.5.0, 10.0.0, 10.5.0, 10.5.1 and 10.6 through 11.5");
 
   script_tag(name:"solution", value:"Upgrade to Cisco Prime Collaboration
-  Provisioning Software Release 12.1 or later. For details refer to
-  reference links");
+  Provisioning Software Release 12.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvc98724");

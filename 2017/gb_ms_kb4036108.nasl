@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4036108.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (KB4036108)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811761");
-  script_version("$Revision: 11863 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-11761", "CVE-2017-8758");
   script_bugtraq_id(100731, 100723);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-09-14 10:51:52 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (KB4036108)");
 
@@ -55,8 +54,7 @@ if(description)
   Microsoft Exchange Server 2013 CU17
   Microsoft Exchange Server 2013 SP1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

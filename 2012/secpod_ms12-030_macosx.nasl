@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-030_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-2663830 (Mac OS X)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902913");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-0141", "CVE-2012-0142", "CVE-2012-0143", "CVE-2012-0184",
                 "CVE-2012-1847");
   script_bugtraq_id(53342, 53373, 53374, 53375, 53379);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-05-09 14:17:49 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-2663830 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49112/");
@@ -52,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to errors while handling OBJECTLINK record, SXLI
   record, MergeCells record and an mismatch error when handling the Series
   record within Excel files.");
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-030.");
   script_tag(name:"qod_type", value:"package");

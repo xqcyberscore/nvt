@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_ms17-014.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # Microsoft Office Word Multiple Vulnerabilities (4013241)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810706");
-  script_version("$Revision: 11936 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-0029", "CVE-2017-0019", "CVE-2017-0030", "CVE-2017-0031",
                 "CVE-2017-0053", "CVE-2017-0105");
   script_bugtraq_id(96045, 96042, 96051, 96052, 96745, 96746);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-15 12:39:37 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Multiple Vulnerabilities (4013241)");
@@ -61,8 +60,7 @@ if(description)
   Microsoft Word 2010 Service Pack 2
   Microsoft Word 2013 Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178683");

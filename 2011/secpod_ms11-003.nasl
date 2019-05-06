@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-003.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2482017)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901180");
-  script_version("$Revision: 11987 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-02-09 17:14:46 +0100 (Wed, 09 Feb 2011)");
   script_cve_id("CVE-2010-3971", "CVE-2011-0035", "CVE-2011-0036", "CVE-2011-0038");
   script_bugtraq_id(45246);
@@ -54,8 +53,7 @@ if(description)
   insecure library loading errors when processing certain HTML or JavaScript
   data, which could be exploited by attackers to execute arbitrary code by
   tricking a user into visiting a malicious web page.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-003.");
   script_tag(name:"qod_type", value:"registry");

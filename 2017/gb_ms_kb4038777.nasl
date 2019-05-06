@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4038777.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4038777)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811746");
-  script_version("$Revision: 11982 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-0161", "CVE-2017-8719", "CVE-2017-8720", "CVE-2017-8628",
                 "CVE-2017-8733", "CVE-2017-8736", "CVE-2017-8675", "CVE-2017-8676",
                 "CVE-2017-8741", "CVE-2017-8677", "CVE-2017-8678", "CVE-2017-8747",
@@ -42,7 +41,7 @@ if(description)
                     100790, 100791, 100792, 100793, 100773);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-09-13 09:34:11 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4038777)");
 
@@ -108,8 +107,7 @@ if(description)
   script_tag(name:"affected", value:"Windows 7 for 32-bit/x64 Systems Service Pack 1
   Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

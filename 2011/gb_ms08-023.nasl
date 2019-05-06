@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-023.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Description: Microsoft 'hxvz.dll' ActiveX Control Memory Corruption Vulnerability (948881)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801491");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T12:31:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_bugtraq_id(28606);
   script_cve_id("CVE-2008-1086");
@@ -51,16 +50,21 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft Windows 2K  Service Pack 4 and prior
+
   Microsoft Windows XP  Service Pack 2 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
-  Microsoft Windows Vista Service Pack 1 and prior.
+
+  Microsoft Windows Vista Service Pack 1 and prior
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an error in 'hxvz.dll' ActiveX control.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-023.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory.
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.
+
   Workaround:
+
   Set the killbit for the following CLSIDs,
   {314111b8-a502-11d2-bbca-00c04f8ec294}, {314111c6-a502-11d2-bbca-00c04f8ec294}");
   script_tag(name:"solution_type", value:"VendorFix");

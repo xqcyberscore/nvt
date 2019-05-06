@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2861855.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Security Advisory (2861855)
 #
@@ -27,17 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803867");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-08-17 16:25:19 +0530 (Sat, 17 Aug 2013)");
   script_name("Microsoft Remote Desktop Protocol Security Advisory (2861855)");
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
 advisory (2861855).");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is due to security issue in Network-level Authentication (NLA)
 method in Remote Desktop Sessions.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_mult_vuln_sep18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-September18
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814207");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2018-8429", "CVE-2018-8430", "CVE-2018-8331", "CVE-2018-8332");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-12 18:05:53 +0530 (Wed, 12 Sep 2018)");
   script_name("Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-September18");
 
@@ -55,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office 2016 Click-to-Run");
 
   script_tag(name:"solution", value:"Upgrade to latest version of Microsoft Office
-  2016 Click-to-Run with respect to update channel used. For details refer to
-  Reference links.");
+  2016 Click-to-Run with respect to update channel used. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

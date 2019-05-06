@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-078.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2783534)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902936");
-  script_version("$Revision: 11876 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-2556", "CVE-2012-4786");
   script_bugtraq_id(56842, 56841);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-12-12 09:08:07 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2783534)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51459/");
@@ -61,8 +60,7 @@ if(description)
 
   - An error when handling certain TrueType Fonts (TTF) can be exploited
     via a specially crafted font file.");
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-078.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # XnView Multiple Vulnerabilities
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811402");
-  script_version("$Revision: 12043 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2017-9914", "CVE-2017-9912", "CVE-2017-9910", "CVE-2017-9911",
                 "CVE-2017-9908", "CVE-2017-9909", "CVE-2017-9906", "CVE-2017-9907",
                 "CVE-2017-9905", "CVE-2017-9903", "CVE-2017-9904", "CVE-2017-9901",
@@ -55,7 +54,7 @@ if(description)
                 "CVE-2017-14270", "CVE-2017-14541", "CVE-2017-14538", "CVE-2017-9913");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-08-07 19:41:51 +0530 (Mon, 07 Aug 2017)");
   script_name("XnView Multiple Vulnerabilities");
 
@@ -75,15 +74,15 @@ if(description)
   - Data from Faulting Address is used as one or more arguments in a subsequent
     Function Call.
 
-  - User Mode Write AV near NULL.
-
-  - For more information refer to reference link.");
+  - User Mode Write AV near NULL.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"XnView Version 2.44 and earlier");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");

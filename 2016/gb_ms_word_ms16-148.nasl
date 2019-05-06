@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_ms16-148.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Word Multiple Information Disclosure Vulnerabilities (3204068)
 #
@@ -26,12 +25,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809751");
-  script_version("$Revision: 11969 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-7268", "CVE-2016-7291", "CVE-2016-7290");
   script_bugtraq_id(94672, 94671, 94670);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-12-14 10:26:19 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Multiple Information Disclosure Vulnerabilities (3204068)");
@@ -50,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Word 2007 and
   Microsoft Word 2010 Service Pack 2.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3128034");

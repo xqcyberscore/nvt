@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-047.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Windows IPsec Policy Processing Information Disclosure Vulnerability (953733)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801484");
-  script_version("$Revision: 12404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-12-21 15:57:21 +0100 (Tue, 21 Dec 2010)");
   script_cve_id("CVE-2008-2246");
   script_bugtraq_id(30634);
@@ -55,8 +54,7 @@ if(description)
   a Windows Server 2003 domain to a Windows Server 2008 domain, which could
   cause all IPsec rules to be ignored and network traffic to be transmitted
   in clear text.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-047.");

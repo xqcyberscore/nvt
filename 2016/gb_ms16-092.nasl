@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-092.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Microsoft Windows Multiple Vulnerabilities (3171910)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808249");
-  script_version("$Revision: 12149 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-3258", "CVE-2016-3272");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-07-13 09:33:37 +0530 (Wed, 13 Jul 2016)");
   script_name("Microsoft Windows Multiple Vulnerabilities (3171910)");
 
@@ -56,8 +55,7 @@ if(description)
   Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

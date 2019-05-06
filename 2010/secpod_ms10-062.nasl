@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-062.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # MPEG-4 Codec Remote Code Execution Vulnerability (975558)
 #
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900250");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_bugtraq_id(43039);
   script_cve_id("CVE-2010-0818");
@@ -49,8 +48,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws exist in MPEG-4 codec included with Windows Media codecs, which
   does not properly handle specially crafted media files that use MPEG-4 video
   encoding.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-062.");
   script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior.

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer-ms16-121.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerability (3194063)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809703");
-  script_version("$Revision: 12313 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-7193");
   script_bugtraq_id(93372);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-10-12 11:04:43 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerability (3194063)");
@@ -50,8 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Word Viewer 2007");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

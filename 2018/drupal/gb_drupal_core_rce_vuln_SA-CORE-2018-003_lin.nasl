@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-003_lin.nasl 12012 2018-10-22 09:20:29Z asteins $
 #
 # Drupal Cross Site Scripting Vulnerability (SA-CORE-2018-003) (Linux)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813212");
-  script_version("$Revision: 12012 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2018-9861");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 11:20:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-19 14:09:14 +0530 (Thu, 19 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Cross Site Scripting Vulnerability (SA-CORE-2018-003) (Linux)");
@@ -56,7 +55,7 @@ if(description)
   Drupal core versions 8.5.0 before 8.5.2 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Drupal core version 8.4.7,
-  8.5.2 or later. For updates refer to the referenced links.");
+  8.5.2 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.drupal.org/sa-core-2018-003");

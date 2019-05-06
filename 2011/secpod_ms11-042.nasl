@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-042.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Microsoft Distributed File System Remote Code Execution Vulnerabilities (2535512)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900288");
-  script_version("$Revision: 12010 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-06-15 15:55:00 +0200 (Wed, 15 Jun 2011)");
   script_bugtraq_id(48180, 48187);
   script_cve_id("CVE-2011-1868", "CVE-2011-1869");
@@ -55,8 +54,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to errors in Microsoft Distributed File System (DFS)
   implementation which fails to validates all fields within specially
   crafted DFS responses.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-042.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-029.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft GDI+ Remote Code Execution Vulnerability (2489979)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902365");
-  script_version("$Revision: 11782 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_version("2019-05-03T12:31:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0041");
   script_bugtraq_id(47250);
@@ -61,8 +60,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by an integer overflow error in the GDI+ library when
   processing malformed data.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-029.");

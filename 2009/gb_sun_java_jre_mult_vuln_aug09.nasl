@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_mult_vuln_aug09.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities - Aug09
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800867");
-  script_version("$Revision: 12629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-05-03T13:51:56+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -63,7 +62,7 @@ if(description)
 
   script_tag(name:"affected", value:"Sun Java JDK/JRE version 6 before Update 15 or 5.0 before Update 20");
 
-  script_tag(name:"insight", value:"Refer to the reference links for more information on the vulnerabilities.");
+
 
   script_tag(name:"summary", value:"This host is installed with Sun Java JDK/JRE and is prone to
   multiple vulnerabilities.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-094.nasl 12493 2018-11-22 15:17:57Z cfischer $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (2639142)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902492");
-  script_version("$Revision: 12493 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2011-3396", "CVE-2011-3413");
   script_bugtraq_id(50967, 50964);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 16:17:57 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-12-14 08:36:00 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (2639142)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47208");
@@ -64,8 +63,7 @@ if(description)
   an insecure manner. This can be exploited to load an arbitrary library by
   tricking a user into opening a PowerPoint file located on a remote WebDAV or SMB share.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-094.");

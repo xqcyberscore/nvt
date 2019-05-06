@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025497.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Microsoft Windows Explorer Remote Code Execution Vulnerability (KB4025497)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811226");
-  script_version("$Revision: 11935 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-8463");
   script_bugtraq_id(99389);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-07-12 09:51:49 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Windows Explorer Remote Code Execution Vulnerability (KB4025497)");
 
@@ -50,8 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-016.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows Movie Maker Could Allow Remote Code Execution Vulnerability (975561)
 #
@@ -36,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900232");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_bugtraq_id(38515);
   script_cve_id("CVE-2010-0265");
@@ -60,8 +59,7 @@ if(description)
   Microsoft Producer 2003");
   script_tag(name:"insight", value:"The flaw is present since applications fails to perform adequate boundary
   checks on user-supplied data.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-016.");
   script_tag(name:"qod_type", value:"registry");

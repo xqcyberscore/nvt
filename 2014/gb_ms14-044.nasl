@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-044.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802080");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-08-13 17:35:15 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)");
@@ -52,8 +51,7 @@ of Service or elevation of privilege.");
 Microsoft SQL Server 2012 x86/x64 Edition Service Pack 1 and prior
 Microsoft SQL Server 2008 R2 x86/x64 Edition Service Pack 2 and prior
 Microsoft SQL Server 2008 x86/x64 Edition Service Pack 3 and prior");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
-  the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-044");

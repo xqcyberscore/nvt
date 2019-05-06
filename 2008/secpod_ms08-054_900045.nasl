@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-054_900045.nasl 12404 2018-11-19 08:40:38Z cfischer $
 # Description: Windows Media Player 11 Remote Code Execution Vulnerability (954154)
 #
 # Authors:
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900045");
-  script_version("$Revision: 12404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
   script_bugtraq_id(30550);
   script_cve_id("CVE-2008-2253");
@@ -47,8 +46,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error when handling sampling rates
 	in Windows Media Player.");
   script_tag(name:"affected", value:"Windows Media Player 11 on Windows XP");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
- update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"impact", value:"Remote attackers can exploit via specially crafted audio
         file stream from a server side playlist (SSPL) that could allow
         arbitrary code execution when streamed from windows media server.

@@ -1,7 +1,6 @@
 ###############################################################################
 ## OpenVAS Vulnerability Test
-## $Id: secpod_ms08-065_remote.nasl 14323 2019-03-19 13:19:09Z jschulte $
-##
+###
 ## Message Queuing Remote Code Execution Vulnerability (951071) - Remote
 ##
 ## Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900244");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-09 17:27:19 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(31637);
   script_cve_id("CVE-2008-3479");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Windows 2000 Service Pack 4 and prior.");
   script_tag(name:"insight", value:"The flaw exists due to a boundary error when parsing RPC requests to the
   Message Queuing (MSMQ).");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing important security update according to
   Microsoft Bulletin MS08-065.");
   script_tag(name:"qod_type", value:"remote_app");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_viewer_ms16-107.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Microsoft Office PowerPoint Viewer Remote Code Execution Vulnerability (3185852)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807360");
-  script_version("$Revision: 12051 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-3360");
   script_bugtraq_id(92796);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-14 11:26:25 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Viewer Remote Code Execution Vulnerability (3185852)");
@@ -52,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft PowerPoint Viewer 2010");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

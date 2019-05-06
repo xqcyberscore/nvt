@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-005.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Microsoft Internet Information Services Privilege Elevation Vulnerability (942831)
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801704");
-  script_version("$Revision: 12010 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-13 17:08:42 +0100 (Thu, 13 Jan 2011)");
   script_cve_id("CVE-2008-0074");
   script_bugtraq_id(27101);
@@ -61,8 +60,7 @@ if(description)
   Microsoft Internet Information Services (IIS) version 7.0");
   script_tag(name:"insight", value:"The flaw is due to an error within the handling of file change
   notifications in the 'FTPRoot', 'NNTPFile\Root', and 'WWWRoot' folders.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-005.");

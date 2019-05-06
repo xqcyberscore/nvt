@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-119.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Edge Multiple Vulnerabilities (3192890)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809439");
-  script_version("$Revision: 12768 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-3267", "CVE-2016-3331", "CVE-2016-3382", "CVE-2016-3386",
                 "CVE-2016-3387", "CVE-2016-3388", "CVE-2016-3389", "CVE-2016-3390",
                 "CVE-2016-3391", "CVE-2016-3392", "CVE-2016-7189", "CVE-2016-7190",
@@ -36,7 +35,7 @@ if(description)
                     93427, 93399);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-10-12 08:03:50 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Multiple Vulnerabilities (3192890)");
@@ -74,8 +73,7 @@ if(description)
   Microsoft Windows 10 Version 1511 x32/x64
   Microsoft Windows 10 Version 1607 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

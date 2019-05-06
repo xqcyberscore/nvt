@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4032241.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Excel 2013 Multiple Vulnerabilities (KB4032241)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813914");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-03T10:12:14+0000");
   script_cve_id("CVE-2018-8382", "CVE-2018-8375", "CVE-2018-8379");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:12:14 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 12:15:59 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Excel 2013 Multiple Vulnerabilities (KB4032241)");
 
@@ -52,9 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Excel 2013");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory.
-  For details refer to Reference links.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

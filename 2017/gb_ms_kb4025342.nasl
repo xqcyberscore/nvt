@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025342.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4025342)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811465");
-  script_version("$Revision: 11879 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2017-8596", "CVE-2017-8598", "CVE-2017-8599", "CVE-2017-8601",
 		"CVE-2017-8602", "CVE-2017-8603", "CVE-2017-8604", "CVE-2017-0170",
   		"CVE-2017-8463", "CVE-2017-8605", "CVE-2017-8606", "CVE-2017-8607",
@@ -46,7 +45,7 @@ if(description)
                     99432, 99400, 99425, 99427, 99396);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-07-12 10:08:33 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4025342)");
 
@@ -80,9 +79,7 @@ if(description)
   - The way that the Windows Kernel handles objects in memory.
 
   - The Microsoft Graphics Component fails to properly handle
-    objects in memory.
-
-  - For More Info refer to reference links.");
+    objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability to gain the same user rights as
@@ -91,8 +88,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Windows 10 Version 1703 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -105,7 +101,6 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

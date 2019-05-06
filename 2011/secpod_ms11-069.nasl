@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-069.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (2567951)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902551");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T11:57:32+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 11:57:32 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_cve_id("CVE-2011-1978");
   script_bugtraq_id(48991);
@@ -49,15 +48,16 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to bypass certain security
   restrictions or gain knowledge of sensitive information.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.0
+
   Microsoft .NET Framework 3.5.1
+
   Microsoft .NET Framework 2.0 Service Pack 2");
   script_tag(name:"insight", value:"The flaw is due to an error when validating the trust level within
   the System.Net.Sockets namespace and can be exploited to bypass CAS (Code
   Access Security) restrictions or disclose information via a specially
   crafted web page viewed using a browser that supports XBAPs (XAML Browser
   Applications).");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-069.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-033.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Prtition Manager Privilege Elevation Vulnerability (2690533)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902677");
-  script_version("$Revision: 11876 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-0178");
   script_bugtraq_id(53378);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-05-09 10:08:42 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Windows Prtition Manager Privilege Elevation Vulnerability (2690533)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49115");
@@ -54,8 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to the way Windows Partition Manager (partmgr.sys)
   allocates objects in memory, when two or more processes or threads call
   Plug and Play (PnP) Configuration Manager functions at the same time.");
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-033.");
   script_tag(name:"qod_type", value:"registry");

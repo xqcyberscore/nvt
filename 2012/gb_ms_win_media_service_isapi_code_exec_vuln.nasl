@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802897");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2003-0227", "CVE-2003-0349");
   script_bugtraq_id(7727, 8035);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-07-25 16:04:16 +0530 (Wed, 25 Jul 2012)");
   script_name("Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/9115");
@@ -61,8 +60,7 @@ if(description)
   script_tag(name:"insight", value:"Windows Media Services logging capability for multicast transmissions is
   implemented as ISAPI extension (nsiislog.dll), which fails to processes
   incoming client or malicious HTTP requests.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is running Microsoft Windows Media Services and is prone
   to remote code execution vulnerabilities.");
 

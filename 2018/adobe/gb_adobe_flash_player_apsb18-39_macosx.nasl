@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb18-39_macosx.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Adobe Flash Player Security Update(apsb18-39)-MAC OS X
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814287");
-  script_version("$Revision: 12938 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2018-15978");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-14 17:09:58 +0530 (Wed, 14 Nov 2018)");
   script_name("Adobe Flash Player Security Update(apsb18-39)-MAC OS X");
 
@@ -53,12 +52,12 @@ if(description)
   on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  31.0.0.148 or later. For updates refer to References.");
+  31.0.0.148 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb18-39.html");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

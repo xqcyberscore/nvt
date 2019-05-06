@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_remote_code_exec_vuln.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Internet Explorer Remote Code Execution Vulnerability (2794220)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902699");
-  script_version("$Revision: 11876 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-4792");
   script_bugtraq_id(57070);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-01-02 10:52:56 +0530 (Wed, 02 Jan 2013)");
   script_name("Microsoft Internet Explorer Remote Code Execution Vulnerability (2794220)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51695");
@@ -55,8 +54,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw exists due to the way that Internet Explorer accesses an object that has
   been deleted or has not been properly allocated and causing use-after-free
   error when handling the CDwnBindInfo object.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-008.");
   script_tag(name:"qod_type", value:"registry");

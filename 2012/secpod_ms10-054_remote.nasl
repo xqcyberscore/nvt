@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-054_remote.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft SMB Server Trans2 Request Remote Code Execution Vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902662");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2010-2550", "CVE-2010-2551", "CVE-2010-2552");
   script_bugtraq_id(42224, 42263, 42267);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-02-29 12:16:56 +0530 (Wed, 29 Feb 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -66,8 +65,7 @@ if(description)
   server, which allows remote attackers to execute arbitrary code on the
   system by sending a malformed SMB Trans2 request.");
 
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-054.");

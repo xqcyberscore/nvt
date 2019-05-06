@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_multiple_dir_trav_vuln_may17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco Prime Collaboration Provisioning Multiple Directory Traversal Vulnerabilities - May17
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:cisco:prime_collaboration_provisioning";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811056");
-  script_version("$Revision: 11863 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2017-6637", "CVE-2017-6636");
   script_bugtraq_id(98530, 98526);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-05-29 13:39:30 +0530 (Mon, 29 May 2017)");
   script_name("Cisco Prime Collaboration Provisioning Multiple Directory Traversal Vulnerabilities - May17");
 
@@ -58,8 +57,7 @@ if (description)
   Software Releases 9.0.0, 9.5.0, 10.0.0, 10.5.0, 10.5.1 and 10.6 through 11.0");
 
   script_tag(name:"solution", value:"Upgrade to Cisco Prime Collaboration
-  Provisioning Software Release 11.1 or later. For details refer to
-  reference links");
+  Provisioning Software Release 11.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvc99618");

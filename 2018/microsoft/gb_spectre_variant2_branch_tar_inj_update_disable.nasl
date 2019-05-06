@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spectre_variant2_branch_tar_inj_update_disable.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Spectre Variant 2 (CVE 2017-5715) Branch Target Injection Update Disable (KB4078130)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812678");
-  script_version("$Revision: 12410 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-29 16:17:29 +0530 (Mon, 29 Jan 2018)");
   script_name("Spectre Variant 2 (CVE 2017-5715) Branch Target Injection Update Disable (KB4078130)");
 
@@ -69,8 +68,7 @@ if(description)
 
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

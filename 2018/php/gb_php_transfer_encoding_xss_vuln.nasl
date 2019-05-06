@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_transfer_encoding_xss_vuln.nasl 11491 2018-09-20 08:17:10Z cfischer $
 #
 # PHP 'Transfer-Encoding: chunked' XSS Vulnerability
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814021");
-  script_version("$Revision: 11491 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2018-17082");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:17:10 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-18 12:42:13 +0530 (Tue, 18 Sep 2018)");
   script_name("PHP 'Transfer-Encoding: chunked' XSS Vulnerability");
 
@@ -57,7 +56,7 @@ if(description)
   before 7.0.32, 7.1.x before 7.1.22, and 7.2.x before 7.2.10.");
 
   script_tag(name:"solution", value:"Upgrade to PHP 5.6.38 or 7.2.10 or 7.1.22
-  or later. For details refer to Reference links.");
+  or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

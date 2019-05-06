@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_auth_bypas_cve_2012_2122.nasl 12591 2018-11-30 08:08:40Z cfischer $
 #
 # MySQL / MariaDB Authentication Bypass
 #
@@ -30,9 +29,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103492");
   script_bugtraq_id(53911);
   script_cve_id("CVE-2012-2122");
-  script_version("$Revision: 12591 $");
+  script_version("2019-05-03T14:30:54+0000");
   script_name("MySQL / MariaDB Authentication Bypass");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 09:08:40 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 14:30:54 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-06-11 18:38:54 +0200 (Mon, 11 Jun 2012)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -89,7 +88,7 @@ cpe  = infos["cpe"];
 if( ! vers = get_app_location( cpe:cpe, port:port ) )
   exit( 0 );
 
-# nb: The vulnerability exists only on specific builds and the original avdisory says:
+# nb: The vulnerability exists only on specific builds and the original advisory says:
 # "many MySQL/MariaDB builds are not affected by this bug."
 # "As far as I know, official vendor MySQL and MariaDB binaries are not vulnerable."
 # Starting from year 2018 (6 years after the vuln) we're now only checking the mentioned

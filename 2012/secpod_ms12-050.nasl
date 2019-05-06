@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-050.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902847");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_bugtraq_id(53842, 54312, 54313, 54314, 54315, 54316);
   script_cve_id("CVE-2012-1858", "CVE-2012-1859", "CVE-2012-1860", "CVE-2012-1861",
                 "CVE-2012-1862", "CVE-2012-1863");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-07-11 11:11:11 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49875");
@@ -89,8 +88,7 @@ if(description)
     not properly sanitised before being returned to the user. This can be
     exploited to execute arbitrary HTML and script code in a user's browser
     session in context of an affected site.");
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-050.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-057.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3000414)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804777");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2014-4073", "CVE-2014-4121", "CVE-2014-4122");
   script_bugtraq_id(70313, 70351, 70312);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-10-15 11:15:20 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -58,8 +57,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft .NET Framework 2.0, 3.5,
   3.5.1, 4.0, 4.5, 4.5.1 and 4.5.2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"registry");
 

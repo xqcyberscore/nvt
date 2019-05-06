@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-070_remote.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Microsoft ASP.NET Information Disclosure Vulnerability (2418042)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901161");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-29 13:56:35 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3332");
   script_bugtraq_id(43316);
@@ -59,8 +58,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error within ASP.NET in the handling of
   cryptographic padding when using encryption in CBC mode. This can be
   exploited to decrypt data via returned error codes from an affected server.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-070.");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-063.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Web Services on Devices API Remote Code Execution Vulnerability (973565)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801480");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-11-25 08:29:59 +0100 (Thu, 25 Nov 2010)");
   script_cve_id("CVE-2009-2512");
   script_bugtraq_id(36919);
@@ -56,8 +55,7 @@ if(description)
   API (WSDAPI), on both clients and servers, when processing a WSD message
   with malformed headers.");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-063.");
   exit(0);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln34_jun16_lin.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-34 Jun-2016 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808152");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T14:30:54+0000");
   script_cve_id("CVE-2013-5767", "CVE-2013-5786", "CVE-2013-5793");
   script_bugtraq_id(63113, 63107, 63116);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 14:30:54 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-07 12:01:54 +0530 (Tue, 07 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-34 Jun-2016 (Linux)");
 
@@ -43,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Apply the patch the referenced avdisory.");
+  script_tag(name:"solution", value:"Apply the patch the referenced advisory.");
 
   script_tag(name:"insight", value:"Unspecified errors in the MySQL
   Server component via unknown vectors related to Optimizer and InnoDB.");

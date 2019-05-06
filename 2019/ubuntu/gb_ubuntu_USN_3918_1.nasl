@@ -21,15 +21,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843938");
-  script_version("2019-04-04T14:50:45+0000");
+  script_version("2019-05-03T10:20:18+0000");
   script_cve_id("CVE-2019-9788", "CVE-2019-9789", "CVE-2019-9790", "CVE-2019-9791",
                   "CVE-2019-9792", "CVE-2019-9795", "CVE-2019-9796", "CVE-2019-9797",
                   "CVE-2019-9799", "CVE-2019-9802", "CVE-2019-9805", "CVE-2019-9806",
                   "CVE-2019-9807", "CVE-2019-9808", "CVE-2019-9809", "CVE-2019-9793",
                   "CVE-2019-9803");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-05-03 10:20:18 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 13:45:24 +0000 (Thu, 28 Mar 2019)");
   script_name("Ubuntu Update for firefox USN-3918-1");
   script_category(ACT_GATHER_INFO);

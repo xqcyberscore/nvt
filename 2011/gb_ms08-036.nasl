@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-036.nasl 12437 2018-11-20 12:21:11Z santu $
 #
 # Microsoft Pragmatic General Multicast (PGM)  Denial of Service Vulnerability (950762)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801485");
-  script_version("$Revision: 12437 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 13:21:11 +0100 (Tue, 20 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_cve_id("CVE-2008-1440", "CVE-2008-1441");
   script_bugtraq_id(29509, 29508);
@@ -56,8 +55,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to the errors in Pragmatic General Multicast
   (PGM) protocol when handling PGM packets with an invalid option length
   field or fragment option.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-036.");

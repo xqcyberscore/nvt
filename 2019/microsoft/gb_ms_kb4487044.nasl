@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814911");
-  script_version("$Revision: 13642 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2019-0555", "CVE-2019-0590", "CVE-2019-0591", "CVE-2019-0593",
                 "CVE-2019-0595", "CVE-2019-0596", "CVE-2019-0597", "CVE-2019-0598",
                 "CVE-2019-0599", "CVE-2019-0600", "CVE-2019-0601", "CVE-2019-0602",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2019-0659", "CVE-2019-0660", "CVE-2019-0662", "CVE-2019-0676");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 16:21:09 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 13:57:04 +0530 (Wed, 13 Feb 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4487044)");
 
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Windows 10 Version 1809 for 32-bit/x64 Systems");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update the mentioned hotfixes in the advisory.
-  For updates refer to the Reference links.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -72,7 +70,6 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

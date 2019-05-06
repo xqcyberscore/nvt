@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-048.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Microsoft Windows SMB Server Remote Code Execution Vulnerability (2536275)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902440");
-  script_version("$Revision: 12010 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-06-15 15:55:00 +0200 (Wed, 15 Jun 2011)");
   script_cve_id("CVE-2011-1267");
   script_tag(name:"cvss_base", value:"7.8");
@@ -52,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused when Microsoft Server Message Block (SMB) protocol
   software improperly handles SMB packets, including some pre-authentication
   scenarios.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-048.");
   script_tag(name:"qod_type", value:"registry");

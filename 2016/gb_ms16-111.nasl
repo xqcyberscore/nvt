@@ -1,6 +1,5 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-111.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Microsoft Windows Kernel Multiple Vulnerabilities (3186973)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809220");
-  script_version("$Revision: 12363 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-3305", "CVE-2016-3306", "CVE-2016-3371", "CVE-2016-3372",
                 "CVE-2016-3373");
   script_bugtraq_id(92812, 92813, 92814, 92815, 92845);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-14 08:08:04 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows Kernel Multiple Vulnerabilities (3186973)");
 
@@ -64,8 +63,7 @@ if(description)
   Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

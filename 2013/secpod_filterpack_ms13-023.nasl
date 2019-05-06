@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_filterpack_ms13-023.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Filter Pack Remote Code Execution Vulnerability (2801261)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902958");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-0079");
   script_bugtraq_id(58369);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-03-13 13:42:19 +0530 (Wed, 13 Mar 2013)");
   script_name("Microsoft Filter Pack Remote Code Execution Vulnerability (2801261)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52550");
@@ -52,8 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Filter Pack Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaw is caused by a type confusion error when handling Tree objects
   and can be exploited via a specially crafted Visio file.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-023.");

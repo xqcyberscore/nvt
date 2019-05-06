@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_jun17.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (4022730)
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811193");
-  script_version("$Revision: 11874 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-3075", "CVE-2017-3081", "CVE-2017-3083", "CVE-2017-3084",
 		"CVE-2017-3076", "CVE-2017-3077", "CVE-2017-3078", "CVE-2017-3079",
 		"CVE-2017-3082");
   script_bugtraq_id(99023, 99025);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-14 08:23:18 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (4022730)");
 
@@ -66,8 +65,7 @@ if(description)
 
   Windows Server 2012/2012 R2/2016");
 
-  script_tag(name:"solution", value:"Run Windows update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

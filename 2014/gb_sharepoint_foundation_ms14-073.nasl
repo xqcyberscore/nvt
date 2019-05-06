@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_foundation_ms14-073.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3000431)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:sharepoint_foundation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805014");
-  script_version("$Revision: 11867 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-4116");
   script_bugtraq_id(70980);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-11-12 09:52:30 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3000431)");
 
@@ -53,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft SharePoint Foundation 2010 Service Pack 2 and prior.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

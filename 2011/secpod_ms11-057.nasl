@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-057.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2559049)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902613");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_cve_id("CVE-2011-1257", "CVE-2011-1960", "CVE-2011-1961", "CVE-2011-1962",
                 "CVE-2011-1963", "CVE-2011-1964", "CVE-2011-2383");
@@ -53,8 +52,7 @@ if(description)
   memory, handles JavaScript event handlers, accesses files stored in the
   local machine, renders data during certain processes and the way the telnet
   handler executes the associated application.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-057.");
   script_tag(name:"qod_type", value:"registry");

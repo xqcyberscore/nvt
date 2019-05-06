@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3114416.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Access Remote Code Execution Vulnerability (KB3114416)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813033");
-  script_version("$Revision: 12410 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2018-0903");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-14 09:45:51 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Access Remote Code Execution Vulnerability (KB3114416)");
 
@@ -50,8 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Access 2010 Service Pack 2.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

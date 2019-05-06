@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-025.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802073");
-  script_version("$Revision: 14185 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-1812");
   script_bugtraq_id(67275);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-05-14 12:36:12 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)");
@@ -64,8 +63,7 @@ if(description)
 
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"registry");
 

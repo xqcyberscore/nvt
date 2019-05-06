@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-082.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Microsoft Windows Search Component Denial of Service Vulnerability (3165270)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808163");
-  script_version("$Revision: 11938 $");
+  script_version("2019-05-03T11:57:32+0000");
   script_cve_id("CVE-2016-3230");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 11:57:32 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-15 08:50:23 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows Search Component Denial of Service Vulnerability (3165270)");
 
@@ -44,18 +43,22 @@ if(description)
   fails to properly handle certain objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to
-  potenially escalate permissions or perform additional privileged actions on the
+  potentially escalate permissions or perform additional privileged actions on the
   target machine.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
-  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,7 +75,6 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

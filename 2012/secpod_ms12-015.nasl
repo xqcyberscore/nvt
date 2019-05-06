@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-015.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Office Visio Viewer Remote Code Execution Vulnerabilities (2663510)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902423");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-0019", "CVE-2012-0020", "CVE-2012-0136", "CVE-2012-0137",
                 "CVE-2012-0138");
   script_bugtraq_id(51903, 51904, 51906, 51907, 51908);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-02-15 09:34:05 +0530 (Wed, 15 Feb 2012)");
   script_name("Microsoft Office Visio Viewer Remote Code Execution Vulnerabilities (2663510)");
   script_xref(name:"URL", value:"https://secunia.com/advisories/47946");
@@ -54,8 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to an unspecified error when validating certain
   data in specially crafted Visio files, this can be exploited to corrupt
   memory.");
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-015.");
   script_tag(name:"qod_type", value:"registry");

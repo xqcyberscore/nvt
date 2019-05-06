@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_services_ms13-067.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Office Services Remote Code Execution vulnerability (2834052)
 #
@@ -29,21 +28,20 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903325");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-1330", "CVE-2013-3179", "CVE-2013-3180", "CVE-2013-0081",
                 "CVE-2013-1315");
   script_bugtraq_id(62221, 62227, 62254, 62205, 62167);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-10-09 15:37:45 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Services Remote Code Execution vulnerability (2834052)");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
   Bulletin MS13-067.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"insight", value:"Multiple Flaws are due to,
 
   - An error when handling an unassigned workflow can be exploited to cause the

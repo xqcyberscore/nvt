@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-040.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # MS Windows Threat Management Gateway Firewall Client Remote Code Execution Vulnerability (2520426)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902444");
-  script_version("$Revision: 12465 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-06-15 15:55:00 +0200 (Wed, 15 Jun 2011)");
   script_cve_id("CVE-2011-1889");
   script_bugtraq_id(48181);
@@ -60,8 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Forefront Threat Management Gateway 2010 SP1 and prior.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-  mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

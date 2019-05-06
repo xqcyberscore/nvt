@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-050_900034.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Windows Messenger Could Allow Information Disclosure Vulnerability (955702
 #
 # Authors:
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900034");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_bugtraq_id(30551);
   script_cve_id("CVE-2008-0082");
@@ -49,8 +48,7 @@ if(description)
         and a user's login ID.");
   script_tag(name:"affected", value:"Windows Messenger 4.7 on MS Windows 2K/XP
         Windows Messenger 5.1 on MS Windows 2K/XP/2003");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
- update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"impact", value:"Remote attackers can log on to a user's Messenger client as a user,
         and can initiate audio and video chat sessions without user interaction.");
   script_tag(name:"qod_type", value:"registry");

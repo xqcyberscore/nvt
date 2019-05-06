@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms06-040_remote.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)
 #
@@ -28,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902782");
-  script_version("$Revision: 11987 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_bugtraq_id(19409);
   script_cve_id("CVE-2006-3439");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-30 11:26:07 +0530 (Fri, 30 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_name("Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -58,8 +57,7 @@ if(description)
   function in netapi32.dll and can be exploited to cause a stack-based buffer
   overflow via a malicious NetrpPathCanonicalize RPC request with an overly
   long path name to the Server Service.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing important security update according to
   Microsoft Bulletin MS06-040.");
 

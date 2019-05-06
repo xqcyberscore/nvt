@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-16_2016-38_1_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-16_2016-38_1 )-Windows
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808695");
-  script_version("$Revision: 12051 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792",
 		"CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796",
 		"CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800",
@@ -40,7 +39,7 @@ if(description)
   script_bugtraq_id(84222, 84221, 84223, 84219, 84218);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-07 11:44:05 +0530 (Wed, 07 Sep 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-16_2016-38_1 )-Windows");
 
@@ -49,17 +48,16 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exist, Refer to the reference
-  link for more information.");
+  script_tag(name:"insight", value:"Multiple flaws exist. Please see the references for more information.");
 
   script_tag(name:"impact", value:"Successful exploitation of this
-  vulnerability will allow remote attackers  to cause a denial of service
+  vulnerability will allow remote attackers to cause a denial of service
   (memory corruption and application crash) or possibly execute arbitrary code.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbird version before
   45 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 45");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 45 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

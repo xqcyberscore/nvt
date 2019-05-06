@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-072.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808162");
-  script_version("$Revision: 12313 $");
+  script_version("2019-05-03T11:57:32+0000");
   script_cve_id("CVE-2016-3223");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 11:57:32 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-15 08:50:23 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)");
 
@@ -44,20 +43,26 @@ if(description)
   Microsoft Windows processes group policy updates.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to
-  potenially escalate permissions or perform additional privileged actions on the
+  potentially escalate permissions or perform additional privileged actions on the
   target machine.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
-  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,9 +77,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

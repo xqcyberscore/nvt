@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-063.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Microsoft Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2567680)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902463");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_cve_id("CVE-2011-1967");
   script_bugtraq_id(48992);
@@ -57,8 +56,7 @@ if(description)
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
   script_tag(name:"insight", value:"The flaw is due to error in the Client/Server Run-time Subsystem
   (CSRSS) when evaluates inter-process device event message permissions.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-063.");
   script_tag(name:"qod_type", value:"registry");

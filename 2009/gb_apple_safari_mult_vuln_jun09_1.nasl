@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800814");
-  script_version("2019-04-29T15:08:03+0000");
-  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
+  script_version("2019-05-03T13:51:56+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if(description)
   security restrictions, sensitive information disclosure, XSS attacks, execute
   JavaScript code, DoS attack and can cause other attacks.");
   script_tag(name:"affected", value:"Apple Safari version prior to 4.0 on Windows.");
-  script_tag(name:"insight", value:"Refer to the reference links for more information on the vulnerabilities.");
+
   script_tag(name:"solution", value:"Upgrade to Safari version 4.0.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to
   to multiple vulnerabilities.");

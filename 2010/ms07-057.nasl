@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms07-057.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Cumulative Security Update for Internet Explorer (939653)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102060");
-  script_version("$Revision: 14331 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-03T12:31:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(25915, 25916, 24911);
   script_cve_id("CVE-2007-3892", "CVE-2007-3893", "CVE-2007-3826");
@@ -44,7 +43,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
 
-  script_tag(name:"solution", value:"Run Windows update or apply available patches.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

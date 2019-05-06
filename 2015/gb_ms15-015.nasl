@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-015.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Windows Create Process Elevation of Privilege Vulnerability (3031432)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805272");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2015-0062");
   script_bugtraq_id(72458);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-02-11 08:09:52 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Windows Create Process Elevation of Privilege Vulnerability (3031432)");
 
@@ -57,8 +56,7 @@ if(description)
 
   Microsoft Windows Server 2012/R2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

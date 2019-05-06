@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4019090_remote.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Microsoft SQL Server 2012 Service Pack 3 Information Disclosure Vulnerability-KB4019090 (Remote)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811293");
-  script_version("$Revision: 11962 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-08-09 15:26:44 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server 2012 Service Pack 3 Information Disclosure Vulnerability-KB4019090 (Remote)");
 
@@ -52,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft SQL Server 2012 x64/x86 Service Pack 3 (CU)");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

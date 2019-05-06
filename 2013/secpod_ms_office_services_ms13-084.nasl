@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_services_ms13-084.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Office Services Remote Code Execution vulnerability (2885089)
 #
@@ -29,20 +28,19 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903328");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-10-09 17:36:47 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Services Remote Code Execution vulnerability (2885089)");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
   Bulletin MS13-084.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"insight", value:"Flaw is due to improper sanitation of user supplied input via a specially
   crafted Excel file.");
   script_tag(name:"affected", value:"Excel Services on Microsoft SharePoint Server 2007/2010/2013,

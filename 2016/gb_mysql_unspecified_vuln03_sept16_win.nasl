@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809300");
-  script_version("$Revision: 12983 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 16:30:19 +0100 (Tue, 08 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-12 13:20:02 +0530 (Mon, 12 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Unspecified Vulnerability-03 Sep16 (Windows)");
@@ -40,8 +40,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple errors exist, for more
-  information refer to reference links.");
+  script_tag(name:"insight", value:"Multiple errors exist. Please see the references for more information.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   remote attacker to gain elevated privileges on the affected system, also

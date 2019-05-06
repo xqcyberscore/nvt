@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms15-012.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3032328)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805047");
-  script_version("$Revision: 11872 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2015-0064");
   script_bugtraq_id(72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-02-11 12:05:18 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3032328)");
 
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Word
   Automation Services Service Pack 2 and prior.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

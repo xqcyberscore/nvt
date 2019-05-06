@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-061.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2876063)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902992");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-2393", "CVE-2013-3776", "CVE-2013-3781");
   script_bugtraq_id(59129, 61234, 61232);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-08-14 13:28:33 +0530 (Wed, 14 Aug 2013)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2876063)");
 
@@ -40,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security update according to
 Microsoft Bulletin MS13-061.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
-  the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"insight", value:"The flaws exist in the WebReady Document Viewing and Data Loss Prevention
 features of Microsoft Exchange Server.");
   script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3

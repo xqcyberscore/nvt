@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-036.nasl 12493 2018-11-22 15:17:57Z cfischer $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (2545814)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902430");
-  script_version("$Revision: 12493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 16:17:57 +0100 (Thu, 22 Nov 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-05-11 14:45:15 +0200 (Wed, 11 May 2011)");
   script_cve_id("CVE-2011-1269", "CVE-2011-1270");
   script_tag(name:"cvss_base", value:"9.3");
@@ -62,8 +61,7 @@ if(description)
   when parsing a malformed PowerPoint file, which could be exploited to execute
   arbitrary code via a malicious document.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-036.");

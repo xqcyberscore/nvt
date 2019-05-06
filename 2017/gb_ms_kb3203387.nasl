@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203387.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft SharePoint Enterprise Server 2013 Unspecified Vulnerability (KB3203387)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811189");
-  script_version("$Revision: 11863 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-8509", "CVE-2017-8511", "CVE-2017-8512", "CVE-2017-8514");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-15 21:30:22 +0530 (Thu, 15 Jun 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2013 Unspecified Vulnerability (KB3203387)");
 
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft SharePoint Enterprise Server 2013
   Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

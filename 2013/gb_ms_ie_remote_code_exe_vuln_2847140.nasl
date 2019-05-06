@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_remote_code_exe_vuln_2847140.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Internet Explorer Remote Code Execution Vulnerability (2847140)
 #
@@ -29,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803395");
-  script_version("$Revision: 11876 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2013-1347");
   script_bugtraq_id(59641);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-05-06 18:35:10 +0530 (Mon, 06 May 2013)");
   script_name("MS Internet Explorer Remote Code Execution Vulnerability (2847140)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53314");
@@ -52,8 +51,7 @@ if(description)
   and failed attacks will cause denial of service conditions.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 8.x and 9.x");
   script_tag(name:"insight", value:"use-after-free error when handling 'CGenericElement'");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-038.");

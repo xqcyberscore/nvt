@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_traccar_xxe_vuln.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Traccar Server <= 4.2 XXE Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112483");
-  script_version("$Revision: 13427 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
+  script_version("2019-05-03T13:51:56+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-14 11:06:12 +0100 (Mon, 14 Jan 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +52,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerable vector to allow such an attack lies in protocol/SpotProtocolDecoder.java.");
   script_tag(name:"affected", value:"Traccar Server through version 4.2.");
-  script_tag(name:"solution", value:"Updates are available. Please refer to the references to apply the fix manually.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_xref(name:"URL", value:"https://github.com/traccar/traccar/commit/d7f6c53fd88635885914013649b6807ec53227bf");
   script_xref(name:"URL", value:"https://www.traccar.org/blog/");

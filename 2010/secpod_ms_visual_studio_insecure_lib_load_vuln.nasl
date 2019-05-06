@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_studio_insecure_lib_load_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Microsoft Visual Studio Insecure Library Loading Vulnerability
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902255");
-  script_version("$Revision: 12490 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3190");
   script_tag(name:"cvss_base", value:"9.3");
@@ -52,8 +51,7 @@ if(description)
   loading libraries in an insecure manner. This can be exploited to load
   arbitrary libraries by tricking a user into opening a TRC file located on a remote WebDAV or SMB share.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
-  and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is installed with Microsoft Visual Studio and is prone
   to insecure library loading vulnerability.

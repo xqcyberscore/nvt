@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_color_control_panel_priv_escalation.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Microsoft Windows Color Control Panel Privilege Escalation Vulnerability
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802383");
-  script_version("$Revision: 12490 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2010-5082");
   script_bugtraq_id(44157);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-01-19 16:17:52 +0530 (Thu, 19 Jan 2012)");
   script_name("Microsoft Windows Color Control Panel Privilege Escalation Vulnerability");
 
@@ -56,8 +55,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in the Color Control Panel, which
   allows attackers to gain privileges via a Trojan horse sti.dll file in the current working directory.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
-  and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"Microsoft Windows Server 2008 SP2 is prone to privilege
   escalation vulnerability.

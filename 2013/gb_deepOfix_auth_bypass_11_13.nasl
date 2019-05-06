@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deepOfix_auth_bypass_11_13.nasl 14004 2019-03-05 17:53:23Z cfischer $
 #
 # DeepOfix SMTP Authentication Bypass
 #
@@ -29,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103833");
   script_cve_id("CVE-2013-6796");
-  script_version("$Revision: 14004 $");
+  script_version("2019-05-03T14:30:54+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 18:53:23 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 14:30:54 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
   script_name("DeepOfix SMTP Authentication Bypass");
   script_category(ACT_ATTACK);
@@ -76,7 +75,7 @@ include("host_details.inc");
 
 port = get_smtp_port(default:25);
 banner = get_smtp_banner(port:port);
-# e.g. 220 deepofix.local ESMTP from the packetstorm avdisory.
+# e.g. 220 deepofix.local ESMTP from the packetstorm advisory.
 if(!banner || (banner !~ "^220 [^ ]+ ESMTP$" && "Powered by the new deepOfix Mail Server" >!< banner && "Welcome to deepOfix" >!< banner))
   exit(0);
 

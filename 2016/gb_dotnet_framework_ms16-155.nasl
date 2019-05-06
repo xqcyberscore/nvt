@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-155.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3205640)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809760");
-  script_version("$Revision: 12768 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-7270");
   script_bugtraq_id(94741);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-12-14 15:04:05 +0530 (Wed, 14 Dec 2016)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3205640)");
   script_tag(name:"summary", value:"This host is missing an important security
@@ -49,8 +48,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.6.2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

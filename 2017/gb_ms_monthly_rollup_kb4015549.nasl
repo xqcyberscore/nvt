@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_monthly_rollup_kb4015549.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Microsoft Windows Monthly Rollup (KB4015549)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810851");
-  script_version("$Revision: 11900 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2013-6629", "CVE-2017-0058", "CVE-2017-0155", "CVE-2017-0156",
 		"CVE-2017-0158", "CVE-2017-0163", "CVE-2017-0166", "CVE-2017-0168",
 		"CVE-2017-0180", "CVE-2017-0182", "CVE-2017-0183", "CVE-2017-0184",
@@ -37,7 +36,7 @@ if(description)
                     97427, 97428, 97435, 97466, 97452, 97498, 97441, 97512);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-12 12:43:38 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Windows Monthly Rollup (KB4015549)");
 
@@ -59,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Windows 7 for 32-bit/x64 Systems Service Pack 1
   Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

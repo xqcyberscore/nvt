@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_20ba39cba9_poppler_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for poppler FEDORA-2018-20ba39cba9
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873989");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-05-03T10:20:18+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:20:18 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-10 07:42:58 +0100 (Wed, 10 Jan 2018)");
   script_cve_id("CVE-2017-1000456");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for poppler FEDORA-2018-20ba39cba9");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'poppler'

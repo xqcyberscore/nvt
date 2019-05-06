@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-082.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Host Integration Server Denial of Service Vulnerabilities (2607670)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902580");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-2007", "CVE-2011-2008");
   script_bugtraq_id(49997, 49998);
@@ -55,8 +54,7 @@ if(description)
   memory and cause the snabase.exe, snaserver.exe, snalink.exe, or
   mngagent.exe process to stop responding via specially crafted requests
   sent to UDP port 1478 or TCP ports 1477 and 1478.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-082.");
 

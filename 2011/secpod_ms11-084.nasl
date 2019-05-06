@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-084.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Windows Kernel-Mode Drivers Remote Code Execution Vulnerability (2617657)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902485");
-  script_version("$Revision: 11997 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2011-2004");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-11-09 09:06:04 +0530 (Wed, 09 Nov 2011)");
   script_name("Windows Kernel-Mode Drivers Remote Code Execution Vulnerability (2617657)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46751");
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an array-indexing error in 'Win32k.sys' when
   parsing TrueType font files, which can be exploited by attackers to cause
   a denial of service.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host has moderate security update missing according to
   Microsoft Bulletin MS11-084.");
   script_tag(name:"qod_type", value:"registry");

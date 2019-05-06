@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_ms14-036.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Live Meeting Remote Code Execution Vulnerability (2967487)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:office_live_meeting";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804598");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-06-11 15:48:21 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Live Meeting Remote Code Execution Vulnerability (2967487)");
 
@@ -50,8 +49,7 @@ Bulletin MS14-036.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
 and compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft Live Meeting 2007 Console");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

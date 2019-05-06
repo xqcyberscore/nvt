@@ -1,8 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms17-013.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
-# Microsoft Office Multiple RCE nd Information Disclosure Vulnerabilities (4013075)
+# Microsoft Office Multiple RCE and Information Disclosure Vulnerabilities (4013075)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810834");
-  script_version("$Revision: 12021 $");
+  script_version("2019-05-03T11:57:32+0000");
   script_cve_id("CVE-2017-0060", "CVE-2017-0073", "CVE-2017-0108", "CVE-2017-0014");
   script_bugtraq_id(96713, 96637, 96722, 96013);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 11:57:32 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-30 14:40:25 +0530 (Thu, 30 Mar 2017)");
-  script_name("Microsoft Office Multiple RCE nd Information Disclosure Vulnerabilities (4013075)");
+  script_name("Microsoft Office Multiple RCE and Information Disclosure Vulnerabilities (4013075)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS17-013.");
@@ -50,10 +49,10 @@ if(description)
   create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
+
   Microsoft Office 2010 Service Pack 2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

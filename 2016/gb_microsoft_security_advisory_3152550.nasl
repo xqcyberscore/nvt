@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3152550.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Wireless Mouse Input Filtering Improvement Advisory (3152550)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807544");
-  script_version("$Revision: 12313 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-04-14 14:33:32 +0530 (Thu, 14 Apr 2016)");
   script_name("Microsoft Wireless Mouse Input Filtering Improvement Advisory (3152550)");
 
@@ -53,8 +52,7 @@ if(description)
   Microsoft Windows 8.1 x32/x64
   Microsoft Windows 7 x32/x64 Edition Service Pack 1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   ##qod is executable_version_unreliable as only Microsoft wireless devices are affected
   script_tag(name:"qod_type", value:"executable_version_unreliable");

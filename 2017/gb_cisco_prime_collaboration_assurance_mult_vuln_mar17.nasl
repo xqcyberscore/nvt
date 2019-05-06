@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_collaboration_assurance_mult_vuln_mar17.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco Prime Collaboration Assurance Multiple Vulnerabilities - Mar17
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:cisco:prime_collaboration_assurance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810677");
-  script_version("$Revision: 11874 $");
+  script_version("2019-05-03T10:12:14+0000");
   script_cve_id("CVE-2017-3843", "CVE-2017-3844", "CVE-2017-3845");
   script_bugtraq_id(96248, 96247, 96245);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:12:14 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-23 10:34:46 +0530 (Thu, 23 Mar 2017)");
   script_name("Cisco Prime Collaboration Assurance Multiple Vulnerabilities - Mar17");
 
@@ -62,7 +61,7 @@ if (description)
   versions 11.0.0, 11.1.0 and 11.5.0");
 
   script_tag(name:"solution", value:"Apply patch from the vendor advisory.
-  For details refer to reference links");
+  Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-pcp2");
@@ -80,7 +79,7 @@ include("version_func.inc");
 
 if(!version = get_app_version(cpe:CPE)) exit(0);
 
-if(version =~ "^(11\.(0|1|5))")
+if(version =~ "^11\.[015]")
 {
   if(version_is_equal(version:version, test_version:"11.0.0")||
      version_is_equal(version:version, test_version:"11.1.0")||
@@ -91,4 +90,5 @@ if(version =~ "^(11\.(0|1|5))")
     exit(0);
   }
 }
+
 exit(0);

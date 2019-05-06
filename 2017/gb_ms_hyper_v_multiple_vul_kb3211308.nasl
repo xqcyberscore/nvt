@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_hyper_v_multiple_vul_kb3211308.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Hyper-V Multiple Vulnerabilities (KB3211308)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810848");
-  script_version("$Revision: 11879 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-0163", "CVE-2017-0168", "CVE-2017-0180");
   script_bugtraq_id(97465, 97418, 97444);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-12 12:24:16 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Windows Hyper-V Multiple Vulnerabilities (KB3211308)");
 
@@ -50,8 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2008 x64 Edition Service Pack 2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

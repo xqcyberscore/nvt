@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-134.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)
 #
@@ -27,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809801");
-  script_version("$Revision: 12768 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-0026", "CVE-2016-3332", "CVE-2016-3333", "CVE-2016-3334",
 		"CVE-2016-3335", "CVE-2016-3338", "CVE-2016-3340", "CVE-2016-3342",
 		"CVE-2016-3343", "CVE-2016-7184");
   script_bugtraq_id(93998, 94008, 94009, 94012, 94011, 94014, 94010, 94013, 94007, 94015);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-11-09 08:58:28 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)");
@@ -68,8 +67,7 @@ if(description)
 
   Microsoft Windows 10 Version 1607 x32/x64");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

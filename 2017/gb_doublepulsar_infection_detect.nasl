@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_doublepulsar_infection_detect.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # Double Pulsar Infection Detect
 #
@@ -28,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810698");
-  script_version("$Revision: 11936 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-0146", "CVE-2017-0147");
   script_bugtraq_id(96707, 96709);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-18 15:25:17 +0530 (Tue, 18 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Double Pulsar Infection Detect");
@@ -58,8 +57,7 @@ if(description)
   script_tag(name:"affected", value:"All Windows Platforms from Windows XP
   through Windows 2012");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

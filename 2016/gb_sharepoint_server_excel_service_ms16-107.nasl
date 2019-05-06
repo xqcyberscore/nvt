@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms16-107.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # MS SharePoint Server Excel Services Multiple Remote Code Execution Vulnerabilities (3115112)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809043");
-  script_version("$Revision: 11837 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-3357", "CVE-2016-3358", "CVE-2016-3362", "CVE-2016-3365");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-14 10:24:16 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Multiple Remote Code Execution Vulnerabilities (3115112)");
@@ -57,8 +56,7 @@ if(description)
 
   Microsoft SharePoint Server 2013 Service Pack 1 Excel Automation Services.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

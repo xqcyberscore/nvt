@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213643.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Outlook 2007 Service Pack 3 Multiple Vulnerabilities (KB3213643)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811260");
-  script_version("$Revision: 14175 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-8571", "CVE-2017-8572", "CVE-2017-8663");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-07-28 15:45:07 +0530 (Fri, 28 Jul 2017)");
   script_name("Microsoft Outlook 2007 Service Pack 3 Multiple Vulnerabilities (KB3213643)");
 
@@ -55,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Outlook 2007 Service Pack 3");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_xss_vuln_0718.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # OpenEMR <= 5.0.1.4 XSS Vulnerabilities
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112357");
-  script_version("$Revision: 11933 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2018-1000218", "CVE-2018-1000219");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-21 09:48:12 +0200 (Tue, 21 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -46,8 +45,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenEMR versions up to and including 5.0.1.4.");
 
-  script_tag(name:"solution", value:"Updates are available.
-  To apply the updates manually, refer to referenced links.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

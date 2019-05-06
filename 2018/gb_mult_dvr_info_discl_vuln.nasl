@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_dvr_info_discl_vuln.nasl 13559 2019-02-11 04:37:23Z ckuersteiner $
 #
 # Multiple DVR Products Information Disclosure Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141062");
-  script_version("$Revision: 13559 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 05:37:23 +0100 (Mon, 11 Feb 2019) $");
+  script_version("2019-05-04T10:06:54+0000");
+  script_tag(name:"last_modification", value:"2019-05-04 10:06:54 +0000 (Sat, 04 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-03 14:37:44 +0700 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -38,7 +37,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Multiple DVR Products Information Disclosure Vulnerability");
 
@@ -55,8 +54,9 @@ sensitive credential information via a direct request for the download.rsp URI."
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th February, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of
+  this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://misteralfa-hack.blogspot.com/2018/05/0day-dvr-multivendor.html");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_kb4089501.nasl 14023 2019-03-07 07:04:38Z cfischer $
 #
 # Microsoft Visual Studio 2012 Update 5 Information Disclosure Vulnerability (KB4089501)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813150");
-  script_version("$Revision: 14023 $");
+  script_version("2019-05-03T10:12:14+0000");
   script_cve_id("CVE-2018-1037");
   script_bugtraq_id(103715);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:04:38 +0100 (Thu, 07 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:12:14 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-19 12:58:52 +0530 (Thu, 19 Apr 2018)");
   script_name("Microsoft Visual Studio 2012 Update 5 Information Disclosure Vulnerability (KB4089501)");
 
@@ -50,9 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Visual Studio 2012 Update 5");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory.
-  For details refer to reference links.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

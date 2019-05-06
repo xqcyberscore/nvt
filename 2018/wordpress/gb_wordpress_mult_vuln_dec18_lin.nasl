@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_dec18_lin.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
 #
 # WordPress Multiple Vulnerabilities (Security Release) - December 2018 (Linux)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112466");
-  script_version("$Revision: 12963 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-12-17 14:16:22 +0100 (Mon, 17 Dec 2018)");
 
   script_name("WordPress Multiple Vulnerabilities (Security Release) - December 2018 (Linux)");
@@ -66,7 +65,8 @@ if(description)
 
   script_tag(name:"solution", value:"The issues have been fixed in version 5.0.1.
   Updated versions of WordPress 4.9 and older releases are also available.
-  For details refer to the referenced links to apply the correct fix for your specific version.");
+
+  Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

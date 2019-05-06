@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-002_remote.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Microsoft Windows Telnet Service RCE Vulnerability-Remote (3020393)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805039");
-  script_version("$Revision: 13624 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2015-0014");
   script_bugtraq_id(71968);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-01-21 13:55:47 +0530 (Wed, 21 Jan 2015)");
   script_name("Microsoft Windows Telnet Service RCE Vulnerability-Remote (3020393)");
 
@@ -67,8 +66,7 @@ if(description)
 
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"remote_active");
 

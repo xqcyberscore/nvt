@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-041.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3148789)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807662");
-  script_version("$Revision: 11837 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-0148");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-04-13 12:18:40 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (3148789)");
 
@@ -48,8 +47,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.6 and 4.6.1");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

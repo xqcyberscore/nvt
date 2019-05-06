@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-056.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2987107)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804776");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2014-4123", "CVE-2014-4124", "CVE-2014-4126", "CVE-2014-4127",
                 "CVE-2014-4128", "CVE-2014-4129", "CVE-2014-4130", "CVE-2014-4132",
                 "CVE-2014-4133", "CVE-2014-4134", "CVE-2014-4137", "CVE-2014-4138",
@@ -38,7 +37,7 @@ if(description)
                     70334, 70335, 70336, 70339, 70340, 70325, 70342);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2014-10-15 08:18:24 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -61,8 +60,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   6.x/7.x/8.x/9.x/10.x/11.x");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"registry");
 

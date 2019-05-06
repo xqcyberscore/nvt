@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0818.nasl 12130 2018-10-26 13:59:17Z cfischer $
 #
 # OpenEMR < 5.0.1.4 Multiple Vulnerabilities
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112356");
-  script_version("$Revision: 12130 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2018-15139", "CVE-2018-15140", "CVE-2018-15141",
   "CVE-2018-15142", "CVE-2018-15143", "CVE-2018-15144", "CVE-2018-15145",
   "CVE-2018-15146", "CVE-2018-15147", "CVE-2018-15148", "CVE-2018-15149",
@@ -35,7 +34,7 @@ if(description)
   "CVE-2018-15154", "CVE-2018-15155", "CVE-2018-15156");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-14 09:22:33 +0200 (Tue, 14 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -52,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenEMR versions before 5.0.1.4");
 
-  script_tag(name:"solution", value:"Upgrade to OpenEMR version 5.0.1.4 or later.
-  To apply the updates manually, refer to referenced links.");
+  script_tag(name:"solution", value:"Upgrade to OpenEMR version 5.0.1.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

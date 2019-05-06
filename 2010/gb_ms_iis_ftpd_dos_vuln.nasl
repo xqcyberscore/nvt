@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_ftpd_dos_vuln.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # Microsoft Windows IIS FTP Server DOS Vulnerability
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801669");
-  script_version("$Revision: 13613 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-3972");
   script_bugtraq_id(45542);
@@ -61,8 +60,7 @@ if(description)
   to the FTP service to cause a heap-based buffer overflow by sending an overly
   long, specially crafted FTP request.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is running Microsoft IIS with FTP server and is prone to
   Denial of service vulnerability.");

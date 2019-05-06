@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-002.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Windows Object Packager Remote Code Execution Vulnerability (2603381)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902784");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_bugtraq_id(51297);
   script_cve_id("CVE-2012-0009");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-01-11 10:54:36 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows Object Packager Remote Code Execution Vulnerability (2603381)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45189/");
@@ -58,8 +57,7 @@ if(description)
   by tricking a user into opening a Publisher file '.pub' containing an embedded packaged object located
   on a remote WebDAV or SMB share.");
 
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-002.");

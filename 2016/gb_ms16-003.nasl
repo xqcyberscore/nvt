@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-003.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Microsoft Windows JScript and VBScript Remote Code Execution Vulnerability(3125540)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806658");
-  script_version("$Revision: 11922 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2016-0002");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2016-01-13 08:37:49 +0530 (Wed, 13 Jan 2016)");
   script_name("Microsoft Windows JScript and VBScript Remote Code Execution Vulnerability(3125540)");
 
@@ -51,8 +50,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

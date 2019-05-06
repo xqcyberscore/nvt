@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_services_ms15-022.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft SharePoint Services 3.0 Multiple Vulnerabilities (3038999)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805150");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2015-0085");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2015-03-11 13:26:41 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Services 3.0 Multiple Vulnerabilities (3038999)");
@@ -54,8 +53,7 @@ if(description)
   3.0 Service Pack 3 on Microsoft SharePoint Server 2007 Service Pack 3 and
   prior.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

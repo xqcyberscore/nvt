@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_mult_vuln_june18.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Axis Network Camera Multiple Vulnerabilities-June18
 #
@@ -28,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813446");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-03T13:51:56+0000");
   script_cve_id("CVE-2018-10658", "CVE-2018-10659", "CVE-2018-10660", "CVE-2018-10661",
                 "CVE-2018-10662", "CVE-2018-10663", "CVE-2018-10664");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-19 15:06:09 +0530 (Tue, 19 Jun 2018)");
   script_name("Axis Network Camera Multiple Vulnerabilities-June18");
 
@@ -85,10 +84,10 @@ if(description)
   users of the '.srv' functionality.");
 
   script_tag(name:"affected", value:"Axis IP Cameras with more than 390 models are
-  affected. For complete list refer to reference links.");
+  affected. Please see the references for a complete list.");
 
   script_tag(name:"solution", value:"Upgrade to latest firmware available from
-  vendor. For details refer to Reference links.");
+  vendor. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");

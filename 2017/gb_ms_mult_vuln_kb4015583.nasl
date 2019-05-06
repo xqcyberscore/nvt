@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4015583.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4015583)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810923");
-  script_version("$Revision: 11900 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2013-6629", "CVE-2017-0058", "CVE-2017-0093", "CVE-2017-0156",
                 "CVE-2017-0158", "CVE-2017-0159", "CVE-2017-0160", "CVE-2017-0162",
                 "CVE-2017-0163", "CVE-2017-0166", "CVE-2017-0167", "CVE-2017-0179",
@@ -38,7 +37,7 @@ if(description)
                 "CVE-2017-0211");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-12 10:47:16 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4015583)");
 
@@ -97,8 +96,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Windows 10 Version 1703 x32/x64.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

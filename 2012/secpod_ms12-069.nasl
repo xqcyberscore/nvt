@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-069.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Kerberos Denial of Service Vulnerability (2743555)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901301");
-  script_version("$Revision: 11876 $");
+  script_version("2019-05-03T12:31:27+0000");
   script_cve_id("CVE-2012-2551");
   script_bugtraq_id(55778);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2012-10-10 09:58:54 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Windows Kerberos Denial of Service Vulnerability (2743555)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50867/");
@@ -52,8 +51,7 @@ if(description)
   Microsoft Windows 2008 R2 Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaw is present due to an error in Kerberos implementation which fails to
   properly handle a specially crafted session.");
-  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
-  install the hotfixes from the referenced advisory.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-069.");
   script_tag(name:"qod_type", value:"registry");

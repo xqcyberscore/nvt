@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107650");
-  script_version("2019-04-29T09:46:22+0000");
-  script_tag(name:"last_modification", value:"2019-04-29 09:46:22 +0000 (Mon, 29 Apr 2019)");
+  script_version("2019-05-03T16:55:02+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 16:55:02 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-24 16:58:51 +0200 (Wed, 24 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -29,7 +29,7 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_delta_electronics_cncsoft_detect_win.nasl");
-  script_mandatory_keys("delta_electronics/cncsoft/suite/win/detected", "delta_electronics/cncsoft/suite/win/location");
+  script_mandatory_keys("delta_electronics/cncsoft/suite/detected", "delta_electronics/cncsoft/suite/location");
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"Detects the installed version

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4041693.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4041693)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812022");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-03T10:54:50+0000");
   script_cve_id("CVE-2017-11762", "CVE-2017-8694", "CVE-2017-8717", "CVE-2017-8718",
                 "CVE-2017-11763", "CVE-2017-11765", "CVE-2017-8727", "CVE-2017-11771",
                 "CVE-2017-11772", "CVE-2017-11779", "CVE-2017-11780", "CVE-2017-11781",
@@ -41,7 +40,7 @@ if(description)
                     101122, 101099, 101128, 101274);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2017-10-11 09:41:11 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4041693)");
 
@@ -113,8 +112,7 @@ if(description)
 
   Microsoft Windows Server 2012 R2");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

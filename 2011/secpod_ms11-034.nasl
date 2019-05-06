@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-034.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2506223)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900283");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_bugtraq_id(47194, 47202, 47203, 47204, 47205, 47206, 47207, 47209, 47210, 47211, 47212,
                     47213, 47214, 47215, 47216, 47217, 47218, 47219, 47234, 47220, 47224, 47225,
@@ -64,8 +63,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to improper Kernel-mode driver object management
   and Null pointer de-reference due to the way kernel-mode drivers keep track
   of pointers to certain kernel-mode driver objects.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-034.");
   script_tag(name:"qod_type", value:"registry");

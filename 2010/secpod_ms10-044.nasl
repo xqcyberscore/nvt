@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-044.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # MS Office Access ActiveX Controls Remote Code Execution Vulnerabilities(982335)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902218");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-05-03T10:54:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-14 10:07:03 +0200 (Wed, 14 Jul 2010)");
   script_cve_id("CVE-2010-0814", "CVE-2010-1881");
   script_tag(name:"cvss_base", value:"9.3");
@@ -48,8 +47,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office Access 2003/2007");
   script_tag(name:"insight", value:"The flaws are caused by a memory corruption and an uninitialized variable
   within 'ACCWIZ.dll' (Microsoft Access Wizard Controls) ActiveX control.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-044.");
   script_tag(name:"qod_type", value:"registry");
