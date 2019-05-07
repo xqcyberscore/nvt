@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # Dell Remote Access Controller Detection
 #
@@ -28,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103680");
-  script_version("$Revision: 11021 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-05-03T12:35:22+0000");
+  script_tag(name:"last_modification", value:"2019-05-03 12:35:22 +0000 (Fri, 03 May 2019)");
   script_tag(name:"creation_date", value:"2013-03-18 17:03:03 +0100 (Mon, 18 Mar 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("Dell Remote Access Controller Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -43,8 +44,7 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Dell Remote Access Controller.
 
-  The script sends a connection request to the server and attempts to
-  extract the version number from the reply.");
+  The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -59,7 +59,38 @@ include("misc_func.inc");
 
 port = get_http_port( default:443 );
 
-# some newer versions like iDRAC7/8 and probably later has to be handled separate
+# iDRAC9
+url = "/restgui/locale/personality/personality_en.json";
+res = http_get_cache(port: port, item: url);
+
+if ('"app_name": "Integrated Remote Access Controller 9"' >< res) {
+  version = "unknown";
+
+  url = "/sysmgmt/2015/bmc/info";
+  req = http_get(port: port, item: url);
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  # {"Attributes":{"ADEnabled":"Disabled","BuildVersion":"30","FwVer":"3.21.21.21","GUITitleBar":"iDRAC-716GFV2","IsOEMBranded":"1","License":"Enterprise","SSOEnabled":"Disabled","SecurityPolicyMessage":"By accessing this computer, you confirm that such access complies with your organization's security policy.","ServerGen":"14G","SystemLockdown":"Disabled","SystemModelName":"Not Available","TFAEnabled":"Disabled","iDRACName":"iDRAC-716GFV2"}}
+  vers = eregmatch(pattern: '"FwVer":"([0-9.]+)"', string: res);
+  if (!isnull(vers[1])) {
+    version = vers[1];
+    concUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
+  }
+
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:dell:idrac9:");
+  if (!cpe)
+    cpe = 'cpe:/a:dell:idrac9';
+
+  register_product(cpe: cpe, location: "/", port: port);
+
+  log_message(data: build_detection_report(app: "Dell iDRAC9", version: version, install: "/", cpe: cpe,
+                                           concluded: vers[0], concludedUrl: concUrl),
+              port: port);
+
+  exit(0);
+}
+
+# some newer versions like iDRAC7/8
 url = "/login.html";
 req = http_get_req(port: port, url: "/login.html", add_headers: make_array("Accept-Encoding", "gzip, deflate"));
 res = http_keepalive_send_recv(port: port, data: req);
@@ -112,7 +143,6 @@ if ('<title id="titleLbl_id"></title>' >< res && "log_thisDRAC" >< res) {
               port: port);
   exit(0);
 }
-
 
 # Testing for older versions
 urls = make_array();

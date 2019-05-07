@@ -2438,7 +2438,12 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
   if( isnull( descend_directories ) )
     descend_directories = "yes";
 
-  fname = ereg_replace( pattern:"\*.+", string:file_name, replace:"" );
+  fname = file_name;
+
+  if( useregex )
+    fname = ereg_replace( pattern:"\.\*", string:fname, replace:"" );
+
+  fname = ereg_replace( pattern:"\*.+", string:fname, replace:"" );
 
   if( ! sock )
     sock = ssh_login_or_reuse_connection();

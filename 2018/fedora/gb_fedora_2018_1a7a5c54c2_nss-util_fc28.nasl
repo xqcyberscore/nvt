@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1a7a5c54c2_nss-util_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for nss-util FEDORA-2018-1a7a5c54c2
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875068");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-05-07T08:07:52+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 08:07:52 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-15 07:42:06 +0200 (Sat, 15 Sep 2018)");
   script_cve_id("CVE-2018-12384");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for nss-util FEDORA-2018-1a7a5c54c2");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'nss-util'

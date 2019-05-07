@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 14190 2019-03-14 14:21:54Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 14190 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:21:54 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-05-07T07:15:31+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 07:15:31 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -207,8 +206,6 @@ if( isnull( log_failed_nmap ) )
 
 set_kb_item( name:"/ping_host/mark_dead", value:mark_dead );
 set_kb_item( name:"/tmp/start_time", value:unixtime() );
-
-if( islocalhost() ) exit( 0 );
 
 if( "no" >< icmp_ping && "no" >< tcp_ping && "no" >< arp_ping && "no" >< sp_only ) {
   log_message( data:"The alive test was not launched because no method was selected." );

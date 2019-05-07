@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2768_nss_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for nss CESA-2018:2768 centos7
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882953");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-05-07T08:07:52+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 08:07:52 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 17:01:59 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-12384");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for nss CESA-2018:2768 centos7");
   script_tag(name:"summary", value:"Check the version of nss");

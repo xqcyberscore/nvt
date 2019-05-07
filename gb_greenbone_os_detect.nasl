@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect.nasl 14061 2019-03-08 17:39:16Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (Version)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103220");
-  script_version("$Revision: 14061 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 18:39:16 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-05-07T07:57:11+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 07:57:11 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -104,7 +103,7 @@ if( http_port = get_kb_list( "greenbone/gos/http/port" ) ) {
     concludedUrl = get_kb_item( "greenbone/gos/http/" + port + "/concludedUrl" );
     extra += 'HTTP(s) on port ' + port + '/tcp\n';
     if( concluded && concludedUrl ) {
-      extra += 'Concluded: ' + concluded + ' from URL: ' + concludedUrl + '\n';
+      extra += 'Concluded: ' + concluded + ' from URL(s): ' + concludedUrl + '\n';
     }
     register_product( cpe:hw_app_cpe, location:location, port:port, service:"www" );
     register_product( cpe:os_cpe, location:location, port:port, service:"www" );

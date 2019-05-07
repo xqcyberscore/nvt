@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4283_1.nasl 12913 2018-12-31 10:50:43Z santu $
 #
 # SuSE Update for mozilla-nspr openSUSE-SU-2018:4283-1 (mozilla-nspr)
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852216");
-  script_version("$Revision: 12913 $");
+  script_version("2019-05-07T08:07:52+0000");
   script_cve_id("CVE-2018-0495", "CVE-2018-12404", "CVE-2018-12384");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-31 11:50:43 +0100 (Mon, 31 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-05-07 08:07:52 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2018-12-29 04:00:48 +0100 (Sat, 29 Dec 2018)");
   script_name("SuSE Update for mozilla-nspr openSUSE-SU-2018:4283-1 (mozilla-nspr)");
   script_category(ACT_GATHER_INFO);

@@ -278,7 +278,7 @@ function snmp_get_community( port, version ) {
 
   if( ! version ) version = get_kb_item( "SNMP/" + port + "/prefered_version" );
   if( ! version ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#couldn't determine SNMP version in snmp_get_community()" );
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#snmp_get_community: couldn't determine SNMP version / no SNMP version available" );
     return;
   }
 
