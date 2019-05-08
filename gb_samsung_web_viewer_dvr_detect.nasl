@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_web_viewer_dvr_detect.nasl 12707 2018-12-07 14:51:43Z tpassfeld $
 #
 # Samsung Web Viewer DVR Remote Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114046");
-  script_version("$Revision: 12707 $");
+  script_version("2019-05-07T14:29:24+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 15:51:43 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-07 14:29:24 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-12 19:06:20 +0100 (Mon, 12 Nov 2018)");
   script_name("Samsung Web Viewer DVR Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -81,6 +80,7 @@ if(res =~ '\\[\\s*"Web Viewer for Samsung DVR' || ('/language_webviewer.js"></sc
                           expr: "^([0-9.]+)",
                           insloc: "/",
                           regPort: port,
+                          regService: "www",
                           conclUrl: conclUrl);
 }
 

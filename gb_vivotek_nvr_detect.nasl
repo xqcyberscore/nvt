@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vivotek_nvr_detect.nasl 12961 2019-01-07 19:15:54Z tpassfeld $
 #
 # Vivotek NVR Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114060");
-  script_version("$Revision: 12961 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 20:15:54 +0100 (Mon, 07 Jan 2019) $");
+  script_version("2019-05-07T14:29:24+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 14:29:24 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-04 13:47:43 +0100 (Fri, 04 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,6 +80,7 @@ if("Content-Length: 30" >< res && "var _nr_nginx_user_lang_" >< res) {
                           expr: "^([0-9.]+)",
                           insloc: install,
                           regPort: port,
+                          regService: "www",
                           conclUrl: conclUrl,
                           extra: "Version detection requires login.");
 }
