@@ -27,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100493");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("2019-05-02T04:12:14+0000");
-  script_tag(name:"last_modification", value:"2019-05-02 04:12:14 +0000 (Thu, 02 May 2019)");
+  script_version("2019-05-06T10:32:17+0000");
+  script_tag(name:"last_modification", value:"2019-05-06 10:32:17 +0000 (Mon, 06 May 2019)");
   script_tag(name:"creation_date", value:"2010-02-14 12:35:00 +0100 (Sun, 14 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -84,6 +84,7 @@ else {
   if (buf && ("<title>Oracle WebLogic Server Administration Console" >< buf ||
       egrep(pattern: "<TITLE>WebLogic Server.*Console Login", string: buf))) {
     version = "unknown";
+    servicepack = "unknown";
 
     vers = eregmatch(string: buf, pattern: "WebLogic Server ([0-9.]+)", icase: TRUE);
     if (!isnull(vers[1])){
@@ -97,6 +98,37 @@ else {
   }
   else
     exit(0);
+}
+
+found_services = FALSE;
+found_services_urls = make_list();
+
+endpoints = make_array(
+"/_async/AsyncResponseService?WSDL", "www\.bea\.com/async/AsyncResponseService",
+"/_async/AsyncResponseServiceHttps?WSDL", "www\.bea\.com/async/AsyncResponseService",
+"/_async/AsyncResponseServiceJms?WSDL", "www\.bea\.com/async/AsyncResponseService",
+"/_async/AsyncResponseServiceSoap12?WSDL", "www\.bea\.com/async/AsyncResponseService",
+"/_async/AsyncResponseServiceSoap12Https?WSDL", "www\.bea\.com/async/AsyncResponseService",
+"/_async/AsyncResponseServiceSoap12Jms?WSDL", "www\.bea\.com/async/AsyncResponseService",
+"/wls-wsat/CoordinatorPortType", "weblogic\.wsee\.wstx\.wsat\.v1[01]\.endpoint\.CoordinatorPort",
+"/wls-wsat/CoordinatorPortType11", "weblogic\.wsee\.wstx\.wsat\.v1[01]\.endpoint\.CoordinatorPort",
+"/wls-wsat/ParticipantPortType", "weblogic\.wsee\.wstx\.wsat\.v1[01]\.endpoint\.ParticipantPort",
+"/wls-wsat/ParticipantPortType11", "weblogic\.wsee\.wstx\.wsat\.v1[01]\.endpoint\.ParticipantPort",
+"/wls-wsat/RegistrationPortTypeRPC", "weblogic\.wsee\.wstx\.wsc\.v1[01]\.endpoint\.RegistrationPort",
+"/wls-wsat/RegistrationRequesterPortType", "weblogic\.wsee\.wstx\.wsc\.v1[01]\.endpoint\.RegistrationRequesterPort",
+"/wls-wsat/RegistrationPortTypeRPC11", "weblogic\.wsee\.wstx\.wsc\.v1[01]\.endpoint\.RegistrationPort");
+
+foreach endpoint (keys(endpoints)) {
+
+  check = endpoints[endpoint];
+
+  req = http_get(port: port, item: endpoint);
+  res = http_keepalive_send_recv(port: port, data: req, bodyonly: TRUE);
+
+  if (res && eregmatch(string: res, pattern: check, icase: FALSE)) {
+    found_services = TRUE;
+    found_services_urls = make_list(found_services_urls, report_vuln_url(port: port, url: endpoint, url_only: TRUE));
+  }
 }
 
 conclurl = report_vuln_url(port: port, url: url, url_only: TRUE);
@@ -119,7 +151,15 @@ if (version != "unknown") {
 register_product(cpe: CPE1, location: "/", port: port, service: "www");
 register_product(cpe: CPE2, location: "/", port: port, service: "www");
 
-log_message(data: build_detection_report(app: "Oracle WebLogic Server", version: version, install: "/", cpe: CPE1,
-                                         concluded: vers[0], concludedUrl: conclurl),
-            port: port);
+report = build_detection_report(app: "Oracle WebLogic Server", version: version, install: "/", cpe: CPE1,
+                                concluded: vers[0], concludedUrl: conclurl);
+
+if (found_services) {
+  report += '\n\nThe following Web-Services have been identified:\n';
+  found_services_urls = sort(found_services_urls);
+  foreach found_services_url(found_services_urls)
+    report += '\n' + found_services_url;
+}
+
+log_message(data: report, port: port);
 exit(0);

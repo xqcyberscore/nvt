@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 13851 2019-02-25 14:33:33Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -22,9 +21,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13851 $
-#
 ###############################################################################
 
 # To enable the new libssh based code, you need to set the environment
@@ -1942,6 +1938,8 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
         "-----unknown keyword " >< ret_ssh_buf ||
         "Unknown action 0" >< ret_ssh_buf ||
         "Invalid command" >< ret_ssh_buf || # HP iLO 100
+        "is not a recognized command" >< ret_ssh_buf || # NetApp Data ONTAP 9.x
+        "not found.  Type '?' for a list of commands" >< ret_ssh_buf || # NetApp Data ONTAP 7.x
         "Syntax Error: unexpected argument" >< ret_ssh_buf ) { # NX-OS/IOS/JunOS/F5
 
       set_kb_item( name:"ssh/force/nosh", value:TRUE );
@@ -1953,7 +1951,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
     # /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
     # grep: /usr/include/freetype2/freetype/freetype.h: No such file or directory
     if( ": not found" >< ret_ssh_buf || ": Permission denied" >< ret_ssh_buf
-    	|| "No such file or directory" >< ret_ssh_buf || "command not found" >< tolower(ret_ssh_buf)) {
+    	|| "No such file or directory" >< ret_ssh_buf || "command not found" >< tolower( ret_ssh_buf ) ) {
       if( ! return_errors )
         return '';
     }

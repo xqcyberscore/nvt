@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-05-02T05:00:19+0000");
-  script_tag(name:"last_modification", value:"2019-05-02 05:00:19 +0000 (Thu, 02 May 2019)");
+  script_version("2019-05-07T06:30:33+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 06:30:33 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -943,7 +943,7 @@ function check_http_banner( port, banner ) {
       return;
     }
 
-    # nb: More detailed OS Detection coverd in gb_netapp_data_ontap_consolidation.nasl
+    # nb: More detailed OS Detection covered in gb_netapp_data_ontap_consolidation.nasl
     if( egrep( pattern:"^Server: (NetApp|Data ONTAP)", string:banner, icase:FALSE ) ) {
       register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;

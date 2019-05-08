@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-04-25T09:49:09+0000");
-  script_tag(name:"last_modification", value:"2019-04-25 09:49:09 +0000 (Thu, 25 Apr 2019)");
+  script_version("2019-05-06T13:29:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-06 13:29:09 +0000 (Mon, 06 May 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -488,6 +488,36 @@ if( "HyperIP Command Line Interface" >< uname ) {
   set_kb_item( name:"hyperip/ssh-login/" + port + "/uname", value:uname );
   set_kb_item( name:"hyperip/ssh-login/show_version_or_uname", value:TRUE );
   set_kb_item( name:"hyperip/ssh-login/port", value:port );
+
+  set_kb_item( name:"ssh/restricted_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
+  exit( 0 );
+}
+
+# NetApp Data ONTAP 9.x
+# hostname::>
+# Error: "/bin/sh" is not a recognized command
+#
+# or:
+# hostname::*>
+# Error: "/bin/sh" is not a recognized command
+
+# NetApp Data ONTAP 7.x
+# hostname>
+# /bin/sh not found.  Type '?' for a list of commands
+
+if( _uname = eregmatch( string:uname, pattern:'^.+(::\\*?> \nError: "[^"]+" is not a recognized command|>.+not found\\.  Type \'\\?\' for a list of commands)', icase:FALSE ) ) {
+
+  version = ssh_cmd( socket:sock, cmd:"version", nosh:TRUE, return_errors:FALSE, pty:TRUE, timeout:20, retry:10, pattern:"NetApp Release" );
+
+  # NetApp Release 9.0: Fri Aug 19 06:39:33 UTC 2016
+  # NetApp Release 7.3: Thu Jul 24 12:55:28 PDT 2008
+  if( "NetApp Release" >< version )
+    set_kb_item( name:"netapp_data_ontap/ssh-login/" + port + "/version_cmd", value:version );
+
+  set_kb_item( name:"netapp_data_ontap/ssh-login/" + port + "/uname", value:chomp( _uname[0] ) );
+  set_kb_item( name:"netapp_data_ontap/ssh-login/version_cmd_or_uname", value:TRUE );
+  set_kb_item( name:"netapp_data_ontap/ssh-login/port", value:port );
 
   set_kb_item( name:"ssh/restricted_shell", value:TRUE );
   set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
