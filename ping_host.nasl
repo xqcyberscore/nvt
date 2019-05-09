@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("2019-05-07T07:15:31+0000");
-  script_tag(name:"last_modification", value:"2019-05-07 07:15:31 +0000 (Tue, 07 May 2019)");
+  script_version("2019-05-08T12:31:52+0000");
+  script_tag(name:"last_modification", value:"2019-05-08 12:31:52 +0000 (Wed, 08 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,7 @@ if(description)
   ### In the following two lines, unreachable is spelled incorectly.
   ### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
   script_add_preference(name:"Report about unrechable Hosts", type:"checkbox", value:"no");
-  script_add_preference(name:"Mark unrechable Hosts as dead (not scanning)", type:"checkbox", value:"no", id:5);
+  script_add_preference(name:"Mark unrechable Hosts as dead (not scanning)", type:"checkbox", value:"yes", id:5);
   script_add_preference(name:"Report about reachable Hosts", type:"checkbox", value:"no");
   script_add_preference(name:"Use ARP", type:"checkbox", value:"no", id:4);
   script_add_preference(name:"Do a TCP ping", type:"checkbox", value:"no", id:1);

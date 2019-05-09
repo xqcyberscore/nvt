@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_login_failed.nasl 13311 2019-01-26 17:04:21Z cfischer $
 #
 # SSH Login Failed For Authenticated Checks
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105936");
-  script_version("$Revision: 13311 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-26 18:04:21 +0100 (Sat, 26 Jan 2019) $");
+  script_version("2019-05-08T08:20:56+0000");
+  script_tag(name:"last_modification", value:"2019-05-08 08:20:56 +0000 (Wed, 08 May 2019)");
   script_tag(name:"creation_date", value:"2014-12-16 10:58:24 +0700 (Tue, 16 Dec 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -187,8 +186,23 @@ foreach check_type( check_types ) {
   }
 }
 
-if( unsupported_report || version_dep_report ) {
+server_banners = get_kb_list( "SSH/server_banner/*" );
+if( server_banners ) {
+  foreach server_banner( server_banners ) {
+    if( "Cisco" >< server_banner )
+      cisco_banner = TRUE;
+  }
+}
+
+if( unsupported_report || version_dep_report || cisco_banner ) {
+
   report = 'If the SSH credentials are correct the login might have failed because of the following reasons.\n\n';
+
+  if( cisco_banner ) {
+    report += "The remote SSH server is a Cisco device and the scanner is using a version < 0.8.5 of the libssh library which has issues with such devices. ";
+    report += "See https://www.libssh.org/2018/10/29/libssh-0-8-5-and-libssh-0-7-7/ for more details.";
+  }
+
   if( unsupported_report ) {
     report += "The remote SSH server isn't supporting one of the following algorithms currently required.";
     report += '\n\n' + unsupported_report;
@@ -198,6 +212,7 @@ if( unsupported_report || version_dep_report ) {
     report += "The scanner isn't providing the requirements for one of the following algorithms currently required by the remote SSH server.";
     report += '\n\n' + version_dep_report;
   }
+
   set_kb_item( name:"login/SSH/failed/reason", value:report );
 }
 

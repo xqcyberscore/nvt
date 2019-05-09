@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-05-06T13:04:06+0000");
-  script_tag(name:"last_modification", value:"2019-05-06 13:04:06 +0000 (Mon, 06 May 2019)");
+  script_version("2019-05-09T06:09:02+0000");
+  script_tag(name:"last_modification", value:"2019-05-09 06:09:02 +0000 (Thu, 09 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1001,6 +1001,7 @@ if( rhexstr =~ "^8000003[8C]00000001........000000000000050200000000000000000000
     rhexstr =~ "^8000002400000001........000000000000050200000000000000000000000000000004000000000$" ) {
   register_service( port:port, proto:"ndmp", message:"A NetApp service supporting the Network Data Management Protocol (NDMP) seems to be running on this port." );
   log_message( port:port, data:"A NetApp service supporting the Network Data Management Protocol (NDMP) seems to be running on this port." );
+  set_kb_item( name:"ndmp/" + port + "/hex_banner", value:rhexstr );
   exit( 0 );
 }
 

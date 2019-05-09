@@ -29,11 +29,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812873");
-  script_version("2019-03-29T14:00:56+0000");
+  script_version("2019-05-08T09:11:43+0000");
   script_cve_id("CVE-2018-10583");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-29 14:00:56 +0000 (Fri, 29 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-05-08 09:11:43 +0000 (Wed, 08 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-07 15:19:54 +0530 (Mon, 07 May 2018)");
   script_tag(name:"qod_type", value:"registry");
 
@@ -53,13 +53,13 @@ if(description)
 
   script_tag(name:"affected", value:"Apache OpenOffice Writer version 4.1.5 on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 28th March, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://secureyourit.co.uk/wp/2018/05/01/creating-malicious-odt-files/");
-  script_xref(name:"URL", value:"https://www.openoffice.org/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
