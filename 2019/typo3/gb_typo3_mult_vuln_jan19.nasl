@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln_jan19.nasl 13287 2019-01-25 09:06:21Z ckuersteiner $
 #
 # TYPO3 Multiple Vulnerabilities (Jan19)
 #
@@ -30,11 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141924");
-  script_version("$Revision: 13287 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 10:06:21 +0100 (Fri, 25 Jan 2019) $");
+  script_version("2019-05-10T09:25:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 09:25:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 15:03:35 +0700 (Fri, 25 Jan 2019)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+
+  script_cve_id("CVE-2018-14041");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -59,7 +60,7 @@ if (description)
 
   - Cross-Site Scripting in Fluid ViewHelpers
 
-  - Cross-Site Scripting in Bootstrap CSS toolkit
+  - Cross-Site Scripting in Bootstrap CSS toolkit (CVE-2018-14041)
 
   - Cross-Site Scripting in Form Framework
 
@@ -87,17 +88,20 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port, version_regex: "[0-9]+\.[0-9]+\.[0-9]+"))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
 
+version = infos['version'];
+path = infos['location'];
+
 if (version_in_range(version: version, test_version: "8.0.0", test_version2: "8.7.22")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "8.7.23");
+  report = report_fixed_ver(installed_version: version, fixed_version: "8.7.23", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }
 
 if (version_in_range(version: version, test_version: "9.0.0", test_version2: "9.5.3")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "9.5.4");
+  report = report_fixed_ver(installed_version: version, fixed_version: "9.5.4", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

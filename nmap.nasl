@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 13565 2019-02-11 08:16:39Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -11,7 +10,7 @@
 # Michael Wiegand <michael.wiegand@greenbone.net>
 #
 # Copyright:
-# Copyright (C) 2004 Michel Arboi
+# Copyright (C) 2005 Michel Arboi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,14 +26,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Nmap can be found at :
-# <http://nmap.org>
-
 # nb: Keep above the description part as it is used there
 include("misc_func.inc");
 include("version_func.inc");
 
-# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# TODO: Remove once GVM-9 and GOS < 4.3.x is retired
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (GVM TBD)
 # onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
 if( defined_func( "get_local_gos_version" ) &&
     defined_func( "version_is_greater_equal" ) ) {
@@ -49,20 +46,25 @@ if( defined_func( "get_local_gos_version" ) &&
   use_new_timing = TRUE;
 }
 
+if( OPENVAS_VERSION && version_is_greater_equal( version:OPENVAS_VERSION, test_version:"10" ) )
+  use_new_timing = TRUE;
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 13565 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 09:16:39 +0100 (Mon, 11 Feb 2019) $");
+  script_version("2019-05-07T10:42:32+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 10:42:32 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Nmap (NASL wrapper)");
   script_category(ACT_SCANNER);
-  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Port scanners");
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/nmap");
+
+  script_xref(name:"URL", value:"https://nmap.org/");
 
   script_add_preference(name:"TCP scanning technique :", type:"radio", value:"connect();SYN scan;FIN scan;Xmas Tree scan;SYN FIN scan;FIN SYN scan;Null scan;No TCP scan");
 

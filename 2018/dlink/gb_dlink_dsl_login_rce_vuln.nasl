@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_login_rce_vuln.nasl 13450 2019-02-05 03:52:29Z ckuersteiner $
 #
 # D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability
 #
@@ -29,10 +28,10 @@ CPE_PREFIX = "cpe:/o:dlink";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108458");
-  script_version("$Revision: 13450 $");
+  script_version("2019-05-09T15:03:03+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 04:52:29 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-09 15:03:03 +0000 (Thu, 09 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-04 09:45:51 +0200 (Tue, 04 Sep 2018)");
 
   script_name("D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability");
@@ -62,7 +61,7 @@ if(description)
   script_tag(name:"affected", value:"D-Link DSL-2750B with Firmware Version
   1.0.1 to 1.0.3. Other devices, models or versions might be also affected.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 09th May, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_vul");

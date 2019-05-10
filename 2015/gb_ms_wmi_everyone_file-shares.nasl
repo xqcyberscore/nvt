@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -28,7 +27,7 @@
 include("misc_func.inc");
 include("version_func.inc");
 
-# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (GVM TBD)
 # onwards so checking for the defined_func and default to FALSE below if the funcs are undefined
 if( defined_func( "get_local_gos_version" ) &&
     defined_func( "version_is_less" ) ) {
@@ -46,8 +45,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 11299 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_version("2019-05-07T10:42:32+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 10:42:32 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

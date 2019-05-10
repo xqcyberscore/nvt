@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10_violation.nasl 14125 2019-03-13 07:18:45Z cfischer $
 #
 # AKIF Orientierungshilfe Windows 10: Nicht erfuellt
 #
@@ -29,6 +28,7 @@
 include("misc_func.inc");
 include("version_func.inc");
 
+# TODO: Remove once GVM-9 and GOS < 4.3.x is retired
 # nb: includes in the description phase won't work anymore from GOS 4.2.11 (GVM TBD)
 # onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
 if( defined_func( "get_local_gos_version" ) &&
@@ -44,11 +44,14 @@ if( defined_func( "get_local_gos_version" ) &&
   use_severity = TRUE;
 }
 
+if( OPENVAS_VERSION && version_is_greater_equal( version:OPENVAS_VERSION, test_version:"10" ) )
+  use_severity = TRUE;
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108080");
-  script_version("$Revision: 14125 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:18:45 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-05-07T10:42:32+0000");
+  script_tag(name:"last_modification", value:"2019-05-07 10:42:32 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   if( use_severity ) {
   script_tag(name:"cvss_base", value:"10.0");

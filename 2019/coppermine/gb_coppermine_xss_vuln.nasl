@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coppermine_xss_vuln.nasl 13453 2019-02-05 06:44:30Z ckuersteiner $
 #
 # Coppermine < 1.5.48 XSS Vulnerability
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:coppermine:coppermine_photo_gallery";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141958");
-  script_version("$Revision: 13453 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 07:44:30 +0100 (Tue, 05 Feb 2019) $");
+  script_version("2019-05-10T08:44:08+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 08:44:08 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-05 11:17:46 +0700 (Tue, 05 Feb 2019)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-14478");
 

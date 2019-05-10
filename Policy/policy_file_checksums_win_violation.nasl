@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win_violation.nasl 14125 2019-03-13 07:18:45Z cfischer $
 #
 # List Windows File Checksum Violations
 #
@@ -30,6 +29,7 @@
 include("misc_func.inc");
 include("version_func.inc");
 
+# TODO: Remove once GVM-9 and GOS < 4.3.x is retired
 # nb: includes in the description phase won't work anymore from GOS 4.2.11 (GVM TBD)
 # onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
 if( defined_func( "get_local_gos_version" ) &&
@@ -45,10 +45,13 @@ if( defined_func( "get_local_gos_version" ) &&
   use_severity = TRUE;
 }
 
+if( OPENVAS_VERSION && version_is_greater_equal( version:OPENVAS_VERSION, test_version:"10" ) )
+  use_severity = TRUE;
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96183");
-  script_version("$Revision: 14125 $");
+  script_version("2019-05-07T10:42:32+0000");
   script_name("Windows file Checksums: Violations");
   if( use_severity ) {
   script_tag(name:"cvss_base", value:"10.0");
@@ -57,7 +60,7 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:18:45 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-07 10:42:32 +0000 (Tue, 07 May 2019)");
   script_tag(name:"creation_date", value:"2013-09-09 11:15:54 +0200 (Mon, 09 Sep 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");

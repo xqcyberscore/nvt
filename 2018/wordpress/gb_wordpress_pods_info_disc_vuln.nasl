@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_pods_info_disc_vuln.nasl 13590 2019-02-12 02:34:37Z ckuersteiner $
 #
 # WordPress Pods Plugin <= 2.7.9 Database Disclosure Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112441");
-  script_version("$Revision: 13590 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 03:34:37 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-05-09T15:03:03+0000");
+  script_tag(name:"last_modification", value:"2019-05-09 15:03:03 +0000 (Thu, 09 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 13:28:00 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -53,7 +52,7 @@ if (description)
 
   script_tag(name:"affected", value:"WordPress Pods plugin through version 2.7.9.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 09th May, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://cxsecurity.com/issue/WLB-2018110194");
