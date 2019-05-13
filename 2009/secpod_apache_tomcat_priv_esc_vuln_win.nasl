@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_tomcat_priv_esc_vuln_win.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache Tomcat Windows Installer Privilege Escalation Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901050");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2009-11-17 15:16:05 +0100 (Tue, 17 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,9 +39,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-5.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-6.html");
@@ -73,15 +71,18 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) )
+if( isnull( port = get_app_port( cpe:CPE ) ) )
   exit( 0 );
 
-if( ! vers = get_app_version( cpe:CPE, port:port ) )
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
   exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_in_range( version:vers, test_version:"5.5.0", test_version2:"5.5.28" ) ||
     version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.0.20" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"5.5.29/6.0.21" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.5.29/6.0.21", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

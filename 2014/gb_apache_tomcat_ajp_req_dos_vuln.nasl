@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_ajp_req_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Apache Tomcat AJP Request Remote Denial Of Service Vulnerability
 #
@@ -29,19 +28,18 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805020");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2014-0095");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2014-11-28 20:01:16 +0530 (Fri, 28 Nov 2014)");
   script_name("Apache Tomcat AJP Request Remote Denial Of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
-  script_mandatory_keys("ApacheTomcat/installed");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
+  script_mandatory_keys("apache/tomcat/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/59732");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-8.html");
@@ -73,11 +71,17 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_in_range( version:vers, test_version:"8.0.0.RC2", test_version2:"8.0.3" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"8.0.4" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"8.0.4", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -23,8 +23,8 @@ CPE = "cpe:/a:theforeman:foreman";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142373");
-  script_version("2019-05-06T12:42:46+0000");
-  script_tag(name:"last_modification", value:"2019-05-06 12:42:46 +0000 (Mon, 06 May 2019)");
+  script_version("2019-05-11T15:07:16+0000");
+  script_tag(name:"last_modification", value:"2019-05-11 15:07:16 +0000 (Sat, 11 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-06 12:22:46 +0000 (Mon, 06 May 2019)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -44,7 +44,7 @@ if (description)
   script_dependencies("gb_foreman_detect.nasl");
   script_mandatory_keys("foreman/installed");
 
-  script_tag(name:"summary", value:"Foreman is prone to an authenticated information dislosure vulnerbility.");
+  script_tag(name:"summary", value:"Foreman is prone to an authenticated information dislosure vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

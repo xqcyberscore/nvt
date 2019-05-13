@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_denial_of_service_vuln_feb15.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Apache Tomcat Denial Of Service Vulnerability - Mar15
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805474");
-  script_version("$Revision: 11975 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2014-0227");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2015-03-06 17:41:16 +0530 (Fri, 06 Mar 2015)");
   script_name("Apache Tomcat Denial Of Service Vulnerability - Mar15");
 
@@ -66,23 +65,22 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!appPort = get_app_port(cpe:CPE)){
+if(isnull(appPort = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(!appVer = get_app_version(cpe:CPE, port:appPort)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:appPort, exit_no_version:TRUE))
   exit(0);
-}
+
+appVer = infos["version"];
+path = infos["location"];
 
 if(appVer =~ "^6\.0")
 {
@@ -113,8 +111,7 @@ if(appVer =~ "^8\.0")
 
 if(VULN)
 {
-  report = 'Installed version: ' + appVer + '\n' +
-           'Fixed version:     ' + fix  + '\n';
+  report = report_fixed_ver(installed_version:appVer, fixed_version:fix, install_path:path);
   security_message(data:report, port:appPort);
   exit(0);
 }

@@ -23,8 +23,8 @@ CPE = 'cpe:/a:isc:bind';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142325");
-  script_version("2019-04-30T07:21:46+0000");
-  script_tag(name:"last_modification", value:"2019-04-30 07:21:46 +0000 (Tue, 30 Apr 2019)");
+  script_version("2019-05-11T15:07:16+0000");
+  script_tag(name:"last_modification", value:"2019-05-11 15:07:16 +0000 (Sat, 11 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-30 07:20:56 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
@@ -42,7 +42,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("bind_version.nasl", "os_detection.nasl");
-  script_mandatory_keys("ISC BIND/installed", "Host/runs_unixoide");
+  script_mandatory_keys("ISC BIND/installed", "Host/runs_windows");
 
   script_tag(name:"summary", value:"ISC BIND Supported Preview Edition is prone to a denial of service
   vulnerability n the nxdomain-redirect feature.");

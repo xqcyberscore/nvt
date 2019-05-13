@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_30633.nasl 12023 2018-10-23 05:37:04Z cfischer $
 #
 # Apache Tomcat 'UTF-8' Directory Traversal Vulnerability
 #
@@ -29,9 +28,9 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108476");
-  script_version("$Revision: 12023 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2008-2938");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 07:37:04 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-22 15:32:08 +0200 (Mon, 22 Oct 2018)");
   script_bugtraq_id(30633);
   script_name("Apache Tomcat 'UTF-8' Directory Traversal Vulnerability");
@@ -40,9 +39,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("apache/tomcat/http/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/30633");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/6229/");
@@ -85,8 +84,8 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir  = get_app_location( cpe:CPE, port:port, service:"www" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 if( dir == "/" ) dir = "";
 
 files = traversal_files();

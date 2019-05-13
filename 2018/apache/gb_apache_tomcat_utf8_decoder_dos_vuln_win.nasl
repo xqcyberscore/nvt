@@ -28,11 +28,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813724");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2018-1336");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-24 12:16:57 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'UTF-8 Decoder' Denial of Service Vulnerability (Windows)");
@@ -62,14 +62,12 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.8");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-8.html#Fixed_in_Apache_Tomcat_8.5.31");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-8.html#Fixed_in_Apache_Tomcat_8.0.52");
-  script_xref(name:"URL", value:"http://tomcat.apache.org");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
   exit(0);
 }
 
@@ -77,11 +75,12 @@ include("host_details.inc");
 include("revisions-lib.inc");
 include("version_func.inc");
 
-if(!tomPort = get_app_port(cpe:CPE)){
+if(isnull(tomPort = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE))
+  exit(0);
+
 appVer = infos['version'];
 path = infos['location'];
 

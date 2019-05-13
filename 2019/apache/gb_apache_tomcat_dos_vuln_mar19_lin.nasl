@@ -23,8 +23,8 @@ CPE = "cpe:/a:apache:tomcat";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142264");
-  script_version("2019-04-16T07:25:45+0000");
-  script_tag(name:"last_modification", value:"2019-04-16 07:25:45 +0000 (Tue, 16 Apr 2019)");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-16 07:09:53 +0000 (Tue, 16 Apr 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,8 +41,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_unixoide");
 
   script_tag(name:"summary", value:"Apache Tomcat is prone to a denial of service vulnerability in the HTTP/2
   implementation.");
@@ -68,7 +68,7 @@ include("host_details.inc");
 include("revisions-lib.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if (isnull(port = get_app_port(cpe: CPE)))
   exit(0);
 
 if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))

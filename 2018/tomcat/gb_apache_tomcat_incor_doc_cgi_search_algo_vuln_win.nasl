@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Apache Tomcat Incorrectly documented CGI search algorithm Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812694");
-  script_version("$Revision: 12410 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2017-15706");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-06 11:43:37 +0530 (Tue, 06 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Incorrectly documented CGI search algorithm Vulnerability (Windows)");
@@ -69,9 +68,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
   exit(0);
 }
 
@@ -79,11 +77,12 @@ include("host_details.inc");
 include("revisions-lib.inc");
 include("version_func.inc");
 
-if(!tomPort = get_app_port(cpe:CPE)){
+if(isnull(tomPort = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE))
+  exit(0);
+
 appVer = infos['version'];
 path = infos['location'];
 
@@ -111,7 +110,7 @@ if(appVer =~ "8\.5")
 
 if(fix)
 {
-  report = report_fixed_ver(installed_version:appVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:appVer, fixed_version:fix, install_path:path);
   security_message(port:tomPort, data: report);
   exit(0);
 }

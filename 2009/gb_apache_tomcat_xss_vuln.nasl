@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache Tomcat cal2.jsp Cross Site Scripting Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800372");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -39,9 +38,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("apache/tomcat/http/detected");
 
   script_xref(name:"URL", value:"http://www.packetstormsecurity.org/0903-exploits/CVE-2009-0781.txt");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/501538/100/0/threaded");
@@ -72,7 +71,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if( ! port = get_app_port( cpe:CPE ) )
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
   exit( 0 );
 
 if( ! dir = get_app_location( cpe:CPE, port:port ) )

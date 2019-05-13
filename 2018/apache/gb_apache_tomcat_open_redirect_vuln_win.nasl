@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_open_redirect_vuln_win.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # Apache Tomcat Open Redirect Vulnerability (Windows)
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141569");
-  script_version("$Revision: 13032 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-05 11:08:04 +0700 (Fri, 05 Oct 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,8 +47,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
 
   script_tag(name:"summary", value:"When the default servlet in Apache Tomcat returned a redirect to a directory
 (e.g. redirecting to '/foo/' when the user requested '/foo') a specially crafted URL could be used to cause the
@@ -73,10 +72,12 @@ include("host_details.inc");
 include("revisions-lib.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if (isnull(port = get_app_port(cpe: CPE)))
   exit(0);
 
-infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE);
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
+  exit(0);
+
 version = infos['version'];
 path = infos['location'];
 
@@ -93,7 +94,7 @@ if (version_in_range(version: version, test_version: "8.0.0", test_version2: "8.
 }
 
 if ((revcomp(a: version, b: "9.0.0.M1") >= 0) && (revcomp(a: version, b: "9.0.12") < 0)) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "9.0.12");
+  report = report_fixed_ver(installed_version: version, fixed_version: "9.0.12", install_path:path);
   security_message(port: port, data: report);
   exit(0);
 }

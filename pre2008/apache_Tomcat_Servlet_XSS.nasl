@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_Tomcat_Servlet_XSS.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache Tomcat /servlet Cross Site Scripting
 #
@@ -34,8 +33,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11041");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,19 +44,14 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Matt Moore");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "cross_site_scripting.nasl");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "cross_site_scripting.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("apache/tomcat/http/detected");
 
   script_tag(name:"summary", value:"The remote Apache Tomcat web server is vulnerable to a cross site scripting
-  issue.
+  issue.");
 
-  Description :
-
-  Apache Tomcat is the servlet container that is used in the official Reference
-  Implementation for the Java Servlet and JavaServer Pages technologies.
-
-  By using the /servlet/ mapping to invoke various servlets / classes it is
+  script_tag(name:"insight", value:"By using the /servlet/ mapping to invoke various servlets / classes it is
   possible to cause Tomcat to throw an exception, allowing XSS attacks, e.g:
 
   tomcat-server/servlet/org.apache.catalina.servlets.WebdavStatus/SCRIPTalert(document.domain)/SCRIPT
@@ -66,6 +60,7 @@ if(description)
   tomcat-server/servlet/org.apache.catalina.Globals/SCRIPTalert(document.domain)/SCRIPT
 
   (angle brackets omitted)");
+
   script_tag(name:"solution", value:"The 'invoker' servlet (mapped to /servlet/), which executes anonymous servlet
   classes that have not been defined in a web.xml file should be unmapped.
 
@@ -81,7 +76,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 host = http_host_name( dont_add_port:TRUE );

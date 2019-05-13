@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_servletsecurity_annotation_sec_bypass_vuln_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Tomcat 'ServletSecurity' Annotations Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812241");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2011-1088", "CVE-2011-1419");
   script_bugtraq_id(46685);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-12 11:08:44 +0530 (Tue, 12 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'ServletSecurity' Annotations Security Bypass Vulnerability (Windows)");
@@ -62,23 +61,16 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-tomPort = "";
-appVer = "";
-path = "";
-
-if(!tomPort = get_app_port(cpe:CPE)){
+if(isnull(tomPort = get_app_port(cpe:CPE)))
   exit(0);
-}
 
 if(!infos = get_app_version_and_location( cpe:CPE, port:tomPort, exit_no_version:TRUE)) exit(0);
 appVer = infos['version'];

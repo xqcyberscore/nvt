@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810966");
-  script_version("$Revision: 11874 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2016-8735");
   script_bugtraq_id(94463);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-28 17:04:45 +0530 (Wed, 28 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'JmxRemoteLifecycleListener' Remote Code Execution Vulnerability");
@@ -64,48 +64,46 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
-  script_mandatory_keys("ApacheTomcat/installed");
-  script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://tomcat.apache.org");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
+  script_mandatory_keys("apache/tomcat/detected");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 include("revisions-lib.inc");
 
-if(!tomPort = get_app_port(cpe:CPE)){
+if(isnull(tomPort = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(!appVer = get_app_version(cpe:CPE, port:tomPort)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE))
   exit(0);
-}
+
+appVer = infos["version"];
+path = infos["location"];
 
 if(version_is_less(version:appVer, test_version:"6.0.48")){
     fix = "6.0.48";
 }
-else if(appVer =~ "^7")
+else if(appVer =~ "^7\.")
 {
   if(revcomp(a: appVer, b: "7.0.73") < 0){
     fix = "7.0.73";
   }
 }
-else if(appVer =~ "^(8\.5\.)")
+else if(appVer =~ "^8\.5\.")
 {
   if(revcomp(a: appVer, b: "8.5.8") < 0){
     fix = "8.5.8";
   }
 }
-else if(appVer =~ "^(8\.)")
+else if(appVer =~ "^8\.")
 {
   if(revcomp(a: appVer, b: "8.0.39") < 0){
     fix = "8.0.39";
   }
 }
-else if(appVer =~ "^(9\.)")
+else if(appVer =~ "^9\.")
 {
   if(revcomp(a: appVer, b: "9.0.0.M13") < 0){
     fix = "9.0.0-M13";
@@ -114,7 +112,7 @@ else if(appVer =~ "^(9\.)")
 
 if(fix)
 {
-  report = report_fixed_ver(installed_version:appVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:appVer, fixed_version:fix, install_path:path);
   security_message(data:report, port:tomPort);
   exit(0);
 }

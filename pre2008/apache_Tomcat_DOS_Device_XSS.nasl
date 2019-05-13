@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_Tomcat_DOS_Device_XSS.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache Tomcat DOS Device Name XSS
 #
@@ -34,8 +33,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11042");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,22 +43,18 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Matt Moore");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "cross_site_scripting.nasl");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "cross_site_scripting.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("apache/tomcat/http/detected");
 
   script_xref(name:"URL", value:"http://www.westpoint.ltd.uk/advisories/wp-02-0008.txt");
 
   script_tag(name:"solution", value:"Upgrade to Apache Tomcat v4.1.3 beta or later.");
+
   script_tag(name:"summary", value:"The remote Apache Tomcat web server is vulnerable to a cross site scripting
-  issue.
+  issue.");
 
-  Description :
-
-  Apache Tomcat is the servlet container that is used in the official Reference
-  Implementation for the Java Servlet and JavaServer Pages technologies.
-
-  By making requests for DOS Device names it is possible to cause
+  script_tag(name:"insight", value:"By making requests for DOS Device names it is possible to cause
   Tomcat to throw an exception, allowing XSS attacks, e.g:
 
   tomcat-server/COM2.IMG%20src='Javascript:alert(document.domain)'
@@ -78,7 +73,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 host = http_host_name( dont_add_port:TRUE );

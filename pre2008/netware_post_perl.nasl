@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11158");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-05-11T15:07:16+0000");
+  script_tag(name:"last_modification", value:"2019-05-11 15:07:16 +0000 (Sat, 11 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5520, 5521, 5522);
   script_tag(name:"cvss_base", value:"7.5");
@@ -77,7 +77,7 @@ if(!rcv)
 
 if("VT-Test=84" >< rcv) {
   report = report_vuln_url(port:port, url:url);
-  security_message(port:port);
+  security_message(port:port, data:report);
   exit(0);
 }
 

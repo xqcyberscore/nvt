@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)
 #
@@ -29,20 +28,19 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802682");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2012-5568");
   script_bugtraq_id(56686);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2012-12-05 12:17:34 +0530 (Wed, 05 Dec 2012)");
   script_name("Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=880011");
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2012/11/26/2");
@@ -53,10 +51,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause
   a denial of service conditions.");
-  script_tag(name:"affected", value:"Apache Tomcat version 7.0.x");
+
+  script_tag(name:"affected", value:"Apache Tomcat version 7.0.x.");
+
   script_tag(name:"insight", value:"The flaw is caused by configuring an appropriate timeout using
-  the connectionTimeout property for the relevant Connector(s) defined in
-  server.xml.");
+  the connectionTimeout property for the relevant Connector(s) defined in server.xml.");
+
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to denial of
   service vulnerability. This NVT has been deprecated for the reasons explained by
   the Apache Tomcat team in the references.");
@@ -68,7 +68,6 @@ if(description)
 
   script_tag(name:"deprecated", value:TRUE);
 
-  script_xref(name:"URL", value:"http://tomcat.apache.org/");
   exit(0);
 }
 
@@ -77,11 +76,17 @@ exit(66);
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_in_range( version:vers, test_version:"7.0.0", test_version2:"7.0.33" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"N/A" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"N/A", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811141");
-  script_version("$Revision: 11982 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2017-5664");
   script_bugtraq_id(98888);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-07 15:10:52 +0530 (Wed, 07 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat Security Bypass Vulnerability (Linux)");
@@ -73,26 +73,24 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://tomcat.apache.org");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_unixoide");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!tomPort = get_app_port(cpe:CPE)){
+if(isnull(tomPort = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(!appVer = get_app_version(cpe:CPE, port:tomPort)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE))
   exit(0);
-}
 
-if(appVer =~ "^(7|8|9)")
+appVer = infos["version"];
+path = infos["location"];
+
+if(appVer =~ "^[7-9]\.")
 {
   if(version_in_range(version:appVer, test_version:"8.5.0", test_version2:"8.5.14")){
     fix = "8.5.15";
@@ -112,7 +110,7 @@ if(appVer =~ "^(7|8|9)")
 
   if(fix)
   {
-    report = report_fixed_ver(installed_version:appVer, fixed_version:fix);
+    report = report_fixed_ver(installed_version:appVer, fixed_version:fix, install_path:path);
     security_message(data:report, port:tomPort);
     exit(0);
   }

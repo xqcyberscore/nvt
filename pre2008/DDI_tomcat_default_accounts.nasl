@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_tomcat_default_accounts.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Apache Tomcat Default Accounts
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11204");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,16 +38,18 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Digital Defense Inc.");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("apache/tomcat/http/detected");
 
   script_tag(name:"solution", value:"Change the default passwords by editing the
   admin-users.xml file located in the /conf/users
   subdirectory of the Tomcat installation.");
+
   script_tag(name:"summary", value:"This host appears to be the running the Apache Tomcat
-  Servlet engine with the default accounts still configured.
-  A potential intruder could reconfigure this service in a way
+  Servlet engine with the default accounts still configured.");
+
+  script_tag(name:"impact", value:"A potential intruder could reconfigure this service in a way
   that grants system access.");
 
   script_tag(name:"solution_type", value:"Mitigation");
@@ -61,7 +62,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 #list of default acnts base64()'d

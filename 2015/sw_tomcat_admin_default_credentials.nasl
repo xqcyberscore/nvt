@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tomcat_admin_default_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Apache Tomcat Server Administration Unauthorized Access Vulnerability
 #
@@ -30,18 +29,18 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111013");
-  script_version("$Revision: 13659 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_name("Apache Tomcat Server Administration Unauthorized Access Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2015-04-10 15:00:00 +0200 (Fri, 10 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("apache/tomcat/http/detected");
 
   script_tag(name:"solution", value:"Change or remove the user from tomcat-users.xml.");
 
@@ -64,7 +63,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 req = http_get( item:"/admin/", port:port );

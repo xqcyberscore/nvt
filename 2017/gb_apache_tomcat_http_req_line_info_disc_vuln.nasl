@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810730");
-  script_version("$Revision: 11959 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2016-6816");
   script_bugtraq_id(94461);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-04 14:36:33 +0530 (Tue, 04 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Apache Tomcat HTTP Request Line Information Disclosure Vulnerability");
@@ -72,25 +72,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
+  script_mandatory_keys("apache/tomcat/http/detected");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://tomcat.apache.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if(!tomPort = get_app_port(cpe:CPE)){
+if(!tomPort = get_app_port(cpe:CPE, service:"www"))
   exit(0);
-}
 
-if(!dir = get_app_location(cpe:CPE, port:tomPort)){
+if(!dir = get_app_location(cpe:CPE, port:tomPort))
   exit(0);
-}
 
 url = dir + "/?{{%25}}cake\=1";
 

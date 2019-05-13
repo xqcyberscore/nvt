@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tomcat_xss_24476.nasl 4355 2016-10-26 13:50:18Z cfi $
 #
 # Apache Tomcat JSP Example Web Applications Cross Site Scripting Vulnerability
 #
@@ -31,8 +30,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111014");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2015-04-15 07:00:00 +0100 (Wed, 15 Apr 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,9 +41,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("apache/tomcat/http/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/24476/");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-6.html");
@@ -71,7 +70,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 url = "/jsp-examples/snp/snoop.jsp;test<script>alert('attack');</script>";

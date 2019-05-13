@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_detect.nasl 13761 2019-02-19 12:03:24Z cfischer $
 #
 # Apache Tomcat Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800371");
-  script_version("$Revision: 13761 $");
+  script_version("2019-05-06T12:43:13+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 13:03:24 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-06 12:43:13 +0000 (Mon, 06 May 2019)");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_name("Apache Tomcat Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -50,7 +49,6 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
@@ -65,6 +63,7 @@ identified = FALSE;
 verFound = FALSE;
 conclUrl = ""; # nb: To make openvas-nasl-lint happy...
 extraUrls = "";
+_conclUrl = "";
 
 foreach file( make_list( "/tomcat-docs/changelog.html", "/index.jsp", "/RELEASE-NOTES.txt", "/docs/RELEASE-NOTES.txt" ) ) {
 
@@ -78,7 +77,9 @@ foreach file( make_list( "/tomcat-docs/changelog.html", "/index.jsp", "/RELEASE-
     continue;
 
   if( egrep( pattern:verPattern, string:res ) || egrep( pattern:verPattern2, string:res ) ) {
-    conclUrl += report_vuln_url( port:port, url:file, url_only:TRUE ) + '\n';
+    if( conclUrl )
+      conclUrl += '\n';
+    conclUrl += report_vuln_url( port:port, url:file, url_only:TRUE );
     verFound = TRUE;
     break;
   }
@@ -94,11 +95,15 @@ if( ! verFound ) {
     if( res =~ "^HTTP/1\.[0-1] 404" && "Apache Tomcat" >< res ) {
       identified = TRUE;
       # nb: Used if the version is hidden on the error page (e.g. <h3>Apache Tomcat/@VERSION@</h3>)
-      _conclUrl = report_vuln_url( port:port, url:file, url_only:TRUE ) + '\n';
+      if( _conclUrl )
+        _conclUrl += '\n';
+      _conclUrl = report_vuln_url( port:port, url:file, url_only:TRUE );
     }
 
     if( egrep( pattern:verPattern2, string:res ) ) {
-      conclUrl += report_vuln_url( port:port, url:file, url_only:TRUE ) + '\n';
+      if( conclUrl )
+        conclUrl += '\n';
+      conclUrl += report_vuln_url( port:port, url:file, url_only:TRUE );
       verFound = TRUE;
       break;
     }
@@ -159,25 +164,13 @@ if( identified ) {
     }
   }
 
-  set_kb_item( name:"www/" + host + "/" + port + "/ApacheTomcat", value:vers );
-  set_kb_item( name:"ApacheTomcat/installed", value:TRUE );
-
-  cpe = build_cpe( value:vers, exp:"^([0-9.RCM]+)", base:"cpe:/a:apache:tomcat:" );
-  if( ! cpe )
-    cpe = "cpe:/a:apache:tomcat";
-
-  if( extraUrls )
-    extra = 'Administrative Backends are available at the following location(s):\n' + extraUrls;
-
-  register_product( cpe:cpe, location:install, port:port, service:"www" );
-  log_message( data:build_detection_report( app:"Apache Tomcat",
-                                            version:vers,
-                                            install:install,
-                                            cpe:cpe,
-                                            extra:extra,
-                                            concluded:vers,
-                                            concludedUrl:conclUrl ),
-                                            port:port );
+  set_kb_item( name:"apache/tomcat/detected", value:TRUE );
+  set_kb_item( name:"apache/tomcat/http/detected", value:TRUE );
+  set_kb_item( name:"apache/tomcat/http/port", value:port );
+  set_kb_item( name:"apache/tomcat/http/" + port + "/version", value:vers );
+  set_kb_item( name:"apache/tomcat/http/" + port + "/concluded", value:vers );
+  set_kb_item( name:"apache/tomcat/http/" + port + "/concludedUrl", value:conclUrl );
+  set_kb_item( name:"apache/tomcat/http/" + port + "/location", value:install );
 }
 
 exit( 0 );

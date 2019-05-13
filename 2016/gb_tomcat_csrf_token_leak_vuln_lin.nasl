@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807410");
-  script_version("$Revision: 11938 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_cve_id("CVE-2015-5351");
   script_bugtraq_id(83330);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-02-25 14:34:55 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat CSRF Token Leak Vulnerability - Feb16 (Linux)");
 
@@ -65,24 +65,24 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_unixoide");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!appPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
+if( isnull( appPort = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
 
-if(!appVer = get_app_version(cpe:CPE, port:appPort)){
-  exit(0);
-}
+if( ! infos = get_app_version_and_location( cpe:CPE, port:appPort, exit_no_version:TRUE ) )
+  exit( 0 );
 
-if(appVer =~ "^(7|8|9)")
+appVer = infos["version"];
+path = infos["location"];
+
+if(appVer =~ "^[7-9]\.")
 {
   if(version_in_range(version:appVer, test_version:"7.0.1", test_version2:"7.0.67"))
   {
@@ -104,7 +104,7 @@ if(appVer =~ "^(7|8|9)")
 
   if(VULN)
   {
-    report = report_fixed_ver(installed_version:appVer, fixed_version:fix);
+    report = report_fixed_ver(installed_version:appVer, fixed_version:fix, install_path:path);
     security_message(data:report, port:appPort);
     exit(0);
   }

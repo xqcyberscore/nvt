@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_41544.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Apache Tomcat 'Transfer-Encoding' Information Disclosure and Denial Of Service Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100712");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-13 12:45:31 +0200 (Tue, 13 Jul 2010)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -40,15 +39,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
-  script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
+  script_mandatory_keys("apache/tomcat/detected");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41544");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-5.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-6.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-7.html");
-  script_xref(name:"URL", value:"http://tomcat.apache.org/");
+
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/512272");
 
   script_tag(name:"solution", value:"The vendor released updates. Please see the references for more
@@ -74,13 +72,19 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_in_range( version:vers, test_version:"5.5.0", test_version2:"5.5.29" ) ||
     version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.0.27" ) ||
     version_is_equal( version:vers, test_version:"7.0.0" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"5.5.30/6.0.28/7.0.1" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.5.30/6.0.28/7.0.1", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

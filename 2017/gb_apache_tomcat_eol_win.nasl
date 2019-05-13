@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_eol_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Apache Tomcat End Of Life Detection (Windows)
 #
@@ -30,18 +29,17 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108134");
-  script_version("$Revision: 11874 $");
+  script_version("2019-05-10T11:41:35+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-02-27 11:48:20 +0100 (Mon, 27 Feb 2017)");
   script_name("Apache Tomcat End Of Life Detection (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
+  script_dependencies("gb_apache_tomcat_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("apache/tomcat/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://tomcat.apache.org/tomcat-80-eol.html");
   script_xref(name:"URL", value:"https://tomcat.apache.org/tomcat-60-eol.html");
@@ -51,9 +49,12 @@ if(description)
 
   script_tag(name:"summary", value:"The Apache Tomcat version on the remote host has reached the end of life and should
   not be used anymore.");
+
   script_tag(name:"impact", value:"An end of life version of Apache Tomcat is not receiving any security updates from the vendor. Unfixed security vulnerabilities
   might be leveraged by an attacker to compromise the security of this host.");
+
   script_tag(name:"solution", value:"Update the Apache Tomcat version on the remote host to a still supported version.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -67,7 +68,7 @@ include("products_eol.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( ret = product_reached_eol( cpe:CPE, version:version ) ) {

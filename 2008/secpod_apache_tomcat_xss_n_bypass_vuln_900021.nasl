@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_tomcat_xss_n_bypass_vuln_900021.nasl 14010 2019-03-06 08:24:33Z cfischer $
 # Description: Apache Tomcat Cross-Site Scripting and Security Bypass Vulnerabilities
 #
 # Authors:
@@ -28,8 +27,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900021");
-  script_version("$Revision: 14010 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-05-10T11:41:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2008-08-07 17:25:16 +0200 (Thu, 07 Aug 2008)");
   script_bugtraq_id(30494, 30496);
   script_cve_id("CVE-2008-1232", "CVE-2008-2370");
@@ -38,9 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
-  script_mandatory_keys("ApacheTomcat/installed");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_apache_tomcat_consolidation.nasl");
+  script_mandatory_keys("apache/tomcat/detected");
 
   script_name("Apache Tomcat Cross-Site Scripting and Security Bypass Vulnerabilities");
 
@@ -74,11 +72,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!appPort = get_app_port(cpe:CPE))
+if(isnull(appPort = get_app_port(cpe:CPE)))
   exit(0);
 
-if(!appVer = get_app_version(cpe:CPE, port:appPort))
+if(!infos = get_app_version_and_location(cpe:CPE, port:appPort, exit_no_version:TRUE))
   exit(0);
+
+appVer = infos["version"];
+path = infos["location"];
 
 if(appVer =~ "^4\.1")
 {
@@ -110,7 +111,7 @@ if(appVer =~ "^6\.0")
 if(VULN)
 {
 
-  report = report_fixed_ver(installed_version:appVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:appVer, fixed_version:fix, install_path:path);
   security_message(data:report, port:appPort);
   exit(0);
 }
