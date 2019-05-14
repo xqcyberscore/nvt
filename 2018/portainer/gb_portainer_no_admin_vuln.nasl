@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portainer_no_admin_vuln.nasl 13864 2019-02-26 07:19:57Z cfischer $
 #
 # Portainer UI No Administrator Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114016");
-  script_version("$Revision: 13864 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 08:19:57 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-05-13T12:10:49+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 12:10:49 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-06 11:59:55 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -45,14 +44,13 @@ if(description)
 
   script_cve_id("CVE-2018-19367");
 
-  script_tag(name:"summary", value:"The script checks if the Portainer Dashboard UI has no administrator user yet
-  at the remote web server.");
+  script_tag(name:"summary", value:"Portainer is prone to an information disclosure and authentication bypass vulnerability.");
 
   script_tag(name:"insight", value:"The configuration of Portainer might be incomplete and therefore
   it is unprotected and potentially exposed to the public. This vulnerability affects all versions until
   version 1.19.2. Versions later than 1.19.2 stop the Portainer instance after 5 minutes if no administrator user was created.");
 
-  script_tag(name:"vuldetect", value:"Check if it would be possible to create a new administrator user.");
+  script_tag(name:"vuldetect", value:"Checks if the Portainer Dashboard UI has no administrator user yet or if it would be possible to create a new administrator user.");
 
   script_tag(name:"impact", value:"Access to the dashboard gives you top level
   access to all aspects of administration for the cluster it is assigned to manage.

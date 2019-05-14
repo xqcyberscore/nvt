@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-05-06T13:29:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-06 13:29:09 +0000 (Mon, 06 May 2019)");
+  script_version("2019-05-14T05:04:40+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -192,6 +192,8 @@ OS_CPE = make_array(
     "CentOS2", "cpe:/o:centos:centos:2",
 
     # Fedora / Fedora Core
+    "FC30", "cpe:/o:fedoraproject:fedora:30",
+    "FC29", "cpe:/o:fedoraproject:fedora:29",
     "FC28", "cpe:/o:fedoraproject:fedora:28",
     "FC27", "cpe:/o:fedoraproject:fedora:27",
     "FC26", "cpe:/o:fedoraproject:fedora:26",
@@ -1735,6 +1737,23 @@ if( "Fedora release 28" >< rls && "(Twenty Eight)" >< rls ) {
   register_detected_os( os:rls, oskey:"FC28" );
   exit( 0 );
 }
+if( "Fedora release 29" >< rls && "(Twenty Nine)" >< rls ) {
+  set_kb_item( name:"ssh/login/fedora", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running " + rls );
+  register_detected_os( os:rls, oskey:"FC29" );
+  exit( 0 );
+}
+if( "Fedora release 30" >< rls && "(Thirty)" >< rls ) {
+  set_kb_item( name:"ssh/login/fedora", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running " + rls );
+  register_detected_os( os:rls, oskey:"FC30" );
+  exit( 0 );
+}
+
 # Red Hat Enterprise Linux ES release 2.1 (Panama)
 # Red Hat Enterprise Linux AS release 3 (Taroon Update 1)
 # Red Hat Enterprise Linux AS release 3 (Taroon Update 2)

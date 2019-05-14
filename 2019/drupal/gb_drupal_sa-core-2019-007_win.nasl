@@ -23,11 +23,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142386");
-  script_version("2019-05-09T11:46:31+0000");
-  script_tag(name:"last_modification", value:"2019-05-09 11:46:31 +0000 (Thu, 09 May 2019)");
+  script_version("2019-05-14T07:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 07:15:16 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-09 09:46:02 +0000 (Thu, 09 May 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:M/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-11831");
 

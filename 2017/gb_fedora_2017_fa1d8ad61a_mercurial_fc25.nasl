@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_fa1d8ad61a_mercurial_fc25.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for mercurial FEDORA-2017-fa1d8ad61a
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873466");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-05-14T07:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 07:15:16 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2017-10-05 11:54:59 +0530 (Thu, 05 Oct 2017)");
   script_cve_id("CVE-2017-1000115", "CVE-2017-1000116");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mercurial FEDORA-2017-fa1d8ad61a");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'mercurial'

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-05-09T05:35:44+0000");
+  script_tag(name:"last_modification", value:"2019-05-09 05:35:44 +0000 (Thu, 09 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -72,6 +71,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
+include("url_func.inc");
 
 # Keep this in sync with the preferences in the description part
 start_page = script_get_preference( "Start page : " );
@@ -121,7 +121,6 @@ URLs_auth_hash   = make_list();
 Code404          = make_list();
 URLs_discovered  = make_list();
 Check401         = TRUE;
-recur_candidates = make_array();
 
 URLs_hash[start_page] = 0;
 cnt = 0;
@@ -345,243 +344,25 @@ function dir( url ) {
   return ereg_replace( pattern:"(.*)/[^/]*", string:url, replace:"\1" );
 }
 
-function remove_cgi_arguments( url, port, host ) {
-
-  local_var url, port, host;
-  local_var len, idx, cgi, cgi_args, arg, args, a, b;
-
-  # Remove the trailing blanks
-  while( url[ strlen( url ) - 1] == " " ) {
-    url = substr( url, 0, strlen( url ) - 2);
-  }
-
-  # New length after removing the trailing blanks
-  len = strlen( url );
-
-  idx = stridx( url, "?" );
-  if( idx < 0 ) {
-    return url;
-  } else if( idx >= len - 1 ) {
-    cgi = substr( url, 0, len - 2 );
-    add_cgi( cgi:cgi, args:"", port:port, host:host );
-    return cgi;
-  } else {
-    if( idx > 1 ) {
-      cgi = substr( url, 0, idx - 1 );
-    } else {
-      cgi = ".";
-    }
-
-    cgi_args = split( substr( url, idx + 1, len - 1 ), sep:"&" );
-
-    foreach arg( make_list( cgi_args ) ) {
-
-      arg = arg - "&";
-      arg = arg - "amp;";
-      a = ereg_replace( string:arg, pattern:"(.*)=.*", replace:"\1" );
-      b = ereg_replace( string:arg, pattern:".*=(.*)", replace:"\1" );
-
-      if( a != b ) {
-        args = string( args, a, " [", b, "] " );
-      } else {
-        args = string( args, arg, " [] " );
-      }
-    }
-    add_cgi( cgi:cgi, args:args, port:port, host:host );
-    return cgi;
-  }
-}
-
-function basename( name, level ) {
-
-  local_var name, level, len, i;
-
-  len = strlen( name );
-
-  if( len == 0 ) return NULL;
-
-  for( i = len - 1; i >= 0; i-- ) {
-    if( name[i] == "/" ) {
-      level--;
-      if( level < 0 ) {
-        return( substr( name, 0, i ) );
-      }
-    }
-  }
-
-  # Level is too high, we return /
-  return "/";
-}
-
-function clean_url( url ) {
-
-  local_var url, search, s;
-
-  search = make_list( "'"," ",'"' );
-  foreach s( search ) {
-    if( ! isnull( url ) ) {
-      url = str_replace( string:url, find:s, replace:"", keep:FALSE );
-    }
-  }
-  return url;
-}
-
-# This function checks if the passed URL is a recursion candidate
-# and returns TRUE if the same URL was previously collected two times
-# and FALSE otherwise.
-function check_recursion_candidates( url, current, port, host ) {
-
-  local_var url, current, port, host, num;
-
-  if( ! url ) return FALSE;
-
-  # A few of those are already checked in canonical_url
-  # but just checking again to be sure...
-  # Examples without recursions:
-  # <a href="#">example1</a>
-  # <a href="./example2">example2</a>
-  # <a href="/example3">example3</a>
-  # <a href="../example4">example4</a>
-  # <a href="./../example5">example5</a>
-  # <a href="https://example6">example6</a>
-  # <a href="//example7">example7</a>
-  if( url =~ "^(https?|\.|/|#)" ) {
-    if( debug > 3 ) display( "***** Not a recursion candidate: '", url, "'\n" );
-    return FALSE;
-  }
-
-  # Recursion candidates are only links to subdirs
-  if( "/" >!< url ) return FALSE;
-
-  # e.g. if a 404 page contains a link like:
-  # <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-  # which would be a relative URL to a subfolder of the current path
-  # throwing the same 404 page causing a recursion later...
-  num = recur_candidates[url];
-  if( num ) {
-    num++;
-    if( debug > 3 ) display( "***** Adding possible recursion candidate: '", url, "' (Count: ", num, ")\n" );
-    recur_candidates[url] = num;
-    if( num > 2 ) {
-      if( debug > 3 ) display( "***** Max count ", num, " of recursion for: '", url, "' reached, skipping this URL.\n" );
-      set_kb_item( name:"www/" + host + "/" + port + "/content/recursion_urls", value:current + " (" + url + ")" );
-      return TRUE;
-    }
-  } else {
-    if( debug > 3 ) display( "***** Adding possible recursion candidate: '", url, "' (Count: 1)\n" );
-    recur_candidates[url] = 1;
-  }
-  return FALSE;
-}
-
-function canonical_url( url, current, port, host ) {
-
-  local_var url, current, port, host;
-  local_var location, num_dots, i;
-
-  url = clean_url( url:url );
-
-  if( debug > 1 ) display( "***** canonical '", url, "' (current:", current, ")\n" );
-
-  if( strlen( url ) == 0 ) return NULL;
-  if( url[0] == "#" ) return NULL;
-
-  if( url == "./" || url == "." || url =~ "^\./\?" ) return current;
-
-  # We need to check for a possible recursion, see the function for some background notes.
-  if( check_recursion_candidates( url:url, current:current, port:port, host:host ) ) return NULL;
-
-  if( debug > 2 ) display( "**** canonical(again) ", url, "\n" );
-
-  if( ereg( pattern:"[a-z]*:", string:url, icase:TRUE ) ) {
-    if( ereg( pattern:"^http://", string:url, icase:TRUE ) ) {
-      location = ereg_replace( string:url, pattern:"http://([^/]*)/.*", replace:"\1", icase:TRUE );
-      if( location != url ) {
-        # TBD: location could also contain the port, e.g. Location: http://example.com:1234/url
-        if( location != get_host_name() ) {
-          return NULL;
-        } else {
-          return remove_cgi_arguments( url:ereg_replace( string:url, pattern:"http://[^/]*/([^?]*)", replace:"/\1", icase:TRUE ), port:port, host:host );
-        }
-      }
-    } else if( ereg( pattern:"^https://", string:url, icase:TRUE ) ) {
-      location = ereg_replace( string:url, pattern:"https://([^/]*)/.*", replace:"\1", icase:TRUE );
-      if( location != url ) {
-        # TBD: location could also contain the port, e.g. Location: https://example.com:1234/url
-        if( location != get_host_name() ) {
-          return NULL;
-        } else {
-          return remove_cgi_arguments( url:ereg_replace( string:url, pattern:"https://[^/]*/([^?]*)", replace:"/\1", icase:TRUE ), port:port, host:host );
-        }
-      }
-    }
-  } else {
-    if( url == "//" ) return "/";
-
-    if( ereg( pattern:"^//.*", string:url, icase:TRUE ) ) {
-      location = ereg_replace( string:url, pattern:"//([^/]*)/.*", replace:"\1", icase:TRUE );
-      if( location != url ) {
-        # TBD: location could also contain the port, e.g. Location: //example.com:1234/url
-        if( location == get_host_name() ) {
-          return remove_cgi_arguments( url:ereg_replace( string:url, pattern:"//[^/]*/([^?]*)", replace:"/\1", icase:TRUE ), port:port, host:host );
-        }
-     }
-     return NULL;
-    }
-
-    if( url[0] == "/" ) {
-      return remove_cgi_arguments( url:url, port:port, host:host );
-    } else {
-      i = 0;
-      num_dots = 0;
-
-      while( i < strlen( url ) - 2 && url[i] == "." && url[i+1] == "." && url[i+2] == "/" ) {
-        num_dots++;
-        url = url - "../";
-        if( strlen( url ) == 0 ) break;
-      }
-
-      while( i < strlen( url ) && url[i] == "." && url[i+1] == "/" ) {
-        url = url - "./";
-        if( strlen( url ) == 0 ) break;
-      }
-
-      # Repeat again as some websites are doing stuff like <a href="./../foo"></a>
-      while( i < strlen( url ) - 2 && url[i] == "." && url[i+1] == "." && url[i+2] == "/" ) {
-        num_dots++;
-        url = url - "../";
-        if( strlen( url ) == 0 ) break;
-      }
-
-      url = string( basename( name:current, level:num_dots ), url );
-    }
-
-    i = stridx( url, "#" );
-    if( i >= 0 ) url = substr( url, 0, i - 1 );
-
-    if( url[0] != "/" ) {
-      return remove_cgi_arguments( url:string("/", url ), port:port, host:host );
-    } else {
-      return remove_cgi_arguments( url:url, port:port, host:host );
-    }
-  }
-  return NULL;
-}
-
 function extract_location( data, port, host ) {
 
   local_var data, port, host;
   local_var loc, url;
 
   loc = egrep( string:data, pattern:"^Location: " );
-  if( ! loc ) return NULL;
+  if( ! loc )
+    return NULL;
 
   loc = loc - string( "\r\n" );
   loc = ereg_replace( string:loc, pattern:"Location: (.*)$", replace:"\1" );
 
-  url = canonical_url( url:loc, current:"/", port:port, host:host );
+  url = canonical_url( url:loc, current:"/", port:port, host:host, debug:debug, webmirror_called:TRUE );
   if( url ) {
-    add_url( url:url, port:port, host:host );
+
+    if( ! isnull( url[1] ) )
+      add_cgi( cgi:url[0], args:url[1], port:port, host:host );
+
+    add_url( url:url[0], port:port, host:host );
     return url;
   }
   return NULL;
@@ -787,12 +568,17 @@ function parse_javascript( elements, current, port, host ) {
   pat = string( ".*window\\.open\\('([^',", raw_string(0x29), "]*)'.*\\)*" );
   url = ereg_replace( pattern:pat, string:elements["onclick"], replace:"\1", icase:TRUE );
 
-  if( url == elements["onclick"] ) return NULL;
+  if( url == elements["onclick"] )
+    return NULL;
 
-  url = canonical_url( url:url, current:current, port:port, host:host );
+  url = canonical_url( url:url, current:current, port:port, host:host, debug:debug, webmirror_called:TRUE );
   if( url ) {
-    add_url( url:url, port:port, host:host );
-    return url;
+
+    if( ! isnull( url[1] ) )
+      add_cgi( cgi:url[0], args:url[1], port:port, host:host );
+
+    add_url( url:url[0], port:port, host:host );
+    return url[0];
   }
   return NULL;
 }
@@ -804,9 +590,14 @@ function parse_dir_from_src( elements, current, port, host ) {
   src = elements["src"];
   if( ! src ) return NULL;
 
-  src = canonical_url( url:src, current:current, port:port, host:host );
+  src = canonical_url( url:src, current:current, port:port, host:host, debug:debug, webmirror_called:TRUE );
+  if( src ) {
 
-  add_cgi_dir( dir:src, port:port, host:host );
+    if( ! isnull( src[1] ) )
+      add_cgi( cgi:src[0], args:src[1], port:port, host:host );
+
+    add_cgi_dir( dir:src[0], port:port, host:host );
+  }
 }
 
 function parse_href_or_src( elements, current, port, host ) {
@@ -821,10 +612,14 @@ function parse_href_or_src( elements, current, port, host ) {
     return NULL;
   }
 
-  href = canonical_url( url:href, current:current, port:port, host:host );
+  href = canonical_url( url:href, current:current, port:port, host:host, debug:debug, webmirror_called:TRUE );
   if( href ) {
-    add_url( url:href, port:port, host:host );
-    return href;
+
+    if( ! isnull( href[1] ) )
+      add_cgi( cgi:href[0], args:href[1], port:port, host:host );
+
+    add_url( url:href[0], port:port, host:host );
+    return href[0];
   }
 }
 
@@ -849,10 +644,14 @@ function parse_refresh( elements, current, port, host ) {
   href = sub["url"];
   if( ! href ) return NULL;
 
-  href = canonical_url( url:href, current:current, port:port, host:host );
+  href = canonical_url( url:href, current:current, port:port, host:host, debug:debug, webmirror_called:TRUE );
   if( href ) {
-    add_url( url:href, port:port, host:host );
-    return href;
+
+    if( ! isnull( href[1] ) )
+      add_cgi( cgi:href[0], args:href[1], port:port, host:host );
+
+    add_url( url:href[0], port:port, host:host );
+    return href[0];
   }
 }
 
@@ -866,9 +665,13 @@ function parse_form( elements, current, port, host ) {
   # nb: <form action="" or <form action="#" resolves to the current URL
   if( ! isnull( action ) && ( action == "" || action == "#" ) ) action = current;
 
-  action = canonical_url( url:action, current:current, port:port, host:host );
+  action = canonical_url( url:action, current:current, port:port, host:host, debug:debug, webmirror_called:TRUE );
   if( action ) {
-    return action;
+
+    if( ! isnull( action[1] ) )
+      add_cgi( cgi:action[0], args:action[1], port:port, host:host );
+
+    return action[0];
   } else {
     return NULL;
   }

@@ -28,11 +28,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813904");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-13T06:06:12+0000");
   script_cve_id("CVE-2018-14884");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-13 06:06:12 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-07 13:29:04 +0530 (Tue, 07 Aug 2018)");
   script_name("PHP 'HTTP Parsing' Function Unspecified Vulnerability (Linux)");
 
@@ -53,7 +53,6 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to PHP version 7.0.27, 7.1.13 or
   7.2.1 or later. Please see the references for more information.");
 
-  script_xref(name:"URL", value:"http://www.php.net");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=75535");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -63,7 +62,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ag-custom-admin_info_disc_vuln.nasl 13590 2019-02-12 02:34:37Z ckuersteiner $
 #
 # WordPress Absolutely Glamorous Custom Admin Plugin <= 6.4.1 Database Backup Arbitrary File Download Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112439");
-  script_version("$Revision: 13590 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 03:34:37 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-05-13T12:30:25+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 12:30:25 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 13:10:00 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -48,13 +47,13 @@ if (description)
   script_mandatory_keys("wordpress/installed");
 
   script_tag(name:"summary", value:"WordPress Absolutely Glamorous Custom Admin plugin is prone to an information
-disclosure vulnerability.");
+	disclosure vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Absolutely Glamorous Custom Admin plugin through version 6.4.1.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 13th May, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://cxsecurity.com/issue/WLB-2018110141");
@@ -70,18 +69,23 @@ include("version_func.inc");
 
 CPE = "cpe:/a:wordpress:wordpress";
 
-if (!port = get_app_port(cpe: CPE)) exit(0);
-if (!dir = get_app_location(cpe: CPE, port: port)) exit(0);
+if(!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (dir == "/") dir = "";
+if(!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/ag-custom-admin/readme.txt");
+if(dir == "/")
+  dir = "";
 
-if ("=== Absolutely Glamorous Custom Admin ===" >< res && "Changelog" >< res) {
+url = dir + "/wp-content/plugins/ag-custom-admin/readme.txt";
+res = http_get_cache(port: port, item: url);
+
+if(res =~ "=== (Absolutely Glamorous|AG) Custom Admin" && "Changelog" >< res) {
 
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
-  if (!isnull(vers[1]) && version_is_less_equal(version: vers[1], test_version: "6.4.1")) {
+  if(!isnull(vers[1]) && version_is_less_equal(version: vers[1], test_version: "6.4.1")) {
     report = report_fixed_ver(installed_version: vers[1], fixed_version: "None");
     security_message(port: port, data: report);
     exit(0);

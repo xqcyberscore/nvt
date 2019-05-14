@@ -29,11 +29,11 @@ CPE = "cpe:/a:typo3:typo3";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141924");
-  script_version("2019-05-10T09:25:35+0000");
-  script_tag(name:"last_modification", value:"2019-05-10 09:25:35 +0000 (Fri, 10 May 2019)");
+  script_version("2019-05-13T07:00:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 07:00:34 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 15:03:35 +0700 (Fri, 25 Jan 2019)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-14041");
 

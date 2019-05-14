@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1072.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1072-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891072");
-  script_version("$Revision: 14281 $");
+  script_version("2019-05-14T07:15:16+0000");
   script_cve_id("CVE-2017-1000115", "CVE-2017-1000116", "CVE-2017-1000117", "CVE-2017-9800");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1072-1] mercurial security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-14 07:15:16 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

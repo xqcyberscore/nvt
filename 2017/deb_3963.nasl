@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3963.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3963-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703963");
-  script_version("$Revision: 14280 $");
+  script_version("2019-05-14T07:15:16+0000");
   script_cve_id("CVE-2017-1000115", "CVE-2017-1000116", "CVE-2017-9462");
   script_name("Debian Security Advisory DSA 3963-1 (mercurial - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-14 07:15:16 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2017-09-04 00:00:00 +0200 (Mon, 04 Sep 2017)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112441");
-  script_version("2019-05-09T15:03:03+0000");
-  script_tag(name:"last_modification", value:"2019-05-09 15:03:03 +0000 (Thu, 09 May 2019)");
+  script_version("2019-05-13T12:21:14+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 12:21:14 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 13:28:00 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"affected", value:"WordPress Pods plugin through version 2.7.9.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th May, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 13th May, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://cxsecurity.com/issue/WLB-2018110194");
@@ -68,14 +68,19 @@ include("version_func.inc");
 
 CPE = "cpe:/a:wordpress:wordpress";
 
-if (!port = get_app_port(cpe: CPE)) exit(0);
-if (!dir = get_app_location(cpe: CPE, port: port)) exit(0);
+if(!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (dir == "/") dir = "";
+if(!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/pods/readme.txt");
+if(dir == "/")
+  dir = "";
 
-if ("=== Pods - Custom Content Types and Fields ===" >< res && "Changelog" >< res) {
+url = dir + "/wp-content/plugins/pods/readme.txt";
+res = http_get_cache(port: port, item: url);
+
+if("=== Pods" >< res && "Changelog" >< res) {
 
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
