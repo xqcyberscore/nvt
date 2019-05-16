@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_podcastgenerator_46133.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Podcast Generator Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103062");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-02-04 13:23:33 +0100 (Fri, 04 Feb 2011)");
   script_bugtraq_id(46133);
 
@@ -48,24 +46,27 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("podcast_generator_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("podcast_generator/detected");
+
   script_tag(name:"summary", value:"Podcast Generator is prone to a local file-include vulnerability and a
-cross-site scripting vulnerability because it fails to properly
-sanitize user-supplied input.
+  cross-site scripting vulnerability because it fails to properly sanitize user-supplied input.");
 
-An attacker can exploit the local file-include vulnerability using
-directory-traversal strings to view and execute local files within
-the context of the webserver process. Information harvested may aid
-in further attacks.
+  script_tag(name:"impact", value:"An attacker can exploit the local file-include vulnerability using
+  directory-traversal strings to view and execute local files within
+  the context of the webserver process. Information harvested may aid in further attacks.
 
-The attacker may leverage the cross-site scripting issue to execute
-arbitrary script code in the browser of an unsuspecting user in the
-context of the affected site. This may let the attacker steal cookie-
-based authentication credentials and launch other attacks.
+  The attacker may leverage the cross-site scripting issue to execute
+  arbitrary script code in the browser of an unsuspecting user in the
+  context of the affected site. This may let the attacker steal cookie-
+  based authentication credentials and launch other attacks.");
 
-Podcast Generator 1.3 is vulnerable. Prior versions may also be
-affected.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"Podcast Generator 1.3 is vulnerable. Prior versions may also be
+  affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -75,17 +76,14 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_dir_from_kb(port:port,app:"podcast_generator"))exit(0);
-url = string(dir,"/core/themes.php?L_failedopentheme=<script>alert('openvas-xss-test');</script>");
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\);</script>",check_header:TRUE)) {
+url = string(dir,"/core/themes.php?L_failedopentheme=<script>alert('vt-xss-test');</script>");
 
-  security_message(port:port);
+if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('vt-xss-test'\);</script>",check_header:TRUE)) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
-
 }
 
 exit(0);

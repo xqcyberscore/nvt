@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_discloser_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Discloser Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902137");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_name("Discloser Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -89,6 +88,7 @@ foreach dir( make_list_unique( "/discloser", "/", cgi_dirs( port:port ) ) ) {
     version = ereg_replace( pattern:"-", string:version, replace:"." );
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/Discloser", value:tmp_version );
+    set_kb_item( name:"discloser/detected", value:TRUE );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:bob_jewell:discloser:" );
     if( isnull( cpe ) )

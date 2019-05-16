@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_38638.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # httpdx PNG File Handling Remote Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100525");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-03-11 12:36:18 +0100 (Thu, 11 Mar 2010)");
   script_bugtraq_id(38638);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,16 +44,18 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("httpdx/banner");
-  script_tag(name:"summary", value:"The 'httpdx' program is prone to a denial-of-service vulnerbaility.
 
-Remote attackers can exploit this issue to cause the server to stop
-responding, denying service to legitimate users.
+  script_tag(name:"summary", value:"The 'httpdx' program is prone to a denial-of-service vulnerbaility.");
 
-This issue affects httpdx 1.5.3, other versions may also be affected.");
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to cause the server to stop
+  responding, denying service to legitimate users.");
+
+  script_tag(name:"affected", value:"httpdx 1.5.3, other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -63,41 +64,35 @@ This issue affects httpdx 1.5.3, other versions may also be affected.");
   exit(0);
 }
 
-
 include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port: port);
-if(!banner)exit(0);
 
-if("httpdx/" >!< banner)exit(0);
+if(!banner || "httpdx/" >!< banner)
+  exit(0);
 
 if(safe_checks()) {
-
   version = eregmatch(pattern: "httpdx/([0-9.]+)", string: banner);
   if(isnull(version[1]))exit(0);
-
   if(version_is_equal(version: version[1], test_version: "1.5.3")) {
     security_message(port:port);
     exit(0);
   }
+} else {
 
+  if(http_is_dead(port:port))
+    exit(0);
+
+  url = string("GET /res~httpdx.conf/image/php.png");
+  req = http_get(item:url, port:port);
+  res = http_send_recv(port:port, data:req);
+
+  if(http_is_dead(port:port)) {
+    security_message(port:port);
+    exit(0);
+  }
 }
-
-else {
-
-   url = string("GET /res~httpdx.conf/image/php.png");
-   req = http_get(item:url, port:port);
-   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-
-   if(http_is_dead(port:port)) {
-        security_message(port:port);
-        exit(0);
-   }
- }
 
 exit(0);

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nakid_cms_rfi_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Nakid CMS 'core[system_path]' Parameter Remote File Inclusion Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902082");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -46,41 +45,45 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_nakid_cms_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("NakidCMS/installed");
+
   script_tag(name:"insight", value:"The flaw is caused by an input validation error in the
-'/modules/catalog/upload_photo.php' script when processing the
-'core[system_path]' parameter.");
+  '/modules/catalog/upload_photo.php' script when processing the
+  'core[system_path]' parameter.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Nakid CMS and is prone to remote file
-inclusion vulnerability.");
+  inclusion vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to include malicious
-PHP scripts and execute arbitrary commands with the privileges of the web server.");
-  script_tag(name:"affected", value:"Nakid CMS version 0.5.2 and 0.5.1");
+  PHP scripts and execute arbitrary commands with the privileges of the web server.");
+
+  script_tag(name:"affected", value:"Nakid CMS version 0.5.2 and 0.5.1.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 
 ncPort = get_http_port(default:80);
-if(!ncPort){
-  exit(0);
-}
 
 ncVer = get_kb_item("www/" + ncPort + "/Nakid/CMS/Ver");
-if(!ncVer){
- exit(0);
-}
+if(!ncVer)
+  exit(0);
 
 ncVer = eregmatch(pattern:"^(.+) under (/.*)$", string:ncVer);
 if(!isnull(ncVer[2]))
 {
-  sndReq = http_get(item:string(ncVer[2], "/modules/catalog/upload_photo.php?" +
-                                  "core[system_path]=OpenVAS_RFI.php"), port:ncPort);
+  url = string(ncVer[2], "/modules/catalog/upload_photo.php?core[system_path]=VT_RFI.php");
+  sndReq = http_get(item:url, port:ncPort);
   rcvRes = http_send_recv(port:ncPort, data:sndReq);
-  if("OpenVAS_RFI.php" >< rcvRes && "failed to open stream" >< rcvRes){
-    security_message(ncPort);
+  if("VT_RFI.php" >< rcvRes && "failed to open stream" >< rcvRes) {
+    report = report_vuln_url(port:ncPort, url:url);
+    security_message(port:ncPort, data:report);
   }
 }

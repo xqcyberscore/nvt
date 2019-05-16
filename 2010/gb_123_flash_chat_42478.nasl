@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_123_flash_chat_42478.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # 123 Flash Chat Multiple Security Vulnerabilities
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100766");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-31 14:30:50 +0200 (Tue, 31 Aug 2010)");
   script_bugtraq_id(42478);
 
@@ -47,18 +45,19 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 35555);
   script_mandatory_keys("TopCMM/banner");
+
   script_tag(name:"summary", value:"123 Flash Chat is prone to multiple security vulnerabilities. These
   vulnerabilities include a cross-site scripting vulnerability, multiple
-  information-disclosure vulnerabilities, and a directory-traversal
-  vulnerability.
+  information-disclosure vulnerabilities, and a directory-traversal vulnerability.");
 
-  An attacker can exploit these vulnerabilities to execute arbitrary
+  script_tag(name:"impact", value:"An attacker can exploit these vulnerabilities to execute arbitrary
   script code in the browser of an unsuspecting user in the context of
   the affected site, steal cookie-based authentication credentials,
   obtain sensitive information, or perform unauthorized actions. Other
-  attacks are also possible.
+  attacks are also possible.");
 
-  123 Flash Chat 7.8 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"123 Flash Chat 7.8 is vulnerable, other versions may also be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
@@ -72,18 +71,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:35555);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port:port);
-if(!banner || "Server: TopCMM Server" >!< banner)exit(0);
-
-url = string("/index.html%27%22--%3E%3Cscript%3Ealert%28%27openvas-xss-test%27%29%3C/script%3E");
-
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\)</script>",extra_check:"Error Information", check_header:TRUE)) {
-
-  security_message(port:port);
+if(!banner || "Server: TopCMM Server" >!< banner)
   exit(0);
 
+url = string("/index.html%27%22--%3E%3Cscript%3Ealert%28%27vt-xss-test%27%29%3C/script%3E");
+
+if(http_vuln_check(port:port, url:url, pattern:"<script>alert\('vt-xss-test'\)</script>", extra_check:"Error Information", check_header:TRUE)) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
 exit(0);

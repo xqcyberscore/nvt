@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_image_hosting_script_dpi_xss_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Clixint DPI Image Hosting Script Cross Site Scripting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801082");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,41 +41,37 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("gb_image_hosting_script_dpi_detect.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_image_hosting_script_dpi_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("imagehostingscript/dpi/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary HTML
   script codes in a user's established login session into the context of an
   affected site running the vulnerable web application.");
+
   script_tag(name:"affected", value:"Image Hosting Script DPI 1.1 Final and prior on all running platforms.");
+
   script_tag(name:"insight", value:"This flaw is due to an error in 'images.php' which doesn't verify user supplied
   input before being used via 'date' parameter.");
-  script_tag(name:"summary", value:"This host is running Flashlight Free Edition and is prone to a Cross Site
+
+  script_tag(name:"summary", value:"This host is running Image Hosting Script DPI and is prone to a Cross Site
   Scripting Vulnerability.");
-  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.
 
-  *****
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  NOTE: Ignore this warning, if the aforementioned patch is already applied.
-
-  *****");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 dpiPort = get_http_port(default:80);
-if(!dpiPort){
-  exit(0);
-}
 
 dpiVer = get_kb_item("www/" + dpiPort + "/ImageHostingScript/DPI");
-if(!dpiVer){
+if(!dpiVer)
   exit(0);
-}
 
 dpiVer = eregmatch(pattern:"^(.+) under (/.*)$", string:dpiVer);
 if(dpiVer[1] != NULL)

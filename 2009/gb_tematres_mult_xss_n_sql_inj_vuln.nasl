@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tematres_mult_xss_n_sql_inj_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # TemaTres Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800801");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 08:03:45 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -46,44 +45,45 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_tematres_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("tematres/detected");
+
   script_tag(name:"impact", value:"Successful attacks will let the attacker steal cookie-based authentication
   credentials, compromise the application, access or modify data, or can exploit
-  latest vulnerabilities in the underlying database when 'magic_quotes_gpc' is
-  disabled.");
-  script_tag(name:"affected", value:"TemaTres version 1.031 and prior");
+  latest vulnerabilities in the underlying database when 'magic_quotes_gpc' is disabled.");
+
+  script_tag(name:"affected", value:"TemaTres version 1.031 and prior.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to
 
   - In-adequate check of user supplied input which causes input validation error
-    in the search form.
+  in the search form.
 
   - Validation check error in accepting user input for the following parameters
-     a) _expresion_de_busqueda, b) letra  c) estado_id and d) tema e) PATH_TO
-     inside index.php.
+  a) _expresion_de_busqueda, b) letra  c) estado_id and d) tema e) PATH_TO inside index.php.
 
   - Validation check error in accepting user input for the following parameters
-     a) y b) ord and c) m inside sobre.php.
+  a) y b) ord and c) m inside sobre.php.
 
   - Validation check error in accepting user input for the following parameters
-     a) mail b) password inside index.php.
+  a) mail b) password inside index.php.
 
   - Validation check error in accepting user input for the following parameters
-     a) dcTema b) madsTema c) zthesTema d) skosTema and e) xtmTema inside xml.php.");
+  a) dcTema b) madsTema c) zthesTema d) skosTema and e) xtmTema inside xml.php.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to TemaTres version 1.033 or later.");
+
   script_tag(name:"summary", value:"The host is running TemaTres and is prone to Multiple XSS and SQL
   Injection Vulnerabilities.");
-  script_xref(name:"URL", value:"http://www.r020.com.ar/tematres/index.en.html#indice");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 tematresPort = get_http_port(default:80);
-if(!tematresPort){
-  exit(0);
-}
 
 tematresVer = get_kb_item("www/" + tematresPort + "/TemaTres");
 tematresVer = eregmatch(pattern:"^(.+) under (/.*)$", string:tematresVer);

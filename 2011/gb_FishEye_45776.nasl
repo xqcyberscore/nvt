@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_FishEye_45776.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Fisheye Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103027");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-13 13:28:59 +0100 (Thu, 13 Jan 2011)");
   script_bugtraq_id(45776);
   script_tag(name:"cvss_base", value:"2.6");
@@ -49,38 +48,34 @@ if (description)
   script_dependencies("gb_FishEye_detect.nasl");
   script_require_ports("Services/www", 8060);
   script_mandatory_keys("FishEye/installed");
+
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
-information.");
+  information.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Fisheye and Crucible are prone to cross-site scripting, security-
-bypass, and information-disclosure vulnerabilities.
+  bypass, and information-disclosure vulnerabilities.");
 
-Attackers can exploit these issues to execute arbitrary script code in
-the context of the website, steal cookie-based authentication
-information, disclose sensitive information, or bypass certain
-security restrictions.
+  script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary script code in
+  the context of the website, steal cookie-based authentication
+  information, disclose sensitive information, or bypass certain security restrictions.");
 
-Fisheye and Crucible versions prior to 2.4.4 are vulnerable.");
+  script_tag(name:"affected", value:"Fisheye and Crucible versions prior to 2.4.4 are vulnerable.");
+
   exit(0);
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:8060);
-if(!get_port_state(port))exit(0);
-
 vers = get_kb_item(string("www/", port, "/FishEye"));
-
 if(vers) {
-
-    if(version_is_less(version: vers, test_version: "2.4.4")) {
-      security_message(port:port);
-      exit(0);
-    }
-
+  if(version_is_less(version: vers, test_version: "2.4.4")) {
+    security_message(port:port);
+    exit(0);
+  }
 }
 
 exit(0);
-

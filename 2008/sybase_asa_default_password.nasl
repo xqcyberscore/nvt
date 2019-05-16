@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sybase_asa_default_password.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # Sybase ASA default database password
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:sybase:adaptive_server_enterprise';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80088");
-  script_version("$Revision: 14010 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -176,57 +175,44 @@ function make_sql_login_pkt(database, username, password)
     return sql_packet;
 }
 
-port = get_app_port( cpe:CPE, service:"sybase_tcp_listener" );
-if(!port)port = 2638;
+if(!port = get_app_port( cpe:CPE, service:"sybase_tcp_listener" ))
+  exit( 0 );
 
-if(get_port_state(port))
-{
-   soc = open_sock_tcp(port);
+soc = open_sock_tcp(port);
+if(!soc)
+  exit(0);
 
-   if(soc)
-   {
-      # this creates a variable called sql_packet
-      sql_packet = make_sql_login_pkt(database:"", username:"DBA", password:"SQL");
-      send(socket:soc, data:sql_packet);
+# this creates a variable called sql_packet
+sql_packet = make_sql_login_pkt(database:"", username:"DBA", password:"SQL");
+send(socket:soc, data:sql_packet);
+r = recv(socket:soc, length:512);
+close(soc);
 
-      r  = recv(socket:soc, length:512);
-      close(soc);
-
-      # See <http://www.freetds.org/tds.html> for info on the TDS protocol
-      if(
-        # packet seems big enough and...
-        strlen(r) > 3 &&
-        # response from server and...
-        ord(r[0x00]) == 4 &&
-        # packet length agrees with what's in the packet header
-        (ord(r[2])*256 + ord(r[3])) == strlen(r)
-      )
-      {
-        # Find the server response to the login request.
-        i = 8;
-        while (i < strlen(r))
-        {
-          type = ord(r[i]);
-          if (type == 0xFD || type == 0xFE || type == 0xFF)
-          {
-            exit(0);
-          }
-          if (type == 0xAD)
-          {
-            ack = ord(r[i+3]);
-            ver = ord(r[i+4]);
-            if (
-              (ver == 5 && ack == 5) ||
-              (ver == 4 && ack == 1)
-            )
-            {
-              security_message(port);
-              exit(0);
-            }
-          }
-          len = ord(r[i+1]) + ord(r[i+2])*256;
-          i += 3 + len;
-        }
+# See <http://www.freetds.org/tds.html> for info on the TDS protocol
+if(
+   # packet seems big enough and...
+   strlen(r) > 3 &&
+   # response from server and...
+   ord(r[0x00]) == 4 &&
+   # packet length agrees with what's in the packet header
+   (ord(r[2])*256 + ord(r[3])) == strlen(r)
+  ) {
+  # Find the server response to the login request.
+  i = 8;
+  while (i < strlen(r)) {
+    type = ord(r[i]);
+    if (type == 0xFD || type == 0xFE || type == 0xFF) {
+      exit(0);
+    }
+    if (type == 0xAD) {
+      ack = ord(r[i+3]);
+      ver = ord(r[i+4]);
+      if ( (ver == 5 && ack == 5) || (ver == 4 && ack == 1) ) {
+        security_message(port:port);
+        exit(0);
       }
     }
+    len = ord(r[i+1]) + ord(r[i+2])*256;
+    i += 3 + len;
+  }
 }

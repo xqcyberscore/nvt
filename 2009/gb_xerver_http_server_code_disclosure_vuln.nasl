@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerver_http_server_code_disclosure_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # Xerver HTTP Server Source Code Disclosure Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801019");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-21 10:12:07 +0200 (Wed, 21 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -44,28 +43,34 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_xerver_http_server_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("xerver/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain sensitive
-information about the application.");
+  information about the application.");
+
   script_tag(name:"affected", value:"Xerver version 4.32 and prior on all platforms.");
+
   script_tag(name:"insight", value:"An error exists when processing HTTP requests containing '::$DATA'
-after the HTML file name which can be exploited to disclose the source code.");
+  after the HTML file name which can be exploited to disclose the source code.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Xerver HTTP Server and is prone to the Source
-Code Disclosure Vulnerability.");
+  Code Disclosure Vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 xerPort = get_http_port(default:80);
-if(!xerPort){
+if(!xerPort)
   exit(0);
-}
 
 xerVer = get_kb_item("www/" + xerPort + "/Xerver");
 if(xerVer != NULL)

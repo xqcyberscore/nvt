@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("2019-05-07T06:30:33+0000");
-  script_tag(name:"last_modification", value:"2019-05-07 06:30:33 +0000 (Tue, 07 May 2019)");
+  script_version("2019-05-15T09:55:21+0000");
+  script_tag(name:"last_modification", value:"2019-05-15 09:55:21 +0000 (Wed, 15 May 2019)");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -327,6 +327,15 @@ if( "IOS-FTP server" >< banner && "ready." >< banner ) {
 # nb: Only runs on Windows. Note that it still reports a SYST banner as 215 UNIX Type: L8
 if( "220 Titan FTP Server" >< banner ) {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  exit( 0 );
+}
+
+syst_banner = get_kb_item( "ftp/fingerprints/" + port + "/syst_banner_noauth" );
+
+# e.g. 215 UNIX Type: L8 Version: BSD-44
+# "HP-UX or AIX ftpd" according to shodan
+if( "215 UNIX " >< syst_banner && "Version: BSD" >< syst_banner ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

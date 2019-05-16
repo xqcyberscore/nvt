@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_msg_service_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # SAP Message Server Service Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141067");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-09 09:04:58 +0700 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,9 +72,6 @@ port = get_unknown_port(default: 3900);
 if (port < 3600 || port >= 3700)
   if (port < 3900 || port >= 4000)
     exit(0);
-
-if (!get_port_state(port))
-  exit(0);
 
 soc = open_sock_tcp(port);
 if (!soc)

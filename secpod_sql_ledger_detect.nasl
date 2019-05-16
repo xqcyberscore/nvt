@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sql_ledger_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # SQL-Ledger Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902009");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10890 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-31 08:44:14 +0100 (Thu, 31 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SQL-Ledger Version Detection");
@@ -80,6 +79,7 @@ foreach dir( make_list_unique( "/sql-ledger", "/ledger", "/", cgi_dirs( port:por
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/SQL-Ledger", value:tmp_version );
+    set_kb_item( name:"sql-ledger/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:sql-ledger:sql-ledger:" );
     if( isnull( cpe ) )

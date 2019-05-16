@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pligg_46998.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Pligg CMS Multiple Security Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103139");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2011-04-01 13:32:12 +0200 (Fri, 01 Apr 2011)");
   script_bugtraq_id(46998);
 
@@ -47,20 +46,23 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("pligg_cms_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("pligg/detected");
+
   script_tag(name:"solution", value:"The vendor has released a fix. Please see the references for more
-information.");
+  information.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Pligg CMS is prone to multiple security vulnerabilities because it
-fails to properly sanitize user-supplied input. These vulnerabilities
-include a local file-include vulnerability, a security-bypass
-vulnerability, and an authentication-bypass vulnerability.
+  fails to properly sanitize user-supplied input. These vulnerabilities
+  include a local file-include vulnerability, a security-bypass
+  vulnerability, and an authentication-bypass vulnerability.");
 
-Attackers can exploit these issues to view and execute arbitrary local
-files in the context of the webserver process, bypass security-
-restrictions, and perform unauthorized actions.
+  script_tag(name:"impact", value:"Attackers can exploit these issues to view and execute arbitrary local
+  files in the context of the webserver process, bypass security-restrictions, and perform unauthorized actions.");
 
-Versions prior to Pligg CMS 1.1.4 are vulnerable.");
+  script_tag(name:"affected", value:"Versions prior to Pligg CMS 1.1.4 are vulnerable.");
+
   exit(0);
 }
 
@@ -68,11 +70,8 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
-if(ver = get_version_from_kb(port:port,app:"pligg"))
+if(ver = get_version_from_kb(port:port, app:"pligg"))
 {
   if(version_is_less(version:ver, test_version:"1.1.4")){
     security_message(port:port);

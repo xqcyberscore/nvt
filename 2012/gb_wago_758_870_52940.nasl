@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_758_870_52940.nasl 13364 2019-01-30 12:45:03Z cfischer $
 #
 # WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities
 #
@@ -31,10 +30,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103465");
   script_bugtraq_id(52940, 52942);
   script_cve_id("CVE-2012-4879", "CVE-2012-3013");
-  script_version("$Revision: 13364 $");
+  script_version("2019-05-14T08:13:05+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 13:45:03 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2012-04-12 11:29:33 +0200 (Thu, 12 Apr 2012)");
   script_name("WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -68,13 +67,9 @@ include("misc_func.inc");
 
 credentials = make_list("root:admin", "admin:admin", "user:user", "user:user00", "guest:guest");
 
-# nb: Don't use get_telnet_port as this would exit (and causing the http check to be missed) if no open port has been found.
-telnet_ports = get_kb_list("Services/telnet");
-if(!telnet_ports) telnet_ports = make_list(23);
+telnet_ports = telnet_get_ports();
 
 foreach telnet_port (telnet_ports) {
-
-  if(!get_port_state(telnet_port)) continue;
 
   foreach credential (credentials) {
 

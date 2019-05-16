@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ePO_console_detect.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # ePO console Detection
 #
@@ -28,8 +27,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100331");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-11-01 17:45:48 +0100 (Sun, 01 Nov 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -41,44 +40,33 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"This host is running an ePolicy Orchestrator (ePo) console.");
+
   exit(0);
 }
 
-
 include("http_func.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
+data = "xxxxx";
 
- data = "xxxxx";
+req = string("POST /spipe/pkg?Source=Agent_3.0.0 HTTP/1.0\r\n",
+             "Content-Length: ", strlen(data),
+             "\r\n",
+             "\r\n",
+             data);
+buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+if(!buf)
+  exit(0);
 
- req = string("POST /spipe/pkg?Source=Agent_3.0.0 HTTP/1.0\r\n",
-	      "Content-Length: ", strlen(data),
-              "\r\n",
-              "\r\n",
-	       data);
+if("202 OK" >< buf) {
+  blen = strlen(buf);
+  str  = substr(buf,blen-3);
+  if(hexstr(str) == "0d0a20") {
+    log_message(port:port);
+  }
+}
 
- buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )exit(0);
-
- if("202 OK" >< buf)
- {
-
-       blen = strlen(buf);
-       str  = substr(buf,blen-3);
-
-       if(hexstr(str) == "0d0a20") {
-
-         if(report_verbosity > 0) {
-           log_message(port:port);
-         }
-
-       }
-       exit(0);
-
- }
 exit(0);
-

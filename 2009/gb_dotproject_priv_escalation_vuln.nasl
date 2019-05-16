@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotproject_priv_escalation_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # dotProject Privilege Escalation Vulnerability.
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800565");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-05-07 14:39:04 +0200 (Thu, 07 May 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,27 +43,30 @@ if(description)
   script_family("Privilege escalation");
   script_dependencies("gb_dotproject_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("dotproject/detected");
+
   script_tag(name:"impact", value:"Attackers can exploit this issue via specially crafted HTTP request to
-  certain administrative pages to gain administrative privileges on the
-  affected system.");
+  certain administrative pages to gain administrative privileges on the affected system.");
+
   script_tag(name:"affected", value:"dotProject prior to version 2.1.2.");
+
   script_tag(name:"insight", value:"The flaw is due to improper restrictions on access to certain
   administrative pages.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to version 2.1.2.");
+
   script_tag(name:"summary", value:"The host is installed with dotProject and is prone to a Privilege
   Escalation vulnerability.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 appPort = get_http_port(default:80);
-if(!appPort){
-  exit(0);
-}
 
 dotVer = get_kb_item("www/" + appPort + "/dotProject");
 dotVer = eregmatch(pattern:"^(.+) under (/.*)$", string:dotVer);

@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19584");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14726);
   script_cve_id("CVE-2005-2836");
@@ -37,7 +37,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("phorum_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("phorum/detected");
 
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2005-09/0018.html");
 
@@ -58,8 +58,6 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if (!can_host_php(port:port))
-  exit(0);
 
 install = get_kb_item(string("www/", port, "/phorum"));
 if(isnull(install))

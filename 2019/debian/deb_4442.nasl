@@ -44,8 +44,7 @@ if(description)
 
   script_tag(name:"insight", value:"A vulnerability was discovered in Ghostscript, the GPL PostScript/PDF
 interpreter, which may result in denial of service or the execution of
-arbitrary code if a malformed Postscript file is processed (despite the
--dSAFER sandbox being enabled).");
+arbitrary code if a malformed Postscript file is processed (despite the -dSAFER sandbox being enabled).");
 
   script_tag(name:"affected", value:"'ghostscript' package(s) on Debian Linux.");
 

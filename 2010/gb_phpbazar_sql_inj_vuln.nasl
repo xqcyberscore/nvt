@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbazar_sql_inj_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # phpBazar 'classified.php' SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800465");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,55 +44,56 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_phpbazar_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpbazar/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow execution of arbitrary SQL commands in
-the affected application.");
+  the affected application.");
+
   script_tag(name:"affected", value:"phpBazar version 2.1.1 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to error in 'classified.php' which can be exploited to cause
-SQL injection via the 'catid' parameter, and 'admin/admin.php' which allows to
-obtain access to the admin control panel via a direct request.");
+  SQL injection via the 'catid' parameter, and 'admin/admin.php' which allows to
+  obtain access to the admin control panel via a direct request.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running phpBazar and is prone to SQL Injection
   vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 pbport = get_http_port(default:80);
-if(!pbport){
-  exit(0);
-}
 
 pbver = get_kb_item("www/" + pbport + "/phpBazar");
-if(isnull(pbver)){
+if(isnull(pbver))
   exit(0);
-}
 
 pbver = eregmatch(pattern:"^(.+) under (/.*)$", string:pbver);
 if(!isnull(pbver[2]) && !safe_checks())
 {
-  url = string(pbver[2], "/classified.php?catid=2+and+1=0+union+all" +
-                               "+select+1,2,3,4,5,6,7--");
+  url = string(pbver[2], "/classified.php?catid=2+and+1=0+union+all+select+1,2,3,4,5,6,7--");
   sndReq = http_get(item:url, port:pbport);
   rcvRes = http_send_recv(port:pbport, data:sndReq);
 
-  if("2 and 1=0 union all select 1,2,3,4,5,6,7--&subcatid=1" >< rcvRes)
-  {
-    security_message(pbport);
+  if("2 and 1=0 union all select 1,2,3,4,5,6,7--&subcatid=1" >< rcvRes) {
+    report = report_vuln_url(port:pbport, url:url);
+    security_message(port:pbport, data:report);
     exit(0);
-  }
-  else
-  {
-    sndReq = http_get(item:string(pbver[2], "/admin/admin.php"), port:pbport);
+  } else {
+    url = string(pbver[2], "/admin/admin.php");
+    sndReq = http_get(item:url, port:pbport);
     rcvRes = http_send_recv(port:pbport, data:sndReq);
-    if("phpBazar-AdminPanel" >< rcvRes)
-    {
-      security_message(pbport);
+    if("phpBazar-AdminPanel" >< rcvRes) {
+      report = report_vuln_url(port:pbport, url:url);
+      security_message(port:pbport, data:report);
       exit(0);
     }
   }

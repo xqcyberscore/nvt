@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpcreator_sql_inj_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # cP Creator 'tickets' Cookie SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801006");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -40,37 +39,39 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("gb_cpcreator_detect.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_cpcreator_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("cpcreator/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to conduct SQL
-injection attacks.");
+  injection attacks.");
+
   script_tag(name:"affected", value:"cP Creator Version 2.7.1 and prior.");
+
   script_tag(name:"insight", value:"Input passed to the 'tickets' cookie in index.php (if 'page' is
-set to 'support' and 'task' is set to 'ticket') is not properly sanitised before
-being used in SQL queries.");
+  set to 'support' and 'task' is set to 'ticket') is not properly sanitised before being used in SQL queries.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running cP Creator and is prone to SQL Injection
-Vulnerability");
+  Vulnerability");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 cpcreatPort = get_http_port(default:80);
-if(!cpcreatPort){
-  exit(0);
-}
 
 cpcreatVer = get_kb_item("www/" + cpcreatPort + "/cPCreator");
-if(!cpcreatVer){
+if(!cpcreatVer)
   exit(0);
-}
 
 cpcreatVer = eregmatch(pattern:"^(.+) under (/.*)$", string:cpcreatVer);
 if(cpcreatVer[1] != NULL)

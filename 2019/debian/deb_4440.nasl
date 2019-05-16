@@ -44,14 +44,14 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple vulnerabilities were found in the BIND DNS server:
 
-CVE-2018-5743 
+CVE-2018-5743
 Connection limits were incorrectly enforced.
 
-CVE-2018-5745 
+CVE-2018-5745
 The 'managed-keys' feature was susceptible to denial of service by
 triggering an assert.
 
-CVE-2019-6465 
+CVE-2019-6465
 ACLs for zone transfers were incorrectly enforced for dynamically
 loadable zones (DLZs).");
 

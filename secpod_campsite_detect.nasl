@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_campsite_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Campsite Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900384");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Campsite Version Detection");
@@ -79,6 +78,7 @@ foreach dir( make_list_unique( "/", "/campsite", "/campsite/src", "/campsite/imp
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/Campsite", value:tmp_version );
+    set_kb_item( name:"campsite/detected", value:tmp_version );
 
     cpe = build_cpe( value:version, exp:"^([0-9]\.[0-9]\.[0-9]+)\.?([a-z0-9]+)?", base:"cpe:/a:campware.org:campsite:" );
     if( isnull( cpe ) )

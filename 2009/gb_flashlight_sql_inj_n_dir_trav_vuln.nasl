@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flashlight_sql_inj_n_dir_trav_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Flashlight Free Edition SQL Injection and Directory Traversal Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801075");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-09 07:52:52 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,13 +39,17 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("gb_flashlight_detect.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_flashlight_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("flashlight/free/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to view, add,
-modify or delete information in the back end database or include arbitrary files
-from local and remote resources to compromise a vulnerable server.");
+  modify or delete information in the back end database or include arbitrary files
+  from local and remote resources to compromise a vulnerable server.");
+
   script_tag(name:"affected", value:"Flashlight Free version 1.0 on all running platform.");
+
   script_tag(name:"insight", value:"Flaws are due to,
 
   - An error in 'read.php' which is not properly sanitizing user supplied input
@@ -55,28 +58,27 @@ from local and remote resources to compromise a vulnerable server.");
   - An error in 'admin.php' which is not properly sanitizing user supplied input
   before being used via a .. (dot dot) in the action 'parameter' which causes
   directory traversal attacks in the application context.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running Flashlight Free Edition and is prone to SQL
-Injection and Directory Traversal Vulnerability.");
+  Injection and Directory Traversal Vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 fPort = get_http_port(default:80);
-if(!fPort){
-  exit(0);
-}
 
 fVer = get_kb_item("www/" + fPort + "/Flashlight/Free");
-if(!fVer){
+if(!fVer)
   exit(0);
-}
 
 fVer = eregmatch(pattern:"^(.+) under (/.*)$", string:fVer);
 if(fVer[1] != NULL)

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phorum_xss_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Phorum 'real_name' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802161");
-  script_version("$Revision: 12006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-3392");
   script_bugtraq_id(49347);
@@ -45,33 +44,34 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("phorum_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("phorum/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.");
-  script_tag(name:"affected", value:"Phorum version prior to 5.2.17");
+
+  script_tag(name:"affected", value:"Phorum version prior to 5.2.17.");
+
   script_tag(name:"insight", value:"The flaw is due to input passed via the 'real_name' parameter to the
-  'control.php' script is not properly sanitised before being returned to the
-  user.");
+  'control.php' script is not properly sanitised before being returned to the user.");
+
   script_tag(name:"solution", value:"Upgrade Phorum to 5.2.17 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is running Phorum and is prone to cross-site scripting
   vulnerability.");
-  script_xref(name:"URL", value:"http://www.phorum.org/downloads.php");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 phorumPort = get_http_port(default:80);
-if(!phorumPort){
-  exit(0);
-}
 
-phorumVer =  get_version_from_kb(port:phorumPort,app:"phorum");
-if(!phorumVer){
+phorumVer =  get_version_from_kb(port:phorumPort, app:"phorum");
+if(!phorumVer)
   exit(0);
-}
 
 if(version_is_less(version:phorumVer, test_version:"5.2.17")){
   security_message(phorumPort);

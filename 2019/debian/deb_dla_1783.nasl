@@ -42,8 +42,8 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Denis Andzakovic discovered two vulnerabilities in atftp, the advanced 
-TFTP server which could result in denial of service by sending malformed 
+  script_tag(name:"insight", value:"Denis Andzakovic discovered two vulnerabilities in atftp, the advanced
+TFTP server which could result in denial of service by sending malformed
 packets.");
 
   script_tag(name:"affected", value:"'atftp' package(s) on Debian Linux.");

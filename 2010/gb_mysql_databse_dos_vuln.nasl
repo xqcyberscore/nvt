@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_databse_dos_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # MySQL 'ALTER DATABASE' Remote Denial Of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801380");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-19 10:09:06 +0200 (Mon, 19 Jul 2010)");
   script_cve_id("CVE-2010-2008");
   script_bugtraq_id(41198);
@@ -49,11 +48,16 @@ if(description)
   script_dependencies("mysql_version.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed");
+
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to cause a Denial of Service.");
+
   script_tag(name:"affected", value:"MySQL version priot to 5.1.48 on all running platform.");
-  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.48");
+
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.48.");
+
   script_tag(name:"summary", value:"The host is running MySQL and is prone to Denial Of Service
   vulnerability.");
+
   script_tag(name:"insight", value:"The flaw is due to an error when processing the 'ALTER DATABASE' statement and
   can be exploited to corrupt the MySQL data directory using the '#mysql50#'
   prefix followed by a '.' or '..'.
@@ -62,28 +66,18 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   exit(0);
 }
-
 
 include("misc_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-sqlPort = get_app_port(cpe:CPE);
-if(!sqlPort){
-  sqlPort = 3306;
-}
-
-if(!get_port_state(sqlPort)){
+if(!sqlPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-mysqlVer = get_app_version(cpe:CPE, port:sqlPort);
-if(isnull(mysqlVer)){
+if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort))
   exit(0);
-}
 
 mysqlVer = eregmatch(pattern:"([0-9.a-z]+)", string:mysqlVer);
 if(!isnull(mysqlVer[1]))

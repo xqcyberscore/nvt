@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_system_portal_server_xss_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Sun Java System Portal Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801248");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_cve_id("CVE-2009-4187");
   script_bugtraq_id(37186);
@@ -46,30 +45,30 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_sun_java_system_portal_server_detect.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("sun/java/portal/server/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in context of an affected site.");
+
   script_tag(name:"affected", value:"Sun Java System Portal Server Versions 6.3.1, 7.1, and 7.2.");
+
   script_tag(name:"insight", value:"The flaws are caused by improper validation of user-supplied input via the
   unspecified parameters to the Gateway component.");
+
   script_tag(name:"summary", value:"This host is running Sun Java System Portal Server and is prone to
   multiple unspecified Cross site scripting vulnerabilities.");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Apply the security patches,
 
-  *****
-  NOTE: Please ignore this warning, if the above mentioned patches are applied.
-  *****");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Apply the referenced security patches.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!port){
-  exit(0);
-}
 
 ver = get_kb_item("www/" + port + "/Sun/Java/Portal/Server");
 if(ver != NULL)

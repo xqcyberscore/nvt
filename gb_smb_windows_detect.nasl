@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_windows_detect.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # SMB Windows Detection
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103621");
-  script_version("$Revision: 13813 $");
+  script_version("2019-05-15T09:55:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-15 09:55:33 +0000 (Wed, 15 May 2019)");
   script_tag(name:"creation_date", value:"2012-12-11 10:59:09 +0200 (Tue, 11 Dec 2012)");
   script_name("SMB Windows Detection");
   script_category(ACT_GATHER_INFO);
@@ -248,6 +247,13 @@ if( winVal == "6.3" && "Windows Server 2016" >< winName ) {
     register_win_version( cpe_base:"cpe:/o:microsoft:windows_server_2016", win_vers:"", servpack:csdVer, os_name:winName, is64bit:TRUE );
   else
     register_win_version( cpe_base:"cpe:/o:microsoft:windows_server_2016", win_vers:"", servpack:csdVer, os_name:winName );
+}
+
+if( winVal == "6.3" && "Windows Server 2019" >< winName ) {
+  if( "x64" >< arch )
+    register_win_version( cpe_base:"cpe:/o:microsoft:windows_server_2019", win_vers:"", servpack:csdVer, os_name:winName, is64bit:TRUE );
+  else
+    register_win_version( cpe_base:"cpe:/o:microsoft:windows_server_2019", win_vers:"", servpack:csdVer, os_name:winName );
 }
 
 ## Fallback if none of the above is matching, also report as "unknown" OS.

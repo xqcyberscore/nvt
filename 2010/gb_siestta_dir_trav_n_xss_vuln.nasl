@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siestta_dir_trav_n_xss_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Siestta Directory Traversal and Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800769");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1710", "CVE-2010-1711");
   script_bugtraq_id(39526);
@@ -45,18 +44,26 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_siestta_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("siestta/detected");
+
   script_tag(name:"insight", value:"The flaws are due to the improper validation of user supplied
   data in 'login.php' via 'idioma' parameter and in 'carga_foto_al.php' via
-  'usuario'  parameter before being used to include files.");
+  'usuario' parameter before being used to include files.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Siestta and is prone to directory traversal
   and cross site scripting vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   sensitive information or execute arbitrary code on the vulnerable web server.");
+
   script_tag(name:"affected", value:"Siestta version 2.0");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
@@ -68,9 +75,8 @@ include("misc_func.inc");
 siPort = get_http_port(default:80);
 
 siVer = get_kb_item("www/" + siPort + "/Siestta");
-if(!siVer){
- exit(0);
-}
+if(!siVer)
+  exit(0);
 
 siVer = eregmatch(pattern:"^(.+) under (/.*)$", string:siVer);
 if(siVer[2] != NULL)

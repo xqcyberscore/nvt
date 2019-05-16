@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iWeb_37228.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # iWeb Server URL Directory Traversal Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100378");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-08 12:57:07 +0100 (Tue, 08 Dec 2009)");
   script_bugtraq_id(37228);
   script_cve_id("CVE-2009-4053");
@@ -48,13 +46,16 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("iWeb/banner");
-  script_tag(name:"summary", value:"iWeb Server is prone to a directory-traversal vulnerability because
-the application fails to sufficiently sanitize user-supplied input.
 
-Exploiting this issue allows an attacker to access files outside of
-the web servers root directory. Successfully exploiting this issue
-will allow attackers to gain access to sensitive information.");
+  script_tag(name:"summary", value:"iWeb Server is prone to a directory-traversal vulnerability because
+  the application fails to sufficiently sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"Exploiting this issue allows an attacker to access files outside of
+  the web servers root directory. Successfully exploiting this issue
+  will allow attackers to gain access to sensitive information.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -65,24 +66,33 @@ will allow attackers to gain access to sensitive information.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
+include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port: port);
 if(!banner)exit(0);
 
-if(egrep(pattern:"Server: iWeb", string:banner))
- {
-   url = string("/..%5C..%5C..%5Cboot.ini");
-   req = http_get(item:url, port:port);
-   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-   if( res == NULL )exit(0);
+if(egrep(pattern:"Server: iWeb", string:banner)) {
 
-   if( egrep(pattern: "\[boot loader\]", string: res, icase: TRUE) ) {
-        security_message(port:port);
-        exit(0);
-   }
- }
+  files = traversal_files("windows");
+
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    url = string("/..%5C..%5C..%5C", file);
+    req = http_get(item:url, port:port);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+    if(!res)
+      continue;
+
+    if( egrep(pattern: pattern, string: res, icase: TRUE) ) {
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
+      exit(0);
+    }
+  }
+}
 
 exit(0);

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: delegate_overflow2.nasl 13794 2019-02-20 14:59:32Z cfischer $
 # Description: Delegate Multiple Overflows
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17599");
-  script_version("$Revision: 13794 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,6 +57,7 @@ if(description)
 include("http_func.inc");
 include("pop3_func.inc");
 include("version_func.inc");
+include("misc_func.inc");
 
 ports = pop3_get_ports();
 foreach port(ports) {
@@ -68,11 +68,7 @@ foreach port(ports) {
   }
 }
 
-port = get_kb_item("Services/http_proxy");
-if(!port) port = 8080;
-if(!get_port_state(port))
-  exit(0);
-
+port = get_port_for_service(default:8080, proto:"http_proxy");
 banner = get_http_banner(port:port);
 if(!banner || "DeleGate" >!< banner)
   exit(0);

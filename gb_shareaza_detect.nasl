@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shareaza_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Shareaza Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800603");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10913 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Shareaza Version Detection");
@@ -60,9 +59,9 @@ if("Shareaza" >< banner)
 
   if(shareazaVer[1] != NULL)
   {
+    set_kb_item(name:"shareaza/detected", value:TRUE);
     set_kb_item(name:"www/" + shareazaPort + "/Shareaza", value:shareazaVer[1]);
-    log_message(data:"Shareaza version " + shareazaVer[1] +
-                         " was detected on the host");
+    log_message(data:"Shareaza version " + shareazaVer[1] + " was detected on the host");
 
     cpe = build_cpe(value:shareazaVer[1], exp:"^([0-9.]+)", base:"cpe:/a:ryo-oh-ki:shareaza:");
     if(!isnull(cpe))

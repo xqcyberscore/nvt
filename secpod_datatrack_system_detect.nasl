@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_datatrack_system_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # DataTrack System Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902061");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DataTrack System Version Detection");
@@ -62,8 +61,9 @@ if("Server: MagnoWare" >< banner || ">DataTrack Web Client<" >< banner)
   if(dtsVer[1] != NULL)
   {
     set_kb_item(name:"www/" + dtsPort + "/DataTrack_System", value:dtsVer[1]);
-    log_message(data:"DataTrack System version " + dtsVer[1] +
-                                       " was detected on the host");
+    set_kb_item(name:"datatrack_system/detected", value:TRUE);
+
+    log_message(data:"DataTrack System version " + dtsVer[1] + " was detected on the host");
 
     cpe = build_cpe(value:dtsVer[1], exp:"^([0-9.]+)", base:"cpe:/a:magnoware:datatrack_system:");
     if(!isnull(cpe))

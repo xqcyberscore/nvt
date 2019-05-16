@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpshop_37227.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # PhpShop Cross-Site Scripting and SQL Injection Vulnerabilities
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100383");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-08 22:02:24 +0100 (Tue, 08 Dec 2009)");
   script_cve_id("CVE-2009-4570");
   script_bugtraq_id(37227);
@@ -48,19 +46,23 @@ if (description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("phpshop_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_mandatory_keys("phpshop/detected");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"summary", value:"PhpShop is prone to a cross-site scripting vulnerability and multiple
-SQL-injection vulnerabilities because it fails to adequately sanitize
-user-supplied input.
+  SQL-injection vulnerabilities because it fails to adequately sanitize user-supplied input.");
 
-Exploiting these issues could allow an attacker to steal cookie-
-based authentication credentials, compromise the application,
-access or modify data, or exploit latent vulnerabilities in the
-underlying database.
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to steal cookie-
+  based authentication credentials, compromise the application, access or modify data, or exploit
+  latent vulnerabilities in the underlying database.");
 
-PhpShop 0.8.1 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"PhpShop 0.8.1 is vulnerable, other versions may also be affected.");
+
   exit(0);
 }
 
@@ -69,9 +71,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if (!can_host_php(port:port)) exit(0);
-
 if(!version = get_kb_item(string("www/", port, "/phpshop")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_sas_owa_agent_detect.nasl 9445 2018-04-11 12:46:27Z cfischer $
 #
 # SafeNet SAS OWA Agent Detection
 #
@@ -30,10 +29,10 @@ CPE = 'cpe:/a:microsoft:outlook_web_app';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105151");
-  script_version("$Revision: 9445 $");
+  script_version("2019-05-13T14:05:09+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:46:27 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2014-12-22 14:36:28 +0100 (Mon, 22 Dec 2014)");
   script_name("SafeNet SAS OWA Agent Detection");
   script_category(ACT_GATHER_INFO);
@@ -55,10 +54,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-port = get_app_port( cpe:CPE );
-if( ! port ) port = 443;
-if( ! get_port_state( port ) ) exit( 0 );
-if( ! can_host_asp( port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! can_host_asp( port:port ) )
+  exit( 0 );
 
 url = '/owa/auth/logon.aspx?replaceCurrent=1&url=';
 req = http_get( item:url, port:port );

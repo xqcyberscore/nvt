@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: support_incident_tracker_37949.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Support Incident Tracker Blank Password Authentication Bypass Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100467");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,17 +46,21 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("support_incident_tracker_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("sit/installed");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"The vendor has released an update. Please see the references for more
   information.");
+
   script_tag(name:"summary", value:"Support Incident Tracker (SiT!) is prone to an authentication-bypass
-  vulnerability.
+  vulnerability.");
 
-  An attacker can exploit this issue to gain unauthorized access to the
-  affected application.
+  script_tag(name:"impact", value:"An attacker can exploit this issue to gain unauthorized access to the
+  affected application.");
 
-  Versions prior to Support Incident Tracker (SiT!) 3.51 are vulnerable.");
+  script_tag(name:"affected", value:"Versions prior to Support Incident Tracker (SiT!) 3.51 are vulnerable.");
+
   exit(0);
 }
 
@@ -65,22 +68,20 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if(!version = get_kb_item(string("www/", port, "/support_incident_tracker")))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/support_incident_tracker")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))
+  exit(0);
 
 vers = matches[1];
 
 if(!isnull(vers) && vers >!< "unknown") {
-
   if(version_is_less(version: vers, test_version: "3.51")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

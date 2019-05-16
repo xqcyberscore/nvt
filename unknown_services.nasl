@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unknown_services.nasl 14020 2019-03-06 16:31:41Z cfischer $
 #
 # Collect banner of unknown services
 #
@@ -24,11 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+include("plugin_feed_info.inc");
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("$Revision: 14020 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 17:31:41 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-05-09T07:03:38+0000");
+  script_tag(name:"last_modification", value:"2019-05-09 07:03:38 +0000 (Thu, 09 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -100,6 +101,10 @@ if(description)
                       "X.nasl", "xtel_detect.nasl",
                       "xtelw_detect.nasl", "yahoo_msg_running.nasl",
                       "zabbix_detect.nasl");
+
+  if(FEED_NAME == "GSF" || FEED_NAME == "SCM")
+    script_dependencies("gsf/gb_sap_gateway_detect.nasl");
+
   script_require_ports("Services/unknown");
 
   script_tag(name:"summary", value:"This plugin collect the banner from unknown/unidentified services.

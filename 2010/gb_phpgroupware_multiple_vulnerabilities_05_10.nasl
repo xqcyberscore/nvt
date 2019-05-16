@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpgroupware_multiple_vulnerabilities_05_10.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # phpGroupWare Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100640");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-05-17 12:46:01 +0200 (Mon, 17 May 2010)");
   script_bugtraq_id(40167, 40168);
   script_cve_id("CVE-2010-0403", "CVE-2010-0404");
@@ -47,39 +46,37 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("phpgroupware_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("phpGroupWare/installed");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"The vendor has released phpGroupWare 0.9.16.016 to address this issue.
   Please see the references for more information.");
+
   script_tag(name:"summary", value:"phpGroupWare is prone to multiple SQL-injection vulnerabilities and
   to a Local File Include Vulnerability because it fails to sufficiently
-  sanitize user-supplied data before using it.
+  sanitize user-supplied data before using it.");
 
-  Exploiting these issues could allow an attacker to compromise the
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to compromise the
   application, access or modify data, exploit latent vulnerabilities
   in the underlying database or to view files and execute local scripts
-  in the context of the webserver process. .
+  in the context of the webserver process.");
 
-  Versions of phpGroupWare prior to 0.9.16.016 are vulnerable.");
+  script_tag(name:"affected", value:"Versions of phpGroupWare prior to 0.9.16.016 are vulnerable.");
+
   exit(0);
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"phpGroupWare")) {
-
   if(version_is_less(version: vers, test_version: "0.9.16.016")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

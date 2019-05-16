@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 13679 $");
+  script_version("2019-05-13T14:05:09+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
@@ -138,33 +137,30 @@ foreach port( ports ) {
 ports = pop3_get_ports();
 foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  banner = get_pop3_banner( port:port );
 
-    banner = get_pop3_banner( port:port );
+  if( banner && ( "Lotus Notes POP3 server" >< banner || "IBM Notes POP3 server" >< banner ) ) {
 
-    if( banner && ( "Lotus Notes POP3 server" >< banner || "IBM Notes POP3 server" >< banner ) ) {
+    install    = port + "/tcp";
+    domino_ver = "unknown";
+    version    = eregmatch( pattern:"(Lotus|IBM) Notes POP3 server version Release ([0-9][^ ]+)", string:banner );
 
-      install    = port + "/tcp";
-      domino_ver = "unknown";
-      version    = eregmatch( pattern:"(Lotus|IBM) Notes POP3 server version Release ([0-9][^ ]+)", string:banner );
+    if( ! isnull( version[2] ) ) domino_ver = version[2];
 
-      if( ! isnull( version[2] ) ) domino_ver = version[2];
+    set_kb_item( name:"Domino/Version", value:domino_ver );
+    set_kb_item( name:"Domino/Installed", value:TRUE );
 
-      set_kb_item( name:"Domino/Version", value:domino_ver );
-      set_kb_item( name:"Domino/Installed", value:TRUE );
+    cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
+    if( isnull( cpe ) )
+      cpe = "cpe:/a:ibm:lotus_domino";
 
-      cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
-      if( isnull( cpe ) )
-        cpe = "cpe:/a:ibm:lotus_domino";
-
-      register_product( cpe:cpe, location:install, port:port, service:"pop3" );
-      log_message( data:build_detection_report( app:"IBM/Lotus Domino",
-                                                version:domino_ver,
-                                                install:install,
-                                                cpe:cpe,
-                                                concluded:version[0] ),
-                                                port:port );
-    }
+    register_product( cpe:cpe, location:install, port:port, service:"pop3" );
+    log_message( data:build_detection_report( app:"IBM/Lotus Domino",
+                                              version:domino_ver,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:version[0] ),
+                                              port:port );
   }
 }
 

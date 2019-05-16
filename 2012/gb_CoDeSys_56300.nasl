@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CoDeSys_56300.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # CODESYS Multiple Vulnerabilities
 #
@@ -32,7 +31,7 @@ if (description)
   script_bugtraq_id(56300);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 10941 $");
+  script_version("2019-05-13T14:05:09+0000");
 
   script_name("CoDeSys Directory Traversal Vulnerability");
 
@@ -41,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.3s-software.com/");
   script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-13-011-01");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2012-10-29 18:46:26 +0100 (Mon, 29 Oct 2012)");
   script_category(ACT_ATTACK);
 
@@ -71,10 +70,6 @@ include("dump.inc");
 include("misc_func.inc");
 
 port = get_port_for_service(default: 2455, proto: "codesys");
-
-if (!get_port_state(port))
-  exit(0);
-
 soc = open_sock_tcp(port);
 if (!soc)
   exit(0);

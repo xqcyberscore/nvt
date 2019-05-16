@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10537");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-05-15T08:01:39+0000");
+  script_tag(name:"last_modification", value:"2019-05-15 08:01:39 +0000 (Wed, 15 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_xref(name:"IAVA", value:"2000-a-0005");
   script_bugtraq_id(1806);
@@ -88,7 +88,7 @@ cmd = "/winnt/system32/cmd.exe?/c+dir+c:\\+/OG";
 for(d = 0; dir[d]; d++) {
   for(u = 0; uni[u]; u++) {
     url = string(dir[d], "..", uni[u], "..", uni[u], "..", uni[u], "..", uni[u], "..", uni[u], "..", cmd);
-    req = http_get(item:req, port:port);
+    req = http_get(item:url, port:port);
     res = http_keepalive_send_recv(port:port, data:req);
     if(!res)
       continue;

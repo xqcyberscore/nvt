@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_expressionengine_xss_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # ExpressionEngine CMS Cross Site Scripting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800263");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,15 +44,23 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_expressionengine_detect.nasl");
   script_require_ports("Services/www", 80, 8080);
+  script_mandatory_keys("expression_engine/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary HTML
   codes in an image by tricking the user to view a malicious profile page.");
+
   script_tag(name:"affected", value:"ExpressionEngine versions prior to 1.6.7 on all platforms.");
+
   script_tag(name:"insight", value:"Inadequate validation of user supplied input to the system/index.php script
   leads to cross site attacks.");
+
   script_tag(name:"solution", value:"Update ExpressionEngine to version 1.6.7.");
+
   script_tag(name:"summary", value:"This host is running ExpressionEngine CMS and is prone to a Cross Site
   Scripting vulnerability.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -61,14 +68,10 @@ include("http_func.inc");
 include("version_func.inc");
 
 httpPort = get_http_port(default:80);
-if(!httpPort){
-  exit(0);
-}
 
 expressionVer = get_kb_item("www/" + httpPort + "/ExpEngine");
-if(expressionVer == NULL){
+if(expressionVer == NULL)
   exit(0);
-}
 
 if(version_is_less(version:expressionVer, test_version:"1.6.7")){
   security_message(port:httpPort, data:"The target host was found to be vulnerable.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_porxy_svr_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Sun Java System Web Proxy Server Vulnerabilities (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800025");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,13 +76,6 @@ if(!get_kb_item("SMB/WindowsVersion")){
 }
 
 sunPort = get_http_port(default:8081);
-if(!port){
-  sunPort = 8081;
-}
-
-if(!get_port_state(sunPort)){
-  exit(0);
-}
 
 banner = get_http_banner(port:sunPort);
 if(!banner){

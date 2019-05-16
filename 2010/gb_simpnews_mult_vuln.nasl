@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simpnews_mult_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # SimpNews Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801391");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2010-2858", "CVE-2010-2859");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,44 +44,45 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_simpnews_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("simpnews/detected");
+
   script_tag(name:"insight", value:"The flaws are exists due to:
 
   - An error 'news.php', allow remote attackers to inject arbitrary web scripts
-    via the 'layout' and 'sortorder' parameters.
+  via the 'layout' and 'sortorder' parameters.
 
   - An error in 'news.php' allows remote attackers to obtain sensitive
-    information via an invalid lang parameter, which reveals the installation
-    path in an error message.");
+  information via an invalid lang parameter, which reveals the installation
+  path in an error message.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to the SimpNews version 2.48 or later.");
+
   script_tag(name:"summary", value:"This host is running SimpNews and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary web
   scripts and to obtain sensitive information.");
+
   script_tag(name:"affected", value:"SimpNews Version 2.47.03 and prior.");
-  script_xref(name:"URL", value:"http://www.boesch-it.de/sw/simpnews.php");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 snPort = get_http_port(default:80);
-if(!get_port_state(snPort)){
-  exit(0);
-}
 
 ver = get_kb_item(string("www/", snPort, "/SimpNews"));
-if(!ver){
- exit(0);
-}
+if(!ver)
+  exit(0);
 
 simpnewsVer = eregmatch(pattern:"^(.+) under (/.*)$", string:ver);
-if(isnull(simpnewsVer[1])){
+if(isnull(simpnewsVer[1]))
   exit(0);
-}
 
 if(version_is_less_equal(version:simpnewsVer[1], test_version:"2.47.03")){
- security_message(port:snPort);
+  security_message(port:snPort);
 }

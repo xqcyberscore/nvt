@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openmairie_opencatalogue_lfi_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # openMairie openCatalogue 'dsn[phptype]' Local File Inclusion Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902054");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1999");
   script_tag(name:"cvss_base", value:"6.8");
@@ -44,42 +43,47 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_openmairie_prdts_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("openmairie/products/detected");
+
   script_tag(name:"insight", value:"Input passed to the parameter 'dsn[phptype]' in 'scr/soustab.php'
-is not properly verified before being used to include files.");
+  is not properly verified before being used to include files.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running openMairie openCatalogue and is prone to
-local file inclusion vulnerability.");
+  local file inclusion vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to include
-or disclose the contents of local files with the privileges of the web server.");
-  script_tag(name:"affected", value:"OpenMairie openCatalogue version 1.024 and prior");
+  or disclose the contents of local files with the privileges of the web server.");
+
+  script_tag(name:"affected", value:"OpenMairie openCatalogue version 1.024 and prior.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 
 openPort = get_http_port(default:80);
-if(!get_port_state(openPort)){
-  exit(0);
-}
 
 openVer = get_kb_item("www/"+ openPort + "/OpenMairie/Open_Catalogue");
-if(!openVer){
+if(!openVer)
   exit(0);
-}
 
 openVer = eregmatch(pattern:"^(.+) under (/.*)$", string:openVer);
 
 if(openVer[2] != NULL)
 {
-  sndReq = http_get(item:string(openVer[2], "/scr/soustab.php?dsn[phptype]=" +
-                    "../../../../../../../../OpenVas-rfi.txt"),port:openPort);
+  url = string(openVer[2], "/scr/soustab.php?dsn[phptype]=../../../../../../../../vt-rfi.txt");
+  sndReq = http_get(item:url, port:openPort);
   rcvRes = http_send_recv(port:openPort, data:sndReq);
 
-  if("/OpenVas-rfi.txt/" >< rcvRes && "failed to open stream" >< rcvRes){
-    security_message(openPort);
+  if("/vt-rfi.txt/" >< rcvRes && "failed to open stream" >< rcvRes){
+    report = report_vuln_url(port:openPort, url:url);
+    security_message(port:openPort, data:report);
+    exit(0);
   }
 }

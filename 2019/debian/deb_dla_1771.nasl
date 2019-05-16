@@ -116,7 +116,7 @@ crash (oops) or other hardware-dependent impact.
 CVE-2019-3819
 
 A potential infinite loop was discovered in the HID debugfs
-interface exposed under ... 
+interface exposed under ...
 
   Description truncated. Please see the references for more information.");
 

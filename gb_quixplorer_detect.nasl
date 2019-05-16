@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quixplorer_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # QuiXplorer Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800630");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-06-16 15:46:51 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("QuiXplorer Version Detection");
@@ -47,7 +46,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -75,6 +73,7 @@ foreach dir( make_list_unique( "/quixplorer", "/quixplore", cgi_dirs( port:port 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/QuiXplorer", value:tmp_version );
     set_kb_item( name:"QuiXplorer/installed", value:TRUE );
+    set_kb_item( name:"tinywebgallery_or_quixplorer/detected", value:TRUE );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:claudio_klingler:quixplorer:" );
     if( isnull( cpe ) )

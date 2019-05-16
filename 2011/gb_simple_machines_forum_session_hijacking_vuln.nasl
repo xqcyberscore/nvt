@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_machines_forum_session_hijacking_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Simple Machines Forum Session Hijacking Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802334");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_bugtraq_id(49078);
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,35 +42,36 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_simple_machines_forum_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("SMF/installed");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive
-information such as user's session credentials and may aid in further
-attacks.");
+  information such as user's session credentials and may aid in further attacks.");
+
   script_tag(name:"affected", value:"Simple Machines Forum (SMF) 2.0");
+
   script_tag(name:"insight", value:"The flaw exists due to improper handling of user's sessions,
-allowing a remote attacker to hijack a valid user's session via a specially
-crafted link.");
+  allowing a remote attacker to hijack a valid user's session via a specially crafted link.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is installed with Simple Machines Forum and is prone
-to session hijacking vulnerability.");
+  to session hijacking vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 smfPort = get_http_port(default:80);
-if(!smfPort){
-  exit(0);
-}
 
 ver = get_version_from_kb(port:smfPort, app:"SMF");
-if(!ver){
+if(!ver)
   exit(0);
-}
 
 if(version_is_equal(version:ver, test_version:"2.0")){
   security_message(smfPort);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rt_search_info_disclosure_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # RT (Request Tracker) Search Interface Information Disclosure Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902510");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-1687");
   script_bugtraq_id(47383);
@@ -45,32 +44,31 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("rt_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("RequestTracker/installed");
+
   script_tag(name:"impact", value:"Successful exploitation will let the authenticated users to obtain sensitive
   information by using the search interface.");
+
   script_tag(name:"affected", value:"RT (Request Tracker) versions 3.0.0 through 3.6.10, 3.8.0 through 3.8.9,
   and 4.0.0rc through 4.0.0rc7.");
+
   script_tag(name:"insight", value:"The flaw is caused by an error in the search interface which can be exploited
   to disclose certain sensitive information.");
+
   script_tag(name:"solution", value:"Upgrade to RT (Request Tracker) version 3.8.10, 3.6.11 or 4.0.0rc8.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is installed with Request Tracker and is prone to
   information disclosure vulnerability.");
-  script_xref(name:"URL", value:"http://www.bestpractical.com/rt/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port)) {
-  exit(0);
-}
-
-if(!can_host_php(port:port)){
-  exit(0);
-}
 
 if(vers = get_version_from_kb(port:port,app:"rt_tracker"))
 {

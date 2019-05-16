@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: prtg_traffic_grapher_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # PRTG Traffic Grapher Detection
 #
@@ -28,8 +27,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100215");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-06-01 13:46:24 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PRTG Traffic Grapher Detection");
@@ -72,6 +71,7 @@ if( egrep(pattern: 'PRTG Traffic Grapher V[0-9.]+', string: buf, icase: TRUE) &&
 
   tmp_version = string(vers," under /");
   set_kb_item(name: string("www/", port, "/PRTGTrafficGrapher"), value: tmp_version);
+  set_kb_item(name: "prtgtrafficgrapher/detected", value: TRUE);
 
   cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:paessler:prtg_traffic_grapher:");
   if(!isnull(cpe))

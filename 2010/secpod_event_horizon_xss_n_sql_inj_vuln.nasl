@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_event_horizon_xss_n_sql_inj_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Event Horizon 'modfile.php' Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902088");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41580);
   script_cve_id("CVE-2010-2854", "CVE-2010-2855");
@@ -45,16 +44,24 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_event_horizon_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("event_horizon/detected");
+
   script_tag(name:"insight", value:"The flaw exists due to the improper validation of user supplied data to
   'YourEmail' and 'VerificationNumber' parameters to 'modfile.php' script.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to the Event Horizon version 1.1.11");
+
+  script_tag(name:"solution", value:"Upgrade to the Event Horizon version 1.1.11.");
+
   script_tag(name:"summary", value:"This host is running Event Horizon and is prone cross site
   scripting and SQL injection vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code and manipulate SQL queries by injecting arbitrary SQL code
   in a user's browser session in context of an affected site.");
+
   script_tag(name:"affected", value:"Event Horizon version 1.1.10 and prior.");
+
   exit(0);
 }
 
@@ -62,18 +69,16 @@ include("http_func.inc");
 include("version_func.inc");
 
 eventhPort = get_http_port(default:80);
-if(!get_port_state(eventhPort)){
-  exit(0);
-}
 
-if(!dir = get_dir_from_kb(port:eventhPort, app:"Event/Horizon/Ver")){
+if(!dir = get_dir_from_kb(port:eventhPort, app:"Event/Horizon/Ver"))
  exit(0);
-}
 
-sndReq = http_get(item:string(dir, '/modfile.php?YourEmail=<script>alert' +
-                  '("OpenVAS-XSS-Testing")</script>'), port:eventhPort);
+url = string(dir, '/modfile.php?YourEmail=<script>alert("VT-XSS-Testing")</script>');
+sndReq = http_get(item:url, port:eventhPort);
 rcvRes = http_send_recv(port:eventhPort, data:sndReq);
 
-if(rcvRes =~ "HTTP/1\.. 200" && '<script>alert("OpenVAS-XSS-Testing")</script>' >< rcvRes){
-    security_message(eventhPort);
+if(rcvRes =~ "^HTTP/1\.[01] 200" && '<script>alert("VT-XSS-Testing")</script>' >< rcvRes) {
+  report = report_vuln_url(port:eventhPort, url:url);
+  security_message(port:eventhPort, data:report);
+  exit(0);
 }

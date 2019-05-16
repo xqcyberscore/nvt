@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_task_freak_xss_n_sql_inj_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Task Freak Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800788");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-07 07:04:19 +0200 (Wed, 07 Jul 2010)");
   script_cve_id("CVE-2010-1520", "CVE-2010-1521");
   script_bugtraq_id(41221, 41218);
@@ -44,43 +43,47 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_task_freak_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("TaskFreak/installed");
+
   script_tag(name:"insight", value:"The flaws are due to:
 
   - Improper validation of user supplied input to 'tznMessage' parameter in
-    'logout.php'.
+  'logout.php'.
 
   - Input passed via the 'password' parameter to 'login.php' (when username is
-    set to a valid user), which is not properly sanitised before being used in a
-    SQL query in 'include/classes/tzn_user.php'.");
+  set to a valid user), which is not properly sanitised before being used in a
+  SQL query in 'include/classes/tzn_user.php'.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to the TaskFreak version 0.6.4 or later");
+
+  script_tag(name:"solution", value:"Upgrade to the TaskFreak version 0.6.4 or later.");
+
   script_tag(name:"summary", value:"This host is running Task Freak and is prone to Cross Site Scripting
   and SQL Injection vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code and manipulate SQL queries by injecting arbitrary SQL code
   in a user's browser session in the context of an affected site.");
-  script_tag(name:"affected", value:"TaskFreak version prior to 0.6.4");
-  script_xref(name:"URL", value:"http://www.taskfreak.com/download.php");
+
+  script_tag(name:"affected", value:"TaskFreak version prior to 0.6.4.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 tfPort = get_http_port(default:80);
-if(!get_port_state(tfPort)){
-  exit(0);
-}
 
-if(!dir = get_dir_from_kb(port:tfPort, app:"TaskFreak")){
+if(!dir = get_dir_from_kb(port:tfPort, app:"TaskFreak"))
   exit(0);
-}
 
-sndReq = http_get(item:string(dir, "/logout.php?tznMessage=<script>alert" +
-                        "('OpenVAS-XSS-Testing')</script>"), port:tfPort);
+url = string(dir, "/logout.php?tznMessage=<script>alert('VT-XSS-Testing')</script>");
+sndReq = http_get(item:url, port:tfPort);
 rcvRes = http_send_recv(port:tfPort, data:sndReq);
 
-if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert('OpenVAS-XSS-Testing'i)</script>" >< rcvRes){
-  security_message(tfPort);
+if(rcvRes =~ "^HTTP/1\.[01] 200" && "<script>alert('VT-XSS-Testing')</script>" >< rcvRes) {
+  report = report_vuln_url(port:tfPort, url:url);
+  security_message(port:tfPort, data:report);
+  exit(0);
 }

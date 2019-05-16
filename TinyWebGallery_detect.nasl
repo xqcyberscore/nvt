@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TinyWebGallery_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # TinyWebGallery Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100192");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-05-10 17:01:14 +0200 (Sun, 10 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("TinyWebGallery Detection");
@@ -62,38 +61,36 @@ if(!can_host_php(port:port))exit(0);
 
 foreach dir( make_list_unique( "/tinywebgallery", "/gallery", "/twg", cgi_dirs( port:port ) ) ) {
 
-    install = dir;
-    if( dir == "/" ) dir = "";
-    url = dir + "/admin/index.php";
-    buf = http_get_cache( item:url, port:port );
-    if( buf == NULL ) continue;
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/admin/index.php";
+  buf = http_get_cache( item:url, port:port );
+  if( !buf ) continue;
 
-    if(egrep(pattern:"TWG Administration", string: buf) &&
-       egrep(pattern:"TWG Admin [0-9.]+", string: buf))
-    {
-         vers = string("unknown");
+  if(egrep(pattern:"TWG Administration", string: buf) &&
+     egrep(pattern:"TWG Admin [0-9.]+", string: buf)) {
 
-	 version = eregmatch(pattern:"TWG Admin ([0-9.]+)", string:buf);
+    vers = string("unknown");
+    version = eregmatch(pattern:"TWG Admin ([0-9.]+)", string:buf);
+    if(!isnull(version[1]))
+      vers = version[1];
 
-	 if(!isnull(version[1])) {
-           vers = version[1];
-	 }
+    tmp_version = string(vers," under ",install);
+    set_kb_item(name: string("www/", port, "/TinyWebGallery"), value: tmp_version);
+    set_kb_item(name: "tinywebgallery/detected", value: TRUE);
+    set_kb_item(name: "tinywebgallery_or_quixplorer/detected", value: TRUE);
 
-         tmp_version = string(vers," under ",install);
-	 set_kb_item(name: string("www/", port, "/TinyWebGallery"), value: tmp_version);
+    cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:tinywebgallery:tinywebgallery:");
+    if(!isnull(cpe))
+      register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
-         cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:tinywebgallery:tinywebgallery:");
-         if(!isnull(cpe))
-            register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
-
-         info = string("TinyWebGallery Version '");
-         info += string(vers);
-         info += string("' was detected on the remote host in the following directory(s):\n\n");
-         info += string(install, "\n");
-
-         log_message(port:port,data:info);
-         exit(0);
-    }
+    info = string("TinyWebGallery Version '");
+    info += string(vers);
+    info += string("' was detected on the remote host in the following directory(s):\n\n");
+    info += string(install, "\n");
+    log_message(port:port,data:info);
+    exit(0);
+  }
 }
 
 exit(0);

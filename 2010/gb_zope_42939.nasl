@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zope_42939.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Zope Unspecified Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100779");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-03 15:15:12 +0200 (Fri, 03 Sep 2010)");
   script_bugtraq_id(42939);
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,14 +47,18 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("zope/banner");
   script_require_ports("Services/www", 8080);
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Updates are available, please see the references for more information.");
-  script_tag(name:"summary", value:"Zope is prone to an unspecified denial-of-service vulnerability.
 
-An attacker can exploit this issue to cause the vulnerable application
-to crash, denying service to legitimate users.
+  script_tag(name:"summary", value:"Zope is prone to an unspecified denial-of-service vulnerability.");
 
-Versions prior to Zope 2.10.12 and Zope 2.11.7 are vulnerable.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause the vulnerable application
+  to crash, denying service to legitimate users.");
+
+  script_tag(name:"affected", value:"Versions prior to Zope 2.10.12 and Zope 2.11.7 are vulnerable.");
+
   exit(0);
 }
 
@@ -63,22 +66,17 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port: port);
-if(!banner)exit(0);
-if("Server: Zope/" >!< banner)exit(0);
+if(!banner || "Server: Zope/" >!< banner)exit(0);
 
 version = eregmatch(pattern: "Server: Zope/\(Zope ([0-9.]+)", string: banner);
 if(isnull(version[1]))exit(0);
 
 if(version_in_range(version: version[1], test_version: "2.11", test_version2: "2.11.6")  ||
    version_in_range(version: version[1], test_version: "2.10", test_version2: "2.10.11"))  {
-
-    security_message(port:port);
-    exit(0);
-
+  security_message(port:port);
+  exit(0);
 }
 
 exit(0);
-

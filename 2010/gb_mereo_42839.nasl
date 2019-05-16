@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mereo_42839.nasl 13210 2019-01-22 09:14:04Z cfischer $
 #
 # Mereo 'GET' Request Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100776");
-  script_version("$Revision: 13210 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_bugtraq_id(42839);
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,8 +42,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_family("Buffer overflow");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Mereo is prone to a remote buffer-overflow vulnerability because it
@@ -64,7 +64,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default:8080);
 banner = get_http_banner(port:port);
@@ -79,7 +78,7 @@ url = string("/",crap(data:"X",length:10000));
 for(i=0;i<25;i++) {
 
   req = http_get(item:url, port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  res = http_send_recv(port:port, data:req);
   if(http_is_dead(port:port)) {
     security_message(port:port);
     exit(0);

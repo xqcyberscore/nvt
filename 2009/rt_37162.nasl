@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rt_37162.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # RT Session Fixation Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100386");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-09 13:16:50 +0100 (Wed, 09 Dec 2009)");
   script_bugtraq_id(37162);
   script_cve_id("CVE-2009-3585");
@@ -48,25 +47,26 @@ if (description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("rt_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("RequestTracker/installed");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
-  script_tag(name:"summary", value:"RT is prone to a session-fixation vulnerability.
 
-Attackers can exploit this issue to hijack a user's session and gain
-unauthorized access to the affected application.
+  script_tag(name:"summary", value:"RT is prone to a session-fixation vulnerability.");
 
-The issue affects RT 3.0.0 through 3.8.5.");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to hijack a user's session and gain
+  unauthorized access to the affected application.");
+
+  script_tag(name:"affected", value:"The issue affects RT 3.0.0 through 3.8.5.");
+
   exit(0);
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!version = get_kb_item(string("www/", port, "/rt_tracker")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
 
@@ -75,10 +75,9 @@ vers = matches[1];
 if(!isnull(vers) && vers >!< "unknown") {
 
   if(version_in_range(version: vers, test_version: "3", test_version2: "3.8.5")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

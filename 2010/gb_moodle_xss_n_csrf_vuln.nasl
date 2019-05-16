@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_xss_n_csrf_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Moodle Cross Site Scripting and Cross Site Request Forgery Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800798");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-12 09:42:32 +0200 (Mon, 12 Jul 2010)");
   script_cve_id("CVE-2010-2229", "CVE-2010-2228",
                 "CVE-2010-2231", "CVE-2010-2230");
@@ -46,59 +45,56 @@ if(description)
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Moodle/Version");
+
   script_tag(name:"insight", value:"The flaws are due to,
 
   - Certain input passed to the 'MNET' access control interface is not properly
-    sanitised before being used.
+  sanitised before being used.
 
   - Improper validation of user supplied data to the 'blog/index.php' page,
-    which allows remote attackers to inject arbitrary web script or HTML via
-    unspecified parameters.
+  which allows remote attackers to inject arbitrary web script or HTML via
+  unspecified parameters.
 
   - Error in 'KSES text cleaning filter' in 'lib/weblib.php' which fails to
-    properly handle 'vbscript URIs', which allows remote authenticated users
-    to conduct cross-site scripting (XSS) attacks via HTML input.
+  properly handle 'vbscript URIs', which allows remote authenticated users
+  to conduct cross-site scripting (XSS) attacks via HTML input.
 
   - Allowing users to perform certain actions via 'HTTP requests' without
-    performing any validity checks to verify the requests. This can be
-    exploited to delete certain quiz reports by tricking a user into visiting
-    a specially crafted site.");
-  script_tag(name:"solution", value:"Upgrade to Moodle version 1.8.13 or 1.9.9 or later");
+  performing any validity checks to verify the requests. This can be
+  exploited to delete certain quiz reports by tricking a user into visiting
+  a specially crafted site.");
+
+  script_tag(name:"solution", value:"Upgrade to Moodle version 1.8.13 or 1.9.9 or later.");
+
   script_tag(name:"summary", value:"This host is running Moodle and is prone to Cross-Site Scripting
   and Cross Site Request Forgery Vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site
-  and to gain knowledge of sensitive information or to conduct cross-site
-  request forgery attacks.");
+  and to gain knowledge of sensitive information or to conduct cross-site request forgery attacks.");
+
   script_tag(name:"affected", value:"Moodle version 1.8.x prior to 1.8.13
+
   Moodle version 1.9.x prior to 1.9.9");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://moodle.org/downloads/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 moodlePort = get_http_port(default:80);
-if(!get_port_state(moodlePort)){
+
+moodleVer = get_version_from_kb(port:moodlePort, app:"moodle");
+if(!moodleVer)
   exit(0);
-}
 
-## GET the version from KB
-moodleVer = get_version_from_kb(port:moodlePort,app:"moodle");
-if(!moodleVer){
-exit(0);
-}
-
-if(moodleVer != NULL)
-{
-  if(version_in_range(version:moodleVer, test_version:"1.8", test_version2:"1.8.12") ||
-     version_in_range(version:moodleVer, test_version:"1.9", test_version2:"1.9.8")){
-     security_message(moodlePort);
-     exit(0);
-  }
+if(version_in_range(version:moodleVer, test_version:"1.8", test_version2:"1.8.12") ||
+   version_in_range(version:moodleVer, test_version:"1.9", test_version2:"1.9.8")){
+  security_message(port:moodlePort);
+  exit(0);
 }
 
 exit(0);

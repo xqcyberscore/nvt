@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_internet_gatekeeper_detect.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # F-Secure Internet Gatekeeper Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103081");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11725 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-02-21 13:57:38 +0100 (Mon, 21 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -51,28 +50,28 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("url_func.inc");
 include("host_details.inc");
 
 SCRIPT_DESC = "F-Secure Internet Gatekeeper Detection";
 
 port = get_http_port(default:9012);
-if(!get_port_state(port))exit(0);
+
+host = http_host_name(port:port);
 
 url = string("/login.jsf");
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-if( buf == NULL )continue;
+buf = http_get_cache(item:url, port:port);
+if(!buf)
+  exit(0);
 
 if("<title>F-Secure Anti-Virus Gateway for Linux</title>" >< buf)
 {
-   vers = string("unknown");
-   install = "/";
+  vers = string("unknown");
+  install = "/";
 
-   state = eregmatch(pattern:'id="javax.faces.ViewState" value="([^"]+)"', string:buf);
+  state = eregmatch(pattern:'id="javax.faces.ViewState" value="([^"]+)"', string:buf);
 
-   if(!isnull(state[1])) {
+  if(!isnull(state[1])) {
 
     st = urlencode(str:state[1]);
     j_id_jsp = eregmatch(pattern:"form:(j_id_jsp_[^' ;]+)", string:buf);
@@ -84,9 +83,6 @@ if("<title>F-Secure Anti-Virus Gateway for Linux</title>" >< buf)
       if(!isnull(c[1])) {
 
         j_id = urlencode(str:j_id_jsp[1]);
-        host = get_host_name();
-        if( port != 80 && port != 443 )
-          host += ':' + port;
         variables = string("form%3Ausername=admin&form%3Apassword=admin&form%3Achangelang=EN&form_SUBMIT=1&javax.faces.ViewState=",st,"&form%3A_idcl=form%3A",j_id);
 
         req = string(
@@ -103,46 +99,42 @@ if("<title>F-Secure Anti-Virus Gateway for Linux</title>" >< buf)
 
         if("302 Moved" >< result && "/home.jsf" >< result) {
 
- 	  security_message(port:port,data:string("The remote F-Secure Internet Gatekeeper uses default credentials (admin:admin).\nChange the default password as soon as possible\n"));
+          security_message(port:port,data:string("The remote F-Secure Internet Gatekeeper uses default credentials (admin:admin).\nChange the default password as soon as possible\n"));
 
           req = string(
-		      "GET /version.jsf HTTP/1.1\r\n",
-		      "Host: ", host, "\r\n",
-		      "Referer: http://", host,"/home.jsf\r\n",
-		      "Cookie: JSESSIONID=",c[1],"\r\n",
-		      "\r\n\r\n"
-		      );
+                      "GET /version.jsf HTTP/1.1\r\n",
+                      "Host: ", host, "\r\n",
+                      "Referer: http://", host,"/home.jsf\r\n",
+                      "Cookie: JSESSIONID=",c[1],"\r\n",
+                      "\r\n\r\n"
+                      );
 
-         result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+          result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-         if("Product version" >< result && "System information" >< result) {
-           version = eregmatch(pattern:'<td class="f12">([0-9.]+ build [0-9]+)', string:result);
-	   if(!isnull(version[1])) {
-             vers = version[1];
-	   }
+          if("Product version" >< result && "System information" >< result) {
+            version = eregmatch(pattern:'<td class="f12">([0-9.]+ build [0-9]+)', string:result);
+            if(!isnull(version[1])) {
+              vers = version[1];
+            }
           }
         }
-       }
-     }
-   }
+      }
+    }
+  }
 
-   set_kb_item(name: string("www/", port, "/f_secure_internet_gatekeeper"), value: string(vers," under ",install));
-   if(vers == "unknown") {
-     register_host_detail(name:"App", value:string("cpe:/a:f-secure:internet_gatekeeper:unknown::linux"), desc:SCRIPT_DESC);
-   } else {
-     register_host_detail(name:"App", value:string("cpe:/a:f-secure:internet_gatekeeper:",vers,"::linux"), desc:SCRIPT_DESC);
-   }
+  set_kb_item(name: string("www/", port, "/f_secure_internet_gatekeeper"), value: string(vers," under ",install));
+  set_kb_item(name: "f_secure_internet_gatekeeper/detected", value: TRUE);
 
+  if(vers == "unknown") {
+    register_host_detail(name:"App", value:string("cpe:/a:f-secure:internet_gatekeeper:unknown::linux"), desc:SCRIPT_DESC);
+  } else {
+    register_host_detail(name:"App", value:string("cpe:/a:f-secure:internet_gatekeeper:",vers,"::linux"), desc:SCRIPT_DESC);
+  }
 
-   info = string("F-Secure Internet Gatekeeper Version '");
-   info += string(vers);
-   info += string("' was detected on the remote host\n");
-
-   if(report_verbosity > 0) {
-     log_message(port:port,data:info);
-   }
-   exit(0);
-
+  info = string("F-Secure Internet Gatekeeper Version '");
+  info += string(vers);
+  info += string("' was detected on the remote host\n");
+  log_message(port:port, data:info);
 }
 
 exit(0);

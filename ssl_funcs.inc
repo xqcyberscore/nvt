@@ -2416,3 +2416,33 @@ function get_supported_tls_versions( port, min, max ) {
 function get_ssl_port() {
   return get_kb_item( "ssl_tls/port" );
 }
+
+# @brief Returns the info if a passed port has SSL/TLS enabled.
+#
+# @note The rationale for this function is that newer GnuTLS versions (used by the scanner) might drop
+#       support for older SSL/TLS versions (e.g. SSLv2) in the future. If this is happening the scanner
+#       is not able to detect the remote SSL/TLS version anymore and @ref get_port_transport and/or
+#       the KB key Transports/TCP/$port would contain the info that the remote service has no support
+#       for SSL/TLS where it actually has such support.
+# @note Add a dependency to gb_tls_version_get.nasl if you want to use this function.
+#
+# @return TRUE if the passed port has SSL/TLS enabled, FALSE otherwise and NULL if no port parameter
+#         was passed.
+#
+function is_ssl_tls_enabled( port ) {
+
+  local_var port;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#is_ssl_tls_enabled" );
+    return;
+  }
+
+  if( get_port_transport( port ) > ENCAPS_IP )
+    return TRUE;
+
+  if( get_kb_item( "tls/supported/" + port ) )
+    return TRUE;
+
+  return FALSE;
+}

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_springsource_tc_server_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Vmware SpringSource tc Server Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902187");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Vmware SpringSource tc Server Version Detection");
@@ -79,6 +78,7 @@ foreach dir( make_list_unique( "/", "/myserver", "/SStc", cgi_dirs( port:port ) 
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/Vmware/SSTC/Runtime", value:tmp_version );
+    set_kb_item( name:"vmware/tc_server/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:vmware:tc_server:" );
     if( isnull( cpe ) )

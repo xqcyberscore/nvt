@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linkspheric_viewlisting_sql_inj_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # linkSpheric 'viewListing.php' SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801113");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,34 +42,36 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_linkspheric_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("linkspheric/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow execution of arbitrary SQL
-commands in the affected application.");
+  commands in the affected application.");
+
   script_tag(name:"affected", value:"linkSpheric version 0.74 Beta 6 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to error in viewListing.php which can be exploited
-to cause SQL injection via the 'listID' parameter.");
+  to cause SQL injection via the 'listID' parameter.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running linkSpheric and is prone to an SQL Injection
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 include("misc_func.inc");
 
 spheric_port = get_http_port(default:80);
-if(!spheric_port){
-  exit(0);
-}
 
 spheric_ver = get_kb_item("www/" + spheric_port + "/linkSpheric");
-if(isnull(spheric_ver)){
+if(isnull(spheric_ver))
   exit(0);
-}
 
 vtstrings = get_vt_strings();
 

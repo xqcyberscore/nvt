@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_brekeke_pbx_csrf_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Brekeke PBX Cross-Site Request Forgery Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902066");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-2114");
   script_tag(name:"cvss_base", value:"2.6");
@@ -40,40 +39,38 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2010 SecPod");
-  script_require_ports("Services/www", 28080);
-  script_dependencies("find_service.nasl", "http_version.nasl");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 28080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"insight", value:"The flaw exists in the application which fails to perform
-validity checks on certain 'HTTP reqests', which allows an attacker to hijack
-the authentication of users for requests that change passwords via the
-pbxadmin.web.PbxUserEdit bean.");
+  validity checks on certain 'HTTP reqests', which allows an attacker to hijack
+  the authentication of users for requests that change passwords via the
+  pbxadmin.web.PbxUserEdit bean.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to Brekeke PBX version 2.4.6.7 or later.");
+
   script_tag(name:"summary", value:"This host is running Brekeke PBX and is prone to Cross-Site
-Request Forgery Vulnerability.");
+  Request Forgery Vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to change the
-administrator's password by tricking a logged in administrator into visiting a
-malicious web site.");
+  administrator's password by tricking a logged in administrator into visiting a
+  malicious web site.");
+
   script_tag(name:"affected", value:"Brekeke PBX version 2.4.4.8");
-  script_xref(name:"URL", value:"http://www.brekeke.com/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 pbxPort = get_http_port(default:28080);
-if(!pbxPort){
-  pbxPort = "28080";
-}
 
-if(!get_port_state(pbxPort)){
-  exit(0);
-}
-
-sndReq = http_get(item:string("/pbx/gate?bean=pbxadmin.web.PbxLogin"),
-                               port:pbxPort);
+sndReq = http_get(item:string("/pbx/gate?bean=pbxadmin.web.PbxLogin"), port:pbxPort);
 rcvRes = http_send_recv(port:pbxPort, data:sndReq);
 
 if(">Brekeke PBX<" >< rcvRes)

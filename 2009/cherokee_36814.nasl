@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cherokee_36814.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Cherokee Web Server Malformed Packet Remote Denial of Service Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100318");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-28 11:13:14 +0100 (Wed, 28 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -49,14 +48,16 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Cherokee/banner");
+
   script_tag(name:"summary", value:"Cherokee Web Server is prone to a remote denial-of-service
-vulnerability.
+  vulnerability.");
 
-An attacker could exploit this issue to crash the affected
-application, denying service to legitimate users.
+  script_tag(name:"impact", value:"An attacker could exploit this issue to crash the affected
+  application, denying service to legitimate users.");
 
-Cherokee Web Server 0.5.4 is vulnerable, other versions may also
-be affected.");
+  script_tag(name:"affected", value:"Cherokee Web Server 0.5.4 is vulnerable, other versions may also
+  be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
@@ -70,8 +71,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port: port);
 if(!banner)exit(0);
 

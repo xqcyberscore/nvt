@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_41319.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Mahara Multiple Remote Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100697");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-05 12:40:56 +0200 (Mon, 05 Jul 2010)");
   script_bugtraq_id(41319);
   script_cve_id("CVE-2010-1667", "CVE-2010-1668", "CVE-2010-1669", "CVE-2010-1670");
@@ -49,42 +48,43 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("secpod_mahara_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("mahara/detected");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"Mahara is prone to multiple remote vulnerabilities, including:
 
-1. Multiple HTML-injection vulnerabilities
-2. A cross-site request-forgery vulnerability
-3. Multiple SQL-injection vulnerabilities
-4. An authentication-bypass vulnerability
+  1. Multiple HTML-injection vulnerabilities
 
-Exploiting these issues could allow an attacker to steal cookie-based
-authentication credentials, control how the site is rendered to the
-user, compromise the application, access or modify data, or exploit
-latent vulnerabilities in the underlying database, gain unauthorized
-access to the application and perform certain administrative tasks.");
+  2. A cross-site request-forgery vulnerability
+
+  3. Multiple SQL-injection vulnerabilities
+
+  4. An authentication-bypass vulnerability");
+
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to steal cookie-based
+  authentication credentials, control how the site is rendered to the
+  user, compromise the application, access or modify data, or exploit
+  latent vulnerabilities in the underlying database, gain unauthorized
+  access to the application and perform certain administrative tasks.");
+
   exit(0);
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-if (!can_host_php(port:port)) exit(0);
-
-if(vers = get_version_from_kb(port:port,app:"Mahara")) {
-
+if(vers = get_version_from_kb(port:port, app:"Mahara")) {
   if(version_in_range(version: vers, test_version: "1.0", test_version2: "1.0.14") ||
      version_in_range(version: vers, test_version: "1.1", test_version2: "1.1.8") ||
      version_in_range(version: vers, test_version: "1.2", test_version2: "1.2.4")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

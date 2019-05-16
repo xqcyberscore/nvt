@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_uebimiau_webmail_info_disc_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Uebimiau Webmail Information Disclosure Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901024");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-22 10:03:41 +0200 (Tue, 22 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -43,28 +42,32 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_uebimiau_webmail_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("uebimiau/webmail/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain sensitive information
-in the context of the affected web application.");
+  in the context of the affected web application.");
+
   script_tag(name:"affected", value:"Uebimiau Webmail version 3.2.0-2.0");
+
   script_tag(name:"insight", value:"Error is due to an improper sanitization of user supplied input in
-the 'system_admin/admin.ucf' file.");
+  the 'system_admin/admin.ucf' file.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Uebimiau Webmail and is prone to Information
-Disclosure Vulnerability.");
+  Disclosure Vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 uwebPort = get_http_port(default:80);
-if(!uwebPort){
-  exit(0);
-}
 
 uwebVer = get_kb_item("www/" + uwebPort + "/Uebimiau/Webmail");
 if(!uwebVer){

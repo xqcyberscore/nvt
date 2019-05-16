@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xtreamerpro_media_server_dir_trav_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # XtreamerPRO Media Server 'dir' Parameter Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900286");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,21 +39,29 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_unixoide");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform directory
-traversal attacks and read arbitrary files on the affected application.");
+  traversal attacks and read arbitrary files on the affected application.");
+
   script_tag(name:"affected", value:"XtreamerPRO Version 2.6.0, 2.7.0, Other versions may also be
-affected.");
+  affected.");
+
   script_tag(name:"insight", value:"The flaws are due to input validation error in 'dir' parameter
-to 'download.php' and 'otherlist.php', which allows attackers to read arbitrary
-files via a /%2f.. sequences.");
+  to 'download.php' and 'otherlist.php', which allows attackers to read arbitrary files via a /%2f.. sequences.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running XtreamerPRO Media Server and is prone to
-multiple directory traversal vulnerabilities.");
+  multiple directory traversal vulnerabilities.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
@@ -62,20 +69,13 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port)){
+if(!can_host_php(port:port))
   exit(0);
-}
 
-if(!can_host_php(port:port)){
-  exit(0);
-}
+res = http_get_cache(item:"/login_form.php", port:port);
 
-req = http_get(item:"/login_form.php", port:port);
-res = http_send_recv(port:port, data:req);
+if(res =~ ">Copyright .*[0-9]{4} Xtreamer.net") {
 
-if(res =~ ">Copyright .*[0-9]{4} Xtreamer.net")
-{
   path = "/download.php?dir=/%2f../%2f../etc/&file=passwd";
 
   req = http_get(item:path, port:port);

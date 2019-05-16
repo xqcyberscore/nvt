@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vsoft_webmatic_xss_n_sql_inj_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # Valarsoft Webmatic Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901088");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-24 14:01:59 +0100 (Thu, 24 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,32 +43,34 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_valarsoft_webmatic_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("valarsoft/webmatic/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause Cross-Site Scripting or
-  SQL Injection attacks by executing arbitrary codes within the context of the
-  affected application.");
+  SQL Injection attacks by executing arbitrary codes within the context of the affected application.");
+
   script_tag(name:"affected", value:"Valarsoft Webmatic prior to 3.0.3");
+
   script_tag(name:"insight", value:"- Certain unspecified input is not properly sanitised before being returned to
-    the user. This can be exploited to execute arbitrary HTML and script code in
-    a user's browser session in the context of an affected site.
+  the user. This can be exploited to execute arbitrary HTML and script code in
+  a user's browser session in the context of an affected site.
 
   - Certain unspecified input is not properly sanitised before being used in SQL
-    queries. This can be exploited to manipulate SQL queries by injecting
-    arbitrary SQL code.");
+  queries. This can be exploited to manipulate SQL queries by injecting arbitrary SQL code.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to Valarsoft Webmatic version 3.0.3.");
+
   script_tag(name:"summary", value:"This host is running Valarsoft Webmatic and is prone to multiple
   Cross-Site Scripting and SQL Injection vulnerabilities.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 webmaticPort = get_http_port(default:80);
-if(!webmaticPort){
-  exit(0);
-}
 
 webmaticVer = get_kb_item("www/"+ webmaticPort + "/Valarsoft/Webmatic");
 if(!webmaticVer){

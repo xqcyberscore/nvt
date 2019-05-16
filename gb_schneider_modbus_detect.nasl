@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_modbus_detect.nasl 14045 2019-03-08 07:18:46Z cfischer $
 #
 # Schneider Electric Devices Detection (modbus)
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106542");
-  script_version("$Revision: 14045 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 08:18:46 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -83,7 +82,7 @@ set_kb_item(name: "schneider_electric/detected", value: TRUE);
 port = get_port_for_service(default: 502, proto: "modbus");
 
 # nb: Try to get some additional information over modbus
-if (get_port_state(port) && sock = open_sock_tcp(port)) {
+if (sock = open_sock_tcp(port)) {
   # CPU module
   req = raw_string(0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x5a, 0x00, 0x02);
   send(socket: sock, data: req, length: strlen(req));

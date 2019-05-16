@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quickphp_45603.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # QuickPHP Directory Traversal Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103003");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
   script_bugtraq_id(45603);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,37 +42,42 @@ if (description)
   script_category(ACT_ATTACK);
   script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 5723);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"QuickPHP is prone to a directory-traversal vulnerability because it
-fails to sufficiently sanitize user-supplied input.
+  fails to sufficiently sanitize user-supplied input.");
 
-A remote attacker may leverage this issue to retrieve arbitrary files
-in the context of the affected application, potentially revealing
-sensitive information that may lead to other attacks.
+  script_tag(name:"impact", value:"A remote attacker may leverage this issue to retrieve arbitrary files
+  in the context of the affected application, potentially revealing
+  sensitive information that may lead to other attacks.");
 
-QuickPHP 1.9.1 is vulnerable. Other versions may also be affected.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"QuickPHP 1.9.1 is vulnerable. Other versions may also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:5723);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+if(!can_host_php(port:port))
+  exit(0);
 
 url = string("http://192.168.2.7/",crap(data:"..%2F",length:10*5));
 
-if(http_vuln_check(port:port, url:url,pattern:"boot\.ini")) {
-
-  security_message(port:port);
+if(http_vuln_check(port:port, url:url, pattern:"boot\.ini")) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
-
 }
 
 exit(0);

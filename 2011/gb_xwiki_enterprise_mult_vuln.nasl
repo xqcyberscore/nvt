@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # XWiki Enterprise Unspecified SQL Injection and XSS Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801841");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_cve_id("CVE-2010-4641", "CVE-2010-4642");
   script_bugtraq_id(44601);
@@ -44,28 +43,31 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_xwiki_enterprise_detect.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("xwiki/installed");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary script
   code or cause SQL Injection attack and gain sensitive information.");
-  script_tag(name:"affected", value:"XWiki Enterprise before 2.5");
+
+  script_tag(name:"affected", value:"XWiki Enterprise before 2.5.");
+
   script_tag(name:"insight", value:"The flaws are caused by input validation errors when processing user-supplied
   data and parameters, which could allow remote attackers to execute arbitrary
   script code or manipulate SQL queries by injecting arbitrary SQL code.");
+
   script_tag(name:"solution", value:"Upgrade to XWiki Enterprise 2.5 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"The host is running XWiki Enterprise and is prone to unspecified
   SQL injection and cross site scripting vulnerabilities.");
-  script_xref(name:"URL", value:"http://enterprise.xwiki.org/xwiki/bin/view/Main/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!port){
-  exit(0);
-}
 
 if(ver = get_kb_item("www/" + port + "/XWiki"))
 {

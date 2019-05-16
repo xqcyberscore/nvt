@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_websvn_mult_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # WebSVN Script Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900441");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-01-23 16:33:16 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,19 +49,23 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes in the
   context of the web application and execute cross site scripting attacks and
   can gain sensitive information or can cause directory traversal attacks.");
+
   script_tag(name:"affected", value:"WebSVN version prior to 2.1.0.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to version 2.1.0.");
+
   script_tag(name:"summary", value:"This host is running WebSVN and is prone to Multiple
   Vulnerabilities.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - input passed in the URL to index.php is not properly sanitised before
-    being returned to the user.
+  being returned to the user.
 
   - input passed to the rev parameter in rss.php is not properly sanitised
-    before being used, when magic_quotes_gpc is disable.
+  before being used, when magic_quotes_gpc is disable.
 
   - restricted access to the repositories is not properly enforced.");
   exit(0);
@@ -72,17 +75,13 @@ include("http_func.inc");
 include("version_func.inc");
 
 websvnPort = get_http_port( default:80 );
+svnVer = get_kb_item("www/" + websvnPort + "/WebSVN");
+if(!svnVer)
+  exit(0);
 
-if(get_port_state(websvnPort))
-{
-  svnVer = get_kb_item("www/" + websvnPort + "/WebSVN");
-  if(svnVer != NULL)
-  {
-    if(version_is_less(version:svnVer, test_version:"2.1.0")){
-      security_message(port:websvnPort, data:"The target host was found to be vulnerable.");
-      exit(0);
-    }
-  }
+if(version_is_less(version:svnVer, test_version:"2.1.0")){
+  security_message(port:websvnPort, data:"The target host was found to be vulnerable.");
+  exit(0);
 }
 
 exit(99);

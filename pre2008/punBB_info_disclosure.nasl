@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15938");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11841);
   script_xref(name:"OSVDB", value:"7974");
@@ -36,8 +36,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("punBB_detect.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("punBB/installed");
 
   script_xref(name:"URL", value:"http://www.punbb.org/changelogs/1.1.4_to_1.1.5.txt");
 

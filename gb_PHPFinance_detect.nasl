@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PHPFinance_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # PHPFinance Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100770");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-01 14:30:27 +0200 (Wed, 01 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PHPFinance Detection");
@@ -70,6 +69,7 @@ foreach dir( make_list_unique( "/phpfinance", cgi_dirs( port:port ) ) ) {
     }
 
     set_kb_item(name: string("www/", port, "/phpfinance"), value: string(vers," under ",install));
+    set_kb_item(name: "phpfinance/detected", value: TRUE);
 
     info = string("PHPFinance Version '");
     info += string(vers);

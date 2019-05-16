@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wing_ftp_40510.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Wing FTP Server 'admin_loginok.html' HTML Injection Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100665");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-03 13:39:07 +0200 (Thu, 03 Jun 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,17 +47,20 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 5466);
   script_mandatory_keys("Wing_FTP_Server/banner");
+
   script_tag(name:"summary", value:"Wing FTP Server is prone to an HTML-injection vulnerability because it
-fails to sufficiently sanitize user-supplied data.
+  fails to sufficiently sanitize user-supplied data.");
 
-Attacker-supplied HTML or JavaScript code could run in the context of
-the affected site, potentially allowing the attacker to steal cookie-
-based authentication credentials and to control how the site is
-rendered to the user, other attacks are also possible.
+  script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of
+  the affected site, potentially allowing the attacker to steal cookie-
+  based authentication credentials and to control how the site is
+  rendered to the user, other attacks are also possible.");
 
-Wing FTP Server 3.5.0 is vulnerable, other versions may also be
-affected.");
+  script_tag(name:"affected", value:"Wing FTP Server 3.5.0 is vulnerable, other versions may also be
+  affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -69,11 +70,9 @@ affected.");
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:5466);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "Server: Wing FTP Server" >!< banner)exit(0);

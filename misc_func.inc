@@ -213,7 +213,7 @@ function get_port_for_service( default, nodefault, ipproto, proto ) {
   else
     key = strcat( "Services/", ipproto, "/", proto );
 
-  port = get_kb_item( k );
+  port = get_kb_item( key );
   if( port )
     return port;
 

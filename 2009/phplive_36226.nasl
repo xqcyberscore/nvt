@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phplive_36226.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # PHP Live! 'deptid' Parameter SQL Injection Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100303");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-11 19:51:15 +0200 (Sun, 11 Oct 2009)");
   script_bugtraq_id(36226);
   script_cve_id("CVE-2009-3062");
@@ -47,16 +45,16 @@ if (description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("phplive_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("phplive/detecred");
+
   script_tag(name:"summary", value:"PHP Live! is prone to an SQL-injection vulnerability because it
-fails to sufficiently sanitize user-supplied data before using it in
-an SQL query.
+  fails to sufficiently sanitize user-supplied data before using it in an SQL query.");
 
-Exploiting this issue could allow an attacker to compromise the
-application, access or modify data, or exploit latent vulnerabilities
-in the underlying database.
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the
+  application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
-PHP Live! 3.3 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"PHP Live! 3.3 is vulnerable, other versions may also be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
@@ -67,26 +65,19 @@ PHP Live! 3.3 is vulnerable, other versions may also be affected.");
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
-
 if(!version = get_kb_item(string("www/", port, "/phplive")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
 
 vers = matches[1];
 
 if(!isnull(vers) && vers >!< "unknown") {
-
   if(version_is_equal(version: vers, test_version: "3.3")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

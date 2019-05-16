@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_evernote_for_windows_xss_vuln.nasl 12424 2018-11-19 15:26:23Z mmartin $
 #
 # Evernote for Windows Stored Cross-Site Scripting Vulnerability (Windows)
 #
@@ -28,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107370");
-  script_version("$Revision: 12424 $");
+  script_version("2019-05-16T07:59:11+0000");
   script_cve_id("CVE-2018-18524");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 16:26:23 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-16 07:59:11 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-17 13:01:31 +0100 (Sat, 17 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Evernote for Windows Stored Cross-Site Scripting Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

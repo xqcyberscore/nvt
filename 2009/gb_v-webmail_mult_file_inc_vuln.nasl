@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_v-webmail_mult_file_inc_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # V-webmail Multiple PHP Remote File Inclusion Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800822");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,33 +44,37 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_v-webmail_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("v-webmail/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to execute
-arbitrary PHP code via a URL in the CONFIG[pear_dir] or CONFIG[includes]
-parameters when register_globals is enabled.");
+  arbitrary PHP code via a URL in the CONFIG[pear_dir] or CONFIG[includes]
+  parameters when register_globals is enabled.");
+
   script_tag(name:"affected", value:"V-webmail version 1.6.4 and prior");
+
   script_tag(name:"insight", value:"The flaws are due to error in 'CONFIG[pear_dir]' parameter to
-Mail/RFC822.php, Net/Socket.php, XML/Parser.php, XML/Tree.php, Mail/mimeDecode.php,
-Log.php, Console/Getopt.php, System.php, and File.php in includes/pear/ directory
-and also in includes/cachedConfig.php, includes/mailaccess/pop3.php, and
-includes/prepend.php files, and error exists in 'CONFIG[includes]' parameter
-to prepend.php and email.list.search.php in includes/.");
+  Mail/RFC822.php, Net/Socket.php, XML/Parser.php, XML/Tree.php, Mail/mimeDecode.php,
+  Log.php, Console/Getopt.php, System.php, and File.php in includes/pear/ directory
+  and also in includes/cachedConfig.php, includes/mailaccess/pop3.php, and
+  includes/prepend.php files, and error exists in 'CONFIG[includes]' parameter
+  to prepend.php and email.list.search.php in includes/.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running V-webmail and is prone to Multiple PHP
-Remote File Inclusion vulnerability.");
+  Remote File Inclusion vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 vwmailPort = get_http_port(default:80);
-if(!vwmailPort){
-  exit(0);
-}
 
 vwmailVer = get_kb_item("www/" + vwmailPort + "/V-webmail");
 vwmailVer = eregmatch(pattern:"^(.+) under (/.*)$", string:vwmailVer);

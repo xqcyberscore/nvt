@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_support_incident_tracker_46671.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Support Incident Tracker (SiT!) Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103105");
-  script_version("$Revision: 14117 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2011-03-04 13:25:07 +0100 (Fri, 04 Mar 2011)");
   script_bugtraq_id(46671);
 
@@ -46,7 +45,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("support_incident_tracker_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("sit/installed");
 
   script_tag(name:"summary", value:"Support Incident Tracker (SiT!) is prone to multiple cross-
   site scripting vulnerabilities because it fails to properly sanitize user-supplied input.");
@@ -63,6 +62,7 @@ if(description)
   release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
@@ -71,7 +71,9 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!dir = get_dir_from_kb(port:port,app:"support_incident_tracker"))exit(0);
+
+if(!dir = get_dir_from_kb(port:port, app:"support_incident_tracker"))
+  exit(0);
 
 url = string(dir,"/feedback.php?ax=--><script>alert(/vt-xss-test/)</script>");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Axis Commerce Detection
 #
@@ -28,8 +27,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103223");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-24 15:44:33 +0200 (Wed, 24 Aug 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Axis Commerce Detection");
@@ -71,6 +70,7 @@ foreach dir( make_list_unique( "/axis", "/shop", cgi_dirs( port:port ) ) ) {
     }
 
     set_kb_item(name: string("www/", port, "/axis_ecommerce"), value: string(vers," under ",install));
+    set_kb_item(name: "axis_ecommerce/detected", value: TRUE);
 
     info = string("Axis Commerce Version '");
     info += string(vers);

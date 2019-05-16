@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sql_ledger_mult_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # SQL-Ledger Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902010");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-31 08:44:14 +0100 (Thu, 31 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,60 +35,63 @@ if(description)
                 "CVE-2009-3583", "CVE-2009-3584", "CVE-2009-4402");
   script_bugtraq_id(37431);
   script_name("SQL-Ledger Multiple Vulnerabilities");
-
-
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_sql_ledger_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("sql-ledger/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct cross-site request
   forgery attacks and by malicious users to conduct script insertion and SQL
   injection attacks, or bypass certain security restrictions.");
-  script_tag(name:"affected", value:"SQL-Ledger version 2.8.24 and prior");
+
+  script_tag(name:"affected", value:"SQL-Ledger version 2.8.24 and prior.");
+
   script_tag(name:"insight", value:"- The application allows users to perform certain actions via HTTP requests
-    without performing any validity checks to verify the request. This can be
-    exploited to perform actions with the privileges of a target user, who is
-    tricked into visiting a malicious website.
+  without performing any validity checks to verify the request. This can be
+  exploited to perform actions with the privileges of a target user, who is
+  tricked into visiting a malicious website.
 
   - Input passed via customer names, vendor names, the DCN description field
-    in 'Accounts Receivables', and the description field in 'Accounts Payable',
-    is not properly sanitised before being used. This can be exploited to
-    insert arbitrary HTML and script code, which is executed in a user's browser
-    session in context of an affected site when the malicious data is viewed.
+  in 'Accounts Receivables', and the description field in 'Accounts Payable',
+  is not properly sanitised before being used. This can be exploited to
+  insert arbitrary HTML and script code, which is executed in a user's browser
+  session in context of an affected site when the malicious data is viewed.
 
   - Input passed via the 'id' parameter when searching for vendors is not
-    properly sanitised before being used in SQL queries. This can be exploited
-    to manipulate SQL queries by injecting arbitrary SQL code.
+  properly sanitised before being used in SQL queries. This can be exploited
+  to manipulate SQL queries by injecting arbitrary SQL code.
 
   - Input passed via the 'countrycode' field in 'Preferences' is not properly
-    sanitised before used to include files. This can be exploited to include
-    arbitrary '.pl' files from the local system via directory traversal attacks.");
+  sanitised before used to include files. This can be exploited to include
+  arbitrary '.pl' files from the local system via directory traversal attacks.");
+
   script_tag(name:"solution", value:"Upgrade to SQL-Ledger version 2.8.30 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is running SQL-Ledger and is prone to multiple
   vulnerabilities.");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/37877");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/54964");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2009-12/0415.html");
-  script_xref(name:"URL", value:"http://www.sql-ledger.org/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 ledgerPort = get_http_port(default:80);
-if(!ledgerPort){
+if(!ledgerPort)
   exit(0);
-}
 
 ledgerVer = get_kb_item("www/"+ ledgerPort + "/SQL-Ledger");
-if(!ledgerVer){
+if(!ledgerVer)
   exit(0);
-}
 
 ledgerVer = eregmatch(pattern:"^(.+) under (/.*)$", string:ledgerVer);
 if(ledgerVer[1] != NULL)

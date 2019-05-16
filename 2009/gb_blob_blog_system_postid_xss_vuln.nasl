@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blob_blog_system_postid_xss_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # BLOB Blog System 'postid' Parameter XSS Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800956");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -43,27 +42,30 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_blob_blog_system_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("blog/blog-system/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
-  and script code in a user's browser session in the context of an affected
-  site.");
+  and script code in a user's browser session in the context of an affected site.");
+
   script_tag(name:"affected", value:"BLOB Blog System prior to 1.2 on all platforms.");
+
   script_tag(name:"insight", value:"This flaw is due to improper validation of user supplied data passed
   into the 'postid' parameter in the bpost.php.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to BLOB Blog System 1.2 or later.");
+
   script_tag(name:"summary", value:"This host is running BLOB Blog System and is prone to a Cross-Site
   Scripting vulnerability.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 bbsPort = get_http_port(default:80);
-if(!bbsPort){
-  exit(0);
-}
 
 bbsVer = get_kb_item("www/" + bbsPort + "/BLOB-Blog-System");
 bbsVer = eregmatch(pattern:"^(.+) under (/.*)$", string:bbsVer);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: znc_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # ZNC Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100243");
-  script_version("$Revision: 12875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -52,13 +51,11 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-ports = get_kb_list( "Services/irc" );
-if ( ! ports ) ports = make_list( 6667 );
-
+ports = get_ports_for_service( default_list:make_list( 6667 ), proto:"irc" );
 foreach port( ports ) {
 
-  if( ! get_port_state( port ) ) continue;
   soc = open_sock_tcp( port );
   if( ! soc ) continue;
 

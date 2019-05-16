@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerver_42110.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Xerver Multiple Vulnerabilities
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100736");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-02 19:12:50 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(42110);
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,16 +44,19 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_xerver_http_server_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("xerver/detected");
+
   script_tag(name:"summary", value:"Xerver is prone to multiple vulnerabilities including source code
-disclosure, denial of service, security bypass, and directory-
-traversal issues.
+  disclosure, denial of service, security bypass, and directory-traversal issues.");
 
-Successfully exploiting these issues may allow an attacker to disclose
-sensitive information, bypass certain security-restrictions, perform
-denial-of-service attacker or execute arbitrary binaries.
+  script_tag(name:"impact", value:"Successfully exploiting these issues may allow an attacker to disclose
+  sensitive information, bypass certain security-restrictions, perform
+  denial-of-service attacker or execute arbitrary binaries.");
 
-These issues affect Xerver versions up to and including 4.32.");
+  script_tag(name:"affected", value:"These issues affect Xerver versions up to and including 4.32.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -68,17 +69,15 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-if(!vers = get_kb_item(string("www/", port, "/Xerver")))exit(0);
+if(!vers = get_kb_item(string("www/", port, "/Xerver")))
+  exit(0);
 
 if(!isnull(vers) && vers >!< "unknown") {
-
   if(version_is_less_equal(version:vers,test_version:"4.32")) {
     security_message(port:port);
     exit(0);
   }
-
 }
 
 exit(0);

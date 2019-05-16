@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecms_43640.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Evaria ECMS 'Poll.php' Local File Disclosure Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100839");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
   script_bugtraq_id(43640);
   script_tag(name:"cvss_base", value:"5.1");
@@ -37,23 +35,24 @@ if (description)
   script_name("Evaria ECMS 'Poll.php' Local File Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/43640");
-  script_xref(name:"URL", value:"http://www.evaria.com/en/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_ecms_detect.nasl");
+  script_dependencies("gb_ecms_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("ecms/detected");
+
   script_tag(name:"summary", value:"Evaria ECMS is prone to a local file-disclosure vulnerability because
-it fails to adequately validate user-supplied input.
+  it fails to adequately validate user-supplied input.");
 
-Exploiting this vulnerability would allow an attacker to obtain
-potentially sensitive information from local files on computers
-running the vulnerable application. This may aid in further attacks.
+  script_tag(name:"impact", value:"Exploiting this vulnerability would allow an attacker to obtain
+  potentially sensitive information from local files on computers
+  running the vulnerable application. This may aid in further attacks.");
 
-Evaria ECMS 1.1 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"Evaria ECMS 1.1 is vulnerable, other versions may also be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
@@ -66,23 +65,27 @@ Evaria ECMS 1.1 is vulnerable, other versions may also be affected.");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
 
-if(!dir = get_dir_from_kb(port:port,app:"ecms"))exit(0);
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+if(!dir = get_dir_from_kb(port:port, app:"ecms"))
+  exit(0);
 
-foreach file (keys(files)) {
+files = traversal_files();
 
-  url = string(dir, "/admin/poll.php?config=",crap(data:"../",length:3*9),files[file]);
+foreach pattern( keys( files ) ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:file)) {
+  file = files[pattern];
 
-    security_message(port:port);
+  url = string(dir, "/admin/poll.php?config=", crap(data:"../", length:3*9), file);
+
+  if(http_vuln_check(port:port, url:url, pattern:pattern)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
-
   }
 }
+
 exit(0);

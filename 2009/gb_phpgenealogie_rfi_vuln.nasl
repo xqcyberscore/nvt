@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpgenealogie_rfi_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # PHPGenealogie 'CoupleDB.php' Remote File Inclusion Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801008");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,28 +42,32 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_phpgenealogie_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpgenealogie/detected");
+
   script_tag(name:"affected", value:"PHPGenealogie version 2.0");
+
   script_tag(name:"insight", value:"The flaw is due to error in 'DataDirectory' parameter in
-'CoupleDB.php' which is not properly verified before being used to includefiles.");
+  'CoupleDB.php' which is not properly verified before being used to includefiles.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running PHPGenealogie and is prone to Remote File
-Inclusion vulnerability.");
+  Inclusion vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-code on the vulnerable Web server.");
+  code on the vulnerable Web server.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 phpgenPort = get_http_port(default:80);
-if(!phpgenPort){
-  exit(0);
-}
 
 phpgenVer = get_kb_item("www/" + phpgenPort + "/PHPGenealogie");
 phpgenVer = eregmatch(pattern:"^(.+) under (/.*)$", string:phpgenVer);
@@ -72,10 +75,10 @@ phpgenVer = eregmatch(pattern:"^(.+) under (/.*)$", string:phpgenVer);
 if((phpgenVer[2] != NULL) && (!safe_checks()))
 {
   sndReq = http_get(item:string(phpgenVer[2], "/CoupleDB.php?Parametre=0&" +
-                         "DataDirectory=xyz/OpenVAS-RemoteFileInclusion.txt"),
+                         "DataDirectory=xyz/VT-RemoteFileInclusion.txt"),
                     port:phpgenPort);
   rcvRes = http_send_recv(port:phpgenPort, data:sndReq);
-  if("xyz/OpenVAS-RemoteFileInclusion.txt" >< rcvRes)
+  if("xyz/VT-RemoteFileInclusion.txt" >< rcvRes)
   {
     security_message(phpgenPort);
     exit(0);

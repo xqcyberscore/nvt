@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_quick_arcade_sql_injection_n_xss_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # PHP Quick Arcade SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801364");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_cve_id("CVE-2010-1661", "CVE-2010-1662");
   script_bugtraq_id(39733);
@@ -45,44 +44,46 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_quick_arcade_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("php-quick-arcade/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to steal cookie-based
-authentication credentials, compromise the application, access or modify data.");
+  authentication credentials, compromise the application, access or modify data.");
+
   script_tag(name:"affected", value:"PHP-Quick-Arcade version 3.0.21 and prior.");
+
   script_tag(name:"insight", value:"The flaws are due to,
 
   - Input validation errors in the 'Arcade.php' and 'acpmoderate.php' scripts
-when processing the 'phpqa_user_c' cookie or the 'id' parameter, which could
-be exploited by malicious people to conduct SQL injection attacks.
+  when processing the 'phpqa_user_c' cookie or the 'id' parameter, which could
+  be exploited by malicious people to conduct SQL injection attacks.
 
   - Input validation error in the 'acpmoderate.php' script when processing the
-'serv' parameter, which could allow cross site scripting attacks.");
+  'serv' parameter, which could allow cross site scripting attacks.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running PHP Quick Arcade and is prone to SQL
-injection and cross site scripting Vulnerabilities.");
+  injection and cross site scripting Vulnerabilities.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 phpqaPort = get_http_port(default:80);
-if(!phpqaPort){
-  exit(0);
-}
 
 phpqaVer = get_kb_item("www/" + phpqaPort + "/PHP-Quick-Arcade");
-if(!phpqaVer){
+if(!phpqaVer)
   exit(0);
-}
 
 phpqaVer = eregmatch(pattern:"^(.+) under (/.*)$", string:phpqaVer);
-if(isnull(phpqaVer[1])){
+if(isnull(phpqaVer[1]))
   exit(0);
-}
 
 if(version_is_less_equal(version:phpqaVer[1], test_version:"3.0.21")){
   security_message(phpqaPort);

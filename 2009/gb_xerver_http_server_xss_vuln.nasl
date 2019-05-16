@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerver_http_server_xss_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Xerver HTTP Server Cross Site Scripting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801015");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-21 10:12:07 +0200 (Wed, 21 Oct 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -43,52 +42,47 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_xerver_http_server_detect.nasl");
-  script_require_ports("Services/www", 32123);
+  script_require_ports("Services/www", 32123, 80);
+  script_mandatory_keys("xerver/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-HTML and script code in a user's browser session in context of an affected site.");
+  HTML and script code in a user's browser session in context of an affected site.");
+
   script_tag(name:"affected", value:"Xerver version 4.32 and prior on all platforms.");
+
   script_tag(name:"insight", value:"The flaw is due to improper sanitization of user supplied input
-passed via 'currentPath' parameter (when 'action' is set to 'chooseDirectory')
-to the administrative interface.");
+  passed via 'currentPath' parameter (when 'action' is set to 'chooseDirectory')
+  to the administrative interface.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Xerver HTTP Server and is prone to Cross Site
-Scripting vulnerability");
+  Scripting vulnerability");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
-foreach xerPort (make_list(32123, 80))
-{
-  if(get_port_state(xerPort))
-  {
-    xerVer = get_kb_item("www/" + xerPort + "/Xerver");
-    if(!isnull(xerVer)){
-     break;
-    }
-  }
-}
+xerPort = get_http_port(default:32123);
 
-if(isnull(xerVer)){
+xerVer = get_kb_item("www/" + xerPort + "/Xerver");
+if(isnull(xerVer))
   exit(0);
-}
-
-xerPort = 32123;
 
 if(!safe_checks())
 {
-  # XSS attempts
-  request = http_get(item:string("/action=chooseDirectory&currentPath=''>><script>" +
-                                 "alert('XSS-By-Stack')</script>"), port:xerPort);
+  url = string("/action=chooseDirectory&currentPath=''>><script>alert('XSS-By-Stack')</script>");
+  request = http_get(item:url, port:xerPort);
   response = http_send_recv(port:xerPort, data:request);
-  if(response =~ "HTTP/1\.. 200" && "XSS-By-Stack" >< response)
-  {
-    security_message(xerPort);
+  if(response =~ "HTTP/1\.. 200" && "XSS-By-Stack" >< response) {
+    report = report_vuln_url(port:xerPort, url:url);
+    security_message(port:xerPort, data:report);
     exit(0);
   }
 }

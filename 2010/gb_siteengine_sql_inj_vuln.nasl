@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siteengine_sql_inj_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # SiteEngine 'module' SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801682");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-12-31 07:04:16 +0100 (Fri, 31 Dec 2010)");
   script_bugtraq_id(45056);
   script_cve_id("CVE-2010-4357");
@@ -44,35 +43,37 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_siteengine_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("siteengine/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL
-Injection attack and gain sensitive information.");
-  script_tag(name:"affected", value:"SiteEngine Version 7.1");
+  Injection attack and gain sensitive information.");
+
+  script_tag(name:"affected", value:"SiteEngine Version 7.1.");
+
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
-via the 'module' parameter in comments.php that allows attackers to manipulate
-SQL queries by injecting arbitrary SQL code.");
+  via the 'module' parameter in comments.php that allows attackers to manipulate
+  SQL queries by injecting arbitrary SQL code.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running SiteEngine and is prone to SQL injection
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
-
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 seVer = get_version_from_kb(port:port, app:"SiteEngine");
-if(! seVer) {
+if(!seVer)
   exit(0);
-}
 
 if(version_is_equal(version:seVer, test_version:"7.1")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );

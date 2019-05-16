@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_campsite_sql_inj_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Campsite 'article_id' Parameter SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902072");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_cve_id("CVE-2010-1867");
   script_bugtraq_id(39862);
@@ -46,21 +45,23 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_campsite_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("campsite/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to manipulate SQL queries by
-  injecting arbitrary SQL code, which leads to view, add, modify or delete
-  information in the back-end database.");
-  script_tag(name:"affected", value:"Campsite version 3.3.5 and prior");
+  injecting arbitrary SQL code, which leads to view, add, modify or delete information in the back-end database.");
+
+  script_tag(name:"affected", value:"Campsite version 3.3.5 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to improper validation of user supplied input via the
   'article_id' parameter to 'javascript/tinymce/plugins/campsiteattachment/attachments.php',
   which is not properly sanitised before being used in SQL queries.");
+
   script_tag(name:"summary", value:"This host is running Campsite and is prone to SQL injection
   vulnerability.");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Apply patch or Upgrade to Campsite version 3.3.6 or later
 
-  *****
-  NOTE: Please ignore the warning if the patch is applied.
-  *****");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Apply patch or Upgrade to Campsite version 3.3.6 or later.");
 
   script_xref(name:"URL", value:"http://www.sourcefabric.org/en/home/web/6/campsite.htm?tpl=18");
   script_xref(name:"URL", value:"http://www.sourcefabric.org/en/home/web_news/65/important-security-patch-for-campsite-3.2-and-above.htm?tpl=32");
@@ -68,19 +69,14 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
 csPort = get_http_port(default:80);
-if(!csPort){
-  exit(0);
-}
 
 csVer = get_kb_item("www/"+ csPort + "/Campsite");
-if(!csVer){
+if(!csVer)
   exit(0);
-}
 
 csVer = eregmatch(pattern:"^(.+) under (/.*)$", string:csVer);
 if(csVer[1] != NULL)

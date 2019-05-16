@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phppgadmin_49914.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # phpPgAdmin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103295");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-10-12 15:33:11 +0200 (Wed, 12 Oct 2011)");
   script_bugtraq_id(49914);
   script_cve_id("CVE-2011-3598");
@@ -48,39 +47,37 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_phppgadmin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("phppgadmin/detected");
+
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
-information.");
+  information.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"phpPgAdmin is prone to multiple cross-site scripting vulnerabilities
-because it fails to properly sanitize user-supplied input.
+  because it fails to properly sanitize user-supplied input.");
 
-An attacker may leverage these issues to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may allow the attacker to steal cookie-based authentication
-credentials and launch other attacks.
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may allow the attacker to steal cookie-based authentication
+  credentials and launch other attacks.");
 
-phpPgAdmin 5.0.2 is vulnerable. Prior versions may also be affected.");
+  script_tag(name:"affected", value:"phpPgAdmin 5.0.2 is vulnerable. Prior versions may also be affected.");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"phpPgAdmin")) {
-
   if(version_in_range(version: vers, test_version: "5", test_version2:"5.0.2")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

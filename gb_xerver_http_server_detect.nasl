@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerver_http_server_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # Xerver Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801017");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-21 10:12:07 +0200 (Wed, 21 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Xerver Version Detection");
@@ -53,23 +52,23 @@ include("host_details.inc");
 
 SCRIPT_DESC = "Xerver Version Detection";
 
-foreach port(make_list(32123, 80))
-{
-  if(get_port_state(port))
-  {
-    banner = get_http_banner(port:port);
-    if(banner)
-    {
-      xerVer = eregmatch(pattern:"Server: Xerver/([0-9.]+)",string:banner);
-      if(xerVer[1] != NULL){
-        set_kb_item(name:"www/" + port + "/Xerver", value:xerVer[1]);
-        log_message(data:"Xerver version " + xerVer[1] + " was detected on the host");
+port = get_http_port(default:32123);
 
-        cpe = build_cpe(value:xerVer[1], exp:"^([0-9.]+)", base:"cpe:/a:xerver:xerver:");
-        if(!isnull(cpe))
-           register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
+banner = get_http_banner(port:port);
+if(!banner || "Server: Xerver" >!< banner)
+  exit(0);
 
-      }
-    }
-  }
-}
+vers = "unknown";
+
+xerVer = eregmatch(pattern:"Server: Xerver/([0-9.]+)", string:banner);
+if(xerVer[1] != NULL)
+  vers = xerVer[1];
+
+set_kb_item(name:"www/" + port + "/Xerver", value:vers);
+
+set_kb_item(name:"xerver/detected", value:TRUE);
+log_message(data:"Xerver version " + vers + " was detected on the host");
+
+cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:xerver:xerver:");
+if(!isnull(cpe))
+  register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);

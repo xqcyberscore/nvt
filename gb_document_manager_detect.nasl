@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_document_manager_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Document Manager Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800477");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Document Manager Version Detection");
@@ -89,6 +88,7 @@ foreach path (make_list_unique("/", "/dmanager", cgi_dirs(port:dmPort)))
 
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + dmPort + "/DocManager", value:tmp_version);
+    set_kb_item(name:"docmanager/detected", value:TRUE);
 
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:dmanager:documentmanager:");
     if( isnull( cpe ) )

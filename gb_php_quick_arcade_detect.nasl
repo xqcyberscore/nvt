@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_quick_arcade_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # PHP Quick Arcade (PHPQA) Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801363");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PHP Quick Arcade (PHPQA) Version Detection");
@@ -74,6 +73,7 @@ foreach dir( make_list_unique( "/", "/phpqa", "/phpqa/phpqa", cgi_dirs( port:por
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/PHP-Quick-Arcade", value:tmp_version );
+    set_kb_item( name:"php-quick-arcade/detected", value:TRUE );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:jcink:php-quick-arcade:" );
     if( isnull( cpe ) )

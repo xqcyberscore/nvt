@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpWebSite_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # phpWebSite Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103106");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-03-04 13:25:07 +0100 (Fri, 04 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("phpWebSite Detection");
@@ -68,6 +67,7 @@ foreach dir( make_list_unique( "/phpwebsite", "/cms", cgi_dirs( port:port ) ) ) 
     vers = string("unknown");
 
     set_kb_item(name: string("www/", port, "/phpWebSite"), value: string(vers," under ",install));
+    set_kb_item(name: "phpwebsite/detected", value: TRUE);
 
     info = string("phpWebSite Version '");
     info += string(vers);

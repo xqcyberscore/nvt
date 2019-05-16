@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tembria_server_monitor_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Tembria Server Monitor Version Detection
 #
@@ -31,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901107");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_name("Tembria Server Monitor Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -84,6 +83,7 @@ foreach dir( make_list_unique( "/", "/tembria", cgi_dirs( port:port ) ) ) {
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/tembria", value:tmp_version );
+    set_kb_item( name:"tembria/server_monitor/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:tembria:server_monitor:" );
     if( isnull( cpe ) )

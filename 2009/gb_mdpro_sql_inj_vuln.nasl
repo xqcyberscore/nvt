@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mdpro_sql_inj_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # MDPro Surveys Module SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800919");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-07 07:29:21 +0200 (Fri, 07 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,28 +43,31 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_mdpro_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("mdpro/detected");
+
   script_tag(name:"impact", value:"This flaw can be exploited via malicious SQL commands to modify
-or delete information in the back-end database.");
+  or delete information in the back-end database.");
+
   script_tag(name:"affected", value:"MDPro version 1.083.x");
+
   script_tag(name:"insight", value:"The Surveys module fails to validate the user supplied data
-passed into the 'pollID' parameter before using it in an SQL query.");
+  passed into the 'pollID' parameter before using it in an SQL query.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is installed with MDPro and is prone to SQL Injection
   vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 mdproPort = get_http_port(default:80);
-if(!mdproPort){
-  exit(0);
-}
 
 mdproVer = get_kb_item("www/" + mdproPort + "/MDPro");
 mdproVer = eregmatch(pattern:"^(.+) under (/.*)$", string:mdproVer);

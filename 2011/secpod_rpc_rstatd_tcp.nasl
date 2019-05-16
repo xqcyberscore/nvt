@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rpc_rstatd_tcp.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # RPC rstatd Service Detection (TCP)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901206");
-  script_version("$Revision: 12057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
@@ -81,9 +80,6 @@ RPC_PROG = 100001;
 
 port = get_rpc_port( program:RPC_PROG, protocol:IPPROTO_TCP );
 if( ! port )
-  exit( 0 );
-
-if( ! get_port_state( port ) )
   exit( 0 );
 
 if( ! soc = open_sock_tcp( port ) )

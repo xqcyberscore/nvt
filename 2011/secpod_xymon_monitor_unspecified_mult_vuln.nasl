@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xymon_monitor_unspecified_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Xymon Monitor Unspecified Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902504");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_cve_id("CVE-2011-1716");
   script_bugtraq_id(47156);
@@ -45,30 +44,31 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_xymon_monitor_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("xymon/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  HTML and script code in a user's browser session in context of an affected
-  site.");
+  HTML and script code in a user's browser session in context of an affected site.");
+
   script_tag(name:"affected", value:"Xymon Monitor versions 4.3.0 and prior.");
+
   script_tag(name:"insight", value:"The flaws are caused by improper validation of user-supplied input by
   multiple unspecified scripts which allows attackers to execute arbitrary
   HTML and script code on the web server.");
+
   script_tag(name:"solution", value:"Upgrade to Xymon Monitor version 4.3.1 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is running Xymon Monitor and is prone to unspecified
   multiple cross site scripting vulnerabilities.");
-  script_xref(name:"URL", value:"http://xymon.sourceforge.net/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port)) {
-  exit(0);
-}
-
 if(vers = get_version_from_kb(port:port,app:"Xymon"))
 {
   if(version_is_less_equal(version:vers, test_version:"4.3.0")){

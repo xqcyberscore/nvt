@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phorum_35777.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Phorum Multiple BBCode HTML Injection Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100248");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
   script_bugtraq_id(35777);
   script_tag(name:"cvss_base", value:"4.3");
@@ -47,40 +46,37 @@ if (description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("phorum_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("phorum/detected");
+
   script_tag(name:"solution", value:"Vendor fixes are available. Please see the references for details.");
+
   script_tag(name:"summary", value:"Phorum is prone to multiple HTML-injection vulnerabilities because it
-fails to sufficiently sanitize user-supplied data.");
+  fails to sufficiently sanitize user-supplied data.");
 
   script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of
-the affected site, potentially allowing the attacker to steal cookie-
-based authentication credentials and to control how the site is
-rendered to the user, other attacks are also possible.");
+  the affected site, potentially allowing the attacker to steal cookie-
+  based authentication credentials and to control how the site is
+  rendered to the user, other attacks are also possible.");
 
   script_tag(name:"affected", value:"Versions prior to Phorum 5.2.12a are vulnerable.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
-
 if(!version = get_kb_item(string("www/", port, "/phorum")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
 
 vers = matches[1];
 
 if(!isnull(vers) && vers >!< "unknown") {
-
   if(version_is_less(version: vers, test_version: "5.2.12a")) {
-      security_message(port:port, data:"The target host was found to be vulnerable.");
-      exit(0);
+    security_message(port:port, data:"The target host was found to be vulnerable.");
+    exit(0);
   }
 }
 

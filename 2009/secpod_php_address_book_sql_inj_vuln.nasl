@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_address_book_sql_inj_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # PHP Address Book Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900698");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,32 +43,34 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_php_address_book_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("PHP-Address-Book/installed");
+
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause SQL Injection attack, gain
   sensitive information about the database used by the web application.");
+
   script_tag(name:"affected", value:"PHP Address Book version 4.0.x");
+
   script_tag(name:"insight", value:"The flaw is due to improper sanitization of user supplied input passed to the
   'id' parameter in view.php, edit.php, and delete.php, and to the 'alphabet'
   parameter in index.php before being used in SQL queries.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to PHP Address Book version 5.7.2 or later.");
+
   script_tag(name:"summary", value:"This host is running PHP Address Book and is prone to SQL Injection
   vulnerability.");
-  script_xref(name:"URL", value:"http://sourceforge.net/projects/php-addressbook/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 
 phpPort = get_http_port(default:80);
-if(!phpPort){
-  exit(0);
-}
 
 phpVer = get_kb_item("www/"+ phpPort + "/PHP-Address-Book");
-if(!phpVer){
+if(!phpVer)
   exit(0);
-}
 
 ver = eregmatch(pattern:"^(.+) under (/.*)$", string:phpVer);
 if(ver[1] =~ "^4\.0"){

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_auth_bypass_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # ManageEngine ServiceDesk Plus Authentication Bypass Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801984");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-1509");
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,29 +43,33 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to get user names
-and passwords of registered users. This may allow an attacker to steal
-cookie-based  authentications and launch further attacks.");
+  and passwords of registered users. This may allow an attacker to steal
+  cookie-based  authentications and launch further attacks.");
+
   script_tag(name:"affected", value:"ManageEngine ServiceDesk Plus 8.0 Build 8013 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in authentication process, User
-passwords are pseudo encrypted and locally stored in user cookies. Having
-Javascript code encrypt and decrypt passwords in Login.js file.");
+  passwords are pseudo encrypted and locally stored in user cookies. Having
+  Javascript code encrypt and decrypt passwords in Login.js file.");
+
   script_tag(name:"solution", value:"Vendor has released a patch to fix this issue, please refer
-below link for more information.");
+  below link for more information.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is running ManageEngine ServiceDesk Plus and is prone
-to authentication bypass vulnerability.");
+  to authentication bypass vulnerability.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!get_port_state(port)) {
-  exit(0);
-}
 
 if(!vers = get_version_from_kb(port:port,app:"ManageEngine")){
   exit(0);

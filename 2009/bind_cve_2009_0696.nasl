@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bind_cve_2009_0696.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # ISC BIND 9 Remote Dynamic Update Message Denial of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100251");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-07-29 21:36:35 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -123,11 +122,9 @@ if( safe_checks() ) {
 } else {
 
   if( proto == "tcp" ) {
-    if( ! get_port_state( port) ) exit( 0 );
     soc = open_sock_tcp( port );
     if( ! soc ) exit( 0 );
   } else {
-    if( ! get_udp_port_state( port) ) exit( 0 );
     soc = open_sock_udp( port );
     if( ! soc ) exit( 0 );
   }

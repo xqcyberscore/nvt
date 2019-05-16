@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_internet_gatekeeper_46381.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # F-Secure Internet Gatekeeper Log File Information Disclosure Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103082");
-  script_version("$Revision: 11987 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-02-21 13:57:38 +0100 (Mon, 21 Feb 2011)");
   script_bugtraq_id(46381);
   script_cve_id("CVE-2011-0453");
@@ -44,15 +43,20 @@ if (description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("gb_fsecure_internet_gatekeeper_detect.nasl");
   script_require_ports("Services/www", 9012);
-  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"F-Secure Internet Gatekeeper is prone to an information-disclosure
-vulnerability.
+  script_mandatory_keys("f_secure_internet_gatekeeper/detected");
 
-Attackers can exploit this issue to gain access to sensitive
-information. Information obtained may lead to other attacks.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"summary", value:"F-Secure Internet Gatekeeper is prone to an information-disclosure
+  vulnerability.");
+
+  script_tag(name:"impact", value:"Attackers can exploit this issue to gain access to sensitive
+  information. Information obtained may lead to other attacks.");
+
   exit(0);
 }
 
@@ -61,17 +65,14 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:9012);
-if(!get_port_state(port))exit(0);
 
 if(!dir =  get_dir_from_kb(port:port,app:"f_secure_internet_gatekeeper"))exit(0);
 url = string(dir, "/fsecure/log/fssp.log");
 
 if(http_vuln_check(port:port, url:url,pattern:"F-Secure Security Platform",extra_check:make_list("Database version:","Starting ArchiveScanner engine"))) {
-
-  security_message(port:port);
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
-
 }
 
 exit(0);
-

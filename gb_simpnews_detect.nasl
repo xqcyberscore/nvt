@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simpnews_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # SimpNews Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801390");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10890 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-02 16:33:48 +0200 (Mon, 02 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SimpNews Version Detection");
@@ -94,6 +93,7 @@ foreach dir( make_list_unique( "/SimpNews", "/simpnew248", "/", cgi_dirs( port:p
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/SimpNews", value:tmp_version );
+    set_kb_item( name:"simpnews/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:boesch-it:simpnews:" );
     if( isnull( cpe ) )

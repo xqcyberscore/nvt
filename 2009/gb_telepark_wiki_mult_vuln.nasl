@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepark_wiki_mult_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Telepark.wiki Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801068");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,41 +43,44 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_telepark_wiki_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("telepark.wiki/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct cross-site
   scripting attacks, bypass certain security restrictions, disclose sensitive
   information, and compromise a vulnerable system.");
-  script_tag(name:"affected", value:"Telepark.wiki version prior to 2.4.25 on all platforms");
+
+  script_tag(name:"affected", value:"Telepark.wiki version prior to 2.4.25 on all platforms.");
+
   script_tag(name:"insight", value:"The following issues exist:
 
   - An input appended to the URL after 'index.php' is not properly sanitised
-    before being returned to the user.
+  before being returned to the user.
 
   - An improper authentication verification error in '/ajax/deletePage.php'
-    can be exploited to delete pages without any user credentials.
+  can be exploited to delete pages without any user credentials.
 
   - An improper authentication verification error in '/ajax/deleteComment.php'
-    can be exploited to delete comments without any user credentials.
+  can be exploited to delete comments without any user credentials.
 
   - An input passed via various parameters to multiple scripts is not properly verified
-    before being used to include files.
+  before being used to include files.
 
-  - An error in the '/ajax/addComment.php' script not properly verifying uploaded
-    files.");
+  - An error in the '/ajax/addComment.php' script not properly verifying uploaded files.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to Telepark.wiki version 2.4.25 or later.");
+
   script_tag(name:"summary", value:"This host is running Telepark.wiki and is prone to multiple
   vulnerabilities.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 twikiPort = get_http_port(default:80);
-if(!twikiPort){
-  exit(0);
-}
 
 twikiVer = get_kb_item("www/" + twikiPort + "/Telepark.wiki");
 twikiVer = eregmatch(pattern:"^(.+) under (/.*)$", string:twikiVer);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zervit_40132.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Zervit HTTP Server Source Code Information Disclosure Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100637");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-05-14 12:04:31 +0200 (Fri, 14 May 2010)");
   script_bugtraq_id(40132);
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,15 +44,18 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Zervit/banner");
+
   script_tag(name:"summary", value:"Zervit is prone to a vulnerability that lets attackers access source
-code files.
+  code files.");
 
-An attacker can exploit this vulnerability to retrieve certain files
-from the vulnerable computer in the context of the webserver process.
-Information obtained may aid in further attacks.
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to retrieve certain files
+  from the vulnerable computer in the context of the webserver process.
+  Information obtained may aid in further attacks.");
 
-Zervit 0.4 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"Zervit 0.4 is vulnerable. Other versions may also be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -63,16 +64,14 @@ Zervit 0.4 is vulnerable. Other versions may also be affected.");
   exit(0);
 }
 
-
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
-if(!banner || "Server: Zervit" >!< banner)exit(0);
+if(!banner || "Server: Zervit" >!< banner)
+  exit(0);
 
 version = eregmatch(pattern:"Server: Zervit ([0-9.]+)", string: banner);
 
@@ -80,12 +79,10 @@ if(isnull(version[1]))exit(0);
 vers = version[1];
 
 if(!isnull(vers)) {
-
- if(version_is_equal(version: vers, test_version: "0.4")) {
-      security_message(port:port);
-      exit(0);
+  if(version_is_equal(version: vers, test_version: "0.4")) {
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

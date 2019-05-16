@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cybozu_products_mail_system_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Cybozu Products Mail System Images Cross-Site Scripting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902537");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-1334");
   script_bugtraq_id(48446);
@@ -45,36 +44,40 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_cybozu_products_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("cybozu_products/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  HTML and script code in a user's browser session in context of an affected
-  site.");
+  HTML and script code in a user's browser session in context of an affected site.");
+
   script_tag(name:"affected", value:"Cybozu Office version 6
+
   Cybozu Dezie versions before 6.1
+
   Cybozu MailWise versions before 3.1
+
   Cybozu Garoon versions 2.0.0 through 2.1.3");
+
   script_tag(name:"insight", value:"The flaw is caused by improper validation of unspecified input related to
   downloading images from the mail system, which allows attackers to execute
-  arbitrary HTML and script code in a user's browser session in context of an
-  affected site.");
+  arbitrary HTML and script code in a user's browser session in context of an affected site.");
+
   script_tag(name:"solution", value:"Upgrade to Cybozu Garoon version 2.5.0, Cybozu Office version 7
   Cybozu Dezie version 6.1, Cybozu Mailwise version 3.1 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is running Cybozu Office, Cybozu Garoon, Cybozu Dezie or
   Cybozu MailWise and is prone to cross site scripting vulnerability.");
-  script_xref(name:"URL", value:"http://products.cybozu.co.jp/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port)) {
-  exit(0);
-}
 
-if(vers = get_version_from_kb(port:port,app:"CybozuOffice"))
+if(vers = get_version_from_kb(port:port, app:"CybozuOffice"))
 {
   if(vers =~ "^6\.*")
   {
@@ -83,7 +86,7 @@ if(vers = get_version_from_kb(port:port,app:"CybozuOffice"))
   }
 }
 
-if(vers = get_version_from_kb(port:port,app:"CybozuGaroon"))
+if(vers = get_version_from_kb(port:port, app:"CybozuGaroon"))
 {
   if(version_in_range(version:vers, test_version:"2.0.0", test_version2:"2.1.3"))
   {
@@ -92,7 +95,7 @@ if(vers = get_version_from_kb(port:port,app:"CybozuGaroon"))
   }
 }
 
-if(vers = get_version_from_kb(port:port,app:"CybozuDezie"))
+if(vers = get_version_from_kb(port:port, app:"CybozuDezie"))
 {
   if(version_is_less(version:vers, test_version:"6.1"))
   {
@@ -101,7 +104,7 @@ if(vers = get_version_from_kb(port:port,app:"CybozuDezie"))
   }
 }
 
-if(vers = get_version_from_kb(port:port,app:"CybozuMailWise"))
+if(vers = get_version_from_kb(port:port, app:"CybozuMailWise"))
 {
   if(version_is_less(version:vers, test_version:"3.1")){
     security_message(port:port);

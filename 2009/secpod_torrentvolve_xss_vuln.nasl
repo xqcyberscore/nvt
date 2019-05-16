@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_torrentvolve_xss_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # TorrentVolve archive.php XSS Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900577");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,28 +42,32 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_torrentvolve_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("torrentvolve/detected");
+
   script_tag(name:"affected", value:"TorrentVolve 1.4 and prior.");
+
   script_tag(name:"insight", value:"The flaw occurs because archive.php does not sanitise the data
-passed into 'deleteTorrent' parameter before being returned to the user.");
+  passed into 'deleteTorrent' parameter before being returned to the user.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running TorrentVolve and is prone to Cross Site
   Scripting vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to delete arbitrary
-files on the affected system if register_globals is enabled.");
+  files on the affected system if register_globals is enabled.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 tvPort = get_http_port(default:80);
-if(!tvPort){
-  exit(0);
-}
 
 tvVer = get_kb_item("www/" + tvPort + "/TorrentVolve");
 tvVer = eregmatch(pattern:"^(.+) under (/.*)$", string:tvVer);

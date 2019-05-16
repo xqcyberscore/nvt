@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shareaza_update_notification_spoof_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Shareaza Update Notification Spoofing Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800604");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,33 +38,37 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("gb_shareaza_detect.nasl");
   script_require_ports("Services/www", 6346);
+  script_mandatory_keys("shareaza/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will let the attackers conduct spoofing attacks.");
+
   script_tag(name:"affected", value:"Shareaza prior to version 2.3.1.0.");
+
   script_tag(name:"insight", value:"The flaw is due to update notifications being handled via the domain
   update.shareaza.com, which is no longer controlled by the vendor. This can
   be exploited to spoof update notifications.");
+
   script_tag(name:"solution", value:"Upgrade Shareaza to version 2.3.1.0.");
+
   script_tag(name:"summary", value:"This host has Shareaza installed and is prone to Update Notification
   Spoofing vulnerabilities.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/28302");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/39484");
   script_xref(name:"URL", value:"http://sourceforge.net/project/shownotes.php?group_id=110672&release_id=565250");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 shareazaPort = get_http_port(default:6346);
-
-if(!shareazaPort){
-  exit(0);
-}
 
 shareazaVer = get_kb_item("www/" + shareazaPort + "/Shareaza");
 

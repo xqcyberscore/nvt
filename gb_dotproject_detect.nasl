@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotproject_detect.nasl 5128 2017-01-28 11:43:14Z cfi $
 #
 # dotProject Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800564");
-  script_version("$Revision: 5128 $");
+  script_version("2019-05-14T12:12:41+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-28 12:43:14 +0100 (Sat, 28 Jan 2017) $");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-05-07 14:39:04 +0200 (Thu, 07 May 2009)");
   script_name("dotProject Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -76,6 +75,7 @@ foreach dir( make_list_unique( "/dotproject", "/dotProject", "/Dotproject", cgi_
 
       tmp_version = vers + " under " + install;
       set_kb_item( name:"www/" + port + "/dotProject", value:tmp_version );
+      set_kb_item( name:"dotproject/detected", value:TRUE );
 
       cpe = build_cpe( value:vers, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:dotproject:dotproject:" );
       if( cpe ) {

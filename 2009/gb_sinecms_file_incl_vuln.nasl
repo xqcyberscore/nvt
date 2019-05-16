@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sinecms_file_incl_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # SineCMS Remote File Inclusion Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800942");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-10 15:23:12 +0200 (Thu, 10 Sep 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -45,31 +44,33 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_sinecms_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("sinecms/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive
-information and execute arbitrary code via crafetd URLs which upload malicious
-files.");
+  information and execute arbitrary code via crafetd URLs which upload malicious files.");
+
   script_tag(name:"affected", value:"SineCMS version 2.3.5 and prior.");
+
   script_tag(name:"insight", value:"This vulnerability arises because input passed to the
-'sine[config][index_main]' parameter in 'mods/Integrated/index.php' is not
-sanitised before being used to include files.");
+  'sine[config][index_main]' parameter in 'mods/Integrated/index.php' is not
+  sanitised before being used to include files.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is installed with SineCMS and is prone to Remote
-File Inclusion vulnerability.");
+  File Inclusion vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 sinePort = get_http_port(default:80);
-if(!sinePort)
-{
-  exit(0);
-}
 
 sineVer = get_kb_item("www/" + sinePort + "/SineCMS");
 sineVer = eregmatch(pattern:"^(.+) under (/.*)$", string:sineVer);

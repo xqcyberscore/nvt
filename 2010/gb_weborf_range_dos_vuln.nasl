@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_range_dos_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Weborf 'Range' Header Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801222");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-2262");
   script_bugtraq_id(40575);
@@ -45,26 +44,30 @@ if(description)
   script_family("Web Servers");
   script_dependencies("gb_weborf_webserver_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("weborf/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.");
-  script_tag(name:"affected", value:"Galileo Students Team Weborf version prior to 0.12.1");
+
+  script_tag(name:"affected", value:"Galileo Students Team Weborf version prior to 0.12.1.");
+
   script_tag(name:"insight", value:"The flaw is caused by an error when processing malicious HTTP headers.
   By sending a specially-crafted Range header, a remote attacker could
   exploit this vulnerability to cause the application to crash.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to Galileo Students Team Weborf version 0.12.1 or later.");
+
   script_tag(name:"summary", value:"This host is running Weborf webserver and is prone to denial of
   service vulnerability.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 ver = get_kb_item("www/" + port + "/Weborf");
 if(ver != NULL)

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zope_37765.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Zope 'standard_error_message' Cross-Site Scripting Vulnerability
 #
@@ -30,8 +29,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100455");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:23:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:23:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-01-20 10:52:14 +0100 (Wed, 20 Jan 2010)");
   script_bugtraq_id(37765);
   script_cve_id("CVE-2010-1104");
@@ -49,46 +48,45 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("zope/banner");
   script_require_ports("Services/www", 8080);
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for
   details.");
+
   script_tag(name:"summary", value:"Zope is prone to a cross-site scripting vulnerability because the
-  application fails to properly sanitize user-supplied input.
+  application fails to properly sanitize user-supplied input.");
 
-  An attacker may leverage this issue to execute arbitrary script code
-  in the browser of an unsuspecting user in the context of the affected
-  site. This may help the attacker steal cookie-based authentication
-  credentials and launch other attacks.
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected site. This may help the attacker
+  steal cookie-based authentication credentials and launch other attacks.");
 
-  The issue affects versions prior to Zope 2.12.3, 2.11.6, 2.10.11,
+  script_tag(name:"affected", value:"The issue affects versions prior to Zope 2.12.3, 2.11.6, 2.10.11,
   2.9.12, and 2.8.12.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port: port);
-if(!banner)exit(0);
-if("Server: Zope/" >!< banner)exit(0);
+if(!banner || "Server: Zope/" >!< banner)
+  exit(0);
 
 version = eregmatch(pattern: "Server: Zope/\(Zope ([0-9.]+)", string: banner);
-if(isnull(version[1]))exit(0);
+if(isnull(version[1]))
+  exit(0);
 
 if(version_in_range(version: version[1], test_version: "2.12", test_version2: "2.12.3")  ||
    version_in_range(version: version[1], test_version: "2.11", test_version2: "2.11.5")  ||
    version_in_range(version: version[1], test_version: "2.10", test_version2: "2.10.10") ||
    version_in_range(version: version[1], test_version: "2.9", test_version2: "2.9.11")   ||
    version_in_range(version: version[1], test_version: "2.8", test_version2: "2.8.11"))  {
-
-    security_message(port:port);
-    exit(0);
-
+  security_message(port:port);
+  exit(0);
 }
 
 exit(0);
-

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbazar_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
 #
 # phpBazar version detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800464");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("phpBazar version detection");
@@ -90,7 +89,8 @@ foreach dir( make_list_unique( "/", "/phpBazar", "/PHPBazar", cgi_dirs( port:por
     }
 
     tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/phpBazar", value:tmp_version) ;
+    set_kb_item( name:"www/" + port + "/phpBazar", value:tmp_version);
+    set_kb_item( name:"phpbazar/detected", value:TRUE);
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:smartisoft:phpbazar:" );
     if( isnull( cpe ) )

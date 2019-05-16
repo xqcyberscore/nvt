@@ -57,7 +57,7 @@
 
 function hotfix_check_sp( nt, win2k, xp, xpx64, win2003, win2003x64, winVista, winVistax64,
                           win7, win7x64, win2008, win2008x64, win2008r2, win8, win8x64, win2012,
-                          win2012R2, win8_1, win8_1x64, win10, win10x64, win2016 ) {
+                          win2012R2, win8_1, win8_1x64, win10, win10x64, win2016, win2019 ) {
 
   local_var winVer, winName, arch, SvPk;
 
@@ -434,6 +434,23 @@ function hotfix_check_sp( nt, win2k, xp, xpx64, win2003, win2003x64, winVista, w
     }
 
     if( SvPk < win2016 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2019 && ( "6.3" >< winVer ) && ( "Windows Server 2019" >< winName ) && (arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2019/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2019 ) {
       return 1;
     } else {
       return 0;

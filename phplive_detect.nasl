@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phplive_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # PHP Live! Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100302");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-11 19:51:15 +0200 (Sun, 11 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PHP Live! Detection");
@@ -78,6 +77,7 @@ foreach dir( make_list_unique( "/phplive", "/support", cgi_dirs( port:port ) ) )
 
     tmp_version = string(vers," under ",install);
     set_kb_item(name: string("www/", port, "/phplive"), value: tmp_version);
+    set_kb_item(name: "phplive/detecred", value: TRUE);
 
     cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:phplivesupport.:phplive");
     if(!isnull(cpe))

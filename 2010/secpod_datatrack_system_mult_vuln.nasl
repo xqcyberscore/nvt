@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_datatrack_system_mult_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # DataTrack System Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902062");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T08:13:05+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-2043", "CVE-2010-2078", "CVE-2010-2079");
   script_bugtraq_id(40249);
@@ -47,57 +46,61 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_datatrack_system_detect.nasl");
   script_require_ports("Services/www", 81);
+  script_mandatory_keys("datatrack_system/detected");
+
   script_tag(name:"insight", value:"The flaws are due to,
 
   - An input passed via the 'Work_Order_Summary' parameter to 'Home.aspx' in
-the 'DataTrack Web Client' is not properly sanitised before being displayed
-to the user.
+  the 'DataTrack Web Client' is not properly sanitised before being displayed to the user.
 
   - An improper validation of user supplied input, which can be exploited to
-disclose the contents of the 'root' directory, read arbitrary files, via a
-trailing backslash in a 'URL'.");
+  disclose the contents of the 'root' directory, read arbitrary files, via a
+  trailing backslash in a 'URL'.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running DataTrack System and is prone to multiple
-vulnerabilities.");
+  vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
-arbitrary HTML code in a user's browser session in the context of an affected
-site and to obtain sensitive information.");
+  arbitrary HTML code in a user's browser session in the context of an affected
+  site and to obtain sensitive information.");
+
   script_tag(name:"affected", value:"DataTrack System version 3.5(3.5.8019.4)");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 dtsPort = get_http_port(default:81);
-if(!get_port_state(dtsPort)){
-  exit(0);
-}
 
 dtsVer = get_kb_item("www/" + dtsPort + "/DataTrack_System");
-if(!dtsVer){
+if(!dtsVer)
+  exit(0);
+
+url = string("/web.config%5C");
+sndReq = http_get(item:url, port:dtsPort);
+rcvRes = http_send_recv(port:dtsPort, data:sndReq);
+
+if("<configuration>" >< rcvRes || "<system.web>" >< rcvRes) {
+  report = report_vuln_url(port:dtsPort, url:url);
+  security_message(port:dtsPort, data:report);
   exit(0);
 }
 
-## Create the attack string to download web.config file
-sndReq = http_get(item:string("/web.config%5C"), port:dtsPort);
+url = string("/%u00A0/");
+sndReq = http_get(item:url, port:dtsPort);
 rcvRes = http_send_recv(port:dtsPort, data:sndReq);
-if("<configuration>" >< rcvRes || "<system.web>" >< rcvRes)
-{
-  security_message(dtsPort);
-  exit(0);
-}
 
-## Consrtuct the attack string to view list of directories
-sndReq = http_get(item:string("/%u00A0/"), port:dtsPort);
-rcvRes = http_send_recv(port:dtsPort, data:sndReq);
-if(">Directory Listing" >< rcvRes)
-{
+if(">Directory Listing" >< rcvRes) {
   if("Bin/" >< rcvRes || "Web.config" >< rcvRes){
-      security_message(dtsPort);
+    report = report_vuln_url(port:dtsPort, url:url);
+    security_message(port:dtsPort, data:report);
   }
 }

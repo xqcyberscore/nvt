@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_tiles_xss_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Apache Tiles Multiple XSS Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900496");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,14 +41,21 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_apache_tiles_detect.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("apache/tiles/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will let the attacker access the server context
   inside the tiles web application and perform XSS attacks.");
+
   script_tag(name:"affected", value:"Apache Tiles version 2.1 to 2.1.1.");
+
   script_tag(name:"insight", value:"This flaw is due to attribute values or templates being defined by using
   JSP tags 'tiles:putAttribute', 'tiles:insertTemplate' which are being evaluated twice.");
+
   script_tag(name:"solution", value:"Upgrade your Apache Tiles version to 2.1.2.");
+
   script_tag(name:"summary", value:"This host has Apache Tiles installed and is prone to multiple Cross-Site
   Scripting Vulnerabilities.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://issues.apache.org/struts/browse/TILES-351");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc/tiles/framework/trunk/src/site/apt/security/security-bulletin-1.apt?revision=741913");
@@ -60,14 +66,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 tilesPort = get_http_port(default:8080);
-if(!tilesPort){
-  exit(0);
-}
-
-if(!get_port_state(tilesPort)){
-  exit(0);
-}
-
 version = get_kb_item("www/" + tilesPort + "/Apache/Tiles");
 version = eregmatch(pattern:"^(.+) under (/.*)$", string:version);
 if(version[1] == NULL){

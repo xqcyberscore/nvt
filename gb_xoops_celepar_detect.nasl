@@ -1,6 +1,5 @@
 ###############################################################################
-# Openvas Vulnerability Test
-# $Id: gb_xoops_celepar_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# OpenVAS Vulnerability Test
 #
 # Xoops Celepar Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801152");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_name("Xoops Celepar Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -63,20 +62,19 @@ foreach dir (make_list_unique("/xoopscelepar", "/" , cgi_dirs(port:xoopsPort))) 
 
   rcvRes = http_get_cache(item: dir + "/index.php", port:xoopsPort);
 
-  if("200 OK" >< rcvRes && ">XOOPS Site" >< rcvRes) {
+  if(rcvRes =~ "HTTP/1\.[01] 200" && ">XOOPS Site" >< rcvRes) {
 
     version = "unknown";
 
-    celeparVer = eregmatch(pattern:">Powered by XOOPS ([0-9.]+)",
-                           string:rcvRes);
+    celeparVer = eregmatch(pattern:">Powered by XOOPS ([0-9.]+)", string:rcvRes);
 
     if(celeparVer[1] != NULL) {
       version = celeparVer[1];
     }
 
     tmp_version = version + " under " + install;
-    set_kb_item(name:"www/" + xoopsPort + "/XoopsCelepar",
-                value:tmp_version);
+    set_kb_item(name:"www/" + xoopsPort + "/XoopsCelepar", value:tmp_version);
+    set_kb_item(name:"xoops_celepar/detected", value:TRUE);
 
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:alexandre_amaral:xoops_celepar:");
     if(!cpe)

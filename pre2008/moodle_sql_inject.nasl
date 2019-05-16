@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: moodle_sql_inject.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Moodle SQL injection flaws
 #
 # Authors:
@@ -22,13 +21,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-#  Ref: Moodle Team
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15639");
-  script_version("$Revision: 14336 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1424", "CVE-2004-1425", "CVE-2004-2232");
   script_bugtraq_id(11608, 11691, 12120);
@@ -45,13 +42,16 @@ if (description)
   script_dependencies("gb_moodle_cms_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Moodle/Version");
-  script_tag(name:"solution", value:"Upgrade to Moodle 1.4.3 or later.");
-  script_tag(name:"summary", value:"The remote host is running a version of the Moodle suite, an open-source
-course management system written in PHP, which is older than version 1.4.3.
 
-The remote version of this software is vulnerable to SQL injection issue
-in 'glossary' module due to a lack of user input sanitization.");
+  script_tag(name:"solution", value:"Upgrade to Moodle 1.4.3 or later.");
+
+  script_tag(name:"summary", value:"The remote version of Moodle is vulnerable to a SQL
+  injection issue in 'glossary' module due to a lack of user input sanitization.");
+
+  script_tag(name:"affected", value:"Moodle prior to version 1.4.3.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -59,19 +59,15 @@ include("http_func.inc");
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
-
-
-# Test an install.
 install = get_kb_item(string("www/", port, "/moodle"));
-if (isnull(install)) exit(0);
+if (isnull(install))
+  exit(0);
+
 matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
 if (!isnull(matches)) {
   ver = matches[1];
-  if (ver =~ "^(0\..*|1\.([0-4][^0-9]?|[0-4]\.[012][^0-9]?))$")
-  {
-	security_message(port);
-	exit(0);
+  if (ver =~ "^(0\..*|1\.([0-4][^0-9]?|[0-4]\.[012][^0-9]?))$") {
+    security_message(port);
+    exit(0);
   }
 }

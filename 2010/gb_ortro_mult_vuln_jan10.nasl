@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ortro_mult_vuln_jan10.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Ortro Multiple Unspecified Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800981");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,32 +43,34 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_ortro_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("ortro/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will let the remote attacker Disable/Lock a host and
   to perform scp transfer between two remote hosts.");
-  script_tag(name:"affected", value:"Ortro version prior to 1.3.4");
+
+  script_tag(name:"affected", value:"Ortro version prior to 1.3.4.");
+
   script_tag(name:"insight", value:"The flaw is caused by unspecified errors with unknown impact and attack
   vectors.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to Ortro version 1.3.4");
+
+  script_tag(name:"solution", value:"Upgrade to Ortro version 1.3.4.");
+
   script_tag(name:"summary", value:"The host has Ortro installed and is prone to multiple Unspecified
   vulnerabilities.");
-  script_xref(name:"URL", value:"http://www.ortro.net/download");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 ortroPort = get_http_port(default:80);
-if(!ortroPort){
-  exit(0);
-}
 
 ortroVer = get_kb_item("www/"+ ortroPort + "/Ortro");
-if(!ortroVer){
+if(!ortroVer)
   exit(0);
-}
 
 ortroVer  = eregmatch(pattern:"^(.+) under (/.*)$", string:ortroVer);
 if(ortroVer[1] != NULL)

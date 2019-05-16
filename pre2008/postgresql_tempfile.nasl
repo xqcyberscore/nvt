@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: postgresql_tempfile.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: PostgreSQL insecure temporary file creation
 #
 # Authors:
@@ -23,97 +22,49 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-#  Ref: Trustix security engineers
 CPE = "cpe:/a:postgresql:postgresql";
 
 if(description)
 {
-
   script_oid("1.3.6.1.4.1.25623.1.0.15417");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0977");
   script_bugtraq_id(11295);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_name("PostgreSQL insecure temporary file creation");
-
-
-
-
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-
-
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Gain a shell remotely");
   script_dependencies("postgresql_detect.nasl");
   script_require_ports("Services/postgresql", 5432);
-  script_require_keys("PostgreSQL/installed");
+  script_mandatory_keys("PostgreSQL/installed");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to newer version of this software.");
+
   script_tag(name:"summary", value:"The remote PostgreSQL server, according to its version number, is vulnerable
-to an unspecified insecure temporary file creation flaw, which may allow
-a local attacker to overwrite arbitrary files with the privileges of
-the application.");
+  to an unspecified insecure temporary file creation flaw, which may allow
+  a local attacker to overwrite arbitrary files with the privileges of the application.");
+
   exit(0);
 }
 
-
+include("version_func.inc");
 include("host_details.inc");
 
-port = get_app_port(cpe:CPE);
-if(!port)port = 5432;
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if(!get_port_state(port))exit(0);
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
-#
-# Request the database 'template1' as the user 'postgres' or 'pgsql'
-#
-zero = raw_string(0x00);
-
-user[0] = "postgres";
-user[1] = "pgsql";
-
-for(i=0;i<2;i=i+1)
-{
- soc = open_sock_tcp(port);
- if(!soc)exit(0);
- usr = user[i];
- len = 224 - strlen(usr);
-
- req = raw_string(0x00, 0x00, 0x01, 0x28, 0x00, 0x02,
-    	         0x00, 0x00, 0x74, 0x65, 0x6D, 0x70, 0x6C, 0x61,
-		 0x74, 0x65, 0x31) + crap(data:zero, length:55) +
-        usr +
-       crap(data:zero, length:len);
-
- send(socket:soc, data:req);
- r = recv(socket:soc, length:5);
- r2 = recv(socket:soc, length:1024);
- if((r[0]=="R") && (strlen(r2) == 10))
-  {
-    dbs = "";
-    req = raw_string(0x51) + "select version();" +
-    	  raw_string(0x00);
-    send(socket:soc, data:req);
-
-    r = recv(socket:soc, length:65535);
-    r = strstr(r, "PostgreSQL");
-    if(r != NULL)
-     {
-      for(i=0;i<strlen(r);i++)
-      {
-       if(ord(r[i]) == 0)
-     	break;
-       }
-     r = substr(r, 0, i - 1);
-     if(ereg(string:r, pattern:"PostgreSQL ([0-6]\.|7\.(4\.[0-5])|([0-3]\..*)).*")){
-     	security_message(port);
-	exit(0);
-	}
-     }
-    exit(0);
-   }
+if(ereg(string:vers, pattern:"^([0-6]\.|7\.(4\.[0-5])|([0-3]\..*)).*")){
+  security_message(port:port);
 }
+
+exit(0);

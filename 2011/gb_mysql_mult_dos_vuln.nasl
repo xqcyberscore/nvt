@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # MySQL Multiple Denial Of Service Vulnerabilities
 #
@@ -23,13 +22,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:mysql:mysql";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801566");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-01-18 07:48:41 +0100 (Tue, 18 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -46,50 +46,47 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("mysql_version.nasl");
   script_require_ports("Services/mysql", 3306);
+  script_mandatory_keys("MySQL/installed");
+
   script_tag(name:"impact", value:"Successful exploitation could allow users to cause a Denial of Service.");
-  script_tag(name:"affected", value:"MySQL version 5.1 before 5.1.49 on all running platform.");
+
+  script_tag(name:"affected", value:"MySQL version 5.1 before 5.1.49 on all running platforms.");
+
   script_tag(name:"insight", value:"The flaws are due to:
 
   - An error in 'storage/innobase/dict/dict0crea.c' in 'mysqld' allows remote
-    authenticated users to cause a denial of service by modifying the
-    innodb_file_format or innodb_file_per_table configuration parameters for
-    the InnoDB storage engine.
+  authenticated users to cause a denial of service by modifying the
+  innodb_file_format or innodb_file_per_table configuration parameters for
+  the InnoDB storage engine.
 
   - An error in handling of 'IN' or 'CASE' operations with NULL arguments that
-    are explicitly specified or indirectly provided by the WITH ROLLUP modifier.
+  are explicitly specified or indirectly provided by the WITH ROLLUP modifier.
 
   - An error in handling of certain arguments to the BINLOG command, which
-    triggers an access of uninitialized memory.
+  triggers an access of uninitialized memory.
 
   - An error in creating temporary tables while using InnoDB, which triggers an
-    assertion failure.");
-  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.49");
+  assertion failure.");
+
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.49.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"The host is running MySQL and is prone to multiple denial of service
   vulnerabilities.");
-  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
+
   exit(0);
 }
-
 
 include("misc_func.inc");
 include("version_func.inc");
-
 include("host_details.inc");
 
-sqlPort = get_app_port(cpe:CPE);
-if(!sqlPort){
-  sqlPort = 3306;
-}
-
-if(!get_port_state(sqlPort)){
+if(!sqlPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-mysqlVer = get_app_version(cpe:CPE, port:sqlPort);
-if(isnull(mysqlVer)){
+if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort))
   exit(0);
-}
 
 mysqlVer = eregmatch(pattern:"([0-9.a-z]+)", string:mysqlVer);
 if(!isnull(mysqlVer[1]))

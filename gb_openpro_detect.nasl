@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openpro_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # OpenPro Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800928");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenPro Version Detection");
@@ -77,6 +76,7 @@ foreach dir( make_list_unique( "/", "/openpro", "/forum", cgi_dirs( port:port ) 
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/OpenPro", value:tmp_version );
+    set_kb_item( name:"openpro/detected", value:TRUE );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:openpro:openpro:" );
     if( isnull( cpe ) )

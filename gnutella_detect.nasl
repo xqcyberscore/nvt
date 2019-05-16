@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gnutella_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Gnutella servent detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10946");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,19 +55,16 @@ ports = get_unknown_port_list( default:6346 ); # Detection is commeted out in na
 
 foreach port ( ports ) {
 
-  if( get_port_state( port ) ) {
+  soc = open_sock_tcp( port );
+  if( soc ) {
 
-    soc = open_sock_tcp( port );
-    if( soc ) {
+    send( socket:soc, data:'GNUTELLA CONNECT/0.4\r\n\r\n' );
+    answer = recv( socket:soc, length:500 );
+    close( soc );
 
-      send( socket:soc, data:'GNUTELLA CONNECT/0.4\r\n\r\n' );
-      answer = recv( socket:soc, length:500 );
-      close( soc );
-
-      if( "GNUTELLA OK" >< answer ) {
-        log_message( port:port );
-        register_service( port:port, proto:"gnutella" );
-      }
+    if( "GNUTELLA OK" >< answer ) {
+      log_message( port:port );
+      register_service( port:port, proto:"gnutella" );
     }
   }
 }

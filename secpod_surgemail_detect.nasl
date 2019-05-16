@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_detect.nasl 13387 2019-01-31 14:47:07Z cfischer $
 #
 # SurgeMail Version Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900839");
-  script_version("$Revision: 13387 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 15:47:07 +0100 (Thu, 31 Jan 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -93,14 +92,6 @@ if("surgemail" >< banner){
 }
 
 surgemail_port = get_http_port(default:7026);
-
-if(!surgemail_port){
-  surgemail_port = 7026;
-}
-
-if(!get_port_state(surgemail_port)){
-  exit(0);
-}
 
 rcvRes = http_get_cache(item:"/", port:surgemail_port);
 

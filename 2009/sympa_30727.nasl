@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sympa_30727.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # Sympa 'sympa.pl' Insecure Temporary File Creation Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100299");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-11 19:51:15 +0200 (Sun, 11 Oct 2009)");
   script_bugtraq_id(30727);
   script_cve_id("CVE-2008-4476");
@@ -47,32 +46,30 @@ if (description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("sympa_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("sympa/detected");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
-  script_tag(name:"summary", value:"Sympa creates temporary files in an insecure manner.
 
-An attacker with local access could potentially exploit this issue to
-perform symbolic-link attacks, overwriting arbitrary files in the
-context of the affected application.
+  script_tag(name:"summary", value:"Sympa creates temporary files in an insecure manner.");
 
-Successfully mounting a symlink attack may allow the attacker to
-delete or corrupt sensitive files, which may result in a denial of
-service. Other attacks may also be possible.
+  script_tag(name:"impact", value:"An attacker with local access could potentially exploit this issue to
+  perform symbolic-link attacks, overwriting arbitrary files in the
+  context of the affected application.
 
-Sympa 5.4.3 is vulnerable, other versions may also be affected.");
+  Successfully mounting a symlink attack may allow the attacker to
+  delete or corrupt sensitive files, which may result in a denial of
+  service. Other attacks may also be possible.");
+
+  script_tag(name:"affected", value:"Sympa 5.4.3 is vulnerable, other versions may also be affected.");
+
   exit(0);
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/sympa")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
@@ -82,10 +79,9 @@ vers = matches[1];
 if(!isnull(vers) && vers >!< "unknown") {
 
   if(version_is_equal(version: vers, test_version: "5.4.3")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

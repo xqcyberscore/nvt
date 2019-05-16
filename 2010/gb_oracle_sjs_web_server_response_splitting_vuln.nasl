@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_sjs_web_server_response_splitting_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Oracle Java System Web Server HTTP Response Splitting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801532");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-16T07:41:50+0000");
+  script_tag(name:"last_modification", value:"2019-05-16 07:41:50 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2010-11-02 18:01:36 +0100 (Tue, 02 Nov 2010)");
   script_cve_id("CVE-2010-3514");
   script_tag(name:"cvss_base", value:"4.3");
@@ -45,51 +44,50 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("SunWWW/banner");
   script_require_ports("Services/www", 80);
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct Cross Site
   Scripting and browser cache poisoning attacks.");
+
   script_tag(name:"affected", value:"Oracle Java System Web Server 6.x/7.x");
+
   script_tag(name:"insight", value:"The flaw is due to input validation error in 'response.setHeader()'
   method which is not properly sanitising before being returned to the user.
   This can be exploited to insert arbitrary HTTP headers, which will be
   included in a response sent to the user.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Apply the patch");
+
+  script_tag(name:"solution", value:"Apply the referenced vendor update.");
+
   script_tag(name:"summary", value:"The host is running Oracle Java System Web Server and is prone to
   HTTP response splitting vulnerability.");
+
   script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-79-1215353.1-1");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 
-host = get_host_name();
-
 jswsPort = get_http_port(default:80);
-if(!jswsPort){
+
+banner = get_http_banner(port:jswsPort);
+if(!banner || "Server: Sun-" >!< banner)
   exit(0);
-}
 
-if(get_port_state(jswsPort))
-{
-  banner = get_http_banner(port:jswsPort);
-  if("Server: Sun-" >< banner)
-  {
-    foreach files (make_list("login.jsp", "index.jsp", "default.jsp", "admin.jsp"))
-    {
-      url = string("/" ,files , "?ref=http://" , host ,
-              "/%0D%0AContent-type:+text/html;%0D%0A%0D%0ATEST%3Cscript%3Ealert" +
-              "(111)%3C/script%3E");
+host = http_host_name(port:jswsPort);
 
-      req = http_get(item:url, port:jswsPort);
-      resp = http_send_recv(port: jswsPort, data: req);
+foreach files (make_list("login.jsp", "index.jsp", "default.jsp", "admin.jsp")) {
 
-      if(egrep(string:resp, pattern:"^HTTP/1\..*200 OK") &&
-         ("TEST<script>alert(111)</script>" >< resp))
-      {
-        security_message(jswsPort);
-        exit(0);
-      }
-    }
+  url = string("/", files, "?ref=http://", host, "/%0D%0AContent-type:+text/html;%0D%0A%0D%0ATEST%3Cscript%3Ealert(111)%3C/script%3E");
+
+  req = http_get(item:url, port:jswsPort);
+  resp = http_send_recv(port: jswsPort, data: req);
+
+  if(egrep(string:resp, pattern:"^HTTP/1\.[01] 200") &&
+     ("TEST<script>alert(111)</script>" >< resp)) {
+    report = report_vuln_url(port:jswsPort, url:url);
+    security_message(port:jswsPort, data:report);
+    exit(0);
   }
 }

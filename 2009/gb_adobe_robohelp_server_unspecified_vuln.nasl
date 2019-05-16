@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robohelp_server_unspecified_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # Adobe RoboHelp Server Unspecified Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801103");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-10 15:23:12 +0200 (Thu, 10 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -44,30 +43,33 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("gb_adobe_robohelp_server_detect.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("adobe/robohelpserver/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute
-arbitrary code or compromise a vulnerable system.");
+  arbitrary code or compromise a vulnerable system.");
+
   script_tag(name:"affected", value:"Adobe RoboHelp Server version 8.0");
+
   script_tag(name:"insight", value:"The flaw is due to an unspecified 'pre-authentication' error
-which can be exploited via unknown vectors.");
+  which can be exploited via unknown vectors.");
+
   script_tag(name:"solution", value:"The vendor has released a patch to fix the issue, please see the references for more information.");
+
   script_tag(name:"summary", value:"This host is running Adobe RoboHelp Server and is prone to unspecified
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 robohelpPort = get_http_port(default:8080);
-if(!robohelpPort)
-{
-  exit(0);
-}
 
 robohelpVer = get_kb_item("www/" + robohelpPort + "/RoboHelpServer");
 robohelpVer = eregmatch(pattern:"^(.+) under (/.*)$", string:robohelpVer);

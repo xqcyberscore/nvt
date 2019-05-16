@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomly_redirect_45364.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Joomla Redirect Component 'com_redirect' Local File Include Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100946");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-12-14 13:08:24 +0100 (Tue, 14 Dec 2010)");
   script_bugtraq_id(45364);
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,16 +45,18 @@ if (description)
   script_dependencies("joomla_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
-  script_tag(name:"summary", value:"The 'com_redirect' component for Joomla! is prone to a local file-
-include vulnerability because it fails to properly sanitize user-
-supplied input.
 
-An attacker can exploit this vulnerability to obtain potentially
-sensitive information and execute arbitrary local scripts in the
-context of the webserver process. This may allow the attacker to
-compromise the application and the underlying computer. Other attacks
-are also possible.");
+  script_tag(name:"summary", value:"The 'com_redirect' component for Joomla! is prone to a local file-
+  include vulnerability because it fails to properly sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to obtain potentially
+  sensitive information and execute arbitrary local scripts in the
+  context of the webserver process. This may allow the attacker to
+  compromise the application and the underlying computer. Other attacks
+  are also possible.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -72,21 +72,21 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
 
-if(!dir = get_dir_from_kb(port:port,app:"joomla"))exit(0);
+if(!dir = get_dir_from_kb(port:port,app:"joomla"))
+  exit(0);
+
 files = traversal_files();
 
-foreach file (keys(files)) {
+foreach pattern (keys(files)) {
 
-  url = string(dir,"/index.php?option=com_redirect&view=",crap(data:"../",length:3*15),files[file],"%00");
+  file = files[pattern];
+  url = string(dir,"/index.php?option=com_redirect&view=",crap(data:"../",length:3*15),file,"%00");
 
-  if(http_vuln_check(port:port, url:url,pattern:file)) {
-
-    security_message(port:port);
+  if(http_vuln_check(port:port, url:url, pattern:pattern)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
-
   }
 }
 

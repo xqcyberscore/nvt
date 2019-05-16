@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pligg_mult_sql_inj_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Pligg Multiple SQL Injection Vulnerabilities
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801258");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-2577", "CVE-2010-3013");
   script_bugtraq_id(42408);
@@ -47,31 +46,33 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("pligg_cms_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("pligg/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL Injection attack
   and gain sensitive information.");
+
   script_tag(name:"affected", value:"Pligg CMS Version 1.1.0 and prior.");
+
   script_tag(name:"insight", value:"The flaws are caused by improper validation of user-supplied inputs via the
   'title' parameter in storyrss.php and story.php and 'role' parameter in
-  groupadmin.php that allows attacker to manipulate SQL queries by injecting
-  arbitrary SQL code.");
+  groupadmin.php that allows attacker to manipulate SQL queries by injecting arbitrary SQL code.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to Pligg CMS Version 1.1.1 or later.");
+
   script_tag(name:"summary", value:"The host is running Pligg CMS and is prone to multiple SQL injection
   vulnerabilities.");
-  script_xref(name:"URL", value:"http://www.pligg.com/download/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
-if(ver = get_version_from_kb(port:port,app:"pligg"))
+if(ver = get_version_from_kb(port:port, app:"pligg"))
 {
   if(version_is_less(version:ver, test_version:"1.1.1")){
     security_message(port:port);

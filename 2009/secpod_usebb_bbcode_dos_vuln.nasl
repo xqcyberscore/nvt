@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_usebb_bbcode_dos_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # UseBB BBcode Parsing Remote Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901057");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,33 +44,34 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_usebb_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("usebb/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code and cause Denial-of-Service by posting a message containing specially
-  crafted BBcode.");
+  code and cause Denial-of-Service by posting a message containing specially crafted BBcode.");
+
   script_tag(name:"affected", value:"UseBB version 1.0.9 and prior on all platforms.");
+
   script_tag(name:"insight", value:"This issue is due to an infinite loops while parsing for malformed
   BBcode.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to UseBB version 1.0.10");
+
+  script_tag(name:"solution", value:"Upgrade to UseBB version 1.0.10.");
+
   script_tag(name:"summary", value:"This host has UseBB installed and is prone to Denial of Service
   vulnerability.");
-  script_xref(name:"URL", value:"http://www.usebb.net/downloads/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 usebbPort = get_http_port(default:80);
-if(!usebbPort){
-  exit(0);
-}
 
 usebbVer = get_kb_item("www/"+ usebbPort + "/UseBB");
-if(!usebbVer){
+if(!usebbVer)
   exit(0);
-}
 
 usebbVer = eregmatch(pattern:"^(.+) under (/.*)$", string:usebbVer);
 if(usebbVer[1])

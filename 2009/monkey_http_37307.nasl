@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: monkey_http_37307.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # Monkey HTTP Daemon Invalid HTTP 'Connection' Header Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100397");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
   script_bugtraq_id(37307);
   script_tag(name:"cvss_base", value:"7.8");
@@ -49,24 +48,25 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("Monkey/banner");
   script_require_ports("Services/www", 2001);
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Updates are available, please see the references for more information.");
-  script_tag(name:"summary", value:"Monkey HTTP Daemon is prone to a denial-of-service vulnerability.
 
-Remote attackers can exploit this issue to cause the application to
-crash, denying service to legitimate users.
+  script_tag(name:"summary", value:"Monkey HTTP Daemon is prone to a denial-of-service vulnerability.");
 
-Versions prior to Monkey HTTP Daemon 0.9.3 are vulnerable.");
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to cause the application to
+  crash, denying service to legitimate users.");
+
+  script_tag(name:"affected", value:"Versions prior to Monkey HTTP Daemon 0.9.3 are vulnerable.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:2001);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port: port);
 if(!banner)exit(0);
 
@@ -74,10 +74,9 @@ if("Server: Monkey/" >!< banner)exit(0);
 version = eregmatch(pattern: "Server: Monkey/([0-9.]+)", string: banner);
 if(isnull(version[1]))exit(0);
 
-   if(version_is_less(version: version[1], test_version: "0.9.3")) {
-        security_message(port:port);
-        exit(0);
-   }
+if(version_is_less(version: version[1], test_version: "0.9.3")) {
+  security_message(port:port);
+  exit(0);
+}
 
 exit(0);
-

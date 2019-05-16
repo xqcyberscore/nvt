@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxportal_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # AjaxPortal Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800816");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("AjaxPortal Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -73,6 +72,7 @@ foreach dir( make_list_unique( "/", "/ajaxportal", "/portal", cgi_dirs( port:por
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/AjaxPortal", value:tmp_version );
+    set_kb_item( name:"ajaxportal/detected", value:TRUE );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:myiosoft.com:ajaxportal:" );
     if( isnull( cpe ) )

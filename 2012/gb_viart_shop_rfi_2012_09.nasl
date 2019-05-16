@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_shop_rfi_2012_09.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # ViArt Shop File Inclusion Vulnerability
 #
@@ -24,19 +23,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:viart:viart_shop";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103580");
-  script_version("$Revision: 11049 $");
+  script_version("2019-05-13T14:05:09+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("ViArt Shop File Inclusion Vulnerability");
 
   script_xref(name:"URL", value:"http://se3c.blogspot.de/2012/09/viart-shop-evaluation-v41-multiple.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2012-09-26 10:51:47 +0200 (Wed, 26 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,8 +62,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 files = traversal_files();
@@ -76,7 +74,6 @@ foreach file (keys(files)) {
     security_message(port:port);
     exit(0);
   }
-
 }
 
 exit(0);

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysql_dos_vuln_900221.nasl 14310 2019-03-19 10:27:27Z cfischer $
 # Description: MySQL Empty Bit-String Literal Denial of Service Vulnerability
 #
 # Authors:
@@ -22,13 +21,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
+
 CPE = "cpe:/a:mysql:mysql";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900221");
-  script_version("$Revision: 14310 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:27:27 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_bugtraq_id(31081);
   script_cve_id("CVE-2008-3963");
@@ -37,7 +37,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("MySQL Empty Bit-String Literal Denial of Service Vulnerability");
 
   script_dependencies("mysql_version.nasl");
@@ -56,31 +55,22 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation by remote attackers could cause denying
   access to legitimate users.");
 
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
+include("misc_func.inc");
+include("host_details.inc");
 
- include("misc_func.inc");
- include("host_details.inc");
+if(!sqlPort = get_app_port(cpe:CPE))
+  exit(0);
 
+if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort))
+  exit(0);
 
- sqlPort = get_app_port(cpe:CPE);
- if(!sqlPort){
-        sqlPort = 3306;
- }
-
- if(!get_port_state(sqlPort)){
-        exit(0);
- }
-
- mysqlVer = get_app_version(cpe:CPE, port:sqlPort);
-
- if(mysqlVer)
- {
-       if(ereg(pattern:"^(5\.0(\.[0-5]?[0-9]|\.6[0-5])?|5\.1(\.[01]?[0-9]|" +
-                       "\.2[0-5])?|6\.0(\.[0-5])?)[^.0-9]", string:mysqlVer)){
-                security_message(sqlPort);
-       }
- }
+if(ereg(pattern:"^(5\.0(\.[0-5]?[0-9]|\.6[0-5])?|5\.1(\.[01]?[0-9]|" +
+                "\.2[0-5])?|6\.0(\.[0-5])?)[^.0-9]", string:mysqlVer)){
+  security_message(port:sqlPort);
+}

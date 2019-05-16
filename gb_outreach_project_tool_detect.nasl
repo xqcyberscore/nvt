@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_outreach_project_tool_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Outreach Project Tool Version Detection (OPT)
 #
@@ -28,15 +27,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801069");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Outreach Project Tool Version Detection (OPT)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -63,8 +62,7 @@ foreach dir( make_list_unique( "/", "/OPT127MAX/opt", "/opt", cgi_dirs( port:por
   install = dir;
   if( dir == "/" ) dir = "";
 
-  sndReq = http_get( item:dir + "/index.php?OPT_Session=" +
-                                " OpenVAS_Req", port:port );
+  sndReq = http_get( item:dir + "/index.php?OPT_Session=VT_Req", port:port );
   rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
   if( "<title>Outreach Project Tool Login</title>" >< rcvRes || "./include/opt_css.php" >< rcvRes ||
@@ -82,6 +80,7 @@ foreach dir( make_list_unique( "/", "/OPT127MAX/opt", "/opt", cgi_dirs( port:por
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/OPT", value:tmp_version );
+    set_kb_item( name:"outreach_project_tool/detected", value:TRUE );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:lanifex:outreach_project_tool:" );
     if( isnull( cpe ) )

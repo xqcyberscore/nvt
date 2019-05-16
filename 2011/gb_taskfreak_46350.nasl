@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_taskfreak_46350.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # TaskFreak! Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103078");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-02-15 13:44:44 +0100 (Tue, 15 Feb 2011)");
   script_bugtraq_id(46350);
 
@@ -46,38 +45,38 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("secpod_task_freak_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_mandatory_keys("TaskFreak/installed");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"summary", value:"TaskFreak! is prone to multiple cross-site scripting
-vulnerabilities because the application fails to sufficiently
-sanitize user-supplied input.
+  vulnerabilities because the application fails to sufficiently
+  sanitize user-supplied input.");
 
-An attacker may leverage these issues to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may let the attacker steal cookie-based authentication
-credentials and launch other attacks.
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may let the attacker steal cookie-based authentication
+  credentials and launch other attacks.");
 
-TaskFreak! 0.6.4 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"TaskFreak! 0.6.4 is vulnerable. Other versions may also be affected.");
+
   exit(0);
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"TaskFreak")) {
-
   if(version_is_equal(version: vers, test_version: "0.6.4")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

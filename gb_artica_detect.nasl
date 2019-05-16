@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artica_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Artica Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100870");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-10-26 13:33:58 +0200 (Tue, 26 Oct 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Artica Detection");
@@ -62,6 +61,7 @@ if( buf == NULL ) exit( 0 );
 if( "lighttpd" >< buf && "artica-language" >< buf && "artica-template" >< buf && "Artica for postfix" >< buf ) {
 
    set_kb_item( name: "www/" + port + "/artica", value: TRUE );
+   set_kb_item( name: "artica/detected", value: TRUE );
 
    ## CPE is currently not registered
    cpe = 'cpe:/a:artica:artica';

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2mc_mult_unspecified_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # DB2 Monitoring Console Multiple Unspecified Security Bypass Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800691");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,41 +41,40 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("gb_ibm_db2mc_detect.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_ibm_db2mc_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("ibm/db2mc/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to bypass certain
   security restrictions or potentially compromise a vulnerable system.");
+
   script_tag(name:"affected", value:"DB2 Monitoring Console Version 2.2.24 and prior.");
+
   script_tag(name:"insight", value:"- An unspecified error can be exploited to upload files to the web
-    server hosting the application.
+  server hosting the application.
 
   - An unspecified error can be exploited to gain access to the database
-    that a user is currently connected to by tricking the user to access
-    malicious link.");
+  that a user is currently connected to by tricking the user to access malicious link.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to DB2 Monitoring Console Version 2.2.25 or later.");
+
   script_tag(name:"summary", value:"The host is running IBM DMC and is prone to multiple
   Unspecified Security Bypass Vulnerabilities.");
-  script_xref(name:"URL", value:"http://sourceforge.net/projects/db2mc/files/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 dmcPort = get_http_port(default:80);
-if(!dmcPort)
-{
-  exit(0);
-}
 
 dmcVer = get_kb_item("www/" + dmcPort + "/IBM/DB2MC");
 if(!dmcVer)
-{
-   exit(0);
-}
+  exit(0);
 
 dmcVer = eregmatch(pattern:"^(.+) under (/.*)$", string:dmcVer);
 if(dmcVer[1] != NULL)

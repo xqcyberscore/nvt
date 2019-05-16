@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jv2_folder_gallery_rfi_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # JV2 Folder Gallery 'lang_file' Parameter Remote File Inclusion Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801351");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-2127");
   script_bugtraq_id(40339);
@@ -42,37 +41,39 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_jv2_folder_gallery_detect.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_jv2_folder_gallery_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("jv2_folder_gallery/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
-arbitrary PHP code via a URL in the lang_file parameter.");
+  arbitrary PHP code via a URL in the lang_file parameter.");
+
   script_tag(name:"affected", value:"JV2 Folder Gallery version 3.1 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to improper sanitization of user supplied input
-in 'lang_file' parameter in 'gallery/gallery.php' while including external
-files for processing.");
+  in 'lang_file' parameter in 'gallery/gallery.php' while including external files for processing.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running JV2 Folder Gallery and is prone to remote
-file inclusion vulnerability.");
+  file inclusion vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 vfgPort = get_http_port(default:80);
-if(!vfgPort){
-  exit(0);
-}
 
 vfgVer = get_kb_item("www/" + vfgPort + "/JV2/Folder/Gallery");
-if(!vfgVer){
+if(!vfgVer)
   exit(0);
-}
 
 vfgVer = eregmatch(pattern:"^(.+) under (/.*)$", string:vfgVer);
 if(vfgVer[1] != NULL)

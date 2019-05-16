@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cybozu_products_detect.nasl 12000 2018-10-21 10:49:25Z cfischer $
 #
 # Cybozu Products Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902533");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 12000 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-21 12:49:25 +0200 (Sun, 21 Oct 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Cybozu Products Version Detection");
@@ -80,6 +79,8 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
       tmp_version = version + " under " + install;
       set_kb_item( name:"www/" + port + "/CybozuGaroon", value:tmp_version );
       set_kb_item( name:"CybozuGaroon/Installed", value:TRUE );
+      set_kb_item( name:"cybozu_products/detected", value:TRUE );
+
       cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cybozu:garoon:" );
       if( isnull( cpe ) )
         cpe = 'cpe:/a:cybozu:garoon';
@@ -115,6 +116,7 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
         tmp_version = version + " under " + install;
         set_kb_item( name:"CybozuOffice/Installed", value:TRUE );
         set_kb_item( name:"www/" + port + "/CybozuOffice", value:tmp_version );
+        set_kb_item( name:"cybozu_products/detected", value:TRUE );
 
         cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cybozu:office:" );
         if( isnull( cpe ) )
@@ -150,6 +152,7 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
       tmp_version = version + " under " + install;
       set_kb_item( name:"CybozuDezie/Installed", value:TRUE );
       set_kb_item( name:"www/" + port + "/CybozuDezie", value:tmp_version );
+      set_kb_item( name:"cybozu_products/detected", value:TRUE );
 
       cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cybozu:dezie:" );
       if( isnull( cpe ) )
@@ -184,6 +187,7 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
       tmp_version = version + " under " + install;
       set_kb_item( name:"CybozuMailWise/Installed", value:TRUE );
       set_kb_item( name:"www/" + port + "/CybozuMailWise", value:tmp_version );
+      set_kb_item( name:"cybozu_products/detected", value:TRUE );
 
       cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cybozu:mailwise:" );
       if( isnull( cpe ) )

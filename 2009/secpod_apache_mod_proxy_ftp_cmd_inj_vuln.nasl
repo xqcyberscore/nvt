@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_mod_proxy_ftp_cmd_inj_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # Apache 'mod_proxy_ftp' Module Command Injection Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900842");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,43 +40,35 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("General");
+  script_family("Web Servers");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("apache/banner");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to bypass intended access
-  restrictions in the context of the affected application, and can cause the
-  arbitrary command injection.");
+  restrictions in the context of the affected application, and can cause the arbitrary command injection.");
+
   script_tag(name:"affected", value:"Apache HTTP Server on Linux.");
+
   script_tag(name:"insight", value:"The flaw is due to error in the mod_proxy_ftp module which can be exploited
-  via vectors related to the embedding of these commands in the Authorization
-  HTTP header.");
+  via vectors related to the embedding of these commands in the Authorization HTTP header.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to Apache HTTP Server version 2.2.15 or later");
+
+  script_tag(name:"solution", value:"Upgrade to Apache HTTP Server version 2.2.15 or later.");
+
   script_tag(name:"summary", value:"The host is running Apache and is prone to Command Injection
   vulnerability.");
-  script_xref(name:"URL", value:"http://www.apache.org/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
-
 apachePort = get_http_port(default:80);
-if(!apachePort){
-  apachePort = 80;
-}
-
-if(!get_port_state(apachePort))
-{
-  exit(0);
-}
-
 banner = get_http_banner(port:apachePort);
-if(banner =~ "Apache/([0-9.]+) \(Win32\)")
-{
+if(banner =~ "Apache/([0-9.]+) \(Win32\)") {
   exit(0);
 }
 

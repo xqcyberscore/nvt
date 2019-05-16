@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openpro_file_inc_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # OpenPro Remote File Inclusion Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800929");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,29 +42,32 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_openpro_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("openpro/detected");
+
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code by
-including remote PHP files via malicious URLs.");
+  including remote PHP files via malicious URLs.");
+
   script_tag(name:"affected", value:"OpenPro version 1.3.1 and prior.");
+
   script_tag(name:"insight", value:"The user supplied input passed into 'LIBPATH' parameter in the
-'search_wA.php' script is not properly sanitised before being returned to the
-user.");
+  'search_wA.php' script is not properly sanitised before being returned to the user.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is installed with OpenPro and is prone to Remote File
-Inclusion vulnerability.");
+  Inclusion vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 openPort = get_http_port(default:80);
-if(!openPort){
-  exit(0);
-}
 
 openproVer = get_kb_item("www/" + openPort + "/OpenPro");
 openproVer = eregmatch(pattern:"^(.+) under (/.*)$", string:openproVer);

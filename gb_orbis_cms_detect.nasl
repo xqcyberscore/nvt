@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbis_cms_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # Orbis CMS Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801403");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11224 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-07-16 19:44:55 +0200 (Fri, 16 Jul 2010)");
   script_name("Orbis CMS Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -79,6 +78,7 @@ foreach path (make_list_unique("/orbis", "/Orbis", "/", cgi_dirs(port:orbisPort)
 
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + orbisPort + "/Orbis/CMS/Ver", value:tmp_version);
+    set_kb_item(name:"orbis/cms/detected", value:TRUE);
 
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:novo-ws:orbis_cms:");
     if( isnull( cpe ) )

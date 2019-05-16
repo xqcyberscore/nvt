@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: orion_webserver_37717.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Orion Application Server Terminal Escape Sequence in Logs Command Injection Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100444");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
   script_bugtraq_id(37717);
   script_cve_id("CVE-2009-4493");
@@ -49,15 +47,16 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("Orion/banner");
   script_require_ports("Services/www", 80);
+
   script_tag(name:"summary", value:"Orion Application Server is prone to a command-injection
-vulnerability because it fails to adequately sanitize user-supplied
-input in logfiles.
+  vulnerability because it fails to adequately sanitize user-supplied input in logfiles.");
 
-Attackers can exploit this issue to execute arbitrary commands in
-a terminal.
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary commands in
+  a terminal.");
 
-Orion Application Server 2.0.7 is vulnerable, other versions may also
-be affected.");
+  script_tag(name:"affected", value:"Orion Application Server 2.0.7 is vulnerable, other versions may also
+  be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
@@ -67,28 +66,20 @@ be affected.");
   exit(0);
 }
 
-
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port: port);
-if(!banner)exit(0);
-
-if("Server: Orion/" >!< banner)exit(0);
+if(!banner || "Server: Orion/" >!< banner)
+  exit(0);
 
 if(!version = eregmatch(pattern: "Orion/([0-9.]+)", string: banner))exit(0);
-
 if(!isnull(version[1])) {
-
   if(version_is_less_equal(version: version[1], test_version: "2.0.7")) {
-      security_message(port:port);
-      exit(0);
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

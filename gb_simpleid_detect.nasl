@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simpleid_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # SimpleID Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801415");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_name("SimpleID Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,6 +73,7 @@ foreach dir( make_list_unique( "/simpleid", "/SimpleID", "/simpleid/www", "/Simp
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/SimpleID/Ver", value:tmp_version );
+    set_kb_item( name:"simpleid/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:kelvin_mo:simpleid:" );
     if( isnull( cpe ) )

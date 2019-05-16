@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openforum_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # OpenForum Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900926");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenForum Version Detection");
@@ -74,6 +73,7 @@ foreach dir( make_list_unique( "/openforum", "/opnfrm", "/forum", cgi_dirs( port
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/OpenForum", value:tmp_version );
+    set_kb_item( name:"openforum/detected", value:TRUE );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:2enetworx:openforum:" );
     if( isnull( cpe ) )

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modperl_version.nasl 9115 2018-03-15 18:21:22Z cfischer $
 #
 # mod_perl Version Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100129");
-  script_version("$Revision: 9115 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 19:21:22 +0100 (Thu, 15 Mar 2018) $");
+  script_version("2019-05-13T14:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
   script_tag(name:"creation_date", value:"2009-04-13 18:06:40 +0200 (Mon, 13 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,6 +61,7 @@ if( ! isnull( matches[1] ) ) {
   version = matches[1];
   install = "/";
   set_kb_item( name:"www/" + port + "/mod_perl", value:version );
+  set_kb_item( name:"mod_perl/detected", value:TRUE );
 
   cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:mod_perl:");
   if( isnull( cpe ) )

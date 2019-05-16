@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oscss_xss_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # osCSS 'page' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901134");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-14T12:12:41+0000");
+  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2010-2856");
   script_bugtraq_id(41510);
@@ -46,30 +45,34 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_oscss_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("oscss/detected");
+
   script_tag(name:"impact", value:"Successful exploitation could result in a compromise of the
-application, theft of cookie-based authentication credentials, disclosure or
-modification of sensitive data.");
+  application, theft of cookie-based authentication credentials, disclosure or
+  modification of sensitive data.");
+
   script_tag(name:"affected", value:"osCSS Version 1.2.2 and prior.");
+
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
-via the 'page' parameter in 'admin/currencies.php' that allows the attackers to
-execute arbitrary HTML and script code in the context of an affected site.");
+  via the 'page' parameter in 'admin/currencies.php' that allows the attackers to
+  execute arbitrary HTML and script code in the context of an affected site.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running osCSS and is prone to cross site scripting
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 ver = get_kb_item("www/" + port + "/osCSS");
 ocVer = eregmatch(pattern:"^(.+) under (/.*)$", string:ver);
