@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852480");
-  script_version("2019-05-10T12:05:36+0000");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2019-11234", "CVE-2019-11235");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-10 12:05:36 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-09 02:00:49 +0000 (Thu, 09 May 2019)");
   script_name("openSUSE Update for freeradius-server openSUSE-SU-2019:1346-1 (freeradius-server)");
   script_category(ACT_GATHER_INFO);
@@ -47,7 +47,7 @@ if(description)
   Security issues fixed:
 
   - CVE-2019-11235: Fixed an authentication bypass related to the EAP-PWD
-  Commit frame and insufficent validation of elliptic curve points
+  Commit frame and insufficient validation of elliptic curve points
   (bsc#1132549).
 
   - CVE-2019-11234: Fixed an authentication bypass caused by reflecting

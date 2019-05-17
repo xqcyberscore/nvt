@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol51518670.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # F5 BIG-IP - SOL51518670 - Linux kernel vulnerability CVE-2015-2922
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-2922");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11922 $");
+  script_version("2019-05-10T14:24:23+0000");
 
   script_name("F5 BIG-IP - SOL51518670 - Linux kernel vulnerability CVE-2015-2922");
 
@@ -43,7 +42,8 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The ndisc_router_discovery function in net/ipv6/ndisc.c in the Neighbor Discovery (ND) protocol implementation in the IPv6 stack in the Linux kernel before 3.19.6 allows remote attackers to reconfigure a hop-limit setting via a small hop_limit value in a Router Advertisement (RA) message.");
+  script_tag(name:"insight", value:"The ndisc_router_discovery function in net/ipv6/ndisc.c in the Neighbor Discovery (ND) protocol implementation in the IPv6 stack
+  in the Linux kernel before 3.19.6 allows remote attackers to reconfigure a hop-limit setting via a small hop_limit value in a Router Advertisement (RA) message.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"The remote host is missing a security patch.");
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-03-23 12:37:31 +0100 (Wed, 23 Mar 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -100,4 +100,3 @@ if( report = is_f5_vulnerable( ca:check_f5, version:version ) )
 }
 
 exit( 99 );
-

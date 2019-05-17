@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815035");
-  script_version("2019-04-25T13:51:44+0000");
+  script_version("2019-05-17T08:39:44+0000");
   script_cve_id("CVE-2019-0822", "CVE-2019-0828");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2019-04-10 09:14:49 +0530 (Wed, 10 Apr 2019)");
-  script_tag(name:"last_modification", value:"2019-04-25 13:51:44 +0000 (Thu, 25 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 08:39:44 +0000 (Fri, 17 May 2019)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-April19 (Mac OS X)");
 
@@ -52,11 +52,10 @@ if(description)
 
   Microsoft Office 2019 on Mac OS X");
 
-  script_tag(name:"solution", value:"No known solution is available as of 10th
-  April, 2019. Information regarding this issue will be updated once solution
-  details are available.");
+  script_tag(name:"solution", value:"Upgrade to Microsoft Office 2016 16.16.9 or
+  Microsoft Office 2019 16.24 or later on Mac OS X. Please see the references for more information.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/officeupdates/release-notes-office-2016-mac");
   script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/officeupdates/release-notes-office-for-mac");
   script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/officeupdates/update-history-office-for-mac");
@@ -75,7 +74,7 @@ if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-if(offVer =~ "^1[5|6]\.)")
+if(offVer =~ "^1[5|6]\.")
 {
   if(version_is_less_equal(version:offVer, test_version:"16.16.8")||
      version_in_range(version:offVer, test_version:"16.17.0", test_version2:"16.23.1"))

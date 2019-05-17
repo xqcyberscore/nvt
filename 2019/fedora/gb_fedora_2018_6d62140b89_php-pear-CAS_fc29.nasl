@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875741");
-  script_version("2019-05-14T05:04:40+0000");
+  script_version("2019-05-15T14:58:59+0000");
   # TODO: No CVE assigned yet.  script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-15 14:58:59 +0000 (Wed, 15 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-07 02:19:08 +0000 (Tue, 07 May 2019)");
   script_name("Fedora Update for php-pear-CAS FEDORA-2018-6d62140b89");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"This package is a PEAR library for using a Central Authentication Service.
 
-Autoloader &#39, %{pear_phpdir}/CAS/Autoload.php&#39, .");
+  Autoloader '%{pear_phpdir}/CAS/Autoload.php'<semicolon>");
 
   script_tag(name:"affected", value:"'php-pear-CAS' package(s) on Fedora 29.");
 

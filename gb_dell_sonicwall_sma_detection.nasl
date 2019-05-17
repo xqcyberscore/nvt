@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_sma_detection.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Dell SonicWALL Secure Mobile Access / Secure Remote Access Detection
 #
@@ -29,8 +28,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107118");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-09 13:26:09 +0700 (Mon, 09 Jan 2017)");
   script_name("Dell SonicWALL Secure Mobile Access / Secure Remote Access Detection");
   script_category(ACT_GATHER_INFO);
@@ -96,7 +95,7 @@ else if ( Product == "SRA" )
     cpe = 'cpe:/o:dell:sonicwall_secure_remote_access_firmware:';
 
 }
-if ( ! isnull(series)) set_kb_item( name:'sonicwall/' + tolower( Product ) + '/serie', value:series );
+if ( ! isnull(series)) set_kb_item( name:'sonicwall/' + tolower( Product ) + '/series', value:series );
 if ( ! isnull(vers)) set_kb_item( name:'sonicwall/' + tolower( Product ) + '/version', value:vers );
 
 register_product( cpe:cpe, location:port + "/udp", port:port, proto:"udp", service:"snmp" );

@@ -1,8 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_dir_traversal.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
-# Linknat VOS3000/2009 Direcory Traversal Vulnerability
+# Linknat VOS3000/2009 Directory Traversal Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:linknat:vos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106088");
-  script_version("$Revision: 11516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-05-27 12:47:53 +0700 (Fri, 27 May 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");

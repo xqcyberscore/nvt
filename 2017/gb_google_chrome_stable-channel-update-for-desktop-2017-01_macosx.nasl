@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-01_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-01)-MAC OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810525");
-  script_version("$Revision: 11863 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2017-5007", "CVE-2017-5006", "CVE-2017-5008", "CVE-2017-5010",
                 "CVE-2017-5011", "CVE-2017-5009", "CVE-2017-5012", "CVE-2017-5013",
                 "CVE-2017-5014", "CVE-2017-5015", "CVE-2017-5019", "CVE-2017-5016",
@@ -38,7 +37,7 @@ if(description)
                 "CVE-2017-5026");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-27 16:45:20 +0530 (Fri, 27 Jan 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-01)-MAC OS X");
 
@@ -56,7 +55,7 @@ if(description)
 
   - An out of bounds memory access error in WebRTC.
 
-  - A heap overflow errro in V8.
+  - A heap overflow error in V8.
 
   - An address spoofing error in Omnibox.
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xoops_viewtopic_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # XOOPS viewtopic.php Cross Site Scripting Vulnerability
 #
@@ -33,8 +32,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15480");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2756");
   script_bugtraq_id(9497);
@@ -54,7 +53,7 @@ if(description)
   site scripting attacks.");
 
   script_tag(name:"insight", value:"The weblinks module of XOOPS contains a file named 'viewtopic.php' in
-  the '/modules/newbb' directory. The code of the module insufficently filters out user provided data.");
+  the '/modules/newbb' directory. The code of the module insufficiently filters out user provided data.");
 
   script_tag(name:"impact", value:"The URL parameter used by 'viewtopic.php' can be used to insert malicious
   HTML and/or JavaScript in to the web page.");

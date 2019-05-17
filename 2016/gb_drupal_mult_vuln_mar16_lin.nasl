@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_mar16_lin.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Drupal Multiple Vulnerabilities - March16 (Linux)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807481");
-  script_version("$Revision: 11837 $");
+  script_version("2019-05-16T08:02:32+0000");
   script_cve_id("CVE-2016-3164");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2016-03-15 09:57:38 +0530 (Tue, 15 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities - March16 (Linux)");
@@ -43,8 +42,8 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exixt due to the current path
-  can be populated with an external URL.");
+  script_tag(name:"insight", value:"The flaw exists due to the current path being populated with
+  an external URL.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to conduct open redirect attack.");

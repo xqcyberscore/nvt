@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-05-14T05:04:40+0000");
-  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
+  script_version("2019-05-02T13:44:33+0000");
+  script_tag(name:"last_modification", value:"2019-05-02 13:44:33 +0000 (Thu, 02 May 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -2369,9 +2369,11 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=18.10" >< rls ) {
 }
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=19.04" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
+  ## For Ubuntu19 dpkg -l lists first few lines and user needs to scroll for rest of data
+  ## Packages collected in 'buf' variable include only these first few packages.
+  ## Currently using dpkg -l|head -10000 to display 10000 lines
+  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l|head -10000" );
   if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 19.04" );
   register_detected_os( os:"Ubuntu 19.04", oskey:"UBUNTU19.04" );
   exit( 0 );
 }

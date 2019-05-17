@@ -1,6 +1,5 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_metasploit_csrf_vuln_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Metasploit Cross Site Request Forgery Vulnerability - Windows
 #
@@ -29,17 +28,17 @@ CPE = "cpe:/a:metasploit:metasploit_framework";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811589");
-  script_version("$Revision: 11874 $");
+  script_version("2019-05-16T08:02:32+0000");
   script_cve_id("CVE-2017-5244");
   script_bugtraq_id(99082);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2017-08-30 17:12:23 +0530 (Wed, 30 Aug 2017)");
   script_name("Metasploit Cross Site Request Forgery Vulnerability - Windows");
 
   script_tag(name:"summary", value:"This host is installed with Metasploit
-  and is prone to cross site rquest forgery vulnerability.");
+  and is prone to a cross-site request forgery vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

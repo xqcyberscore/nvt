@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_xss_vuln_nov14_lin.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # phpMyAdmin Multiple Cross-Site Scripting Vulnerabilities - Nov14 (Linux)
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112013");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-08-21 11:18:02 +0200 (Mon, 21 Aug 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -49,9 +48,9 @@ if(description)
 
   script_tag(name:"summary", value:"phpMyAdmin is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name:"insight", value:"phpMyAdmin is prone ot multiple cross-site scripting (XSS) vulnerabilities that allow remote authenticated users to inject arbitrary web script
-      or HTML via a crafted (1) database name or (2) table name, related to the libraries/DatabaseInterface.class.php code for SQL debug output
-      and the js/server_status_monitor.js code for the server monitor page.");
+  script_tag(name:"insight", value:"phpMyAdmin is prone to multiple cross-site scripting (XSS) vulnerabilities that allow remote authenticated users to inject arbitrary web script
+  or HTML via a crafted (1) database name or (2) table name, related to the libraries/DatabaseInterface.class.php code for SQL debug output
+  and the js/server_status_monitor.js code for the server monitor page.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

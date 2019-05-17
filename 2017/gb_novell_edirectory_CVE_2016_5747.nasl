@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_CVE_2016_5747.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Novell eDirectory Access Restrictions Bypass
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140225");
-  script_version("$Revision: 11863 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2016-5747");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-30 12:28:05 +0200 (Thu, 30 Mar 2017)");
   script_name("Novell eDirectory Access Restrictions Bypass");
   script_tag(name:"summary", value:"This host is installed with Novell eDirectory
@@ -56,7 +55,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -70,17 +68,17 @@ if( major !~ "^9\." ) exit( 99 );
 if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
   sp = "0";
 
-invers = major;
+instvers = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  instvers += ' SP' + sp;
 
 revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 revision = str_replace( string:revision, find:".", replace:"" );
 
 if( version_is_less( version:major, test_version:"9.0.1" ) )
 {
-  report = 'Installed version: ' + invers + '\n' +
+  report = 'Installed version: ' + instvers + '\n' +
            'Fixed version:     9.0.1\n';
   security_message(data:report, port:port);
   exit(0);

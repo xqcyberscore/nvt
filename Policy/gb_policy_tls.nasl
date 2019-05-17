@@ -41,7 +41,7 @@ if(description)
   script_dependencies("gb_tls_version_get.nasl");
   script_mandatory_keys("ssl_tls/port");
 
-  script_add_preference(name:"Minimum allowed TLS version:", type:"radio", value:"TLS 1.2;TLS 1.1;TLS 1.0;SSL v3");
+  script_add_preference(name:"Minimum allowed TLS version:", type:"radio", value:"TLS 1.3;TLS 1.2;TLS 1.1;TLS 1.0;SSL v3");
   script_add_preference(name:"Perform check:", type:"checkbox", value:"no");
   script_add_preference(name:"Report passed tests:", type:"checkbox", value:"no");
 
@@ -86,11 +86,13 @@ ssl["SSLv3"]   = SSL_v3;
 ssl["TLSv1.0"] = TLS_10;
 ssl["TLSv1.1"] = TLS_11;
 ssl["TLSv1.2"] = TLS_12;
+ssl["TLSv1.3"] = TLS_13;
 
 if( minimum_TLS == "SSL v3" )  mtls = SSL_v3;
 if( minimum_TLS == "TLS 1.0" ) mtls = TLS_10;
 if( minimum_TLS == "TLS 1.1" ) mtls = TLS_11;
 if( minimum_TLS == "TLS 1.2" ) mtls = TLS_12;
+if( minimum_TLS == "TLS 1.3" ) mtls = TLS_13;
 
 foreach sv( supported_versions ) {
   if( ssl[sv] < mtls )

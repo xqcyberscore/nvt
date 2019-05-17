@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpcas_session_hijack_n_xss_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # phpCAS Session Hijacking and Cross-Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801428");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -76,8 +75,7 @@ if(!sock){
   exit(0);
 }
 
-paths = find_file(file_name:"CAS.php",file_path:"/usr/share/pear/",
-                  useregex:TRUE, regexpar:"$", sock:sock);
+paths = find_file(file_name:"CAS.php",file_path:"/usr/share/pear/", useregex:TRUE, regexpar:"$", sock:sock);
 
 foreach binName (paths)
 {

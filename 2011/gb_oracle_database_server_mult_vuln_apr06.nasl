@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_server_mult_vuln_apr06.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities - April 06
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802538");
-  script_version("$Revision: 12047 $");
+  script_version("2019-05-16T08:02:32+0000");
   script_cve_id("CVE-2006-1868", "CVE-2006-1871", "CVE-2006-1872",
                 "CVE-2006-1873", "CVE-2006-1874");
   script_bugtraq_id(17590);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2011-12-08 14:37:52 +0530 (Thu, 08 Dec 2011)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities - April 06");
   script_category(ACT_GATHER_INFO);
@@ -54,12 +53,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.red-database-security.com/advisory/oracle_cpu_apr_2006.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/431345/30/5490/threaded");
 
-  script_tag(name:"impact", value:"An unspecified impact and attack vectors.");
+  script_tag(name:"impact", value:"The impact of a successful exploitation is not described in detail.");
+
   script_tag(name:"affected", value:"Oracle Database server versions 8.1.7.4, 9.0.1.5, 9.2.0.6, 9.2.0.7, 10.1.0.4,
   10.1.0.5 and 10.2.0.1");
-  script_tag(name:"insight", value:"The flaws are due to unspecified errors in the multiple components.");
+
+  script_tag(name:"insight", value:"The flaws are due to unspecified errors in multiple components.");
+
   script_tag(name:"summary", value:"This host is running Oracle database and is prone to multiple
   unspecified vulnerabilities.");
+
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");

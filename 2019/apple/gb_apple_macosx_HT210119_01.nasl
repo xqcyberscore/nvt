@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814887");
-  script_version("2019-05-14T12:37:52+0000");
+  script_version("2019-05-16T13:15:53+0000");
   script_cve_id("CVE-2019-8568", "CVE-2019-8560", "CVE-2019-6237", "CVE-2019-8571",
                 "CVE-2019-8583", "CVE-2019-8584", "CVE-2019-8586", "CVE-2019-8587",
                 "CVE-2019-8594", "CVE-2019-8595", "CVE-2019-8596", "CVE-2019-8597",
@@ -30,10 +30,11 @@ if(description)
                 "CVE-2019-8623", "CVE-2019-8628", "CVE-2019-8600", "CVE-2019-8602",
                 "CVE-2019-8607", "CVE-2019-8589", "CVE-2019-8585", "CVE-2019-8577",
                 "CVE-2019-8576", "CVE-2019-8634", "CVE-2019-8635", "CVE-2019-8616",
-                "CVE-2019-8598");
+                "CVE-2019-8598", "CVE-2018-12126", "CVE-2018-12127", "CVE-2018-12130",
+                "CVE-2019-11091", "CVE-2019-8612");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-14 12:37:52 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-14 10:43:07 +0530 (Tue, 14 May 2019)");
   script_name("Apple MacOSX Security Updates (HT210119) - 01");
 

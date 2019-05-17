@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901071");
-  script_version("2019-05-14T12:12:41+0000");
-  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
+  script_version("2019-05-15T14:58:59+0000");
+  script_tag(name:"last_modification", value:"2019-05-15 14:58:59 +0000 (Wed, 15 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -78,8 +78,7 @@ if(!amVer)
 amVer = eregmatch(pattern:"^(.+) under (/.*)$", string:amVer);
 if(!safe_checks() && amVer[2] != NULL)
 {
-  request = http_get(item:amVer[2] + "/cource.php?action=pregled&cont_id" +
-                                     "=[SQL]", port:amPort);
+  request = http_get(item:amVer[2] + "/cource.php?action=pregled&cont_id=[SQL]", port:amPort);
   response = http_send_recv(port:amPort, data:request);
   if("Da li si siguran da je to ta baza" >< response)
   {

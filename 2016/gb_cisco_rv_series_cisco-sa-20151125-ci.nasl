@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_rv_series_cisco-sa-20151125-ci.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Small Business RV Series Confidential Information Decryption Man-in-the-Middle Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106248");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-15 12:51:33 +0700 (Thu, 15 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -66,7 +65,7 @@ traffic, and modify or inject its own traffic.");
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by using the static
 information to conduct man-in-the-middle attacks to decrypt confidential information on user connections.");
 
-  script_tag(name:"affected", value:"RV320 Dual Gigabit WAN VPN Router and RV325 Dual Gigabit WAN VPN Router");
+  script_tag(name:"affected", value:"RV320 Dual Gigabit WAN VPN Router and RV325 Dual Gigabit WAN VPN Router.");
 
   script_tag(name:"solution", value:"Update to Firmware version 1.3.1.12");
 

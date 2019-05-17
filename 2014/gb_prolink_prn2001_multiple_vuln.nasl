@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prolink_prn2001_multiple_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Prolink PRN2001 Multiple Vulnerabilities
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805021");
-  script_version("$Revision: 11402 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2014-12-04 12:11:44 +0530 (Thu, 04 Dec 2014)");
   script_name("Prolink PRN2001 Multiple Vulnerabilities");
 
@@ -78,11 +77,9 @@ if(description)
   exit(0);
 }
 
-
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
 
 http_port = get_http_port(default:8080);
 
@@ -94,14 +91,13 @@ host = http_host_name(port:http_port);
 
 credential ="admin:password";
 userpass = base64(str:credential );
-pReq = 'GET / HTTP/1.1\r\n' +
-       'Host: ' +  host + '\r\n' +
-       'Authorization: Basic ' + userpass + '\r\n' +
-       '\r\n';
+req = 'GET / HTTP/1.1\r\n' +
+      'Host: ' +  host + '\r\n' +
+      'Authorization: Basic ' + userpass + '\r\n' +
+      '\r\n';
+res = http_keepalive_send_recv(port:http_port, data:req);
 
-pRes = http_keepalive_send_recv(port:http_port, data:pReq);
-
-if(pRes =~ "HTTP/1\.. 200 Ok"  && ">PROLiNK Wireless Router<" >< pRes)
+if(res =~ "^HTTP/1\.[01] 200"  && ">PROLiNK Wireless Router<" >< res)
 {
   credential = str_replace( string:credential, find:":", replace:"/" );
   report = 'It was possible to login using the following credentials:\n\n' + credential;

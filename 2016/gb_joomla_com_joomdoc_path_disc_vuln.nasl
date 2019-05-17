@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_joomdoc_path_disc_vuln.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Joomla Joomdoc Extension Path Disclosure Vulnerability
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808230");
-  script_version("$Revision: 12431 $");
+  script_version("2019-05-16T08:02:32+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-20 16:50:11 +0530 (Mon, 20 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
 
@@ -45,7 +44,7 @@ if(description)
   check whether it is able to obtain sensitive information or not.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in joomla joomdoc
-  extension cofiguration, which display full path of the file in the error
+  extension configuration which displays the full path of the file in the error
   message in case of denial of access.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

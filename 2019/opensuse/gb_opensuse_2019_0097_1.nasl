@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0097_1.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # SuSE Update for systemd openSUSE-SU-2019:0097-1 (systemd)
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852259");
-  script_version("$Revision: 13595 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2018-16864", "CVE-2018-16865", "CVE-2018-16866");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-30 04:03:12 +0100 (Wed, 30 Jan 2019)");
   script_name("SuSE Update for systemd openSUSE-SU-2019:0097-1 (systemd)");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +77,7 @@ if(description)
 
   - logind: Make session_restore_vt() static.
 
-  - udev: Downgrade message when settting inotify watch up fails.
+  - udev: Downgrade message when setting inotify watch up fails.
   (bsc#1005023)
 
   - log: Never log into foreign fd #2 in PID 1 or its pre-execve() children.

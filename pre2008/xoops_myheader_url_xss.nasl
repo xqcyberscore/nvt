@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xoops_myheader_url_xss.nasl 5952 2017-04-13 12:34:17Z cfi $
 #
 # XOOPS myheader.php URL Cross Site Scripting Vulnerability
 #
@@ -34,8 +33,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11962");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9269);
   script_tag(name:"cvss_base", value:"4.3");
@@ -51,7 +50,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to the latest version of XOOPS.");
 
   script_tag(name:"summary", value:"The weblinks module of XOOPS contains a file named 'myheader.php'
-  in /modules/mylinks/ directory. The code of the module insufficently
+  in /modules/mylinks/ directory. The code of the module insufficiently
   filters out user provided data.");
 
   script_tag(name:"impact", value:"The URL parameter used by 'myheader.php'

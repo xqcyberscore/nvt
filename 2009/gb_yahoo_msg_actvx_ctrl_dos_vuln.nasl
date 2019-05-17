@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_actvx_ctrl_dos_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Yahoo! Messenger 'YahooBridgeLib.dll' ActiveX Control DOS Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801150");
-  script_version("$Revision: 14330 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-16T08:02:32+0000");
+  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -43,19 +42,21 @@ if(description)
   script_require_ports("Services/yahoo_messenger", 5101);
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause Denial of
-  Service condition on the affected applicaion.");
+  Service condition on the affected application.");
+
   script_tag(name:"affected", value:"Yahoo! Messenger version 9.x to 9.0.0.2162 on Windows.");
+
   script_tag(name:"insight", value:"The flaw is due to a NULL pointer dereference error in 'RegisterMe()' method
-  in 'YahooBridgeLib.dll', which can be exploited by causing victim to visit a
-  specially crafted Web page.");
+  in 'YahooBridgeLib.dll', which can be exploited by causing the victim to visit a specially crafted web page.");
+
   script_tag(name:"solution", value:"Upgrade to Yahoo! Messenger version 10.0.0.1270 or later");
-  script_tag(name:"summary", value:"This host is installed with Yahoo! Messenger and is prone to Denial
+
+  script_tag(name:"summary", value:"This host is installed with Yahoo! Messenger and is prone to a Denial
   of Service Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name:"URL", value:"http://messenger.yahoo.com/download/");
   exit(0);
 }
 

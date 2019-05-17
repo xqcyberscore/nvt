@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wowza_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Wowza Streaming Engine Multiple Vulnerabilities
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:wowza:streaming_engine';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106225");
-  script_version("$Revision: 12149 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
@@ -56,7 +55,7 @@ HTTP requests without performing any validity checks to verify the requests. Thi
 certain actions with administrative privileges if a logged-in user visits a malicious web site.
 
 The application suffers from a privilege escalation issue. Normal user (read-only) can elevate his/her
-privileges by sending a POST request seting the parameter 'accessLevel' to 'admin' gaining admin rights and/or
+privileges by sending a POST request setting the parameter 'accessLevel' to 'admin' gaining admin rights and/or
 setting the parameter 'advUser' to 'true' and '_advUser' to 'on' gaining advanced admin rights.
 
 Wowza Streaming Engine suffers from multiple reflected cross-site scripting vulnerabilities when input passed

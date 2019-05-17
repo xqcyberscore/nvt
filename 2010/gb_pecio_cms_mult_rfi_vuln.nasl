@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801444");
-  script_version("2019-05-14T08:13:05+0000");
-  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
+  script_version("2019-05-16T08:02:32+0000");
+  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-3204");
   script_bugtraq_id(42806);
@@ -57,8 +57,8 @@ if(description)
   script_tag(name:"summary", value:"This host is running Pecio CMS and is prone to multiple
   remote file inclusion vulnerabilities.");
 
-  script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to obtain
-  sensitive information or execute malicious PHP code in the context of the webserver process.");
+  script_tag(name:"impact", value:"Successful exploitation will allow the remote attacker to obtain
+  sensitive information or to execute malicious PHP code in the context of the webserver process.");
 
   script_tag(name:"affected", value:"Pecio CMS version 2.0.5");
 

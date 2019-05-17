@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_te_ce_com_inj_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Cisco TelePresence CE and TC Software Command Injection Vulnerability(cisco-sa-20161102-tp)
 #
@@ -24,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:cisco:telepresence_mcu_mse_series_software";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809729");
-  script_version("$Revision: 11772 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2016-6459");
   script_bugtraq_id(94075);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-11-21 11:42:31 +0530 (Mon, 21 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco TelePresence CE and TC Software Command Injection Vulnerability(cisco-sa-20161102-tp)");

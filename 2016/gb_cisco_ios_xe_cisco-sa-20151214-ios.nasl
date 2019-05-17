@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20151214-ios.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco IOS XE Software IPv6 Neighbor Discovery Denial of Service Vulnerability
 #
@@ -33,26 +32,29 @@ if (description)
   script_cve_id("CVE-2015-6359");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12338 $");
+  script_version("2019-05-10T14:24:23+0000");
 
   script_name("Cisco IOS XE Software IPv6 Neighbor Discovery Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151214-ios");
 
-
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
-  script_tag(name:"summary", value:"A vulnerability in the IPv6 neighbor discovery (ND) handling of Cisco IOS XE Software on ASR platforms could allow an unauthenticated, adjacent attacker to cause an affected device to crash.
+  script_tag(name:"solution", value:"Cisco has released software updates that address these vulnerabilities. Workarounds that
+  mitigate these vulnerabilities are available.");
 
-The vulnerability is due to insufficient bounds on internal tables. An attacker could exploit this vulnerability by flooding an adjacent IOS XE device with specific ND messages. An exploit could allow the attacker to deplete the available memory, possibly causing an affected device to crash.
+  script_tag(name:"summary", value:"A vulnerability in the IPv6 neighbor discovery (ND) handling of Cisco IOS XE Software on
+  ASR platforms could allow an unauthenticated, adjacent attacker to cause an affected device to crash.");
 
-Cisco has released software updates that address these vulnerabilities. Workarounds that mitigate these vulnerabilities are available.");
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient bounds on internal tables. An attacker could exploit this
+  vulnerability by flooding an adjacent IOS XE device with specific ND messages.");
+
+  script_tag(name:"impact", value:"An exploit could allow the attacker to deplete the available memory, possibly causing an affected device to crash.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-05-10 10:49:56 +0200 (Tue, 10 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

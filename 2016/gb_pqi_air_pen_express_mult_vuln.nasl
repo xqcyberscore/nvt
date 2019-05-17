@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pqi_air_pen_express_mult_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # PQI Air Pen Express Wireless Router Multiple Vulnerabilities
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:pqi:air:pen:express";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807536");
-  script_version("$Revision: 11772 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-04-07 11:07:14 +0530 (Thu, 07 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("PQI Air Pen Express Wireless Router Multiple Vulnerabilities");
@@ -48,9 +47,9 @@ if(description)
   - Not restricting some files which are containing sensitive information.
 
   - Insufficient validation of user supplied input via parameters 'mssid_0',
-    'ssid', 'hostname', 'admpass' in Basic Wireless Settings, 'hostname',
-    in Wide Area Network (WAN) Settings and 'addURLFilter', 'addHostFilter'
-    in Webs URL Filter Settings.
+  'ssid', 'hostname', 'admpass' in Basic Wireless Settings, 'hostname', in
+  Wide Area Network (WAN) Settings and 'addURLFilter', 'addHostFilter'
+  in Webs URL Filter Settings.
 
   - The users are allowed to set the administrative credential.
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_wiki_cms_152_lfi.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # TTiki Wiki CMS Groupware 'fixedURLData' Local File Inclusion Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108064");
-  script_version("$Revision: 11863 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2016-10143");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-30 16:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("Tiki Wiki CMS Groupware 'fixedURLData' Local File Inclusion Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -79,7 +78,7 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-# nb: CVE says only version 15.2 is vulnerable but thats currently wrong:
+# nb: CVE says only version 15.2 is vulnerable but that's currently wrong:
 # the vulnerable code path exists down to 1.x and is fixed in the 12.11 LTS and 15.4
 
 if( version_is_less( version:vers, test_version:"12.11" ) ) {

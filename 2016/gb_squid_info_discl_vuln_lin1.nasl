@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_info_discl_vuln_lin1.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Squid Information Disclosure Vulnerability (Linux)
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106480");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-12-19 14:15:02 +0700 (Mon, 19 Dec 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +54,7 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Due to incorrect comparsion of request headers Squid can deliver responses
+  script_tag(name:"insight", value:"Due to incorrect comparison of request headers Squid can deliver responses
 containing private data to clients it should not have reached.");
 
   script_tag(name:"impact", value:"This problem allows a remote attacker to discover private and sensitive

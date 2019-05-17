@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814749");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-16T13:15:53+0000");
   script_cve_id("CVE-2019-0657", "CVE-2019-0613");
   script_bugtraq_id(106890, 106872);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 12:18:46 +0530 (Wed, 13 Feb 2019)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4483452)");
 
@@ -86,11 +86,13 @@ if(edgeVer =~ "11\.0\.17763")
 {
   if(!registry_key_exists(key:"SOFTWARE\Microsoft\.NETFramework")){
     if(!registry_key_exists(key:"SOFTWARE\Microsoft\ASP.NET")){
-      exit(0);
+      if(!registry_key_exists(key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\")){
+        exit(0);
+      }
     }
   }
 
-  key_list = make_list("SOFTWARE\Microsoft\.NETFramework\", "SOFTWARE\Microsoft\ASP.NET\");
+  key_list = make_list("SOFTWARE\Microsoft\.NETFramework\", "SOFTWARE\Microsoft\ASP.NET\", "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\");
 
   foreach key(key_list)
   {
@@ -123,7 +125,7 @@ if(edgeVer =~ "11\.0\.17763")
       }
     }
 
-    if((!VULN) && "ASP.NET" >< key)
+    if((!vulnerable_range) && "ASP.NET" >< key)
     {
       foreach item (registry_enum_keys(key:key))
       {
@@ -147,6 +149,28 @@ if(edgeVer =~ "11\.0\.17763")
         }
       }
     }
+
+    ## For versions greater than 4.5 (https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed#net_b)
+    if((!vulnerable_range) && "NET Framework Setup" >< key)
+    {
+      dotPath = registry_get_sz(key:key, item:"InstallPath");
+      if(dotPath && "\Microsoft.NET\Framework" >< dotPath)
+      {
+        dllVer = fetch_file_version(sysPath:dotPath, file_name:"system.dll");
+        if(dllVer)
+        {
+          if(version_in_range(version:dllVer, test_version:"2.0.50727.5700", test_version2:"2.0.50727.9036"))
+          {
+            vulnerable_range = "2.0.50727.5700 - 2.0.50727.9036" ;
+            break;
+          }
+          else if(version_in_range(version:dllVer, test_version:"4.7", test_version2:"4.7.3323")){
+            vulnerable_range = "4.7 - 4.7.3323" ;
+          }
+        }
+      }
+    }
+
     if(vulnerable_range)
     {
       report = report_fixed_ver(file_checked:dotPath + "system.dll",

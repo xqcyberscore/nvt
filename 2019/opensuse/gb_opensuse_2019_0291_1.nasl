@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852329");
-  script_version("$Revision: 14008 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2018-1122", "CVE-2018-1123", "CVE-2018-1124", "CVE-2018-1125", "CVE-2018-1126");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-05 04:08:32 +0100 (Tue, 05 Mar 2019)");
   script_name("SuSE Update for procps openSUSE-SU-2019:0291-1 (procps)");
   script_category(ACT_GATHER_INFO);
@@ -50,7 +50,7 @@ if(description)
   vulnerabilities in the config_file() function (bsc#1092100).
 
   - CVE-2018-1123: Prevent denial of service in ps via mmap buffer overflow.
-  Inbuilt protection in ps maped a guard page at the end of the overflowed
+  Inbuilt protection in ps mapped a guard page at the end of the overflowed
   buffer, ensuring that the impact of this flaw is limited to a crash
   (temporary denial of service) (bsc#1092100).
 

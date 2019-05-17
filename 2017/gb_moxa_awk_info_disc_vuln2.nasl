@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_awk_info_disc_vuln2.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Moxa AWK Series serviceAgent Information Disclosure Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/h:moxa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106742");
-  script_version("$Revision: 11501 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-11 14:59:45 +0200 (Tue, 11 Apr 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,7 +59,7 @@ disclosure vulnerability in the serviceAgent.");
 serviceAgent functionality of Moxa AWK Series Industrial devices. A specially crafted TCP query will allow an
 attacker to retrieve potentially sensitive information, such as firmware version.");
 
-  script_tag(name:"impact", value:"An unauthenticated attacker may obtain sentive information.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may obtain sensitive information.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_mult_xss_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Dolphin Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:boonex:dolphin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808218");
-  script_version("$Revision: 12149 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-06 09:51:58 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Dolphin Multiple Cross Site Scripting Vulnerabilities");
@@ -52,7 +51,7 @@ if(description)
     'photos_only', 'online_only', 'mode' to viewFriends.php script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script into user's brower session.");
+  attackers to inject arbitrary web script into user's browser session.");
 
   script_tag(name:"affected", value:"Dolphin versions 7.0.7 and lower.");
 
@@ -68,7 +67,7 @@ if(description)
   script_dependencies("gb_dolphin_detect.nasl");
   script_mandatory_keys("Dolphin/Installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.boonex.com");
+
   exit(0);
 }
 
@@ -76,7 +75,7 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE)) {
   exit(0);
 }
 

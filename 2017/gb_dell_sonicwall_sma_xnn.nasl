@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_sma_xnn.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Dell SonicWALL Secure Mobile Access - Cross-Site Scripting / Cross-Site Request Forgery Vulnerability
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/o:dell:sonicwall_secure_mobile_access";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107119");
-  script_version("$Revision: 11874 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-09 13:26:09 +0700 (Mon, 09 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("Dell SonicWALL Secure Mobile Access - Cross-Site Scripting / Cross-Site Request Forgery Vulnerability");
@@ -59,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dell_sonicwall_sma_detection.nasl");
-  script_mandatory_keys("sonicwall/sma/detected", "sonicwall/sma/serie");
+  script_mandatory_keys("sonicwall/sma/detected", "sonicwall/sma/series");
   script_require_udp_ports("Services/udp/snmp", 161);
 
   exit(0);
@@ -68,11 +67,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! serie = get_kb_item( "sonicwall/sma/serie" ) ) exit( 0 );
+if( ! series = get_kb_item( "sonicwall/sma/series" ) ) exit( 0 );
 
 if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
-if( ( serie == "200" || serie == "400" || serie == "500v" ) && version_in_range( version:version, test_version:"8.1", test_version2:"8.1.0.2" ) ) {
+if( ( series == "200" || series == "400" || series == "500v" ) && version_in_range( version:version, test_version:"8.1", test_version2:"8.1.0.2" ) ) {
 
   report = report_fixed_ver( installed_version:version, fixed_version:"8.1.0.3" );
   security_message( port:0, data:report );

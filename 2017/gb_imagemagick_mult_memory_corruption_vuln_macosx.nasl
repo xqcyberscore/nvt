@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_memory_corruption_vuln_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ImageMagick Multiple Memory Corruption Vulnerabilities (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810563");
-  script_version("$Revision: 11863 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2016-8862", "CVE-2016-8866");
   script_bugtraq_id(93794);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 13:23:30 +0530 (Tue, 21 Feb 2017)");
   script_name("ImageMagick Multiple Memory Corruption Vulnerabilities (Mac OS X)");
 
@@ -81,7 +80,7 @@ if(!gmVer = get_app_version(cpe:CPE)){
 }
 
 ## CVE-2016-8866 is due to an incomplete fix for CVE-2016-8862
-## CVE-2016-8862 , not fixed completly in 7.0.3.3, complete fix is in 7.0.3.8
+## CVE-2016-8862 , not fixed completely in 7.0.3.3, complete fix is in 7.0.3.8
 if(version_is_less(version:gmVer, test_version:"7.0.3.8"))
 {
   report = report_fixed_ver(installed_version:gmVer, fixed_version:"7.0.3.8");

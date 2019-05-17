@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vBulletin_3_7_4_multiple_sql_injection.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # VBulletin 3.7.4 multiple SQL Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100019");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(32352, 32349, 32353);
   script_cve_id("CVE-2008-6255", "CVE-2008-6255", "CVE-2008-6255");
@@ -44,15 +43,17 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("vBulletin/installed");
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to newest Version of VBulletin.");
+
   script_tag(name:"summary", value:"vBulletin is prone to multiple SQL-injection vulnerability because it fails to
-  sufficiently sanitize user-supplied data before using it in SQL querys.
+  sufficiently sanitize user-supplied data before using it in SQL queries.");
 
-  Exploiting this issue could allow an attacker to compromise the application,
-  access or modify data, or exploit latent vulnerabilities in the underlying
-  database.
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the application,
+  access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
-  vBulletin 3.7.4 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"vBulletin 3.7.4 is vulnerable, other versions may also be affected.");
+
   exit(0);
 }
 

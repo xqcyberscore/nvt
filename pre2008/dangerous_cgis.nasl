@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11748");
-  script_version("2019-04-29T15:08:03+0000");
-  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1784, 2177, 2197, 2705, 4211, 4579, 5078);
   script_tag(name:"cvss_base", value:"7.5");
@@ -54,6 +54,7 @@ if(description)
 
   By default this script only checks for this CGIs within the /cgi-bin directory. You can change
   this behavior with the script preference to check all detected CGI directories.");
+
   script_tag(name:"solution", value:"Please take the time to visit cve.mitre.org and check the
   associated CVE ID for each cgi found. If you are running a vulnerable
   version, then delete or upgrade the CGI.");
@@ -128,8 +129,7 @@ cgi[57] = "csFAQ.cgi";      cve[57] = "CVE-2004-0665";
 
 check_kb_cgi_dirs = script_get_preference( "Check all detected CGI directories:" );
 
-report = string( "The following dangerous CGI scripts were found", "\n" );
-report += string( "You should manually check each script and the associated CVE ID at cve.mitre.org", "\n\n" );
+report = string( "The following dangerous CGI scripts were found", "\n\n" );
 
 port = get_http_port( default:80 );
 

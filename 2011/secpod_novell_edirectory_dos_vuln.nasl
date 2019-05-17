@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_edirectory_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Novell eDirectory NCP Request Remote Denial of Service Vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902291");
-  script_version("$Revision: 11997 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2010-4327");
   script_bugtraq_id(46263);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -75,17 +74,16 @@ if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
   sp = "0";
 
-
-invers = major;
+instvers = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  instvers += ' SP' + sp;
 
 edirVer = major + '.' + sp;
 
 if(version_in_range(version:edirVer, test_version:"8.8.5", test_version2:"8.8.5.5") ||
    version_in_range(version:edirVer, test_version:"8.8.6", test_version2:"8.8.6.1")) {
-  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  report =  report_fixed_ver( installed_version:instvers, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit( 0 );
 }

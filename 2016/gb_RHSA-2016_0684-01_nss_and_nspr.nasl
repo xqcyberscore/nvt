@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871602");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-04-26 05:18:31 +0200 (Tue, 26 Apr 2016)");
   script_cve_id("CVE-2016-1978", "CVE-2016-1979");
   script_tag(name:"cvss_base", value:"7.5");
@@ -64,7 +64,7 @@ permissions of the user running the application. (CVE-2016-1979)
 
 Red Hat would like to thank the Mozilla project for reporting these issues.
 Upstream acknowledges Eric Rescorla as the original reporter of
-CVE-2016-1978  and Tim Taubert as the original reporter of CVE-2016-1979.");
+CVE-2016-1978 and Tim Taubert as the original reporter of CVE-2016-1979.");
   script_tag(name:"affected", value:"nss and nspr on Red Hat Enterprise Linux
 (v. 5 server)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");

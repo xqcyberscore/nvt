@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_ciphers_anon_report.nasl 5994 2017-04-20 16:16:00Z cfi $
 #
 # SSL/TLS: Report 'Anonymous' Cipher Suites
 #
@@ -28,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108147");
-  script_version("$Revision: 5994 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2007-1858", "CVE-2014-0351");
   script_bugtraq_id(28482, 69754);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 18:16:00 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-20 06:08:04 +0200 (Thu, 20 Apr 2017)");
   script_name("SSL/TLS: Report 'Anonymous' Cipher Suites");
   script_category(ACT_GATHER_INFO);
@@ -71,7 +70,7 @@ cipherText = "'Anonymous' cipher suites";
 port = get_ssl_port();
 if( ! port ) exit( 0 );
 
-# Don't report for StartTLS services. A MitM attacker might be already in the postition to
+# Don't report for StartTLS services. A MitM attacker might be already in the position to
 # intercept the initial request for StartTLS and force a fallback to plaintext. This avoids
 # also that we're reporting this cipher suites on 'Opportunistic TLS' services like SMTP.
 if( get_kb_item( "starttls_typ/" + port ) ) exit( 0 );

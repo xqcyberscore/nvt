@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_dsl_n55u_router_xss_nd_info_disc_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # ASUS DSL-N55U Router Cross Site Scripting And Information Disclosure Vulnerabilities
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808240");
-  script_version("$Revision: 12338 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-29 17:04:23 +0530 (Wed, 29 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ASUS DSL-N55U Router Cross Site Scripting And Information Disclosure Vulnerabilities");
@@ -49,7 +48,7 @@ if(description)
     web path as a value of a GET parameter.
 
   - An unauthenticated access to DHCP information of the local machines connected
-    to the router from the WAN IP address.");
+  to the router from the WAN IP address.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script into user's browser session and also

@@ -27,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103206");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-05-15T14:58:59+0000");
+  script_tag(name:"last_modification", value:"2019-05-15 14:58:59 +0000 (Wed, 15 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-17 15:40:19 +0200 (Wed, 17 Aug 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("inGate SIParator Detection");
@@ -59,7 +59,7 @@ banner = get_http_banner(port: port);
 if(!banner || "erver: Ingate-SIParator" >!< banner)exit(0);
 
 vers = "unknown";
-version = eregmatch(pattern:"Server: Ingate-SIParator/([0-9.]+)", tring:banner);
+version = eregmatch(pattern:"Server: Ingate-SIParator/([0-9.]+)", string:banner);
 
 if(!isnull(version[1]))vers = version[1];
 

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814891");
-  script_version("2019-05-14T12:37:52+0000");
-  script_cve_id("CVE-2019-8569", "CVE-2019-8592");
+  script_version("2019-05-16T13:15:53+0000");
+  script_cve_id("CVE-2019-8569", "CVE-2019-8592", "CVE-2019-8525", "CVE-2019-8547");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-14 12:37:52 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-14 10:43:25 +0530 (Tue, 14 May 2019)");
   script_name("Apple MacOSX Security Updates (HT210119) - 05");
 

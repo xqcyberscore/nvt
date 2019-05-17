@@ -26,14 +26,18 @@
 #
 # @return NULL
 #
-function policy_logging(text) {
+function policy_logging(text, error) {
 
-  local_var text;
+  local_var text, error;
   local_var verbose;
 
   verbose = get_kb_item("Compliance/verbose");
-  if(verbose) {
-    log_message(data:text, port:0);
+  if(verbose){
+    if(error){
+      log_message(data:text, port:0, proto:"Policy/Control/Error");
+    }else{
+      log_message(data:text, port:0, proto:"Policy/Control");
+    }
   }
 }
 
@@ -212,13 +216,15 @@ function policy_reporting(result, default, compliant, fixtext, type, test, info)
   test = str_replace(string:test, find:'\n', replace: " ");
   fixtext = str_replace(string:fixtext, find:'\n', replace: " ");
 
-  report += "Compliant: " + toupper(compliant) + '\n';
-  report += "Result: " + result + '\n';
-  report += "Required: " + default + '\n';
-  report += "Type of test: " + type + '\n';
-  report += "Test: " + test + '\n';
-  report += "Fixtext: " + fixtext + '\n';
-  report += "Comments: " + info;
+  report += "Compliant:    " + toupper(compliant) + '\n';
+  report += "Actual Value: " + result + '\n';
+  report += "Set Point:    " + default + '\n';
+  report += "Type of Test: " + type + '\n';
+  report += "Test:         " + test + '\n';
+  report += "Solution:     " + fixtext;
+  if(info){
+    report += '\n' + "Notes:    " + info;
+  }
 
   policy_logging(text:report);
 }

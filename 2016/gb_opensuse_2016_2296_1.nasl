@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2296_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2016:2296-1 (Chromium)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851391");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-14 05:45:01 +0200 (Wed, 14 Sep 2016)");
   script_cve_id("CVE-2016-5147", "CVE-2016-5148", "CVE-2016-5149", "CVE-2016-5150",
                 "CVE-2016-5151", "CVE-2016-5152", "CVE-2016-5153", "CVE-2016-5154",
@@ -89,7 +88,7 @@ if(description)
 
   The following upstream fixes are included:
 
-  - SPDY crasher fixes
+  - SPDY crash fixes
 
   - Disable NV12 DXGI video on AMD
 

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876241");
-  script_version("2019-05-14T05:04:40+0000");
+  script_version("2019-05-15T14:58:59+0000");
   script_cve_id("CVE-2018-15746", "CVE-2018-10839", "CVE-2018-17958", "CVE-2018-17962", "CVE-2018-17963", "CVE-2018-18849", "CVE-2018-18954");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-15 14:58:59 +0000 (Wed, 15 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-07 02:40:17 +0000 (Tue, 07 May 2019)");
   script_name("Fedora Update for qemu FEDORA-2018-87f2ace20d");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +46,7 @@ if(description)
 emulation speed by using dynamic translation. QEMU has two operating modes:
 
   * Full system emulation. In this mode, QEMU emulates a full system (for
-   example a PC), including a processor and various peripherials. It can be
+   example a PC), including a processor and various peripherals. It can be
    used to launch different Operating Systems without rebooting the PC or
    to debug system code.
 

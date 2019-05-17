@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_03_17.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Novell / NetIQ eDirectory Multiple Vulnerabilities - Mar17
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140224");
-  script_version("$Revision: 11977 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2016-9167", "CVE-2016-9168", "CVE-2017-5186");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-30 12:28:05 +0200 (Thu, 30 Mar 2017)");
   script_name("Novell eDirectory Multiple Vulnerabilities - Mar17");
   script_tag(name:"summary", value:"This host is installed with Novell / NetIQ eDirectory
@@ -62,7 +61,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -76,10 +74,10 @@ if( major !~ "^9\." ) exit( 99 );
 if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
   sp = "0";
 
-invers = major;
+instvers = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  instvers += ' SP' + sp;
 
 revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 revision = str_replace( string:revision, find:".", replace:"" );
@@ -88,7 +86,7 @@ if( version_is_less( version:major, test_version:"9.0.2" ) ||
     ( major == "9.0.2" && int( revision ) < 4000456 )
   )
 {
-  report = 'Installed version: ' + invers + '\n' +
+  report = 'Installed version: ' + instvers + '\n' +
            'Fixed version:     9.0.2 Hotfix 2\n';
   security_message(data:report, port:port);
   exit(0);

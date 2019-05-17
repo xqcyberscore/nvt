@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln02_may16_lin.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Drupal Multiple Vulnerabilities02- May16 (Linux)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808045");
-  script_version("$Revision: 11922 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2016-3168", "CVE-2016-3163", "CVE-2016-3169");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-05-18 16:17:47 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities02- May16 (Linux)");
@@ -53,7 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause brute force attacks, to download and execute JSON-encoded
-  contet and also to gain elevated privileges.");
+  content and also to gain elevated privileges.");
 
   script_tag(name:"affected", value:"Drupal 6.x before 6.38 and 7.x before 7.43
   on Linux.");

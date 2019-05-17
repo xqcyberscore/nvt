@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_edirectory_57038.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Novell eDirectory Multiple Security Vulnerabilities
 #
@@ -30,9 +29,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103630");
   script_bugtraq_id(57038);
   script_cve_id("CVE-2012-0428", "CVE-2012-0429", "CVE-2012-0430", "CVE-2012-0432");
-  script_version("$Revision: 11103 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_name("Novell eDirectory Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2013-01-02 11:38:11 +0100 (Wed, 02 Jan 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -84,10 +83,10 @@ if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
 revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 revision = str_replace( string:revision, find:".", replace:"" );
 
-invers = major;
+instvers = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  instvers += ' SP' + sp;
 
 if( major =~ "8\.8" )
 {
@@ -99,7 +98,7 @@ if( major =~ "8\.8" )
 
 if( hole )
 {
-  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  report =  report_fixed_ver( installed_version:instvers, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit(0);
 }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pragmamx_mult_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PragmaMX Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803345");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-16T08:02:32+0000");
   script_bugtraq_id(53669);
   script_cve_id("CVE-2012-2452");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2013-03-25 16:37:00 +0530 (Mon, 25 Mar 2013)");
   script_name("PragmaMX Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -50,11 +49,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   or web script in a user's browser session in context of an affected site.");
-  script_tag(name:"affected", value:"PragmaMX version 1.12.1 and prior");
-  script_tag(name:"insight", value:"Multiple flaws due to input passed via 'name' parameter to modules.php and
-  'img_url' parameter to img_popup.php is not properly sanitised before being
-  returned to the user.");
+
+  script_tag(name:"affected", value:"PragmaMX version 1.12.1 and prior.");
+
+  script_tag(name:"insight", value:"Multiple flaws due to improperly sanitized 'name' parameter in modules.php and
+  'img_url' parameter in img_popup.php before they are being returned to the user.");
+
   script_tag(name:"solution", value:"Upgrade to PragmaMx 1.12.2 or later.");
+
   script_tag(name:"summary", value:"The host is installed with PragmaMX and is prone to multiple cross
   site scripting vulnerabilities.");
 
@@ -68,9 +70,8 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-if(!can_host_php(port:port)){
+if(!can_host_php(port:port))
   exit(0);
-}
 
 foreach dir (make_list_unique("/", "/pragmamx", "/cms", cgi_dirs(port:port)))
 {
@@ -87,7 +88,8 @@ foreach dir (make_list_unique("/", "/pragmamx", "/cms", cgi_dirs(port:port)))
     if(http_vuln_check(port: port, url: url, check_header: TRUE,
        pattern: "<script>alert\(document\.cookie\)</script>"))
     {
-      security_message(port:port);
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
       exit(0);
     }
   }

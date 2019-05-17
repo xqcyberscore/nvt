@@ -27,11 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120553");
-  script_version("$Revision: 11703 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_tag(name:"creation_date", value:"2015-09-08 13:29:28 +0200 (Tue, 08 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_name("Amazon Linux Local Check: ALAS-2013-179");
-  script_tag(name:"insight", value:"The http_request_split_value function in request.c in lighttpd before 1.4.32 allows remote attackers to cause a denial of service (infinite loop) via a request with a header containing an empty token, as demonstrated using the Connection: TE, , Keep-Alive header.");
+  script_tag(name:"insight", value:"The http_request_split_value function in request.c in lighttpd before 1.4.32 allows
+  remote attackers to cause a denial of service (infinite loop) via a request with a header containing an empty token,
+  as demonstrated using the Connection: TE, , Keep-Alive header.");
   script_tag(name:"solution", value:"Run yum update lighttpd to update your system.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2013-179.html");

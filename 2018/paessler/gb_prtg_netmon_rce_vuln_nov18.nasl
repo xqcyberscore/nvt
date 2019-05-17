@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_rce_vuln_nov18.nasl 12339 2018-11-13 14:53:23Z jschulte $
 #
 # PRTG Network Monitor <=18.3.43.2323 Remote Code Execution Vulnerability
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113299");
-  script_version("$Revision: 12339 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:53:23 +0100 (Tue, 13 Nov 2018) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-13 15:30:47 +0200 (Tue, 13 Nov 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -52,7 +51,7 @@ if( description )
   script_tag(name:"summary", value:"PRTG Network Monitor is prone to a remote command execution (RCE) vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"When creating an HTTP Advanced Sensor, the users input in the POST parameter 'proxyport_'
-  is mishandled. The attacker can craft an HTTP request and overide the 'writeresult'
+  is mishandled. The attacker can craft an HTTP request and override the 'writeresult'
   command-line parameter for HttpAdvancedSensor.exe to store arbitrary data in
   an arbitrary place on the file system, including executables.");
   script_tag(name:"impact", value:"Successful exploitation would allow an authenticated attacker to

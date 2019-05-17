@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_version_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # SMB Remote Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807830");
-  script_version("$Revision: 10898 $");
+  script_version("2019-05-16T07:13:31+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-16 07:13:31 +0000 (Thu, 16 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-08 09:14:21 +0530 (Wed, 08 Jun 2016)");
   script_name("SMB Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -243,16 +242,22 @@ name = kb_smb_name();
 if( ! name ) name = "*SMBSERVER";
 
 smb1_support = smb_neg_prot_smb_1_check( target:name, port:port );
-if( smb1_support )
+if( smb1_support ) {
   set_kb_item( name:"smb_v1/supported", value:TRUE );
+  set_kb_item( name:"smb_v1/" + port + "/supported", value:TRUE );
+}
 
 smb2_support = smb_neg_prot_smb2_check( target:name, port:port );
-if( smb2_support )
+if( smb2_support ) {
   set_kb_item( name:"smb_v2/supported", value:TRUE );
+  set_kb_item( name:"smb_v2/" + port + "/supported", value:TRUE );
+}
 
 smb3_support = smb_neg_prot_smb_2_3_check( target:name, port:port );
-if( smb3_support )
+if( smb3_support ) {
   set_kb_item( name:"smb_v3/supported", value:TRUE );
+  set_kb_item( name:"smb_v3/" + port + "/supported", value:TRUE );
+}
 
 if( smb1_support && smb2_support && smb3_support ) {
   report = "SMBv1, SMBv2 and SMBv3 are enabled on remote target";

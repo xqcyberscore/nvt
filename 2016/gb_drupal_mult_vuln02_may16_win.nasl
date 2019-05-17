@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln02_may16_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Drupal Multiple Vulnerabilities02- May16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808044");
-  script_version("$Revision: 11961 $");
+  script_version("2019-05-10T14:24:23+0000");
   script_cve_id("CVE-2016-3168", "CVE-2016-3163", "CVE-2016-3169");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2016-05-18 16:01:10 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Multiple Vulnerabilities02- May16 (Windows)");
@@ -43,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exixts due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - An improper validation of JSON-encoded content in system module.
 
@@ -53,7 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause brute force attacks, to download and execute JSON-encoded
-  contet and also to gain elevated privileges.");
+  content and also to gain elevated privileges.");
 
   script_tag(name:"affected", value:"Drupal 6.x before 6.38 and 7.x before 7.43
   on Windows.");

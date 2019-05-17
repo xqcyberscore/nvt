@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dwhttp_format_string.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # dwhttpd format string
 #
@@ -27,24 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# This script could also cover BID:1556 and CVE-2000-0697
-#
-# References:
-#
-# Date:  Thu, 1 Aug 2002 16:31:40 -0600 (MDT)
-# From: "ghandi" <ghandi@mindless.com>
-# To: bugtraq@securityfocus.com
-# Subject: Sun AnswerBook2 format string and other vulnerabilities
-#
-# Affected:
-# dwhttp/4.0.2a7a, dwhttpd/4.1a6
-# And others?
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11075");
-  script_version("$Revision: 14336 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-10T14:24:23+0000");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5384);
   script_cve_id("CVE-1999-1417");
@@ -58,10 +44,16 @@ if(description)
   script_mandatory_keys("dwhttp/banner");
   script_require_ports("Services/www", 8888);
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade your software or protect it with a filtering reverse proxy");
+
+  script_tag(name:"solution", value:"Upgrade your software or protect it with a filtering reverse proxy.");
+
   script_tag(name:"summary", value:"The remote web server is vulnerable to a format string attack.");
+
   script_tag(name:"impact", value:"A cracker may exploit this vulnerability to make your web server
   crash continually or even execute arbirtray code on your system.");
+
+  script_tag(name:"affected", value:"dwhttp/4.0.2a7a and dwhttpd/4.1a6 are known to be affected. Other
+  versions might be affected as well.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

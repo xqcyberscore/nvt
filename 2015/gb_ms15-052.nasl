@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805382");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-17T08:39:44+0000");
   script_cve_id("CVE-2015-1674");
   script_bugtraq_id(74488);
-  script_tag(name:"cvss_base", value:"1.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-05-17 08:39:44 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2015-05-13 11:36:27 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows Kernel Security Feature Bypass Vulnerability (3050514)");
 
