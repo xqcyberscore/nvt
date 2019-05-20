@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_dos_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # VLC Media Player 'MP4' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802920");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2012-2396");
   script_bugtraq_id(53535, 53169);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-07-25 13:06:00 +0530 (Wed, 25 Jul 2012)");
   script_name("VLC Media Player 'MP4' Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49159");
@@ -64,7 +63,7 @@ denial of service vulnerability.");
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

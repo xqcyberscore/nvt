@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deluxeBB_1_3.nasl 13241 2019-01-23 12:12:00Z cfischer $
 #
 # DeluxeBB 'misc.php' SQL Injection Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:deluxebb:deluxebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100064");
-  script_version("$Revision: 13241 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 13:12:00 +0100 (Wed, 23 Jan 2019) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2009-03-20 11:01:53 +0100 (Fri, 20 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -72,7 +71,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: FALSE);
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: FALSE)) exit(0);
 version = infos['version'];
 dir = infos['location'];
 if (dir == "/")

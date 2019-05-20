@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dng_converter_memory_corruption_vuln_nov17_win.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Adobe DNG Converter Memory Corruption Vulnerability Nov17 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:dng_converter";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812211");
-  script_version("$Revision: 12391 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-11295");
   script_bugtraq_id(101828);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-16 16:38:07 +0530 (Thu, 16 Nov 2017)");
   script_name("Adobe DNG Converter Memory Corruption Vulnerability Nov17 (Windows)");
 
@@ -71,7 +70,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 adVer = infos['version'];
 path = infos['location'];
 

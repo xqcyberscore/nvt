@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813179");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-8155");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-09 11:17:23 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft SharePoint Foundation 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB4018398)");
 
@@ -69,7 +69,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 
-infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_foundation', exit_no_version:TRUE ) ;
+if(!infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_foundation', exit_no_version:TRUE ) ) exit(0);
 shareVer = infos['version'];
 if(!(shareVer =~ "^15\..*")){
   exit(0);

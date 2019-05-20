@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_rce_vuln.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Joomla! < 3.8.13 RCE Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141583");
-  script_version("$Revision: 12938 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-10 14:51:37 +0700 (Wed, 10 Oct 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -70,7 +69,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE);
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE)) exit(0);
 version = infos['version'];
 path = infos['location'];
 

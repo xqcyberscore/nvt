@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812201");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-11877", "CVE-2017-11878");
   script_bugtraq_id(101747, 101756);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-15 09:09:54 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Excel 2016 Multiple Vulnerabilities (KB4011220)");
 
@@ -66,13 +66,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-excelVer = "";
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(!excelVer){
@@ -84,7 +81,7 @@ if(!excelPath){
   excelPath = "Unable to fetch the install path";
 }
 
-if(excelVer =~ "^(16\.)" && version_is_less(version:excelVer, test_version:"16.0.4615.1000"))
+if(excelVer =~ "^16\." && version_is_less(version:excelVer, test_version:"16.0.4615.1000"))
 {
   report = report_fixed_ver( file_checked:excelPath + "Excel.exe", file_version:excelVer, vulnerable_range:"16.0 - 16.0.4615.0999" );
   security_message(data:report);

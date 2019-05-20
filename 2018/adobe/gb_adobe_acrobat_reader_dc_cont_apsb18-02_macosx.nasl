@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_dc_cont_apsb18-02_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Acrobat Reader DC (Continuous Track) Multiple Vulnerabilities-apsb18-02 (Mac OS X)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812935");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-4872", "CVE-2018-4890", "CVE-2018-4904", "CVE-2018-4910",
                 "CVE-2018-4917", "CVE-2018-4888", "CVE-2018-4892", "CVE-2018-4902",
                 "CVE-2018-4911", "CVE-2018-4913", "CVE-2018-4879", "CVE-2018-4895",
@@ -43,7 +42,7 @@ if(description)
                 "CVE-2018-4914", "CVE-2018-4997", "CVE-2018-4998", "CVE-2018-4999");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-15 16:24:40 +0530 (Thu, 15 Feb 2018)");
   script_name("Adobe Acrobat Reader DC (Continuous Track) Multiple Vulnerabilities-apsb18-02 (Mac OS X)");
 
@@ -92,7 +91,7 @@ include("version_func.inc");
 
 acroVer = "";
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

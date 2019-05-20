@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_vuln_aug18.nasl 12252 2018-11-08 07:19:31Z asteins $
 #
 # Joomla! < 3.8.12 Multiple Vulnerabilities
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112371");
-  script_version("$Revision: 12252 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-15880", "CVE-2018-15882");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-30 10:12:03 +0200 (Thu, 30 Aug 2018)");
 
   script_name("Joomla! < 3.8.12 Multiple Vulnerabilities");
@@ -75,7 +74,7 @@ CPE = "cpe:/a:joomla:joomla";
 if(!port = get_app_port(cpe:CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE)) exit(0);
 ver = infos['version'];
 path = infos['location'];
 

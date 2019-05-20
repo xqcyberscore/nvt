@@ -23,8 +23,8 @@ CPE = "cpe:/a:openmrs:openmrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142136");
-  script_version("2019-03-26T08:16:24+0000");
-  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
+  script_version("2019-05-17T13:14:58+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-13 09:16:06 +0700 (Wed, 13 Mar 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -73,9 +73,8 @@ if (dir == "/")
 
 url = dir + "/ws/rest/v1/concept";
 headers = make_array("Content-Type", "application/xml");
-data = "";
 
-req = http_post_req(port: port, url: url, data: data, add_headers: headers);
+req = http_post_req(port: port, url: url, data: "", add_headers: headers);
 res = http_keepalive_send_recv(port: port, data: req);
 
 if (res !~ "^HTTP/1\.[01] 500")

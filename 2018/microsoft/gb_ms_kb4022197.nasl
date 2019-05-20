@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813430");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-13 13:53:25 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft SharePoint Server 2010 Service Pack 2 Word Automation Services Defense in Depth (KB4022197)");
 
@@ -68,7 +68,7 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server', exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_server', exit_no_version:TRUE)) exit(0);
 shareVer = infos['version'];
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){

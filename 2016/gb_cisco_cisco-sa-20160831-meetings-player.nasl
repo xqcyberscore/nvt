@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cisco-sa-20160831-meetings-player.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco WebEx Meetings Player Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:cisco:webex_wrf_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107067");
-  script_version("$Revision: 12338 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2016-1464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2016-10-25 11:19:11 +0530 (Tue, 25 Oct 2016)");
 
   script_name("Cisco WebEx Meetings Player Arbitrary Code Execution Vulnerability (Windows)");
@@ -73,7 +72,7 @@ player was installed from, see advisory.");
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe: CPE, exit_no_version: TRUE);
+if(!infos = get_app_version_and_location(cpe: CPE, exit_no_version: TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

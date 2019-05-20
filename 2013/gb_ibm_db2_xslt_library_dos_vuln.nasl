@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_xslt_library_dos_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 XSLT Library Denial of Service Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803789");
-  script_version("$Revision: 14286 $");
+  script_version("2019-05-17T11:35:17+0000");
   script_cve_id("CVE-2013-5466");
   script_bugtraq_id(64334);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 11:35:17 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2013-12-26 17:51:52 +0530 (Thu, 26 Dec 2013)");
 
   script_name("IBM DB2 XSLT Library Denial of Service Vulnerability");
@@ -78,7 +77,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+if(!infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE)) exit(0);
 version = infos["version"];
 proto = infos["proto"];
 

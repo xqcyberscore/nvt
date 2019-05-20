@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - Sep 12 (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802962");
-  script_version("$Revision: 11857 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2011-3016", "CVE-2011-3021", "CVE-2011-3027", "CVE-2011-3032",
                 "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037",
                 "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041",
@@ -75,7 +74,7 @@ if(description)
                     51641, 51911, 38368, 54680, 54203, 54386, 55534);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-09-17 17:25:24 +0530 (Mon, 17 Sep 2012)");
   script_name("Apple iTunes Multiple Vulnerabilities - Sep 12 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5485");
@@ -104,7 +103,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

@@ -28,14 +28,14 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813509");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-4247", "CVE-2018-4205", "CVE-2018-4232", "CVE-2018-4246",
                 "CVE-2018-4192", "CVE-2018-4188", "CVE-2018-4214", "CVE-2018-4201",
                 "CVE-2018-4218", "CVE-2018-4233", "CVE-2018-4199", "CVE-2018-4190",
                 "CVE-2018-4222");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-04 13:35:10 +0530 (Mon, 04 Jun 2018)");
   script_name("Apple Safari Security Updates(HT208854)");
 
@@ -84,7 +84,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 sVer = infos['version'];
 sPath = infos['location'];
 

@@ -28,12 +28,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813751");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-10915");
   script_bugtraq_id(105054);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-13 12:44:42 +0530 (Mon, 13 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL 'libpq' Security Bypass Vulnerability Aug18 (Windows)");
@@ -86,7 +86,7 @@ if(!pgsqlPort){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_version:TRUE)) exit(0);
 pgsqlVer = infos['version'];
 pgsqlPath = infos['location'];
 

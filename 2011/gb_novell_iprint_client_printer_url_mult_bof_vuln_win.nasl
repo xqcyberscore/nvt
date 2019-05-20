@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_printer_url_mult_bof_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Novell iPrint Client 'printer-url' Multiple BOF Vulnerabilities (Windows)
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:novell:iprint";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801951");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-1699", "CVE-2011-1700", "CVE-2011-1701", "CVE-2011-1702",
                 "CVE-2011-1703", "CVE-2011-1704", "CVE-2011-1705", "CVE-2011-1706",
@@ -74,7 +73,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

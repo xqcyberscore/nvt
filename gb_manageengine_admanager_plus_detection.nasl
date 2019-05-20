@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_detection.nasl 9186 2018-03-23 09:48:58Z asteins $
 #
 # ManageEngine ADManager Plus Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107131");
-  script_version("$Revision: 9186 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
+  script_version("2019-05-17T10:38:54+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:38:54 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-19 16:11:25 +0530 (Thu, 19 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,8 +59,9 @@ port = get_http_port( default:8080 );
 
 res = http_get_cache( item:"/", port:port );
 
-if( res =~ "HTTP/1\.. 200" && ( "<title>ManageEngine" >< res && "ADManager Plus</title>" >< res )
-    && '<input type="hidden" name="AUTHRULE_NAME" value="ADAuthenticator">' >< res && "admp.login.browserinfo.message" >< res ) {
+if( res =~ "HTTP/1\.. 200" && ( "<title>ManageEngine" >< res && "ADManager Plus</title>" >< res ) &&
+    '<input type="hidden" name="AUTHRULE_NAME" value="ADAuthenticator">' >< res &&
+    "admp.login.browserinfo.message" >< res ) {
 
   set_kb_item( name:"manageengine/admanager_plus/installed", value:TRUE );
 
@@ -69,16 +69,12 @@ if( res =~ "HTTP/1\.. 200" && ( "<title>ManageEngine" >< res && "ADManager Plus<
   install = "/";
 
   vers = eregmatch( pattern:"style.css\?v\=([0-9]+)", string:res );
-  if ( isnull ( vers[1] ) ) {
+  if ( isnull ( vers[1] ) )
     vers = eregmatch( pattern:'ADMPAlert\\.js\\?v\\=([0-9]+)', string: res);
-  }
 
   if( ! isnull( vers[1] ) ) {
     version = vers[1];
     version = version[0] + '.' + version[1] + '.' + version[2] + version[3];
-
-    set_kb_item( name:"www/" + port + "/admanager_plus", value:version );
-    set_kb_item( name:"admanager_plus/version", value:version );
 
     extra = "Build " + vers[1];
   }
@@ -96,6 +92,7 @@ if( res =~ "HTTP/1\.. 200" && ( "<title>ManageEngine" >< res && "ADManager Plus<
                                             cpe:cpe,
                                             concluded:vers[0],
                                             extra:extra ),
-                                            port:port );
+               port:port );
 }
+
 exit( 0 );

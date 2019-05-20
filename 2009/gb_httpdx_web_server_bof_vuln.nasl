@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_web_server_bof_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # httpdx Web Server 'h_handlepeer()' Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800962");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,26 +43,30 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("gb_httpdx_server_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("httpdx/installed");
+
   script_tag(name:"impact", value:"Remote attackers can exploit this issue to execute arbitrary code or crash
   the server via a specially crafted request.");
+
   script_tag(name:"affected", value:"httpdx Web Server version 1.4.3 and prior on windows.");
+
   script_tag(name:"insight", value:"A boundary error occurs in 'h_handlepeer()' in 'http.cpp' while processing
   overly long HTTP requests leading to a buffer overflow.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to httpdx Server version 1.4.4 or later.");
+
   script_tag(name:"summary", value:"The host is running httpdx Web Server and is prone to a Buffer
   Overflow vulnerability.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 httpdxPort = get_http_port(default:80);
-if(!httpdxPort){
-  exit(0);
-}
 
 httpdxVer = get_kb_item("httpdx/" + httpdxPort + "/Ver");
 if(!isnull(httpdxVer))

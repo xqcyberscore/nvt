@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tdesktop_info_disclosure_vuln_win.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Telegram Desktop Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:telegram:tdesktop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814310");
-  script_version("$Revision: 12767 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-17780");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-09 17:30:33 +0530 (Fri, 09 Nov 2018)");
   script_name("Telegram Desktop Information Disclosure Vulnerability (Windows)");
 
@@ -71,7 +70,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 telVer = infos['version'];
 telPath = infos['location'];
 

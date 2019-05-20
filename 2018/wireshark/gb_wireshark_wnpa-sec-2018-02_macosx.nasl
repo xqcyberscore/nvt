@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018-02_macosx.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Wireshark Security Updates (wnpa-sec-2018-02) MACOSX
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812631");
-  script_version("$Revision: 12026 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-17997");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-16 13:14:37 +0530 (Tue, 16 Jan 2018)");
   script_name("Wireshark Security Updates (wnpa-sec-2018-02) MACOSX");
 
@@ -71,7 +70,7 @@ include("host_details.inc");
 
 wirversion = "";
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 wirversion = infos['version'];
 path = infos['location'];
 

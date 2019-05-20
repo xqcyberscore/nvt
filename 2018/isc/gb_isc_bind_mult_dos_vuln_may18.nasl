@@ -28,11 +28,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813401");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T11:35:17+0000");
   script_cve_id("CVE-2018-5736", "CVE-2018-5737");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 11:35:17 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-22 09:25:41 +0530 (Tue, 22 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Multiple Denial of Service Vulnerabilities-May18");
@@ -77,7 +77,7 @@ if(!port = get_app_port(cpe: CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_proto(cpe:CPE, port:port, exit_no_version:TRUE);
+if(!infos = get_app_version_and_proto(cpe:CPE, port:port, exit_no_version:TRUE)) exit(0);
 version = infos["version"];
 proto = infos["proto"];
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_apr13_win.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 April 13 (Windows)
 #
@@ -43,12 +42,12 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803374");
-  script_version("$Revision: 11866 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2013-1375", "CVE-2013-1371", "CVE-2013-0650", "CVE-2013-0646");
   script_bugtraq_id(58439, 58438, 58440, 58436);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2013-04-18 13:10:34 +0530 (Thu, 18 Apr 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -69,7 +68,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

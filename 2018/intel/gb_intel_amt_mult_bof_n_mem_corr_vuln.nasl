@@ -28,11 +28,11 @@ CPE = 'cpe:/h:intel:active_management_technology';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813800");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-3628", "CVE-2018-3629", "CVE-2018-3632");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-24 13:43:57 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Intel Active Management Technology Buffer Overflow And Memory Corruption Vulnerabilities");
@@ -73,7 +73,7 @@ if(!imePort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:imePort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:CPE, port:imePort, exit_no_version:TRUE)) exit(0);
 imeVer = infos['version'];
 imepath = infos['location'];
 

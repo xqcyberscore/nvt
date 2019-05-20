@@ -1062,7 +1062,10 @@ function get_container_os(container_id, soc) {
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=19.04" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
+    ## For Ubuntu19 dpkg -l lists first few lines and user needs to scroll for rest of data
+    ## Packages collected in 'buf' variable include only these first few packages.
+    ## Currently using dpkg -l|head -10000 to display 10000 lines
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l|head -10000'", nosh:TRUE);
     if(buf)
       set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 19.04", oskey:"UBUNTU19.04");

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsa18-01_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Mac OS X
 #
@@ -28,12 +27,12 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812688");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-4878", "CVE-2018-4877");
   script_bugtraq_id(102893, 102930);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-02 11:12:23 +0530 (Fri, 02 Feb 2018)");
   script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Mac OS X");
 
@@ -73,7 +72,7 @@ include("version_func.inc");
 
 playerVer = "";
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

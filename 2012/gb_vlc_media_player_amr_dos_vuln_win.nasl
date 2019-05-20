@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_amr_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # VLC Media Player '.amr' File Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802420");
-  script_version("$Revision: 11374 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2012-0904");
   script_bugtraq_id(51255);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-01-23 15:30:49 +0530 (Mon, 23 Jan 2012)");
   script_name("VLC Media Player '.amr' File Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/72085");
@@ -66,7 +65,7 @@ of service vulnerability.");
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

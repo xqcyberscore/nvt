@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_gss2_user_enumeration_vuln_lin.nasl 13972 2019-03-04 07:20:45Z cfischer $
 #
 # OpenSSH 'auth2-gss.c' User Enumeration Vulnerability (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813888");
-  script_version("$Revision: 13972 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-15919");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 08:20:45 +0100 (Mon, 04 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-05 13:12:09 +0530 (Wed, 05 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -80,7 +79,7 @@ include("host_details.inc");
 if(!sshPort = get_app_port(cpe:CPE))
   exit(0);
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:sshPort);
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:sshPort)) exit(0);
 sshVer = infos['version'];
 sshPath = infos['location'];
 

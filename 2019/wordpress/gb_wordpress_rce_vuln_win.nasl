@@ -23,8 +23,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142030");
-  script_version("$Revision: 13867 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-02-22 14:09:13 +0700 (Fri, 22 Feb 2019)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -67,7 +67,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE);
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE)) exit(0);
 version = infos['version'];
 path = infos['location'];
 

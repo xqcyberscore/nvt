@@ -24,7 +24,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814868");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2019-5787", "CVE-2019-5788", "CVE-2019-5789", "CVE-2019-5790",
                 "CVE-2019-5791", "CVE-2019-5792", "CVE-2019-5793", "CVE-2019-5794",
                 "CVE-2019-5795", "CVE-2019-5796", "CVE-2019-5797", "CVE-2019-5798",
@@ -32,7 +32,7 @@ if(description)
                 "CVE-2019-5803", "CVE-2019-5804");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-14 12:14:20 +0530 (Thu, 14 Mar 2019)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_12-2019-03)-Linux");
 
@@ -90,7 +90,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 chr_ver = infos['version'];
 chr_path = infos['location'];
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_navicopa_server_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # NaviCOPA Server Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801100");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2010-01-09 13:17:56 +0100 (Sat, 09 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NaviCOPA Server Version Detection");
@@ -60,6 +59,7 @@ if("NaviCOPA" >< banner)
   if(!isnull(ncpaVer[1]))
   {
     set_kb_item(name:"NaviCOPA/" + httpPort + "/Ver", value:ncpaVer[1]);
+    set_kb_item(name:"navicopa/detected", value:TRUE);
     log_message(data:"NaviCOPA Server version " + ncpaVer[1] +
                      " was detected on the host");
 

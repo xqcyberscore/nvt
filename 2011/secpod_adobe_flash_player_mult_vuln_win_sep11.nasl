@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_win_sep11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities September-2011 (Windows)
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902738");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-2426", "CVE-2011-2427", "CVE-2011-2428",
                 "CVE-2011-2429", "CVE-2011-2430", "CVE-2011-2444");
@@ -77,7 +76,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

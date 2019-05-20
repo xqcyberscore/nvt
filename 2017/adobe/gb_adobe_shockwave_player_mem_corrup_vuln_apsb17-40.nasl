@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mem_corrup_vuln_apsb17-40.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Adobe Shockwave Player Memory Corruption Vulnerability (APSB17-40)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812092");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-11294");
   script_bugtraq_id(101836);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-16 11:32:08 +0530 (Thu, 16 Nov 2017)");
   script_name("Adobe Shockwave Player Memory Corruption Vulnerability (APSB17-40)");
 
@@ -66,17 +65,14 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
   script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
-  script_xref(name:"URL", value:"http://get.adobe.com/shockwave");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-playerVer = "";
-playerPath = "";
-
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 playerVer = infos['version'];
 playerPath = infos['location'];
 

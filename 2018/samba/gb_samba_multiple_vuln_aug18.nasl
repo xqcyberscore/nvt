@@ -28,11 +28,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813783");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-10918", "CVE-2018-1139");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-17 13:10:38 +0530 (Fri, 17 Aug 2018)");
   script_name("Samba Multiple Vulnerabilities - Aug18");
 
@@ -80,7 +80,7 @@ include("host_details.inc");
 
 if(isnull(port = get_app_port(cpe:CPE))) exit(0);
 
-infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE)) exit(0);
 vers = infos['version'];
 loc = infos['location'];
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_HT207600.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Apple Safari Multiple Vulnerabilities-HT207600
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810727");
-  script_version("$Revision: 11900 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2016-9642", "CVE-2016-9643", "CVE-2017-2364", "CVE-2017-2367",
                 "CVE-2017-2377", "CVE-2017-2378", "CVE-2017-2385", "CVE-2017-2386",
                 "CVE-2017-2389", "CVE-2017-2394", "CVE-2017-2395", "CVE-2017-2396",
@@ -44,7 +43,7 @@ if(description)
                     100613);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-31 16:41:59 +0530 (Fri, 31 Mar 2017)");
   script_name("Apple Safari Multiple Vulnerabilities-HT207600");
 
@@ -112,7 +111,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 safVer = infos['version'];
 path = infos['location'];
 

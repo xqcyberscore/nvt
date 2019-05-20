@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT208475.nasl 14293 2019-03-18 18:52:01Z cfischer $
 #
 # Apple Safari Security Updates( HT208475 )
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812665");
-  script_version("$Revision: 14293 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-4088", "CVE-2018-4089", "CVE-2018-4096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:52:01 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-24 11:54:25 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple Safari Security Updates( HT208475 )");
 
@@ -61,7 +60,7 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version", "ssh/login/osx_name", "ssh/login/osx_version");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
+
   exit(0);
 }
 
@@ -92,7 +91,7 @@ else if(version_in_range(version:osVer, test_version:"10.13", test_version2:"10.
 
 else
 {
-  infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
   safVer = infos['version'];
   safPath = infos['location'];
 

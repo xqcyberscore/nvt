@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_jul2017-3236622_01_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # Oracle BI Publisher Multiple Unspecified Vulnerabilities-01 (jul2017-3236622-jul2018-4258247)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:business_intelligence_publisher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811247");
-  script_version("$Revision: 11936 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-10025", "CVE-2017-10024", "CVE-2017-10028", "CVE-2017-10029",
                 "CVE-2017-10030", "CVE-2017-10059", "CVE-2018-2900");
   script_bugtraq_id(99697, 99723, 99724, 99738, 99740, 99743);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-07-19 17:26:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle BI Publisher Multiple Unspecified Vulnerabilities-01 (jul2017-3236622-jul2018-4258247)");
@@ -79,7 +78,7 @@ if(!obpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:obpPort);
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:obpPort)) exit(0);
 obpVer = infos['version'];
 obPath = infos['location'];
 

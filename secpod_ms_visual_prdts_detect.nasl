@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_prdts_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Microsoft Visual Product(s) Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900808");
-  script_version("$Revision: 12413 $");
+  script_version("2019-05-18T06:07:35+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-18 06:07:35 +0000 (Sat, 18 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-03 06:30:10 +0200 (Mon, 03 Aug 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Visual Products Version Detection");
@@ -57,7 +56,7 @@ include("host_details.inc");
 include("version_func.inc");
 
 ##  NOTE: Visual Studio Build Version is not reliable. This NVT only tries to understand which
-##  Visual Studio is installed, i.e. 2003, 2005, 2008, 2010, 2013, 2015 or 2017
+##  Visual Studio is installed, i.e. 2003, 2005, 2008, 2010, 2013, 2015, 2017 or 2019
 ##  Visual Studio Version Available from registry as well as from executable are
 ##  basic version installed but not latest version after we have applied Service Pack
 ##  or Update.
@@ -76,7 +75,8 @@ STUDIO_LIST = make_list("^(7\..*)", "cpe:/a:microsoft:visual_studio:2003:", "Mic
                         "^(11\..*)", "cpe:/a:microsoft:visual_studio:2012:", "Microsoft VisualStudio 2012",
                         "^(12\..*)", "cpe:/a:microsoft:visual_studio:2013:", "Microsoft VisualStudio 2013",
                         "^(14\..*)", "cpe:/a:microsoft:visual_studio:2015", "Microsoft VisualStudio 2015",
-                        "^(15\..*)", "cpe:/a:microsoft:visual_studio:2017", "Microsoft VisualStudio 2017");
+                        "^(15\..*)", "cpe:/a:microsoft:visual_studio:2017", "Microsoft VisualStudio 2017",
+                        "^(16\..*)", "cpe:/a:microsoft:visual_studio:2019", "Microsoft VisualStudio 2019");
 STUDIO_MAX = max_index(STUDIO_LIST);
 
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\VisualStudio"))

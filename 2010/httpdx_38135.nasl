@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpdx_38135.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # httpdx 'USER' Command Remote Format String Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100491");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2010-02-09 12:21:13 +0100 (Tue, 09 Feb 2010)");
   script_bugtraq_id(38135);
   script_tag(name:"cvss_base", value:"9.3");
@@ -46,13 +44,15 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_httpdx_server_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name:"summary", value:"The 'httpdx' program is prone to a remote format-string vulnerability.
+  script_mandatory_keys("httpdx/installed");
 
-An attacker may exploit this issue to execute arbitrary code within
-the context of the affected application. Failed exploit attempts will
-result in a denial-of-service condition.
+  script_tag(name:"summary", value:"The 'httpdx' program is prone to a remote format-string vulnerability.");
 
-The issue affects httpdx 1.5.2. Other versions may also be affected.");
+  script_tag(name:"impact", value:"An attacker may exploit this issue to execute arbitrary code within
+  the context of the affected application. Failed exploit attempts will result in a denial-of-service condition.");
+
+  script_tag(name:"affected", value:"The issue affects httpdx 1.5.2. Other versions may also be affected.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
@@ -62,14 +62,10 @@ The issue affects httpdx 1.5.2. Other versions may also be affected.");
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
 httpdxPort = get_http_port(default:80);
-if(!httpdxPort){
-    exit(0);
-}
 
 httpdxVer = get_kb_item("httpdx/" + httpdxPort + "/Ver");
 if(!isnull(httpdxVer))

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_demux_module_dos_vuln_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # VLC Media Player 'MP4 Demux Module' DoS Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812504");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-17670");
   script_bugtraq_id(102214);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-20 11:58:25 +0530 (Wed, 20 Dec 2017)");
 
   script_tag(name:"qod_type", value:"registry");
@@ -77,7 +76,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vlcVer = infos['version'];
 path = infos['location'];
 

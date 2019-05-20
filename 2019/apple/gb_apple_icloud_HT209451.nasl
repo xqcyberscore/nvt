@@ -28,13 +28,13 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814821");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-20346", "CVE-2018-20505", "CVE-2018-20506", "CVE-2019-6215",
                 "CVE-2019-6212", "CVE-2019-6216", "CVE-2019-6217", "CVE-2019-6226",
                 "CVE-2019-6227", "CVE-2019-6233", "CVE-2019-6234", "CVE-2019-6229");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 13:00:19 +0530 (Wed, 23 Jan 2019)");
   script_name("Apple iCloud Security Updates (HT209451)-Windows");
 
@@ -77,7 +77,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 icVer = infos['version'];
 icPath = infos['location'];
 

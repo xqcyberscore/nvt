@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876319");
-  script_version("2019-05-14T05:04:40+0000");
+  script_version("2019-05-17T10:04:07+0000");
   script_cve_id("CVE-2019-10909", "CVE-2019-10910", "CVE-2019-10911", "CVE-2019-11358");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:04:07 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-08 02:09:55 +0000 (Wed, 08 May 2019)");
   script_name("Fedora Update for drupal8 FEDORA-2019-eba8e44ee6");
   script_category(ACT_GATHER_INFO);
@@ -37,15 +37,14 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-eba8e44ee6");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5IABSKTYZ5JUGL735UKGXL5YPRYOPUYI");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'drupal8' package(s) announced via the FEDORA-2019-eba8e44ee6 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'drupal8'
+  package(s) announced via the FEDORA-2019-eba8e44ee6 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Drupal is an open source content management
-  platform powering millions of websites and applications. Its built, used, and
-  supported by an active and diverse community of people around the world.");
+  script_tag(name:"insight", value:"Drupal is an open source content management platform powering millions of
+websites and applications. Its built, used, and supported by an active and
+diverse community of people around the world.");
 
   script_tag(name:"affected", value:"'drupal8' package(s) on Fedora 30.");
 

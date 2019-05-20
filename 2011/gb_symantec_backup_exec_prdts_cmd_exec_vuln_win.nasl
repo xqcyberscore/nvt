@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_backup_exec_prdts_cmd_exec_vuln_win.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Symantec Backup Exec Products Arbitrary Command Execution vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801798");
-  script_version("$Revision: 12010 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_cve_id("CVE-2011-0546");
   script_bugtraq_id(47824);
@@ -62,7 +61,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-servInfos = get_app_version_and_location( cpe:"cpe:/a:symantec:veritas_backup_exec_for_windows_servers" );
+if(!servInfos = get_app_version_and_location( cpe:"cpe:/a:symantec:veritas_backup_exec_for_windows_servers" )) exit(0);
 servVers  = servInfos['version'];
 servPath  = servInfos['location'];
 
@@ -74,7 +73,7 @@ if( servVers ) {
   }
 }
 
-infos = get_app_version_and_location( cpe:"cpe:/a:symantec:backup_exec", exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:"cpe:/a:symantec:backup_exec", exit_no_version:TRUE )) exit(0);
 vers  = infos['version'];
 path  = infos['location'];
 

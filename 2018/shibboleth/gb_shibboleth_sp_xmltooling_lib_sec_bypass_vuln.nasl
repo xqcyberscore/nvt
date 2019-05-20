@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Shibboleth XMLTooling-C Library Security Bypass Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:internet2:shibboleth-sp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813051");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-0489");
   script_bugtraq_id(103172);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-22 14:44:12 +0530 (Thu, 22 Mar 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Shibboleth XMLTooling-C Library Security Bypass Vulnerability");
@@ -79,7 +78,7 @@ include("version_func.inc");
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 shVer = infos['version'];
 location = infos['location'];
 

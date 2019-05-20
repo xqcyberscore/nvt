@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_logrotate_vuln_may18_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # PostgreSQL logrotate Vulnerability - May18 (Linux)
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:postgresql:postgresql';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141084");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-11 16:05:24 +0700 (Fri, 11 May 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -72,7 +71,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe:CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE);
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE)) exit(0);
 version = infos['version'];
 install = infos['location'];
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jan2018-3236628_03_lin.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Java SE Security Updates (jan2018-3236628) 03 - Linux
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108370");
-  script_version("$Revision: 12047 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-2677", "CVE-2018-2599", "CVE-2018-2603", "CVE-2018-2641",
                 "CVE-2018-2602", "CVE-2018-2629", "CVE-2018-2678", "CVE-2018-2663",
                 "CVE-2018-2633", "CVE-2018-2588", "CVE-2018-2637", "CVE-2018-2618",
                 "CVE-2018-2579");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-17 11:40:36 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle Java SE Security Updates (jan2018-3236628) 03 - Linux");
 
@@ -86,17 +85,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE );
-jreVer = infos['version'];
-if( ! jreVer )
-{
+if(!infos = get_app_version_and_location(cpe:CPE)) {
   CPE = "cpe:/a:sun:jre";
-  infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
-  jreVer = infos['version'];
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 }
+
+jreVer = infos['version'];
 path = infos['location'];
 
-if(jreVer =~ "^((1\.(6|7|8))|9)")
+if(jreVer =~ "^(1\.[6-8]|9)\.")
 {
   if(version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.171") ||
      version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.161") ||

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb17-33_lin.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Adobe Flash Player Security Updates( apsb17-33 )-Linux
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812142");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-3112", "CVE-2017-3114", "CVE-2017-11213", "CVE-2017-11215",
 		"CVE-2017-11225");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-15 13:50:31 +0530 (Wed, 15 Nov 2017)");
   script_name("Adobe Flash Player Security Updates( apsb17-33 )-Linux");
 
@@ -66,16 +65,14 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-playerVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 playerVer = infos['version'];
 playerPath = infos['location'];
 

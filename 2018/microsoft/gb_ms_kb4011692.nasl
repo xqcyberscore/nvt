@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813022");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-0919", "CVE-2018-0922");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-14 11:17:28 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Office Web Apps Server 2013 RCE And Information Disclosure Vulnerabilities (KB4011692)");
 
@@ -72,7 +72,7 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-infos = get_app_version_and_location(cpe:"cpe:/a:microsoft:office_web_apps", exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:"cpe:/a:microsoft:office_web_apps", exit_no_version:TRUE)) exit(0);
 webappVer = infos['version'];
 path = infos['location'];
 if(!path || "Could not find the install location" >< path){

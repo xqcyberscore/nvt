@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_mult_bof_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Intel Active Management Technology Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/h:intel:active_management_technology';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812222");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-5711", "CVE-2017-5712");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-22 13:16:37 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Intel Active Management Technology Multiple Buffer Overflow Vulnerabilities");
@@ -64,15 +63,11 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_intel_amt_webui_detect.nasl");
   script_mandatory_keys("intel_amt/installed");
-  script_xref(name:"URL", value:"https://downloadcenter.intel.com");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
-
-imePort = 0;
-imeVer = "";
 
 if(!imePort = get_app_port(cpe:CPE)){
   exit(0);

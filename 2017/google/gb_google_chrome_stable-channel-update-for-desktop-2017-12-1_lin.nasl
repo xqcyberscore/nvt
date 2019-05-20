@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-12-1_lin.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-12-1)-Linux
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812261");
-  script_version("$Revision: 12308 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-15429");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-15 12:23:32 +0530 (Fri, 15 Dec 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-12-1)-Linux");
 
@@ -64,16 +63,13 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-chr_ver = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

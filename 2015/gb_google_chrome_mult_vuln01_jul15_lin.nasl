@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 July15 (Linux)
 #
@@ -32,7 +31,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805936");
-  script_version("$Revision: 11872 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2015-1271", "CVE-2015-1273", "CVE-2015-1274", "CVE-2015-1276",
                 "CVE-2015-1279", "CVE-2015-1280", "CVE-2015-1281", "CVE-2015-1282",
                 "CVE-2015-1283", "CVE-2015-1284", "CVE-2015-1286", "CVE-2015-1287",
@@ -42,7 +41,7 @@ if(description)
   script_bugtraq_id(75973, 76007);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2015-07-23 14:50:34 +0530 (Thu, 23 Jul 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July15 (Linux)");
 
@@ -120,7 +119,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

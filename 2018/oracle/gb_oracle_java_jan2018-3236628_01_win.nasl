@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jan2018-3236628_01_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Oracle Java SE Security Updates (jan2018-3236628) 01 - Windows
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812637");
-  script_version("$Revision: 12410 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-2657");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-17 11:38:48 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle Java SE Security Updates (jan2018-3236628) 01 - Windows");
 
@@ -68,17 +67,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE );
-jreVer = infos['version'];
-if( ! jreVer )
-{
+if(!infos = get_app_version_and_location(cpe:CPE)) {
   CPE = "cpe:/a:sun:jre";
-  infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
-  jreVer = infos['version'];
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 }
+
+jreVer = infos['version'];
 path = infos['location'];
 
-if(jreVer =~ "^(1\.(6|7))")
+if(jreVer =~ "^1\.[67]\.")
 {
   if((version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.171"))||
      (version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.161")))

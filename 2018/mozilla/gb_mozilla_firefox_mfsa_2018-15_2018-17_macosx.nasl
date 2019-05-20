@@ -28,7 +28,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813620");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-5156", "CVE-2018-12370",
                 "CVE-2018-5186", "CVE-2018-5187", "CVE-2018-5188", "CVE-2018-12361",
                 "CVE-2018-12358", "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2018-12369");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-27 16:01:29 +0530 (Wed, 27 Jun 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-15_2018-17 )-MAC OS X");
 
@@ -96,7 +96,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 ffVer = infos['version'];
 ffPath = infos['location'];
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_pass_storage_info_disc_vuln_win.nasl 13133 2019-01-18 04:50:16Z ckuersteiner $
 #
 # TeamViewer Password Storage 'teamviewer.exe' Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:teamviewer:teamviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814111");
-  script_version("$Revision: 13133 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-14333");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 05:50:16 +0100 (Fri, 18 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-21 10:08:14 +0530 (Fri, 21 Sep 2018)");
 
   script_name("TeamViewer Password Storage 'teamviewer.exe' Information Disclosure Vulnerability (Windows)");
@@ -79,7 +78,7 @@ connections to other computers.");
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 teamVer = infos['version'];
 teamPath = infos['location'];
 

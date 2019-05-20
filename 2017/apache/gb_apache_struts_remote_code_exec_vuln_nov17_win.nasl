@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_remote_code_exec_vuln_nov17_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Struts 'TextParseUtil.translateVariables' RCE Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812064");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2016-3090");
   script_bugtraq_id(85131);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-02 15:00:36 +0530 (Thu, 02 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Struts 'TextParseUtil.translateVariables' RCE Vulnerability (Windows)");
@@ -67,15 +66,11 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
-
-appVer = "";
-appPort = "";
 
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -85,7 +80,7 @@ if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }
 
-if(appVer =~ "^(2\.)")
+if(appVer =~ "^2\.")
 {
   if(version_in_range(version:appVer, test_version:"2.0.0", test_version2:"2.3.16.3"))
   {

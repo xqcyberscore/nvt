@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl 14295 2019-03-18 20:16:46Z cfischer $
 #
 # Apple Safari Spoofing and Cross-Site Scripting Vulnerabilities - HT208116
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811782");
-  script_version("$Revision: 14295 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-7085", "CVE-2017-7089", "CVE-2017-7106", "CVE-2017-7081",
                 "CVE-2017-7087", "CVE-2017-7090", "CVE-2017-7091", "CVE-2017-7092",
                 "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", "CVE-2017-7096",
@@ -40,7 +39,7 @@ if(description)
                     100996, 100991);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 21:16:46 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-09-21 11:33:23 +0530 (Thu, 21 Sep 2017)");
   script_name("Apple Safari Spoofing and Cross-Site Scripting Vulnerabilities - HT208116");
 
@@ -107,7 +106,7 @@ else if(version_in_range(version:osVer, test_version:"10.12", test_version2:"10.
 
 else
 {
-  infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE);
+  if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE)) exit(0);
   safVer = infos['version'];
   path = infos['location'];
 

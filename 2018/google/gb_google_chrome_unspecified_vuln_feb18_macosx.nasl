@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_unspecified_vuln_feb18_macosx.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # Google Chrome Unspecified Security Vulnerability Feb18 (Mac OS X)
 #
@@ -28,12 +27,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812804");
-  script_version("$Revision: 13394 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-6056");
   script_bugtraq_id(103003);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-16 17:50:30 +0530 (Fri, 16 Feb 2018)");
   script_name("Google Chrome Unspecified Security Vulnerability Feb18 (Mac OS X)");
 
@@ -73,7 +72,7 @@ include("host_details.inc");
 
 vers = "";
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

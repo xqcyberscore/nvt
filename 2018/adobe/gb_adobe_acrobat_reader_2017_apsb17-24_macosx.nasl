@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_2017_apsb17-24_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Acrobat Reader 2017 Security Updates(apsb17-24)-MAC OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812549");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-3016", "CVE-2017-3038", "CVE-2017-3113", "CVE-2017-3115",
                 "CVE-2017-3116", "CVE-2017-3117", "CVE-2017-3118", "CVE-2017-3119",
                 "CVE-2017-3120", "CVE-2017-3121", "CVE-2017-3122", "CVE-2017-3123",
@@ -49,7 +48,7 @@ if(description)
                 "CVE-2017-11269", "CVE-2017-11270", "CVE-2017-11271");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-09 13:25:15 +0530 (Fri, 09 Mar 2018)");
   script_name("Adobe Acrobat Reader 2017 Security Updates(apsb17-24)-MAC OS X");
 
@@ -97,7 +96,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 readerVer = infos['version'];
 InstallPath = infos['location'];
 

@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813663");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-12782", "CVE-2018-5015", "CVE-2018-5028", "CVE-2018-5032",
                 "CVE-2018-5036", "CVE-2018-5038", "CVE-2018-5040", "CVE-2018-5041",
                 "CVE-2018-5045", "CVE-2018-5052", "CVE-2018-5058", "CVE-2018-5067",
@@ -57,7 +57,7 @@ if(description)
                 "CVE-2018-5034", "CVE-2018-5037", "CVE-2018-5043", "CVE-2018-12784");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 13:11:59 +0530 (Thu, 12 Jul 2018)");
   script_name("Adobe Acrobat Reader DC (Classic Track) Multiple Vulnerabilities-apsb18-21 (Mac OS X)");
 
@@ -112,7 +112,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

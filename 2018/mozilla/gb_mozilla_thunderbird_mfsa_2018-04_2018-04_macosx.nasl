@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-04_2018-04_macosx.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-04_2018-04)-MAC OS X
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813050");
-  script_version("$Revision: 12068 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-5095", "CVE-2018-5096", "CVE-2018-5097", "CVE-2018-5098",
                 "CVE-2018-5099", "CVE-2018-5102", "CVE-2018-5103", "CVE-2018-5104",
                 "CVE-2018-5117", "CVE-2018-5089");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-22 11:48:22 +0530 (Thu, 22 Mar 2018)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2018-04_2018-04)-MAC OS X");
 
@@ -91,7 +90,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 tbVer = infos['version'];
 tbPath = infos['location'];
 

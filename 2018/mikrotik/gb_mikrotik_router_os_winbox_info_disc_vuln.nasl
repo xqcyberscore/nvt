@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_os_winbox_info_disc_vuln.nasl 14086 2019-03-11 09:05:57Z mmartin $
 #
 # Mikrotik RouterOS 'Winbox Service' Information Disclosure Vulnerability
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/o:mikrotik:routeros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813155");
-  script_version("$Revision: 14086 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:05:57 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-25 11:34:56 +0530 (Wed, 25 Apr 2018)");
 
   script_cve_id("CVE-2018-14847");
@@ -71,7 +70,7 @@ port and download a user database file. The remote user can then log in and take
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE) ;
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE) ) exit(0);
 mikVer = infos['version'];
 mikPath = infos['location'];
 

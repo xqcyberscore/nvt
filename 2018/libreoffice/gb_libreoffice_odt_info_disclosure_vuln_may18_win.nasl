@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl 11760 2018-10-05 10:04:56Z cfischer $
 #
 # LibreOffice ODT File Information Disclosure Vulnerability May18 (Windows)
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812872");
-  script_version("$Revision: 11760 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-10583");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:04:56 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-07 13:33:47 +0530 (Mon, 07 May 2018)");
   script_tag(name:"qod_type", value:"registry");
 
@@ -72,7 +71,7 @@ initiate an SMB connection embedded in a malicious .odt file and leak NetNTLM cr
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 lver = infos['version'];
 lpath = infos['location'];
 

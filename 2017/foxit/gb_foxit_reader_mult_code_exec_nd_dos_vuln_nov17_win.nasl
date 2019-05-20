@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_code_exec_nd_dos_vuln_nov17_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Foxit Reader Multiple Arbitrary Code Execution and DoS Vulnerabilities Nov17 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812101");
-  script_version("$Revision: 11982 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-10947", "CVE-2017-10948", "CVE-2017-10946");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-10 12:34:48 +0530 (Fri, 10 Nov 2017)");
   script_name("Foxit Reader Multiple Arbitrary Code Execution and DoS Vulnerabilities Nov17 (Windows)");
 
@@ -71,7 +70,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 foxitVer = infos['version'];
 foxPath = infos['location'];
 

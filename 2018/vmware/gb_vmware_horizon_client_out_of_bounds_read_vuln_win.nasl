@@ -28,12 +28,12 @@ CPE = "cpe:/a:vmware:horizon_view_client";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813822");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-6970");
   script_bugtraq_id(105031);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-10 10:11:02 +0530 (Fri, 10 Aug 2018)");
   script_name("VMware Horizon Client Out-of-bounds Read Vulnerability (Windows)");
 
@@ -68,7 +68,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 vmVer = infos['version'];
 vmPath = infos['location'];
 

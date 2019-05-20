@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810747");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-3626", "CVE-2017-10400", "CVE-2016-3092", "CVE-2018-2911",
                 "CVE-2018-3152");
   script_bugtraq_id(97896, 101383, 91453);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-19 13:45:58 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle GlassFish Server Multiple Security Vulnerabilities");
 
@@ -82,7 +82,7 @@ if(!dbPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:dbPort);
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:dbPort)) exit(0);
 dbVer = infos['version'];
 dbPath = infos['location'];
 

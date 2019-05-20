@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_load_parameter_dos_vuln_win.nasl 13491 2019-02-06 09:26:37Z asteins $
 #
 # WordPress 'load-scripts.php' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812692");
-  script_version("$Revision: 13491 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-6389");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:26:37 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-05 20:13:56 +0530 (Mon, 05 Feb 2018)");
   script_name("WordPress 'load-scripts.php' Denial of Service Vulnerability (Windows)");
 
@@ -77,7 +76,7 @@ include("host_details.inc");
 if (!wordPort = get_app_port(cpe:CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe:CPE, port:wordPort, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:wordPort, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

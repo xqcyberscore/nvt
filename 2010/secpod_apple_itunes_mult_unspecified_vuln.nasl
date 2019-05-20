@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_itunes_mult_unspecified_vuln.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Apple iTunes Multiple Unspecified Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902201");
-  script_version("$Revision: 12670 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_cve_id("CVE-2010-1769", "CVE-2010-1763", "CVE-2010-1387");
   script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +59,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

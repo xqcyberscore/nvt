@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808621");
-  script_version("$Revision: 12323 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3500", "CVE-2016-3503",
                 "CVE-2016-3508", "CVE-2016-3550");
   script_bugtraq_id(91945, 91996, 91972, 91951);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:36:30 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2016-07-25 11:28:15 +0530 (Mon, 25 Jul 2016)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-01 July 2016 (Windows)");
 
@@ -85,11 +85,9 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE);
-if(!infos)
-{
+if(!infos = get_app_version_and_location(cpe:CPE)) {
   CPE = "cpe:/a:sun:jre";
-  infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 }
 
 jreVer = infos['version'];

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_is_mult_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Quick Heal Internet Security Multiple Vulnerabilities
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:quick_heal:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811552");
-  script_version("$Revision: 11935 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-8773", "CVE-2017-8774", "CVE-2017-8775", "CVE-2017-8776");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-08-02 12:24:09 +0530 (Wed, 02 Aug 2017)");
   script_name("Quick Heal Internet Security Multiple Vulnerabilities");
 
@@ -80,7 +79,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 quickVer = infos['version'];
 path = infos['location'];
 

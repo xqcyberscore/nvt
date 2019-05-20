@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_demuxer_double_free_vuln_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # VLC Media Player TiVo Demuxer Double Free Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802480");
-  script_version("$Revision: 11888 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2012-0023", "CVE-2011-5231");
   script_bugtraq_id(51147, 51231);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-11-02 12:41:07 +0530 (Fri, 02 Nov 2012)");
   script_name("VLC Media Player TiVo Demuxer Double Free Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47325");
@@ -65,7 +64,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

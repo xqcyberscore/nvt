@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843986");
-  script_version("2019-05-02T13:44:33+0000");
+  script_version("2019-05-20T06:45:30+0000");
   script_cve_id("CVE-2019-9210");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-02 13:44:33 +0000 (Thu, 02 May 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-05-20 06:45:30 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-25 02:00:30 +0000 (Thu, 25 Apr 2019)");
   script_name("Ubuntu Update for advancecomp USN-3936-2");
   script_category(ACT_GATHER_INFO);

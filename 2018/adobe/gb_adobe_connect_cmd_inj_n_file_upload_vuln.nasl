@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_cmd_inj_n_file_upload_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Adobe Connect Command Injection And Unrestricted File Upload Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813038");
-  script_version("$Revision: 12410 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-4921", "CVE-2018-4923");
   script_bugtraq_id(103393, 103391);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-15 11:20:29 +0530 (Thu, 15 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Command Injection And Unrestricted File Upload Vulnerabilities");
@@ -81,7 +80,7 @@ if(!acPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:acPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:acPort, exit_no_version:TRUE)) exit(0);
 acVer = infos['version'];
 acPath = infos['location'];
 

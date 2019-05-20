@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803434");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2012-1530", "CVE-2013-0601", "CVE-2013-0602", "CVE-2013-0603",
                 "CVE-2013-0604", "CVE-2013-0605", "CVE-2013-0606", "CVE-2013-0607",
                 "CVE-2013-0608", "CVE-2013-0609", "CVE-2013-0610", "CVE-2013-0611",
@@ -42,7 +41,7 @@ if(description)
                     57294, 57275, 57276, 57270, 57295, 57277, 57296, 57285, 57297, 65275);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2013-03-12 19:05:12 +0530 (Tue, 12 Mar 2013)");
   script_name("Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)");
 
@@ -72,7 +71,7 @@ application or cause a denial of service.");
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

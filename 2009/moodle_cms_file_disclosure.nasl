@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: moodle_cms_file_disclosure.nasl 10674 2018-07-30 08:24:18Z asteins $
 #
 # Moodle File Disclosure Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100085");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2009-03-28 19:13:00 +0100 (Sat, 28 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -43,27 +41,28 @@ if (description)
   script_dependencies("gb_moodle_cms_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Moodle/Version");
+
   script_tag(name:"summary", value:"An input filter for TeX formulas can be exploited to disclose files
-   readable by the web server. This includes the moodle configuration
-   file with all authentication data and server locations for directly
-   connecting to backend database.
-   TeX filter by default is off and in case of being activated mostly no
-   complete LaTeX environment on a server system will be available.");
+  readable by the web server. This includes the moodle configuration
+  file with all authentication data and server locations for directly
+  connecting to backend database.
+  TeX filter by default is off and in case of being activated mostly no
+  complete LaTeX environment on a server system will be available.");
 
   script_tag(name:"affected", value:"Moodle 1.9.x (prior to 1.9.4),
-   Moodle 1.8.x (prior to 1.8.8),
-   Moodle 1.7.x (prior to 1.7.7)");
+  Moodle 1.8.x (prior to 1.8.8),
+  Moodle 1.7.x (prior to 1.7.7)");
 
   script_tag(name:"solution", value:"Several alternatives:
 
-   1) deactivate TeX filter, if not needed
+  1) deactivate TeX filter, if not needed
 
-   2) use more restrictive mimetex program for rendering
+  2) use more restrictive mimetex program for rendering
 
-   3) change LaTeX configuration (set 'openin_any=p' for paranoid!)
+  3) change LaTeX configuration (set 'openin_any=p' for paranoid!)
 
-   or upgrade to latest development version where patch should be
-   applied by now.");
+  or upgrade to latest development version where patch should be applied by now.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/502231/30/0/threaded");
 
@@ -74,9 +73,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 moodlePort = get_http_port(default:80);
-if(!moodlePort){
-  exit(0);
-}
 
 if(!get_kb_item(string("www/", moodlePort, "/moodle")))exit(0);
 

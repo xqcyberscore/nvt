@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876321");
-  script_version("2019-05-14T05:04:40+0000");
+  script_version("2019-05-17T10:04:07+0000");
   script_cve_id("CVE-2019-10879", "CVE-2019-10878", "CVE-2019-10877");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:04:07 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-08 02:10:07 +0000 (Wed, 08 May 2019)");
   script_name("Fedora Update for teeworlds FEDORA-2019-d29e04fa11");
   script_category(ACT_GATHER_INFO);
@@ -37,15 +37,14 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-d29e04fa11");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5KCS2CFDYJFBLZ4QKVPNJWHOZEGQ2LBC");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'teeworlds' package(s) announced via the FEDORA-2019-d29e04fa11 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'teeworlds'
+  package(s) announced via the FEDORA-2019-d29e04fa11 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"The game features cartoon-themed graphics and
-  physics, and relies heavily on classic shooter weaponry and gameplay. The controls
-  are heavily inspired by the FPS genre of computer games.");
+  script_tag(name:"insight", value:"The game features cartoon-themed graphics and physics,
+and relies heavily on classic shooter weaponry and gameplay.
+The controls are heavily inspired by the FPS genre of computer games.");
 
   script_tag(name:"affected", value:"'teeworlds' package(s) on Fedora 30.");
 

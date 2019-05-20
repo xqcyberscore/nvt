@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801019");
-  script_version("2019-05-14T12:12:41+0000");
-  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-21 10:12:07 +0200 (Wed, 21 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -69,8 +69,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 xerPort = get_http_port(default:80);
-if(!xerPort)
-  exit(0);
 
 xerVer = get_kb_item("www/" + xerPort + "/Xerver");
 if(xerVer != NULL)

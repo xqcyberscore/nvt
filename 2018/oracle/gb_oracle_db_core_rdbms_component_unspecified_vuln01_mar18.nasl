@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln01_mar18.nasl 12088 2018-10-25 10:57:43Z cfischer $
 #
 # Oracle Database Server Core RDBMS Component Unspecified Vulnerability -01 Mar18
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813006");
-  script_version("$Revision: 12088 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2011-2242");
   script_tag(name:"cvss_base", value:"1.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:57:43 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-07 15:14:30 +0530 (Wed, 07 Mar 2018)");
   script_name("Oracle Database Server Core RDBMS Component Unspecified Vulnerability -01 Mar18");
 
@@ -71,7 +70,7 @@ if(!dbport = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:dbport, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:dbport, exit_no_version:TRUE)) exit(0);
 dbVer = infos['version'];
 path = infos['location'];
 

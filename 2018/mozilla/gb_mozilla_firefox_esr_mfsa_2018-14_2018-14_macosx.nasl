@@ -28,11 +28,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813395");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-6126");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-07 10:54:24 +0530 (Thu, 07 Jun 2018)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-14_2018-14)-MAC OS X");
 
@@ -71,7 +71,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 ffVer = infos['version'];
 ffPath = infos['location'];
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901004");
-  script_version("2019-05-14T12:12:41+0000");
-  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -74,8 +74,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 nchatPort = get_http_port(default:80);
-if(!nchatPort)
-  exit(0);
 
 nchatVer = get_kb_item("www/" + nchatPort + "/NatterChat");
 nchatVer = eregmatch(pattern:"^(.+) under (/.*)$", string:nchatVer);

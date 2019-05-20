@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_obj_code_exec_vuln_win.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802772");
-  script_version("$Revision: 11973 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2012-0779");
   script_bugtraq_id(53395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-05-08 13:53:41 +0530 (Tue, 08 May 2012)");
   script_name("Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49096/");
@@ -66,7 +65,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

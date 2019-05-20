@@ -23,8 +23,8 @@ CPE = 'cpe:/a:isc:bind';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142324");
-  script_version("2019-04-30T07:21:46+0000");
-  script_tag(name:"last_modification", value:"2019-04-30 07:21:46 +0000 (Tue, 30 Apr 2019)");
+  script_version("2019-05-17T11:35:17+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 11:35:17 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-30 07:15:16 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
@@ -72,7 +72,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+if(!infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE)) exit(0);
 version = infos["version"];
 proto = infos["proto"];
 

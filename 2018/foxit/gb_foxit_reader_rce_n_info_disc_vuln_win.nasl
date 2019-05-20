@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_rce_n_info_disc_vuln_win.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Foxit Reader Remote Code Execution And Information Disclosure Vulnerabilities - Oct18 (Windows)
 #
@@ -30,7 +29,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814065");
-  script_version("$Revision: 12767 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-17607", "CVE-2018-17608", "CVE-2018-17609", "CVE-2018-17610",
                 "CVE-2018-17611", "CVE-2018-17781", "CVE-2018-16291", "CVE-2018-16292",
                 "CVE-2018-16293", "CVE-2018-16294", "CVE-2018-16295", "CVE-2018-16296",
@@ -41,7 +40,7 @@ if(description)
                 "CVE-2018-3997");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 11:59:56 +0530 (Wed, 03 Oct 2018)");
   script_name("Foxit Reader Remote Code Execution And Information Disclosure Vulnerabilities - Oct18 (Windows)");
 
@@ -119,7 +118,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 pdfVer = infos['version'];
 pdfPath = infos['location'];
 

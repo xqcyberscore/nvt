@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ibm:spss_samplepower";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802600");
-  script_version("$Revision: 14117 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_bugtraq_id(51448);
   script_cve_id("CVE-2012-0189");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-02-01 11:11:11 +0530 (Wed, 01 Feb 2012)");
   script_name("IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)");
 
@@ -84,7 +83,7 @@ include("version_func.inc");
 include("secpod_activex.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

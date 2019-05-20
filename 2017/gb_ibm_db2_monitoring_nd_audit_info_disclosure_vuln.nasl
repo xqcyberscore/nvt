@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_monitoring_nd_audit_info_disclosure_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 'monitoring' and 'audit feature' Information Disclosure Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809855");
-  script_version("$Revision: 14286 $");
+  script_version("2019-05-17T11:35:17+0000");
   script_cve_id("CVE-2014-0919");
   script_bugtraq_id(74217);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 11:35:17 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-04 11:08:09 +0530 (Wed, 04 Jan 2017)");
 
   script_name("IBM DB2 'monitoring' and 'audit feature' Information Disclosure Vulnerability");
@@ -76,7 +75,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+if(!infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE)) exit(0);
 version = infos["version"];
 proto = infos["proto"];
 

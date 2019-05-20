@@ -28,11 +28,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813098");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-2783");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-18 19:05:00 +0530 (Wed, 18 Apr 2018)");
   script_name("Oracle Java SE Security Updates (apr2018-3678067) 01 - Windows");
 
@@ -66,17 +66,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE);
-jreVer = infos['version'];
-if(!jreVer)
-{
+if(!infos = get_app_version_and_location(cpe:CPE)) {
   CPE = "cpe:/a:sun:jre";
-  infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
-  jreVer = infos['version'];
+  if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 }
+
+jreVer = infos['version'];
 path = infos['location'];
 
-if(jreVer =~ "^(1\.(6|7|8))")
+if(jreVer =~ "^1\.[6-8]\.")
 {
   if((version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.181")) ||
      (version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.161")) ||

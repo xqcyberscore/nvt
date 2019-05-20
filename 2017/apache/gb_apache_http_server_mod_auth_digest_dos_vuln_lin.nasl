@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mod_auth_digest_dos_vuln_lin.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache HTTP Server 'mod_auth_digest' DoS Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812067");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2016-2161");
   script_bugtraq_id(95076);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-06 13:08:05 +0530 (Mon, 06 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_auth_digest' DoS Vulnerability (Linux)");
@@ -69,13 +68,8 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-httpd_port = 0;
-httpd_ver = "";
-affected_version = "";
 
 if(!httpd_port = get_app_port(cpe:CPE)){
   exit(0);

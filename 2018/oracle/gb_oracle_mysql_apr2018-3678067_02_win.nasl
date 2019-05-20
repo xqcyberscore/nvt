@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813144");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-2766", "CVE-2018-2782", "CVE-2018-2784", "CVE-2018-2787",
                 "CVE-2018-2758");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-19 10:32:41 +0530 (Thu, 19 Apr 2018)");
   script_name("Oracle Mysql Security Updates (apr2018-3678067) 02 - Windows");
 
@@ -79,7 +79,7 @@ if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE)) exit(0);
 mysqlVer = infos['version'];
 path = infos['location'];
 

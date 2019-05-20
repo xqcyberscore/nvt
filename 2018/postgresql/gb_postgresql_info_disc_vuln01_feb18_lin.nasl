@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_info_disc_vuln01_feb18_lin.nasl 12142 2018-10-29 08:28:54Z cfischer $
 #
 # PostgreSQL Information Disclosure Vulnerability-01 Feb18 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812957");
-  script_version("$Revision: 12142 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-1052");
   script_bugtraq_id(102987);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:28:54 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-28 11:29:21 +0530 (Wed, 28 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Information Disclosure Vulnerability-01 Feb18 (Linux)");
@@ -79,7 +78,7 @@ if(!pgsqlPort){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_version:TRUE)) exit(0);
 pgsqlVer = infos['version'];
 pgsqlPath = infos['location'];
 

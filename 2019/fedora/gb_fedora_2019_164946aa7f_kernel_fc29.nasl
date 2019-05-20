@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875628");
-  script_version("2019-05-14T05:04:40+0000");
+  script_version("2019-05-20T06:45:30+0000");
   script_cve_id("CVE-2019-7221", "CVE-2019-6974", "CVE-2019-7222", "CVE-2018-16880", "CVE-2019-3459", "CVE-2019-3460", "CVE-2019-3701", "CVE-2018-19824", "CVE-2018-16862", "CVE-2018-19407", "CVE-2018-18710");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-05-20 06:45:30 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-07 02:13:18 +0000 (Tue, 07 May 2019)");
   script_name("Fedora Update for kernel FEDORA-2019-164946aa7f");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_dos_vuln_aug18.nasl 12956 2019-01-07 10:14:49Z ckuersteiner $
 #
 # XnView Multiple Denial of Service Vulnerabilities Aug18
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813820");
-  script_version("$Revision: 12956 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-15175", "CVE-2018-15176", "CVE-2018-15174");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:14:49 +0100 (Mon, 07 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-10 10:11:02 +0530 (Fri, 10 Aug 2018)");
 
   script_name("XnView Multiple Denial of Service Vulnerabilities Aug18");
@@ -74,7 +73,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 xnVer = infos['version'];
 xnPath = infos['location'];
 

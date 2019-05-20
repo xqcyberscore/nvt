@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_02.nasl 12166 2018-10-30 10:10:44Z santu $
 #
 # Oracle WebLogic Server Multiple Unspecified Vulnerabilities (cpujul2017-3236622-cpuoct2018-4428296)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811245");
-  script_version("$Revision: 12166 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-10137", "CVE-2017-10152", "CVE-2018-2902");
   script_bugtraq_id(99634, 101351, 105654);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 11:10:44 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-07-19 13:53:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Multiple Unspecified Vulnerabilities (cpujul2017-3236622-cpuoct2018-4428296)");
@@ -79,7 +78,7 @@ if(!webPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location( cpe:CPE, port:webPort, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, port:webPort, exit_no_version:TRUE )) exit(0);
 webVer = infos['version'];
 path = infos['location'];
 

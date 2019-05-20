@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sep_arbit_file_del_vuln_sym17-011.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Symantec Endpoint Protection Arbitrary File Deletion Vulnerability (SYM17-011)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812069");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-13680");
   script_bugtraq_id(101503);
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-08 15:56:13 +0530 (Wed, 08 Nov 2017)");
   script_name("Symantec Endpoint Protection Arbitrary File Deletion Vulnerability (SYM17-011)");
 
@@ -70,15 +69,10 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-sepVer= "";
-infos = "";
-sepPath = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 sepVer = infos['version'];
 sepPath = infos['location'];
 

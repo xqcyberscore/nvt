@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810554");
-  script_version("2019-05-16T06:54:44+0000");
+  script_version("2019-05-20T06:24:13+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-16 06:54:44 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 06:24:13 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-02-15 13:56:01 +0530 (Wed, 15 Feb 2017)");
   script_name("SMBv1 enabled (Local Windows Check)");
   script_category(ACT_GATHER_INFO);
@@ -46,9 +46,9 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if SMBv1 is enabled for the SMB Client or Server based on the
   information provided by the following two VTs:
-  
+
   - SMBv1 Client Detection (OID: 1.3.6.1.4.1.25623.1.0.810550)
-  
+
   - SMBv1 Server Detection (OID: 1.3.6.1.4.1.25623.1.0.810549).");
 
   script_tag(name:"qod_type", value:"registry");

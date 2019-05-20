@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107653");
-  script_version("2019-05-14T13:45:27+0000");
-  script_tag(name:"last_modification", value:"2019-05-14 13:45:27 +0000 (Tue, 14 May 2019)");
+  script_version("2019-05-20T07:23:58+0000");
+  script_tag(name:"last_modification", value:"2019-05-20 07:23:58 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-11 15:29:21 +0200 (Sat, 11 May 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -86,7 +86,7 @@ foreach key( key_list ) {
     set_kb_item( name:"gegridsolutions/ge_communicator/detected", value:TRUE );
 
     register_and_report_cpe( app:"GE Grid Solutions " + appName, ver:version, concluded:concluded,
-                             base:"cpe:/a:gegridsolutions:ge_communicator:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
+                             base:"cpe:/a:ge:ge_communicator:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
     exit( 0 );
   }
 }

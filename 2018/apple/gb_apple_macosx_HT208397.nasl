@@ -27,12 +27,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812629");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-5753", "CVE-2017-5715");
   script_bugtraq_id(102371, 102376);
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-12 16:38:44 +0530 (Fri, 12 Jan 2018)");
   script_name("Apple MacOSX Security Updates (HT208397)");
 
@@ -72,7 +72,7 @@ include("host_details.inc");
 safVer = "";
 path = "";
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 safVer = infos['version'];
 path = infos['location'];
 

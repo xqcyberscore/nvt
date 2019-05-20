@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpdx_37586.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # httpdx Space Character Remote File Disclosure Vulnerability
 #
@@ -24,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100421");
-  script_version("$Revision: 14233 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2010-01-05 18:50:28 +0100 (Tue, 05 Jan 2010)");
   script_bugtraq_id(37586);
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,14 +45,16 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_httpdx_server_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("httpdx/installed");
+
   script_tag(name:"summary", value:"httpdx is prone to a remote file-disclosure vulnerability because it
-fails to properly sanitize user-supplied input.
+  fails to properly sanitize user-supplied input.");
 
-An attacker can exploit this vulnerability to view the source code
-of files in the context of the server process. This may aid in
-further attacks.
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view the source code
+  of files in the context of the server process. This may aid in further attacks.");
 
-httpdx 1.5 is affected. Other versions may be vulnerable as well.");
+  script_tag(name:"affected", value:"httpdx 1.5 is affected. Other versions may be vulnerable as well.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
@@ -68,9 +68,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 httpdxPort = get_http_port(default:80);
-if(!httpdxPort){
-  exit(0);
-}
 
 httpdxVer = get_kb_item("httpdx/" + httpdxPort + "/Ver");
 if(!isnull(httpdxVer))

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_oct12_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - October 12 (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802986");
-  script_version("$Revision: 11888 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2012-5248", "CVE-2012-5249", "CVE-2012-5250", "CVE-2012-5251",
                 "CVE-2012-5252", "CVE-2012-5253", "CVE-2012-5254", "CVE-2012-5255",
                 "CVE-2012-5256", "CVE-2012-5257", "CVE-2012-5258", "CVE-2012-5259",
@@ -41,7 +40,7 @@ if(description)
   script_bugtraq_id(55827, 56374, 56375, 56376, 56377);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-10-15 12:29:16 +0530 (Mon, 15 Oct 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - October 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50876/");
@@ -70,7 +69,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

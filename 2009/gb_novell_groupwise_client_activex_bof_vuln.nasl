@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_groupwise_client_activex_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Novell Groupwise Client ActiveX Control Buffer Overflow Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:novell:groupwise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800973");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2009-11-09 14:01:44 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -69,7 +68,7 @@ include("secpod_activex.inc");
 include("secpod_smb_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 gcVer = infos['version'];
 
 if(version_is_less_equal(version:gcVer, test_version:"7.0.3.1294"))

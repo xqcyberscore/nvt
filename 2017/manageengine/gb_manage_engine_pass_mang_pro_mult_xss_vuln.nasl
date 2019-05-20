@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_pass_mang_pro_mult_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # ManageEngine Password Manager Pro Multiple XSS Vulnerabilities
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:manageengine:password_manager_pro";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812501");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-17698");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-19 10:23:27 +0530 (Tue, 19 Dec 2017)");
   script_name("ManageEngine Password Manager Pro Multiple XSS Vulnerabilities");
 
@@ -71,9 +70,6 @@ if (description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-meVer = "";
-mePort = "";
 
 if(!mePort = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_file_read_line_function_macosx.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Wireshark 'File_read_line' Function Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812282");
-  script_version("$Revision: 11982 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-17935");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-28 12:52:35 +0530 (Thu, 28 Dec 2017)");
   script_name("Wireshark 'File_read_line' Function Denial of Service Vulnerability (Mac OS X)");
 
@@ -75,7 +74,7 @@ wirversion = "";
 path = "";
 infos = "";
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 wirversion = infos['version'];
 path = infos['location'];
 

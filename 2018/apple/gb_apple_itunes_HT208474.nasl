@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208474.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Apple iTunes Security Updates( HT208474 )
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812666");
-  script_version("$Revision: 12410 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-4088", "CVE-2018-4096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-24 12:06:17 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple iTunes Security Updates( HT208474 )");
 
@@ -68,7 +67,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 ituneVer = infos['version'];
 itunePath = infos['location'];
 

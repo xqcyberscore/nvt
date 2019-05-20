@@ -29,11 +29,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812869");
-  script_version("2019-05-04T10:06:54+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-2826");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-04 10:06:54 +0000 (Sat, 04 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-02 16:58:57 +0530 (Wed, 02 May 2018)");
 
   script_name("Zabbix Server Information Disclosure Vulnerability May18");
@@ -75,7 +75,7 @@ include("host_details.inc");
 if (!zport = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe:CPE, port:zport, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:zport, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

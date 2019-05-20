@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_sa-2018-001-003_win.nasl 12496 2018-11-23 03:21:34Z ckuersteiner $
 #
 # OpenAFS < 1.6.22.4, 1.8.x through 1.8.1.1 Multiple Vulnerabilities (Windows)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112379");
-  script_version("$Revision: 12496 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-16947", "CVE-2018-16948", "CVE-2018-16949");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 04:21:34 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-09-17 14:02:22 +0200 (Mon, 17 Sep 2018)");
   script_name("OpenAFS < 1.6.22.4, 1.8.x through 1.8.1.1 Multiple Vulnerabilities (Windows)");
 
@@ -87,7 +86,7 @@ include("host_details.inc");
 
 CPE = "cpe:/a:openafs:openafs";
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 vers = infos["version"];
 path = infos["location"];
 

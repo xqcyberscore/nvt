@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_mult_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Novell iPrint Client Multiple Security Vulnerabilities (Windows)
 #
@@ -32,8 +31,8 @@ CPE = "cpe:/a:novell:iprint";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801423");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-3109", "CVE-2010-3108", "CVE-2010-3107", "CVE-2010-3106");
   script_bugtraq_id(42100);
@@ -83,7 +82,7 @@ include("secpod_activex.inc");
 include("secpod_smb_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 iPrintVer = infos['version'];
 
 if(version_is_less_equal(version:iPrintVer, test_version:"5.40"))

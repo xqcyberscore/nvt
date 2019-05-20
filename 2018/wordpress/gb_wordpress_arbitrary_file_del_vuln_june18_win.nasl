@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_arbitrary_file_del_vuln_june18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress Arbitrary File Deletion Vulnerability-June 2018 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813454");
-  script_version("$Revision: 12116 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-12895");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-27 12:51:49 +0530 (Wed, 27 Jun 2018)");
   script_name("WordPress Arbitrary File Deletion Vulnerability-June 2018 (Windows)");
 
@@ -78,7 +77,7 @@ if(!wordPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:wordPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:wordPort, exit_no_version:TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

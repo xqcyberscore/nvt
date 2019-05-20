@@ -28,12 +28,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813196");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-17557", "CVE-2017-14458", "CVE-2018-3842", "CVE-2018-3853",
                 "CVE-2018-3850", "CVE-2018-10303", "CVE-2018-10302", "CVE-2018-3843");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-18 12:43:57 +0530 (Fri, 18 May 2018)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities-May18 (Windows)");
 
@@ -103,7 +103,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 pdfVer = infos['version'];
 pdfPath = infos['location'];
 

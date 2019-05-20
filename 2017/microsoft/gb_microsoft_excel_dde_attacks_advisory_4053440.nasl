@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_excel_dde_attacks_advisory_4053440.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Excel 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812074");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-10 10:53:35 +0530 (Fri, 10 Nov 2017)");
   script_name("Microsoft Excel 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)");
 
@@ -52,8 +51,11 @@ if(description)
   attackers to perform code execution on the targeted device.");
 
   script_tag(name:"affected", value:"Microsoft Excel 2016
+
   Microsoft Excel 2013
+
   Microsoft Excel 2010
+
   Microsoft Excel 2007");
 
   script_tag(name:"solution", value:"Disable the DDE feature via the registry
@@ -73,13 +75,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-excelVer = "";
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(!excelVer){

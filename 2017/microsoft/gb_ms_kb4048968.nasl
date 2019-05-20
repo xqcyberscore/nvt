@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812126");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-11835", "CVE-2017-11832");
   script_bugtraq_id(101736, 101726);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-15 00:30:17 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4048968)");
 
@@ -63,14 +63,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-sysPath = "";
-fileVer = "";
 
 if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);

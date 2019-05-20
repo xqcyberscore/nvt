@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_cc_mult_rce_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Adobe Photoshop CC Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812210");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-11304", "CVE-2017-11303");
   script_bugtraq_id(101829);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-16 16:38:07 +0530 (Thu, 16 Nov 2017)");
   script_name("Adobe Photoshop CC Multiple Remote Code Execution Vulnerabilities (Windows)");
 
@@ -67,18 +66,14 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_photoshop_detect.nasl");
   script_mandatory_keys("Adobe/Photoshop/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/photoshop.html");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-prodVer = "";
-prodVer2017 = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 prodVer2017 = infos['version'];
 path = infos['location'];
 

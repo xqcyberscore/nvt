@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_dos_n_sec_bypass_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft PowerShell Core DoS And Security Feature Bypass Vulnerabilities (MacOSX)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812745");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-01-30 15:21:20 +0530 (Tue, 30 Jan 2018)");
   script_name("Microsoft PowerShell Core DoS And Security Feature Bypass Vulnerabilities (MacOSX)");
 
@@ -79,7 +78,7 @@ infos = "";
 psPath = "";
 psVer = "";
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 psVer = infos['version'];
 psPath = infos['location'];
 

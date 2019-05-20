@@ -28,11 +28,11 @@ CPE = "cpe:/a:portswigger:burp_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813811");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-10377");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-02 13:12:21 +0530 (Thu, 02 Aug 2018)");
   script_name("Burp Suite 'Collaborator server certificat' Security Bypass Vulnerability (Linux)");
 
@@ -71,7 +71,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE, nofork: TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE, nofork: TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

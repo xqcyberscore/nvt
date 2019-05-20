@@ -28,14 +28,14 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814822");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2018-20346", "CVE-2018-20505", "CVE-2019-6212", "CVE-2019-6215",
                 "CVE-2019-6216", "CVE-2019-6221", "CVE-2019-6227", "CVE-2019-6229",
                 "CVE-2019-6233", "CVE-2018-20506", "CVE-2019-6217", "CVE-2019-6234",
                 "CVE-2019-6235", "CVE-2019-6226");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 14:09:57 +0530 (Fri, 25 Jan 2019)");
   script_name("Apple iTunes Security Updates (HT209450)");
 
@@ -78,7 +78,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 appVer = infos['version'];
 appPath = infos['location'];
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_HT208328.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple iCloud Security Updates HT208328)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812258");
-  script_version("$Revision: 12391 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-13864", "CVE-2017-7156", "CVE-2017-7157", "CVE-2017-13856",
                 "CVE-2017-13870", "CVE-2017-13866", "CVE-2017-7160");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-14 16:00:28 +0530 (Thu, 14 Dec 2017)");
   script_name("Apple iCloud Security Updates( HT208328 )");
 
@@ -65,19 +64,13 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_icloud_detect_win.nasl");
   script_mandatory_keys("apple/icloud/Win/Ver");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-infos = "";
-vers = "";
-path = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

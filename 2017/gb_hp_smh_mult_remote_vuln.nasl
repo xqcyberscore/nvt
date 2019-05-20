@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_remote_vuln.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # HP System Management Homepage Multiple Remote Vulnerabilities
 #
@@ -33,8 +32,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112085");
-  script_version("$Revision: 11835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_version("2019-05-17T10:45:27+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-10-17 12:34:56 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -75,7 +74,7 @@ include("version_func.inc");
 if (!hpport = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_location(cpe:CPE, port:hpport, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:hpport, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

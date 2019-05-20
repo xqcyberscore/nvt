@@ -28,11 +28,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813445");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2017-17062");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-19 12:05:29 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Improper Privilege Management Vulnerability-June18");
@@ -79,7 +79,7 @@ if(!oxPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:oxPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:oxPort, exit_no_version:TRUE)) exit(0);
 oxVer = infos['version'];
 path = infos['location'];
 

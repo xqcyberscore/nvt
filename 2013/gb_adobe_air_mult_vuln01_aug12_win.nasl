@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_aug12_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Air Multiple Vulnerabilities -01 August 12 (Windows)
 #
@@ -38,13 +37,13 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Adobe Air and is prone to multiple
   vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803490");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-17T10:45:27+0000");
   script_cve_id("CVE-2012-4163", "CVE-2012-4164", "CVE-2012-4165", "CVE-2012-4166",
                 "CVE-2012-4167", "CVE-2012-4168", "CVE-2012-4171", "CVE-2012-5054");
   script_bugtraq_id(55136, 55365);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2012-08-24 11:31:28 +0530 (Fri, 24 Aug 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,7 +63,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 

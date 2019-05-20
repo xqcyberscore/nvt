@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mojolicious_dir_trav_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mojolicious Directory Traversal Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801882");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-05-17T12:32:34+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 12:32:34 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_bugtraq_id(47402);
   script_cve_id("CVE-2011-1589");
@@ -46,17 +45,22 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_mandatory_keys("Mojolicious/banner");
   script_require_ports("Services/www", 3000);
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive information
   that could aid in further attacks.");
+
   script_tag(name:"affected", value:"Mojolicious versions prior to 1.16.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in 'Path.pm', which allows remote
-  attackers to read arbitrary files via a %2f..%2f
-  (encoded slash dot dot slash) in a URI.");
+  attackers to read arbitrary files via a %2f..%2f (encoded slash dot dot slash) in a URI.");
+
   script_tag(name:"solution", value:"Upgrade to Mojolicious version 1.16 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"The host is running Mojolicious and is prone to directory traversal
   vulnerability.");
-  script_xref(name:"URL", value:"http://www.mojolicious.org/");
+
   exit(0);
 }
 
@@ -66,9 +70,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:3000);
-if(!port){
-  exit(0);
-}
 
 banner = get_http_banner(port:port);
 
@@ -80,7 +81,8 @@ if("Server: Mojolicious" >< banner)
     url = string(crap(data:"..%2f",length:5*10),files[file]);
 
     if(http_vuln_check(port:port, url:url, pattern:file)) {
-      security_message(port:port);
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
     }
   }
 }

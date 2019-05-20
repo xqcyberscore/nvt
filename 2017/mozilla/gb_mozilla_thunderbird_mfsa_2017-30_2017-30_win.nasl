@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-30_2017-30_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2017-30_2017-30 )-Windows
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812274");
-  script_version("$Revision: 11983 $");
+  script_version("2019-05-17T13:14:58+0000");
   script_cve_id("CVE-2017-7845", "CVE-2017-7846", "CVE-2017-7847", "CVE-2017-7848",
                 "CVE-2017-7829");
   script_bugtraq_id(102115, 102258);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-26 15:41:29 +0530 (Tue, 26 Dec 2017)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2017-30_2017-30 )-Windows");
 
@@ -75,17 +74,13 @@ if(description)
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
-  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-tbVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 tbVer = infos['version'];
 tbPath = infos['location'];
 

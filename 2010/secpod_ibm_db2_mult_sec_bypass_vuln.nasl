@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_mult_sec_bypass_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 Multiple Security Bypass Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901156");
-  script_version("$Revision: 14286 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
+  script_version("2019-05-17T11:35:17+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 11:35:17 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_bugtraq_id(43291);
   script_cve_id("CVE-2010-3474", "CVE-2010-3475");
@@ -81,7 +80,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+if(!infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE)) exit(0);
 version = infos["version"];
 proto = infos["proto"];
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hhvm_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # HHVM Detection
 #
@@ -31,16 +30,15 @@ if (description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-17T09:31:40+0000");
+  script_tag(name:"last_modification", value:"2019-05-17 09:31:40 +0000 (Fri, 17 May 2019)");
   script_tag(name:"creation_date", value:"2014-12-09 14:29:24 +0100 (Tue, 09 Dec 2014)");
   script_name("HHVM Detection");
 
   script_xref(name:"URL", value:"http://hhvm.com/");
 
-  script_tag(name:"summary", value:"The script sends a connection
-request to the server and attempts to extract the version number
-from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract
+  the version number from the reply.");
 
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
@@ -54,8 +52,6 @@ from the reply.");
 
 
 include("http_func.inc");
-
-
 include("cpe.inc");
 include("host_details.inc");
 
@@ -64,24 +60,23 @@ port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
 if( ! banner || "X-Powered-By: HHVM/" >!< banner ) exit( 0 );
 
-vers ='unknown';
+vers = 'unknown';
 version = eregmatch( pattern:'X-Powered-By: HHVM/([^ \r\n]+)', string:banner );
 if( ! isnull( version[1] ) ) vers = version[1];
 
-set_kb_item(name:"HHVM/installed",value:TRUE);
+set_kb_item(name:"HHVM/detected",value:TRUE);
 
-cpe = build_cpe( value:vers, exp:"^([0-9.]+.*)$", base:"cpe:/a:hiphop_virtual_machine_for_php_project:hiphop_virtual_machine_for_php:" );
-if( isnull( cpe ) )
-  cpe = "cpe:/a:hiphop_virtual_machine_for_php_project:hiphop_virtual_machine_for_php";
+cpe = build_cpe( value:vers, exp:"^([0-9.]+.*)$", base:"cpe:/a:facebook:hhvm:" );
+if( ! cpe )
+  cpe = "cpe:/a:facebook:hhvm";
 
-register_product( cpe:cpe, location:port + '/tcp', port:port );
+register_product( cpe:cpe, location:port + '/', port:port, service:"www" );
 
 log_message( data: build_detection_report( app:"HHVM",
                                            version:vers,
-                                           install:port + '/tcp',
+                                           install:'/',
                                            cpe:cpe,
                                            concluded: version[0] ),
              port:port );
 
 exit(0);
-
