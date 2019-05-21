@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_change_user_cmd_sec_bypass_vuln_lin.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808154");
-  script_version("$Revision: 11961 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2012-5627");
   script_bugtraq_id(56837);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-07 19:33:35 +0530 (Tue, 07 Jun 2016)");
   script_name("MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -70,7 +69,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
 
@@ -82,7 +80,7 @@ if(!mariadbPort = get_app_port(cpe:CPE)){
 }
 
 mariadbVer = get_app_version(cpe:CPE, port:mariadbPort);
-if(isnull(mariadbVer) ||  !(mariadbVer =~ "^(5.2|5.3|5.5)")){
+if(!mariadbVer || mariadbVer !~ "^5\.[235]\."){
   exit(0);
 }
 

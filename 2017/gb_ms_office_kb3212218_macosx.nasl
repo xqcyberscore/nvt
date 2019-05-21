@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_kb3212218_macosx.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Microsoft Office Spoofing Vulnerability-KB3212218 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810743");
-  script_version("$Revision: 11989 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2017-0207");
   script_bugtraq_id(97463);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-12 15:10:09 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Spoofing Vulnerability-KB3212218 (Mac OS X)");
@@ -65,18 +64,17 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-if(!(offVer =~ "^(14\.)")){
+if(offVer !~ "^14\."){
   exit(0);
 }
 
-if(offVer =~ "^(14\.)" && version_is_less(version:offVer, test_version:"14.7.3"))
+if(offVer =~ "^14\." && version_is_less(version:offVer, test_version:"14.7.3"))
 {
   report = 'File version:     ' + offVer   + '\n' +
            'Vulnerable range: 14.0 - 14.7.2 ' + '\n' ;

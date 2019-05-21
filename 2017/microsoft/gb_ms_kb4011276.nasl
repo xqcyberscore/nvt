@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812148");
-  script_version("2019-05-17T13:14:58+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2017-11882");
   script_bugtraq_id(101757);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-11-15 13:22:30 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Office 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011276)");
 
@@ -68,7 +68,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 offVer = get_kb_item("MS/Office/Ver");
-if(!offVer || !(offVer =~ "^12\.")){
+if(!offVer || offVer !~ "^12\."){
   exit(0);
 }
 

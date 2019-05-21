@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814283");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-8574", "CVE-2018-8577", "CVE-2018-8522", "CVE-2018-8524",
                 "CVE-2018-8558", "CVE-2018-8576", "CVE-2018-8579", "CVE-2018-8582",
                 "CVE-2018-8575", "CVE-2018-8539", "CVE-2018-8573", "CVE-2018-8546");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-14 14:56:39 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Office 365 (2016 Click-to-Run) Multiple Vulnerabilities-November18");
 
@@ -87,17 +87,16 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
 officeVer = get_kb_item("MS/Off/C2R/Ver");
-UpdateChannel = get_kb_item("MS/Office/C2R/UpdateChannel");
-officePath = get_kb_item("MS/Off/C2R/InstallPath");
-
-if(!(officeVer =~ "^(16\.)")){
+if(!officeVer || officeVer !~ "^16\."){
   exit(0);
 }
+
+UpdateChannel = get_kb_item("MS/Office/C2R/UpdateChannel");
+officePath = get_kb_item("MS/Off/C2R/InstallPath");
 
 ## 1810 (Build 11001.20108)
 if(UpdateChannel == "Monthly Channel")

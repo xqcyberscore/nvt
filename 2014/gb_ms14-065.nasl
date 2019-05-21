@@ -28,7 +28,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804790");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2014-4143", "CVE-2014-6323", "CVE-2014-6337", "CVE-2014-6339",
                 "CVE-2014-6340", "CVE-2014-6341", "CVE-2014-6342", "CVE-2014-6343",
                 "CVE-2014-6344", "CVE-2014-6345", "CVE-2014-6346", "CVE-2014-6347",
@@ -38,7 +38,7 @@ if(description)
                     70346, 70942, 70946, 70347, 70348, 70939, 70940, 70323, 70333);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2014-11-12 08:00:12 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3003057)");
 
@@ -75,7 +75,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("host_details.inc");
@@ -89,7 +88,7 @@ if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2,
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(6|7|8|9|10|11)")){
+if(!ieVer || ieVer !~ "^([6-9|1[01])\."){
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_eol.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Internet Explorer End Of Life Detection
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806657");
-  script_version("$Revision: 12455 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-01-12 15:30:21 +0530 (Tue, 12 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Internet Explorer End Of Life Detection");
@@ -61,7 +60,7 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(6|7|8|9|10|11)")){
+if(!ieVer || ieVer !~ "^([6-9|1[01])\."){
   exit(0);
 }
 
@@ -69,7 +68,7 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8_1:1, win8_1x64:1, win201
 {
   ## Internet Explorer 11 only supported Windows 7 and Server 2008r2
   ## https://support.microsoft.com/en-us/lifecycle#gp/Microsoft-Internet-Explorer
-  if(!(ieVer =~ "^11"))
+  if(ieVer !~ "^11\.")
   {
     VULN = TRUE;
     Fix = "Internet Explorer 11";
@@ -80,7 +79,7 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8_1:1, win8_1x64:1, win201
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
   ## Internet Explorer 9 only supported for Windows Vista and Server 2008
-  if(!(ieVer =~ "^9"))
+  if(ieVer !~ "^9\.")
   {
     VULN = TRUE;
     Fix = "Internet Explorer 9";
@@ -91,7 +90,7 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 else if(hotfix_check_sp(win2012:1) > 0)
 {
   ##Internet Explorer 10 only supported for Windows Server 2012
-  if(!(ieVer =~ "^10"))
+  if(ieVer !~ "^10\.")
   {
     VULN = TRUE;
     Fix = "Internet Explorer 10";

@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811093");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2017-8527", "CVE-2017-8531", "CVE-2017-0283", "CVE-2017-8532",
                 "CVE-2017-8533", "CVE-2017-0287", "CVE-2017-0288", "CVE-2017-0289",
                 "CVE-2017-0286");
   script_bugtraq_id(98933, 98819, 98920, 98820, 98821, 98922, 98923, 98929, 98891);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-14 11:38:00 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Multiple Vulnerabilities (KB3191844)");
 
@@ -47,10 +47,10 @@ if(description)
   - An error in the way Windows Uniscribe handles objects in memory.
 
   - Multiple errors in the Windows GDI component which improperly discloses the
-    contents of its memory.
+  contents of its memory.
 
   - An error in the Windows font library which improperly handles specially crafted
-    embedded fonts.");
+  embedded fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information and execute
@@ -69,11 +69,9 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3191844");
+
   exit(0);
 }
-
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -81,7 +79,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 offVer = get_kb_item("MS/Office/Ver");
-if(!offVer || !(offVer =~ "^14\.")){
+if(!offVer || offVer !~ "^14\."){
   exit(0);
 }
 

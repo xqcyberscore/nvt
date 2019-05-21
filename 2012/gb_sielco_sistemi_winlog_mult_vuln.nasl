@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # Sielco Sistemi Winlog Multiple Vulnerabilities
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802879");
-  script_version("$Revision: 11861 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2012-4353", "CVE-2012-4354", "CVE-2012-4355", "CVE-2012-4356",
                 "CVE-2012-4357", "CVE-2012-4358", "CVE-2012-4359");
   script_bugtraq_id(54212);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:29:59 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2012-06-28 12:12:09 +0530 (Thu, 28 Jun 2012)");
   script_name("Sielco Sistemi Winlog Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -98,8 +97,7 @@ payload = raw_string(crap(data:raw_string(0x00), length: 20),
 send(socket:soc, data: payload);
 res = recv(socket:soc, length:200);
 
-if (!res || !(hexstr(res) =~ "^78"))
-{
+if (!res || hexstr(res) !~ "^78") {
   close(soc);
   exit(0);
 }

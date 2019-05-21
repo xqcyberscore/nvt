@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_int_overflow_vuln_jul14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # PostgreSQL Multiple Integer Overflow Vulnerabilities July14 (Windows)
 #
@@ -29,25 +28,30 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804712");
-  script_version("$Revision: 11867 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2014-2669");
   script_bugtraq_id(66557);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2014-07-07 15:46:46 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL Multiple Integer Overflow Vulnerabilities July14 (Windows)");
 
-
   script_tag(name:"summary", value:"This host is installed with PostgreSQL and is prone to multiple integer overflow
-vulnerabilities.");
+  vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Flaw is due to an unspecified user-supplied input which is not properly
-validated.");
+  validated.");
+
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to gain elevated privileges.");
+
   script_tag(name:"affected", value:"PostgreSQL version before 9.0.x before 9.0.16, 9.1.x before 9.1.12,
-9.2.x before 9.2.7, and 9.3.x before 9.3.3");
+  9.2.x before 9.2.7, and 9.3.x before 9.3.3");
+
   script_tag(name:"solution", value:"Upgrade to version 9.3.3, 9.2.7, 9.1.12, and 9.0.16, or later.");
+
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,7 +75,7 @@ include("host_details.inc");
 if(!pgsqlPort = get_app_port(cpe:CPE)) exit(0);
 
 pgsqlVer = get_app_version(cpe:CPE, port:pgsqlPort);
-if(isnull(pgsqlVer) ||  !(pgsqlVer =~ "^(9\.(0|1|2|3))")){
+if(!pgsqlVer || pgsqlVer !~ "^9\.[0-3]\.") {
   exit(0);
 }
 

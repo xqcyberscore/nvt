@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811764");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-09-14 14:48:51 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft Outlook 2007 Service Pack 3 Defense in Depth Vulnerability (KB4011086)");
 
@@ -62,7 +62,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
@@ -70,11 +69,10 @@ include("secpod_smb_func.inc");
 
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
 
-if(!(outlookVer =~ "^12\.")){
+if(!outlookVer || outlookVer !~ "^12\."){
   exit(0);
 }
 
-## Office outlook
 outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                               "\App Paths\OUTLOOK.EXE", item:"Path");
 if(!outlookFile){

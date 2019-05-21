@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_sec_bypass_vuln_mar18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office 2016 Click-to-Run (C2R) Security Bypass Vulnerability - Mar18
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812999");
-  script_version("$Revision: 12120 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-0907");
   script_bugtraq_id(103325);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-03-23 18:36:25 +0530 (Fri, 23 Mar 2018)");
   script_name("Microsoft Office 2016 Click-to-Run (C2R) Security Bypass Vulnerability - Mar18");
 
@@ -70,12 +69,12 @@ include("host_details.inc");
 include("version_func.inc");
 
 officeVer = get_kb_item("MS/Off/C2R/Ver");
-UpdateChannel = get_kb_item("MS/Office/C2R/UpdateChannel");
-officePath = get_kb_item("MS/Off/C2R/InstallPath");
-
-if(!(officeVer =~ "^(16\.)")){
+if(!officeVer || officeVer !~ "^16\."){
   exit(0);
 }
+
+UpdateChannel = get_kb_item("MS/Office/C2R/UpdateChannel");
+officePath = get_kb_item("MS/Off/C2R/InstallPath");
 
 ##1802 (Build 9029.2253)
 if(UpdateChannel == "Monthly Channel")

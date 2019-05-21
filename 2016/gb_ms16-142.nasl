@@ -28,13 +28,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809715");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2016-7195", "CVE-2016-7196", "CVE-2016-7198", "CVE-2016-7199",
                 "CVE-2016-7227", "CVE-2016-7239", "CVE-2016-7241");
   script_bugtraq_id(94052, 94051, 94053, 94057, 94065, 94059, 94055);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-11-09 15:08:09 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3198467)");
@@ -85,7 +85,7 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008x64:3, win7:2, win7x64:2, w
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(9|10|11)")){
+if(!ieVer || ieVer !~ "^(9|1[01])\."){
   exit(0);
 }
 

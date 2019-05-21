@@ -23,11 +23,11 @@ CPE = "cpe:/a:microsoft:azure_ad_connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815079");
-  script_version("2019-05-18T06:07:35+0000");
+  script_version("2019-05-20T12:55:29+0000");
   script_cve_id("CVE-2019-1000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-18 06:07:35 +0000 (Sat, 18 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 12:55:29 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-17 12:30:03 +0530 (Fri, 17 May 2019)");
   script_name("Microsoft Azure AD Connect Elevation of Privilege Vulnerability - Windows");
 
@@ -64,20 +64,19 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if( ! infos = get_app_version_and_location(cpe:CPE, port:serPort, exit_no_version:TRUE)) exit(0);
 ad_ver = infos['version'];
 ad_path = infos['location'];
 
-if(ad_ver == "1.3.20.0")
-{
-
+if(ad_ver == "1.3.20.0") {
   report = report_fixed_ver(installed_version:ad_ver, fixed_version:"1.3.21.0", install_path:ad_path);
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

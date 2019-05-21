@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805206");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2014-6363");
   script_bugtraq_id(71504);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2014-12-10 08:42:37 +0530 (Wed, 10 Dec 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows VBScript Remote Code Execution Vulnerability (3016711)");
@@ -50,9 +50,13 @@ if(description)
   attackers to execute arbitrary code and corrupt memory.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
@@ -73,7 +77,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_reg.inc");
@@ -91,7 +94,7 @@ if(!sysPath ){
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(6|7|8)")){
+if(!ieVer || ieVer !~ "^[6-8]\."){
   exit(0);
 }
 
@@ -103,7 +106,7 @@ if(!dllVer){
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
   if((ieVer =~ "^6" && version_in_range(version:dllVer, test_version:"5.6", test_version2:"5.6.0.8852")) ||
-     (ieVer =~ "^(6|7)" && version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.23527")) ||
+     (ieVer =~ "^[67]" && version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.23527")) ||
      (ieVer =~ "^8" && version_in_range(version:dllVer, test_version:"5.8", test_version2:"5.8.6001.23641"))){
     security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
@@ -113,8 +116,8 @@ if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  if((ieVer =~ "^(6|7)" && version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.19220")) ||
-     (ieVer =~ "^(6|7)" && version_in_range(version:dllVer, test_version:"5.7.6002.23000", test_version2:"5.7.6002.23527")) ||
+  if((ieVer =~ "^[67]" && version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.19220")) ||
+     (ieVer =~ "^[67]" && version_in_range(version:dllVer, test_version:"5.7.6002.23000", test_version2:"5.7.6002.23527")) ||
      (ieVer =~ "^8" && version_in_range(version:dllVer, test_version:"5.8.6001.19000", test_version2:"5.8.6001.19586")) ||
      (ieVer =~ "^8" && version_in_range(version:dllVer, test_version:"5.8.6001.23000", test_version2:"5.8.6001.23641"))){
     security_message( port: 0, data: "The target host was found to be vulnerable" );

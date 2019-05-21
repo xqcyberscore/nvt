@@ -21,8 +21,8 @@ CPE = "cpe:/a:oracle:mysql";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142401");
-  script_version("2019-05-13T13:15:15+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 13:15:15 +0000 (Mon, 13 May 2019)");
+  script_version("2019-05-20T12:55:29+0000");
+  script_tag(name:"last_modification", value:"2019-05-20 12:55:29 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-13 09:51:44 +0000 (Mon, 13 May 2019)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -46,7 +46,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
-  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
+  script_mandatory_keys("MySQL/installed", "Host/runs_windows");
 
   script_tag(name:"summary", value:"Oracle MySQL is prone to multiple vulnerabilities.");
 

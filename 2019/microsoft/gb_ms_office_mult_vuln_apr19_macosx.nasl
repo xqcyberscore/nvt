@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815035");
-  script_version("2019-05-17T08:39:44+0000");
+  script_version("2019-05-20T12:55:29+0000");
   script_cve_id("CVE-2019-0822", "CVE-2019-0828");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2019-04-10 09:14:49 +0530 (Wed, 10 Apr 2019)");
-  script_tag(name:"last_modification", value:"2019-05-17 08:39:44 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 12:55:29 +0000 (Mon, 20 May 2019)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-April19 (Mac OS X)");
 
@@ -74,12 +74,12 @@ if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-if(offVer =~ "^1[5|6]\.")
+if(offVer =~ "^1[56]\.")
 {
   if(version_is_less_equal(version:offVer, test_version:"16.16.8")||
      version_in_range(version:offVer, test_version:"16.17.0", test_version2:"16.23.1"))
   {
-    report = report_fixed_ver(installed_version:offVer, fixed_version:"NoneAvailable");
+    report = report_fixed_ver(installed_version:offVer, fixed_version:"Microsoft Office 2016 16.16.9 or Microsoft Office 2019 16.24 or later.");
     security_message(data:report);
     exit(0);
   }

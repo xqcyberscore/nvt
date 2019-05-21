@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813288");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 11:19:59 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Outlook 2010 Service Pack 2 Defense in Depth Vulnerability (KB4032222)");
 
@@ -61,15 +61,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
-
-if(!outlookVer || !(outlookVer =~ "^14\.")){
+if(!outlookVer || outlookVer !~ "^14\."){
   exit(0);
 }
 

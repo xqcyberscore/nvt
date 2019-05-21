@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811189");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2017-8509", "CVE-2017-8511", "CVE-2017-8512", "CVE-2017-8514");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-15 21:30:22 +0530 (Thu, 15 Jun 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2013 Unspecified Vulnerability (KB3203387)");
 
@@ -68,7 +68,7 @@ include("secpod_smb_func.inc");
 
 if( ! infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:sharepoint_server", exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer || !(shareVer =~ "^15\.")){
+if(!shareVer || shareVer !~ "^15\."){
   exit(0);
 }
 

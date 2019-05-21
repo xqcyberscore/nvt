@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_auth_bypass_vuln.nasl 12442 2018-11-20 14:05:57Z asteins $
 #
 # Sensiolabs Symfony 2.8.x < 2.8.37, 3.3.x < 3.3.17, 3.4.x < 3.4.7 and 4.0.x < 4.0.7 Authentication Bypass Vulnerability
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112434");
-  script_version("$Revision: 12442 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 15:05:57 +0100 (Tue, 20 Nov 2018) $");
+  script_version("2019-05-20T11:07:17+0000");
+  script_tag(name:"last_modification", value:"2019-05-20 11:07:17 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-20 15:02:11 +0100 (Tue, 20 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +48,7 @@ if( description )
   script_dependencies("gb_symfony_consolidation.nasl");
   script_mandatory_keys("symfony/detected");
 
-  script_tag(name:"summary", value:"This host runs Symfony and is prone to an authentication bypass vulnerability..");
+  script_tag(name:"summary", value:"This host runs Symfony and is prone to an authentication bypass vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An issue was discovered in the Ldap component in Symfony.
   It allows remote attackers to bypass authentication by logging in with a 'null' password and valid username,

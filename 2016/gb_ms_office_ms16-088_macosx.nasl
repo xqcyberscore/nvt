@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-088_macosx.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-3170008(Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807867");
-  script_version("$Revision: 11989 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2016-3280", "CVE-2016-3281", "CVE-2016-3282", "CVE-2016-3284");
   script_bugtraq_id(91582, 91588, 91589, 91594);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-07-13 16:17:51 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-3170008(Mac OS X)");
@@ -68,25 +67,24 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-if(!(offVer =~ "^(14\.)") || !(offVer =~ "^(15\.)")){
+if(offVer !~ "^1[45]\."){
   exit(0);
 }
 
-if(offVer =~ "^(14\.)" && version_is_less(version:offVer, test_version:"14.6.6"))
+if(offVer =~ "^14\." && version_is_less(version:offVer, test_version:"14.6.6"))
 {
   report = 'File version:     ' + offVer   + '\n' +
            'Vulnerable range: 14.1.0 - 14.6.5 ' + '\n' ;
   security_message(data:report);
 }
 
-if(offVer =~ "^(15\.)" && version_is_less(version:offVer, test_version:"15.24.0"))
+if(offVer =~ "^15\." && version_is_less(version:offVer, test_version:"15.24.0"))
 {
   report = 'File version:     ' + offVer   + '\n' +
            'Vulnerable range: 15.0 - 15.23.0 ' + '\n' ;

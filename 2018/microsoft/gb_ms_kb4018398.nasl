@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813179");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-8155");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-09 11:17:23 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft SharePoint Foundation 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB4018398)");
 
@@ -62,16 +62,15 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-
 if(!infos = get_app_version_and_location( cpe:'cpe:/a:microsoft:sharepoint_foundation', exit_no_version:TRUE ) ) exit(0);
+
 shareVer = infos['version'];
-if(!(shareVer =~ "^15\..*")){
+if(shareVer !~ "^15\."){
   exit(0);
 }
 
@@ -104,7 +103,7 @@ foreach key(key_list)
     if(!dllVer){
       continue;
     }
-    if(dllVer =~ "^(15\.)")
+    if(dllVer =~ "^15\.")
     {
       if(version_is_less(version:dllVer, test_version:"15.0.5031.1000"))
       {

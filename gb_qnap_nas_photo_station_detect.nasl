@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_photo_station_detect.nasl 11446 2018-09-18 09:05:56Z ckuersteiner $
 #
 # QNAP QTS Photo Station Detection
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813164");
-  script_version("$Revision: 11446 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 11:05:56 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-03 19:51:43 +0530 (Thu, 03 May 2018)");
   script_name("QNAP QTS Photo Station Detection");
 
@@ -66,7 +65,7 @@ foreach dir (make_list("/photo/", "/photo/gallery/", "/gallery/"))
   req = http_get_req( url:dir, port:qtsPort, add_headers:make_array("Accept-Encoding", "gzip, deflate"));
   res = http_keepalive_send_recv(port:qtsPort, data:req);
 
-  if(res =~ "^HTTP/1.. 30.")
+  if(res =~ "^HTTP/1\.[01] 30.")
   {
     url = eregmatch(pattern: 'Location: ([^\r\n]+)', string: res);
     if(url[1])
@@ -74,20 +73,20 @@ foreach dir (make_list("/photo/", "/photo/gallery/", "/gallery/"))
       new_url = url[1];
       req = http_get_req( url:new_url, port:qtsPort);
       res = http_keepalive_send_recv(port:qtsPort, data:req);
-      if(!(res =~ "HTTP/1.. 200 OK")){
+      if(res !~ "^HTTP/1\.[01] 200"){
         continue ;
       }
     }
   }
 
-  if(res =~ "HTTP/1.. 200 OK" && "title>Photo Station</title" >< res)
+  if(res =~ "^HTTP/1\.[01] 200" && "title>Photo Station</title" >< res)
   {
     url = eregmatch(pattern:"'\.js\?([0-9.]+)", string:res);
     new_url = dir + "/lang/ENG.js?" + url[1] ;
     req = http_get_req( url:new_url, port:qtsPort);
     res = http_keepalive_send_recv(port:qtsPort, data:req);
 
-    if(res =~ "HTTP/1.. 200 OK" && "QTS Login" >< res && res =~ "COPYRIGHT=.*QNAP Systems" &&
+    if(res =~ "^HTTP/1\.[01] 200" && "QTS Login" >< res && res =~ "COPYRIGHT=.*QNAP Systems" &&
       "LANG_QTS" >< res)
     {
       photoVer = "Unknown";
@@ -96,7 +95,7 @@ foreach dir (make_list("/photo/", "/photo/gallery/", "/gallery/"))
       url = dir + "/api/user.php" ;
       req = http_get_req( url:url, port:qtsPort);
       res = http_keepalive_send_recv(port:qtsPort, data:req);
-      if(res =~ "HTTP/1.. 200 OK" && "status" >< res && "timestamp" >< res)
+      if(res =~ "^HTTP/1\.[01] 200" && "status" >< res && "timestamp" >< res)
       {
         version = eregmatch(pattern:'<appVersion>([0-9.]+)</appVersion><appBuildNum>([0-9]+)<', string:res);
         baseQTSVersion = eregmatch(pattern:'<builtinFirmwareVersion>([0-9.]+)</builtinFirmwareVersion>', string:res);

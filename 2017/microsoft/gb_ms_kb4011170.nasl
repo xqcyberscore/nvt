@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812023");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2017-11775", "CVE-2017-11777");
   script_bugtraq_id(101105, 101155);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-10-13 10:02:45 +0530 (Fri, 13 Oct 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2013 Service Pack 1 Multiple XSS Vulnerabilities (KB4011170)");
 
@@ -75,7 +75,7 @@ include("secpod_smb_func.inc");
 
 if( ! infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:sharepoint_server", exit_no_version:TRUE ) ) exit( 0 );
 shareVer = infos['version'];
-if(!shareVer || !(shareVer =~ "^15\.")){
+if(!shareVer || shareVer !~ "^15\."){
   exit(0);
 }
 

@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814778");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T12:06:32+0000");
   script_cve_id("CVE-2019-0801", "CVE-2019-0822", "CVE-2019-0824", "CVE-2019-0825",
                 "CVE-2019-0826", "CVE-2019-0827", "CVE-2019-0828");
   script_bugtraq_id(107738, 107699, 107744, 107745, 107746, 107747, 107751);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 12:06:32 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-10 10:58:49 +0530 (Wed, 10 Apr 2019)");
   script_name("Microsoft Office 365 (2016 Click-to-Run) Multiple RCE Vulnerabilities-April19");
 
@@ -73,12 +73,12 @@ include("host_details.inc");
 include("version_func.inc");
 
 officeVer = get_kb_item("MS/Off/C2R/Ver");
-UpdateChannel = get_kb_item("MS/Office/C2R/UpdateChannel");
-officePath = get_kb_item("MS/Off/C2R/InstallPath");
-
-if(!(officeVer =~ "^16\.")){
+if(!officeVer || officeVer !~ "^16\."){
   exit(0);
 }
+
+UpdateChannel = get_kb_item("MS/Office/C2R/UpdateChannel");
+officePath = get_kb_item("MS/Off/C2R/InstallPath");
 
 ## Version 1903 (Build 11425.20204)
 if(UpdateChannel == "Monthly Channel")

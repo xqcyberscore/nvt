@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813434");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-8244");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-13 10:34:24 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Outlook 2016 Elevation of Privilege Vulnerability (KB4022160)");
 
@@ -62,7 +62,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
@@ -70,7 +69,7 @@ include("secpod_smb_func.inc");
 
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
 
-if(!outlookVer || !(outlookVer =~ "^16\.")){
+if(!outlookVer || outlookVer !~ "^16\."){
   exit(0);
 }
 

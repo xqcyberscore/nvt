@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-042_macosx.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Microsoft Office Muliple Remote Code Execution Vulnerabilities-3148775(Mac OS X)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807541");
-  script_version("$Revision: 11989 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2016-0139", "CVE-2016-0122");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-04-13 11:57:14 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Muliple Remote Code Execution Vulnerabilities-3148775(Mac OS X)");
@@ -64,12 +63,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-if(!offVer || !(offVer =~ "^(14\.)")){
+if(!offVer || offVer !~ "^14\."){
   exit(0);
 }
 

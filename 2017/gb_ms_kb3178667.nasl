@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811090");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-14 10:06:33 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (KB3178667)");
 
@@ -65,14 +65,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
 officeVer = get_kb_item("MS/Office/Ver");
-if(!officeVer || !(officeVer =~ "^(16\.)")){
+if(!officeVer || officeVer !~ "^16\."){
   exit(0);
 }
 
@@ -91,7 +90,7 @@ if(!offdllVer){
   exit(0);
 }
 
-if(offdllVer =~ "^(16\.)" && version_is_less(version:offdllVer, test_version:"16.0.4549.1000"))
+if(offdllVer =~ "^16\." && version_is_less(version:offdllVer, test_version:"16.0.4549.1000"))
 {
   report = 'File checked:     ' + offPath + "\mso20win32client.dll" + '\n' +
            'File version:     ' + offdllVer  + '\n' +

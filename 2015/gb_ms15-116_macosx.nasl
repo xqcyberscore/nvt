@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-116_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft Office Multiple Vulnerabilities-3104540 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806705");
-  script_version("$Revision: 11872 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2015-6038", "CVE-2015-6094", "CVE-2015-6123");
   script_bugtraq_id(77489, 77490);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-3104540 (Mac OS X)");
@@ -67,12 +66,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-if(!offVer || !(offVer =~ "^14")){
+if(!offVer || offVer !~ "^14\."){
   exit(0);
 }
 

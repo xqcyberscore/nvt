@@ -29,14 +29,14 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805761");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2015-2482", "CVE-2015-6042", "CVE-2015-6044", "CVE-2015-6046",
                 "CVE-2015-6047", "CVE-2015-6048", "CVE-2015-6049", "CVE-2015-6050",
                 "CVE-2015-6051", "CVE-2015-6052", "CVE-2015-6053", "CVE-2015-6055",
                 "CVE-2015-6056", "CVE-2015-6059", "CVE-2015-6184");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2015-10-14 10:03:00 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3096441)");
@@ -78,7 +78,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("host_details.inc");
@@ -91,7 +90,7 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(7|8|9|10|11)")){
+if(!ieVer || ieVer !~ "^([7-9|1[01])\."){
   exit(0);
 }
 
@@ -105,34 +104,34 @@ if(!dllVer){
   exit(0);
 }
 
-if(dllVer =~ "^(7\.0\.6002\.1)"){
+if(dllVer =~ "^7\.0\.6002\.1"){
   Vulnerable_range = "7.0.6002.18000 - 7.0.6002.19487";
 }
-else if (dllVer =~ "^(7\.0\.6002\.2)"){
+else if (dllVer =~ "^7\.0\.6002\.2"){
   Vulnerable_range = "7.0.6002.23000 - 7.0.6002.23797";
 }
-else if (dllVer =~ "^(8\.0\.6001\.1)"){
+else if (dllVer =~ "^8\.0\.6001\.1"){
   Vulnerable_range = "8.0.6001.18000 - 8.0.6001.19689";
 }
-else if (dllVer =~ "^(8\.0\.6001\.2)"){
+else if (dllVer =~ "^8\.0\.6001\.2"){
   Vulnerable_range = "8.0.6001.20000 - 8.0.6001.23749";
 }
-else if (dllVer =~ "^(9\.0\.8112\.1)"){
+else if (dllVer =~ "^9\.0\.8112\.1"){
   Vulnerable_range = "9.0.8112.16000 - 9.0.8112.16707";
 }
-else if (dllVer =~ "^(9\.0\.8112\.2)"){
+else if (dllVer =~ "^9\.0\.8112\.2"){
   Vulnerable_range = "9.0.8112.20000 - 9.0.8112.20822";
 }
-else if (dllVer =~ "^(8\.0\.7601\.1)"){
+else if (dllVer =~ "^8\.0\.7601\.1"){
   Vulnerable_range = "8.0.7601.17000 - 8.0.7601.19002";
 }
-else if (dllVer =~ "^(8\.0\.7601\.2)"){
+else if (dllVer =~ "^8\.0\.7601\.2"){
   Vulnerable_range = "8.0.7601.22000 - 8.0.7601.23205";
 }
-else if (dllVer =~ "^(10\.0\.9200\.1)"){
+else if (dllVer =~ "^10\.0\.9200\.1"){
   Vulnerable_range = "10.0.9200.16000 - 10.0.9200.17518";
 }
-else if (dllVer =~ "^(10\.0\.9200\.2)"){
+else if (dllVer =~ "^10\.0\.9200\.2"){
   Vulnerable_range = "10.0.9200.21000 - 10.0.9200.21635";
 }
 

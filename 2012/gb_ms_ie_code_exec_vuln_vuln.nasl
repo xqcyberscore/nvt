@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803028");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2012-1529", "CVE-2012-2546", "CVE-2012-2548", "CVE-2012-2557",
                 "CVE-2012-4969");
   script_bugtraq_id(55641, 55645, 55646, 55647, 55562);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2012-09-18 16:56:37 +0530 (Tue, 18 Sep 2012)");
   script_name("Microsoft Internet Explorer Remote Code Execution Vulnerability (2757760)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50626");
@@ -48,23 +48,27 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
   information or execute arbitrary code in the context of the current user.");
+
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x");
+
   script_tag(name:"insight", value:"Multiple vulnerabilities exists due to the way that Internet Explorer
-  accesses an object that has been deleted and causing multiple
-  use-after-free errors when,
+  accesses an object that has been deleted and causing multiple use-after-free errors when,
 
   - Handling onMove events, event listeners aand the execCommand method.
 
   - Cloning nodes and layout handling.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-063.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -76,7 +80,7 @@ if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win7:2, win2008:3) <= 0){
 }
 
 ieVer = get_kb_item("MS/IE/Version");
-if(!ieVer || !(ieVer =~ "^(6|7|8|9)")){
+if(!ieVer || ieVer !~ "^[6-9]\."){
   exit(0);
 }
 

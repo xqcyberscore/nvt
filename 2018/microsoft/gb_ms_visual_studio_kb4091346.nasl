@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813137");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-1037");
   script_bugtraq_id(103715);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-17 11:21:30 +0530 (Tue, 17 Apr 2018)");
   script_name("Microsoft Visual Studio 2010 Service Pack 1 Information Disclosure Vulnerability (KB4091346)");
 
@@ -69,7 +69,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 vsVer = get_kb_item("Microsoft/VisualStudio/Ver");
-if(!vsVer || !(vsVer =~ "^(10\.)")){
+if(!vsVer || vsVer !~ "^10\."){
   exit(0);
 }
 

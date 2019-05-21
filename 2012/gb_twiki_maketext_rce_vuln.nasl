@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_maketext_rce_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802048");
-  script_version("$Revision: 13659 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2012-12-27 12:46:41 +0530 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -94,7 +93,7 @@ req1 = string("GET ", url1 , " HTTP/1.1\r\n",
              "Content-Length: 0\r\n\r\n");
 res1 = http_keepalive_send_recv(port:twikiPort, data:req1);
 
-if(!(res1 =~ "HTTP/1.. 200 OK" && 'name="crypttoken" value="' >< res1)){
+if(res1 !~ "^HTTP/1\.[01] 200" || 'name="crypttoken" value="' >!< res1){
   exit(0);
 }
 
@@ -150,7 +149,7 @@ req4 = string("POST ", url4 , " HTTP/1.1\r\n",
              post_data );
 res4 = http_keepalive_send_recv(port:twikiPort, data:req4);
 
-if(res1 =~ "HTTP/1.. 200 OK" && "}; `date`; {" >!< res3 &&
+if(res1 =~ "^HTTP/1\.[01] 200" && "}; `date`; {" >!< res3 &&
    egrep(string:res3, pattern:">VT-Test</a></span> HASH\(0x")){
   report = report_vuln_url( port:twikiPort, url:url1 );
   security_message(port:twikiPort, data:report);

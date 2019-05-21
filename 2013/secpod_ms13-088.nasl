@@ -22,12 +22,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:microsoft:ie";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903329");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2013-3871", "CVE-2013-3908", "CVE-2013-3909", "CVE-2013-3910",
                 "CVE-2013-3911", "CVE-2013-3912", "CVE-2013-3914", "CVE-2013-3915",
                 "CVE-2013-3916", "CVE-2013-3917");
@@ -35,15 +36,17 @@ if(description)
                     63596);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2013-11-13 08:35:24 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2888505)");
 
-
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
-Bulletin MS13-088.");
+  Bulletin MS13-088.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error when generating print previews of certain web content.
@@ -53,12 +56,14 @@ Bulletin MS13-088.");
   - An use-after-free error when handling CAnchorElement objects.
 
   - Multiple unspecified errors.");
+
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x
-Microsoft Internet Explorer version 11.x on Windows 8.1 x32/x64 and
-Windows server 2012 R2.");
+
+  Microsoft Internet Explorer version 11.x on Windows 8.1 x32/x64 and Windows server 2012 R2.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
-execution of arbitrary code, disclose potentially sensitive information
-and compromise a user's system.");
+  execution of arbitrary code, disclose potentially sensitive information and compromise a user's system.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,10 +76,9 @@ and compromise a user's system.");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-088");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -87,7 +91,7 @@ if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win7:2, win2008:3, win8:1, win8_
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(6|7|8|9|10|11)")){
+if(!ieVer || ieVer !~ "^([6-9|1[01])\."){
   exit(0);
 }
 

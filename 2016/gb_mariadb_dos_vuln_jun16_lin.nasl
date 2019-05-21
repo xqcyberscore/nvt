@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_jun16_lin.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # MariaDB Denial Of Service Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808153");
-  script_version("$Revision: 11961 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2013-1861");
   script_bugtraq_id(58511);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-07 19:15:05 +0530 (Tue, 07 Jun 2016)");
   script_name("MariaDB Denial Of Service Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -70,10 +69,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -83,7 +80,7 @@ if(!mariadbPort = get_app_port(cpe:CPE)){
 }
 
 mariadbVer = get_app_version(cpe:CPE, port:mariadbPort);
-if(isnull(mariadbVer) ||  !(mariadbVer =~ "^(5.1|5.2|5.3|5.5)")){
+if(!mariadbVer || mariadbVer !~ "^5\.[1235]\."){
   exit(0);
 }
 

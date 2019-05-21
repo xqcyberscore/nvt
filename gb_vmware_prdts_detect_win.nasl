@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_win.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # VMware products version detection (Windows)
 #
@@ -24,14 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800000");
-  script_version("$Revision: 10890 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMWare products version detection (Windows)");
@@ -53,7 +51,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
@@ -62,14 +59,14 @@ if(!os_arch){
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
   key_list1 = make_list("SOFTWARE\VMware, Inc.\VMware GSX Server",
-                          "SOFTWARE\VMware, Inc.\VMware Workstation",
-                          "SOFTWARE\VMware, Inc.\VMware Player",
-                          "SOFTWARE\VMWare, Inc.\VMWare Server",
-                          "SOFTWARE\VMware, Inc.\VMware ACE");
+                        "SOFTWARE\VMware, Inc.\VMware Workstation",
+                        "SOFTWARE\VMware, Inc.\VMware Player",
+                        "SOFTWARE\VMWare, Inc.\VMWare Server",
+                        "SOFTWARE\VMware, Inc.\VMware ACE");
 }
 
 else if("x64" >< os_arch){
-  key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+  key_list  = make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
   key_list1 = make_list("SOFTWARE\Wow6432Node\VMware, Inc.\VMware GSX Server",
                         "SOFTWARE\Wow6432Node\VMware, Inc.\VMware Workstation",
                         "SOFTWARE\Wow6432Node\VMware, Inc.\VMware Player",
@@ -147,7 +144,7 @@ if(vmVer != NULL)
   if(buildflag != NULL)
   {
     vmwareBuild = vmware[3];
-    if (!(vmwareBuild =~ "[0-9]+")){
+    if (vmwareBuild !~ "[0-9]+"){
       vmwareBuild = "";
     }
   }

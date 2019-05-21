@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813760");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-8360");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-15 09:31:10 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (KB4344146)");
 
@@ -65,7 +65,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -86,7 +85,7 @@ foreach item (registry_enum_keys(key:key))
   if(dotPath && "\Microsoft.NET\Framework" >< dotPath)
   {
     dllVer = fetch_file_version(sysPath:dotPath, file_name:"mscorlib.dll");
-    if(!dllVer || !(dllVer =~ "^(4\.(6|7))" )){
+    if(!dllVer || dllVer !~ "^4\.[67]\."){
       continue;
     }
 

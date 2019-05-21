@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_av_detect_win.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # avast! AntiVirus Version Detection (Windows)
 #
@@ -30,28 +29,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801110");
-  script_version("$Revision: 10896 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("avast! AntiVirus Version Detection (Windows)");
-
-
-  script_tag(name:"summary", value:"Detects the installed version of avast! AntiVirus on Windows.
-
-The script logs in via smb, searches for avast and gets the
-version from 'DisplayVersion' string in registry.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
+  script_tag(name:"summary", value:"Detects the installed version of avast! AntiVirus on Windows.
+
+The script logs in via smb, searches for avast and gets the
+version from 'DisplayVersion' string in registry.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -85,7 +83,7 @@ foreach path (make_list("Avast", "Avast Antivirus", "avast!", "avast5"))
     avastVer = registry_get_sz(key:key + path, item:"DisplayVersion");
     avastPath = registry_get_sz(key:key + path, item:"DisplayIcon");
     avastPath = avastPath - "\AvastUI.exe";
-    if(!(avastVer =~ "^([0-9]\.[0-9]+\.[0-9]+\.[0-9]+)") && avastPath){
+    if(avastVer !~ "^([0-9]\.[0-9]+\.[0-9]+\.[0-9]+)" && avastPath){
       avastVer = fetch_file_version(sysPath:avastPath , file_name: "AvastUI.exe");
     }
 

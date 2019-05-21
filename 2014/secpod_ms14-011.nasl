@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903229");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2014-0271");
   script_bugtraq_id(65395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2014-02-12 09:18:06 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft VBScript Remote Code Execution Vulnerability (2928390)");
   script_category(ACT_GATHER_INFO);
@@ -107,7 +107,7 @@ if(!sysPath){
 }
 
 ieVer = get_app_version(cpe:CPE, nofork: TRUE);
-if(!ieVer || !(ieVer =~ "^(6|7|8|9|10|11)")){
+if(!ieVer || ieVer !~ "^([6-9|1[01])\."){
   exit(0);
 }
 

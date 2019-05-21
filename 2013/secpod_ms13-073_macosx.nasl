@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-073_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-2858300 (Mac OS X)
 #
@@ -27,26 +26,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902996");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2013-1315", "CVE-2013-3158", "CVE-2013-3159");
   script_bugtraq_id(62167, 62219, 62225);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2013-09-11 12:29:56 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-2858300 (Mac OS X)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS13-073.");
+  Microsoft Bulletin MS13-073.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws exists when processing XML data, which can be exploited to
-disclose contents of certain local files by sending specially crafted XML
-data including external entity references.");
+  disclose contents of certain local files by sending specially crafted XML data including external entity references.");
+
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory and
-disclose sensitive information.");
+  disclose sensitive information.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -60,12 +63,11 @@ disclose sensitive information.");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-if(!offVer || !(offVer =~ "^14")){
+if(!offVer || offVer !~ "^14\."){
   exit(0);
 }
 

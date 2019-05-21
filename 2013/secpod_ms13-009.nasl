@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903300");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2013-0015", "CVE-2013-0018", "CVE-2013-0019", "CVE-2013-0020",
                 "CVE-2013-0021", "CVE-2013-0022", "CVE-2013-0023", "CVE-2013-0024",
                 "CVE-2013-0025", "CVE-2013-0026", "CVE-2013-0027", "CVE-2013-0028",
@@ -35,7 +35,7 @@ if(description)
                     57831, 57832, 57833, 57834);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2013-02-13 08:14:01 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2792100)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52122/");
@@ -48,12 +48,14 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+
   script_tag(name:"impact", value:"Successful exploitation will allow the attackers to gain information of
   another domain or Internet Explorer zone and execution of arbitrary code.");
+
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x");
+
   script_tag(name:"insight", value:"- An error when handling the encoding for Shift_JIS auto-selection can be
-    exploited to gain access to information in another domain or Internet
-    Explorer zone.
+  exploited to gain access to information in another domain or Internet  Explorer zone.
 
   - Multiple use-after-free error related to,
 
@@ -80,13 +82,15 @@ if(description)
      CObjectElement and
 
      CHTML.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-009.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-009");
   exit(0);
 }
 
@@ -100,7 +104,7 @@ if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:2) <= 0){
 }
 
 ieVer = get_kb_item("MS/IE/Version");
-if(!ieVer || !(ieVer =~ "^(6|7|8|9|10)")){
+if(!ieVer || ieVer !~ "^([6-9]|10)\."){
   exit(0);
 }
 

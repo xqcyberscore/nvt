@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813573");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-8172", "CVE-2018-8232");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 13:08:27 +0530 (Thu, 12 Jul 2018)");
   script_name("Microsoft Visual Studio 2017 Multiple Vulnerabilities-July18");
 
@@ -74,7 +74,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 vsVer = get_kb_item("Microsoft/VisualStudio/Ver");
-if(!vsVer || !(vsVer =~ "^(15\.)")){
+if(!vsVer || vsVer !~ "^15\."){
   exit(0);
 }
 

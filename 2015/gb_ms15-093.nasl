@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805959");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2015-2502");
   script_bugtraq_id(76403);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2015-08-19 17:04:11 +0530 (Wed, 19 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer RCE vulnerability (3088903)");
@@ -70,7 +70,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("host_details.inc");
@@ -83,7 +82,7 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(7|8|9|10|11)")){
+if(!ieVer || ieVer !~ "^([7-9|1[01])\."){
   exit(0);
 }
 
@@ -97,7 +96,7 @@ if(!dllVer){
   exit(0);
 }
 
-if (dllVer =~ "^(7\.0\.6002\.2)"){
+if (dllVer =~ "^7\.0\.6002\.2"){
   Vulnerable_range = "7.0.6002.23000 - 7.0.6002.23781";
 }
 
@@ -105,7 +104,7 @@ else if(dllVer =~ "^(7\.0\.6002\.)"){
   Vulnerable_range = "7.0.6002.18000 - 7.0.6002.19474";
 }
 
-else if (dllVer =~ "^(8\.0\.6001\.2)"){
+else if (dllVer =~ "^8\.0\.6001\.2"){
   Vulnerable_range = "8.0.6001.20000 - 8.0.6001.23732";
 }
 
@@ -113,7 +112,7 @@ else if (dllVer =~ "^(8\.0\.6001\.)"){
   Vulnerable_range = "8.0.6001.18000 - 8.0.6001.19673";
 }
 
-else if (dllVer =~ "^(9\.0\.8112\.2)"){
+else if (dllVer =~ "^9\.0\.8112\.2"){
   Vulnerable_range = "9.0.8112.20000 - 9.0.8112.20799";
 }
 
@@ -121,7 +120,7 @@ else if (dllVer =~ "^(9\.0\.8112\.)"){
   Vulnerable_range = "9.0.8112.16000 - 9.0.8112.16684";
 }
 
-else if (dllVer =~ "^(8\.0\.7601\.2)"){
+else if (dllVer =~ "^8\.0\.7601\.2"){
   Vulnerable_range = "8.0.7601.22000 - 8.0.7601.23170";
 }
 
@@ -129,7 +128,7 @@ else if (dllVer =~ "^(8\.0\.7601\.)"){
   Vulnerable_range = "8.0.7601.17000 - 8.0.7601.18967";
 }
 
-else if (dllVer =~ "^(10\.0\.9200\.2)"){
+else if (dllVer =~ "^10\.0\.9200\.2"){
   Vulnerable_range = "10.0.9200.21000 - 10.0.9200.21594";
 }
 

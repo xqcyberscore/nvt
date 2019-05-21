@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903314");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2013-3115", "CVE-2013-3143", "CVE-2013-3144", "CVE-2013-3145",
                 "CVE-2013-3146", "CVE-2013-3147", "CVE-2013-3148", "CVE-2013-3149",
                 "CVE-2013-3150", "CVE-2013-3151", "CVE-2013-3152", "CVE-2013-3153",
@@ -36,23 +36,28 @@ if(description)
                     60970, 60971, 60972, 60973, 60974, 60975, 60976, 60941);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2013-07-10 08:34:28 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2846071)");
 
-
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
-Bulletin MS13-055.");
+  Bulletin MS13-055.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"insight", value:"Multiple unspecified error due to an,
 
   - Improper handling of the encoding for Shift_JIS auto-selection.
 
   - Improper handling of objects in memory.");
+
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
-execution of arbitrary code in the context of the current user.");
+  execution of arbitrary code in the context of the current user.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,10 +70,9 @@ execution of arbitrary code in the context of the current user.");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-055");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -80,7 +84,7 @@ if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win7:2, win2008:3, win8:1) <= 0)
 }
 
 ieVer = get_kb_item("MS/IE/Version");
-if(!ieVer || !(ieVer =~ "^(6|7|8|9|10)")){
+if(!ieVer || ieVer !~ "^([6-9]|10)\."){
   exit(0);
 }
 

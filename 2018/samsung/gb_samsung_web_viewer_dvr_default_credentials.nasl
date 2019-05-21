@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114047");
-  script_version("2019-05-09T10:19:11+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-09 10:19:11 +0000 (Thu, 09 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-12 19:25:24 +0100 (Mon, 12 Nov 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -256,7 +256,7 @@ foreach cred(keys(creds)) {
     res = http_send_recv(port: port, data: req);
   }
 
-  if(res =~ "top.document.location.href='../index.htm\?port=[0-9]+';" && !(res =~ "<\s*body\s*onload\s*=\s*'movetoauth\(\)'\s*>")) {
+  if(res =~ "top.document.location.href='../index.htm\?port=[0-9]+';" && res !~ "<\s*body\s*onload\s*=\s*'movetoauth\(\)'\s*>") {
     VULN = TRUE;
     report += '\nusername: "' + username + '", password: "' + password + '"';
   }

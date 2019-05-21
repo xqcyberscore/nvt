@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-085_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-2885080 (Mac OS X)
 #
@@ -27,25 +26,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903411");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2013-3889", "CVE-2013-3890");
   script_bugtraq_id(62829, 62824);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2013-10-09 11:20:33 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-2885080 (Mac OS X)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS13-085.");
+  Microsoft Bulletin MS13-085.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to error when processing Microsoft Word binary
-documents can be exploited to cause a memory corruption");
+  documents can be exploited to cause a memory corruption");
+
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.");
+  code, cause memory corruption and compromise the system.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,12 +63,11 @@ code, cause memory corruption and compromise the system.");
   exit(0);
 }
 
-
 include("version_func.inc");
 
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-if(!offVer || !(offVer =~ "^14")){
+if(!offVer || offVer !~ "^14\."){
   exit(0);
 }
 

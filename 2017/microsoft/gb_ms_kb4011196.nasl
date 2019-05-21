@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812024");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2017-11774");
   script_bugtraq_id(101098);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2017-10-11 10:08:54 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Outlook 2010 Service Pack 2 Security Feature Bypass Vulnerability (KB4011196)");
 
@@ -62,7 +62,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
@@ -70,7 +69,7 @@ include("secpod_smb_func.inc");
 
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
 
-if(!outlookVer || !(outlookVer =~ "^14\.")){
+if(!outlookVer || outlookVer !~ "^14\."){
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_dos_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PostgreSQL Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803442");
-  script_version("$Revision: 11865 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2013-0255");
   script_bugtraq_id(57844);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2013-03-20 17:42:26 +0530 (Wed, 20 Mar 2013)");
   script_name("PostgreSQL Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1028092");
@@ -47,18 +46,23 @@ if(description)
   script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash the server
   via a specially crafted SQL query.");
+
   script_tag(name:"affected", value:"PostgreSQL version 9.2.x before 9.2.3, 9.1.x before 9.1.8, 9.0.x
   before 9.0.12, 8.4.x before 8.4.16, and 8.3.x before 8.3.23");
+
   script_tag(name:"insight", value:"Input validation error within the 'enum_recv()' function of
   backend/utils/adt/enum.c");
+
   script_tag(name:"solution", value:"Upgrade to PostgreSQL 8.3.23, 8.4.16, 9.0.12, 9.1.8, 9.2.3 or later.");
+
   script_tag(name:"summary", value:"This host is installed with PostgreSQL and is prone to denial
   of service vulnerability.");
+
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.postgresql.org/download/");
   exit(0);
 }
 
@@ -68,7 +72,7 @@ include("host_details.inc");
 
 if(!pgsqlPort = get_app_port(cpe:CPE)) exit(0);
 pgsqlVer = get_app_version(cpe:CPE, port:pgsqlPort);
-if(isnull(pgsqlVer) ||  !(pgsqlVer =~ "^(8|9)")){
+if(!pgsqlVer || pgsqlVer !~ "^[89]\."){
   exit(0);
 }
 

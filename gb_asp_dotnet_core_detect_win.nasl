@@ -1,6 +1,5 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_detect_win.nasl 11902 2018-10-15 09:26:53Z santu $
 #
 # ASP.NET Core/.NET Core SDK Detection (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812949");
-  script_version("$Revision: 11902 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 11:26:53 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-26 16:34:26 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ASP.NET Core/.NET Core SDK Detection (Windows)");
@@ -84,7 +83,7 @@ foreach key (key_list1)
     version = eregmatch(pattern:"v([0-9.]+)", string:item);
     coreVer = version[1];
 
-    if(coreVer && !(coreVer =~ "[0-9]+\.[0-9]+\.[0-9]+"))
+    if(coreVer && coreVer !~ "[0-9]+\.[0-9]+\.[0-9]+")
     {
       foreach key (key_list)
       {

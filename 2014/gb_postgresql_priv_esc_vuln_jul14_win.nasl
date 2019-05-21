@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_priv_esc_vuln_jul14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PostgreSQL 'make check' Local Privilege Escalation Vulnerability July14 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804711");
-  script_version("$Revision: 11402 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2014-0067");
   script_bugtraq_id(65721);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2014-07-07 15:34:21 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL 'make check' Local Privilege Escalation Vulnerability July14 (Windows)");
 
@@ -75,7 +74,7 @@ include("host_details.inc");
 if(!pgsqlPort = get_app_port(cpe:CPE)) exit(0);
 
 pgsqlVer = get_app_version(cpe:CPE, port:pgsqlPort);
-if(isnull(pgsqlVer) ||  !(pgsqlVer =~ "^((8\.4|9\.(0|1|2|3)))")){
+if(!pgsqlVer || pgsqlVer !~ "^(8\.4|9\.[0-3])\."){
   exit(0);
 }
 

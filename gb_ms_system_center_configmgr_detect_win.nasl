@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_system_center_configmgr_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Microsoft System Center Configuration Manager Version Detection
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803023");
-  script_version("$Revision: 11015 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2012-09-12 09:47:47 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,31 +39,28 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
+
   script_tag(name:"summary", value:"Detects the installed version of Microsoft System
   Center Configuration Manager.
 
 The script logs in via smb, searches for Microsoft System Center Configuration
 Manager in the registry and gets the version from 'DisplayVersion' string in
 registry");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("host_details.inc");
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 
-
-if(!get_kb_item("SMB/WindowsVersion")){
+if(!get_kb_item("SMB/WindowsVersion"))
   exit(0);
-}
-
 
 osArch = get_kb_item("SMB/Windows/Arch");
-if(!osArch){
+if(!osArch)
   exit(0);
-}
 
 if("x86" >< osArch){
  keylist = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -124,7 +120,7 @@ foreach key (keylist)
       }
 
       if("Microsoft System Center Configuration Manager 2007" >< confmgrName &&
-         !(confmgrName =~ "R2|R3"))
+         confmgrName !~ "R[23]")
       {
         newKey = baseKey + "\ConfigMgr\Setup";
         if(registry_key_exists(key: newKey))

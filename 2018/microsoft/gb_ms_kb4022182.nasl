@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813418");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-8248");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-13 08:30:56 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Office 2013 Service Pack 1 Remote Code Execution Vulnerability (KB4022182)");
 
@@ -58,9 +58,9 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
@@ -68,7 +68,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 officeVer = get_kb_item("MS/Office/Ver");
-if(!officeVer || !(officeVer =~ "^(15\.)")){
+if(!officeVer || officeVer !~ "^15\."){
   exit(0);
 }
 
@@ -91,7 +91,7 @@ foreach key(key_list)
     if(!exeVer){
       continue;
     }
-    if(exeVer =~ "^(15\.)" && version_is_less(version:exeVer, test_version:"15.0.5041.1000"))
+    if(exeVer =~ "^15\." && version_is_less(version:exeVer, test_version:"15.0.5041.1000"))
     {
       report = report_fixed_ver(file_checked:exePath + "\graph.exe",
                                 file_version:exeVer, vulnerable_range:"15.0 - 15.0.5041.0999");

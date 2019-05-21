@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-081_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities-3017301 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805029");
-  script_version("$Revision: 11867 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2014-6356", "CVE-2014-6357");
   script_bugtraq_id(71469, 71470);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2014-12-10 13:24:58 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities-3017301 (Mac OS X)");
 
@@ -71,12 +70,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-if(!offVer || !(offVer =~ "^14")){
+if(!offVer || offVer !~ "^14\."){
   exit(0);
 }
 

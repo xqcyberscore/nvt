@@ -25,12 +25,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807362");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2016-3359");
   script_bugtraq_id(92795);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-14 12:23:33 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Outlook Remote Code Execution Vulnerability (3185852)");
@@ -47,8 +47,10 @@ if(description)
   arbitrary code in the context of the current user and to take control of the
   affected system.");
 
-  script_tag(name:"affected", value:"Microsoft Outlook 2007 Service Pack 2 and prior,
-  Microsoft Outlook 2010 Service Pack 1 and prior,
+  script_tag(name:"affected", value:"Microsoft Outlook 2007 Service Pack 2 and prior
+
+  Microsoft Outlook 2010 Service Pack 1 and prior
+
   Microsoft Outlook 2016.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
@@ -69,7 +71,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
@@ -77,7 +78,7 @@ include("secpod_smb_func.inc");
 
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
 
-if(!outlookVer || !(outlookVer =~ "^(14|12|16)")){
+if(!outlookVer || outlookVer !~ "^1[246]\."){
   exit(0);
 }
 

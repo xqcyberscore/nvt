@@ -28,14 +28,14 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806680");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2016-0041", "CVE-2016-0059", "CVE-2016-0060", "CVE-2016-0061",
                 "CVE-2016-0062", "CVE-2016-0063", "CVE-2016-0064", "CVE-2016-0067",
                 "CVE-2016-0068", "CVE-2016-0069", "CVE-2016-0071", "CVE-2016-0072",
                 "CVE-2016-0077");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2016-02-10 08:17:47 +0530 (Wed, 10 Feb 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3134220)");
@@ -72,7 +72,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3134814");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3134220");
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3134220");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3141092");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-009");
 
@@ -84,7 +83,6 @@ if(description)
   script_mandatory_keys("MS/IE/Version");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -98,7 +96,7 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
 }
 
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(9|10|11)")){
+if(!ieVer || ieVer !~ "^(9|1[01])\."){
   exit(0);
 }
 

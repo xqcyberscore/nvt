@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814243");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-20T11:12:48+0000");
   script_cve_id("CVE-2018-8501", "CVE-2018-8502", "CVE-2018-8504");
   script_bugtraq_id(105497, 105498, 105499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
   script_tag(name:"creation_date", value:"2018-10-10 08:45:51 +0530 (Wed, 10 Oct 2018)");
   script_name("Microsoft Office 2013 Service Pack 1 Multiple Vulnerabilities (KB4461445)");
 
@@ -64,14 +64,13 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
 offVer = get_kb_item("MS/Office/Ver");
-if(!offVer || !(offVer =~ "^15\.")){
+if(!offVer || offVer !~ "^15\."){
   exit(0);
 }
 
