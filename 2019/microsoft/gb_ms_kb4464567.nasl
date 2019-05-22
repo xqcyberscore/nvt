@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814972");
-  script_version("2019-05-15T13:58:40+0000");
+  script_version("2019-05-21T14:04:10+0000");
   script_cve_id("CVE-2019-0946", "CVE-2019-0947", "CVE-2019-0945");
   script_bugtraq_id(108193, 108192, 108194);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-15 13:58:40 +0000 (Wed, 15 May 2019)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-05-21 14:04:10 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 12:25:43 +0530 (Wed, 15 May 2019)");
   script_name("Microsoft Office 2010 Service Pack 2 Multiple Vulnerabilities (KB4464567)");
 

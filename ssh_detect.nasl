@@ -7,7 +7,7 @@
 # Noam Rathaus <noamr@securiteam.com>
 #
 # Copyright:
-# Copyright (C) 1999 SecuriTeam
+# Copyright (C) 2006 SecuriTeam
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("2019-05-02T04:45:21+0000");
+  script_version("2019-05-21T13:46:00+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-21 13:46:00 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 1999 SecuriTeam");
+  script_copyright("This script is Copyright (C) 2006 SecuriTeam");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "find_service6.nasl", "external_svc_ident.nasl");
   script_require_ports("Services/ssh", 22);
@@ -52,7 +52,6 @@ if(description)
 include("misc_func.inc");
 include("ssh_func.inc");
 include("host_details.inc");
-include("cpe.inc");
 
 vt_strings = get_vt_strings();
 
@@ -101,21 +100,9 @@ if( login_banner ) {
   text += '(not available)';
 }
 
-# SSH-2.0-OpenSSH_7.1-hpn14v5 FreeBSD-openssh-portable-7.1.p1_1,1
-# SSH-2.0-OpenSSH
-# SSH-2.0-OpenSSH_7.6 FreeBSD-openssh-portable-7.6.p1_3,1
-# SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3
-# SSH-2.0-OpenSSH_6.4
-# SSH-2.0-OpenSSH_for_Windows_7.9
-# SSH-2.0-OpenSSH_4.7p1 Debian-8ubuntu1
-# TODO: Move into own detection VT
 if( "OpenSSH" >< server_banner ) {
-  _server_banner = str_replace( string:server_banner, find:"OpenSSH_for_Windows", replace:"OpenSSH" );
-  cpe = build_cpe( value:_server_banner, exp:"OpenSSH[_ ]([.a-zA-Z0-9]*)[- ]?.*", base:"cpe:/a:openbsd:openssh:" );
-  set_kb_item( name:"openssh/detected", value:TRUE );
-  if( ! cpe )
-    cpe = "cpe:/a:openbsd:openssh";
-  register_product( cpe:cpe, location:port + "/tcp", port:port, service:"ssh" );
+  set_kb_item( name:"ssh/openssh/detected", value:TRUE );
+  set_kb_item( name:"ssh/openssh/" + port + "/detected", value:TRUE );
   guess += '\n- OpenSSH';
 }
 
@@ -215,6 +202,30 @@ if( egrep( pattern:"SSH.+Data ONTAP SSH", string:server_banner ) ) {
   set_kb_item( name:"ssh/netapp/data_ontap/detected", value:TRUE );
   set_kb_item( name:"ssh/netapp/data_ontap/" + port + "/detected", value:TRUE );
   guess += '\n- NetApp Data ONTAP';
+}
+
+if( login_banner && "Riverbed" >< login_banner ) {
+
+  if( "Riverbed SteelHead" >< login_banner ) { # gb_riverbed_steelhead_ssh_detect.nasl
+    set_kb_item( name:"ssh/riverbed/steelhead/detected", value:TRUE );
+    set_kb_item( name:"ssh/riverbed/steelhead/" + port + "/detected", value:TRUE );
+    guess += '\n- Riverbed SteelHead';
+  }
+
+  if( "Riverbed Cascade" >< login_banner ) { # gb_riverbed_steelcentral_ssh_detect.nasl
+    set_kb_item( name:"ssh/riverbed/steelcentral/detected", value:TRUE );
+    set_kb_item( name:"ssh/riverbed/steelcentral/" + port + "/detected", value:TRUE );
+    set_kb_item( name:"ssh/riverbed/cascade/detected", value:TRUE );
+    set_kb_item( name:"ssh/riverbed/cascade/" + port + "/detected", value:TRUE );
+    guess += '\n- Riverbed Cascade/SteelCentral';
+  }
+
+  # If one of the above doesn't match we still want to report an unknown Riverbed Product.
+  if( "Riverbed" >!< guess ) {
+    set_kb_item( name:"ssh/riverbed/unknown_product/detected", value:TRUE );
+    set_kb_item( name:"ssh/riverbed/unknown_product/" + port + "/detected", value:TRUE );
+    guess += '\n- Unknown Riverbed Product';
+  }
 }
 
 if( strlen( guess ) > 0 )

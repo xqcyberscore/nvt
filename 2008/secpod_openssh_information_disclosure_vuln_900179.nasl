@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssh_information_disclosure_vuln_900179.nasl 13562 2019-02-11 07:35:15Z cfischer $
 #
 # OpenSSH CBC Mode Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900179");
-  script_version("$Revision: 13562 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:35:15 +0100 (Mon, 11 Feb 2019) $");
+  script_version("2019-05-22T07:58:25+0000");
+  script_tag(name:"last_modification", value:"2019-05-22 07:58:25 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-5161");
   script_bugtraq_id(32319);
@@ -40,8 +39,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_name("OpenSSH CBC Mode Information Disclosure Vulnerability");
-  script_dependencies("ssh_detect.nasl");
-  script_require_ports("Services/ssh", 22);
+  script_dependencies("gb_openssh_consolidation.nasl");
   script_mandatory_keys("openssh/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/32760/");
@@ -75,18 +73,4 @@ if(description)
   exit(0);
 }
 
-exit(66); # Duplicated of 2009/openssh_32319_remote.nasl
-
-include("version_func.inc");
-include("host_details.inc");
-
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
-
-if( version_is_less( version:vers, test_version:"5.2" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"5.2" );
-  security_message( port:port, data:report );
-  exit( 0 );
-}
-
-exit( 99 );
+exit(66); # Duplicated by 2009/openssh_32319_remote.nasl

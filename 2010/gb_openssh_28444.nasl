@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_28444.nasl 13562 2019-02-11 07:35:15Z cfischer $
 #
 # OpenSSH X Connections Session Hijacking Vulnerability
 #
@@ -29,19 +28,18 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100584");
-  script_version("$Revision: 13562 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:35:15 +0100 (Mon, 11 Feb 2019) $");
-  script_tag(name:"creation_date", value:"2010-04-19 20:46:01 +0200 (Mon, 19 Apr 2010)");
+  script_version("2019-05-22T07:58:25+0000");
   script_bugtraq_id(28444);
   script_cve_id("CVE-2008-1483");
   script_name("OpenSSH X Connections Session Hijacking Vulnerability");
+  script_tag(name:"last_modification", value:"2019-05-22 07:58:25 +0000 (Wed, 22 May 2019)");
+  script_tag(name:"creation_date", value:"2010-04-19 20:46:01 +0200 (Mon, 19 Apr 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
-  script_require_ports("Services/ssh", 22);
+  script_dependencies("gb_openssh_consolidation.nasl");
   script_mandatory_keys("openssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/28444");
@@ -50,7 +48,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.openbsd.org/errata42.html");
   script_xref(name:"URL", value:"http://www.openbsd.org/errata43.html");
   script_xref(name:"URL", value:"http://www.openssh.com/txt/release-5.0");
-  script_xref(name:"URL", value:"http://www.openssh.com");
   script_xref(name:"URL", value:"http://sourceforge.net/project/shownotes.php?release_id=590180");
   script_xref(name:"URL", value:"http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=463011");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/492447");
@@ -82,11 +79,17 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_is_less( version:vers, test_version:"4.3p2" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"4.3p2" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"4.3p2", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

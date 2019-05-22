@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_dos_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenSSH Denial of Service Vulnerability
 #
@@ -29,15 +28,22 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806048");
-  script_version("$Revision: 11872 $");
+  script_version("2019-05-22T07:58:25+0000");
   script_cve_id("CVE-2015-6565");
   script_bugtraq_id(75990);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-22 07:58:25 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2015-09-10 14:36:41 +0530 (Thu, 10 Sep 2015)");
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH Denial of Service Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Denial of Service");
+  script_dependencies("gb_openssh_consolidation.nasl");
+  script_mandatory_keys("openssh/detected");
+
+  script_xref(name:"URL", value:"http://www.openssh.com/txt/release-7.0");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/08/22/1");
 
   script_tag(name:"summary", value:"This host is running OpenSSH and is prone
   to denial of service vulnerability.");
@@ -51,40 +57,32 @@ if(description)
   to cause a denial of service (terminal disruption) or possibly have unspecified
   other impact.");
 
-  script_tag(name:"affected", value:"OpenSSH versions 6.8 and 6.9");
+  script_tag(name:"affected", value:"OpenSSH versions 6.8 and 6.9.");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.0 or later.");
 
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.openssh.com/txt/release-7.0");
-  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/08/22/1");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Denial of Service");
-  script_dependencies("ssh_detect.nasl");
-  script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("openssh/detected");
+
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-if(!sshPort = get_app_port(cpe:CPE)){
-  exit(0);
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
+
+if( version_in_range( version:vers, test_version:"6.8", test_version2:"6.9" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"7.0", install_path:path );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-if(!sshVer = get_app_version(cpe:CPE, port:sshPort)){
-  exit(0);
-}
-
-if(version_is_equal(version:sshVer, test_version:"6.8") ||
-   version_is_equal(version:sshVer, test_version:"6.9"))
-{
-  report = 'Installed version: ' + sshVer + '\n' +
-           'Fixed version:     7.0' + '\n';
-
-  security_message(data:report, port:sshPort);
-  exit(0);
-}
+exit( 99 );

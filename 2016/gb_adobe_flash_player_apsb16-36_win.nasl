@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-36_win.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Adobe Flash Player Security Updates( apsb16-36 )-Windows
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809462");
-  script_version("$Revision: 12455 $");
+  script_version("2019-05-21T14:04:10+0000");
   script_cve_id("CVE-2016-7855");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-05-21 14:04:10 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2016-10-27 18:41:34 +0530 (Thu, 27 Oct 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-36 )-Windows");
 

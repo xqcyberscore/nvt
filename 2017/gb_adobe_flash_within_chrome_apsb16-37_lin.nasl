@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_within_chrome_apsb16-37_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Adobe Flash Player Within Google Chrome Security Update (apsb16-37) - Linux
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810633");
-  script_version("$Revision: 11977 $");
+  script_version("2019-05-21T14:04:10+0000");
   script_cve_id("CVE-2016-7857", "CVE-2016-7858", "CVE-2016-7859", "CVE-2016-7860",
                 "CVE-2016-7861", "CVE-2016-7862", "CVE-2016-7863", "CVE-2016-7864",
                 "CVE-2016-7865");
   script_bugtraq_id(94153);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-05-21 14:04:10 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-17 16:34:20 +0530 (Fri, 17 Mar 2017)");
   script_name("Adobe Flash Player Within Google Chrome Security Update (apsb16-37) - Linux");
 

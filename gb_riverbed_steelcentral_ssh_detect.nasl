@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelcentral_ssh_detect.nasl 13570 2019-02-11 10:39:55Z cfischer $
 #
 # Riverbed SteelCentral Detection (SSH Banner)
 #
@@ -28,23 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105788");
+  script_version("2019-05-21T13:46:00+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 13570 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:39:55 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-21 13:46:00 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-30 13:36:05 +0200 (Thu, 30 Jun 2016)");
   script_name("Riverbed SteelCentral Detection (SSH)");
-
-  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the ssh banner.");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("openssh/detected");
+  script_mandatory_keys("ssh/riverbed/steelcentral/detected");
+
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
+  to extract the version number from the SSH banner.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }

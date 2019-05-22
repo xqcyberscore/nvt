@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_auth_password_dos_vuln_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # OpenSSH Denial of Service And User Enumeration Vulnerabilities (Windows)
 #
@@ -29,14 +28,24 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809121");
-  script_version("$Revision: 11969 $");
+  script_version("2019-05-21T12:48:06+0000");
   script_cve_id("CVE-2016-6515", "CVE-2016-6210");
   script_bugtraq_id(92212);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-21 12:48:06 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2016-08-18 10:29:27 +0530 (Thu, 18 Aug 2016)");
   script_name("OpenSSH Denial of Service And User Enumeration Vulnerabilities (Windows)");
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Denial of Service");
+  script_dependencies("gb_openssh_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssh/detected", "Host/runs_windows");
+
+  script_xref(name:"URL", value:"http://www.openssh.com/txt/release-7.3");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Jul/51");
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/CVE-2016-6210");
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2016/08/01/2");
 
   script_tag(name:"summary", value:"This host is installed with openssh and
   is prone to denial of service and user enumeration vulnerabilities.");
@@ -62,38 +71,27 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL", value:"http://www.openssh.com/txt/release-7.3");
-  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Jul/51");
-  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/CVE-2016-6210");
-  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2016/08/01/2");
-
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Denial of Service");
-  script_dependencies("ssh_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("openssh/detected", "Host/runs_windows");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
+if(isnull(port = get_app_port(cpe:CPE)))
+  exit(0);
 
-if(!sshPort = get_app_port(cpe:CPE)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos["version"];
+path = infos["location"];
+
+if(version_is_less(version:vers, test_version:"7.3")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"7.3", install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
 
-if(!sshVer = get_app_version(cpe:CPE, port:sshPort)){
-  exit(0);
-}
-
-if(version_is_less(version:sshVer, test_version:"7.3"))
-{
-  report = report_fixed_ver(installed_version:sshVer, fixed_version:'7.3');
-  security_message(port:sshPort, data:report);
-  exit(0);
-}
+exit(99);

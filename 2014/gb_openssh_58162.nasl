@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_58162.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # OpenSSH Denial of Service Vulnerability
 #
@@ -32,21 +31,19 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103939");
   script_bugtraq_id(58162);
   script_cve_id("CVE-2010-5107");
+  script_version("2019-05-22T07:58:25+0000");
+  script_name("OpenSSH Denial of Service Vulnerability");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11213 $");
-  script_name("OpenSSH Denial of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-22 07:58:25 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2014-04-09 12:16:30 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
-  script_require_ports("Services/ssh", 22);
+  script_dependencies("gb_openssh_consolidation.nasl");
   script_mandatory_keys("openssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/58162");
-  script_xref(name:"URL", value:"http://www.openssh.com");
 
   script_tag(name:"impact", value:"Exploiting this issue allows remote attackers to trigger denial-of-
   service conditions.");
@@ -58,11 +55,11 @@ if(description)
   remote attackers to cause a denial of service (connection-slot exhaustion) by periodically making
   many new TCP connections.");
 
-  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"summary", value:"OpenSSH is prone to a remote denial-of-service vulnerability.");
 
-  script_tag(name:"affected", value:"OpenSSH 6.1 and prior");
+  script_tag(name:"affected", value:"OpenSSH 6.1 and prior.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -73,11 +70,17 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_is_less_equal( version:vers, test_version:"6.1" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

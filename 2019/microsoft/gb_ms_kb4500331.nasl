@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814894");
-  script_version("2019-05-18T06:07:35+0000");
+  script_version("2019-05-22T07:03:13+0000");
   script_cve_id("CVE-2019-0708");
   script_bugtraq_id(108273);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-18 06:07:35 +0000 (Sat, 18 May 2019)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-05-22 07:03:13 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-17 15:27:29 +0530 (Fri, 17 May 2019)");
   script_name("Microsoft Windows Remote Desktop Service Remote Code Execution Vulnerability (KB4500331)");
 
@@ -82,7 +82,7 @@ if(hotfix_check_sp(xp:4) > 0)
 {
   if(version_is_less(version:fileVer , test_version:"5.1.2600.7701"))
   {
-    report = report_fixed_ver(file_checked:path + "\Termdd.sys",
+    report = report_fixed_ver(file_checked:sysPath + "\drivers\Termdd.sys",
                               file_version:fileVer, vulnerable_range:"Less than 5.1.2600.7701");
     security_message(data:report);
     exit(0);
@@ -93,7 +93,7 @@ else if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0){
 
   if(version_is_less(version:fileVer , test_version:"5.2.3790.6787"))
   {
-    report = report_fixed_ver(file_checked:path + "\Termdd.sys",
+    report = report_fixed_ver(file_checked:sysPath + "\drivers\Termdd.sys",
                               file_version:fileVer, vulnerable_range:"Less than 5.2.3790.6787");
     security_message(data:report);
     exit(0);

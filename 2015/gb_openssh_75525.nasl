@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_75525.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability
 #
@@ -32,20 +31,19 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105317");
   script_bugtraq_id(75525);
   script_cve_id("CVE-2015-5352");
+  script_version("2019-05-22T07:58:25+0000");
+  script_name("OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12490 $");
-  script_name("OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-22 07:58:25 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2015-07-09 10:06:32 +0200 (Thu, 09 Jul 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("gb_openssh_consolidation.nasl");
   script_mandatory_keys("openssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/75525");
-  script_xref(name:"URL", value:"http://www.openssh.com");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass certain security
   restrictions and perform unauthorized actions. This may lead to further attacks");

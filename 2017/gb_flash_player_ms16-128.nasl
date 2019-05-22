@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810634");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-21T14:04:10+0000");
   script_cve_id("CVE-2016-7855");
   script_bugtraq_id(93861);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-05-21 14:04:10 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2017-03-17 16:51:17 +0530 (Fri, 17 Mar 2017)");
   script_name("Microsoft IE And Microsoft Edge Flash Player RCE Vulnerability (3201860)");
 

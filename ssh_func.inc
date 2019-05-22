@@ -2402,9 +2402,30 @@ function find_bin( prog_name, sock ) {
   return( r );
 }
 
-function find_file( file_name, file_path, useregex, regexpar, sock ) {
+# @brief Searches for a file on the target SSH server
+#
+# @param file_name   The filename to search for (e.g. ssh, sshd, ...)
+# @param file_path   The path to start the search (e.g. / )
+# @param useregex    If set to TRUE specifies if a basic regexp search in the locate (-r/--regexp) is used.
+# @param useextregex If set to TRUE specifies if a extended regexp search in the locate (--regex) is used
+# @param regexpar    The regex to use if useregex or extregex was set to TRUE.
+# @param sock        The socket for the connection to the remote SSH service.
+#
+# @example Example call to search for all (ssh and sshd) files:
+#          file_name:"sshd"
+#          file_path:"/"
+#          useextregex:TRUE
+#          regexpar:"?$"
+#
+#          The "?" makes the ending "d" optional and so all "ssh" and "sshd" files are returned.
+#
+# @note If useregex and useextregex are both set to TRUE useextregex is used.
+#
+# @return A list containing the found files or NULL if none where found or the function was started against a non-linux service.
 
-  local_var r, f, fname, lparam, cl, file_name, file_path, useregex, regexpar, sock;
+function find_file( file_name, file_path, useregex, useextregex, regexpar, sock ) {
+
+  local_var r, f, fname, lparam, cl, file_name, file_path, useregex, useextregex, regexpar, sock;
   local_var use_find, descend_directories, cmd, start, end, current_timeout;
 
   if( get_kb_item( "ssh/no_linux_shell" ) )
@@ -2422,7 +2443,9 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
 
   r = NULL;
 
-  if( useregex )
+  if( useextregex )
+    lparam = "-ei --regex";
+  else if( useregex )
     lparam = "-eir";
   else
     lparam = "-ei";
@@ -2481,7 +2504,7 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
         # the -xdev once we have reached the timeout three times.
         # TBD: If this doesn't help maybe lower the -maxdepth 7 above?
         current_timeout = get_kb_item( "ssh/lsc/find_timeout" );
-        if( end - start > 14 ) { #nb: OpenVAS 9 and below has a timeout of 15 seconds, current trunk has 30 seconds
+        if( end - start > 14 ) { #nb: GVM-9 and below has a timeout of 15 seconds, current trunk has 30 seconds
           current_timeout++;
           replace_kb_item( name:"ssh/lsc/find_timeout", value:current_timeout );
         }

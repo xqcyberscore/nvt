@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelcentral_ssh_default_credentials.nasl 10123 2018-06-07 13:22:15Z cfischer $
 #
 # Riverbed SteelCentral SSH Default Credentials
 #
@@ -28,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105791");
-  script_version("$Revision: 10123 $");
+  script_version("2019-05-21T13:46:00+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("Riverbed SteelCentral SSH Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:22:15 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-21 13:46:00 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-30 17:36:06 +0200 (Thu, 30 Jun 2016)");
+  script_name("Riverbed SteelCentral SSH Default Credentials");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_openssh_remote_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_dependencies("ssh_detect.nasl");
-  script_mandatory_keys("openssh/detected");
+  script_mandatory_keys("openssh/ssh/detected");
 
   script_tag(name:"summary", value:'The remote Riverbed SteelCentral is prone to a default account authentication bypass vulnerability.');
 

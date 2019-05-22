@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815075");
-  script_version("2019-05-16T13:15:53+0000");
+  script_version("2019-05-21T14:04:10+0000");
   script_cve_id("CVE-2019-0953");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2019-05-16 12:54:18 +0530 (Thu, 16 May 2019)");
-  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-21 14:04:10 +0000 (Tue, 21 May 2019)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Remote Code Execution Vulnerability-May19 (Mac OS X)");
 
