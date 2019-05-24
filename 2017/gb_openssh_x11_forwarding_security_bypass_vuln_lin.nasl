@@ -28,19 +28,19 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810769");
-  script_version("2019-05-21T12:48:06+0000");
+  script_version("2019-05-22T12:00:57+0000");
   script_cve_id("CVE-2016-1908");
   script_bugtraq_id(84427);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-21 12:48:06 +0000 (Tue, 21 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-22 12:00:57 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2017-04-21 16:34:59 +0530 (Fri, 21 Apr 2017)");
   script_name("OpenSSH X11 Forwarding Security Bypass Vulnerability (Linux)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_openssh_consolidation.nasl", "os_detection.nasl");
-  script_mandatory_keys("openssh/detected", "Host/runs_windows");
+  script_mandatory_keys("openssh/detected", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2016/01/15/13");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1298741#c4");

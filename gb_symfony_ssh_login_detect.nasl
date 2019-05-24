@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_ssh_login_detect.nasl 10337 2018-06-27 06:24:34Z cfischer $
 #
 # Sensiolabs Symfony Detection (SSH-Login)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107324");
-  script_version("$Revision: 10337 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 08:24:34 +0200 (Wed, 27 Jun 2018) $");
+  script_version("2019-05-23T07:09:57+0000");
+  script_tag(name:"last_modification", value:"2019-05-23 07:09:57 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-26 16:20:53 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,22 +52,30 @@ include("ssh_func.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
+if( ! sock )
+  exit( 0 );
+
 known_path = 'vendor/symfony/symfony/src/Symfony/Component/HttpKernel';
 path_list = ssh_cmd( cmd:'find / -path \\*' + known_path + ' 2>/dev/null', socket:sock );
+if( ! path_list )
+  exit( 0 );
+
 port = kb_ssh_transport();
 
 foreach path( split( path_list ) ) {
 
   path = ereg_replace( string:path, pattern:'[\r\n]', replace:'' );
   version_text = ssh_cmd( cmd:'grep "const VERSION =" ' + path + '/Kernel.php', socket:sock );
-  version_text = ereg_replace( string:version_text, pattern:'^[ ]+', replace:'' );
+  if( ! version_text )
+    continue;
 
+  version_text = ereg_replace( string:version_text, pattern:'^[ ]+', replace:'' );
   vers = eregmatch( string:version_text, pattern:'([0-9.]+)' );
   if( ! isnull( vers[1] ) ) {
     version = vers[1];
     location = ereg_replace( string:path, pattern:known_path, replace:'' );
     found = TRUE;
-    set_kb_item( name:"symfony/ssh-login/" + port + "/installs", value:port + "#-#" + location + "#-#" + version + "#-#" + version_text + "#-#" + path + '/Kernel.php' );
+    set_kb_item( name:"symfony/ssh-login/" + port + "/installs", value:"0#---#" + location + "#---#" + version + "#---#" + version_text + "#---#" + path + '/Kernel.php' );
   }
 }
 

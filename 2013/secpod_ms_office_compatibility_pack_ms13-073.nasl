@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902999");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-21T06:50:08+0000");
   script_cve_id("CVE-2013-1315", "CVE-2013-3158", "CVE-2013-3159");
   script_bugtraq_id(62167, 62219, 62225);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-21 06:50:08 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2013-09-11 13:54:46 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2858300)");
 
@@ -44,9 +44,9 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws exists when processing XML data, which can be exploited to
   disclose contents of certain local files by sending specially crafted XML
-data including external entity references.");
+  data including external entity references.");
 
-  script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior");
+  script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory and
   disclose sensitive information.");
@@ -56,14 +56,12 @@ data including external entity references.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54739");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2760588");
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-073");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-073");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/XLCnv/Version");
-
-  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-073");
 
   exit(0);
 }

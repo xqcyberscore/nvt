@@ -23,12 +23,12 @@ CPE = "cpe:/a:microsoft:asp.net_core" ;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815127");
-  script_version("2019-05-16T13:15:53+0000");
+  script_version("2019-05-23T07:06:55+0000");
   script_cve_id("CVE-2019-0820", "CVE-2019-0980", "CVE-2019-0981", "CVE-2019-0982");
   script_bugtraq_id(108207, 108232, 108245, 108208);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-05-23 07:06:55 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 11:38:35 +0530 (Thu, 16 May 2019)");
   script_name(".NET Core Multiple DoS Vulnerabilities-02 (May 2019)");
 

@@ -28,14 +28,14 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814822");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-05-22T13:05:41+0000");
   script_cve_id("CVE-2018-20346", "CVE-2018-20505", "CVE-2019-6212", "CVE-2019-6215",
                 "CVE-2019-6216", "CVE-2019-6221", "CVE-2019-6227", "CVE-2019-6229",
                 "CVE-2019-6233", "CVE-2018-20506", "CVE-2019-6217", "CVE-2019-6234",
                 "CVE-2019-6235", "CVE-2019-6226");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-22 13:05:41 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 14:09:57 +0530 (Fri, 25 Jan 2019)");
   script_name("Apple iTunes Security Updates (HT209450)");
 
@@ -64,8 +64,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"https://support.apple.com/en-in/HT209450");
-  script_xref(name:"URL", value:"https://www.apple.com");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT209450");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");

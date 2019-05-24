@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843998");
-  script_version("2019-05-10T12:05:36+0000");
+  script_version("2019-05-23T07:06:55+0000");
   script_cve_id("CVE-2019-3839");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-10 12:05:36 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-05-23 07:06:55 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-09 02:00:36 +0000 (Thu, 09 May 2019)");
   script_name("Ubuntu Update for ghostscript USN-3970-1");
   script_category(ACT_GATHER_INFO);

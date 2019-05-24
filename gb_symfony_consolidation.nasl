@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_consolidation.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Sensiolabs Symfony Detection Consolidation
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107325");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("2019-05-23T07:09:57+0000");
+  script_tag(name:"last_modification", value:"2019-05-23 07:09:57 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-26 16:20:53 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +63,7 @@ foreach source( make_list( "ssh-login", "http" ) ) {
 
   foreach install( install_list ) {
 
-    infos = split( install, sep:"#-#", keep:FALSE );
+    infos = split( install, sep:"#---#", keep:FALSE );
     if( max_index( infos ) < 3 ) continue; # Something went wrong and not all required infos are there...
 
     port = infos[0];

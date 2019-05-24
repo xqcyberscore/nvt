@@ -23,7 +23,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814892");
-  script_version("2019-05-14T12:37:52+0000");
+  script_version("2019-05-22T13:05:41+0000");
   script_cve_id("CVE-2019-8607", "CVE-2019-6237", "CVE-2019-8571", "CVE-2019-8583",
                 "CVE-2019-8584", "CVE-2019-8586", "CVE-2019-8587", "CVE-2019-8594",
                 "CVE-2019-8595", "CVE-2019-8596", "CVE-2019-8597", "CVE-2019-8601",
@@ -32,7 +32,7 @@ if(description)
                 "CVE-2019-8628");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-14 12:37:52 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-22 13:05:41 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-14 10:44:48 +0530 (Tue, 14 May 2019)");
   script_name("Apple Safari Security Updates (HT210123)");
 
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL", value:"https://support.apple.com/en-in/HT210123");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT210123");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelhead_http_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Riverbed SteelHead Detection (HTTP)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106844");
-  script_version("$Revision: 10922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-22T11:40:52+0000");
+  script_tag(name:"last_modification", value:"2019-05-22 11:40:52 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-02 13:17:40 +0700 (Fri, 02 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +45,7 @@ devices and to extract its version.");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -93,6 +92,8 @@ if ('product-name">SteelHead' >< res && 'id="rvbdLoginLogoContainer">' >< res) {
   cpe = build_cpe(value: version, exp: "^([0-9a-z.]+)", base: "cpe:/a:riverbed:steelhead:");
   if (!cpe)
     cpe = 'cpe:/a:riverbed:steelhead';
+
+  register_and_report_os(os: "Riverbed Optimization System (RiOS)", cpe: "cpe:/o:riverbed:riverbed_optimization_system", desc: "Riverbed SteelHead Detection (HTTP)", runs_key: "unixoide");
 
   register_product(cpe: cpe, location: "/", port: port, service: "www");
 

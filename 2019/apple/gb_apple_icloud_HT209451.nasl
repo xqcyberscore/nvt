@@ -28,13 +28,13 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814821");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-05-22T13:05:41+0000");
   script_cve_id("CVE-2018-20346", "CVE-2018-20505", "CVE-2018-20506", "CVE-2019-6215",
                 "CVE-2019-6212", "CVE-2019-6216", "CVE-2019-6217", "CVE-2019-6226",
                 "CVE-2019-6227", "CVE-2019-6233", "CVE-2019-6234", "CVE-2019-6229");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-22 13:05:41 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 13:00:19 +0530 (Wed, 23 Jan 2019)");
   script_name("Apple iCloud Security Updates (HT209451)-Windows");
 
@@ -63,8 +63,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"https://support.apple.com/en-in/HT209451");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT209451");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");

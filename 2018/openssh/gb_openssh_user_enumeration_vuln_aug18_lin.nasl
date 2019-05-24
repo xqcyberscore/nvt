@@ -28,11 +28,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813864");
-  script_version("2019-05-21T12:48:06+0000");
+  script_version("2019-05-23T14:08:05+0000");
   script_cve_id("CVE-2018-15473");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-21 12:48:06 +0000 (Tue, 21 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-23 14:08:05 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-20 17:27:42 +0530 (Mon, 20 Aug 2018)");
   script_name("OpenSSH User Enumeration Vulnerability-Aug18 (Linux)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -80,6 +80,10 @@ if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRU
 
 vers = infos["version"];
 path = infos["location"];
+
+deb_vers = get_kb_item("openssh/" + port + "/debian_version");
+if(deb_vers && version_is_greater_equal(version:deb_vers, test_version:"7.4p1-10+deb9u4"))
+  exit(99);
 
 if(version_is_less_equal(version:vers, test_version:"7.7")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"7.8", install_path:path);

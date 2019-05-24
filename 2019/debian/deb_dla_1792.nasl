@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891792");
-  script_version("2019-05-20T02:00:09+0000");
+  script_version("2019-05-23T07:06:55+0000");
   script_cve_id("CVE-2019-3839");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-20 02:00:09 +0000 (Mon, 20 May 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-05-23 07:06:55 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-20 02:00:09 +0000 (Mon, 20 May 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1792-1] ghostscript security update)");
   script_category(ACT_GATHER_INFO);
@@ -45,7 +45,8 @@ if(description)
   script_tag(name:"insight", value:"A vulnerability was discovered in Ghostscript, the GPL PostScript/PDF
 interpreter, which may result in denial of service or the execution of
 arbitrary code if a malformed Postscript file is processed (despite the
--dSAFER sandbox being enabled).");
+
+  - dSAFER sandbox being enabled).");
 
   script_tag(name:"affected", value:"'ghostscript' package(s) on Debian Linux.");
 

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876319");
-  script_version("2019-05-17T10:04:07+0000");
+  script_version("2019-05-23T07:06:55+0000");
   script_cve_id("CVE-2019-10909", "CVE-2019-10910", "CVE-2019-10911", "CVE-2019-11358");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:04:07 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-05-23 07:06:55 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-08 02:09:55 +0000 (Wed, 08 May 2019)");
   script_name("Fedora Update for drupal8 FEDORA-2019-eba8e44ee6");
   script_category(ACT_GATHER_INFO);

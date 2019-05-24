@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902965");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-21T06:50:08+0000");
   script_cve_id("CVE-2013-1282");
   script_bugtraq_id(58848);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-21 06:50:08 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2013-04-10 12:37:03 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft Windows Active Directory Denial of Service Vulnerability (2830914)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52917/");
@@ -47,29 +47,41 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow the remote attackers to cause a
   denial-of-service condition.");
+
   script_tag(name:"affected", value:"Microsoft Windows 8
+
   Microsoft Windows Server 2012
+
   Microsoft Windows XP x32 Edition Service Pack 3 and prior
+
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
-  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
+
+  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error within the implementations of Active Directory,
   Active Directory Application Mode (ADAM), Active Directory Lightweight
   Directory Service (AD LDS), and Active Directory Services when handling
   LDAP queries. This can be exploited to exhaust available memory resources and
   render the LDAP service non-responsive via a specially crafted LDAP query.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-032.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-032");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_atlassian_jira_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Atlassian JIRA Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902046");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-05-23T11:50:28+0000");
+  script_tag(name:"last_modification", value:"2019-05-23 11:50:28 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +51,6 @@ and to extract its version");
 
   script_xref(name:"URL", value:"https://www.atlassian.com/software/jira");
 
-
   exit(0);
 }
 
@@ -70,7 +68,11 @@ foreach dir (make_list_unique("/jira", cgi_dirs(port: port))) {
 
   rcvRes = http_get_cache(port: port, item: dir + "/login.jsp");
 
-  if("Atlassian JIRA" >< rcvRes && "/secure/Dashboard.jspa" >< rcvRes)
+  # Atlassian JIRA
+  # or:
+  # Atlassian Jira
+  # so a case insensitive =~ is used here
+  if(rcvRes =~ "Atlassian JIRA" && "/secure/Dashboard.jspa" >< rcvRes)
   {
     version = "unknown";
     vers = eregmatch(pattern: '<meta name="ajs-version-number" content="([0-9.]+)">', string:rcvRes);
@@ -85,7 +87,7 @@ foreach dir (make_list_unique("/jira", cgi_dirs(port: port))) {
     if (!cpe)
       cpe = "cpe:/a:atlassian:jira";
 
-    register_product(cpe: cpe, location: install, port: port);
+    register_product(cpe: cpe, location: install, port: port, service: "www");
 
     log_message(data: build_detection_report(app: "Atlassian JIRA", version: version, install: install,
                                              cpe: cpe, concluded: vers[0]),

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_sandbox_profiles_sec_bypass_vuln.nasl 13063 2019-01-14 11:19:20Z cfischer $
 #
 # Apple Mac OS X Predefined Sandbox Profiles Security Bypass Vulnerability
 #
@@ -27,19 +26,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803223");
-  script_version("$Revision: 13063 $");
+  script_version("2019-05-22T12:34:41+0000");
   script_cve_id("CVE-2011-1516", "CVE-2008-7303");
   script_bugtraq_id(50644, 50716);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 12:19:20 +0100 (Mon, 14 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-22 12:34:41 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2013-02-01 12:42:10 +0530 (Fri, 01 Feb 2013)");
   script_name("Apple Mac OS X Predefined Sandbox Profiles Security Bypass Vulnerability");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.[5-7]\.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/48980");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/71284");
@@ -78,7 +77,7 @@ osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer)
   exit(0);
 
-if(osVer =~ "^10.[5-7]." && version_in_range(version:osVer, test_version:"10.5.0", test_version2:"10.7.2")) {
+if(osVer =~ "^10\.[5-7]\." && version_in_range(version:osVer, test_version:"10.5.0", test_version2:"10.7.2")) {
   report = report_fixed_ver(installed_version:osVer, fixed_version:"WillNotFix");
   security_message(port:0, data:report);
   exit(0);

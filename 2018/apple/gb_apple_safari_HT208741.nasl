@@ -28,11 +28,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813319");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-05-22T12:34:41+0000");
   script_cve_id("CVE-2018-4200", "CVE-2018-4204");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-22 12:34:41 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2018-04-25 11:47:33 +0530 (Wed, 25 Apr 2018)");
   script_name("Apple Safari Security Updates(HT208741)");
 
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple Safari versions before 11.1
   (11605.1.33.1.4) on OS X El Capitan 10.11.6, before 11.1 (12605.1.33.1.4) on macOS
-  Sierra 10.12.6 and before 11.1 (13605.1.33.1.4) on macOS High Sierra 10.13.4");
+  Sierra 10.12.6 and before 11.1 (13605.1.33.1.4) on macOS High Sierra 10.13.4.");
 
   script_tag(name:"solution", value:"Upgrade to Apple Safari 11.1 (11605.1.33.1.4)
   on OS X El Capitan 10.11.6, 11.1 (12605.1.33.1.4) on macOS Sierra 10.12.6 or
@@ -65,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl", "gather-package-list.nasl");
-  script_mandatory_keys("AppleSafari/MacOSX/Version", "ssh/login/osx_version");
+  script_mandatory_keys("AppleSafari/MacOSX/Version", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[1-3]\.");
 
   exit(0);
 }
@@ -95,13 +95,13 @@ if(safVer == "11.1")
 {
   ver = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/Safari.app/Contents/Info CFBundleVersion"));
 
-  if(osVer =~ "^(10\.11)" && version_is_less(version:ver, test_version:"11605.1.33.1.4")){
+  if(osVer =~ "^10\.11" && version_is_less(version:ver, test_version:"11605.1.33.1.4")){
     fix = "11.1 (11605.1.33.1.4)";
   }
-  else if(osVer =~ "^(10\.12)" && version_is_less(version:ver, test_version:"12605.1.33.1.4")){
+  else if(osVer =~ "^10\.12" && version_is_less(version:ver, test_version:"12605.1.33.1.4")){
     fix = "11.1 (12605.1.33.1.4)";
   }
-  else if(osVer =~ "^(10\.13)" && version_is_less(version:ver, test_version:"13605.1.33.1.4")){
+  else if(osVer =~ "^10\.13" && version_is_less(version:ver, test_version:"13605.1.33.1.4")){
     fix = "11.1 (13605.1.33.1.4)";
   }
 }

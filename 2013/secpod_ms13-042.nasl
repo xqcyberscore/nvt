@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902970");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-21T06:50:08+0000");
   script_cve_id("CVE-2013-1316", "CVE-2013-1317", "CVE-2013-1318", "CVE-2013-1319",
                 "CVE-2013-1320", "CVE-2013-1321", "CVE-2013-1322", "CVE-2013-1323",
                 "CVE-2013-1327", "CVE-2013-1328", "CVE-2013-1329");
@@ -34,7 +34,7 @@ if(description)
                     59771, 59772);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-21 06:50:08 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2013-05-15 10:32:57 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Office Publisher Remote Code Execution Vulnerability (2830397)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53370/");
@@ -46,32 +46,38 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "gb_smb_windows_detect.nasl");
+  script_dependencies("secpod_office_products_version_900032.nasl", "gb_smb_windows_detect.nasl");
   script_mandatory_keys("SMB/Office/Publisher/Version");
+
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
   tricking a user into opening a specially crafted publisher files.");
+
   script_tag(name:"affected", value:"Microsoft Publisher 2003 Service Pack 3 and prior
+
   Microsoft Publisher 2007 Service Pack 3 and prior
-  Microsoft Publisher 2010 Service Pack 1 and prior");
+
+  Microsoft Publisher 2010 Service Pack 1 and prior.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An unspecified errors when handling array size, return values,
-    table range data, NULL values.
+  table range data, NULL values.
 
   - An integer overflow vulnerability exists.
 
   - A signedness error exists when parsing certain data, which can be
-    exploited to corrupt memory.");
+  exploited to corrupt memory.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-042.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-042");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -79,7 +85,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 pubVer = get_kb_item("SMB/Office/Publisher/Version");
-if(pubVer && pubVer =~ "^(11|12|14)\..*")
+if(pubVer && pubVer =~ "^1[124]\.")
 {
   if(version_in_range(version:pubVer, test_version:"11.0",test_version2:"11.0.8401") ||
      version_in_range(version:pubVer, test_version:"12.0",test_version2:"12.0.6676.4999")||

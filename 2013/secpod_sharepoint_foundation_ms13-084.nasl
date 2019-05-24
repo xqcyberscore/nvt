@@ -22,30 +22,36 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:microsoft:sharepoint_foundation";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903326");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-05-21T06:50:08+0000");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-21 06:50:08 +0000 (Tue, 21 May 2019)");
   script_tag(name:"creation_date", value:"2013-10-09 16:29:38 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft SharePoint Foundation Remote Code Execution vulnerability (2885089)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
-Bulletin MS13-084.");
+  Bulletin MS13-084.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"insight", value:"Flaw is due to improper sanitation of user supplied input via a specially
-crafted Excel file.");
-  script_tag(name:"affected", value:"Microsoft SharePoint Foundation 2010 Service Pack 2 and prior");
+  crafted Excel file.");
+
+  script_tag(name:"affected", value:"Microsoft SharePoint Foundation 2010 Service Pack 2 and prior.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-cause a DoS (Denial of Service), and compromise a vulnerable system.");
+  cause a DoS (Denial of Service), and compromise a vulnerable system.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -57,10 +63,9 @@ cause a DoS (Denial of Service), and compromise a vulnerable system.");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
   script_mandatory_keys("MS/SharePoint/Foundation/Ver");
   script_require_ports(139, 445);
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-084");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
@@ -78,7 +83,7 @@ if(!registry_key_exists(key:key)){
 }
 
 ## SharePoint Foundation 2010
-if(shareVer =~ "^14\..*")
+if(shareVer =~ "^14\.")
 {
   path = registry_get_sz(key: key + "14.0", item:"Location");
 

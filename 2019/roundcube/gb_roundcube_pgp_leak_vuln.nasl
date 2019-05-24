@@ -21,8 +21,8 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142410");
-  script_version("2019-05-15T08:17:11+0000");
-  script_tag(name:"last_modification", value:"2019-05-15 08:17:11 +0000 (Wed, 15 May 2019)");
+  script_version("2019-05-23T05:45:00+0000");
+  script_tag(name:"last_modification", value:"2019-05-23 05:45:00 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 08:05:42 +0000 (Wed, 15 May 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"affected", value:"Roundcube Webmail versions 1.3.9 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th May, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 23th May, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/roundcube/roundcubemail/issues/6638");
@@ -72,7 +72,7 @@ if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version:
   exit(0);
 
 version = infos['version'];
-path = version['location'];
+path = infos['location'];
 
 if (version_is_less_equal(version: version, test_version: "1.3.9")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "None", install_path: path);

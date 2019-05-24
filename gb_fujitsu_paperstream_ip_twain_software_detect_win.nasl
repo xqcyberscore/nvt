@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fujitsu_paperstream_ip_twain_software_detect_win.nasl 13126 2019-01-17 14:02:08Z mmartin $
 #
 # FUJITSU Paperstream IP (TWAIN) Software Version Detection (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107456");
-  script_version("$Revision: 13126 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:02:08 +0100 (Thu, 17 Jan 2019) $");
+  script_version("2019-05-24T06:09:18+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 06:09:18 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-17 14:23:43 +0100 (Thu, 17 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +41,9 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version
   of FUJITSU Paperstream IP (TWAIN) Software for Windows.");
-  script_xref(name:"URL", value:"http://www.fujitsu.com/global/");
+
+  script_xref(name:"URL", value:"http://www.fujitsu.com/global");
+
   script_tag(name:"qod_type", value:"registry");
 
   exit(0);
@@ -54,39 +55,48 @@ include("host_details.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
 
-os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch)
-  exit(0);
+os_arch = get_kb_item( "SMB/Windows/Arch" );
+if( !os_arch )
+  exit( 0 );
 
-if("x86" >< os_arch) {
-  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
-  location = "C:\Program Files\fiScanner";
-} else if("x64" >< os_arch) {
-  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
-                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
-  location = "C:\Program Files (x86)\fiScanner";
+if( "x86" >< os_arch ) {
+  key_list = make_list( "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" );
+} else if( "x64" >< os_arch ) {
+  key_list = make_list( "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\" );
 }
 
-if(isnull(key_list)) exit(0);
+if( isnull( key_list ) )
+  exit( 0 );
 
-foreach key (key_list) {
-  foreach item (registry_enum_keys(key:key)) {
+foreach key( key_list ) {
+  foreach item( registry_enum_keys( key:key ) ) {
 
-    appName = registry_get_sz(key:key + item, item:"DisplayName");
+    appName = registry_get_sz( key:key + item, item:"DisplayName" );
 
-    if(!appName || appName !~ "PaperStream IP") continue;
+    if( ! appName || appName !~ "PaperStream IP" )
+      continue;
 
+    concluded  = "Registry-Key:   " + key + item + '\n';
+    concluded += "DisplayName:    " + appName;
+    location = "unknown";
     version = "unknown";
-    concluded = appName;
 
-    version = registry_get_sz(key:key + item, item:"DisplayVersion");
+    loc = registry_get_sz( key:key + item, item:"InstallLocation" );
+    if( loc )
+      location = loc;
 
-    set_kb_item(name:"fujitsu/paperstream_ip_twain/win/detected", value:TRUE);
+    if( vers = registry_get_sz( key:key + item, item:"DisplayVersion" ) ) {
+      version = vers;
+      concluded += '\nDisplayVersion: ' + vers;
+    }
 
-    register_and_report_cpe(app:appName , ver:version, concluded:concluded,
-                          base:"cpe:/a:fujitsu:paperstream_ip_twain:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
-    exit(0);
+    set_kb_item( name:"fujitsu/paperstream_ip_twain/detected", value:TRUE );
+
+    register_and_report_cpe( app:appName , ver:version, concluded:concluded,
+                             base:"cpe:/a:fujitsu:paperstream_ip_%28twain%29:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 0 );

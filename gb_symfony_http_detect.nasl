@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_http_detect.nasl 12442 2018-11-20 14:05:57Z asteins $
 #
 # Sensiolabs Symfony Detection (HTTP)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107323");
-  script_version("$Revision: 12442 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 15:05:57 +0100 (Tue, 20 Nov 2018) $");
+  script_version("2019-05-23T07:09:57+0000");
+  script_tag(name:"last_modification", value:"2019-05-23 07:09:57 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2018-06-26 16:20:53 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +67,7 @@ if( buf =~ "^HTTP/1\.[01] 200" && buf =~ "<h1><span>Welcome to</span> Symfony [0
     version = vers[1];
   }
   conclUrl = report_vuln_url( port:port, url:"/", url_only:TRUE );
-  set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#-#" + install + "#-#" + version + "#-#" + vers[0] + "#-#" + conclUrl );
+  set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + vers[0] + "#---#" + conclUrl );
 }
 
 # nb: This is only available at /_profiler
@@ -99,7 +98,7 @@ if( buf =~ "^HTTP/1\.[01] 200" && ( "<title>Symfony Profiler</title>" >< buf || 
     }
   }
   conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-  set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#-#" + install + "#-#" + version + "#-#" + vers[0] + "#-#" + conclUrl );
+  set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + vers[0] + "#---#" + conclUrl );
 }
 
 foreach dir( make_list( "/", "/symfony", cgi_dirs( port:port ) ) ) {
@@ -119,7 +118,7 @@ foreach dir( make_list( "/", "/symfony", cgi_dirs( port:port ) ) ) {
       version = vers[1];
     }
     conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#-#" + install + "#-#" + version + "#-#" + vers[0] + "#-#" + conclUrl );
+    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + vers[0] + "#---#" + conclUrl );
   }
 
   # same as app_dev.php above
@@ -135,7 +134,7 @@ foreach dir( make_list( "/", "/symfony", cgi_dirs( port:port ) ) ) {
       version = vers[1];
     }
     conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#-#" + install + "#-#" + version + "#-#" + vers[0] + "#-#" + conclUrl );
+    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + vers[0] + "#---#" + conclUrl );
   }
 
   url = dir + "/login";
@@ -146,7 +145,7 @@ foreach dir( make_list( "/", "/symfony", cgi_dirs( port:port ) ) ) {
     version = vers[1];
     found = TRUE;
     conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#-#" + install + "#-#" + version + "#-#" + vers[0] + "#-#" + conclUrl );
+    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + vers[0] + "#---#" + conclUrl );
   }
 
   url = dir + "/src/Symfony/Component/Console/CHANGELOG.md";
@@ -158,7 +157,7 @@ foreach dir( make_list( "/", "/symfony", cgi_dirs( port:port ) ) ) {
     version = vers[1];
     found = TRUE;
     conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
-    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#-#" + install + "#-#" + version + "#-#" + vers[0] + "#-#" + conclUrl );
+    set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + vers[0] + "#---#" + conclUrl );
   }
 }
 

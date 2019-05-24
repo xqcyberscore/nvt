@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814818");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-22T13:05:41+0000");
   script_cve_id("CVE-2019-6218", "CVE-2019-6208", "CVE-2019-6210", "CVE-2019-6205",
                 "CVE-2019-6213", "CVE-2019-6214", "CVE-2019-6220", "CVE-2019-6230",
                 "CVE-2019-6231", "CVE-2019-6225");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-22 13:05:41 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 10:31:23 +0530 (Wed, 23 Jan 2019)");
   script_name("Apple MacOSX Security Updates(HT209446)-03");
 
@@ -71,8 +71,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name:"URL", value:"https://support.apple.com/en-in/HT209446");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT209446");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

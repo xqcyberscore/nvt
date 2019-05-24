@@ -28,12 +28,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812051");
-  script_version("2019-05-21T12:48:06+0000");
+  script_version("2019-05-23T14:08:05+0000");
   script_cve_id("CVE-2017-15906");
   script_bugtraq_id(101552);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-21 12:48:06 +0000 (Tue, 21 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-23 14:08:05 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2017-10-27 13:08:12 +0530 (Fri, 27 Oct 2017)");
   script_name("OpenSSH 'sftp-server' Security Bypass Vulnerability (Linux)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -79,6 +79,10 @@ if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRU
 
 vers = infos["version"];
 path = infos["location"];
+
+deb_vers = get_kb_item("openssh/" + port + "/debian_version");
+if(deb_vers && version_is_greater_equal(version:deb_vers, test_version:"7.4p1-10+deb9u3"))
+  exit(99);
 
 if(version_is_less(version:vers, test_version:"7.6")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"7.6", install_path:path);

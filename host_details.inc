@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 14244 2019-03-17 19:55:30Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -22,9 +21,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 14244 $
-#
 ###############################################################################
 
 # Used in get_app_port/get_app_location to return a default
@@ -142,6 +138,11 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.142010", # gb_rockwell_powermonitor_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.114075", # gb_beward_ip_cameras_detect_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.114095", # gb_zavio_ip_cameras_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.114097", # gb_tp_link_ip_cameras_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.114099", # gb_pearl_ip_cameras_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.105789", # gb_riverbed_steelcentral_version.nasl
+    "1.3.6.1.4.1.25623.1.0.106845", # gb_riverbed_steelhead_ssh_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.106844", # gb_riverbed_steelhead_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -252,6 +253,11 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.142010", # gb_rockwell_powermonitor_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.114075", # gb_beward_ip_cameras_detect_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.114095", # gb_zavio_ip_cameras_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.114097", # gb_tp_link_ip_cameras_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.114099", # gb_pearl_ip_cameras_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.105789", # gb_riverbed_steelcentral_version.nasl
+    "1.3.6.1.4.1.25623.1.0.106845", # gb_riverbed_steelhead_ssh_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.106844", # gb_riverbed_steelhead_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -501,7 +507,7 @@ function host_runs() {
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|euleros|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
                 'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward|' +
-                'tippingpoint(_| )operating(_| )system|data(_| )ontap|zavio(: )ip(_ |)camera)';
+                'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";
@@ -1042,7 +1048,7 @@ function get_app_port( cpe, service, all, default ) {
     return;
   }
 
-  # TODO: Evaulate all VTs passing a list and migrate them to call the functions
+  # TODO: Evaluate all VTs passing a list and migrate them to call the functions
   # directly. Afterwards remove this part as the function shouldn't take different
   # inputs (strin and array) in the cpe parameter at all.
   if( typeof( cpe ) == "array" ) {

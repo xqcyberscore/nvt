@@ -28,11 +28,11 @@ CPE = "cpe:/a:mybb:mybb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813403");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-05-23T08:40:59+0000");
   script_cve_id("CVE-2018-10678");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-23 08:40:59 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2018-05-22 15:25:41 +0530 (Tue, 22 May 2018)");
   ## Affected only with with Microsoft Edge
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -52,10 +52,11 @@ if(description)
 
   script_tag(name:"affected", value:"MyBB version 1.8.15");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th May, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"https://gist.github.com/MayurUdiniya/7aaa50b878d82b6aab6ed0b3e2b080bc");
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106845");
-  script_version("2019-05-21T13:46:00+0000");
-  script_tag(name:"last_modification", value:"2019-05-21 13:46:00 +0000 (Tue, 21 May 2019)");
+  script_version("2019-05-22T11:40:52+0000");
+  script_tag(name:"last_modification", value:"2019-05-22 11:40:52 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2017-06-02 13:17:40 +0700 (Fri, 02 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -88,6 +88,8 @@ if (soc) {
 cpe = build_cpe(value: version, exp: "^([0-9][0-9a-z.]+)", base: "cpe:/a:riverbed:steelhead:");
 if (!cpe)
   cpe = 'cpe:/a:riverbed:steelhead';
+
+register_and_report_os(os: "Riverbed Optimization System (RiOS)", cpe: "cpe:/o:riverbed:riverbed_optimization_system", desc: "Riverbed SteelHead Detection (SSH)", runs_key: "unixoide");
 
 register_product(cpe: cpe, location: port + "/tcp", port: port, service: "ssh");
 

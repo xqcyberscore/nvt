@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814891");
-  script_version("2019-05-16T13:15:53+0000");
+  script_version("2019-05-22T13:43:48+0000");
   script_cve_id("CVE-2019-8569", "CVE-2019-8592", "CVE-2019-8525", "CVE-2019-8547");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-22 13:43:48 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-14 10:43:25 +0530 (Tue, 14 May 2019)");
   script_name("Apple MacOSX Security Updates (HT210119) - 05");
 
@@ -43,20 +43,21 @@ if(description)
   with system privileges.");
 
   script_tag(name:"affected", value:"Apple Mac OS X versions 10.12.x through
-  10.12.6 and 10.13.x through 10.13.6");
+  10.12.6 and 10.13.x through 10.13.6.");
 
   script_tag(name:"solution", value:"Upgrade to Apple Mac OS X 10.12.6 build 16G2016
   or 10.13.6 build 17G7024 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name:"URL", value:"https://support.apple.com/en-in/HT210119");
-  script_xref(name:"URL", value:"https://www.apple.com");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT210119");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[23]\.");
+
   exit(0);
 }
 
@@ -65,7 +66,7 @@ include("ssh_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName){
-  exit (0);
+  exit(0);
 }
 
 osVer = get_kb_item("ssh/login/osx_version");

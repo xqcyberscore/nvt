@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_packagekit_format_string_vuln.nasl 13063 2019-01-14 11:19:20Z cfischer $
 #
 # Apple Mac OS X PackageKit Format String Vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902715");
-  script_version("$Revision: 13063 $");
+  script_version("2019-05-22T12:34:41+0000");
   script_cve_id("CVE-2010-4013");
   script_bugtraq_id(45693);
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 12:19:20 +0100 (Mon, 14 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-22 12:34:41 +0000 (Wed, 22 May 2019)");
   script_tag(name:"creation_date", value:"2011-08-23 07:05:00 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -39,7 +38,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.6\.");
 
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT4498");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42841");
