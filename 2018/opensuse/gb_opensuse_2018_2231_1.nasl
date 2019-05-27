@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2231_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for znc openSUSE-SU-2018:2231-1 (znc)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851841");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2018-08-08 05:51:19 +0200 (Wed, 08 Aug 2018)");
   script_cve_id("CVE-2018-14055", "CVE-2018-14056");
   script_tag(name:"cvss_base", value:"5.0");
@@ -86,7 +85,7 @@ if(description)
   - Update to version 1.6.6:
 
   * Fix use-after-free in znc --makepem. It was broken for a long time,
-  but started segfaulting only now. This is a useability fix, not a
+  but started segfaulting only now. This is a usability fix, not a
   security fix, because self-signed (or signed by a CA) certificates can
   be created without using --makepem, and then combined into znc.pem.
 

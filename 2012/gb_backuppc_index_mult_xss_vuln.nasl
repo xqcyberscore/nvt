@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_backuppc_index_mult_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # BackupPC 'index.cgi' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802622");
-  script_version("$Revision: 11855 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_bugtraq_id(47628, 50406);
   script_cve_id("CVE-2011-3361", "CVE-2011-5081", "CVE-2011-4923");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2012-04-04 14:49:38 +0530 (Wed, 04 Apr 2012)");
   script_name("BackupPC 'index.cgi' Multiple Cross Site Scripting Vulnerabilities");
 
@@ -47,28 +46,30 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
   session in the context of an affected site.");
-  script_tag(name:"affected", value:"BackupPC version 3.2.0 and prior");
+
+  script_tag(name:"affected", value:"BackupPC version 3.2.0 and prior.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to improper validation of user-supplied
   input to 'num' and 'share' parameters in index.cgi, which allows attackers to
   execute arbitrary HTML and script code in a user's browser session in the
   context of an affected site.");
-  script_tag(name:"solution", value:"Upgrade to BackupPC vesion 3.2.1 or later.");
+
+  script_tag(name:"solution", value:"Upgrade to BackupPC version 3.2.1 or later.");
+
   script_tag(name:"summary", value:"This host is running BackupPC and is prone to multiple cross site
   scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name:"URL", value:"http://backuppc.sourceforge.net/");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

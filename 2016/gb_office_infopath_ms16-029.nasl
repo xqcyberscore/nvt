@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Microsoft InfoPath Memory Curruption Vulnerability (3141806)
+# Microsoft InfoPath Memory Corruption Vulnerability (3141806)
 #
 # Authors:
 # Kashianth T <tkashinath@secpod.com>
@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807603");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-03-09 14:51:16 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
-  script_name("Microsoft InfoPath Memory Curruption Vulnerability (3141806)");
+  script_name("Microsoft InfoPath Memory Corruption Vulnerability (3141806)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-029.");
@@ -47,7 +47,9 @@ if(description)
   attackers to execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft InfoPath 2007 Service Pack 3
+
   Microsoft InfoPath 2010 Service Pack 2
+
   Microsoft InfoPath 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");

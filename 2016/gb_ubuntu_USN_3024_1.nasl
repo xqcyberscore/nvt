@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842823");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-07-06 05:25:52 +0200 (Wed, 06 Jul 2016)");
   script_cve_id("CVE-2015-5174", "CVE-2015-5345", "CVE-2015-5346", "CVE-2015-5351",
         	"CVE-2016-0706", "CVE-2016-0714", "CVE-2016-0763", "CVE-2016-3092");
@@ -73,7 +73,7 @@ issue only affected Ubuntu 12.04 LTS, Ubuntu 14.04 LTS and Ubuntu 15.10.
 
 It was discovered that the Tomcat setGlobalContext method incorrectly
 checked if callers were authorized. A remote attacker could possibly use
-this issue to read or wite to arbitrary application data, or cause a denial
+this issue to read or write to arbitrary application data, or cause a denial
 of service. This issue only affected Ubuntu 12.04 LTS, Ubuntu 14.04 LTS and
 Ubuntu 15.10. (CVE-2016-0763)
 

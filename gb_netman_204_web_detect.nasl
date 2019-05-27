@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netman_204_web_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Netman 204 Detection
 #
@@ -30,8 +29,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.140002");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-09-28 16:19:24 +0200 (Wed, 28 Sep 2016)");
   script_name("Netman 204 Detection");
 
@@ -63,7 +62,7 @@ if("<title>Netman 204 login</title>" >!< buf || "cgi-bin/login.cgi" >!< buf || "
 set_kb_item( name:"netman_204/detected", value:TRUE );
 register_product( cpe:"cpe:/a:riello:netman_204", location:"/", port:port, service:"www" );
 
-log_message( port:port, data:"The remote host ist a Riello NetMan 204 network card");
+log_message( port:port, data:"The remote host is a Riello NetMan 204 network card");
 
 exit( 0 );
 

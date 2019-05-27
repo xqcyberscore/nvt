@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14674");
-  script_version("2019-04-24T08:54:04+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 08:54:04 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-05-24T07:46:22+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 07:46:22 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -93,8 +93,21 @@ for( i = 1; i <= 6 && ! isnull( ports ); i++ ) {
           }
           send( socket:isoc, data:req );
         }
+
         res = recv_line( socket:isoc, length:1024 );
         res = chomp( res );
+
+        # nb: Some banners are coming in like e.g. (including the newline)
+        # 113,55972
+        #  : USERID : iOS : dragon2
+        # In this case we're receiving the second line as well.
+        if( res =~ "^[0-9]+ ?, ?[0-9]+" && "USERID" >!< res ) {
+          res2 = recv_line( socket:isoc, length:1024 );
+          res2 = chomp( res2 );
+          if( res2 )
+            res += res2;
+        }
+
         if( res && "USERID" >< res ) {
           _res = split( res , sep:":", keep:FALSE );
           if( max_index( _res ) > 2 ) {

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_file_upload_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # TYPO3 Unrestricted File Upload Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112040");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2017-09-12 07:56:49 +0200 (Tue, 12 Sep 2017)");
 
   script_cve_id("CVE-2017-14251");
@@ -41,11 +40,17 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("TYPO3 Unrestricted File Upload Vulnerability");
-  script_tag(name:"summary", value:"TYPO3 is prone to an unrestrcited file upload vulnerability.");
+
+  script_tag(name:"summary", value:"TYPO3 is prone to an unrestricted file upload vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The vulnerability occurs in the fileDenyPattern in sysext/core/Classes/Core/SystemEnvironmentBuilder.php.");
+
   script_tag(name:"impact", value:"Remotely authenticated users may upload files with a .pht extension and may consequently execute arbitrary PHP code.");
-  script_tag(name:"affected", value:"TYPO3 versions 7.6.0 to 7.6.21 and 8.0.0 to 8.7.4 are vulnerable");
+
+  script_tag(name:"affected", value:"TYPO3 versions 7.6.0 to 7.6.21 and 8.0.0 to 8.7.4 are vulnerable.");
+
   script_tag(name:"solution", value:"Update to TYPO3 versions 7.6.22 or 8.7.5 that fix the problem described, make sure overridden settings for TYPO3_CONF_VARS/BE/fileDenyPattern are adjusted.");
 
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1039295");

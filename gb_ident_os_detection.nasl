@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108565");
-  script_version("2019-04-18T12:15:08+0000");
-  script_tag(name:"last_modification", value:"2019-04-18 12:15:08 +0000 (Thu, 18 Apr 2019)");
+  script_version("2019-05-24T07:46:22+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 07:46:22 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2019-04-18 09:50:47 +0000 (Thu, 18 Apr 2019)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -87,6 +87,8 @@ if( "windows" >< os || "win32" >< os ) {
   register_and_report_os( os:"IBM OS/2", cpe:"cpe:/o:ibm:os2", banner_type:BANNER_TYPE, banner:concl, desc:SCRIPT_DESC, runs_key:"unixoide", port:port );
 } else if( "freebsd" >< os ) {
   register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, banner:concl, desc:SCRIPT_DESC, runs_key:"unixoide", port:port );
+} else if( os == "ios" ) {
+  register_and_report_os( os:"Apple iOS", cpe:"cpe:/o:apple:iphone_os", banner_type:BANNER_TYPE, banner:concl, desc:SCRIPT_DESC, runs_key:"unixoide", port:port );
 } else {
   if( "unknown" >!< os && "other" >!< os ) {
     register_unknown_os_banner( banner:concl, banner_type_name:BANNER_TYPE, banner_type_short:"ident_os_banner", port:port );

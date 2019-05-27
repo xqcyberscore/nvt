@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900880");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2009-2493");
   script_bugtraq_id(35828);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-14 18:36:58 +0200 (Wed, 14 Oct 2009)");
   script_name("Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)");
 
@@ -61,7 +61,7 @@ if(description)
 
   Microsoft Windows Server 2008 Service Pack 1/2 and prior");
 
-  script_tag(name:"insight", value:"The flaw is due to ane errors in the ATL headers that handle
+  script_tag(name:"insight", value:"The flaw is due to an error in the ATL headers that handle
   instantiation of an object from data streams, which could allow attackers to
   instantiate arbitrary objects in Internet Explorer that can bypass certain
   related security policies.");

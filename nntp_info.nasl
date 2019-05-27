@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nntp_info.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # Misc information on News server
 #
@@ -8,7 +7,7 @@
 # Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
-# Copyright (C) 2002 Michel Arboi
+# Copyright (C) 2005 Michel Arboi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -30,15 +29,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11033");
-  script_version("$Revision: 11663 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018)$");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Misc information on News server");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
-  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("General");
   script_dependencies("find_service_3digits.nasl");
   script_require_ports("Services/nntp", 119);
@@ -329,7 +328,7 @@ if (!superseded && posted)
 if (!superseded && !posted)
   notice += 'We were unable to Supersede our test article\n';
 
-set_kb_item(name: "nntp/"+port+"/supersed", value: superseded);
+set_kb_item(name: "nntp/"+port+"/supersede", value: superseded);
 
 # Test cancel
 

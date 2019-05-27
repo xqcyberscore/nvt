@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108576");
-  script_version("2019-05-21T12:19:26+0000");
+  script_version("2019-05-23T06:42:35+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-21 12:19:26 +0000 (Tue, 21 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-23 06:42:35 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 12:08:23 +0000 (Thu, 16 May 2019)");
   script_name("OpenSSH Detection (Remote)");
   script_category(ACT_GATHER_INFO);
@@ -69,7 +69,7 @@ if( banner && "OpenSSH" >< banner ) {
     concluded = vers[0];
   }
 
-  set_kb_item( name:"openssh/ssh/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + concluded );
+  set_kb_item( name:"openssh/ssh/" + port + "/installs", value:port + "#---#" + install + "#---#" + version + "#---#" + concluded + "#---#Server" );
   set_kb_item( name:"openssh/detected", value:TRUE );
   set_kb_item( name:"openssh/ssh/detected", value:TRUE );
   set_kb_item( name:"openssh/ssh/port", value:port );

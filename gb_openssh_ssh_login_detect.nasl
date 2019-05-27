@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108578");
-  script_version("2019-05-21T11:29:34+0000");
-  script_tag(name:"last_modification", value:"2019-05-21 11:29:34 +0000 (Tue, 21 May 2019)");
+  script_version("2019-05-23T06:42:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-23 06:42:35 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 12:08:23 +0000 (Thu, 16 May 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -101,7 +101,13 @@ foreach path( path_list ) {
   if( vers[1] ) {
     version = vers[1];
     found = TRUE;
-    set_kb_item( name:"openssh/ssh-login/" + port + "/installs", value:port + "#---#" + path + "#---#" + version + "#---#" + vers[0] );
+
+    if( "usage: sshd" >< vers[ max_index( vers ) - 1] )
+      type = "Server";
+    else
+      type = "Client";
+
+    set_kb_item( name:"openssh/ssh-login/" + port + "/installs", value:"0#---#" + path + "#---#" + version + "#---#" + vers[0] + "#---#" + type );
   }
 }
 

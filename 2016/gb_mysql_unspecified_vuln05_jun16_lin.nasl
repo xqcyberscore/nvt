@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808117");
-  script_version("$Revision: 12455 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2014-0420");
   script_bugtraq_id(64888);
   script_tag(name:"cvss_base", value:"2.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:M/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:26 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities - 05 Jun16 (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
   component via unknown vectors related to Replication.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to manipulate certain data and cause a DoS (Denial of Service).
-
-  Imapct level: Application");
+  attackers to manipulate certain data and cause a DoS (Denial of Service).");
 
   script_tag(name:"affected", value:"Oracle MySQL version 5.5.34 and
   earlier, and 5.6.14 and earlier on Linux.");

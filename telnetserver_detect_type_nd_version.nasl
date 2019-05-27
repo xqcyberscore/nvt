@@ -7,7 +7,7 @@
 # Noam Rathaus <noamr@securiteam.com>
 #
 # Copyright:
-# Copyright (C) 1999 SecuriTeam
+# Copyright (C) 2005 SecuriTeam
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10281");
-  script_version("2019-05-02T04:45:21+0000");
-  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
+  script_version("2019-05-24T13:07:17+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 13:07:17 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Telnet Banner Reporting");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 1999 SecuriTeam");
+  script_copyright("This script is Copyright (C) 2005 SecuriTeam");
   script_family("Service detection");
   script_dependencies("telnet.nasl");
   script_require_ports("Services/telnet", 23);
@@ -67,8 +67,10 @@ if( ! telnet_verify_banner( data:banner ) ) {
 telnet_close_socket( socket:soc, data:banner );
 if( strlen( banner ) ) {
 
-  if( "login:" >!< tolower( banner ) )
+  if( "login:" >!< tolower( banner ) ) {
     set_kb_item( name:"telnet/" + port + "/no_login_banner", value:TRUE ); # for check_account()
+    set_kb_item( name:"telnet/no_login_banner", value:TRUE );
+  }
 
   telnet_set_banner( port:port, banner:banner );
   set_kb_item( name:"telnet/banner/available", value:TRUE );

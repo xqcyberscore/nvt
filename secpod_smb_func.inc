@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 13432 2019-02-04 09:41:09Z cfischer $
 #
 # SMB Functions
 #
@@ -22,9 +21,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13432 $
-#
 ###############################################################################
 
 ###############################################################################
@@ -188,7 +184,7 @@ function registry_enum_values( key, type ) {
 
   # This function is mostly called in foreach loops. Make sure to always return
   # an empty list here instead of the previously behavior to return FALSE if any of
-  # the calles between the last return failed. This old  behavior had caused a
+  # the calls between the last return failed. This old  behavior had caused a
   # nasl_array_iterator: # unhandled type 57 (0x39) if FALSE was returned when failed.
   list = make_list();
 
@@ -354,7 +350,7 @@ function registry_enum_keys( key, type ) {
 
   # This function is mostly called in foreach loops. Make sure to always return
   # an empty list here instead of the previously behavior to return FALSE if any of
-  # the calles between the last return failed. This old  behavior had caused a
+  # the calls between the last return failed. This old  behavior had caused a
   # nasl_array_iterator: # unhandled type 57 (0x39) if FALSE was returned when failed.
   list = make_list();
 

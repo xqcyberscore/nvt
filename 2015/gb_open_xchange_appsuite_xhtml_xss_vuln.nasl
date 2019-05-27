@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_xhtml_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Open-Xchange (OX) AppSuite XHTML File HTML Injection Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806077");
-  script_version("$Revision: 11872 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2014-8993");
   script_bugtraq_id(71888);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2015-10-07 10:16:00 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite XHTML File HTML Injection Vulnerability");
@@ -45,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to insufficient
-  sanitization of user supplied inpu via XHTML file with the
+  sanitization of user supplied input via XHTML file with the
   application/xhtml+xml MIME type.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
@@ -69,7 +68,7 @@ if(description)
   script_dependencies("gb_ox_app_suite_detect.nasl");
   script_mandatory_keys("open_xchange_appsuite/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.open-xchange.com");
+
   exit(0);
 }
 

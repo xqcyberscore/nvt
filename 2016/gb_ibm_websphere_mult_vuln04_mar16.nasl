@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln04_mar16.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM Websphere Application Server Multiple Vulnerabilities-04 Mar16
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807621");
-  script_version("$Revision: 13803 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2015-1882", "CVE-2015-0175", "CVE-2015-0174");
   script_bugtraq_id(74222, 74223, 74215);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-03-21 14:49:58 +0530 (Mon, 21 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Multiple Vulnerabilities-04 Mar16");
@@ -50,7 +49,7 @@ if(description)
 
   - An error with the authData elements.
 
-  - An improper handling of configuarion data in SNMP implementation.");
+  - An improper handling of configuration data in SNMP implementation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain elevated privileges on the system, also to obtain

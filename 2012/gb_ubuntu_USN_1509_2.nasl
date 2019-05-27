@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1509_2.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for ubufox USN-1509-2
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1509-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.841087");
-  script_version("$Revision: 14132 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2012-07-19 10:45:15 +0530 (Thu, 19 Jul 2012)");
   script_cve_id("CVE-2012-1948", "CVE-2012-1949", "CVE-2012-1950", "CVE-2012-1951",
                 "CVE-2012-1952", "CVE-2012-1953", "CVE-2012-1954", "CVE-2012-1955",
@@ -53,7 +52,7 @@ if(description)
   Ubuntu 10.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"USN-1509-1 fixed vulnerabilities in Firefox. This update provides an updated
-  ubufox package for use with the lastest Firefox.
+  ubufox package for use with the latest Firefox.
 
   Original advisory details:
 

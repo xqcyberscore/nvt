@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_proftpd_server_sql_inj_vuln.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # ProFTPD Server SQL Injection Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900507");
-  script_version("$Revision: 13602 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +56,7 @@ if(description)
   (') gets introduced during variable substitution by mod_sql and this
   eventually allows for an SQL injection during login.
 
-  - when NLS support is enabled, a flaw in variable substition feature in
+  - when NLS support is enabled, a flaw in variable substitution feature in
   mod_sql_mysql and mod_sql_postgres may allow an attacker to bypass
   SQL injection protection mechanisms via invalid, encoded multibyte characters.");
 

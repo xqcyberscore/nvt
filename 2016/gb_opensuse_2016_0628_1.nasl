@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0628_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2016:0628-1 (openssl)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851222");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-03-08 12:37:43 +0530 (Tue, 08 Mar 2016)");
   script_cve_id("CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0703", "CVE-2016-0704",
                 "CVE-2016-0705", "CVE-2016-0797", "CVE-2016-0798", "CVE-2016-0799",
@@ -65,7 +64,7 @@ if(description)
   'OPENSSL_ALLOW_EXPORT'.
 
   - CVE-2016-0702 aka the 'CacheBleed' attack. (bsc#968050) Various changes
-  in the modular exponentation code were added that make sure that it is
+  in the modular exponentiation code were added that make sure that it is
   not possible to recover RSA secret keys by analyzing cache-bank
   conflicts on the Intel Sandy-Bridge microarchitecture.
 

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3538.nasl 14275 2019-03-18 14:39:45Z cfischer $
 # Auto-generated from advisory DSA 3538-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703538");
-  script_version("$Revision: 14275 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2015-8789", "CVE-2015-8790", "CVE-2015-8791");
   script_name("Debian Security Advisory DSA 3538-1 (libebml - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-03-31 00:00:00 +0200 (Thu, 31 Mar 2016)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -67,12 +66,12 @@ vulnerability by providing a maliciously crafted EBML document.
 
 CVE-2015-8790
 Context-dependent attackers could obtain sensitive information
-from the process' heap memory by using a maliciously crafted UTF-8
+from the process's heap memory by using a maliciously crafted UTF-8
 string.
 
 CVE-2015-8791
 Context-dependent attackers could obtain sensitive information
-from the process' heap memory by using a maliciously crafted
+from the process's heap memory by using a maliciously crafted
 length value in an EBML id.");
   script_tag(name:"vuldetect", value:"This check tests the installed software
 version using the apt package manager.");

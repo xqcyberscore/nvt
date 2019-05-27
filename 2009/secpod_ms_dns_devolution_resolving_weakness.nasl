@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_dns_devolution_resolving_weakness.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows DNS Devolution Third-Level Domain Name Resolving Weakness (971888)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900873");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -79,7 +78,6 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3) <= 0){
   exit(0);
 }
 
-# MS Secruity Updated check
 if(hotfix_missing(name:"957579") == 0){
   exit(0);
 }

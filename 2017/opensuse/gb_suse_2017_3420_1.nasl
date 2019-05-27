@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3420_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2017:3420-1 (ImageMagick)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851668");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2017-12-23 07:47:42 +0100 (Sat, 23 Dec 2017)");
   script_cve_id("CVE-2017-11188", "CVE-2017-11478", "CVE-2017-11523", "CVE-2017-11527",
                 "CVE-2017-11535", "CVE-2017-11640", "CVE-2017-11752", "CVE-2017-12140",
@@ -109,7 +108,7 @@ if(description)
   * CVE-2017-12435: Memory exhaustion in ReadSUNImage in coders/sun.c,
   which allows attackers to cause denial of service [bsc#1052553]
 
-  * CVE-2017-12587: User controlable large loop in the ReadPWPImage in
+  * CVE-2017-12587: User controllable large loop in the ReadPWPImage in
   coders\pwp.c could ...
 
   Description truncated, please see the referenced URL(s) for more information.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 13995 2019-03-05 12:29:00Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -25,9 +24,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13995 $
-#
 ###############################################################################
 
 # Enables debugging output for a few functions below
@@ -182,7 +178,7 @@ function verify_service( port, ipproto, proto ) {
 #
 # @param default   The port to return if "unscanned_closed" is set to "no" and no ports have been found for the specified IP and service protocol.
 # @param nodefault Don't exit if no "default" parameter is passed, it is still exiting if no ports matching the passed info were detected.
-# @param ipproto   An (optional) IP protocol (e.g. "tcp" or "udp") to evaulate. If this parameter isn't passed it will default to "tcp".
+# @param ipproto   An (optional) IP protocol (e.g. "tcp" or "udp") to evaluate. If this parameter isn't passed it will default to "tcp".
 # @param proto     A (mandatory) service protocol (e.g. "www" for HTTP were Services/www is evaluated).
 #
 # @note This function may fork if multiple ports are found open for the same service.
@@ -239,7 +235,7 @@ function get_port_for_service( default, nodefault, ipproto, proto ) {
 #        "Services/proto", "Services/ipproto/proto" and "Known/ipproto/default".
 #
 # @param default_list The port list to return if "unscanned_closed" is set to "no" and no ports have been found for the specified IP and service protocol.
-# @param ipproto      An (optional) IP protocol (e.g. "tcp" or "udp") to evaulate. If this parameter isn't passed it will default to "tcp".
+# @param ipproto      An (optional) IP protocol (e.g. "tcp" or "udp") to evaluate. If this parameter isn't passed it will default to "tcp".
 # @param proto        A (mandatory) service protocol (e.g. "www" for HTTP were Services/www is evaluated).
 #
 # @note  In contrast to @ref get_port_for_service this function will not fork and return a list instead. This should be used e.g. for

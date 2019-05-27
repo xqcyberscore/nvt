@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: docker_policy_tests.inc 13065 2019-01-14 13:39:18Z cfischer $
 #
 # Functions for Docker Policy Tests
 #
@@ -24,9 +23,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
-#
-# $Revision: 13065 $
-#
 ###############################################################################
 
 docker_test = make_array();
@@ -146,7 +142,7 @@ docker_test['3.7']  = make_array( 'title',     '3.7 Use HEALTHCHECK for the cont
                                   'solution',  'Rebuild your container image with HEALTHCHECK instructions.' );
 
 docker_test['3.8']  = make_array( 'title',     '3.8 Do not use privileged containers.',
-                                  'desc',      'Using "--privileged" on the Docker Daemon command line gives all Linux Kernel Capabilities to the container and shold therefore not used.',
+                                  'desc',      'Using "--privileged" on the Docker Daemon command line gives all Linux Kernel Capabilities to the container and should therefore not used.',
                                   'solution',  'Do not use "--privileged" when starting a container.' );
 
 docker_test['3.9']  = make_array( 'title',     '3.9 Sensitive host system directories should not be mounted in containers.',

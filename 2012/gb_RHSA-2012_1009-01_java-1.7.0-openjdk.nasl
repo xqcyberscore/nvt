@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00041.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870777");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2012-06-22 10:26:33 +0530 (Fri, 22 Jun 2012)");
   script_cve_id("CVE-2012-1711", "CVE-2012-1713", "CVE-2012-1716", "CVE-2012-1717",
                 "CVE-2012-1718", "CVE-2012-1719", "CVE-2012-1723", "CVE-2012-1724",
@@ -98,8 +98,6 @@ if(description)
   have failed with an error similar to the following:
 
   error: the frame size of 272 bytes is larger than 256 bytes
-
-  Thi ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

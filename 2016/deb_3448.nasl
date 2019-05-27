@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3448.nasl 14279 2019-03-18 14:48:34Z cfischer $
 # Auto-generated from advisory DSA 3448-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703448");
-  script_version("$Revision: 14279 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2013-4312", "CVE-2015-7566", "CVE-2015-8767", "CVE-2016-0723",
                   "CVE-2016-0728");
   script_name("Debian Security Advisory DSA 3448-1 (linux - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:48:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-01-19 00:00:00 +0100 (Tue, 19 Jan 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,7 +57,7 @@ denial-of-service.
 
 CVE-2013-4312
 Tetsuo Handa discovered that it is possible for a process to open
-far more files than the process' limit leading to denial-of-service
+far more files than the process's limit leading to denial-of-service
 conditions.
 
 CVE-2015-7566

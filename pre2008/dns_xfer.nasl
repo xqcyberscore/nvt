@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10595");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -273,7 +273,7 @@ if( debug_level ) display( "debug: got TCP answer len=", len, "\n" );
 # don't want an infinite loop, if answer is illegal
 if( len < 0 ) exit( 0 );
 
-# only interessted in incoming[7]
+# only interested in incoming[7]
 if( len > 8 ) len = 8;
 incoming = recv( socket:soctcp, length:len, min:len );
 close( soctcp );

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: jgsportal_sql.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: JGS-Portal Multiple XSS and SQL injection Vulnerabilities
 #
 # Authors:
@@ -25,9 +24,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18289");
-  script_version("2019-04-10T13:42:28+0000");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2005-1635", "CVE-2005-1633");
-  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(13650);
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,7 +45,7 @@ if(description)
   script_tag(name:"summary", value:"The remote version of JGS-Portal contains an input validation
   flaw leading multiple SQL injection and XSS vulnerabilities.");
 
-  script_tag(name:"impact", value:"An attacker may exploit these flaws to execute arbirtrary SQL
+  script_tag(name:"impact", value:"An attacker may exploit these flaws to execute arbitrary SQL
   commands against the remote database and to cause arbitrary code execution for third party users.");
 
   script_tag(name:"solution_type", value:"WillNotFix");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("2019-05-15T10:07:01+0000");
-  script_tag(name:"last_modification", value:"2019-05-15 10:07:01 +0000 (Wed, 15 May 2019)");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   # Don't change the preference names, those names are hardcoded within some manager functions...
   # nb: Same goes for id: parameter, those numbers are hardcoded in the manager as well.
 
-  ### In the following two lines, unreachable is spelled incorectly.
+  ### In the following two lines, unreachable is spelled incorrectly.
   ### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
   script_add_preference(name:"Report about unrechable Hosts", type:"checkbox", value:"no");
   script_add_preference(name:"Mark unrechable Hosts as dead (not scanning)", type:"checkbox", value:"yes", id:5);
@@ -162,7 +162,7 @@ report_up = script_get_preference("Report about reachable Hosts");
 if( isnull( report_up ) )
   report_up = "no";
 
-### In the following two lines, unreachable is spelled incorectly.
+### In the following two lines, unreachable is spelled incorrectly.
 ### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
 report_dead = script_get_preference("Report about unrechable Hosts");
 mark_dead   = script_get_preference("Mark unrechable Hosts as dead (not scanning)");

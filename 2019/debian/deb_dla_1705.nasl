@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891705");
-  script_version("$Revision: 14282 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2017-11332", "CVE-2017-11358", "CVE-2017-11359", "CVE-2017-15371");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1705-1] sox security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-06 00:00:00 +0100 (Wed, 06 Mar 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -57,7 +57,7 @@ to perform denial of service (application crash).
 CVE-2017-11358
 
 The read_samples function (hcom.c) is affected by an invalid memory read
-vulnerability when processing HCOM files with invalid dictionnaries. This
+vulnerability when processing HCOM files with invalid dictionaries. This
 flaw might be leveraged by remote attackers using a crafted HCOM file to
 perform denial of service (application crash).
 

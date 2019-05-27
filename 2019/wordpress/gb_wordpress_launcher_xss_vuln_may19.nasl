@@ -1,6 +1,6 @@
 # Copyright (C) 2019 Greenbone Networks GmbH
 #
-# SPDX-License-Identifier: GPL-2.0-or-later # See https://spdx.org/licenses/
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113393");
-  script_version("2019-05-20T09:04:34+0000");
-  script_tag(name:"last_modification", value:"2019-05-20 09:04:34 +0000 (Mon, 20 May 2019)");
+  script_version("2019-05-24T13:14:04+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 13:14:04 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-20 10:36:33 +0200 (Mon, 20 May 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");

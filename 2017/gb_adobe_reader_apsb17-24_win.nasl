@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb17-24_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Adobe Reader Security Updates(apsb17-24)-Windows
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811618");
-  script_version("$Revision: 11977 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2017-3016", "CVE-2017-3038", "CVE-2017-3113", "CVE-2017-3115",
                 "CVE-2017-3116", "CVE-2017-3117", "CVE-2017-3118", "CVE-2017-3119",
                 "CVE-2017-3120", "CVE-2017-3121", "CVE-2017-3122", "CVE-2017-3123",
@@ -51,7 +50,7 @@ if(description)
                     100186, 100185);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2017-08-10 10:47:06 +0530 (Thu, 10 Aug 2017)");
   script_name("Adobe Reader Security Updates(apsb17-24)-Windows");
 
@@ -62,7 +61,7 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
-  - Multiple memory curruption vulnerabilities.
+  - Multiple memory corruption vulnerabilities.
 
   - Multiple use after free vulnerabilities.
 
@@ -90,7 +89,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
+
   exit(0);
 }
 

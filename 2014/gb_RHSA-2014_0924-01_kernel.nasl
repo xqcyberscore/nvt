@@ -26,14 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871206");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2014-07-28 16:42:37 +0530 (Mon, 28 Jul 2014)");
   script_cve_id("CVE-2014-4699", "CVE-2014-4943");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for kernel RHSA-2014:0924-01");
-
 
   script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
@@ -42,7 +41,7 @@ if(description)
 operating system.
 
   * It was found that the Linux kernel's ptrace subsystem allowed a traced
-process' instruction pointer to be set to a non-canonical memory address
+process's instruction pointer to be set to a non-canonical memory address
 without forcing the non-sysret code path when returning to user space.
 A local, unprivileged user could use this flaw to crash the system or,
 potentially, escalate their privileges on the system. (CVE-2014-4699,

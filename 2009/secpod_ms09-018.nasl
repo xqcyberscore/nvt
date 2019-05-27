@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900566");
-  script_version("2019-05-03T10:54:50+0000");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2009-06-11 17:12:55 +0200 (Thu, 11 Jun 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,25 +49,31 @@ if(description)
   script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Remote attackers could execute arbitrary code on the affected system thus
-  taking complete control of that system and may cause denial od service.");
+  taking complete control of that system and may cause denial of service.");
+
   script_tag(name:"affected", value:"Microsoft Windows 2K  Service Pack 4 and prior
+
   Microsoft Windows XP  Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior");
+
   script_tag(name:"insight", value:"The flaw is due to
 
   - Incorrect freeing of memory when processing specially crafted LDAP or
-    LDAPS requests.
+  LDAPS requests.
 
   - Improperly memory management while executing LDAP or LDAPS requests
-    that contain specific OID filters.");
+  that contain specific OID filters.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-018.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

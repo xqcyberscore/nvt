@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_code_exec_vuln_jul09_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Adobe Products '.pdf' and '.swf' Code Execution Vulnerability - July09 (Windows)
 #
@@ -27,29 +26,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900806");
-  script_version("$Revision: 12602 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2009-1862");
   script_bugtraq_id(35759);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_name("Adobe Products '.pdf' and '.swf' Code Execution Vulnerability - July09 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe products and are prone to remote code
-execution vulnerability.");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"- An unspecified error exists in Adobe Flash Player which can be exploited via
-a specially crafted flash application in a '.pdf' file.
+  execution vulnerability.");
 
-  - Error occurs in 'authplay.dll' in Adobe Reader/Acrobat whlie processing '.swf'
-content and can be exploited to execute arbitrary code.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"insight", value:"- An unspecified error exists in Adobe Flash Player which can be exploited via
+  a specially crafted flash application in a '.pdf' file.
+
+  - Error occurs in 'authplay.dll' in Adobe Reader/Acrobat while processing '.swf'
+  content and can be exploited to execute arbitrary code.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause code execution.");
+
   script_tag(name:"affected", value:"Adobe Reader/Acrobat version 9.x to 9.1.2
 
-Adobe Flash Player version 9.x to 9.0.159.0 and 10.x to 10.0.22.87 on Windows.");
+  Adobe Flash Player version 9.x to 9.0.159.0 and 10.x to 10.0.22.87 on Windows.");
+
   script_tag(name:"solution", value:"Upgrade to Adobe Reader/Acrobat version 9.1.3 or later.
-Upgrade to Adobe Flash Player version 9.0.246.0 or 10.0.32.18 or later.");
+
+  Upgrade to Adobe Flash Player version 9.0.246.0 or 10.0.32.18 or later.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

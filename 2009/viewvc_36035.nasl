@@ -26,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100262");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2009-08-26 20:38:31 +0200 (Wed, 26 Aug 2009)");
   script_bugtraq_id(36035);
   script_tag(name:"cvss_base", value:"4.3");
@@ -58,7 +58,7 @@ if (description)
   - An unspecified security vulnerability that may allow attackers to
   print illegal parameter names and values.");
 
-  script_tag(name:"impact", value:"An attacker may leverage theses issue to execute arbitrary script code
+  script_tag(name:"impact", value:"An attacker may leverage these issue to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected site and steal cookie-based
   authentication credentials. Other attacks are also possible.");
 

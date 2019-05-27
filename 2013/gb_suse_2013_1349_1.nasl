@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1349_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2013:1349-1 (update)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850551");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2013-12-10 13:21:24 +0530 (Tue, 10 Dec 2013)");
   script_cve_id("CVE-2013-4124");
   script_tag(name:"cvss_base", value:"5.0");
@@ -56,7 +55,7 @@ if(description)
 
   - Remove ldapsmb from the main spec file.
 
-  - Don't bzip2 the main tar ball, use the upstream gziped
+  - Don't bzip2 the main tar ball, use the upstream gzipped
   one instead.
 
   - Fix crash bug during Win8 sync  (bso#9822).

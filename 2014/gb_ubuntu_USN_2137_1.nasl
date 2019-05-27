@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2137_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for linux-lts-saucy USN-2137-1
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841736");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2014-03-12 09:30:13 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2014-1690", "CVE-2014-1874", "CVE-2014-2038");
   script_tag(name:"cvss_base", value:"4.4");
@@ -50,7 +49,7 @@ mode) could exploit this flaw to cause a denial of service (kernel crash).
 
 An information leak was discovered in the Linux kernel's NFS filesystem. A
 local users with write access to an NFS share could exploit this flaw to
-obtain potential sensative information from kernel memory. (CVE-2014-2038)");
+obtain potential sensitive information from kernel memory. (CVE-2014-2038)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3500.nasl 14279 2019-03-18 14:48:34Z cfischer $
 # Auto-generated from advisory DSA 3500-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703500");
-  script_version("$Revision: 14279 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2015-7575", "CVE-2016-0702", "CVE-2016-0705", "CVE-2016-0797", "CVE-2016-0798", "CVE-2016-0799", "CVE-2016-0800");
   script_name("Debian Security Advisory DSA 3500-1 (openssl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:48:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-03-08 12:37:52 +0530 (Tue, 08 Mar 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -98,12 +97,8 @@ allow remote attackers to cause a denial of service or memory
 corruption in applications that pass large amounts of untrusted data
 to the BIO_*printf functions.
 
-Additionally the EXPORT and LOW ciphers were disabled since thay could
-be used as part of the DROWN
-(CVE-2016-0800)
-and SLOTH
-(CVE-2015-7575
-)
+Additionally the EXPORT and LOW ciphers were disabled since they could
+be used as part of the DROWN (CVE-2016-0800) and SLOTH (CVE-2015-7575)
 attacks, but note that the oldstable (wheezy) and stable (jessie)
 distributions are not affected by those attacks since the SSLv2 protocol
 has already been dropped in the openssl package version 1.0.0c-2.");

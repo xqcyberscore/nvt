@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842269");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2015-07-08 06:32:34 +0200 (Wed, 08 Jul 2015)");
   script_cve_id("CVE-2014-9710", "CVE-2015-1420", "CVE-2015-4001", "CVE-2015-4002",
                 "CVE-2015-4003", "CVE-2015-4167");
@@ -45,7 +45,7 @@ attacker could exploit this flaw to bypass ACLs and potentially escalate privile
 
 A race condition was discovered in the Linux kernel's file_handle size
 verification. A local user could exploit this flaw to read potentially
-sensative memory locations. (CVE-2015-1420)
+sensitive memory locations. (CVE-2015-1420)
 
 A underflow error was discovered in the Linux kernel's Ozmo Devices USB
 over WiFi host controller driver. A remote attacker could exploit this flaw

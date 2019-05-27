@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_parameter_xss_vuln_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # WordPress 'theme' Parameter Cross Site Scripting Vulnerability Jan16 (Linux)
 #
@@ -28,10 +27,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807031");
-  script_version("$Revision: 12313 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-01-18 14:20:15 +0530 (Mon, 18 Jan 2016)");
   script_name("WordPress 'theme' Parameter Cross Site Scripting Vulnerability Jan16 (Linux)");
 
@@ -41,7 +40,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to insufficient
-  validation of user supplied inpu via 'theme' parameter to
+  validation of user supplied input via 'theme' parameter to
   'customize.php' script.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow

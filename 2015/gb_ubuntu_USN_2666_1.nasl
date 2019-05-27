@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842271");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2015-07-08 06:33:04 +0200 (Wed, 08 Jul 2015)");
   script_cve_id("CVE-2015-1420", "CVE-2015-4001", "CVE-2015-4002", "CVE-2015-4003",
                 "CVE-2015-4167", "CVE-2015-4700");
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"A race condition was discovered in the Linux
 kernel's file_handle size verification. A local user could exploit this flaw to
-read potentially sensative memory locations. (CVE-2015-1420)
+read potentially sensitive memory locations. (CVE-2015-1420)
 
 A underflow error was discovered in the Linux kernel's Ozmo Devices USB
 over WiFi host controller driver. A remote attacker could exploit this flaw

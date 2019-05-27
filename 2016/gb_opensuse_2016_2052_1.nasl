@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2052_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2016:2052-1 (java-1_7_0-openjdk)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851380");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-08-12 05:48:50 +0200 (Fri, 12 Aug 2016)");
   script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3498", "CVE-2016-3500",
                 "CVE-2016-3503", "CVE-2016-3508", "CVE-2016-3511", "CVE-2016-3550",
@@ -104,7 +103,7 @@ if(description)
   - S7152582: PKCS11 tests should use the NSS libraries available in the
   OS
 
-  - S7192202: Make sure keytool prints both unknown and unparseable
+  - S7192202: Make sure keytool prints both unknown and unparsable
   extensions
 
   - S7194449: String resources for Key Tool and Policy Tool should be in

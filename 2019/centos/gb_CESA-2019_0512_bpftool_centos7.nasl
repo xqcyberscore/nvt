@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883019");
-  script_version("2019-03-27T07:32:46+0000");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2018-9568", "CVE-2018-17972", "CVE-2018-18445");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-03-27 07:32:46 +0000 (Wed, 27 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2019-03-21 09:50:26 +0100 (Thu, 21 Mar 2019)");
   script_name("CentOS Update for bpftool CESA-2019:0512 centos7 ");
   script_category(ACT_GATHER_INFO);
@@ -52,7 +52,7 @@ Security Fix(es):
   * kernel: Unprivileged users able to inspect kernel stacks of arbitrary
 tasks (CVE-2018-17972)
 
-  * kernel: Faulty computation of numberic bounds in the BPF verifier
+  * kernel: Faulty computation of numeric bounds in the BPF verifier
 (CVE-2018-18445)
 
 For more details about the security issue(s), including the impact, a CVSS

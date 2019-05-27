@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_microworld_mailscan_mult_vuln_900204.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: MicroWorld MailScan for Mail Servers multiple vulnerabilities
 #
 # Authors:
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900204");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3726");
   script_bugtraq_id(30700);
@@ -46,26 +45,29 @@ if(description)
 
   script_tag(name:"summary", value:"This host is running MailScan a Mail Server, which is prone to
   multiple vulnerabilities.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - an input validation error within the web administration interface.
 
   - the web administration interface does not properly restrict access
-          to certain pages. can cause an authentication-bypass vulnerability.
+  to certain pages. can cause an authentication-bypass vulnerability.
 
   - an input passed via URL to the web administration interface is not
-          properly sanitized before being returned to the user.");
+  properly sanitized before being returned to the user.");
+
   script_tag(name:"affected", value:"MicroWorld MailScan for Mail Servers 5.6a and prior versions.");
+
   script_tag(name:"solution", value:"Upgrade to MicroWorld MailScan Version 6.4a or later.");
+
   script_tag(name:"impact", value:"Successful Remote exploitation will allow, to gain unauthorized
   access to disclose sensitive information, directory traversal attacks,
-  cross site scripting, execution fo arbitrary script code within the
+  cross site scripting, execution of arbitrary script code within the
   context of the website to steal cookie-based authentication credentials.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL", value:"http://www.mwti.net/");
   exit(0);
 }
 

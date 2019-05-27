@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881924");
-  script_version("$Revision: 14222 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2014-04-21 12:03:20 +0530 (Mon, 21 Apr 2014)");
   script_cve_id("CVE-2014-0429", "CVE-2014-0446", "CVE-2014-0451", "CVE-2014-0452",
                 "CVE-2014-0453", "CVE-2014-0456", "CVE-2014-0457", "CVE-2014-0458",
@@ -87,7 +87,7 @@ cross-site scripting (XSS) attacks. (CVE-2014-2398)
 
 An insecure temporary file use flaw was found in the way the unpack200
 utility created log files. A local attacker could possibly use this flaw to
-perform a symbolic link attack and overwrite arbitrary files wit ...
+perform a symbolic link attack and overwrite arbitrary files with ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please install the updated packages.");

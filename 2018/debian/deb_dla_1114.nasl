@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1114.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1114-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891114");
-  script_version("$Revision: 14281 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2017-0898", "CVE-2017-0899", "CVE-2017-0900", "CVE-2017-0901", "CVE-2017-10784", "CVE-2017-14033", "CVE-2017-14064");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1114-1] ruby1.9.1 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +53,7 @@ if(description)
 1.9.3.194-8.1+deb7u6.
 
 We recommend that you upgrade your ruby1.9.1 packages.");
-  script_tag(name:"summary", value:"Multiple vulnerabilities were discovered in the Ruby 1.9 interpretor.
+  script_tag(name:"summary", value:"Multiple vulnerabilities were discovered in the Ruby 1.9 interpreter.
 
 CVE-2017-0898
 

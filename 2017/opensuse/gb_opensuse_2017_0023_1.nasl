@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0023_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2017:0023-1 (ImageMagick)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851467");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2017-01-05 05:43:02 +0100 (Thu, 05 Jan 2017)");
   script_cve_id("CVE-2014-9848", "CVE-2016-8707", "CVE-2016-8866", "CVE-2016-9556",
                 "CVE-2016-9559", "CVE-2016-9773");
@@ -46,7 +45,7 @@ if(description)
   * CVE-2016-9559 Possible Null pointer access found by fuzzing
   [bsc#1011136]
 
-  * CVE-2016-8707 Possible code execution in Tiff conver utility
+  * CVE-2016-8707 Possible code execution in Tiff convert utility
   [bsc#1014159]
 
   * CVE-2016-8866 Memory allocation failure in AcquireMagickMemory could

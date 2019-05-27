@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0418_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox SUSE-SU-2014:0418-1 (MozillaFirefox)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850803");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1496", "CVE-2014-1497",
                 "CVE-2014-1498", "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1501",
@@ -112,7 +111,7 @@ if(description)
   Internetwache.org, reported a mechanism using JavaScript
   onbeforeunload events with page navigation to prevent users
   from closing a malicious page's tab and causing the browser
-  to become unresponsive. This allows for a denial of ser ...
+  to become unresponsive. This allows for a denial of service ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"MozillaFirefox on SUSE Linux Enterprise Server 11 SP3");

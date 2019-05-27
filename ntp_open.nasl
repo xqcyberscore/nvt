@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntp_open.nasl 10985 2018-08-15 12:56:20Z cfischer $
 #
 # NTP read variables
 #
@@ -11,7 +10,7 @@
 # - replaced ord(result[0]) == 0x1E by ord(result[0]) & 0x1E (binary AND)
 #
 # Copyright:
-# Copyright (C) 2002 David Lodge
+# Copyright (C) 2005 David Lodge
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -30,14 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10884");
-  script_version("$Revision: 10985 $");
+  script_version("2019-05-25T13:31:37+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:56:20 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-25 13:31:37 +0000 (Sat, 25 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("NTP read variables");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2002 David Lodge");
+  script_copyright("This script is Copyright (C) 2005 David Lodge");
   script_family("Product detection");
   script_require_udp_ports(123);
 
@@ -222,15 +221,15 @@ if( r ) {
 
       install = port + "/udp";
       register_product( cpe:cpe, location:install, port:port );
-
-      report = 'It is possible to determine a lot of information about the remote host by querying ' +
-               'the NTP (Network Time Protocol) variables - these include OS descriptor, and time settings.\n\n' +
-               'It was possible to gather the following information from the remote NTP host : \n\n' + list + '\n' +
-               'Quickfix: Restrict default access to ignore all info packets.';
-
-      log_message( port:port, protocol:proto, data:report );
-      exit( 0 );
     }
+
+    report = 'It is possible to determine a lot of information about the remote host by querying ' +
+             'the NTP (Network Time Protocol) variables - these include OS descriptor, and time settings.\n\n' +
+             'It was possible to gather the following information from the remote NTP host : \n\n' + list + '\n' +
+             'Quickfix: Restrict default access to ignore all info packets.';
+
+    log_message( port:port, protocol:proto, data:report );
+    exit( 0 );
   }
 }
 

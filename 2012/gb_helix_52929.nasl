@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_helix_52929.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # RealNetworks Helix Server Multiple Remote Vulnerabilities
 #
@@ -32,7 +31,7 @@ if (description)
   script_cve_id("CVE-2012-0942", "CVE-2012-1923", "CVE-2012-1984", "CVE-2012-1985", "CVE-2012-2267", "CVE-2012-2268");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11301 $");
+  script_version("2019-05-24T11:20:30+0000");
 
   script_name("RealNetworks Helix Server Multiple Remote Vulnerabilities");
 
@@ -42,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2012-9/");
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2012-8/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2012-04-23 14:15:20 +0200 (Mon, 23 Apr 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -50,10 +49,12 @@ if (description)
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("rtsp_detect.nasl");
   script_require_ports("Services/rtsp", 554);
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"RealNetworks Helix Server is prone to multiple remote vulnerabilities.");
 
-  script_tag(name:"impact", value:"Attackers can exploit theses issues to execute arbitrary code within
+  script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary code within
 the context of the affected application, cause denial-of service
 conditions, retrieve potentially sensitive information, execute
 arbitrary script code in the browser of an unsuspecting user in the
@@ -62,6 +63,7 @@ credentials.");
 
   script_tag(name:"affected", value:"RealNetworks Helix Server 14.2.0.212 is vulnerable, other versions may
 also be affected.");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);

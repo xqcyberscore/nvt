@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108577");
-  script_version("2019-05-21T12:19:26+0000");
-  script_tag(name:"last_modification", value:"2019-05-21 12:19:26 +0000 (Tue, 21 May 2019)");
+  script_version("2019-05-23T06:42:35+0000");
+  script_tag(name:"last_modification", value:"2019-05-23 06:42:35 +0000 (Thu, 23 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 12:08:23 +0000 (Thu, 16 May 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,15 +59,15 @@ foreach source( make_list( "ssh-login", "ssh" ) ) {
     if( max_index( infos ) < 3 )
       continue; # Something went wrong and not all required infos are there...
 
-    port    = infos[0];
-    install = infos[1];
-    version = infos[2];
-    concl   = infos[3];
+    port     = infos[0];
+    install  = infos[1];
+    version  = infos[2];
+    concl    = infos[3];
+    type     = infos[4];
+    app_name = "OpenSSH";
 
-    if( "/sshd" >< install )
-      app_name = "OpenSSH Server";
-    else
-      app_name = "OpenSSH Client";
+    if( type )
+      app_name += " " + type;
 
     # nb: This should contain the "full" Debian version like 7.4p1-10+deb9u4 which is used in the Linux Vuln-VTs
     # to exit earlier if the vuln is already known to be patched.
@@ -86,13 +86,8 @@ foreach source( make_list( "ssh-login", "ssh" ) ) {
     #
     if( "debian" >< tolower( concl ) && "ubuntu" >!< tolower( concl ) ) {
       _vers = eregmatch( pattern:"OpenSSH_([^ ]+) Debian-([^,]+)", string:concl, icase:FALSE );
-      if( _vers[1] && _vers[2] ) {
-        if( source == "ssh-login" )
-          _port = "0";
-        else
-          _port = port;
-        set_kb_item( name:"openssh/" + _port + "/debian_version", value:_vers[1] + "-" + _vers[2] );
-      }
+      if( _vers[1] && _vers[2] )
+        set_kb_item( name:"openssh/" + port + "/debian_version", value:_vers[1] + "-" + _vers[2] );
     }
 
     cpe = build_cpe( value:version, exp:"^([.a-zA-Z0-9]+)", base:"cpe:/a:openbsd:openssh:" );

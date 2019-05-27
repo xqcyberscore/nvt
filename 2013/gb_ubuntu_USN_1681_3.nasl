@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1681_3.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for firefox USN-1681-3
 #
@@ -73,7 +72,7 @@ if(description)
   exploit this to cause a denial of service via application crash.
   (CVE-2013-0764)
 
-  Olli Pettay and Boris Zbarsky discovered flaws in the Javacript engine of
+  Olli Pettay and Boris Zbarsky discovered flaws in the JavaScript engine of
   Firefox. An attacker could cause a denial of service via application crash,
   or potentially execute code with the privileges of the user invoking
   Firefox. (CVE-2013-0745, CVE-2013-0746)
@@ -83,8 +82,8 @@ if(description)
   Description truncated, please see the referenced URL(s) for more information.");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1681-3/");
   script_oid("1.3.6.1.4.1.25623.1.0.841289");
-  script_version("$Revision: 14132 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2013-01-24 09:34:37 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2013-0769", "CVE-2013-0749", "CVE-2013-0770", "CVE-2013-0760",
                 "CVE-2013-0761", "CVE-2013-0762", "CVE-2013-0763", "CVE-2013-0766",

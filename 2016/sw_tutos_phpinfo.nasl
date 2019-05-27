@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tutos_phpinfo.nasl 11453 2018-09-18 11:25:31Z cfischer $
 #
 # TUTOS phpinfo() information disclosure
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:tutos:tutos';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111106");
-  script_version("$Revision: 11453 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:25:31 +0200 (Tue, 18 Sep 2018) $");
+  script_version("2019-05-24T11:20:30+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2016-06-16 16:40:16 +0200 (Thu, 16 Jun 2016)");
   script_cve_id("CVE-2008-0149");
   script_tag(name:"cvss_base", value:"5.0");
@@ -90,7 +89,7 @@ if( "<title>phpinfo()</title>" >< res ) {
   # gb_php_detect.nasl to use this info as well. Also remove
   # the can_host_php() from sw_tutos_detect.nasl once this is
   # done as the NVT would need to run before gb_php_detect.nasl.
-  # Take care to not introduce some sort of dependency cyle.
+  # Take care to not introduce some sort of dependency cycle.
   #  set_kb_item( name:"php/phpinfo/" + host + "/" + port + "/detected_urls", value:url );
   # phpversion = get_php_version( data:res );
   #if( ! isnull( phpversion ) )

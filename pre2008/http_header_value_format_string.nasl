@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_header_value_format_string.nasl 10107 2018-06-07 07:37:31Z cfischer $
 #
 # Description: Format string on HTTP header value
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15642");
-  script_version("$Revision: 10107 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 09:37:31 +0200 (Thu, 07 Jun 2018) $");
+  script_version("2019-05-24T11:45:02+0000");
+  script_tag(name:"last_modification", value:"2019-05-24 11:45:02 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -77,9 +76,6 @@ if( egrep( pattern:"[0-9a-fA-F]{8}", string:r ) ) {
   debug_print( 'Normal answer:\n', r );
 }
 
-soc = http_open_socket( port );
-if( ! soc ) exit( 0 );
-
 foreach header( make_list(
   # HTTP/1.0
   "From", "If-Modified-Since", "Referer", "Content-Length", "Content-Type",
@@ -89,6 +85,10 @@ foreach header( make_list(
   "Max-Forwards", "TE" ) ) {
 
   foreach bad( make_list( "%08x", "%s", "%#0123456x%08x%x%s%p%n%d%o%u%c%h%l%q%j%z%Z%t%i%e%g%f%a%C%S%08x%%#0123456x%%x%%s%%p%%n%%d%%o%%u%%c%%h%%l%%q%%j%%z%%Z%%t%%i%%e%%g%%f%%a%%C%%S%%08x" ) ) {
+
+    soc = http_open_socket( port );
+    if( ! soc )
+      continue;
 
     req2 = ereg_replace( string:req, icase:TRUE, pattern:strcat( header, ':[\r\n]*\r\n' ), replace:strcat( header, ': ', bad, '\r\n' ) );
     if( req2 == req )
@@ -103,11 +103,7 @@ foreach header( make_list(
       debug_print( 'Format string:\n', r );
       flag2++;
     }
-    soc = http_open_socket( port );
-    if( ! soc ) break;
   }
-
-  if( soc ) http_close_socket( soc );
 
   if( http_is_dead( port:port ) ) {
     security_message( port:port );

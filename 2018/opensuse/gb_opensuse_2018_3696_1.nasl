@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3696_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for ntfs-3g_ntfsprogs openSUSE-SU-2018:3696-1 (ntfs-3g_ntfsprogs)
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852111");
-  script_version("$Revision: 12497 $");
+  script_version("2019-05-24T11:20:30+0000");
   script_cve_id("CVE-2017-0358");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
   script_tag(name:"creation_date", value:"2018-11-10 05:57:36 +0100 (Sat, 10 Nov 2018)");
   script_name("SuSE Update for ntfs-3g_ntfsprogs openSUSE-SU-2018:3696-1 (ntfs-3g_ntfsprogs)");
   script_category(ACT_GATHER_INFO);
@@ -53,7 +52,7 @@ if(description)
   script_tag(name:"insight", value:"This update for ntfs-3g_ntfsprogs fixes the following issues:
 
   - CVE-2017-0358: Missing sanitization of the environment during a call to
-  modprobe allowed local users to escalate fo root privilege (bsc#1022500)
+  modprobe allowed local users to escalate for root privilege (bsc#1022500)
 
   This update was imported from the SUSE:SLE-12:Update update project.
 
