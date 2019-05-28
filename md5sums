@@ -7941,7 +7941,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 569372e634dac843f3eb1d55567d5fd6  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-4edb8b13b815ef31c35db971f0311412  plugin_feed_info.inc
+9a3b4f417ef81ef8dbbaa7203e040313  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -19452,7 +19452,7 @@ ba17d89d0f8f58aeb9ba52c473b9f431  gb_baofeng_storm_detect.nasl
 fd5ddba881b28b5b2ce537a4b571c1e3  gb_accellion_fta_detect.nasl
 b8044fd8387ff8cf5fbc5357e770fed5  gb_vibnode_consolidation.nasl
 96583750d9068d46275c5b6facffc85f  gb_cuteftp_detect.nasl
-140a3557e80995a1a51c43f55c627366  gb_phoenix_contact_fl_view_detect_win.nasl
+32568ad4c87cc98b798deab1816fdd91  gb_phoenix_contact_fl_view_detect_win.nasl
 969efdcf756078efc77c9d0815192fcc  gravity_board_x_detect.nasl
 a43ca84eccd65b3f75461f00b5c90267  gb_simatic_cp_snmp_detect.nasl
 f783c24296a5e2c6229b0fe4737705a7  gb_biscom_sft_detect.nasl
@@ -19487,7 +19487,7 @@ f42d406a452ed713fc727921b53fbb05  gb_konica_minolta_ftp_utility_detect.nasl
 827b0b43d8ec2ea4e8726b88a15dcdaa  gb_libreoffice_online_detect.nasl
 db99881e9af33bc6a3591c44a1db6cbb  gb_bridgeway_configuration_tool_detect_win.nasl
 de525ba9818395782627ec20764427d3  gb_harmonic_nsg_9000_devices_detect.nasl
-4435efed20080fd28664728520b3d7d4  gb_phoenix_contact_factory_manager_detect_win.nasl
+d0e278df1768e33666f7f63c1bbefade  gb_phoenix_contact_factory_manager_detect_win.nasl
 f31618dbda3f0cfbc64f800149b9cb5c  gb_ms_system_center_configmgr_detect_win.nasl
 27b1909108a57d147c3958df04bd079c  gb_ibm_websphere_datapower_xc10_detect.nasl
 1c331a2854a3ca868269d1ee2a810615  gb_pkp_open_journal_systems_detect.nasl
@@ -20955,7 +20955,7 @@ ccb3809b1ba48af8a707f73a5ab9ee65  gb_phoenix_contact_automationworx_software_sui
 505797ab7f8fd0729065825e64603724  gb_trendmicro_internet_security_detect.nasl
 ac7ba6038da97fab5647749f15f323e3  gb_kaspersky_smg_detect.nasl
 40fb6e80123ad2cfc60e21ccad12d49b  gb_simatic_s7_pct_detect_win.nasl
-d044604fda728cf582fcda81304eb4de  gb_phoenix_contact_network_manager_detect_win.nasl
+3541b322ee14a38b05e99ada759cbbdd  gb_phoenix_contact_network_manager_detect_win.nasl
 771d340048b45ebac09250b9877d10e4  gb_tibco_ftl_detect_win.nasl
 8c999d037e628207aa62a28e052f41ce  secpod_opera_detection_linux_900037.nasl
 5a8056744c81e7ec4977b7be7bf92c54  gb_omron_cx-supervisor_detect.nasl
@@ -42863,7 +42863,7 @@ b3186c9900ef96e3f582312fcf811dac  gb_ipam_detect.nasl
 932231948f85357ec20dc0afab889e9f  gb_mozilla_prdts_detect_macosx.nasl
 ddee9dd86646b9871af446411a66e64c  gb_planex_csw50hd_camera_remote_detect.nasl
 d3a17aa64d40284041678a028b47b0a2  gb_abb_pluto_manager_detect_win.nasl
-3a3895e826f1cddbd753c586072250b8  gb_rockwell_bootp_dhcp_tool_detect_win.nasl
+766c95945429a8ca3559af1264350629  gb_rockwell_bootp_dhcp_tool_detect_win.nasl
 3e63b3f6e5d5d6c1c82a55f5f00ca1d9  sw_rockmongo_detect.nasl
 b4446450a4cfaa5f89b46777d223335c  gb_xovis_pc_sensor_detect.nasl
 6a128bd531c8ae3b11f48143e24c6e27  http_func.inc
@@ -49151,7 +49151,7 @@ a05f493d3210f1ef7d93f925c5cef510  2019/adobe/gb_adobe_acrobat_reader_dc_classic_
 48270ed1b03ce277ff44bc2ccb998f5d  2019/adobe/gb_adobe_flash_player_within_chrome_apsb19-19_lin.nasl
 97a830a0ce9757c0cb9ee704a49ded2f  2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-18_win.nasl
 31d81e5652c0175e648483a15ad88c21  2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-17_macosx.nasl
-97093d0dbfbabd5ba6d0f568a7e93422  2019/adobe/gb_adobe_indesign_code_exec_vuln_apsb19-23_win.nasl
+6424954798d53137efca8ac0a5632090  2019/adobe/gb_adobe_indesign_code_exec_vuln_apsb19-23_win.nasl
 a461635d7afa41d6fc6df6afa412c36f  2019/adobe/gb_adobe_flash_player_apsb19-19_win.nasl
 8bd60791b9ae34b06f321bc13af07447  2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-07_win.nasl
 bf650a0b92af7ab83302906d289f514d  2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-17_macosx.nasl
@@ -49161,9 +49161,9 @@ bba1727a29ff85125980b1e3c9d454dc  2019/adobe/gb_adobe_media_encoder_apsb19-29_wi
 05536d653c79c89f76be1c3304226496  2019/adobe/gb_flash_player_for_ie_edge_apsb19-06.nasl
 ef8ddf414654d69754f906589a32f19b  2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-17_win.nasl
 c3160b3e010cb09c1ca09beb7bcba2c0  2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-07_win.nasl
-6dce117ee873d917b6efaf54f2f4402c  2019/adobe/gb_adobe_dreamweaver_info_disc_vuln_macosx_apsb19-21.nasl
+964c003ba1ba1c566c95c1b4fb5e4c78  2019/adobe/gb_adobe_dreamweaver_info_disc_vuln_macosx_apsb19-21.nasl
 557553d965d5988ece21143251a576d4  2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-02_win.nasl
-e9c30ec00b0b5c9c4816b3c0c256e694  2019/adobe/gb_adobe_dreamweaver_info_disc_vuln_win_apsb19-21.nasl
+113e4b0141eefb14fb2278caf160f251  2019/adobe/gb_adobe_dreamweaver_info_disc_vuln_win_apsb19-21.nasl
 87dd73dbfe9abc9a596278109cf49307  2019/adobe/gb_adobe_acrobat_2017_apsb19-18_win.nasl
 ff8476601a718a534d109fdd36b73acc  2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-07_win.nasl
 8e8fc7228037a57593cbdf449e65adcf  2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-13_win.nasl
@@ -49195,7 +49195,7 @@ f0de5eee394f5adf516f6408c7144299  2019/adobe/gb_adobe_flash_player_apsb19-26_lin
 53348a39a68a22ebba33bb6f77e43245  2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-02_win.nasl
 60dfbd4e4893bd03035d8cb3911440e6  2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-17_win.nasl
 2a1aad47870100410c13a8cab7d86aa3  2019/adobe/gb_adobe_acrobat_2017_apsb19-17_win.nasl
-ae274e5e7c990a552ebc00459363d26c  2019/adobe/gb_adobe_indesign_code_exec_vuln_apsb19-23_macosx.nasl
+ba2142c18d37321bc7b2418958921639  2019/adobe/gb_adobe_indesign_code_exec_vuln_apsb19-23_macosx.nasl
 6697f9742a100058ad1f7f47d9793897  2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-07_macosx.nasl
 682c87db097078ac3c350ffc6c8d8827  2019/adobe/gb_adobe_flash_player_apsb19-06_macosx.nasl
 b284a8bad8c9bd98604dc4c6a03eb5c4  2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-17_win.nasl
@@ -49273,7 +49273,7 @@ fc278516e342a803812333346e443461  2019/debian/deb_dla_1675.nasl
 e213f68f09912ec4be80a475a4b9e67c  2019/debian/deb_dla_1773.nasl
 4ce536bd5c9604bcabeb7679da9501b5  2019/debian/deb_4443.nasl
 4deb1a820cffc34d42de05bea5a6c046  2019/debian/deb_dla_1801.nasl
-709eeae581b03cde4c06081a53d80cc3  2019/debian/deb_4446.nasl
+fd17195f5f6b59ba0650ee43b8df96a5  2019/debian/deb_4446.nasl
 02cf635b5bfd3b005371d79ecaa5e3a5  2019/debian/deb_dla_1741.nasl
 a120f4adbd2cfea8370b03f42f8d8061  2019/debian/deb_4388.nasl
 6d195226ab92fa5a9a7678ee141a3f7a  2019/debian/deb_4398.nasl
@@ -49305,6 +49305,7 @@ b242a1489378655669a7966f94632eb9  2019/debian/deb_dla_1779.nasl
 b37f28862630041ea70222d7fb677777  2019/debian/deb_4422.nasl
 719a143f328c1f4604ac81e7af3f9c67  2019/debian/deb_4427.nasl
 d05196055cfcd09e4d90065e9030b821  2019/debian/deb_4373.nasl
+9323d5abe93a093c48016cd1c0d4ed12  2019/debian/deb_dla_1806.nasl
 ea02e585aaeb654011d4f4a782a9f01f  2019/debian/deb_dla_1766.nasl
 1bdc75dc9e79f2bcee390060a7b312a1  2019/debian/deb_dla_1774.nasl
 70ccd5965c4899d27899cac295a8e2b8  2019/debian/deb_dla_1778.nasl
@@ -49370,7 +49371,7 @@ ddc68fde61e4c31aa9df7ea3f8526b27  2019/debian/deb_4399.nasl
 419c23495aea06973fc17c2356ef24ac  2019/debian/deb_dla_1726.nasl
 595191a2cf51fef766fee278820d8051  2019/debian/deb_dla_1686.nasl
 465fd452a0c10f02a4e147f2ccfced82  2019/debian/deb_dla_1769.nasl
-05d33a5d1aae36262dbfccb122f50c48  2019/debian/deb_dla_1790.nasl
+f7a79b0171fe7515a0afd6a2f5eea3cd  2019/debian/deb_dla_1790.nasl
 c43c39b68aeb9b8d37f101d91dac8134  2019/debian/deb_dla_1676.nasl
 0294b1c75e81d95cbcc0f5a316af863b  2019/debian/deb_4423.nasl
 d6a7d2f17d67f4032baefc3582bf3305  2019/debian/deb_4409.nasl
@@ -49497,6 +49498,7 @@ ef20bd4c7e3619e8db77bce7a59ca4e1  2019/debian/deb_4403.nasl
 8a2eb1538399907bbe48d17c8cfc04d9  2019/debian/deb_dla_1680.nasl
 60954c710f71d63c13bb25690d8a8815  2019/debian/deb_4369.nasl
 3d9e0b3c0a43b9dc78291e1b43e79f2c  2019/debian/deb_dla_1672.nasl
+cf3debee3c67a817265ef9ecc79e1c0a  2019/debian/deb_dla_1807.nasl
 35e25a0816c37ea8ed35bffcab6fa526  2019/debian/deb_4431.nasl
 8ce66bff5833b545359eab95385f1e72  2019/debian/deb_dla_1682.nasl
 d76ca1ca69990deca8334cca13807366  2019/debian/deb_4450.nasl
@@ -49642,10 +49644,12 @@ d47310ed8ac7a4f6243f87950896e4a7  2019/ubuntu/gb_ubuntu_USN_3966_1.nasl
 3cea9d1aa660eb0a98d2bfd73cd95b73  2019/ubuntu/gb_ubuntu_USN_3940_1.nasl
 c281198b466195ed7c6edef486563e98  2019/ubuntu/gb_ubuntu_USN_3856_1.nasl
 56543e1e1c19c9c3236f16b70abd18cc  2019/ubuntu/gb_ubuntu_USN_3981_1.nasl
+9d0bd27e1c34f9e37fe226e864851c5c  2019/ubuntu/gb_ubuntu_USN_3991_1.nasl
 4f685088455cee2eb3944090230c155f  2019/ubuntu/gb_ubuntu_USN_3928_1.nasl
 8af44eddfa1dd222361bc9de833daadf  2019/ubuntu/gb_ubuntu_USN_3955_1.nasl
 29837b2592b639287a085983eb66e5e9  2019/ubuntu/gb_ubuntu_USN_3978_1.nasl
 09074b742016f2a94dcc3de2911b9493  2019/ubuntu/gb_ubuntu_USN_3886_1.nasl
+8d8cc4e0be017106f693b074f06882d2  2019/ubuntu/gb_ubuntu_USN_3977_2.nasl
 28973459588ce8990cba96b6fd9e1d1e  2019/ubuntu/gb_ubuntu_USN_3911_1.nasl
 acd0f04ebe69009d5d372463f3123a4f  2019/ubuntu/gb_ubuntu_USN_3932_2.nasl
 4d6a50be2596cca93faf60b944b4b844  2019/ubuntu/gb_ubuntu_USN_3875_1.nasl
@@ -49672,6 +49676,7 @@ f41891bb53cbdbcb79316fd0f0f22cca  2019/ubuntu/gb_ubuntu_USN_3918_4.nasl
 60bb0cef091780ff8183b8742e7cecf5  2019/ubuntu/gb_ubuntu_USN_3918_1.nasl
 f7358aaa5b38e26ccde04f9c579b16ef  2019/ubuntu/gb_ubuntu_USN_3901_1.nasl
 21a0b9a57b6aa8abcda70a34fd4c36fc  2019/ubuntu/gb_ubuntu_USN_3915_1.nasl
+f18a2cb331ede94ade8f3203604ec63d  2019/ubuntu/gb_ubuntu_USN_3989_1.nasl
 401950327938f77829d2b8d30312b24d  2019/ubuntu/gb_ubuntu_USN_3988_1.nasl
 5d25bebcb60c849a7df5a22058139d10  2019/ubuntu/gb_ubuntu_USN_3903_1.nasl
 df90e53afaf566d6841aa188f1d5739e  2019/ubuntu/gb_ubuntu_USN_3951_1.nasl
@@ -49688,6 +49693,7 @@ b78bd639625fdfe298cadac80a47a68b  2019/ubuntu/gb_ubuntu_USN_3970_1.nasl
 e456b1a7a0db488e17304e1c4f377384  2019/ubuntu/gb_ubuntu_USN_3910_2.nasl
 c86337633e3f56ce62c20162e9be3607  2019/ubuntu/gb_ubuntu_USN_3863_1.nasl
 6fc22d5a99bab7ea50b34bc6b30320c4  2019/ubuntu/gb_ubuntu_USN_3891_1.nasl
+d600f24cb0d0c21f6edd8ff19167d33a  2019/ubuntu/gb_ubuntu_USN_3993_1.nasl
 9b39ec68168919dc1cf891054d315966  2019/ubuntu/gb_ubuntu_USN_3885_1.nasl
 315f4f10db7769a9675c3f5961a6a4a3  2019/ubuntu/gb_ubuntu_USN_3950_1.nasl
 94fc3cee2d1f411306aa3637ecdc71b9  2019/ubuntu/gb_ubuntu_USN_3908_1.nasl
@@ -49707,6 +49713,7 @@ f9a95f4c868e0355855fe73e2d4cbd71  2019/ubuntu/gb_ubuntu_USN_3962_1.nasl
 5820b1f30698f022a5e41a3ae0560ee0  2019/ubuntu/gb_ubuntu_USN_3968_1.nasl
 7eb7763f6582ff1acbc9765f4a74edff  2019/ubuntu/gb_ubuntu_USN_3902_1.nasl
 ef8ecf86d653148ca6300c88bba34616  2019/ubuntu/gb_ubuntu_USN_3882_1.nasl
+247a667fb5f5f4fcf01ca00a1e88457c  2019/ubuntu/gb_ubuntu_USN_3992_1.nasl
 25555ba32783fe293b5899d6fd9c5f96  2019/ubuntu/gb_ubuntu_USN_3865_1.nasl
 542e1862d8c025ceb63367ba27425718  2019/ubuntu/gb_ubuntu_USN_3980_1.nasl
 82481fc6d93a3af07e4f3f323ae2b7d4  2019/ubuntu/gb_ubuntu_USN_3904_1.nasl
@@ -49716,6 +49723,7 @@ c5646a386c2aed1ac5e672be7e4cedc8  2019/ubuntu/gb_ubuntu_USN_3887_1.nasl
 81629843f23c62b948df1123d6bbcd7a  2019/ubuntu/gb_ubuntu_USN_3979_1.nasl
 27a47769538fa556768461bf11cb9c0c  2019/ubuntu/gb_ubuntu_USN_3985_1.nasl
 2a2326a4ce04bada303d76abe61a0895  2019/ubuntu/gb_ubuntu_USN_3862_1.nasl
+e3f36a655d49ca755b8d0b76b391221b  2019/ubuntu/gb_ubuntu_USN_3990_1.nasl
 491117355d77e2fe51ff39761106cc66  2019/ubuntu/gb_ubuntu_USN_3916_1.nasl
 8e19eb782334930a188e2eb939bb8038  2019/ubuntu/gb_ubuntu_USN_3932_1.nasl
 77abc7cccc988a65715de4c9b4b55073  2019/ubuntu/gb_ubuntu_USN_3896_1.nasl
@@ -50727,6 +50735,7 @@ ba86e55d1a2bde728db4dedaaa46b7b0  2019/google/gb_google_chrome_stable-channel-up
 2aa70ebdad861f0768bc7719a26bf8f6  2019/dlink/gb_dlink_dir-825_inf_disc_vuln_dec18.nasl
 7d40689fe87e271cfaf3954d198e588d  2019/dlink/gb_dlink_dir-850l_auth_bypass_vuln.nasl
 93780f128b922ff9263dd4e1e7ec2a43  2019/gwsecurity/gb_gwsecurity_ip_camera_default_credentials.nasl
+3098eb4fc9129d06baefe463f41db18b  2019/intel/gb_intel_amt_intel-sa-00213.nasl
 f6728febeeee4086fa8a83af99861f9a  2019/kentico/gb_kentico_rce_vuln_mar19.nasl
 43b789bed24ae1b609c4b3473c533943  2019/kentico/gb_kentico_file_upload_vuln.nasl
 10224121201ad816cf1a6221acfcc794  2019/miniupnp/gb_miniupnp_mult_vuln.nasl
@@ -50784,10 +50793,12 @@ f3211ba21403ad2db6cbbddcef31d6a2  2019/opensuse/gb_opensuse_2019_1226_1.nasl
 920da140476086f352d7c278a517646a  2019/opensuse/gb_opensuse_2019_1272_1.nasl
 e1a6b6b365f6b6e1bc1fbe7a236cb2d1  2019/opensuse/gb_opensuse_2019_0214_1.nasl
 6fd8e34fae09979794cf18ac0eae0b60  2019/opensuse/gb_opensuse_2019_0133_1.nasl
+9eca7c6a58cae44ad1d058a78fc32112  2019/opensuse/gb_opensuse_2019_1426_1.nasl
 9500030c8a06ed2e3e11024e12e1ce1f  2019/opensuse/gb_opensuse_2019_0346_1.nasl
 5d0b1eda8817d46690c5e9394fbe384f  2019/opensuse/gb_opensuse_2019_1175_1.nasl
 bdbd447098cd25050dbc691c2554fd1b  2019/opensuse/gb_opensuse_2019_0326_1.nasl
 c753fac445f1b1b2161adf3d0519148f  2019/opensuse/gb_opensuse_2019_1143_1.nasl
+2fd3afeb08999cf98e5633c28699de30  2019/opensuse/gb_opensuse_2019_1428_1.nasl
 3b92674e83abedb82da5f576237bef8d  2019/opensuse/gb_opensuse_2019_0174_1.nasl
 74e12d7e47c77fde4213dbd11a096510  2019/opensuse/gb_opensuse_2019_1220_1.nasl
 785d39ab7236465138729d0831ebfd4d  2019/opensuse/gb_opensuse_2019_1077_1.nasl
@@ -50799,6 +50810,7 @@ d3b03591ef148dbb0dc5ac82af8e1bd8  2019/opensuse/gb_opensuse_2019_0128_1.nasl
 5aea97613ed7f90d6131cf3d7ef7d071  2019/opensuse/gb_opensuse_2019_0275_1.nasl
 cac85fb9b6e8dd2ca2e38b4858978d94  2019/opensuse/gb_opensuse_2019_1152_1.nasl
 9bf1298d31aa68004e062cdea67540ac  2019/opensuse/gb_opensuse_2019_1108_1.nasl
+78b09e23f20a898e11392490bd5b3014  2019/opensuse/gb_opensuse_2019_1408_1.nasl
 3b7035adb61db70a486648dc118241e3  2019/opensuse/gb_opensuse_2019_1109_1.nasl
 44e8e325a9314976052dc7a29bf515b3  2019/opensuse/gb_opensuse_2019_0323_1.nasl
 3286ff8f9e848b5738e77b3002b04124  2019/opensuse/gb_opensuse_2019_0344_1.nasl
@@ -50831,6 +50843,7 @@ fc3a6152bcb0db04860137fa13327730  2019/opensuse/gb_opensuse_2019_1200_1.nasl
 983c980df2bdeafbbb306a1d300e04dd  2019/opensuse/gb_opensuse_2019_1397_1.nasl
 cf55c42c986be804f298eabdb267a2a8  2019/opensuse/gb_opensuse_2019_0093_1.nasl
 fe0b48e844f5d4f9249d9c1bfb74265e  2019/opensuse/gb_opensuse_2019_0293_1.nasl
+9fee2133463a1d6849a1dce2edb75f12  2019/opensuse/gb_opensuse_2019_1407_1.nasl
 f5daa4ebc64c9c54c70ac8ec62be2ac1  2019/opensuse/gb_opensuse_2019_0051_1.nasl
 64ff321800f7530b91e87d8ff2850567  2019/opensuse/gb_opensuse_2019_0176_1.nasl
 67ef31e061f561670cc066a406de6f20  2019/opensuse/gb_opensuse_2019_1199_1.nasl
@@ -50841,6 +50854,7 @@ e22d946c7bbbd86f187172257ef6fc6c  2019/opensuse/gb_opensuse_2019_1313_1.nasl
 5152cfc65ca44d72b18820e74e1d9471  2019/opensuse/gb_opensuse_2019_0298_1.nasl
 22fe7ed06473b21561011729e8eec5bb  2019/opensuse/gb_opensuse_2019_1217_1.nasl
 ef38d2bbeae099d62c35077141fc886c  2019/opensuse/gb_opensuse_2019_1145_1.nasl
+a8f269913ba2530af0959a0b96950783  2019/opensuse/gb_opensuse_2019_1425_1.nasl
 e4a174715bb819553de849f0bb4c15ea  2019/opensuse/gb_opensuse_2019_0200_1.nasl
 92a3f787ad5d0877795912e310af3cc0  2019/opensuse/gb_opensuse_2019_1235_1.nasl
 e9fb496e0e1eed964a2b3194d3797b1c  2019/opensuse/gb_opensuse_2019_0138_1.nasl
@@ -50855,6 +50869,7 @@ f5682cb4ea5d96559c21f273d15af3eb  2019/opensuse/gb_opensuse_2019_1198_1.nasl
 c5f877824faf07a15cd595ea6045eea2  2019/opensuse/gb_opensuse_2019_1128_1.nasl
 f7f8107651fb612e62879827e6d66eb0  2019/opensuse/gb_opensuse_2019_1293_1.nasl
 6ef1d722ddbc6a61abd8c5027940a02f  2019/opensuse/gb_opensuse_2019_0306_1.nasl
+dc377947608eb299f56a0824ef56afdf  2019/opensuse/gb_opensuse_2019_1420_1.nasl
 965bfca18c79d4bf802a8000d3b35ae2  2019/opensuse/gb_opensuse_2019_1392_1.nasl
 f24572d6ca0d73d22d602c5fb9f50b85  2019/opensuse/gb_opensuse_2019_1166_1.nasl
 9c28e212d4de590460d5a81bc8940221  2019/opensuse/gb_opensuse_2019_0094_1.nasl
@@ -50924,6 +50939,7 @@ e86a381e2e4547cb353d72251c60dba2  2019/opensuse/gb_opensuse_2019_1116_1.nasl
 105e981e18da1d1b98e7f66950dcf970  2019/opensuse/gb_opensuse_2019_0175_1.nasl
 53be60ae9b45887cbcd47ce57de513f0  2019/opensuse/gb_opensuse_2019_1174_1.nasl
 5cb5f98cbcf3552df274c149927cb9f4  2019/opensuse/gb_opensuse_2019_1320_1.nasl
+8ab15f86d3764b4dca9302784b1596e1  2019/opensuse/gb_opensuse_2019_1427_1.nasl
 938d0eeef2281e0557fcb7bb626eefa1  2019/opensuse/gb_opensuse_2019_0308_1.nasl
 5d5b9cd8d1f7b49358559e8899dc8702  2019/opensuse/gb_opensuse_2019_1111_1.nasl
 c4e1f3ce798052d9d62ba4fb777ab622  2019/opensuse/gb_opensuse_2019_1173_1.nasl
@@ -50932,6 +50948,7 @@ e576f826e8aba777f6d7e65969f5b8fe  2019/opensuse/gb_opensuse_2018_4307_1.nasl
 85b028dad216824f9299deb8df8044a4  2019/opensuse/gb_opensuse_2019_0152_1.nasl
 5fce120ce419f02fd94db7b230f34249  2019/opensuse/gb_opensuse_2019_1276_1.nasl
 af8ba8ff94ff7bd12777f21935fdc737  2019/opensuse/gb_opensuse_2019_0020_1.nasl
+44106947bdc96d3f582698596caf0307  2019/opensuse/gb_opensuse_2019_1439_1.nasl
 b3cdd9c50204ddca51d627a14cffafa0  2019/opensuse/gb_opensuse_2019_1223_1.nasl
 4ac7ae1081422177d511a84c01324670  2019/opensuse/gb_opensuse_2019_0066_1.nasl
 6b208b4b1a5152a2b1a8cbc2e2333651  2019/opensuse/gb_opensuse_2019_1343_1.nasl
@@ -50987,11 +51004,13 @@ bcda540ef61f341ef49cc992b72d748c  2019/opensuse/gb_opensuse_2019_1405_1.nasl
 aaaa9c0ee83af8571d3c8d3f0386b96a  2019/opensuse/gb_opensuse_2019_1390_1.nasl
 dfaa8461ca1b8646418255abc541a581  2019/opensuse/gb_opensuse_2019_0274_1.nasl
 fc9a2cbc3107519e20a63863156db97b  2019/opensuse/gb_opensuse_2019_0022_1.nasl
+0680f013e66294ce0edb0ac77c6c35fb  2019/opensuse/gb_opensuse_2019_1438_1.nasl
 16b813a8e89588ebf79d76a6397f7902  2019/opensuse/gb_opensuse_2019_1388_1.nasl
 0c0ebecb318ffb298657367024a4878b  2019/opensuse/gb_opensuse_2019_1163_1.nasl
 466aa58245834c8f9fcb64e92c42e53b  2019/opensuse/gb_opensuse_2019_0044_1.nasl
 e1fecaf267a233a117e973e496e80559  2019/opensuse/gb_opensuse_2019_0242_1.nasl
 c9938fd557344abb4de2c66294f8a3cb  2019/opensuse/gb_opensuse_2019_0061_1.nasl
+4d279dea6f9321f6698bf2c7aef21d1c  2019/opensuse/gb_opensuse_2019_1430_1.nasl
 ede62eea34efab686edece43e66e74fc  2019/opensuse/gb_opensuse_2019_1114_1.nasl
 916cb53190c012e7c40d29d3f8efb778  2019/opensuse/gb_opensuse_2019_0207_1.nasl
 283f23906adc3b8b738af304b634ba40  2019/opensuse/gb_opensuse_2019_0245_1.nasl
@@ -51013,6 +51032,7 @@ dcc72099a3559750abbfe63f0dfa7413  2019/opensuse/gb_opensuse_2019_0143_1.nasl
 53c711144cc771ea051fa3b10c1d48ee  2019/opensuse/gb_opensuse_2019_0045_1.nasl
 57305f7cf99ac728a9e81caed13799ba  2019/opensuse/gb_opensuse_2019_1371_1.nasl
 b15f98a81667df3e1ef15e59e7b212fc  2019/opensuse/gb_opensuse_2019_1325_1.nasl
+8b6933676f34f54e4a09933095715789  2019/opensuse/gb_opensuse_2019_1419_1.nasl
 7c0da264470c912aaf57fbadfcf4c0f1  2019/opensuse/gb_opensuse_2019_1291_1.nasl
 be281ecc72be5f5bace34af6c6a1c2b9  2019/opensuse/gb_opensuse_2019_1089_1.nasl
 667d1ff40bf3fbae956daf09a1ade200  2019/opensuse/gb_opensuse_2019_0132_1.nasl
