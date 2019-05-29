@@ -99,7 +99,7 @@ e90eeaa652d2b337dcafcb5ab6408ffd  packeteer_web_version.nasl
 d8ce0538970b05cf74ead78a8913616c  gb_rabbitmq_web_management_detect.nasl
 3519a80cacc7b0f2b21aed6b75f41a12  dcetest.nasl
 b4e181d6165902a841557515ca037f12  gb_bpftp_detect.nasl
-cf5352d1592aee6bf168f324195a07a7  gb_lotus_domino_detect.nasl
+9b3552c9237aac2d3b6610404b687e44  gb_lotus_domino_detect.nasl
 156a3d6c9f4e31f15144c662acc6c80b  gb_fog_server_detect.nasl
 26078d8446deec7dde70cbab59c5e03d  gb_beckhoff_te5950_drive_manager_detect_win.nasl
 0baaca93ac18e0113af639b5d9dfbf22  panda_av_update_detect.nasl
@@ -6399,7 +6399,7 @@ ca2a838e25aed6c6c8c61026ad09f0ad  gb_ibm_bigfix_web_reports_detect.nasl
 b07be78d7d92b4b82b3e161c8016648c  gb_starttls_smtp.nasl
 f3b6c34665de3a9d2fa84007249dc9c0  gb_tigervnc_detect_win.nasl
 c8eec569d22c56538422dde4745d9377  gb_alleycode_html_editor_detect.nasl
-df72249c23231dab474b6f37a1317944  ntp_open.nasl
+ec907fca1faff36717329c548e8a7d1e  ntp_open.nasl
 4bb771bb9ac89c6d7895dd336a9feb2c  secpod_apache_apr-utils_detect.nasl
 c011683f1423b500fd393ec1faf9a022  gb_cp600_runtime_pc_detect_win.nasl
 c118ff7ab04687b5ded7d7ada6e3e45a  gb_ms_office_click2run_detect_win.nasl
@@ -7941,7 +7941,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 569372e634dac843f3eb1d55567d5fd6  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-9a3b4f417ef81ef8dbbaa7203e040313  plugin_feed_info.inc
+cde1d4a53449e54fccaf0377bb2b13d2  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -19348,7 +19348,7 @@ b8cbe4e41a34ac6de06b46bb94b63713  phpshop_detect.nasl
 449ef47fe5df65cf6c4fe0095f6e1f7e  gb_fsecure_prdts_detect_lin.nasl
 70911d2aedd21b386d7945b60857e76e  gb_wago_plc_snmp_detect.nasl
 6f6db59f602e3e50265e7eadeb78e3ef  gb_apple_icloud_detect_win.nasl
-1a66803c4812c73bfd5077c7e7c0a75a  policy_functions.inc
+2adb74218e8b6bb7428c0f88ccb4ed8e  policy_functions.inc
 1a089b9d74a66a00b38b637abdf5affe  gb_virit_explorer_lite_detect.nasl
 f3e7a78800def7d48511b08170748a8d  secpod_adobe_shockwave_player_detect.nasl
 b9548c27e28b70f2e1ae766c8e435459  OpenX_detect.nasl
@@ -48995,7 +48995,10 @@ e20f2bb53b4c56cae9a3111b2fc93c10  2019/discourse/gb_discourse_cve-2019-5418_lfi.
 f29eae86f926e34ba089e8226726f842  2019/discourse/gb_discourse_2.2.0beta2.nasl
 62ae9f3ff9727a35145655d549ddd6e7  2019/spip/gb_spip_rce_vuln.nasl
 a5a0b8a1ccc80e80cc96a8f4a0d535eb  2019/foscam/gb_foscam_ip_camera_default_credentials.nasl
+12969806b1951b6bbf8cf2b002cbd14f  2019/otrs/gb_otrs_OSA-2019-05.nasl
 b0dca622a82a31018bf592aa9f8e95a1  2019/otrs/gb_otrs_rce_vuln_mar19_02.nasl
+3b40a2ee9fc26c17b1f450925a76339d  2019/otrs/gb_otrs_OSA-2019-07.nasl
+e5225d1f93802ef6fc29e12926e728f8  2019/otrs/gb_otrs_OSA-2019-06.nasl
 cc8739f820ef4081de1c6d04e5cc5ebf  2019/otrs/gb_otrs_rce_vuln_mar19_01.nasl
 442548c957c8f2d4d7031869c4c2045d  2019/otrs/gb_otrs_data_loss_vuln_feb18.nasl
 3bb278371ab4255e8ddb3f696fd1f82a  2019/eclipse/gb_jetty_546577_win.nasl
@@ -49418,6 +49421,7 @@ c43977085de660f956de261c67cb4560  2019/debian/deb_dla_1690.nasl
 d17da86502db2f34401c4bed10c8404f  2019/debian/deb_4449.nasl
 88ec89f240ecc781b9b0f913b94d9584  2019/debian/deb_4362.nasl
 f186bf24f61afc42e1a42839ea54ea66  2019/debian/deb_4406.nasl
+b8d76213fd3335af39c9ebd17166f1f4  2019/debian/deb_dla_1808.nasl
 c13f9d5bc901a2d1ba552f7ee330d6ec  2019/debian/deb_4378.nasl
 2b70c5a3cdfc398d0f4eff245f2f7c55  2019/debian/deb_dla_1743.nasl
 148cc9d085818d23dacfdc5af7212901  2019/debian/deb_4374.nasl

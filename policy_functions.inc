@@ -222,8 +222,9 @@ function policy_reporting(result, default, compliant, fixtext, type, test, info)
   report += "Type of Test: " + type + '\n';
   report += "Test:         " + test + '\n';
   report += "Solution:     " + fixtext;
+
   if(info){
-    report += '\n' + "Notes:    " + info;
+    report += '\n' + "Notes:        " + info;
   }
 
   policy_logging(text:report);
@@ -609,4 +610,134 @@ function policy_verify_win_ver(min_ver){
     return TRUE;
 
   return FALSE;
+}
+
+# @brief Returns reporting variables for wrong os
+#
+# @param target_os OS of host that should be matched (at least)
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_report_wrong_os(target_os){
+  local_var target_os, ret;
+
+  ret["value"] = "None";
+  ret["comment"] = "Host does not run " + target_os + ".";
+  ret["compliant"] = "incomplete";
+
+  return ret;
+}
+
+# @brief Returns results variables for exact reg_dword check
+#
+# @param key Registry key to check
+# @param item Registry item to check
+# @param type Registry type to check
+# @param default set point to check the actual value against
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_match_exact_reg_dword(key, item, type, default){
+  local_var key, item, type, default;
+  local_var value, comment, compliant, ret;
+
+  value = registry_get_dword(key:key, item:item, type:type);
+  value = chomp(value);
+
+  if(value == ""){
+    comment = "Registry key not found.";
+    compliant = "incomplete";
+    value = "None";
+  }else{
+    if(int(value) == int(default)){
+      compliant = "yes";
+    }else{
+      compliant = "no";
+    }
+  }
+
+  ret["value"] = value;
+  ret["compliant"] = compliant;
+  if(comment){
+    ret["comment"] = comment;
+  }else{
+    ret["comment"] = "";
+  }
+
+  return ret;
+}
+
+# @brief Returns results variables for exact or partial reg_sz check
+#
+# @param key Registry key to check
+# @param item Registry item to check
+# @param type Registry type to check
+# @param default set point to check the actual value against
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_match_reg_sz(key, item, type, default, partial){
+  local_var key, item, type, default, partial;
+  local_var value, comment, compliant, ret;
+
+  value = registry_get_sz(key:key, item:item, type:type);
+  value = chomp(value);
+
+  if(value == ""){
+    comment = "Registry key not found.";
+    compliant = "incomplete";
+    value = "None";
+  }else{
+    if(partial && default >< value){
+      compliant = "yes";
+    }else if(value == default){
+      compliant = "yes";
+    }else{
+      compliant = "no";
+    }
+  }
+
+  ret["value"] = value;
+  ret["compliant"] = compliant;
+  if(comment){
+    ret["comment"] = comment;
+  }else{
+    ret["comment"] = "";
+  }
+
+  return ret;
+}
+
+# @brief Sets the reult keys to the KB
+#
+# @param type The type of the test
+# @param cmd The actual command of the test
+# @param default set point for the policy control
+# @param solution how to fix non-compliance
+# @param title title of the policy control
+# @param value the actual value found on the host
+# @param compliant compliance status of the policy control
+#
+function policy_set_kbs(type, cmd, default, solution, title, value, compliant){
+  local_var type, cmd, default, solution, title, value, compliant;
+
+  policy_testtype(type:type, cmd:cmd);
+  policy_add_oid();
+  policy_set_dval(dval:default);
+  policy_fixtext(fixtext:solution);
+  policy_control_name(title:title);
+  policy_set_kb(val:value);
+  policy_set_compliance(compliant:compliant);
+}
+
+# @brief Checks if SSH login is possible and if host runs Linux OS
+#
+# @return boolean TRUE if Linux shell and SSH login was possible, FALSE if not
+#
+function policy_check_linux_ssh_shell(){
+  if(!get_kb_item("login/SSH/success") || get_kb_item("ssh/no_linux_shell") ||
+      get_kb_item("ssh/restricted_shell")){
+    return(FALSE);
+  }
+  return(TRUE);
 }

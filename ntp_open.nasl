@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10884");
-  script_version("2019-05-25T13:31:37+0000");
+  script_version("2019-05-27T07:13:17+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-25 13:31:37 +0000 (Sat, 25 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-27 07:13:17 +0000 (Mon, 27 May 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("NTP read variables");
   script_category(ACT_GATHER_INFO);
@@ -59,19 +59,27 @@ function ntp_read_list() {
 
   data = raw_string( 0x16, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00 );
   soc = open_sock_udp( port );
-  if( ! soc ) return( NULL );
+  if( ! soc )
+    return( NULL );
+
   send( socket:soc, data:data );
   r = recv( socket:soc, length:4096 );
   close( soc );
 
-  if( ! r ) return( NULL );
+  if( ! r )
+    return( NULL );
 
   p = strstr( r, "version=" );
-  if(! p ) p = strstr( r, "processor=" );
-  if(! p ) p = strstr( r, "system=" );
+  if( ! p )
+    p = strstr( r, "processor=" );
+
+  if( ! p )
+    p = strstr( r, "system=" );
+
   p = ereg_replace( string:p, pattern:raw_string(0x22), replace:"'" );
 
-  if( p ) return( p );
+  if( p )
+    return( p );
 
   return( NULL );
 }
@@ -88,14 +96,16 @@ function ntp_installed() {
                      0xBE, 0x78, 0x2F, 0x1D, 0x19, 0xBA, 0x00, 0x00 );
 
   soc = open_sock_udp( port );
-  if( ! soc ) return( NULL );
+  if( ! soc )
+    return( NULL );
+
   send( socket:soc, data:data );
   r = recv( socket:soc, length:4096 );
   close( soc );
 
-  if( strlen( r ) > 10 ) {
+  if( strlen( r ) > 10 )
     return( r );
-  }
+
   return( NULL );
 }
 
@@ -103,7 +113,8 @@ port = 123;
 proto = "udp";
 banner_type = "NTP banner";
 
-if( ! get_udp_port_state( port ) ) exit( 0 );
+if( ! get_udp_port_state( port ) )
+  exit( 0 );
 
 r = ntp_installed();
 
@@ -116,7 +127,7 @@ if( r ) {
   } else {
     if( "system" >< list ) {
       s = egrep( pattern:"system=", string:list );
-      os = ereg_replace( string:s, pattern:".*system='([^']*)'.*", replace:"\1" );
+      os = ereg_replace( string:s, pattern:".*system='?([^',]+)[',].*", replace:"\1" );
       set_kb_item( name:"Host/OS/ntp", value:os );
 
       if( "linux" >< tolower( os ) ) {
@@ -125,7 +136,11 @@ if( r ) {
         } else if( "-amazon" >< tolower( os ) ) {
           register_and_report_os( os:"Amazon Linux", cpe:"cpe:/o:amazon:linux", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
-          version = eregmatch( pattern:"Linux/([0-9.]+)", string:os );
+
+          # Linux/2.6.35em1-g9733209
+          # Linux2.4.20_mvl31-bcm95836cpci
+          # Linux2.2.13
+          version = eregmatch( pattern:"Linux/?([0-9.]+)", string:os );
           if( ! isnull( version[1] ) ) {
             register_and_report_os( os:"Linux", version:version[1], cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
@@ -137,9 +152,14 @@ if( r ) {
       } else if( "unix" >< tolower( os ) ) {
         register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else if( "freebsd" >< tolower( os ) ) {
-        version = eregmatch( pattern:"FreeBSD/([0-9.a-zA-Z\-]+)", string:os );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"FreeBSD", version:version[1], cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+
+        # FreeBSDJNPR-11.0-20180730.2cd3a6e_buil
+        # FreeBSDJNPR-10.3-20170422.348838_build
+        # FreeBSD/10.1-RELEASE-p25
+        # FreeBSD/11.2-RELEASE-p6
+        version = eregmatch( pattern:"FreeBSD(/|JNPR-)([0-9.a-zA-Z\-]+)", string:os );
+        if( ! isnull( version[2] ) ) {
+          register_and_report_os( os:"FreeBSD", version:version[2], cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
           register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
@@ -172,6 +192,10 @@ if( r ) {
           register_and_report_os( os:"HP-UX", cpe:"cpe:/o:hp:hp-ux", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
       } else if( "data ontap" >< tolower( os ) ) {
+
+        # Data ONTAP/8.2.4P1
+        # Data ONTAP/8.2.5
+        # Data ONTAP/9.4P1
         version = eregmatch( pattern:"Data ONTAP/([0-9.a-zA-Z\-]+)", string:os );
         if( ! isnull( version[1] ) ) {
           register_and_report_os( os:"NetApp Data ONTAP", version:version[1], cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -187,20 +211,19 @@ if( r ) {
 
     if( "processor" >< list ) {
       s = egrep( pattern:"processor=", string:list );
-      os = ereg_replace( string:s, pattern:".*processor='([^']*)'.*", replace:"\1" );
+      os = ereg_replace( string:s, pattern:".*processor='?([^',]+)[',].*", replace:"\1" );
       set_kb_item( name:"Host/processor/ntp", value:os );
     }
 
     if( "ntpd" >< list ) {
       set_kb_item( name:"NTP/Installed", value:TRUE );
       ntpVerFull = eregmatch( pattern:"version='([^']+)',", string:list );
-      if( ! isnull( ntpVerFull[1] ) ) {
+      if( ! isnull( ntpVerFull[1] ) )
         set_kb_item( name:"NTP/Linux/FullVer", value:ntpVerFull[1] );
-      }
 
       ntpVer = eregmatch( pattern:"ntpd ([0-9.]+)([a-z][0-9]+)?-?(RC[0-9]+)?", string:list );
 
-      if( ntpVer[1] != NULL ) {
+      if( ! isnull( ntpVer[1] ) ) {
 
         if( ntpVer[2] =~ "[a-z][0-9]+" && ntpVer[3] =~ "RC" ) {
           ntpVer = ntpVer[1] + ntpVer[2] + "." + ntpVer[3];
@@ -220,7 +243,7 @@ if( r ) {
         cpe = "cpe:/a:ntp:ntp";
 
       install = port + "/udp";
-      register_product( cpe:cpe, location:install, port:port );
+      register_product( cpe:cpe, location:install, port:port, service:"ntp" );
     }
 
     report = 'It is possible to determine a lot of information about the remote host by querying ' +

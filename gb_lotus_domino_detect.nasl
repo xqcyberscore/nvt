@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("2019-05-13T14:05:09+0000");
+  script_version("2019-05-28T08:14:39+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-28 08:14:39 +0000 (Tue, 28 May 2019)");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
@@ -170,16 +170,32 @@ versionFiles = make_array( "/download/filesets/l_LOTUS_SCRIPT.inf", "Version=([0
                            "/download/filesets/n_LOTUS_SCRIPT.inf", "Version=([0-9.]+)",
                            "/download/filesets/l_SEARCH.inf", "Version=([0-9.]+)",
                            "/download/filesets/n_SEARCH.inf", "Version=([0-9.]+)",
+                           "/download/filesets/l_SHIMMER9.inf", "Version=([0-9.]+)",
+                           "/download/filesets/l_SHIMMER8_5_en.inf", "Version=([0-9.]+)",
+                           "/download/filesets/l_SHIMMER8_en.inf", "Version=([0-9.]+)",
+                           "/download/filesets/l_SHIMMER8_5.inf", "Version=([0-9.]+)",
+                           "/download/filesets/l_SHIMMER8.inf", "Version=([0-9.]+)",
+                           "/download/filesets/n_SHIMMER9.inf", "Version=([0-9.]+)",
+                           "/download/filesets/n_SHIMMER8_5_en.inf", "Version=([0-9.]+)",
+                           "/download/filesets/n_SHIMMER8_en.inf", "Version=([0-9.]+)",
+                           "/download/filesets/n_SHIMMER8_5.inf", "Version=([0-9.]+)",
+                           "/download/filesets/n_SHIMMER8.inf", "Version=([0-9.]+)",
+                           "/download/filesets/n_MAPI.inf", "Version=([0-9.]+)",
+                           "/download/filesets/l_English.inf", "Version=([0-9.]+)",
+                           "/download/filesets/n_DOLBASE.inf", "Version=([0-9.]+)",
                            "/iNotes/Forms5.nsf", "<!-- Domino Release ([0-9.]+)",
                            "/iNotes/Forms6.nsf", "<!-- Domino Release ([0-9.]+)",
                            "/iNotes/Forms7.nsf", "<!-- Domino Release ([0-9.]+)",
                            "/iNotes/Forms8.nsf", "<!-- Domino Release ([0-9.]+)",
                            "/iNotes/Forms85.nsf", "<!-- Domino Release ([0-9.]+)",
                            "/iNotes/Forms9.nsf", "<!-- Domino Release ([0-9.]+)",
+                           "/help/readme.nsf?OpenAbout", "Lotus Notes/Domino ([0-9.]+)", # <title>IBM Lotus Notes/Domino 8.0.2 Release Notes</title> or <title>Lotus Notes/Domino 6.0.2 Release Notes</title>
+                           "/api", '\\s*"name":"Core",\\s*"enabled":[^,]*,\\s*"version":"([0-9.]+)(\\.v[0-9]+)', # { "name":"Core", "enabled":true, "version":"9.0.1.v10_00", "href":"\/api\/core" } (nb: with newlines)
                            "/homepage.nsf", ">Domino Administrator ([0-9.]+) Help</" ); # Last fallback to get the major version
 
 cgis = "/domcfg.nsf";
 final_ver = "unknown";
+extra = "";
 
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
@@ -225,38 +241,58 @@ foreach nsfFile( nsfFiles ) {
     if( ! isnull( version[1] ) ) {
       domino_ver = version[1];
       concluded = version[0];
+      extra += '\n' + report_vuln_url( port:port, url:nsfFile, url_only:TRUE ) + " : " + version[1];
     } else {
-      foreach file ( keys( versionFiles ) ) {
+      extra += '\n' + report_vuln_url( port:port, url:nsfFile, url_only:TRUE ) + " : unknown";
+      foreach file( keys( versionFiles ) ) {
 
         dir = install;
-        if( dir == "/" ) dir = "";
+        if( dir == "/" )
+          dir = "";
+
         url = dir + file;
 
         req = http_get( item:url, port:port );
         res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-        if( "Version=" >< res || "Domino Release" >< res || ">Domino Administrator" >< res ) {
+        if( "Version=" >< res || "Domino Release" >< res || ">Domino Administrator" >< res ||
+             ( '"services":[' >< res || '"href":"\\/api\\/core"' >< res || '"name":"Core",' >< res ) ) {
+
           version = eregmatch( pattern:versionFiles[file], string:res );
-          if( ! isnull(version[1] ) ) {
-            if( domino_ver == "unknown" ) {
-              domino_ver   = version[1];
-              concluded    = version[0];
-              concludedUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+          if( ! isnull( version[1] ) ) {
+
+            # nb: Special handling to rewrite 9.0.1.v10 to 9.0.1FP10
+            if( "/api" >< file && version[2] ) {
+              version[2] = ereg_replace( string:version[2], pattern:"\.v([0-9]+)", replace:"FP\1" );
+              version[1] += version[2];
             }
+
+            extra += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE ) + " : " + version[1];
+
+            if( domino_ver == "unknown" ) {
+              domino_ver = version[1];
+              concluded  = version[0];
+            }
+
             tmp_ver = version[1];
             if( debug ) display( "Current detected version in " + url + ": " + tmp_ver + ", previous version: " + domino_ver + '\n' );
             if( version_is_greater( version:tmp_ver, test_version:domino_ver ) ) {
-              domino_ver   = tmp_ver;
-              concluded    = version[0];
-              concludedUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+              domino_ver = tmp_ver;
+              concluded  = version[0];
             }
+          } else {
+            extra += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE ) + " : unknown";
           }
         }
       }
-      if( concluded ) version[0] = concluded;
+      if( concluded )
+        version[0] = concluded;
     }
-    if( domino_ver != "unknown" ) final_ver = domino_ver;
+    if( domino_ver != "unknown" )
+      final_ver = domino_ver;
   }
+  if( installed && final_ver != "unknown" )
+    break;
 }
 
 if( installed ) {
@@ -274,6 +310,9 @@ if( installed ) {
       cpe = "cpe:/a:ibm:lotus_domino";
   }
 
+  if( extra )
+    extra = 'The following URLs where used for the product / version detection (URL : exposed version):\n' + extra;
+
   register_product( cpe:cpe, location:install, port:port, service:"www" );
 
   log_message( data:build_detection_report( app:"IBM/Lotus Domino",
@@ -281,7 +320,7 @@ if( installed ) {
                                             install:install,
                                             cpe:cpe,
                                             concluded:version[0],
-                                            concludedUrl:concludedUrl ),
+                                            extra:extra ),
                                             port:port );
 }
 
