@@ -147,8 +147,6 @@ function osx_ver(ver) {
     return v[0];
 }
 
-include("version_func.inc");
-
 # Checks if the release is less than the ones in the list #
 function rlsnotsupported(rls, list) {
 	# find the minimum version in the list
@@ -159,7 +157,7 @@ function rlsnotsupported(rls, list) {
 
 	# compare the release version against the
 	# minimum version from the version list
-	if (version_is_less_equal(rls, min, false, false)) return 1; else return 0;
+	if (version_is_less_equal(rls, min, FALSE, FALSE)) return 1; else return 0;
 
 	# according to linked CVEs the versions commonly supplied in list
 	# INCLUDE the last vulnerable release so the above condition

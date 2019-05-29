@@ -68,6 +68,22 @@ if(description)
 
 if(TARGET_IS_IPV6())exit(0);
 
+
+function bada_bing (blat) {
+  #srcport = rand() % 65535;
+  srcport = 500;
+  UDP_LEN = strlen(blat) + 8;
+  ip = forge_ip_packet(ip_v : 4,
+                       ip_hl : 5,
+                       ip_tos : 0,
+                       ip_len : 20,
+                       ip_id : 0xFEAF,
+                       ip_p : IPPROTO_UDP,
+                       ip_ttl : 255,
+                       ip_off : 0,
+                       ip_src : srcaddr,
+                       ip_dst : dstaddr);
+
 function calc_data() {
     ISAKMP_HEADER = IC + RC + NP + MV + ET + IF + MI + LEN;
     SA_HEADER = SA_NP + RES + PLEN + DOI + SIT;
@@ -87,24 +103,6 @@ T_ALEN + T_AV6;
     blap = ISAKMP_HEADER + SA_HEADER + PROP_HEADER +  T_PAY1 + T_PAY2 + T_PAY3 + KE_PAY + NON_PAY;
     return(blap);
 }
-
-
-
-function bada_bing (blat) {
-  #srcport = rand() % 65535;
-  srcport = 500;
-  UDP_LEN = strlen(blat) + 8;
-  ip = forge_ip_packet(ip_v : 4,
-                       ip_hl : 5,
-                       ip_tos : 0,
-                       ip_len : 20,
-                       ip_id : 0xFEAF,
-                       ip_p : IPPROTO_UDP,
-                       ip_ttl : 255,
-                       ip_off : 0,
-                       ip_src : srcaddr,
-                       ip_dst : dstaddr);
-
 
   udpip = forge_udp_packet(                        ip : ip,
                                                  uh_sport : srcport,
@@ -358,8 +356,8 @@ stored = PLEN;
 for (mu=0; mu < 255; mu = mu + 16) {
     for (delta=0; delta < 255; delta = delta + 16) {
         PLEN = raw_string(mu) + raw_string(delta);
-        blat = calc_data();
         IC = raw_string (0x03, 0x00, 0xFE, 0x01, 0xFD, 0x12) + raw_string(delta) + raw_string(mu);
+        blat = calc_data();
         bada_bing(blat);
     }
 }

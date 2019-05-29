@@ -90,7 +90,7 @@ req = string( "GET / HTTP/1.1\r\n",
 res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
 if(res && "400 Bad Request" >< res &&
-   res =~ "Cookie: c[0-9]=X{820}; path=/;" &&
+   res =~ "Cookie: c[0-9]=(X{82}){10}; path=/;" &&
    "Size of a request header field exceeds server limit" >< res){
   security_message(port:port);
   exit(0);

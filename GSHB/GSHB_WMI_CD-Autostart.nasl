@@ -75,12 +75,16 @@ if(!handle){
 CDAUTOKEY = wmi_reg_enum_value(wmi_handle:handle, key:"SYSTEM\CurrentControlSet\Services\Cdrom");
 
 if(!CDAUTOKEY){
-  log_message(port:0, proto: "IT-Grundschutz", data:"Registry Path not found.");
+# Temporarily commenting out this log message, so that nothing is stored in ElasticSearch if this key does not exist.
+# Otherwise it will be displayed as a warning in the tech report, even if AutoRun is turned off
+#  log_message(port:0, proto: "IT-Grundschutz", data:"Registry Path not found.");
   set_kb_item(name:"WMI/CD_Autostart", value:"error");
   wmi_close(wmi_handle:handle);
   exit(0);
 }else if ("AutoRun" >!< CDAUTOKEY){
-  log_message(port:0, proto: "IT-Grundschutz", data:"Registry Value not found.");
+# Temporarily commenting out this log message, so that nothing is stored in ElasticSearch if this value does not exist.
+# Otherwise it will be displayed as a warning in the tech report, even if AutoRun is turned off
+#  log_message(port:0, proto: "IT-Grundschutz", data:"Registry Value not found.");
   set_kb_item(name:"WMI/CD_Autostart", value:"error");
   wmi_close(wmi_handle:handle);
   exit(0);
@@ -99,3 +103,4 @@ if(cdauto == "0"){
   wmi_close(wmi_handle:handle);
 exit(0);
 }
+

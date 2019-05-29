@@ -142,6 +142,8 @@ ipid = rand()%65535;
 
 if(TARGET_IS_IPV6())exit(0);
 
+hops="";
+
 while(TRUE) {
 
    for (i=0; i < 2; i++) {
@@ -180,7 +182,7 @@ while(TRUE) {
      while(response) {
 
        if(!read_packet(packet:response, ipdst:ipdst, ipid:ipid, sport:sport)) {
-         response = pcap_next(pcap_filter:filter, timeout:1); # TBD: filter is undefined here. Is this pcapfil from above?
+         response = pcap_next(pcap_filter:pcapfil, timeout:1);
        } else {
          break;
        }

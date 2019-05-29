@@ -63,8 +63,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 ## Variable Initialization

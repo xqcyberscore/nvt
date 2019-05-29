@@ -35,11 +35,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 XQ Cyber");
   script_family("General");
-  script_dependencies("gb_win_lsc_authentication_info.nasl", "gather-package-list.nasl");
+  script_dependencies("2018/gb_win_lsc_authentication_info.nasl", "gather-package-list.nasl");
 
   exit(0);
 }
 
+include("smb_nt.inc");
 include("ssh_func.inc");
 
 report = "";
@@ -68,6 +69,28 @@ if(get_kb_item("SMB/registry_access")){
 	full_smb_auth = full_smb_auth && TRUE;
 }else{
 	report += "Registry access unsuccessful\n";
+	full_smb_auth = FALSE;
+}
+
+
+buf = "";
+if(!get_kb_item( "win/lsc/disable_win_cmd_exec" )){
+	username = kb_smb_login();
+    domain  = kb_smb_domain();
+
+    if (domain){
+      username = domain + '/' + username;
+    }
+    password = kb_smb_password();
+
+	buf = win_cmd_exec(cmd:'powershell.exe -Command (New-Object System.Security.Principal.WindowsPrincipal([System.Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator) && echo Current user is admin', password:password, username:username);
+}
+
+if("Current user is admin" >< buf){
+	report += "Admin privileges detected\n";
+	full_smb_auth = full_smb_auth && TRUE;
+}else{
+	report += "Admin privileges not detected\n";
 	full_smb_auth = FALSE;
 }
 
