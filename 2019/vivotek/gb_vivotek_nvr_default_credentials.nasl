@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114061");
-  script_version("2019-05-07T10:20:37+0000");
+  script_version("2019-05-29T10:34:22+0000");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-07 10:20:37 +0000 (Tue, 07 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-29 10:34:22 +0000 (Wed, 29 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-03 13:36:20 +0200 (Fri, 03 May 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
@@ -60,6 +60,9 @@ include("http_func.inc");
 include("dump.inc");
 
 CPE = "cpe:/a:vivotek:nvr";
+
+# nb: Available since r25570 of libs 9.0
+if(!defined_func("rsa_public_encrypt")) exit(0);
 
 if(!port = get_app_port(cpe: CPE, service: "www")) exit(0);
 if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA

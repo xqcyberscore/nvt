@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 13844 2019-02-25 10:19:52Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -22,9 +21,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13844 $
-#
 ###############################################################################
 
 # Global TODO: - Dedupliacte code tagged with <- START TODO: This duplicated code just makes this include huge and un-maintainable
@@ -262,7 +258,7 @@ function get_version_from_build( string, win_name ) {
     if( "16299" >< string ) return "1709";
     if( "17134" >< string ) return "1803";
     if( "17763" >< string ) return "1809";
-    # if( "1xxxx" >< string ) return "1903"; # Availability currently unknown
+    if( "18362" >< string ) return "1903";
   }
   return;
 }
