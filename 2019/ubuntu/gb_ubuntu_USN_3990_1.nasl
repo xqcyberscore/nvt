@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844016");
-  script_version("2019-05-28T09:21:36+0000");
+  script_version("2019-05-31T13:18:49+0000");
   script_cve_id("CVE-2018-20060", "CVE-2019-11236", "CVE-2019-11324");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-28 09:21:36 +0000 (Tue, 28 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-31 13:18:49 +0000 (Fri, 31 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-22 02:00:47 +0000 (Wed, 22 May 2019)");
   script_name("Ubuntu Update for python-urllib3 USN-3990-1");
   script_category(ACT_GATHER_INFO);
@@ -35,7 +35,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=(UBUNTU18\.10|UBUNTU19\.04|UBUNTU18\.04 LTS|UBUNTU16\.04 LTS)");
 
   script_xref(name:"USN", value:"3990-1");
-  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3990-1/");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2019-May/004909.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'python-urllib3'
   package(s) announced via the USN-3990-1 advisory.");

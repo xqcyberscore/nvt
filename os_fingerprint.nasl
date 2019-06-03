@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("2019-05-22T11:40:52+0000");
-  script_tag(name:"last_modification", value:"2019-05-22 11:40:52 +0000 (Wed, 22 May 2019)");
+  script_version("2019-06-01T08:20:43+0000");
+  script_tag(name:"last_modification", value:"2019-06-01 08:20:43 +0000 (Sat, 01 Jun 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -85,7 +85,7 @@ if(description)
                       "sw_http_os_detection.nasl", "sw_mail_os_detection.nasl",
                       "sw_telnet_os_detection.nasl", "gb_mysql_mariadb_os_detection.nasl",
                       "apcnisd_detect.nasl",
-                      "ntp_open.nasl", "remote-detect-MDNS.nasl",
+                      "gb_ntp_os_detection.nasl", "remote-detect-MDNS.nasl",
                       "mssqlserver_detect.nasl", "gb_apple_tv_version.nasl",
                       "gb_apple_tv_detect.nasl", "gb_upnp_os_detection.nasl",
                       "gb_sip_os_detection.nasl", "gb_check_mk_agent_detect.nasl",

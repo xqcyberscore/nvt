@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844021");
-  script_version("2019-05-28T09:21:36+0000");
+  script_version("2019-05-31T13:18:49+0000");
   script_cve_id("CVE-2018-12130", "CVE-2018-12127", "CVE-2018-12126", "CVE-2019-11091");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-28 09:21:36 +0000 (Tue, 28 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-31 13:18:49 +0000 (Fri, 31 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-23 02:00:30 +0000 (Thu, 23 May 2019)");
   script_name("Ubuntu Update for intel-microcode USN-3977-2");
   script_category(ACT_GATHER_INFO);
@@ -35,7 +35,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=(UBUNTU18\.10|UBUNTU19\.04|UBUNTU18\.04 LTS|UBUNTU16\.04 LTS)");
 
   script_xref(name:"USN", value:"3977-2");
-  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3977-2/");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2019-May/004916.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'intel-microcode'
   package(s) announced via the USN-3977-2 advisory.");
@@ -52,7 +52,7 @@ Original advisory details:
 
 Ke Sun, Henrique Kawakami, Kekai Hu, Rodrigo Branco, Giorgi Maisuradze, Dan
 Horea Lutas, Andrei Lutas, Volodymyr Pikhur, Stephan van Schaik, Alyssa
-Milburn, Sebastian sterlund, Pietro Frigo, Kaveh Razavi, Herbert Bos,
+Milburn, Sebastian Österlund, Pietro Frigo, Kaveh Razavi, Herbert Bos,
 Cristiano Giuffrida, Moritz Lipp, Michael Schwarz, and Daniel Gruss
 discovered that memory previously stored in microarchitectural fill buffers
 of an Intel CPU core may be exposed to a malicious process that is
@@ -60,7 +60,7 @@ executing on the same CPU core. A local attacker could use this to expose
 sensitive information. (CVE-2018-12130)
 
 Brandon Falk, Ke Sun, Henrique Kawakami, Kekai Hu, Rodrigo Branco, Stephan
-van Schaik, Alyssa Milburn, Sebastian sterlund, Pietro Frigo, Kaveh
+van Schaik, Alyssa Milburn, Sebastian Österlund, Pietro Frigo, Kaveh
 Razavi, Herbert Bos, and Cristiano Giuffrida discovered that memory
 previously stored in microarchitectural load ports of an Intel CPU core may
 be exposed to a malicious process that is executing on the same CPU core. A
@@ -77,7 +77,7 @@ core. A local attacker could use this to expose sensitive information.
 
 Ke Sun, Henrique Kawakami, Kekai Hu, Rodrigo Branco, Volodrmyr Pikhur,
 Moritz Lipp, Michael Schwarz, Daniel Gruss, Stephan van Schaik, Alyssa
-Milburn, Sebastian sterlund, Pietro Frigo, Kaveh Razavi, Herbert Bos, and
+Milburn, Sebastian Österlund, Pietro Frigo, Kaveh Razavi, Herbert Bos, and
 Cristiano Giuffrida discovered that uncacheable memory previously stored in
 microarchitectural buffers of an Intel CPU core may be exposed to a
 malicious process that is executing on the same CPU core. A local attacker

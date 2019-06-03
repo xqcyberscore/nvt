@@ -163,7 +163,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.10884",  # ntp_open.nasl
+    "1.3.6.1.4.1.25623.1.0.108590", # gb_ntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140000", # gb_apple_tv_version.nasl
@@ -278,7 +278,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.10884",  # ntp_open.nasl
+    "1.3.6.1.4.1.25623.1.0.108590", # gb_ntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140000", # gb_apple_tv_version.nasl
@@ -1667,6 +1667,7 @@ function get_base_cpe( cpe ) {
 #
 # @param app          The name of the application, e.g. "Vendor Productname".
 # @param version      The version of the application.
+# @param patch        The update- / patch-level of the application.
 # @param install      The install location of the application, e.g. 80/tcp or /path/to/folder.
 # @param regpath      The path to a windows registry entry of the application.
 # @param cpe          The CPE of the application
@@ -1678,9 +1679,9 @@ function get_base_cpe( cpe ) {
 #
 # @return A string containing a detection report for the passed data.
 
-function build_detection_report( app, version, install, regpath, cpe, concluded, concludedUrl, extra, skip_version ) {
+function build_detection_report( app, version, patch, install, regpath, cpe, concluded, concludedUrl, extra, skip_version ) {
 
-  local_var app, version, install, regpath, cpe, concluded, concludedUrl, extra, skip_version, report;
+  local_var app, version, patch, install, regpath, cpe, concluded, concludedUrl, extra, skip_version, report;
 
   if( isnull( app ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#app#-#build_detection_report" );
 
@@ -1689,13 +1690,16 @@ function build_detection_report( app, version, install, regpath, cpe, concluded,
   if( ! skip_version ) {
     if( ! version )
       version = 'unknown';
-    report += '\nVersion:  ' + version;
+    report += '\nVersion:       ' + version;
   }
 
-  report += '\nLocation: ' + install;
+  if( patch && patch != "unknown" )
+    report += '\nPatch/Update:  ' + patch;
+
+  report += '\nLocation:      ' + install;
 
   if( strlen( cpe ) > 0 )
-    report += '\nCPE:      '+ cpe;
+    report += '\nCPE:           '+ cpe;
 
   if( strlen( regpath ) > 0 )
     report += '\nRegistry path: '+ regpath;
@@ -1716,6 +1720,7 @@ function build_detection_report( app, version, install, regpath, cpe, concluded,
 #
 # @param os          The name of the OS to register.
 # @param version     The version of the OS to register.
+# @param patch       The update- / patch-level of the OS to register.
 # @param cpe         The CPE of the OS to register
 # @param banner_type The type of the banner where the OS was detected from, e.g "HTTP Banner".
 # @param port        The port of the OS to register.
@@ -1726,10 +1731,10 @@ function build_detection_report( app, version, install, regpath, cpe, concluded,
 #
 # @return NULL
 #
-function register_and_report_os( os, version, cpe, banner_type, port, proto, banner, desc, runs_key ) {
+function register_and_report_os( os, version, patch, cpe, banner_type, port, proto, banner, desc, runs_key ) {
 
-  local_var os, version, cpe, banner_type, port, proto, banner, desc, runs_key;
-  local_var oid, report;
+  local_var os, version, patch, cpe, banner_type, port, proto, banner, desc, runs_key;
+  local_var oid, report, version_lo, patch_lo;
 
   oid = get_script_oid();
   if( ! proto )
@@ -1738,9 +1743,35 @@ function register_and_report_os( os, version, cpe, banner_type, port, proto, ban
   if( ! desc )
     set_kb_item( name:"nvt_debug_empty/" + oid, value:oid + "#-#desc#-#register_and_report_os" );
 
+  if( os )
+    register_host_detail( name:"OS", value:os, desc:desc );
+  else
+    os = "N/A";
+
+  report = 'OS:           ' + os;
+
   if( version ) {
-    if( cpe ) cpe += ":" + version;
-    if( os ) os += " " + version;
+
+    version_lo = tolower( version );
+
+    report += '\nVersion:      ' + version;
+
+    if( cpe && version_lo != "unknown" )
+      cpe += ":" + version_lo;
+  }
+
+  if( patch && tolower( patch ) != "unknown" ) {
+
+    patch_lo = tolower( patch );
+
+    report += '\nPatch/Update: ' + patch;
+
+    if( cpe ) {
+      if( version && tolower( version ) != "unknown" )
+        cpe += ":" + patch_lo;
+      else
+        cpe += "::" + patch_lo;
+    }
   }
 
   if( cpe )
@@ -1748,17 +1779,7 @@ function register_and_report_os( os, version, cpe, banner_type, port, proto, ban
   else
     cpe = "N/A";
 
-  if( os )
-    register_host_detail( name:"OS", value:os, desc:desc );
-  else
-    os = "N/A";
-
-  report = 'OS: ' + os;
-
-  if( version )
-    report += '\nVersion: ' + version;
-
-  report += '\nCPE: ' + cpe;
+  report += '\nCPE:          ' + cpe;
   report += '\nFound by NVT: ' + oid + ' (' + desc + ')';
 
   if( banner_type ) {

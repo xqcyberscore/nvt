@@ -21,12 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844017");
-  script_version("2019-05-28T09:21:36+0000");
-  script_cve_id("CVE-2018-20337", "CVE-2018-20363", "CVE-2018-20364", "CVE-2018-20365",
-                "CVE-2018-5817", "CVE-2018-5818", "CVE-2018-5819");
+  script_version("2019-05-31T13:18:49+0000");
+  script_cve_id("CVE-2018-20337", "CVE-2018-20363", "CVE-2018-20364", "CVE-2018-20365", "CVE-2018-5817", "CVE-2018-5818", "CVE-2018-5819");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-05-28 09:21:36 +0000 (Tue, 28 May 2019)");
+  script_tag(name:"last_modification", value:"2019-05-31 13:18:49 +0000 (Fri, 31 May 2019)");
   script_tag(name:"creation_date", value:"2019-05-22 02:00:50 +0000 (Wed, 22 May 2019)");
   script_name("Ubuntu Update for libraw USN-3989-1");
   script_category(ACT_GATHER_INFO);
@@ -36,17 +35,17 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=(UBUNTU18\.04 LTS|UBUNTU18\.10|UBUNTU16\.04 LTS)");
 
   script_xref(name:"USN", value:"3989-1");
-  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3989-1/");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2019-May/004910.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for
-  the 'libraw' package(s) announced via the USN-3989-1 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libraw'
+  package(s) announced via the USN-3989-1 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"It was discovered that LibRaw incorrectly
-handled photo files. If a user or automated system were tricked into processing
-a specially crafted photo file, a remote attacker could cause applications linked
-against LibRaw to crash, resulting in a denial of service, or possibly execute arbitrary
+  script_tag(name:"insight", value:"It was discovered that LibRaw incorrectly handled photo files. If a user or
+automated system were tricked into processing a specially crafted photo
+file, a remote attacker could cause applications linked against LibRaw to
+crash, resulting in a denial of service, or possibly execute arbitrary
 code.");
 
   script_tag(name:"affected", value:"'libraw' package(s) on Ubuntu 18.10, Ubuntu 18.04 LTS, Ubuntu 16.04 LTS.");
