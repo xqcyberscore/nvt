@@ -903,18 +903,29 @@ function in_array( search, array, part_match ) {
   return;
 }
 
+# @brief Checks if a specific array key exists in the passed array
+#
+# @param key        The key to check/evaluate.
+# @param array      The array to check for the existence of the array key.
+# @param part_match If set to TRUE (optional) a partial match/search for the
+#                   array key is done.
+#
+# @return TRUE if the array key exists, FALSE otherwise and NULL if no array
+#         was passed or the key parameter is missing.
+
 function array_key_exist( key, array, part_match ) {
 
-  local_var key, array, part_match, a;
+  local_var key, array, part_match;
+  local_var a;
 
   if( typeof( array ) != "array" ) {
     set_kb_item( name:"nvt_debug_no_array/" + get_script_oid(), value:get_script_oid() + "#-#array#-#array_key_exist" );
-    return;
+    return NULL;
   }
 
-  if( ! key || isnull( key ) ) {
+  if( isnull( key ) ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#array_key_exist" );
-    return;
+    return NULL;
   }
 
   foreach a( keys( array ) ) {
@@ -1217,22 +1228,36 @@ function get_host_open_tcp_port( ) {
     return ports[0]; # TBD: Bring some randomness into this?
 }
 
+# @brief Removes any non-printable characters in a passed data/string (default) or replaces
+#        it with a specified replacement string passed to this function.
+#
+# @param ddata               The data to evaluate.
+# @param noprint_replacement An (optional) char/string to be use to replace the non-printable
+#                            chars with. If not passed the non-printable char will be removed
+#                            instead.
+#
+# @return A string with the removed/replaced non-printable chars or NULL if no ddata parameter
+#         was passed.
+#
 function bin2string( ddata, noprint_replacement ) {
 
-  local_var ddata, noprint_replacement, tmp, i, j, line, linenumber, len, data, c;
+  local_var ddata, noprint_replacement;
+  local_var tmp, i, j, linenumber, len, data, c;
 
-  if( isnull( ddata ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ddata#-#bin2string" );
+  if( isnull( ddata ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ddata#-#bin2string" );
+    return NULL;
+  }
 
-  len = strlen ( ddata );
+  len = strlen( ddata );
   linenumber = len / 16;
 
-  for ( i = 0; i <= linenumber; i++ ) {
+  for( i = 0; i <= linenumber; i++ ) {
 
-    line = line2string ( line:i, linenumber:len ); #TBD: This seems to be unused in all bin2string functions moved here
     data = "";
 
-    for ( j = 0; j < 16; j++ ) {
-      if ( ( i*16+j ) < len ) {
+    for( j = 0; j < 16; j++ ) {
+      if( ( i*16+j ) < len ) {
         c = ddata[i*16+j];
 
         if( isprint( c:c ) ) {

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876375");
-  script_version("2019-05-20T05:59:15+0000");
+  script_version("2019-06-04T06:44:21+0000");
   script_cve_id("CVE-2018-12126", "CVE-2018-12127", "CVE-2018-12130", "CVE-2019-11091");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-20 05:59:15 +0000 (Mon, 20 May 2019)");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-06-04 06:44:21 +0000 (Tue, 04 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-17 02:12:27 +0000 (Fri, 17 May 2019)");
   script_name("Fedora Update for qemu FEDORA-2019-f910d35647");
   script_category(ACT_GATHER_INFO);

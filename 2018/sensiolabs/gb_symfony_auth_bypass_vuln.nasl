@@ -27,13 +27,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112434");
-  script_version("2019-05-20T11:07:17+0000");
-  script_tag(name:"last_modification", value:"2019-05-20 11:07:17 +0000 (Mon, 20 May 2019)");
+  script_version("2019-06-07T08:16:45+0000");
+  script_tag(name:"last_modification", value:"2019-06-07 08:16:45 +0000 (Fri, 07 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-11-20 15:02:11 +0100 (Tue, 20 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -49,13 +49,17 @@ if( description )
   script_mandatory_keys("symfony/detected");
 
   script_tag(name:"summary", value:"This host runs Symfony and is prone to an authentication bypass vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"An issue was discovered in the Ldap component in Symfony.
   It allows remote attackers to bypass authentication by logging in with a 'null' password and valid username,
   which triggers an unauthenticated bind.
 
   NOTE: this issue exists because of an incomplete fix for CVE-2016-2403.");
+
   script_tag(name:"affected", value:"Symfony versions 2.8.0 to 2.8.36, 3.3.0 to 3.3.16, 3.4.0 to 3.4.6 and 4.0.0 to 4.0.6.");
+
   script_tag(name:"solution", value:"The issue has been fixed in Symfony 2.8.37, 3.3.17, 3.4.7 and 4.0.7.
 
   NOTE: No fixes are provided for Symfony 3.0, 3.1, and 3.2 as they are not maintained anymore.

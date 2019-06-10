@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852509");
-  script_version("2019-05-28T09:21:36+0000");
+  script_version("2019-06-06T08:38:06+0000");
   script_cve_id("CVE-2018-12126", "CVE-2018-12127", "CVE-2018-12130", "CVE-2018-20815",
                 "CVE-2019-11091");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-28 09:21:36 +0000 (Tue, 28 May 2019)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-06-06 08:38:06 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-21 02:01:17 +0000 (Tue, 21 May 2019)");
   script_name("openSUSE Update for xen openSUSE-SU-2019:1419-1 (xen)");
   script_category(ACT_GATHER_INFO);

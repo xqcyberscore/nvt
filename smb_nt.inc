@@ -8045,3 +8045,124 @@ function smb_get_system32root() {
     return FALSE;
   }
 }
+
+# @brief Get all subkeys of HKU key, i.e. each SID listed on the host
+#
+# @return list All subkeys from HKU or empty list if an error occurred
+#
+function registry_hku_subkeys() {
+
+  local_var list, kb_proxy_key, kb_proxy, name, port, soc, r, prot;
+  local_var login, pass, domain, uid, tid, pipe, handle, _list;
+
+  # This function is mostly called in foreach loops. Make sure to always return
+  # an empty list here instead of the previously behavior to return FALSE if any of
+  # the calls between the last return failed. This old  behavior had caused a
+  # nasl_array_iterator: # unhandled type 57 (0x39) if FALSE was returned when failed.
+  list = make_list();
+
+  # Query KB ("proxy") first.
+  kb_proxy_key = "SMB//registry_hku_subkeys//Registry//";
+  kb_proxy = get_kb_list( kb_proxy_key );
+  if( ! isnull( kb_proxy ) && kb_proxy && typeof( kb_proxy ) == "array" )
+    return kb_proxy;
+
+  if( kb_smb_is_samba() ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Windows SMB NVT was started against a Samba Server" );
+    return list;
+  }
+
+  name = kb_smb_name();
+  if( ! name )
+    return list;
+
+  port = kb_smb_transport();
+  if( ! port )
+    return list;
+
+  if( ! get_port_state( port ) )
+    return list;
+
+  soc = open_sock_tcp( port );
+  if( ! soc )
+    return list;
+
+  r = smb_session_request( soc:soc, remote:name );
+  if( ! r ) {
+    close( soc );
+    return list;
+  }
+
+  prot = smb_neg_prot( soc:soc );
+  if( ! prot ) {
+    close( soc );
+    return list;
+  }
+
+  login  = kb_smb_login();
+  pass   = kb_smb_password();
+  domain = kb_smb_domain();
+  if( ! login ) login = "";
+  if( ! pass )  pass = "";
+
+  r = smb_session_setup( soc:soc, login:login, password:pass, domain:domain, prot:prot );
+  if( ! r ) {
+    close( soc );
+    return list;
+  }
+
+  uid = session_extract_uid( reply:r );
+  if( ! uid ) {
+    close( soc );
+    return list;
+  }
+
+  r = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
+  if( ! r ) {
+    close( soc );
+    return list;
+  }
+
+  tid = tconx_extract_tid( reply:r );
+  if( ! tid ) {
+    close( soc );
+    return list;
+  }
+
+  r = smbntcreatex( soc:soc, uid:uid, tid:tid, name:"\winreg" );
+  if( ! r ) {
+    close( soc );
+    return list;
+  }
+
+  pipe = smbntcreatex_extract_pipe( reply:r );
+  if( ! pipe ) {
+    close( soc );
+    return list;
+  }
+
+  r = pipe_accessible_registry( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  if( ! r ) {
+    close( soc );
+    return list;
+  }
+
+  handle = registry_open_hku( soc:soc, uid:uid, tid:tid, pipe:pipe );
+  if( ! handle ) {
+    close( soc );
+    return list;
+  }
+
+  _list = registry_enum_key( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:handle );
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:handle );
+  close( soc );
+
+  if( _list ) {
+    list = _list;
+    foreach item( list ) {
+      set_kb_item( name:kb_proxy_key, value:item );
+    }
+  }
+
+  return list;
+}

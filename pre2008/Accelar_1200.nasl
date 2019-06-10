@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Accelar_1200.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Bay Networks Accelar 1200 Switch found with default password
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18415");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,6 +60,8 @@ if(description)
 
 include("telnet_func.inc");
 include("default_credentials.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 # If optimize_test = no
 if( get_kb_item( "default_credentials/disable_default_account_checks" ) ) exit( 0 );
@@ -69,7 +70,7 @@ port = 23; # the port can't be changed on the device
 if( ! get_port_state( port ) )
   exit( 0 );
 
-banner = get_telnet_banner( port:port );
+banner = telnet_get_banner( port:port );
 if( ! banner || "Accelar 1200" >!< banner )
   exit( 0 );
 

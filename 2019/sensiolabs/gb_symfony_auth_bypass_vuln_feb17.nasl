@@ -19,13 +19,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112584");
-  script_version("2019-05-20T11:12:06+0000");
-  script_tag(name:"last_modification", value:"2019-05-20 11:12:06 +0000 (Mon, 20 May 2019)");
+  script_version("2019-06-07T08:16:45+0000");
+  script_tag(name:"last_modification", value:"2019-06-07 08:16:45 +0000 (Fri, 07 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-20 12:00:11 +0200 (Mon, 20 May 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -42,11 +42,16 @@ if( description )
   script_mandatory_keys("symfony/detected");
 
   script_tag(name:"summary", value:"This host runs Symfony and is prone to an authentication bypass vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The vulnerability allows remote attackers to bypass authentication by logging
   in with an empty password and valid username, which triggers an unauthenticated bind.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to bypass authentication.");
+
   script_tag(name:"affected", value:"Symfony versions 2.8.0 to 2.8.5 and 3.0.0 to 3.0.5.");
+
   script_tag(name:"solution", value:"The issue has been fixed in Symfony 2.8.6 and 3.0.6.");
 
   script_xref(name:"URL", value:"https://symfony.com/blog/cve-2016-2403-unauthorized-access-on-a-misconfigured-ldap-server-when-using-an-empty-password");

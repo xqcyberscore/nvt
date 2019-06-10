@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netpbm_detect.nasl 12733 2018-12-10 09:17:04Z cfischer $
 #
 # NetPBM Version Detection (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800470");
-  script_version("$Revision: 12733 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 10:17:04 +0100 (Mon, 10 Dec 2018) $");
+  script_version("2019-06-03T11:22:42+0000");
+  script_tag(name:"last_modification", value:"2019-06-03 11:22:42 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +52,12 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
+  exit(0);
+
+modName = find_file(file_name:"libnetpbm.so", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
+if(!modName) {
+  ssh_close_connection();
   exit(0);
 }
 
@@ -62,24 +66,18 @@ garg[1] = "-m1";
 garg[2] = "-a";
 garg[3] = string("Netpbm [0-9.].\\+");
 
-modName = find_file(file_name:"libnetpbm.so", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
-if(!modName){
-  ssh_close_connection();
-  exit(0);
-}
-
 foreach binaryName(modName) {
 
   binaryName = chomp(binaryName);
-  if(!binaryName) continue;
+  if(!binaryName)
+    continue;
 
   arg = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) + garg[3] + raw_string(0x22) + " " + binaryName;
 
-  netpbmVer = get_bin_version(full_prog_name:"grep", version_argv:arg, ver_pattern:"Netpbm ([0-9.]+)", sock:sock);
+  netpbmVer = get_bin_version(full_prog_name:"grep", version_argv:arg, ver_pattern:"Netpbm ([0-9.]{3,})", sock:sock);
   if(netpbmVer[1]) {
 
     set_kb_item(name:"NetPBM/Ver", value:netpbmVer[1]);
-
     register_and_report_cpe(app:"NetPBM", ver:netpbmVer[1], base:"cpe:/a:netpbm:netpbm:", expr:"([0-9.]+)", regPort:0, insloc:binaryName, concluded:netpbmVer[0], regService:"ssh-login");
   }
 }

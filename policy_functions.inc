@@ -741,3 +741,70 @@ function policy_check_linux_ssh_shell(){
   }
   return(TRUE);
 }
+
+# @brief Returns reporting variables when user list is empty
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_report_empty_hku(){
+  local_var ret;
+
+  ret["value"] = "None";
+  ret["comment"] = "No valid SIDs found in HKU.";
+  ret["compliant"] = "incomplete";
+
+  return ret;
+}
+
+# @brief Returns reporting variables for registry dword for multiple SIDs
+#
+# @param key The registry key to look in
+# @param item The registry item to look for
+# @param default The set point to be compliant
+# @param sids List of SIDs in HKU to look for
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_match_exact_dword_profiles(key, item, default, sids){
+  local_var key, item, default, sids;
+  local_var incomplete_sids, fail_sids, ret;
+
+  incomplete_sids = "";
+  fail_sids = "";
+  ret["compliant"] = "yes";
+  ret["value"] = default;
+  ret["comment"] = "";
+
+  foreach sid (sids){
+    # filter non-standard-accounts
+    if(sid !~ "^S-1-5-[0-9,-]+$" || sid =~ "^S-1-5-(18|19|20)") continue;
+    key = strcat(sid, "\", key);
+    value = registry_get_dword(key:key, item:item, type:type);
+    value = chomp(value);
+    if(!value){
+      incomplete_sids += ", " + sid;
+    }else if(int(value) != int(default)){
+      fail_sids += ", " + sid;
+    }
+  }
+
+  if(incomplete_sids != ""){
+    ret["compliant"] = "incomplete";
+    ret["value"] = "None";
+    ret["comment"] = "Registry key not found for SIDs: " + str_replace(string:incomplete_sids,
+      find:", ", replace:"", count:1);
+  }
+
+  if(fail_sids != ""){
+    ret["compliant"] = "no";
+    ret["value"] = "None";
+    if(ret["comment"] != ""){
+      # Let reporting begin in same indentation as before
+      ret["comment"] += '\n              ';
+    }
+    ret["comment"] += "Non compliant SIDs: " + str_replace(string:fail_sids, find:", ", replace:"",
+      count:1);
+  }
+
+  return(ret);
+}

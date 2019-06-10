@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 13620 2019-02-13 07:44:45Z cfischer $
 #
 # Telnet Unencrypted Cleartext Login
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108522");
-  script_version("$Revision: 13620 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 08:44:45 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-12-20 07:47:54 +0100 (Thu, 20 Dec 2018)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -58,7 +57,7 @@ include("telnet_func.inc");
 include("misc_func.inc");
 include("dump.inc");
 
-port = get_telnet_port( default:23 );
+port = telnet_get_port( default:23 );
 
 # Telnet Secure (TELNETS) on 992/tcp
 encaps = get_port_transport( port );
@@ -67,7 +66,7 @@ if( encaps > ENCAPS_IP )
 
 # nb: We're currently not supporting a check for START_TLS: https://tools.ietf.org/html/draft-altman-telnet-starttls-02
 
-banner = get_telnet_banner( port:port );
+banner = telnet_get_banner( port:port );
 if( ! banner )
   exit( 0 );
 

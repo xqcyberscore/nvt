@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alcatel_backdoor_switch.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Alcatel OmniSwitch 7700/7800 switches backdoor
 #
@@ -36,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11170");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6220);
   script_tag(name:"cvss_base", value:"10.0");
@@ -72,6 +71,7 @@ if(description)
 include("host_details.inc");
 include("telnet_func.inc");
 include("misc_func.inc");
+include("dump.inc");
 
 port = 6778;
 p = known_service( port:port );
@@ -80,7 +80,7 @@ if( p && p != "telnet" && p != "aos" ) exit( 0 );
 if( ! get_port_state( port ) ) exit( 0 );
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
-data = get_telnet_banner( port:port );
+data = telnet_get_banner( port:port );
 
 if( data ) {
   security_message( port:port, data:'Banner:\n' + data );

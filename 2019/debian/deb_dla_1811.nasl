@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891811");
-  script_version("2019-06-01T09:22:39+0000");
+  script_version("2019-06-04T06:44:21+0000");
   script_cve_id("CVE-2017-1000494", "CVE-2019-12107", "CVE-2019-12108", "CVE-2019-12109", "CVE-2019-12110", "CVE-2019-12111");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-06-01 09:22:39 +0000 (Sat, 01 Jun 2019)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-06-04 06:44:21 +0000 (Tue, 04 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-01 09:22:39 +0000 (Sat, 01 Jun 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1811-1] miniupnpd security update)");
   script_category(ACT_GATHER_INFO);

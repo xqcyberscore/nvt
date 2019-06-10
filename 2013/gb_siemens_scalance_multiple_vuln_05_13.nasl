@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Siemens Scalance X200 Series Switches Multiple Vulnerabilities.
 #
@@ -32,7 +31,7 @@ if(description)
   script_cve_id("CVE-2013-3634", "CVE-2013-3633");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_version("$Revision: 13624 $");
+  script_version("2019-06-06T07:39:31+0000");
 
   script_name("Siemens Scalance X200 Series Switches Multiple Vulnerabilities");
 
@@ -41,7 +40,7 @@ if(description)
   script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
   script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-170686.pdf");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-05-30 17:50:28 +0200 (Thu, 30 May 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -76,10 +75,12 @@ if(description)
 
 include("telnet_func.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 port = 23;
 if(!get_port_state(port))exit(0);
-banner = get_telnet_banner(port:port);
+banner = telnet_get_banner(port:port);
 
 if(!banner || "SCALANCE X200" >!< banner || "Device type" >!< banner || "Firmware" >!< banner)
   exit(0);

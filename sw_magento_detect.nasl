@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_detect.nasl 11276 2018-09-07 08:18:40Z cfischer $
 #
 # Magento Shop Detection
 #
@@ -30,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105227");
-  script_version("2019-03-29T12:36:57+0000");
+  script_version("2019-06-03T07:35:11+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-29 12:36:57 +0000 (Fri, 29 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-06-03 07:35:11 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2015-02-09 12:00:00 +0100 (Mon, 09 Feb 2015)");
   script_name("Magento Shop Detection");
   script_category(ACT_GATHER_INFO);
@@ -126,6 +125,25 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
       }
     }
 
+    # From version 2 on the Major/Minor version and edition can get retrieved over /magento_version.
+    # However, this doesn't include any patch information
+    # Magento/2.2 (Enterprise)
+    # Magento/2.3 (Community)
+    url7 = dir + "/magento_version";
+    req = http_get( item:url7, port:port );
+    res7 = http_keepalive_send_recv( port:port, data:req );
+    ver = eregmatch(pattern: "Magento/([0-9.]+) \((Community|Enterprise)\)", string: res7);
+    if (!isnull(ver[1])) {
+      version = ver[1];
+      conclUrl = report_vuln_url(port: port, url: url7, url_only: TRUE);
+      if (!isnull(ver[2])) {
+        if (ver[2] == "Enterprise")
+          EE = TRUE;
+        else
+          CE = TRUE;
+      }
+    }
+
     #nb: License opens up on accessing URL: /css/styles.css
     if( ! EE || ! CE )  {
       #nb: URL for Enterprise Edition
@@ -159,7 +177,6 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
       app = "Magento Unknown Edition";
     }
 
-    set_kb_item( name:"www/" + port + "/magento", value:version );
     set_kb_item( name:"magento/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"([0-9a-z.]+)", base:"cpe:/a:magentocommerce:magento:" );
@@ -175,7 +192,7 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
                                               extra:extra,
                                               concludedUrl:conclUrl,
                                               concluded:ver[0] ),
-                                              port:port );
+                 port:port );
   }
 }
 

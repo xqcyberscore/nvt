@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-pwcrack-ncrack-telnet.nasl 13636 2019-02-13 12:23:58Z cfischer $
 #
 # telnet Remote password cracking using ncrack
 # svn co svn://svn.insecure.org/nmap-exp/ithilgore/ncrack
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80107");
-  script_version("$Revision: 13636 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:23:58 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -58,7 +57,7 @@ passwd = get_kb_item("Secret/pwcrack/passwords_file");
 if (logins == NULL || passwd == NULL)
   exit(0);
 
-port = get_telnet_port(default:23);
+port = telnet_get_port(default:23);
 
 timeout = get_kb_item("/tmp/pwcrack/timeout"); timeout = int(timeout);
 tasks = get_kb_item("/tmp/pwcrack/tasks"); task = int(tasks);

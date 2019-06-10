@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eggdrop_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Eggdrop Detection
 #
@@ -28,8 +27,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100206");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2009-05-16 14:32:16 +0200 (Sat, 16 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -52,6 +51,8 @@ if (description)
 include("cpe.inc");
 include("host_details.inc");
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 port = get_kb_item("Services/eggdrop");
 
@@ -61,7 +62,7 @@ if(!port)
 if(!get_port_state(port))exit(0);
 
 # Eggdrop probably uses some reverse lookup or identd requests, so we use a rather large timeout
-banner = get_telnet_banner(port:port, timeout: 20);
+banner = telnet_get_banner(port:port, timeout: 20);
 
 if(isnull(banner))
    exit(0);

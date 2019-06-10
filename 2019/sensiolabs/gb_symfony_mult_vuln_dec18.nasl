@@ -19,13 +19,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112583");
-  script_version("2019-05-20T11:12:06+0000");
-  script_tag(name:"last_modification", value:"2019-05-20 11:12:06 +0000 (Mon, 20 May 2019)");
+  script_version("2019-06-07T08:16:45+0000");
+  script_tag(name:"last_modification", value:"2019-06-07 08:16:45 +0000 (Fri, 07 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-20 11:50:54 +0200 (Mon, 20 May 2019)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -42,7 +42,9 @@ if( description )
   script_mandatory_keys("symfony/detected");
 
   script_tag(name:"summary", value:"This host runs Symfony and is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - When using the scalar type hint string in a setter method (e.g. setName(string $name)) of a class
@@ -53,9 +55,12 @@ if( description )
 
   - Using backslashes in the _failure_path input field of login forms, one can work around the
   redirection target restrictions and effectively redirect the user to any domain after login. (CVE-2018-19790)");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to disclose
   the full path of an uploaded file, execute arbitrary code or redirect a user to any domain after login.");
+
   script_tag(name:"affected", value:"Symfony versions 2.7.0 to 2.7.49, 2.8.0 to 2.8.48, 3.0.0 to 3.4.19, 4.0.0 to 4.0.14, 4.1.0 to 4.1.8 and 4.2.0.");
+
   script_tag(name:"solution", value:"The issue has been fixed in Symfony 2.7.50, 2.8.49, 3.4.20, 4.0.15, 4.1.9 and 4.2.1.
 
   NOTE: No fixes are provided for Symfony 3.0, 3.1, 3.2 and 3.3 as they are not maintained anymore.

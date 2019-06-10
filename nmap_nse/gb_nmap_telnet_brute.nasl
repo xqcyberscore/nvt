@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_telnet_brute.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap Telnet Brute NSE script.
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801670");
-  script_version("$Revision: 12115 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2010-12-27 14:48:59 +0100 (Mon, 27 Dec 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -89,7 +88,7 @@ if( pref = script_get_preference("unpwdb.userlimit :")){
   args[i++] = "unpwdb.userlimit="+pref;
 }
 
-port = get_telnet_port(default:23);
+port = telnet_get_port(default:23);
 
 argv = make_list("nmap", "--script=telnet-brute.nse", "-p", port, get_host_ip());
 

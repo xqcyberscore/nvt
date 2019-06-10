@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814685");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-06-03T07:01:53+0000");
   script_cve_id("CVE-2019-7090");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-02-14 12:56:52 +0530 (Thu, 14 Feb 2019)");
   script_name("Adobe Flash Player Microsoft Edge and Internet Explorer Security Update(apsb19-06)-Windows");
 

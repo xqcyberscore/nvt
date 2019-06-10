@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerisystems_access_control_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Keri Systems Access Control Systems Detection
 #
@@ -30,8 +29,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105418");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2015-10-21 16:57:28 +0200 (Wed, 21 Oct 2015)");
   script_name("Keri Systems Access Control Systems Detection");
 
@@ -50,10 +49,11 @@ if (description)
 }
 
 include("misc_func.inc");
+include("dump.inc");
 include("telnet_func.inc");
 
-port = get_telnet_port( default:23 );
-if( ! banner = get_telnet_banner( port:port ) ) exit( 0 );
+port = telnet_get_port( default:23 );
+if( ! banner = telnet_get_banner( port:port ) ) exit( 0 );
 if( "KERI-ENET" >!< banner ) exit( 0 );
 
 version = eregmatch( pattern:'Software version V([^ ]+)( \\(([0-9]+)\\))?', string:banner );

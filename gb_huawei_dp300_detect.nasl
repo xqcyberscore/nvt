@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_dp300_detect.nasl 14045 2019-03-08 07:18:46Z cfischer $
 #
 # Huawei DP300 Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141253");
-  script_version("$Revision: 14045 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 08:18:46 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-07-02 09:32:17 +0200 (Mon, 02 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,13 +56,13 @@ if(description)
 }
 
 include("cpe.inc");
-include("dump.inc");
 include("host_details.inc");
 include("misc_func.inc");
+include("dump.inc");
 include("telnet_func.inc");
 
-port = get_telnet_port(default: 5000);
-banner = get_telnet_banner(port: port);
+port = telnet_get_port(default: 5000);
+banner = telnet_get_banner(port: port);
 if (!banner)
   exit(0);
 

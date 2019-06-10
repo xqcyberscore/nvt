@@ -19,13 +19,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112581");
-  script_version("2019-05-20T11:12:06+0000");
-  script_tag(name:"last_modification", value:"2019-05-20 11:12:06 +0000 (Mon, 20 May 2019)");
+  script_version("2019-06-07T10:18:19+0000");
+  script_tag(name:"last_modification", value:"2019-06-07 10:18:19 +0000 (Fri, 07 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-20 11:27:12 +0200 (Mon, 20 May 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -41,7 +41,9 @@ if( description )
   script_mandatory_keys("symfony/detected");
 
   script_tag(name:"summary", value:"This host runs Symfony and is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - Validation messages were not escaped when using the form theme of the PHP templating engine which,
@@ -56,10 +58,13 @@ if( description )
   - HTTP methods, from either the HTTP method itself or using the X-Http-Method-Override header
   were previously returned as the method in question without validation being done on the string,
   meaning that they could be used in dangerous contexts when left unescaped. (CVE-2019-10913)");
+
   script_tag(name:"impact", value:"Successful exploitation could lead to cross-site scripting (XSS),
   SQL injection, remote code execution and the attacker being able to authenticate as a privileged user.");
+
   script_tag(name:"affected", value:"Symfony versions 2.7.0 to 2.7.50, 2.8.0 to 2.8.49, 3.4.0 to 3.4.25,
   4.1.0 to 4.1.11 and 4.2.0 to 4.2.6.");
+
   script_tag(name:"solution", value:"The issue has been fixed in Symfony 2.7.51, 2.8.50, 3.4.26, 4.1.12 and 4.2.7.
 
   NOTE: No fixes are provided for Symfony 3.0, 3.1, 3.2, 3.3, and 4.0 as they are not maintained anymore.

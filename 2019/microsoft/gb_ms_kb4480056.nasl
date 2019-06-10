@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814730");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-06-07T12:54:14+0000");
   script_cve_id("CVE-2019-0545");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-06-07 12:54:14 +0000 (Fri, 07 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-01-09 16:36:42 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (KB4480056)");
 
@@ -107,8 +107,10 @@ if(edgeVer =~ "11\.0\.17763")
             if(dllVer)
             {
               if(version_is_less(version:dllVer, test_version:"4.7.3282.0")){
-                VULN = TRUE ;
-                break;
+                report = report_fixed_ver(file_checked:dotPath + "webengine.dll",
+                                          file_version:dllVer, vulnerable_range:"Less than 4.7.3282.0");
+                security_message(data:report);
+                exit(0);
               }
             }
           }
@@ -116,7 +118,7 @@ if(edgeVer =~ "11\.0\.17763")
       }
     }
 
-    if((!VULN) && "ASP.NET" >< key)
+    if("ASP.NET" >< key)
     {
       foreach item (registry_enum_keys(key:key))
       {
@@ -127,19 +129,14 @@ if(edgeVer =~ "11\.0\.17763")
           if(dllVer)
           {
             if(version_is_less(version:dllVer, test_version:"4.7.3282.0")){
-              VULN = TRUE ;
+              report = report_fixed_ver(file_checked:dotPath + "\webengine.dll",
+                                          file_version:dllVer, vulnerable_range:"Less than 4.7.3282.0");
+              security_message(data:report);
+              exit(0);
             }
           }
         }
       }
-    }
-
-    if(VULN)
-    {
-      report = report_fixed_ver(file_checked:dotPath + "webengine.dll",
-                                file_version:dllVer, vulnerable_range:"Less than 4.7.3282.0");
-      security_message(data:report);
-      exit(0);
     }
   }
 }

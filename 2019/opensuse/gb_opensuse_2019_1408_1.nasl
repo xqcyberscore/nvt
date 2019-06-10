@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852507");
-  script_version("2019-05-28T09:21:36+0000");
+  script_version("2019-06-04T06:44:21+0000");
   script_cve_id("CVE-2018-12126", "CVE-2018-12127", "CVE-2018-12130", "CVE-2019-11091");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-28 09:21:36 +0000 (Tue, 28 May 2019)");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-06-04 06:44:21 +0000 (Tue, 04 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-21 02:01:10 +0000 (Tue, 21 May 2019)");
   script_name("openSUSE Update for ucode-intel openSUSE-SU-2019:1408-1 (ucode-intel)");
   script_category(ACT_GATHER_INFO);

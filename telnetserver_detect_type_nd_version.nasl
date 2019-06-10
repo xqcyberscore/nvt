@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10281");
-  script_version("2019-05-24T13:07:17+0000");
-  script_tag(name:"last_modification", value:"2019-05-24 13:07:17 +0000 (Fri, 24 May 2019)");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,25 +46,13 @@ if(description)
 }
 
 include("host_details.inc");
-include("dump.inc");
 include("misc_func.inc");
+include("dump.inc");
 include("telnet_func.inc");
 
-port = get_telnet_port( default:23 );
-soc = open_sock_tcp( port );
-if( ! soc )
-  exit( 0 );
+port = telnet_get_port( default:23 );
+banner = telnet_get_banner( port:port );
 
-# nb: Don't use get_telnet_banner() as we want to use telnet_verify_banner()
-# without the need to have dump.inc and misc_func.inc included in every VT
-# using get_telnet_banner().
-banner = telnet_negotiate( socket:soc );
-if( ! telnet_verify_banner( data:banner ) ) {
-  close( soc );
-  exit( 0 );
-}
-
-telnet_close_socket( socket:soc, data:banner );
 if( strlen( banner ) ) {
 
   if( "login:" >!< tolower( banner ) ) {
@@ -72,7 +60,6 @@ if( strlen( banner ) ) {
     set_kb_item( name:"telnet/no_login_banner", value:TRUE );
   }
 
-  telnet_set_banner( port:port, banner:banner );
   set_kb_item( name:"telnet/banner/available", value:TRUE );
   set_kb_item( name:"ssh_or_telnet/banner/available", value:TRUE );
 

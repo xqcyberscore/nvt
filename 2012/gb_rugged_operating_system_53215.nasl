@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rugged_operating_system_53215.nasl 13794 2019-02-20 14:59:32Z cfischer $
 #
 # Rugged Operating System Backdoor Unauthorized Access Vulnerability
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/o:ruggedcom:ros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103499");
-  script_version("$Revision: 13794 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_bugtraq_id(53215);
   script_cve_id("CVE-2012-1803");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2012-06-21 13:07:51 +0200 (Thu, 21 Jun 2012)");
   script_name("Rugged Operating System Backdoor Unauthorized Access Vulnerability");
   script_category(ACT_ATTACK);
@@ -68,12 +67,14 @@ if(description)
 
 include("telnet_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 port = 23;
 if(!get_port_state(port))
   exit(0);
 
-banner = get_telnet_banner(port:port);
+banner = telnet_get_banner(port:port);
 if(!banner || ( "Rugged Operating System" >!< banner || "MAC Address" >!< banner))
   exit( 0 );
 

@@ -19,11 +19,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108586");
-  script_version("2019-05-24T13:07:17+0000");
+  script_version("2019-06-06T07:39:31+0000");
   script_cve_id("CVE-2019-5021", "CVE-1999-0502");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-24 13:07:17 +0000 (Fri, 24 May 2019)");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-24 12:35:09 +0000 (Fri, 24 May 2019)");
   script_name("Unpassworded 'root' Account (Telnet)");
   script_category(ACT_ATTACK);
@@ -65,7 +65,7 @@ if(description)
 include("telnet_func.inc");
 include("default_account.inc");
 
-port = get_telnet_port( default:23 );
+port = telnet_get_port( default:23 );
 if( get_kb_item( "telnet/" + port + "/no_login_banner" ) )
   exit( 0 );
 

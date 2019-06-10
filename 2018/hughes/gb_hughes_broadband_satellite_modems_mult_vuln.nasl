@@ -28,11 +28,11 @@ CPE = "cpe:/a:hughes:broadband_satelite_modem";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813749");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-06-06T07:39:31+0000");
   script_cve_id("CVE-2016-9497", "CVE-2016-9496", "CVE-2016-9494", "CVE-2016-9495");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-08-08 14:01:09 +0530 (Wed, 08 Aug 2018)");
   script_name("Hughes Broadband Satellite Modems Multiple Vulnerabilities");
 
@@ -81,7 +81,7 @@ if(description)
 include("telnet_func.inc");
 include("host_details.inc");
 
-port = get_telnet_port( default:1953);
+port = telnet_get_port( default:1953);
 if(!soc = open_sock_tcp(port)){
   exit(0);
 }

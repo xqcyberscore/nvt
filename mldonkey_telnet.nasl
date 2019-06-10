@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_telnet.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # mldonkey telnet
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11124");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -60,12 +59,14 @@ if(description)
 }
 
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 port = get_kb_item( "Services/mldonkey-telnet" );
 if( ! port ) port = 4000;
 if( ! get_port_state( port ) ) exit( 0 );
 
-r = get_telnet_banner( port:port );
+r = telnet_get_banner( port:port );
 if( ! r ) exit( 0 );
 
 if( "Welcome on mldonkey command-line" >< r ) {

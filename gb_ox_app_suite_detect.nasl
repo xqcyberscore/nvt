@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ox_app_suite_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Open-Xchange App Suite Detection
 #
@@ -30,8 +29,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105387");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-06-04T07:18:30+0000");
+  script_tag(name:"last_modification", value:"2019-06-04 07:18:30 +0000 (Tue, 04 Jun 2019)");
   script_tag(name:"creation_date", value:"2015-09-25 13:13:41 +0200 (Fri, 25 Sep 2015)");
   script_name("Open-Xchange App Suite Detection");
 
@@ -69,7 +68,7 @@ url = '/appsuite/signin';
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( "window.ox" >!< buf || "/apps/themes/default/favicon.ico" >!< buf || "io-ox-copyright" >!< buf ) exit( 0 );
+if( "window.ox" >!< buf || "io-ox-copyright" >!< buf ) exit( 0 );
 
 cpe = 'cpe:/a:open-xchange:open-xchange_appsuite';
 vers = 'unknown';
@@ -82,7 +81,8 @@ if( ! isnull( version[1] ) ) {
   cpe += ':' + vers;
 }
 
-if( ! isnull( version[2] ) ) set_kb_item( name:"open_xchange_appsuite/" + port + "/revision", value: version[2] );
+if( ! isnull( version[2] ) )
+  set_kb_item( name:"open_xchange_appsuite/" + port + "/revision", value: version[2] );
 
 
 register_product( cpe:cpe, location:"/appsuite", port:port );

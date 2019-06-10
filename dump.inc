@@ -1,6 +1,5 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: dump.inc 4421 2016-11-04 16:12:14Z cfi $
+# OpenVAS Include File
 #
 # Some support functions for dump
 #
@@ -23,9 +22,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 4421 $
-#
 ###############################################################################
 
 function line2string( line, linenumber ) {
@@ -54,19 +50,28 @@ function line2string( line, linenumber ) {
   return string( "0x", toupper( hexstr( substr( tmp, pos, 3 ) ) ), ": " );
 }
 
+# @brief Checks if a passed character is a printable one (Range from >= 0x20 and <= 0x7E).
+#
+# @param c The character to check.
+#
+# @return TRUE if the passed character is a printable one, FALSE otherwise and NULL if no char was
+#         passed to the c parameter.
+#
 function isprint( c ) {
 
   local_var c;
 
-  if( isnull( c ) ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#c#-#isprint" );
+  if( isnull( c ) ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#c#-#isprint" );
+    return NULL;
+  }
 
-  if( ( ord( c ) >= 0x20 ) && ( ord( c ) <= 0x7E) ) {
+  if( ( ord( c ) >= 0x20 ) && ( ord( c ) <= 0x7E ) ) {
     return TRUE;
   } else {
-   return FALSE;
+    return FALSE;
   }
 }
-
 
 function hexdump( ddata ) {
 

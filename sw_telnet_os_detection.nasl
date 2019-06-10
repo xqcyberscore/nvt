@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("2019-05-07T06:30:33+0000");
-  script_tag(name:"last_modification", value:"2019-05-07 06:30:33 +0000 (Tue, 07 May 2019)");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -55,8 +55,8 @@ include("dump.inc");
 SCRIPT_DESC = "Telnet OS Identification";
 BANNER_TYPE = "Telnet banner";
 
-port = get_telnet_port( default:23 );
-banner = get_telnet_banner( port:port );
+port = telnet_get_port( default:23 );
+banner = telnet_get_banner( port:port );
 if( ! banner || banner == "" || isnull( banner ) )
   exit( 0 );
 

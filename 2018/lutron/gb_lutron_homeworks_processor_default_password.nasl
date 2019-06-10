@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113206");
-  script_version("2019-05-09T15:03:03+0000");
-  script_tag(name:"last_modification", value:"2019-05-09 15:03:03 +0000 (Thu, 09 May 2019)");
+  script_version("2019-06-06T15:22:58+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 15:22:58 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-06-05 12:36:33 +0200 (Tue, 05 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2018-11629", "CVE-2018-11681", "CVE-2018-11682");
 
@@ -65,8 +65,9 @@ if(description)
 
   script_tag(name:"affected", value:"The vulnerability affects multiple Lutron devices.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th May, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"http://sadfud.me/explotos/CVE-2018-11629");
 
@@ -75,7 +76,7 @@ if(description)
 
 include("telnet_func.inc");
 
-port = get_telnet_port( default: 23 );
+port = telnet_get_port( default: 23 );
 if( get_kb_item( "telnet/" + port + "/no_login_banner" ) )
   exit( 0 );
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storageworks_51399.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities
 #
@@ -32,9 +31,9 @@ if(description)
   script_cve_id("CVE-2011-4788", "CVE-2012-0697");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13568 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_name("HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2012-02-21 13:19:06 +0100 (Tue, 21 Feb 2012)");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51399");
@@ -101,7 +100,7 @@ if("<title>HP StorageWorks" >< buf) {
     close(soc);
   }
 
-  port = get_telnet_port(default:23);
+  port = telnet_get_port(default:23);
   foreach credential (keys(credentials)) {
 
     if(!soc = open_sock_tcp(port))

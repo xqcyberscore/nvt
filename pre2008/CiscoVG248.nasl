@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: CiscoVG248.nasl 13634 2019-02-13 12:06:16Z cfischer $
 #
 # Cisco VG248 login password is blank
 #
@@ -33,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19377");
-  script_version("$Revision: 13634 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:06:16 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +63,7 @@ if(description)
 
 include('telnet_func.inc');
 
-port = get_telnet_port( default:23 );
+port = telnet_get_port( default:23 );
 
 soc = open_sock_tcp( port );
 if ( ! soc ) exit( 0 );

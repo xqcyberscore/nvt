@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814684");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-06-03T07:01:53+0000");
   script_cve_id("CVE-2019-7090");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 11:38:50 +0530 (Wed, 13 Feb 2019)");
   script_name("Adobe Flash Player Within Google Chrome Security Update(apsb19-06)- MAC OS X");
 

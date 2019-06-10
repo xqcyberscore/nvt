@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_831CII_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # ZTE ZXDSL 831CII Detection (Telnet)
 #
@@ -30,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.811354");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-28 16:53:25 +0530 (Tue, 28 Nov 2017)");
   script_name("ZTE ZXDSL 831CII Detection (Telnet)");
 
@@ -54,9 +53,11 @@ if(description)
 include("telnet_func.inc");
 include("host_details.inc");
 include("cpe.inc");
+include("misc_func.inc");
+include("dump.inc");
 
-ztport = get_telnet_port(default:23);
-banner = get_telnet_banner(port:ztport);
+ztport = telnet_get_port(default:23);
+banner = telnet_get_banner(port:ztport);
 if(!banner || "Welcome to ZXDSL 831CII" >!< banner)
   exit( 0 );
 

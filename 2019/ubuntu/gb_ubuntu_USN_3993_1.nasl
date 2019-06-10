@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844019");
-  script_version("2019-05-31T13:18:49+0000");
+  script_version("2019-06-03T07:01:53+0000");
   script_cve_id("CVE-2019-5435", "CVE-2019-5436");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-31 13:18:49 +0000 (Fri, 31 May 2019)");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-23 02:00:26 +0000 (Thu, 23 May 2019)");
   script_name("Ubuntu Update for curl USN-3993-1");
   script_category(ACT_GATHER_INFO);

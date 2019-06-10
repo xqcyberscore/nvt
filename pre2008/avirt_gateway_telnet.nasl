@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: avirt_gateway_telnet.nasl 13634 2019-02-13 12:06:16Z cfischer $
 # Description: Avirt gateway insecure telnet proxy
 #
 # Authors:
@@ -25,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11096");
-  script_version("$Revision: 13634 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:06:16 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3901);
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +54,7 @@ if(description)
 
 include("telnet_func.inc");
 
-port = get_telnet_port(default:23);
+port = telnet_get_port(default:23);
 
 soc = open_sock_tcp(port);
 if (!soc) exit(0);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_revB_telnet_backdoor.nasl 13627 2019-02-13 10:38:43Z cfischer $
 #
 # D-Link DIR-850L Telnet Account Backdoor (LAN)
 #
@@ -28,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107301");
-  script_version("$Revision: 13627 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_cve_id("CVE-2017-14421");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:38:43 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-03-19 13:22:17 +0100 (Mon, 19 Mar 2018)");
   script_name("D-Link DIR-850L Telnet Account Backdoor (LAN)");
   script_category(ACT_ATTACK);
@@ -63,7 +62,7 @@ if(description)
 
 include("telnet_func.inc");
 
-port = get_telnet_port( default:23 );
+port = telnet_get_port( default:23 );
 if( get_kb_item( "telnet/" + port + "/no_login_banner" ) )
   exit( 0 );
 

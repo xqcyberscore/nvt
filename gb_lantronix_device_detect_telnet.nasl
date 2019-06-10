@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_telnet.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Lantronix Devices Detection (Telnet)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108302");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-29 08:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,13 +47,13 @@ if(description)
   exit(0);
 }
 
-include("dump.inc");
 include("misc_func.inc");
+include("dump.inc");
 include("telnet_func.inc");
 include("host_details.inc");
 
-port   = get_telnet_port( default:9999 ); # Most devices are running on 9999 but there are a few like MSS on 23/tcp
-banner = get_telnet_banner( port:port );
+port   = telnet_get_port( default:9999 ); # Most devices are running on 9999 but there are a few like MSS on 23/tcp
+banner = telnet_get_banner( port:port );
 
 # Lantronix MSS-VIA Version V3.6/3(000201)
 # Lantronix MSS4 Version B3.7/108(030909)

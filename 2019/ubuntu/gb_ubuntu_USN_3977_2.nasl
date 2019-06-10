@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844021");
-  script_version("2019-05-31T13:18:49+0000");
+  script_version("2019-06-04T06:44:21+0000");
   script_cve_id("CVE-2018-12130", "CVE-2018-12127", "CVE-2018-12126", "CVE-2019-11091");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-31 13:18:49 +0000 (Fri, 31 May 2019)");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-06-04 06:44:21 +0000 (Tue, 04 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-23 02:00:30 +0000 (Thu, 23 May 2019)");
   script_name("Ubuntu Update for intel-microcode USN-3977-2");
   script_category(ACT_GATHER_INFO);

@@ -28,8 +28,8 @@ if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113003");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-06-03T12:54:36+0000");
+  script_tag(name:"last_modification", value:"2019-06-03 12:54:36 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-09-27 12:06:59 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Pydio Detection");
@@ -81,7 +81,7 @@ foreach dir( make_list_unique( "/pydio", cgi_dirs( port: port ) ) ) {
     cpe = build_cpe( value: version_number, exp: "([0-9.]+)", base: "cpe:/a:pydio:pydio:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:pydio:pydio';
-    register_product( cpe: cpe, location: install, port: port );
+    register_product( cpe: cpe, location: install, port: port, service: "www" );
 
     log_message( data:build_detection_report( app: "Pydio",
                                               version: version_number,

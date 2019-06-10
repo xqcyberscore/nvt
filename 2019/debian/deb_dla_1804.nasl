@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891804");
-  script_version("2019-05-26T02:00:38+0000");
+  script_version("2019-06-03T07:01:53+0000");
   script_cve_id("CVE-2019-5436");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-26 02:00:38 +0000 (Sun, 26 May 2019)");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-26 02:00:38 +0000 (Sun, 26 May 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1804-1] curl security update)");
   script_category(ACT_GATHER_INFO);

@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107324");
-  script_version("2019-05-23T07:09:57+0000");
-  script_tag(name:"last_modification", value:"2019-05-23 07:09:57 +0000 (Thu, 23 May 2019)");
+  script_version("2019-06-03T07:31:04+0000");
+  script_tag(name:"last_modification", value:"2019-06-03 07:31:04 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-06-26 16:20:53 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,8 +57,10 @@ if( ! sock )
 
 known_path = 'vendor/symfony/symfony/src/Symfony/Component/HttpKernel';
 path_list = ssh_cmd( cmd:'find / -path \\*' + known_path + ' 2>/dev/null', socket:sock );
-if( ! path_list )
+if( ! path_list ) {
+  ssh_close_connection();
   exit( 0 );
+}
 
 port = kb_ssh_transport();
 
@@ -70,7 +72,7 @@ foreach path( split( path_list ) ) {
     continue;
 
   version_text = ereg_replace( string:version_text, pattern:'^[ ]+', replace:'' );
-  vers = eregmatch( string:version_text, pattern:'([0-9.]+)' );
+  vers = eregmatch( string:version_text, pattern:'([0-9.]{3,})' );
   if( ! isnull( vers[1] ) ) {
     version = vers[1];
     location = ereg_replace( string:path, pattern:known_path, replace:'' );

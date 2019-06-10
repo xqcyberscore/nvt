@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackboard_lc3000_default_pw.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Blackboard LC3000 Laundry Reader Default Telnet Password
 #
@@ -28,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103843");
-  script_version("$Revision: 13624 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Blackboard LC3000 Laundry Reader Default Telnet Password");
 
   script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/10/28/290/");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-12-02 11:02:55 +0200 (Mon, 02 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,9 +62,11 @@ if(description)
 }
 
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
-port = get_telnet_port(default:23);
-banner = get_telnet_banner(port:port);
+port = telnet_get_port(default:23);
+banner = telnet_get_banner(port:port);
 if(!banner || 'Blackboard LC3000' >!< banner)
   exit(0);
 

@@ -85,13 +85,13 @@ __no_telnet = make_list( "<<<check_mk>>>", "\\check_mk\.ini", "<<<uptime>>>", "<
 #         no connection could be made to the remote service and FALSE if not all required
 #         parameters where passed.
 #
-function get_telnet_banner( port, timeout ) {
+function telnet_get_banner( port, timeout ) {
 
   local_var port, timeout;
   local_var banner, soc;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_telnet_banner" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#telnet_get_banner" );
     return FALSE;
   }
 
@@ -117,6 +117,9 @@ function get_telnet_banner( port, timeout ) {
     telnet_set_is_marked_broken( port:port );
     return FALSE;
   }
+
+  if( ! telnet_verify_banner( data:banner ) )
+    return FALSE;
 
   telnet_set_banner( port:port, banner:banner );
   telnet_close_socket( socket:soc, data:banner );
@@ -233,13 +236,13 @@ function telnet_set_banner( port, banner ) {
 # @return The open / found Telnet ports or the port passed via the default parameter in the case of no found ports
 #         and "unscanned_closed" is set to "no".
 #
-function get_telnet_port( default, nodefault, ignore_broken, ignore_unscanned ) {
+function telnet_get_port( default, nodefault, ignore_broken, ignore_unscanned ) {
 
   local_var default, nodefault, ignore_broken, ignore_unscanned;
   local_var port;
 
   if( ! default && ! nodefault ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_telnet_port" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#telnet_get_port" );
     exit( 0 );
   }
 
@@ -275,7 +278,7 @@ function get_telnet_port( default, nodefault, ignore_broken, ignore_unscanned ) 
 #        or (if passed) the ports included in the list of the default_ports
 #        parameter.
 #
-# @note In contrast to @ref get_telnet_port this function will not fork
+# @note In contrast to @ref telnet_get_port this function will not fork
 #       and return a list instead. This should be used e.g. for
 #       Detection-VTs where we want to make sure that we're not getting
 #       blocked by the remote service with to many concurrent connections.

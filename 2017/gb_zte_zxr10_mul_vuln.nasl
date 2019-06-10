@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxr10_mul_vuln.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # ZTE ZXR10 Router Multiple Vulnerabilities
 #
@@ -28,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107254");
-  script_version("$Revision: 13624 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -36,7 +35,7 @@ if(description)
 
   script_name("ZTE ZXR10 Router Multiple Vulnerabilities");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-09 10:23:00 +0200 (Thu, 09 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -62,9 +61,11 @@ if(description)
 }
 
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
-port = get_telnet_port( default:23 );
-banner = get_telnet_banner( port:port );
+port = telnet_get_port( default:23 );
+banner = telnet_get_banner( port:port );
 
 if( !banner || banner !~ "Welcome to (ZXUN|ZXR10).+ of ZTE Corporation"  )
   exit( 0 );

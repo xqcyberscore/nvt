@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("2019-04-17T12:18:39+0000");
-  script_tag(name:"last_modification", value:"2019-04-17 12:18:39 +0000 (Wed, 17 Apr 2019)");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,6 +54,7 @@ include("telnet_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
+include("dump.inc");
 include("mac_prefix.inc");
 include("hp_printers.inc");
 include("sharp_printers.inc");
@@ -227,7 +228,7 @@ if( is_printer ) report( data:"Detected FTP banner on port " + port + '/tcp:\n\n
 port = 23;
 if( get_port_state( port ) ) {
 
-  banner = get_telnet_banner( port:port );
+  banner = telnet_get_banner( port:port );
 
   if( "HP JetDirect" >< banner ) {
     is_printer = TRUE;

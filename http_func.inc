@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 14291 2019-03-18 17:18:50Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -23,9 +22,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 14291 $
-#
 ###############################################################################
 
 # Enables to include the OID of the VT within the HTTP user agent of http_get_user_agent()
@@ -1971,6 +1967,7 @@ function report_vuln_url( port, url, url_only ) {
 # @param add_headers        Additional headers which should be added to the HTTP POST request. Needs to be an
 #                           array in form of e.g. make_array( "Content-Type", "application/x-www-form-urlencoded" )
 # @param accept_header      The Accept: header to use (e.g. application/json), defaults to "*/*" if not passed.
+# @param accept_encoding    The Accept-Encoding: header to use (e.g. gzip,deflate), defaults to "identity" if not passed.
 # @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the result of the
 #                           http_get_user_agent() function if not passed. If this parameter is given the function
 #                           will add a separate X-Scanner: header field by default. This behavior can be disabled
@@ -1986,9 +1983,9 @@ function report_vuln_url( port, url, url_only ) {
 #
 # @example req = http_post_req( port:port, url:"/", data:data, accept_header:"application/json", add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
 #
-function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner ) {
+function http_post_req( port, url, data, add_headers, accept_header, accept_encoding, user_agent, host_header_use_ip, dont_add_xscanner ) {
 
-  local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner;
+  local_var port, url, data, add_headers, accept_header, accept_encoding, user_agent, host_header_use_ip, dont_add_xscanner;
   local_var x_header, len, vtstrings, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
@@ -2014,6 +2011,9 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
   if( ! accept_header )
     accept_header = '*/*';
 
+  if( ! accept_encoding )
+    accept_encoding = 'identity';
+
   if ( ! user_agent ) {
     user_agent = http_get_user_agent();
   } else if( ! dont_add_xscanner ) {
@@ -2037,7 +2037,7 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
         'Accept-Language: en\r\n' +
         'Accept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\r\n' +
         'Accept: ' + accept_header + '\r\n' +
-        'Accept-Encoding: identity\r\n';
+        'Accept-Encoding: ' + accept_encoding + '\r\n';
 
   if( data )
     req += 'Content-Length: ' + len + '\r\n';

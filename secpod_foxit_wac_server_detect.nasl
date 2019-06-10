@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_wac_server_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Foxit WAC Server Version Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900923");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -52,6 +51,8 @@ include("ssh_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 function set_detection( port, banner, service ) {
 
@@ -85,7 +86,7 @@ function set_detection( port, banner, service ) {
 telnetPorts = telnet_get_ports();
 
 foreach port( telnetPorts ) {
-  banner = get_telnet_banner( port:port );
+  banner = telnet_get_banner( port:port );
   # Welcome to WAC Server 2.0 Build 3503. (C) Foxit Software, 2002-2003
   if( banner && "WAC" >< banner && "Foxit Software" >< banner )
     set_detection( port:port, banner:banner, service:"telnet" );

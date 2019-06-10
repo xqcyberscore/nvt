@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_hardcoded_telnet_account.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Grandstream Devices Backdoor in Telnet Protocol
 #
@@ -28,7 +27,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103737");
-  script_version("$Revision: 11865 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_cve_id("CVE-2013-3542", "CVE-2013-3962", "CVE-2013-3963");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jun/84");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-06-11 14:29:08 +0200 (Tue, 11 Jun 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +52,7 @@ if (description)
 
 include("telnet_func.inc");
 
-port = get_telnet_port( default:23 );
+port = telnet_get_port( default:23 );
 
 soc = open_sock_tcp(port);
 if(!soc)exit(0);

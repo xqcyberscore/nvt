@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ros_detect.nasl 13627 2019-02-13 10:38:43Z cfischer $
 #
 # Rugged Operating System Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103633");
-  script_version("$Revision: 13627 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:38:43 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-01-04 12:11:14 +0100 (Fri, 04 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,6 +53,8 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("telnet_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 function check_http() {
 
@@ -84,8 +85,8 @@ function check_telnet() {
   local_var port, banner;
   global_var concluded;
 
-  port = get_telnet_port(default:23);
-  r = get_telnet_banner(port:port);
+  port = telnet_get_port(default:23);
+  r = telnet_get_banner(port:port);
   if(!r || "Rugged Operating System" >!< r)
     return FALSE;
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autonomic_controls_no_remote_auth.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Autonomic Controls Devices No Authentication
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113245");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-08-07 11:30:00 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -70,12 +69,14 @@ if( description )
 
 CPE = "cpe:/h:autonomic_controls:device";
 
-include( "host_details.inc" );
-include( "telnet_func.inc" );
+include("host_details.inc");
+include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 if( ! port = get_kb_item( "autonomic_controls/telnet/port" ) ) exit( 0 );
 
-banner = get_telnet_banner( port: port );
+banner = telnet_get_banner( port: port );
 
 if( banner =~ 'You are logged in' ) {
   report = "Accessing remote configuration didn't require authentication.";

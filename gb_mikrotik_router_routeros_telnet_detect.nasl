@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # MikroTik RouterOS Detection (Telnet)
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113070");
-  script_version("$Revision: 13624 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-12-14 13:17:18 +0100 (Thu, 14 Dec 2017)");
   script_name("MikroTik RouterOS Detection (Telnet)");
   script_category(ACT_GATHER_INFO);
@@ -53,9 +52,11 @@ if(description)
 
 include("host_details.inc");
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
-port = get_telnet_port( default:23 );
-banner = get_telnet_banner( port:port );
+port = telnet_get_port( default:23 );
+banner = telnet_get_banner( port:port );
 if( "MikroTik" >!< banner || "Login:" >!< banner )
   exit( 0 );
 

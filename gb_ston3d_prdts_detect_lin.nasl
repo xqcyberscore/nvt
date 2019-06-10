@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ston3d_prdts_detect_lin.nasl 12733 2018-12-10 09:17:04Z cfischer $
 #
 # StoneTrip Ston3D Standalone Player Version Detection (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800575");
-  script_version("$Revision: 12733 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 10:17:04 +0100 (Mon, 10 Dec 2018) $");
+  script_version("2019-06-03T07:31:04+0000");
+  script_tag(name:"last_modification", value:"2019-06-03 07:31:04 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,31 +53,32 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock) exit(0);
+if(!sock)
+  exit(0);
+
+sapName = find_file(file_name:"S3DEngine_Linux", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
+if(!sapName) {
+  ssh_close_connection();
+  exit(0);
+}
 
 garg[0] = "-o";
 garg[1] = "-m1";
 garg[2] = "-a";
 garg[3] = string("Standalone Engine [0-9.]\\+");
 
-sapName = find_file(file_name:"S3DEngine_Linux", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
-if(!sapName){
-  ssh_close_connection();
-  exit(0);
-}
-
-foreach binaryName (sapName) {
+foreach binaryName(sapName) {
 
   binaryName = chomp(binaryName);
-  if(!binaryName) continue;
+  if(!binaryName)
+    continue;
 
   arg = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) + garg[3] + raw_string(0x22) + " " + binaryName;
 
-  sapVer = get_bin_version(full_prog_name:"grep", version_argv:arg, sock:sock, ver_pattern:"([0-9.]+)");
+  sapVer = get_bin_version(full_prog_name:"grep", version_argv:arg, sock:sock, ver_pattern:"([0-9.]{3,})");
   if(sapVer[1]) {
 
     set_kb_item(name:"Ston3D/Standalone/Player/Lin/Ver", value:sapVer[1]);
-
     register_and_report_cpe(app:"StoneTrip Ston3D Standalone Player", ver:sapVer[1], base:"cpe:/a:stonetrip:s3dplayer_standalone:", expr:"([0-9.]+)", regPort:0, insloc:binaryName, concluded:sapVer[0], regService:"ssh-login");
     break;
   }

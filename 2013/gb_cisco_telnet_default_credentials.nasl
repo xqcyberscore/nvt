@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telnet_default_credentials.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Cisco Default Telnet Login
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103807");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-10-11 17:38:09 +0200 (Fri, 11 Oct 2013)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -55,12 +54,14 @@ if(description)
 
 include("telnet_func.inc");
 include("default_credentials.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 # If optimize_test = no
 if( get_kb_item( "default_credentials/disable_default_account_checks" ) ) exit( 0 );
 
-port = get_telnet_port( default:23 );
-banner = get_telnet_banner( port:port );
+port = telnet_get_port( default:23 );
+banner = telnet_get_banner( port:port );
 if( "User Access Verification" >!< banner && "cisco" >!< banner )
   exit( 0 );
 

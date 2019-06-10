@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_audemat_fmb80_default_telnet_credentials.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Audemat FMB80 RDS Encoder Default root Credentials
 #
@@ -28,7 +27,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103898");
-  script_version("$Revision: 11867 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Audemat FMB80 RDS Encoder Default root Credentials");
@@ -36,7 +35,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2014/01/28/audemat-fmb80-rds-encoder-default-root-credentials/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2014-01-29 15:02:06 +0200 (Wed, 29 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -58,7 +57,7 @@ access to sensitive information or modify system configuration.");
 
 include("telnet_func.inc");
 
-port = get_telnet_port( default:23 );
+port = telnet_get_port( default:23 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

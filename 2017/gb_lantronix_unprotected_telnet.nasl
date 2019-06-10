@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_unprotected_telnet.nasl 7929 2017-11-29 09:59:29Z cfischer $
 #
 # Lantronix Devices Unprotected Telnet Access
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112132");
-  script_version("$Revision: 7929 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:59:29 +0100 (Wed, 29 Nov 2017) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-22 11:46:00 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,9 +54,11 @@ if(description)
 }
 
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 if( ! port = get_kb_item( "lantronix_device/telnet/port" ) ) exit( 0 );
-banner = get_telnet_banner( port:port );
+banner = telnet_get_banner( port:port );
 
 if( banner && "Press Enter" >< banner && "Setup Mode" >< banner ) {
   report = "The Lantronix Device setup menu could be accessed via an unprotected telnet connection.";

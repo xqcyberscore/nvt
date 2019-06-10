@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pihole_mult_vuln_feb18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Pi-hole Ad-Blocker < 3.3 Multiple Vulnerabilities
 #
@@ -30,18 +29,17 @@ CPE = "cpe:/a:pihole:web";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108343");
-  script_version("$Revision: 12120 $");
+  script_version("2019-06-03T08:07:49+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-03 08:07:49 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-02-18 11:43:37 +0100 (Sun, 18 Feb 2018)");
   script_name("Pi-hole Ad-Blocker < 3.3 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("gb_pihole_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("Pi-hole/installed");
+  script_mandatory_keys("pi-hole/detected");
 
   script_xref(name:"URL", value:"https://pi-hole.net/2018/02/14/pi-hole-v3-3-released-its-extra-special/");
   script_xref(name:"URL", value:"https://github.com/pi-hole/AdminLTE/pull/674");
@@ -70,14 +68,20 @@ if(description)
   exit(0);
 }
 
-include("version_func.inc");
 include("host_details.inc");
+include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_is_less( version:vers, test_version:"3.3" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"3.3" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"3.3", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

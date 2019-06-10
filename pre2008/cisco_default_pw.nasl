@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cisco_default_pw.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Cisco default password
 #
@@ -38,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.23938");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
   script_cve_id("CVE-1999-0508");
   script_tag(name:"cvss_base", value:"4.6");
@@ -71,6 +70,8 @@ include("ssh_func.inc");
 include("default_account.inc");
 include("default_credentials.inc");
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 # If optimize_test = no
 if( get_kb_item( "default_credentials/disable_default_account_checks" ) ) exit( 0 );
@@ -161,7 +162,7 @@ function check_cisco_account( login, password ) {
     if( isnull( password ) ) password = "";
 
     if( ! telnet_checked ) {
-      banner = get_telnet_banner( port:telnet_port );
+      banner = telnet_get_banner( port:telnet_port );
       if( banner == NULL ) {
         telnet_port = 0;
         return 0;

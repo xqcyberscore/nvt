@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability
 #
@@ -32,13 +31,13 @@ if (description)
   script_cve_id("CVE-2014-0329");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11867 $");
+  script_version("2019-06-06T07:39:31+0000");
 
   script_name("ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65310");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2014-02-10 13:47:33 +0100 (Mon, 10 Feb 2014)");
   script_tag(name:"qod_type", value:"exploit");
   script_category(ACT_ATTACK);
@@ -78,8 +77,9 @@ ZTE: ZXV10 W300");
 }
 
 include("telnet_func.inc");
-include("dump.inc");
 include("snmp_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 snmp_port = get_snmp_port(default:161);
 sysdesc = get_snmp_sysdesc(port:snmp_port);
@@ -91,7 +91,7 @@ if( sysdesc =~ "(ZXV|N12E|SpeedSurf|RTA|DG-)" ) device = TRUE;
 
 if( ! device )
 {
-  banner = get_telnet_banner( port:telnet_port );
+  banner = telnet_get_banner( port:telnet_port );
   if( banner && ( "User Access Verification" >< banner && "Username:" >< banner ) || banner =~ "(ZXV|N12E|SpeedSurf|RTA|DG-)"  ) device = TRUE;
 }
 

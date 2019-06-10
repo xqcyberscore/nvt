@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dont_scan_fragile_device.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Do not scan fragile devices or ports
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108298");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-06-06T07:39:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-24 14:08:04 +0100 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -72,6 +71,7 @@ include("host_details.inc");
 include("ftp_func.inc");
 include("telnet_func.inc");
 include("misc_func.inc");
+include("dump.inc");
 
 if( get_kb_item( "Host/scanned" ) == 0 ) exit( 0 );
 if( ! get_kb_item( "global_settings/exclude_fragile" ) ) exit( 0 );
@@ -191,7 +191,7 @@ if( strlen( exclude_port_definition ) > 0 ) {
 # This device is known to break if port 30718/tcp is touched
 port = 9999;
 if( get_port_state( port ) ) {
-  banner = get_telnet_banner( port:port );
+  banner = telnet_get_banner( port:port );
   if( banner && ( banner =~ "Lantronix .* Device Server" || ( "MAC address " >< banner && "Software version " >< banner ) ) ) {
     fragile_exclude_and_report( reason:"- The detected Lantronix Device is known to crash if this port is scanned.", port:30718, exclude_from_tls:TRUE );
   }

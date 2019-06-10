@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensiolabs_symfony_eol.nasl 10853 2018-08-09 08:45:51Z jschulte $
 #
 # Sensiolabs Symfony End of Life Detection
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112349");
-  script_version("$Revision: 10853 $");
+  script_version("2019-06-07T08:16:45+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:45:51 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-07 08:16:45 +0000 (Fri, 07 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-08-06 13:03:00 +0200 (Mon, 06 Aug 2018)");
   script_name("Sensiolabs Symfony End of Life Detection");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -53,17 +52,17 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if an unsupported version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
 
 CPE = "cpe:/a:sensiolabs:symfony";
 
-include( "host_details.inc" );
-include( "products_eol.inc" );
-include( "misc_func.inc" );
-include( "http_func.inc" ); # For report_vuln_url()
+include("host_details.inc");
+include("products_eol.inc");
+include("misc_func.inc");
+include("http_func.inc");
 
 if( isnull( port = get_app_port( cpe: CPE ) ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );

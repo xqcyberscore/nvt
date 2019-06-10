@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mult_brother_telnet_default_credentials.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Brother Multiple Devices Telnet Default Password
 #
@@ -28,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111092");
-  script_version("$Revision: 13624 $");
+  script_version("2019-06-06T07:39:31+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Brother Multiple Devices Telnet Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2016-03-26 18:12:12 +0100 (Sat, 26 Mar 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -59,9 +58,11 @@ if(description)
 }
 
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
-port = get_telnet_port(default:23);
-banner = get_telnet_banner( port:port );
+port = telnet_get_port(default:23);
+banner = telnet_get_banner( port:port );
 if(!banner || "Welcome. Type <return>, enter password at # prompt" >!< banner )
   exit( 0 );
 

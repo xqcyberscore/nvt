@@ -23,8 +23,8 @@ CPE = "cpe:/a:apache:hadoop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142481");
-  script_version("2019-06-03T03:48:39+0000");
-  script_tag(name:"last_modification", value:"2019-06-03 03:48:39 +0000 (Mon, 03 Jun 2019)");
+  script_version("2019-06-03T08:02:26+0000");
+  script_tag(name:"last_modification", value:"2019-06-03 08:02:26 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-03 03:26:39 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
@@ -44,7 +44,7 @@ if (description)
   script_dependencies("gb_apache_hadoop_detect.nasl");
   script_mandatory_keys("Apache/Hadoop/Installed");
 
-  script_tag(name:"summary", value:"Apache Hadoop is prone to a KMS ACL regression vulnerbility.");
+  script_tag(name:"summary", value:"Apache Hadoop is prone to a KMS ACL regression vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host");
 

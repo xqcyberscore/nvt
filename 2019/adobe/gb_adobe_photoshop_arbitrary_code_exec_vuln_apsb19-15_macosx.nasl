@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:photoshop_cc2018";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814873");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-06-03T07:01:53+0000");
   script_cve_id("CVE-2019-7094");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-03-18 16:31:23 +0530 (Mon, 18 Mar 2019)");
   script_name("Adobe Photoshop CC Arbitrary Code Execution Vulnerability-APSB19-15 (Mac OS X)");
 

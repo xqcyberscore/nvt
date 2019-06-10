@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: b2evolution_net_sql_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # b2Evolution title SQL Injection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16121");
-  script_version("2019-04-11T14:06:24+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-06-06T08:04:52+0000");
+  script_tag(name:"last_modification", value:"2019-06-06 08:04:52 +0000 (Thu, 06 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,9 +36,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_b2evolution_detect.nasl");
+  script_mandatory_keys("b2evolution/installed");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/13718");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1012797");

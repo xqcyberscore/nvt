@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yara_ssh_detect.nasl 13058 2019-01-14 09:19:05Z cfischer $
 #
 # YARA Detection (SSH)
 #
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112478");
-  script_version("$Revision: 13058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 10:19:05 +0100 (Mon, 14 Jan 2019) $");
+  script_version("2019-06-03T07:31:04+0000");
+  script_tag(name:"last_modification", value:"2019-06-03 07:31:04 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-01-08 09:26:12 +0100 (Tue, 08 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,7 +68,7 @@ foreach full_path( full_path_list ) {
   if( ! full_path || "/." >< full_path )
     continue;
 
-  vers = get_bin_version( full_prog_name:full_path, sock:sock, version_argv:"-v", ver_pattern:"([0-9.]+)" );
+  vers = get_bin_version( full_prog_name:full_path, sock:sock, version_argv:"-v", ver_pattern:"([0-9.]{3,})" );
 
   if( vers[1] ) {
     version = vers[1];

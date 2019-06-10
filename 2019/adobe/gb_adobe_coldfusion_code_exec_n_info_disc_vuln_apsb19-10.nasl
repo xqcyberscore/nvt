@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814687");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-06-03T07:01:53+0000");
   script_cve_id("CVE-2019-7091", "CVE-2019-7092");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-02-14 12:03:46 +0530 (Thu, 14 Feb 2019)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Code Execution And Information Disclosure Vulnerabilities (APSB19-10)");
