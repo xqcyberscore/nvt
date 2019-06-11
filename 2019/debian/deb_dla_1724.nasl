@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891724");
-  script_version("2019-03-24T23:00:00+0100");
+  script_version("2019-06-11T06:56:59+0000");
   script_cve_id("CVE-2019-9755");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1724-1] ntfs-3g security update)");
-  script_tag(name:"last_modification", value:"2019-03-24 23:00:00 +0100 (Sun, 24 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-06-11 06:56:59 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-03-24 23:00:00 +0100 (Sun, 24 Mar 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

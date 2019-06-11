@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843941");
-  script_version("2019-04-04T14:50:45+0000");
+  script_version("2019-06-11T06:56:59+0000");
   script_cve_id("CVE-2019-9755");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-06-11 06:56:59 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 13:46:06 +0000 (Thu, 28 Mar 2019)");
   script_name("Ubuntu Update for ntfs-3g USN-3914-1");
   script_category(ACT_GATHER_INFO);

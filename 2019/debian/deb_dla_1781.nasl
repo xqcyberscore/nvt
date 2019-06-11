@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891781");
-  script_version("2019-05-10T02:00:09+0000");
+  script_version("2019-06-10T08:12:11+0000");
   script_cve_id("CVE-2018-11806", "CVE-2018-18849", "CVE-2018-20815", "CVE-2019-9824");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-10 02:00:09 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-06-10 08:12:11 +0000 (Mon, 10 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-10 02:00:09 +0000 (Fri, 10 May 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1781-1] qemu security update)");
   script_category(ACT_GATHER_INFO);

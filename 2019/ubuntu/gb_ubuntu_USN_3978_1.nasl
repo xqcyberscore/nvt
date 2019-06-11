@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844007");
-  script_version("2019-05-17T10:04:07+0000");
+  script_version("2019-06-10T08:12:11+0000");
   script_cve_id("CVE-2018-12130", "CVE-2018-12127", "CVE-2018-12126", "CVE-2018-20815",
                 "CVE-2019-11091", "CVE-2019-5008", "CVE-2019-9824");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:04:07 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-06-10 08:12:11 +0000 (Mon, 10 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 02:02:55 +0000 (Wed, 15 May 2019)");
   script_name("Ubuntu Update for qemu USN-3978-1");
   script_category(ACT_GATHER_INFO);
