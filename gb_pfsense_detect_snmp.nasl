@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_detect_snmp.nasl 7769 2017-11-15 10:07:45Z asteins $
 #
 # pfSense Detection (SNMP)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112117");
-  script_version("$Revision: 7769 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 11:07:45 +0100 (Wed, 15 Nov 2017) $");
+  script_version("2019-06-11T14:05:30+0000");
+  script_tag(name:"last_modification", value:"2019-06-11 14:05:30 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-10 13:04:05 +0100 (Fri, 10 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,19 +52,24 @@ include("misc_func.inc");
 
 port = get_snmp_port( default:161 );
 
-if( ! sysdesc = get_snmp_sysdesc(port:port ) ) exit ( 0 );
+if( ! sysdesc = get_snmp_sysdesc(port:port ) )
+  exit ( 0 );
 
+# pfSense 2.4.4 without patch:
+# pfSense  2.4.4-RELEASE pfSense FreeBSD 11.2-RELEASE-p3 amd64
+# pfsense 2.4.4 with p3:
+# pfSense  2.4.4-RELEASE pfSense FreeBSD 11.2-RELEASE-p10 amd64
 if ( "pfSense" >< sysdesc ) {
+
   set_kb_item( name:"pfsense/installed", value:TRUE );
   set_kb_item( name:"pfsense/snmp/installed", value:TRUE );
   set_kb_item( name:"pfsense/snmp/port", value:port );
 
   version = "unknown";
   vers = eregmatch( pattern:"^pfSense .* ([0-9.]+)-RELEASE .* FreeBSD", string:sysdesc );
-
-  if( vers[1] ) {
+  if( vers[1] )
     version = vers[1];
-  }
+
   set_kb_item( name:"pfsense/snmp/" + port + "/version", value:version );
   set_kb_item( name:"pfsense/snmp/" + port + "/concluded", value:sysdesc);
 }

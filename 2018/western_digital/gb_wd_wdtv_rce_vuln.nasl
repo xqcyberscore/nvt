@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_wdtv_rce_vuln.nasl 13716 2019-02-18 04:31:31Z ckuersteiner $
 #
 # Western Digital WD TV Live Hub RCE Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:western_digital:wdtv_live_hub';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141284");
-  script_version("$Revision: 13716 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 05:31:31 +0100 (Mon, 18 Feb 2019) $");
+  script_version("2019-06-11T10:18:21+0000");
+  script_tag(name:"last_modification", value:"2019-06-11 10:18:21 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-07-09 14:38:27 +0200 (Mon, 09 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,7 +56,7 @@ toServerValue.cgi.");
 
   script_tag(name:"affected", value:"Western Digital TV Live Hub 3.12.13 and probably prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 18th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 11th June, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"vuldetect", value:"Checks the firmware version.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_get_installed_sw.nasl 14073 2019-03-10 10:27:47Z cfischer $
 #
 # SNMP Read Installed Software Packages
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106913");
-  script_version("$Revision: 14073 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-10 11:27:47 +0100 (Sun, 10 Mar 2019) $");
+  script_version("2019-06-11T14:05:30+0000");
+  script_tag(name:"last_modification", value:"2019-06-11 14:05:30 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-06-29 15:32:58 +0700 (Thu, 29 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +52,7 @@ include("snmp_func.inc");
 
 port    = get_snmp_port(default: 161);
 sysdesc = get_snmp_sysdesc(port: port);
-if (!sysdesc || "Linux" >!< sysdesc)
+if (!sysdesc || ("Linux" >!< sysdesc && sysdesc !~ "(Free|Net|Open)BSD"))
   exit(0);
 
 # we limit it to max 800 entries

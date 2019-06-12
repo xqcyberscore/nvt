@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl 13699 2019-02-15 14:29:50Z cfischer $
 #
 # OCS Inventory NG <= 2.5.0 Remote Shell Upload Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:ocsinventory-ng:ocs_inventory_ng";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107374");
-  script_version("$Revision: 13699 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-06-11T10:18:21+0000");
+  script_tag(name:"last_modification", value:"2019-06-11 10:18:21 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-11-23 11:45:49 +0100 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -61,7 +60,7 @@ if (description)
 
   script_tag(name:"affected", value:"OCS Inventory NG version <= 2.5.0");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 11th June, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://seclists.org/fulldisclosure/2018/Nov/40");

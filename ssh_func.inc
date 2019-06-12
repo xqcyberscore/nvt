@@ -1884,7 +1884,7 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer ) {
 function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry, clear_buffer ) {
 
   local_var socket, cmd, timeout, nosh, return_errors, pty, pattern, retry, clear_buffer;
-  local_var payload, ret, tempbuf, end, cret, messid_data, ret_payload, ret_ssh_buf, sess;
+  local_var nolang_sh, payload, ret, tempbuf, end, cret, messid_data, ret_payload, ret_ssh_buf, sess;
 
   if( ! cmd ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd" );
@@ -1893,8 +1893,12 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
 
   if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_cmd" );
 
-  if( ! nosh )
-    if( get_kb_item( "ssh/force/nosh" ) ) nosh = TRUE; # NX-OS/IOS/JunOS/F5
+  if( ! nosh ) {
+    if( get_kb_item( "ssh/force/nosh" ) )
+      nosh = TRUE; # NX-OS/IOS/JunOS/F5
+    else if( get_kb_item( "ssh/force/nolang_sh" ) )
+      nolang_sh = TRUE; # pfSense, see description below
+  }
 
   if( get_kb_item( "ssh/no_linux_shell" ) ) {
     nosh = TRUE;
@@ -1903,7 +1907,12 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
 
   if( ! nosh ) {
     cmd = str_replace( string:cmd, find:"'", replace:'"' );
-    cmd = string( "/bin/sh -c ", "'LANG=C; LC_ALL=C; " , cmd , "'" );
+    # nb: Special handling for e.g. pfSense which had returned the command but with a space in between the command
+    # (e.g. 'u name -a' instead of 'uname -a' causing ssh_cmd_pty() to not remove this echo from the return value.
+    if( nolang_sh )
+      cmd = string( "/bin/sh -c ", "'", cmd, "'" );
+    else
+      cmd = string( "/bin/sh -c ", "'LANG=C; LC_ALL=C; ", cmd, "'" );
   }
 
   if( ! pty )
@@ -1950,8 +1959,8 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
     # e.g.:
     # /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
     # grep: /usr/include/freetype2/freetype/freetype.h: No such file or directory
-    if( ": not found" >< ret_ssh_buf || ": Permission denied" >< ret_ssh_buf
-    	|| "No such file or directory" >< ret_ssh_buf || "command not found" >< tolower( ret_ssh_buf ) ) {
+    if( ": not found" >< ret_ssh_buf || ": Permission denied" >< ret_ssh_buf ||
+        "No such file or directory" >< ret_ssh_buf || "command not found" >< tolower( ret_ssh_buf ) ) {
       if( ! return_errors )
         return '';
     }
@@ -2426,7 +2435,7 @@ function find_bin( prog_name, sock ) {
 function find_file( file_name, file_path, useregex, useextregex, regexpar, sock ) {
 
   local_var r, f, fname, lparam, cl, file_name, file_path, useregex, useextregex, regexpar, sock;
-  local_var use_find, descend_directories, cmd, start, end, current_timeout;
+  local_var use_find, descend_directories, cmd, check_pattern, start, end, current_timeout;
 
   if( get_kb_item( "ssh/no_linux_shell" ) )
     return;
@@ -2486,12 +2495,16 @@ function find_file( file_name, file_path, useregex, useextregex, regexpar, sock 
         if( "no" >< descend_directories )
           cmd += " -xdev";
 
+        # nb: check_pattern is used to check if some special devices are wrongly echoing back our command
+        # which could cause false detections with number based regex calls.
+        check_pattern = " -maxdepth 7 -mindepth 1";
+        cmd += check_pattern;
+
         # nb: /run is excluded because it is a new storage of transient state files on Debian
         # See https://wiki.debian.org/ReleaseGoals/RunDirectory for more info
-        cmd += " -maxdepth 7 -mindepth 1";
         cmd += ' \\( -path "*/proc" -o -path "/run" -o -path "/dev" -o -path "/sys" -o -path "/media" -o -path "/tmp" -o -path "/var" \\) -prune -o ';
-        cmd += " -name " + raw_string( 0x22 );
-        cmd += file_name + raw_string( 0x22 ) +" -a  -type f  -print 2>/dev/null";
+        cmd += "-name " + raw_string( 0x22 );
+        cmd += file_name + raw_string( 0x22 ) + " -a -type f -print 2>/dev/null";
 
         start = unixtime();
         f = split( ssh_cmd( socket:sock, cmd:cmd, timeout:60 ) );
@@ -2519,7 +2532,7 @@ function find_file( file_name, file_path, useregex, useextregex, regexpar, sock 
     return NULL;
 
   if( fname >!< r ) {
-    if( fname >< f ) {
+    if( fname >< f && check_pattern >!< f ) {
       r = f;
     } else {
       r = NULL;
@@ -2608,7 +2621,7 @@ function ssh_check_locate( sock ) {
         "Compression" >!< r &&
         "Filenames"   >!< r &&
         "file names"  >!< r ) ) ||
-        "command not found" >< r ||
+        "command not found" >< tolower( r ) ||
         "locate: not found" >< r ||
         "locate:" >< r ) { # nb: Also includes an outdated database like "locate: warning: database /var/cache/locate/locatedb is more than 8 days old (actual age is 9,3 days)"
 

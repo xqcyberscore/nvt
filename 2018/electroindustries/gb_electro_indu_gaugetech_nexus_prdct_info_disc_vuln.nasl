@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_electro_indu_gaugetech_nexus_prdct_info_disc_vuln.nasl 13716 2019-02-18 04:31:31Z ckuersteiner $
 #
 # Electro Industries GaugeTech Nexus series Products Information Disclosure Vulnerability
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/h:electroindustries_gaugetech:total_websolutions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813629");
-  script_version("$Revision: 13716 $");
+  script_version("2019-06-11T10:18:21+0000");
   script_cve_id("CVE-2018-12921");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 05:31:31 +0100 (Mon, 18 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-11 10:18:21 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-07-04 11:28:37 +0530 (Wed, 04 Jul 2018)");
 
   script_name("Electro Industries GaugeTech Nexus series Products Information Disclosure Vulnerability");
@@ -55,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Electro Industries GaugeTech Nexus series
   Products.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 18th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 11th June, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

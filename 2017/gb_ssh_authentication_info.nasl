@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 14040 2019-03-07 14:01:35Z cfischer $
 #
 # Linux/UNIX SSH/LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 14040 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 15:01:35 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-06-11T14:05:30+0000");
+  script_tag(name:"last_modification", value:"2019-06-11 14:05:30 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,6 +70,7 @@ kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
                        "ssh/locate/available", "locate: Command available",
                        "ssh/force/clear_buffer", "Clear received buffer before sending a command",
                        "ssh/force/nosh", "Don't prepend '/bin/sh -c' to used commands",
+                       "ssh/force/nolang_sh", "Don't prepend 'LANG=C; LC_ALL=C;' to the '/bin/sh -c' commands",
                        "ssh/force/pty", "Commands are send via an pseudoterminal/pty",
                        "ssh/send_extra_cmd", "Send an extra command",
                        "global_settings/ssh/debug", "Debugging enabled within 'Global variable settings'",

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Microsoft IIS Tilde Character Information Disclosure Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802887");
-  script_version("$Revision: 12465 $");
+  script_version("2019-06-07T14:26:17+0000");
   script_bugtraq_id(54251);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-07 14:26:17 +0000 (Fri, 07 Jun 2019)");
   script_tag(name:"creation_date", value:"2012-07-18 10:29:25 +0530 (Wed, 18 Jul 2012)");
   script_name("Microsoft IIS Tilde Character Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -51,7 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   sensitive information that could aid in further attacks.");
 
-  script_tag(name:"affected", value:"Microsoft Internet Information Services versions 7.5 and prior.");
+  script_tag(name:"affected", value:"All versions of Microsoft Internet Information Services.");
 
   script_tag(name:"insight", value:"Microsoft IIS fails to validate a specially crafted GET request
   containing a '~' tilde character, which allows to disclose all short-names of

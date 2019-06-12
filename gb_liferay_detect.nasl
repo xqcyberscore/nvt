@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_liferay_detect.nasl 11418 2018-09-17 05:57:41Z cfischer $
 #
 # Liferay Version Detection
 #
@@ -27,17 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808730");
-  script_version("$Revision: 11418 $");
+  script_version("2019-06-11T03:47:50+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 07:57:41 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-11 03:47:50 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2016-08-01 13:52:04 +0530 (Mon, 01 Aug 2016)");
   script_name("Liferay Version Detection");
-  script_tag(name:"summary", value:"Detects the installed version of
-  Liferay.
+  script_tag(name:"summary", value:"Detection of Liferay.
 
-  This script sends HTTP GET request and try to ensure the presence of Liferay
-  from the response.");
+  The script sends a connection request to the server and attempts to detect Liferay and to extract its
+  version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -53,6 +51,7 @@ if(description)
 include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("http_keepalive.inc");
 
 life_port = get_http_port(default:8080);
 
@@ -64,23 +63,19 @@ foreach dir(make_list_unique("/", "/Liferay", cgi_dirs(port:life_port)))
 
   url = dir + '/web/guest';
 
-  sndReq = http_get(item:url, port:life_port);
-  rcvRes = http_send_recv(port:life_port, data:sndReq);
+  rcvRes = http_get_cache(port: life_port, item: url);
 
-  if(rcvRes =~ "^HTTP/1\.[01] 200" && "Liferay<" >< rcvRes &&
-     rcvRes =~ "Powered By.*Liferay" && "> Email Address" ><rcvRes)
-  {
-    vers = eregmatch(pattern:"Liferay Portal Community Edition (([0-9.]+) ?([A-Z0-9]+)? ([A-Z0-9]+))", string:rcvRes);
-    if(vers[1]){
-      version = vers[1];
-    }
-    else{
-      version ="Unknown";
-    }
+  if(rcvRes =~ "^HTTP/1\.[01] 200" && "Liferay-Portal:" >< rcvRes) {
+    version = "unknown";
+
+# Liferay Community Edition Portal 7.0.1 GA2 (Wilberforce / Build 7001 / June 10, 2016)
+    vers = eregmatch(pattern:"Liferay (Portal )?Community Edition (Portal )?(([0-9.]+) ?([A-Z0-9]+)? ([A-Z0-9]+))",
+                     string:rcvRes);
+    if(!isnull(vers[3]))
+      version = vers[3];
 
     version = ereg_replace( pattern:" ", replace:".", string:version);
 
-    set_kb_item(name:"www/" + life_port + "/Liferay", value:version);
     set_kb_item(name:"Liferay/Installed", value:TRUE);
 
     cpe = build_cpe(value:version, exp:"([0-9.A-Z]+)", base:"cpe:/a:liferay:liferay_portal:");
@@ -93,9 +88,10 @@ foreach dir(make_list_unique("/", "/Liferay", cgi_dirs(port:life_port)))
                                             version:version,
                                             install:install,
                                             cpe:cpe,
-                                            concluded:version),
-                                            port:life_port);
+                                            concluded:vers[0]),
+                port:life_port);
     exit(0);
   }
 }
+
 exit(0);

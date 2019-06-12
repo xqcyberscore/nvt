@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_xss_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Openfire Reflected XSS Vulnerability
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112307");
-  script_version("$Revision: 13994 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
+  script_version("2019-06-11T10:18:21+0000");
+  script_tag(name:"last_modification", value:"2019-06-11 10:18:21 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-06-15 10:04:21 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -61,7 +60,7 @@ if(description)
 
   script_tag(name:"affected", value:"Ignite Realtime Openfire");
 
-  script_tag(name:"solution", value:"No known solution is available as of 14th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 11th June, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://seclists.org/fulldisclosure/2018/Jun/13");
