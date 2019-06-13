@@ -23,8 +23,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142500");
-  script_version("2019-06-11T04:26:53+0000");
-  script_tag(name:"last_modification", value:"2019-06-11 04:26:53 +0000 (Tue, 11 Jun 2019)");
+  script_version("2019-06-12T17:55:08+0000");
+  script_tag(name:"last_modification", value:"2019-06-12 17:55:08 +0000 (Wed, 12 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-11 04:26:01 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");
-  script_mandatory_keys("phpMyAdmin/installed", "Host/runs_unixoide");
+  script_mandatory_keys("phpMyAdmin/installed", "Host/runs_windows");
 
   script_tag(name:"summary", value:"phpMyAdmin is prone to a CSRF vulnerability.");
 

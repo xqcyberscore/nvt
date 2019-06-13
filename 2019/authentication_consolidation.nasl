@@ -83,10 +83,10 @@ if(!get_kb_item( "win/lsc/disable_win_cmd_exec" )){
     }
     password = kb_smb_password();
 
-	buf = win_cmd_exec(cmd:'powershell.exe -Command (New-Object System.Security.Principal.WindowsPrincipal([System.Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator) && echo Current user is admin', password:password, username:username);
+	buf = win_cmd_exec(cmd:'powershell.exe -Command whoami /GROUPS', password:password, username:username);
 }
 
-if("Current user is admin" >< buf){
+if("BUILTIN\Administrators" >< buf){
 	report += "Admin privileges detected\n";
 	full_smb_auth = full_smb_auth && TRUE;
 }else{
