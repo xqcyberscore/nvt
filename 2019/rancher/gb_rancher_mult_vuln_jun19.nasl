@@ -19,11 +19,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113038");
-  script_version("2019-06-12T09:56:27+0000");
-  script_tag(name:"last_modification", value:"2019-06-12 09:56:27 +0000 (Wed, 12 Jun 2019)");
+  script_version("2019-06-14T07:01:50+0000");
+  script_tag(name:"last_modification", value:"2019-06-14 07:01:50 +0000 (Fri, 14 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-11 14:44:30 +0000 (Tue, 11 Jun 2019)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -31,7 +31,7 @@ if(description)
 
   script_cve_id("CVE-2019-12274", "CVE-2019-11881");
 
-  script_name("Rancher < 2.2.4 Mutliple Vulnerabilities");
+  script_name("Rancher < 2.2.4 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 

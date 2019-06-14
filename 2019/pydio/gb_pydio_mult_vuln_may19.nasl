@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113404");
-  script_version("2019-06-07T07:25:51+0000");
-  script_tag(name:"last_modification", value:"2019-06-07 07:25:51 +0000 (Fri, 07 Jun 2019)");
+  script_version("2019-06-13T10:45:24+0000");
+  script_tag(name:"last_modification", value:"2019-06-13 10:45:24 +0000 (Thu, 13 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-03 11:55:43 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -65,7 +65,12 @@ if(description)
     in order to be able to edit the affected plugin configuration.
 
   - Using the aforementioned XSS vulnerability against an administrator would allow an attacker
-    to gain elevated privileges.");
+    to gain elevated privileges.
+
+  - An issue was discovered in proxy.php. Through an unauthenticated request, it is possible to
+    evaluate malicious PHP code by placing it in the fourth line of a .php file, with execution via
+    a HTTP GET request to proxy.php?hash=../../../../../var/lib/pydio/data/personal/guest/[filename].
+    This is related to plugins/action.share/src/Store/ShareStore.php.");
   script_tag(name:"affected", value:"Pydio through version 8.2.2.");
   script_tag(name:"solution", value:"Update to version 8.2.3.");
 
