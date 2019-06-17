@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_tnslsnr_version.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Oracle Version Detection
 #
@@ -8,7 +7,7 @@
 # James W. Abendschan <jwa@jammed.com>
 #
 # Copyright:
-# Copyright (C) 2001 James W. Abendschan <jwa@jammed.com>
+# Copyright (C) 2005 James W. Abendschan <jwa@jammed.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10658");
-  script_version("$Revision: 10929 $");
+  script_version("2019-06-14T09:39:30+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-14 09:39:30 +0000 (Fri, 14 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Oracle Version Detection");
 
@@ -41,7 +40,7 @@ if(description)
   the version from the response, and sets the result in KB.");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2001 James W. Abendschan <jwa@jammed.com>");
+  script_copyright("Copyright (C) 2005 James W. Abendschan <jwa@jammed.com>");
   script_family("Product detection");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/unknown", 1521);
@@ -56,25 +55,21 @@ include("cpe.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
+function tnscmd(sock, command) {
 
-function tnscmd(sock, command)
-{
+  command_length = strlen(command);
+  packet_length = command_length + 58;
 
-    command_length = strlen(command);
-    packet_length = command_length + 58;
+  # packet length - bytes 1 and 2
+  plen_h = packet_length / 256;
+  plen_l = 256 * plen_h; # bah, no ( ) ?
+  plen_l = packet_length - plen_h;
 
-    # packet length - bytes 1 and 2
+  clen_h = command_length / 256;
+  clen_l = 256 * clen_h;
+  clen_l = command_length - clen_l;
 
-    plen_h = packet_length / 256;
-    plen_l = 256 * plen_h;            # bah, no ( ) ?
-    plen_l = packet_length - plen_h;
-
-    clen_h = command_length / 256;
-    clen_l = 256 * clen_h;
-    clen_l = command_length - clen_l;
-
-
-    packet = raw_string(
+  packet = raw_string(
         plen_h, plen_l, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
         0x01, 0x36, 0x01, 0x2c, 0x00, 0x00, 0x08, 0x00,
         0x7f, 0xff, 0x7f, 0x08, 0x00, 0x00, 0x00, 0x01,
@@ -85,8 +80,7 @@ function tnscmd(sock, command)
         0x00, 0x00, command
         );
 
-
-    send (socket:sock, data:packet);
+  send (socket:sock, data:packet);
 }
 
 # Reply comes in 2 packets.  The first is the reply to the connection
@@ -120,7 +114,8 @@ function extract_version(socket)
     report = string("A TNS service is running on this port but it\n",
                     "refused to honor an attempt to connect to it.\n",
                     "(The TNS reply code was ", ord(header[4]), ")");
-    security_message(port:port, data:report);
+    register_service(port:port, proto:"oracle_tnslsnr");
+    log_message(port:port, data:report);
     return 0;
   }
 
@@ -192,8 +187,6 @@ function oracle_version(port)
     close(sock);
   }
 }
-
-# retrieve and test unknown services
 
 port = get_unknown_port( default:1521 );
 

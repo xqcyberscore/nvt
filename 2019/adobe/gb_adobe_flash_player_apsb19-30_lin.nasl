@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815096");
-  script_version("2019-06-12T13:47:22+0000");
+  script_version("2019-06-17T06:50:08+0000");
   script_cve_id("CVE-2019-7845");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-12 13:47:22 +0000 (Wed, 12 Jun 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-06-17 06:50:08 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-12 11:57:05 +0530 (Wed, 12 Jun 2019)");
   script_name("Adobe Flash Player Security Update(apsb19-30)-Linux");
 

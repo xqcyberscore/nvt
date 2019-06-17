@@ -1,19 +1,14 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_dameware_mini_rc_bof_vuln_nov15.nasl 13699 2019-02-15 14:29:50Z cfischer $
+# Copyright (C) 2018 Greenbone Networks GmbH
 #
-# DameWare Mini Remote Control < 12.0 Hotfix 1 Buffer Overflow Vulnerability (Windows)
+# Text descriptions are largely excerpted from the referenced
+# advisory, and are Copyright (C) of their respective author(s)
 #
-# Authors:
-# Michael Martin <michael.martin@greenbone.net>
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Copyright:
-# Copyright (C) 2018 Greenbone Networks GmbH, https://www.greenbone.net
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,15 +18,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107381");
-  script_version("$Revision: 13699 $");
+  script_version("2019-06-14T08:55:13+0000");
   script_cve_id("CVE-2015-8220");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
-  script_tag(name:"creation_date", value:"2018-11-26 13:45:14 +0100 (Mon, 26 Nov 2018)");
+  script_tag(name:"last_modification", value:"2019-06-14 08:55:13 +0000 (Fri, 14 Jun 2019)");
+  script_tag(name:"creation_date", value:"2018-11-26 13:45:13 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"registry");
@@ -43,14 +37,18 @@ if(description)
   script_dependencies("gb_dameware_mini_rc_detect_win.nasl");
   script_mandatory_keys("dameware/mini_remote_control/win/detected");
 
-  script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer overflow vulnerability.");
+  script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer overflow
+vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Stack-based buffer overflow in the URI handler in DWRCC.exe in
-  SolarWinds DameWare Mini Remote Control before 12.0 HotFix 1.");
-  script_tag(name:"impact", value:"Exploitation of this Vulnerability allows remote attackers to execute
-  arbitrary code via a crafted commandline argument in a link.");
+SolarWinds DameWare Mini Remote Control before 12.0 HotFix 1.");
+
+  script_tag(name:"impact", value:"Exploitation of this Vulnerability allows remote attackers to
+execute arbitrary code via a crafted commandline argument in a link.");
+
   script_tag(name:"affected", value:"DameWare Mini Remote Control before version 12.0 Hotfix 1.");
-  script_tag(name:"solution", value:"Upgrade DameWare Mini Remote Control to version 12.0 Hotfix 1 or later.");
+  script_tag(name:"solution", value:"Upgrade DameWare Mini Remote Control to version 12.0 Hotfix 1
+or later.");
 
   script_xref(name:"URL", value:"https://thwack.solarwinds.com/thread/95643");
 

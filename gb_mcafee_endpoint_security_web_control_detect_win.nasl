@@ -19,9 +19,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107617");
-  script_version("$Revision: 14177 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:03:37 +0100 (Thu, 14 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2019-03-14 09:19:14 +0100 (Thu, 14 Mar 2019)");
+  script_version("2019-06-14T12:04:34+0000");
+  script_tag(name:"last_modification", value:"2019-06-14 12:04:34 +0000 (Fri, 14 Jun 2019)");
+  script_tag(name:"creation_date", value:"2019-03-14 09:19:13 +0100 (Thu, 14 Mar 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("McAfee Endpoint Security Web Control Version Detection (Windows)");
@@ -31,9 +31,8 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
-
-  script_tag(name:"summary", value:"Detects the installed version
-  of McAfee Endpoint Security Web Control for Windows.");
+  script_tag(name:"summary", value:"Detects the installed version of McAfee Endpoint Security Web
+Control for Windows.");
   script_xref(name:"URL", value:"https://www.mcafee.com/enterprise/en-us/products/endpoint-security.html");
   script_tag(name:"qod_type", value:"registry");
 
@@ -47,8 +46,7 @@ include("secpod_smb_func.inc");
 include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch)
-  exit(0);
+if(!os_arch) exit(0);
 
 if("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -71,13 +69,13 @@ foreach key (key_list) {
     loc = registry_get_sz(key:key + item, item:"InstallLocation");
     if(loc) location = loc;
 
-    if(!version = registry_get_sz(key:key + item, item:"DisplayVersion"))
-      version = "unknown";
+    if(!version = registry_get_sz(key:key + item, item:"DisplayVersion")) version = "unknown";
 
     set_kb_item(name:"mcafee/endpoint_security_web_control/win/detected", value:TRUE);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-                          base:"cpe:/a:mcafee:endpoint_security_web_control:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+                            base:"cpe:/a:mcafee:endpoint_security_web_control:", expr:"^([0-9.]+)",
+                            insloc:location, regService:"smb-login", regPort:0);
     exit(0);
   }
 }

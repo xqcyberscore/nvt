@@ -1,35 +1,27 @@
-##############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_logitech_options_detect_win.nasl 12823 2018-12-18 13:47:35Z asteins $
+# Copyright (C) 2018 Greenbone Networks GmbH
 #
-# Logitech Options Detection (Windows)
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Authors:
-# Michael Martin <michael.martin@greenbone.net>
-#
-# Copyright:
-# Copyright (c) 2018 Greenbone Networks GmbH, http//www.greenbone.net
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2
-# (or any later version), as published by the Free Software Foundation.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107435");
-  script_version("$Revision: 12823 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 14:47:35 +0100 (Tue, 18 Dec 2018) $");
-  script_tag(name:"creation_date", value:"2018-12-14 15:24:56 +0100 (Fri, 14 Dec 2018)");
+  script_version("2019-06-14T09:48:28+0000");
+  script_tag(name:"last_modification", value:"2019-06-14 09:48:28 +0000 (Fri, 14 Jun 2019)");
+  script_tag(name:"creation_date", value:"2018-12-14 15:24:55 +0100 (Fri, 14 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Logitech Options Detection (Windows)");
@@ -39,12 +31,8 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
-
-  script_tag(name:"summary", value:"Detects the installed version
-  of Logitech Options for Windows.");
-
+  script_tag(name:"summary", value:"Detects the installed version of Logitech Options for Windows.");
   script_tag(name:"qod_type", value:"registry");
-
   exit(0);
 }
 
@@ -55,8 +43,7 @@ include("secpod_smb_func.inc");
 include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch)
-  exit(0);
+if(!os_arch) exit(0);
 
 if("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -91,7 +78,8 @@ foreach key (key_list) {
     set_kb_item(name:"logitech/options/win/ver", value:version);
 
     register_and_report_cpe(app:appName , ver:version, concluded:concluded,
-                          base:"cpe:/a:logitech:options:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+                            base:"cpe:/a:logitech:options:", expr:"^([0-9.]+)", insloc:location,
+                            regService:"smb-login", regPort:0);
     exit(0);
   }
 }

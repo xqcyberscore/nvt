@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-06-11T14:05:30+0000");
-  script_tag(name:"last_modification", value:"2019-06-11 14:05:30 +0000 (Tue, 11 Jun 2019)");
+  script_version("2019-06-15T13:46:14+0000");
+  script_tag(name:"last_modification", value:"2019-06-15 13:46:14 +0000 (Sat, 15 Jun 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -592,7 +592,10 @@ if( "Welcome to the Greenbone OS" >< uname ) {
 if( "linux" >< tolower( uname ) ) {
   un = egrep( pattern:'(Linux[^\r\n]+)', string:uname );
   if( un ) {
-    u = eregmatch( pattern:'(Linux [^ ]+ [^ ]+ #[0-9]+ [^\n]+)', string:un );
+
+    # Linux hostname 4.19.46 #1-NixOS SMP Sat May 25 16:23:48 UTC 2019 x86_64 GNU/Linux
+    # Linux hostname 4.19.0-5-amd64 #1 SMP Debian 4.19.37-3 (2019-05-15) x86_64 GNU/Linux
+    u = eregmatch( pattern:'(Linux [^ ]+ [^ ]+ #[0-9]+[^ ]* [^\n]+)', string:un );
 
     if( ! isnull( u[1] ) ) {
       register_uname( uname:u[1] );

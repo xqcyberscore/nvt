@@ -19,9 +19,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107555");
-  script_version("$Revision: 13641 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 15:56:21 +0100 (Wed, 13 Feb 2019) $");
-  script_tag(name:"creation_date", value:"2019-02-12 12:25:43 +0100 (Tue, 12 Feb 2019)");
+  script_version("2019-06-14T11:25:55+0000");
+  script_tag(name:"last_modification", value:"2019-06-14 11:25:55 +0000 (Fri, 14 Jun 2019)");
+  script_tag(name:"creation_date", value:"2019-02-12 12:25:42 +0100 (Tue, 12 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("WECON LeviStudioU Version Detection (Windows)");
@@ -31,9 +31,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
-
-  script_tag(name:"summary", value:"Detects the installed version
-  of WECON LeviStudioU for Windows.");
+  script_tag(name:"summary", value:"Detects the installed version of WECON LeviStudioU for Windows.");
   script_xref(name:"URL", value:"http://www.we-con.com.cn/");
   script_tag(name:"qod_type", value:"registry");
 
@@ -47,8 +45,7 @@ include("secpod_smb_func.inc");
 include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch)
-  exit(0);
+if(!os_arch) exit(0);
 
 if("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -63,25 +60,28 @@ foreach key (key_list) {
   foreach item (registry_enum_keys(key:key)) {
 
     appName = registry_get_sz(key:key + item, item:"DisplayName");
-    if(!appName || appName !~ "LeviStudioU") continue;
+    if(appName !~ "LeviStudioU") continue;
 
     location = "unknown";
 
     loc = registry_get_sz(key:key + item, item:"InstallLocation");
     if(loc){
       location = loc;
-    #item:"DisplayVersion" contains wrong value.
-      path = location + '\\ReleaseLog.log';
+
+      path = location + "\ReleaseLog.log";
       version_info = smb_read_file(fullpath:path, offset:0, count:300);
       versq = eregmatch(pattern:"Release Build [0-9-]+ V([0-9.]+)", string:version_info);
       version = versq[1];
-    }else version = "unknown";
+    }else{
+      version = "unknown";
+    }
     concluded = versq[0];
 
     set_kb_item(name:"wecon/levistudiou/win/detected", value:TRUE);
 
     register_and_report_cpe(app:"WECON LeviStudioU", ver:version, concluded:concluded,
-                          base:"cpe:/a:we-con:levistudiou:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+                            base:"cpe:/a:we-con:levistudiou:", expr:"^([0-9.]+)", insloc:location,
+                            regService:"smb-login", regPort:0);
     exit(0);
   }
 }

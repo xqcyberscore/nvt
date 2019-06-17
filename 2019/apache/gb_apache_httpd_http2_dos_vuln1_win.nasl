@@ -23,11 +23,11 @@ CPE = "cpe:/a:apache:http_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142225");
-  script_version("2019-04-08T15:50:06+0000");
-  script_tag(name:"last_modification", value:"2019-04-08 15:50:06 +0000 (Mon, 08 Apr 2019)");
+  script_version("2019-06-17T06:50:08+0000");
+  script_tag(name:"last_modification", value:"2019-06-17 06:50:08 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-08 15:32:26 +0000 (Mon, 08 Apr 2019)");
-  script_tag(name:"cvss_base", value:"3.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
 
   script_cve_id("CVE-2019-0197");
 

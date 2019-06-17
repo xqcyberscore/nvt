@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704422");
-  script_version("2019-04-26T08:24:31+0000");
+  script_version("2019-06-17T06:50:08+0000");
   script_cve_id("CVE-2018-17189", "CVE-2018-17199", "CVE-2019-0196", "CVE-2019-0211", "CVE-2019-0217", "CVE-2019-0220");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-17 06:50:08 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-06 02:00:17 +0000 (Sat, 06 Apr 2019)");
   script_name("Debian Security Advisory DSA 4422-1 (apache2 - security update)");
   script_category(ACT_GATHER_INFO);

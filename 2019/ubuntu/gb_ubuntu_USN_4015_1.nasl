@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844049");
-  script_version("2019-06-13T11:51:34+0000");
+  script_version("2019-06-17T06:50:08+0000");
   script_cve_id("CVE-2019-12749");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-13 11:51:34 +0000 (Thu, 13 Jun 2019)");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-06-17 06:50:08 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-12 02:00:36 +0000 (Wed, 12 Jun 2019)");
   script_name("Ubuntu Update for dbus USN-4015-1");
   script_category(ACT_GATHER_INFO);

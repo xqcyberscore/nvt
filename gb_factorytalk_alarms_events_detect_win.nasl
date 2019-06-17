@@ -1,14 +1,6 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_factorytalk_alarms_events_detect_win.nasl 13163 2019-01-19 09:02:36Z mmartin $
+# Copyright (C) 2019 Greenbone Networks GmbH, http//www.greenbone.net
 #
-# Rockwell Automation FactoryTalk Alarms and Events Version Detection (Windows)
-#
-# Authors:
-# Michael Martin <michael.martin@greenbone.net>
-#
-# Copyright:
-# Copyright (c) 2019 Greenbone Networks GmbH, http//www.greenbone.net
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -22,14 +14,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107466");
-  script_version("$Revision: 13163 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-19 10:02:36 +0100 (Sat, 19 Jan 2019) $");
-  script_tag(name:"creation_date", value:"2019-01-19 10:04:29 +0100 (Sat, 19 Jan 2019)");
+  script_version("2019-06-14T10:35:11+0000");
+  script_tag(name:"last_modification", value:"2019-06-14 10:35:11 +0000 (Fri, 14 Jun 2019)");
+  script_tag(name:"creation_date", value:"2019-01-19 10:04:28 +0100 (Sat, 19 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Rockwell Automation FactoryTalk Alarms and Events Version Detection (Windows)");

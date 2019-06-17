@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # ILIAS Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140443");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-06-14T08:06:30+0000");
+  script_tag(name:"last_modification", value:"2019-06-14 08:06:30 +0000 (Fri, 14 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -78,6 +77,9 @@ foreach dir (make_list_unique("/", "/ilias", "/ILIAS", cgi_dirs(port: port))) {
   # http_get_cache() doesn't make sense here since we get a unique session id anyway
   req = http_get(port: port, item: url);
   res = http_keepalive_send_recv(port: port, data: req);
+
+  if (!res)
+    continue;
 
   # We should get a redirect with a session id
   loc = http_extract_location_from_redirect(port: port, data: res);
