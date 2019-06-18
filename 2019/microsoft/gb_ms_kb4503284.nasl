@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815087");
-  script_version("2019-06-12T13:47:22+0000");
+  script_version("2019-06-18T06:52:36+0000");
   script_cve_id("CVE-2019-0620", "CVE-2019-0709", "CVE-2019-0710", "CVE-2019-0711",
                 "CVE-2019-0713", "CVE-2019-0722", "CVE-2019-0888", "CVE-2019-0904",
                 "CVE-2019-0905", "CVE-2019-0906", "CVE-2019-0907", "CVE-2019-0908",
@@ -38,9 +38,9 @@ if(description)
                 "CVE-2019-1050", "CVE-2019-1051", "CVE-2019-1052", "CVE-2019-1053",
                 "CVE-2019-1054", "CVE-2019-1055", "CVE-2019-1064", "CVE-2019-1069",
                 "CVE-2019-1080", "CVE-2019-1081", "CVE-2019-2102");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-12 13:47:22 +0000 (Wed, 12 Jun 2019)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-18 06:52:36 +0000 (Tue, 18 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-12 09:25:15 +0530 (Wed, 12 Jun 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4503284)");
 

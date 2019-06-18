@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113380");
-  script_version("2019-06-13T11:02:17+0000");
-  script_tag(name:"last_modification", value:"2019-06-13 11:02:17 +0000 (Thu, 13 Jun 2019)");
+  script_version("2019-06-17T12:27:56+0000");
+  script_tag(name:"last_modification", value:"2019-06-17 12:27:56 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-29 12:27:28 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -29,9 +29,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_cve_id("CVE-2019-11513", "CVE-2019-11226");
+  script_cve_id("CVE-2019-11513", "CVE-2019-11226", "CVE-2019-10105", "CVE-2019-10106", "CVE-2019-10107");
 
-  script_name("CMS Made Simple <= 2.2.10 Reflected Mutliple Cross-Site Scripting (XSS) Vulnerabilities");
+  script_name("CMS Made Simple <= 2.2.10 Reflected Multiple Cross-Site Scripting (XSS) Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -41,16 +41,30 @@ if(description)
   script_mandatory_keys("cmsmadesimple/installed");
 
   script_tag(name:"summary", value:"CMS Made Simple is prone to multiple cross-site scripting (XSS) vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
   - The File Manager is prone to reflected XSS via the 'New Name' field in a Rename action.
 
-  - XSS Vulnerability via the m1_name parameter in 'Add Article' under Content->Content Manager->News.");
+  - XSS Vulnerability via the m1_name parameter in 'Add Article' under Content->Content Manager->News.
+
+  - Self-XSS Vulnerability via the Layout Design Manager 'Name' field, which is reachable via a
+    'Create a new Template' action to the Designer.
+
+  - XSS Vulnerability via the moduleinterface.php 'Name' field, which is reachable via an
+  'Add Category' action to the 'Site Admin Settings - News module' section.
+
+  - XSS Vulnerability via the myaccount.php 'Email Address' field, which is reachable via the
+  'My Preferences - My Account' section.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an authenticated attacker to inject arbitrary
   JavaScript and HTML into the site.");
+
   script_tag(name:"affected", value:"CMS Made Simple through version 2.2.10.");
-  script_tag(name:"solution", value:"No known solution is available as of 13th June, 2019.
+
+  script_tag(name:"solution", value:"No known solution is available as of 17th June, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://dev.cmsmadesimple.org/bug/view/12022");

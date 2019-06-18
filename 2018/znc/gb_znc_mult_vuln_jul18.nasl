@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_znc_mult_vuln_jul18.nasl 11317 2018-09-11 08:57:27Z asteins $
 #
 # ZNC < 1.7.1-rc1 Multiple Vulnerabilities
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:znc:znc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108452");
-  script_version("$Revision: 11317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_version("2019-06-17T10:09:29+0000");
+  script_tag(name:"last_modification", value:"2019-06-17 10:09:29 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-07-24 09:57:02 +0200 (Tue, 24 Jul 2018)");
   script_cve_id("CVE-2018-14055", "CVE-2018-14056");
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"https://github.com/znc/znc/commit/d22fef8620cdd87490754f607e7153979731c69d");
   script_xref(name:"URL", value:"https://github.com/znc/znc/commit/a4a5aeeb17d32937d8c7d743dae9a4cc755ce773");
 
-  script_tag(name:"summary", value:"The host is running an ZCN IRC bouncer which is prone to multiple
+  script_tag(name:"summary", value:"The host is running an ZNC IRC bouncer which is prone to multiple
   security vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation allows:
@@ -78,11 +77,17 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos["version"];
+path = infos["location"];
 
 if( version_in_range( version:vers, test_version:"0.045", test_version2:"1.7.0" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"1.7.1-rc1" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.7.1-rc1", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

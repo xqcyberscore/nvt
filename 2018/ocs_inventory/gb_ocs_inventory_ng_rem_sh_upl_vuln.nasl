@@ -24,8 +24,8 @@ CPE = "cpe:/a:ocsinventory-ng:ocs_inventory_ng";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107374");
-  script_version("2019-06-14T09:22:55+0000");
-  script_tag(name:"last_modification", value:"2019-06-14 09:22:55 +0000 (Fri, 14 Jun 2019)");
+  script_version("2019-06-17T12:10:54+0000");
+  script_tag(name:"last_modification", value:"2019-06-17 12:10:54 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-11-23 11:45:49 +0100 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -38,21 +38,24 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("secpod_ocs_inventory_ng_detect.nasl");
   script_mandatory_keys("ocs_inventory_ng/detected");
+
   script_tag(name:"summary", value:"OCS Inventory NG <= 2.5.0 is prone to a remote shell upload
-vulnerability.");
+  vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"OCS Inventory NG could allow a remote authenticated attacker to
-upload arbitrary files. By sending a specially-crafted HTTP request, a remote attacker could exploit
-this vulnerability to upload a malicious PHP script, which could allow the attacker to execute
-arbitrary PHP code on the vulnerable system.");
+  upload arbitrary files. By sending a specially-crafted HTTP request, a remote attacker could exploit
+  this vulnerability to upload a malicious PHP script, which could allow the attacker to execute
+  arbitrary PHP code on the vulnerable system.");
 
   script_tag(name:"impact", value:"Remotely authenticated attackers might use this vulnerability to
-execute arbitrary code on the target.");
+  execute arbitrary code on the target.");
 
-  script_tag(name:"affected", value:"OCS Inventory NG version <= 2.5.0");
-  script_tag(name:"solution", value:"No known solution is available as of 08th June, 2019.
-Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"affected", value:"OCS Inventory NG version <= 2.5.0.");
+
+  script_tag(name:"solution", value:"No known solution is available as of 17th June, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://seclists.org/fulldisclosure/2018/Nov/40");
   script_xref(name:"URL", value:"https://exchange.xforce.ibmcloud.com/vulnerabilities/152967");
@@ -67,7 +70,7 @@ include( "version_func.inc" );
 if( ! port = get_app_port( cpe: CPE ) )
   exit( 0 );
 
-if( ! infos = get_app_version_and_location( cpe: CPE, exit_no_version: TRUE ) )
+if( ! infos = get_app_version_and_location( cpe: CPE, port: port, exit_no_version: TRUE ) )
   exit( 0 );
 
 version = infos['version'];

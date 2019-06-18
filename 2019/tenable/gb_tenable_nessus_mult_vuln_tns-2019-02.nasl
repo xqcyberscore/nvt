@@ -23,11 +23,11 @@ CPE = "cpe:/a:tenable:nessus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107633");
-  script_version("2019-04-04T14:50:45+0000");
+  script_version("2019-06-17T10:04:51+0000");
   script_cve_id("CVE-2019-1559", "CVE-2017-18214", "CVE-2016-4055");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-06-17 10:04:51 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-02 15:40:22 +0200 (Tue, 02 Apr 2019)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Tenable Nessus < 8.3.0 Multiple Vulnerabilities (TNS-2019-02)");
@@ -37,7 +37,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"These vulnerabilities exist in 3rdpary components used by Nessus:
+  script_tag(name:"insight", value:"These vulnerabilities exist in third party components used by Nessus:
 
   - An Information disclosure vulnerability in OpenSSL.
 

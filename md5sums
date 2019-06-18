@@ -155,7 +155,7 @@ d2cc0f547e362cb335df19b612e8b5ea  gb_icq_detect.nasl
 c56e4b8c2f4304c3dc0785a89b1f608f  secpod_avahi_detection_lin.nasl
 cbf5ebc9075e846d706ca0666faced01  gb_superantispyware_detect.nasl
 7dcb3311d20a38d684348916d9e08b2b  gb_ibm_tsm_client_detect_macosx.nasl
-b8faf320aa0d8def72fbf4046c994906  gb_docker_for_windows_detect.nasl
+6da1963192ba99438a6e3caa2e6cb113  gb_docker_for_windows_detect.nasl
 91b24cf8605fb3e4e9b5ad6750b99282  secpod_usebb_detect.nasl
 d6adcde28bbd3b4965a6de55918def50  gb_ibh_opc_ua_server_client_detect_win.nasl
 3686a5d34f80ab81ab45ae899f1acf2d  gb_postgres_tls_support.nasl
@@ -509,7 +509,7 @@ b93cdc117e5a794c5b150f46ba9bbf06  gb_frontier_silicon_radio_detect.nasl
 c5d8e0fa7b36d331c3729fb5b5583bd7  gb_solarwinds_scm_detect_win.nasl
 22665b7aff2fffb132cc0a0f4afb63cf  sw_proxmox_ve_detect.nasl
 b176056f7e914ed2f22ee178cff9d33f  gb_projectsend_remote_detect.nasl
-5c850d4cfca3b35c9394ea863f0dc139  gb_netgear_prosafe_http_detect.nasl
+1f79519fa2f16b8a88c9feb0dc53e46c  gb_netgear_prosafe_http_detect.nasl
 cd81f61cdfa7bd165889b8620e2d2390  gb_cisco_firepower_management_center_web_detect.nasl
 ed31b8c6160660521315375b4fb176a4  remote-detect-filemaker.nasl
 7f51687dca7577cb3d2f4122a138cba0  logins.nasl
@@ -5293,7 +5293,7 @@ c611c1b6318d70b9002c27d9929f0fee  2016/gb_fedora_2016_4274c906e7_perl-DBD-MySQL_
 7124e61af1d8e82763f8d5e0b2e2642a  2016/gb_fedora_2016_60753c3dcd_roundcubemail_fc24.nasl
 e5fe2d7435a86818f0c29c3a88ca18de  2016/gb_cloudbees_jenkins_mult_xss_vuln_aug16_win.nasl
 d44028affcd7429140aa5487a4ee8f56  2016/gb_fedora_2016_8fd9019541_xen_fc22.nasl
-53f34bd2c25cd18d224aab4c2008bf51  2016/gb_panasonic_fpwin_pro_mult_vuln.nasl
+99468c662207556112a054db0b82b751  2016/gb_panasonic_fpwin_pro_mult_vuln.nasl
 83ba24a62d1f5fda234314b9a8a51c1c  2016/gb_RHSA-2015_1623-01_kernel.nasl
 c70da7e5080b3dddddf6eb102ce96b36  2016/gb_securitydbData_xml_disclosure.nasl
 a518ea821f374155129495b8f368e317  2016/gb_fedora_2016_0_firefox_fc23.nasl
@@ -7941,7 +7941,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 569372e634dac843f3eb1d55567d5fd6  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-391f861b36f7376bdcd3ab5ef613bc1d  plugin_feed_info.inc
+76294821a552b6736f6a5305bba7ee1f  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -13773,7 +13773,7 @@ e2d3696e2f363ec74793db7faf065b84  2018/wampserver/gb_wampserver_xss_vuln_dec18.n
 35e652fb5bd6908186d4a2b4be05cc50  2018/python/gb_python_elementtree_dos_vuln_win.nasl
 1f17b8c21a3891486e566a1ebf97c317  2018/python/gb_python_elementtree_dos_vuln_macosx.nasl
 a0f4dc0433fd3c5c708fa8e49b80ac7b  2018/python/gb_python_mult_dos_vuln_june18_win.nasl
-3406725607648b0ffbd9a8854de29ac3  2018/igniterealtime/gb_openfire_xss_vuln.nasl
+4e49a3ef3c6db80f99891587af5247f0  2018/igniterealtime/gb_openfire_xss_vuln.nasl
 67bcba06d2144d938dd107b45606df85  2018/php/gb_php_imap_mail_dos_vuln_win.nasl
 edd6b5eaae14108623dd741926bf6bd1  2018/php/gb_php_security_bypass_vuln_may18_win.nasl
 0272444bd808cfcbdc13956c03d80bf2  2018/php/gb_php_stack_buffer_overflow_vuln_mar18_lin.nasl
@@ -14386,7 +14386,7 @@ f44185a076c67d41b62fd20c2fd17c99  2018/jquery/gb_jquery_xss_vuln2.nasl
 75a8e194690b246e75572e31a2cf49bb  2018/jquery/gb_jquery_xss_vuln3.nasl
 51c46a5fd57a88ead4a78c758b35935c  2018/avtech/gb_avtech_avc787_dvr_default_cred_vuln.nasl
 f508ac93cd58ab5dfc4a9c53c88ea8d5  2018/ocs_inventory/gb_ocs_inventory_ng_mult_vuln.nasl
-0ffbc95b9b9b443d1aa33182f0c5a1c1  2018/ocs_inventory/gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl
+cc2c00c4b9acb2782899032f5f6844d3  2018/ocs_inventory/gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl
 a1d294c701e17ba9511ea9c49b91d80b  2018/nomachine/gb_nomachine_for_windows_rce_vuln.nasl
 2fae9634dc8751af319d0a26e0d78f18  2018/kubernetes/gb_kubernetes_dashboard_exposure_vuln.nasl
 13d197b9b011d306d4394b8c50468d2a  2018/openvpn/gb_openvpn_win_dos_vuln.nasl
@@ -15400,7 +15400,7 @@ e58341caa67d53d2237709dc0a51efbf  2018/canon/gb_canon_network_camera_default_cre
 4a4b591fe826f6a931cde3ad890d2870  2018/canon/gb_canon_printers_auth_bypass.nasl
 c75cf91fd074c80b59f6b885223796c7  2018/canon/gb_canon_printer_lbp6030w_auth_bypass_vuln.nasl
 c9244d5c8a7105ada2a99acd7cf90c62  2018/canon/gb_canon_printers_access_bypass_vuln.nasl
-61aa210c304fa6ef10def48470dc6db5  2018/canon/gb_canon_printme_efi_xss_vuln.nasl
+3242cbae4edbfb87e56a3a72c19e6b5f  2018/canon/gb_canon_printme_efi_xss_vuln.nasl
 8c7c03af18049922ce7f9860c484a93a  2018/h2o/gb_h2o_mult_vuln2.nasl
 0c884819b19899f15e9064ad9d5cce51  2018/h2o/gb_h2o_heap_overflow_vuln.nasl
 336ca7a5e06fe2e65697bf72ec611c11  2018/h2o/gb_h2o_dos_vuln2.nasl
@@ -16142,7 +16142,7 @@ af724728efc7e6c4d3c545a04f36fe6d  2018/lantronix/gb_lantronix_device_default_cre
 8fd88e3677c1cf51831820cce4a38bf4  2018/dovecot/gb_dovecot_dos_and_inf_disc_vuln.nasl
 6f1f073fc80718b5c554a6f4ecaf9da5  2018/swarmpit/gb_swarmpit_exposure_vuln.nasl
 e5a4fe5abf3a0f6d0ee4f3991bd42266  2018/contec/gb_contec_smart_home_auth_bypass_vuln.nasl
-55c8fea3305250df1197794d6d2afbae  2018/znc/gb_znc_mult_vuln_jul18.nasl
+817052ad4a3b4a730d77bb696087f8e4  2018/znc/gb_znc_mult_vuln_jul18.nasl
 68424de763204d08e08dde1219aa3c2f  2018/nodejs/gb_nodejs_dos_vuln02_win.nasl
 0ca8eb82b036f32c96be122c25df527a  2018/nodejs/gb_nodejs_dos_vuln04_macosx.nasl
 e9b8e1f1482ffbb3f3a0db76640ed989  2018/nodejs/gb_nodejs_path_mod_regex_dos_vuln_macosx.nasl
@@ -19254,7 +19254,7 @@ c1e4329833ac4dc49e02b1c737cc365a  2018/elasticsearch/gb_elasticsearch_snapshot_a
 ba6cb122483d144c0d64e9c075855793  2018/magnicomp/gb_magnicomp_sysinfo_info_disc_vuln_macosx.nasl
 7488b25bb582da1db3dc0e6643f35bd5  2018/magnicomp/gb_magnicomp_sysinfo_info_disc_vuln_lin.nasl
 77b3ca5f33113bd855bf48414e764d40  2018/magnicomp/gb_magnicomp_sysinfo_priv_escal_vuln_lin.nasl
-4217f29bab611f5013373805e6554baf  2018/docker/gb_docker_for_windows_privilege_escalation_vuln.nasl
+6c61c7f6961c8d158d719a224af0e602  2018/docker/gb_docker_for_windows_privilege_escalation_vuln.nasl
 2f61bcdd0ecb75dbfba54773b3e95b6b  2018/tenable/gb_tenable_nessus_priv_esc_vuln.nasl
 61cd32e35e598f9b990837c7d4d6bed5  2018/tenable/gb_tenable_nessus_mult_vuln_tns-2018-08.nasl
 32286645e1028835977bdea46d39b5de  2018/tenable/gb_tenable_nessus_mult_vuln_tns-2018-14.nasl
@@ -36518,7 +36518,7 @@ ce474c21ee37caa076fac7c79f7348b2  gb_prtg_network_monitor_detect.nasl
 a93f8c755628b7ef66d06f92107d4a6e  gb_apache_archiva_detect.nasl
 672dde848a7f088f2619d3db14d4f38d  gb_hpe_synergy_planning_tool_detect.nasl
 d77712f73acc637ca82abf9bf82129ab  gb_symantec_messaging_gateway_ssh_detect.nasl
-71472c28fcfb3d7cba4b19fbc0f13c65  gb_panasonic_fpwin_pro_detect_win.nasl
+0746ab3abcc2d2517ffe8ddc8b740132  gb_panasonic_fpwin_pro_detect_win.nasl
 d7b73bbb855ddb74f234e26d6b6bdc19  gb_abb_driveconfig_detect_win.nasl
 abd386dda076d4eb58189e8929f46bc1  AfterLogic_WebMail_Pro_detect.nasl
 b7646411b3440b5b4f88a5620fb0684c  gb_apple_tv_version.nasl
@@ -48990,13 +48990,21 @@ bbc84fe16fbfb862ac0b1aa8effbfd41  2019/php/gb_php_CVE-2019-9022_lin.nasl
 70a20eed5426a53be5923378d9c9a7b1  2019/php/gb_php_CVE-2019-9025_lin.nasl
 3a3b1b1239bf011d11a1130b63fabee6  2019/php/gb_php_mult_vuln_feb19_lin.nasl
 8ae66c56bdcd890ea562f5c30e358527  2019/discourse/gb_discourse_2.2.0beta5.nasl
+6e4780610165a656d8653d735f5a158f  2019/discourse/gb_discourse_2.3.0beta9.nasl
+e7f501ce76103607bac3350d159d7deb  2019/discourse/gb_discourse_2.3.0beta2.nasl
 8df8f89a75b391c179e8d8651553db0a  2019/discourse/gb_discourse_2.2.0beta8.nasl
 d4574e6d0347045ea9a2b8d4921681b3  2019/discourse/gb_discourse_2.2.0beta7.nasl
 6aa1c3aafb6eb992a1011b9e232e2572  2019/discourse/gb_discourse_2.2.0beta6.nasl
 bd82db94dff6769899942c04b2fe51bc  2019/discourse/gb_discourse_2.2.0beta3.nasl
 e20f2bb53b4c56cae9a3111b2fc93c10  2019/discourse/gb_discourse_cve-2019-5418_lfi.nasl
 9b23ff0c61efc6b0d73689b3e90861b9  2019/discourse/gb_discourse_2.2.0beta4.nasl
+405b2c7d1b27f39a23ec648026dd107d  2019/discourse/gb_discourse_2.3.0beta8.nasl
+c3758ea36a78e955dae8c618f1473cc2  2019/discourse/gb_discourse_2.3.0beta5.nasl
+42e407e1560bfdf7ed25ba86ef994fd7  2019/discourse/gb_discourse_2.3.0beta10.nasl
 721b586ff9404265cf658392ceaf8792  2019/discourse/gb_discourse_2.2.0beta9.nasl
+57059a095964d6fd3cb0e7c5e63ee8c4  2019/discourse/gb_discourse_2.3.0beta3.nasl
+fc55b4fcfecae8805df53e750b698b25  2019/discourse/gb_discourse_2.3.0beta11.nasl
+09baf7c20f19e25502b42790a71d2e6c  2019/discourse/gb_discourse_2.3.0beta6.nasl
 f29eae86f926e34ba089e8226726f842  2019/discourse/gb_discourse_2.2.0beta2.nasl
 62ae9f3ff9727a35145655d549ddd6e7  2019/spip/gb_spip_rce_vuln.nasl
 a5a0b8a1ccc80e80cc96a8f4a0d535eb  2019/foscam/gb_foscam_ip_camera_default_credentials.nasl
@@ -49040,7 +49048,8 @@ c42b1b31d42ab4772b05e31d9e836a15  2019/elastic/gb_kibana_CVE-2018-17245_win_nov1
 f49734ce4aa978e2207c10928d55354f  2019/lexmark/gb_lexmark_printers_CVE-2019-6489.nasl
 1779fb1a05373aad25c0083dc338e063  2019/zavio/gb_zavio_ip_cameras_default_credentials.nasl
 f7f56cccb7e482ee3593303590f7dc07  2019/cmsmadesimple/gb_cms_made_simple_mult_vuln_mar19.nasl
-a400f79e75e1c51c7897582fae45df30  2019/cmsmadesimple/gb_cms_made_simple_mult_xss_vuln_apr19.nasl
+5bd5d7e3ded411b084804565fd686dfd  2019/cmsmadesimple/gb_cms_made_simple_mult_xss_vuln_apr19.nasl
+4be617f6f8bc369eb601be1256b17cc7  2019/webmin/gb_webmin_rce_vuln_jun19.nasl
 67b67c6c16d07698193ca3311980b7a4  2019/webmin/gb_webmin_rce_vuln.nasl
 bac1586b16f33418bcdfd9baa26f73e4  2019/gb_exodus_spyware.nasl
 42c9895034f22eaeaf9b20b9bcc1397f  2019/phpbb/gb_phpbb_mult_vuln_apr19.nasl
@@ -49100,6 +49109,7 @@ c0be059d0061410f0568205c0aecf2d9  2019/wordpress/gb_wordpress_woocommerce-checko
 010b775681b6f61133d2233992cd50d9  2019/wordpress/gb_wordpress_give_xss_vuln_feb19.nasl
 83c99cca3a185dd5814c83e561ff252b  2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_win.nasl
 018cc6862a91ff19618512f716b0a558  2019/wordpress/gb_wordpress_hrm_mult_vuln_feb19.nasl
+d5868b1814450c367b23e09ec694ace4  2019/wordpress/gb_wordpress_count-per-day_xss_vuln_mar13.nasl
 9550998d4747cde4a058f705b80b9da7  2019/wordpress/gb_wordpress_wp-google-maps_sql_inj_vuln.nasl
 32155b9bebb5953eb466ff63119d2f5b  2019/wordpress/gb_wordpress_import-users-from-csv-with-meta_xss_vuln_dec18.nasl
 4b8ce7517f4c3fed357d0dc50abc00aa  2019/wordpress/gb_wordpress_easy_wp_smtp_file_upload_vuln.nasl
@@ -49134,11 +49144,11 @@ be10d734d7aef01add929ec3d463433f  2019/wordpress/gb_wordpress_contact-form-maker
 b2d0ae7703e943783df9dbea17a650d9  2019/wordpress/gb_wordpress_yop-poll_xss_vuln_feb19.nasl
 cfa9d5fb596faceeec7428b5cba26d42  2019/wordpress/gb_wordpress_two-factor-authentication_csrf_vuln_dec18.nasl
 ccaeda4a04f097714f238ba8f64318fb  2019/wordpress/gb_wordpress_wp-booking-system_csrf_vuln_may19.nasl
-dc4d966f48c8c2f643704928b6d85cf6  2019/wordpress/gb_wordpress_wp-live-chat-support_xss_vuln_feb19.nasl
+ebf321f2612dc856c39c4b6a05971df3  2019/wordpress/gb_wordpress_wp-live-chat-support_xss_vuln_feb19.nasl
 cd6bdf58658115cbc49074aa46fd60c2  2019/wordpress/gb_wordpress_ps-phpcaptcha_input_san_vuln_feb19.nasl
 ba613d549c7e2876f9453cdca561fbb4  2019/wordpress/gb_wordpress_form-maker_csrf_vuln_apr19.nasl
 f228a0c060e3bd7a995a7e0fe21a4c54  2019/wordpress/gb_wordpress_mult_vuln_mar19_lin.nasl
-c604604a254cf324dab74eb5d37e8528  2019/wordpress/gb_wordpress_wp-live-chat-support_improper_valid_check_vuln_jun19.nasl
+db9754adcee189c7387838e640e627ca  2019/wordpress/gb_wordpress_wp-live-chat-support_improper_valid_check_vuln_jun19.nasl
 67a6e20b834a331bfb0898fb0c75d5a7  2019/wordpress/gb_wordpress_spam-byebye_xss_vuln_jan19.nasl
 ac890e3aa106e47de8748c0e1dd41c15  2019/wordpress/gb_wordpress_wp-maintenance-mode_mult_vuln_dec18.nasl
 fcc339e962b40eed310b9bb0f3396428  2019/wordpress/gb_wordpress_launcher_xss_vuln_may19.nasl
@@ -49216,7 +49226,7 @@ ccfdb8ee34db7628c472c9986d9e2244  2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-
 2415dba8ea70e06260f7408fefaf74f7  2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-02_macosx.nasl
 60df1de59ed634db68bdef795d1e6897  2019/adobe/gb_adobe_acrobat_2017_apsb19-02_macosx.nasl
 ada95b9015890e9a806dc5eeaa4c0ca4  2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-02_win.nasl
-7a2c6831be6013476be4c36ed872f37a  2019/adobe/gb_adobe_coldfusion_apsb19-27_01.nasl
+93627a3062641c6f3e9fb249786f5fa0  2019/adobe/gb_adobe_coldfusion_apsb19-27_01.nasl
 f0de5eee394f5adf516f6408c7144299  2019/adobe/gb_adobe_flash_player_apsb19-26_lin.nasl
 53348a39a68a22ebba33bb6f77e43245  2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-02_win.nasl
 60dfbd4e4893bd03035d8cb3911440e6  2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-17_win.nasl
@@ -49349,6 +49359,7 @@ ee9d28dcf5ab4712b1ce4bd140db3ca0  2019/debian/deb_4463.nasl
 4e6ade6f78e4640817c36f46eededfe1  2019/debian/deb_dla_1671.nasl
 e822b90f18f303294e5809f1c3b286e7  2019/debian/deb_dla_1793.nasl
 3e341507e3a2238c2a110a50ae9d1a24  2019/debian/deb_dla_1803.nasl
+aed9e76eb3f3628a0a7ea9b7fef8a3cf  2019/debian/deb_4465.nasl
 e9bc6f7edfb13dfdca9ead3c79aee569  2019/debian/deb_dla_1776.nasl
 8006bb70cf0f0361175520655a6e4c49  2019/debian/deb_dla_1799.nasl
 84d0acc4162a2de59853427b77b76186  2019/debian/deb_dla_1708.nasl
@@ -49373,6 +49384,7 @@ ec4d797105a33f614ed3560519a74e68  2019/debian/deb_4413.nasl
 f48e324ccaf768aeea3e41d7b446104a  2019/debian/deb_4426.nasl
 ffee5d79fda946d4ab333cacb3e49f7b  2019/debian/deb_dla_1730.nasl
 04234dab079876107214f65630053ba5  2019/debian/deb_4381.nasl
+3fff38c72608e9524cee824e6b26bd70  2019/debian/deb_dla_1821.nasl
 1d32390fba3ba0674d17d0cea511c52e  2019/debian/deb_dla_1757.nasl
 fc5f3bc9a5acc77cf34984a68911c314  2019/debian/deb_dla_1670.nasl
 d3fd9d3a920696b6646dbc3556fe7a34  2019/debian/deb_dla_1736.nasl
@@ -49388,6 +49400,7 @@ cf1a4f7d3d000049e3fe869caddd2fe3  2019/debian/deb_dla_1658.nasl
 fb48c7f0f26aaa544a3923753ac9e610  2019/debian/deb_dla_1705.nasl
 482a97a85606c22fd37c2482454d29f1  2019/debian/deb_dla_1811.nasl
 3c57fb729006d81407af82765ac78a4b  2019/debian/deb_dla_1759.nasl
+22f1f938fba200ba57f4814e86a9b4ec  2019/debian/deb_dla_1823.nasl
 c4698b5dc3947e0b61d230d6c16f37c9  2019/debian/deb_4451.nasl
 596b406dc59652bf43dbf8218235d4c4  2019/debian/deb_4460.nasl
 5f963dbb486422a0b8b60f029b464a10  2019/debian/deb_dla_1804.nasl
@@ -49510,6 +49523,7 @@ daf215e4fe976fc2d390781046ed5db7  2019/debian/deb_dla_1677.nasl
 2657142ce45b774cf6dcd54489d51f4a  2019/debian/deb_4404.nasl
 2661cfe5279bb70631ca42c2472f947d  2019/debian/deb_dla_1739.nasl
 7a05ed915bec5e111732e5a24875d8dd  2019/debian/deb_dla_1727.nasl
+4be58a1a2c5012ce6b5a1c0fed56e6c1  2019/debian/deb_dla_1820.nasl
 5e000403823fa6e9767dd4c0e73e5904  2019/debian/deb_dla_1762.nasl
 b9adaf398a4d68cd08a271c75daa1884  2019/debian/deb_dla_1796.nasl
 25c6a21660270f917e5b6c8593d0a478  2019/debian/deb_dla_1689.nasl
@@ -49885,6 +49899,8 @@ ae7f1207727a7d734ecfc0e2fe9935a9  2019/ubuntu/gb_ubuntu_USN_3936_2.nasl
 68e60cf83c03b9c855b0b3f447fb993b  2019/dovecot/gb_dovecot_auth_bypass_vuln.nasl
 304783b3f1bbb782042872675c9e09d6  2019/dovecot/gb_dovecot_dos_vuln_apr19.nasl
 83903c5356e10bb391f03c40a00160a1  2019/dovecot/gb_dovecot_priv_esc_vuln_mar19.nasl
+dd6dbb1c41e592f0a98efdabecdaa937  2019/znc/gb_znc_jun19.nasl
+cbea5b1dffd443cc0d69e1e014dada22  2019/znc/gb_znc_mar19.nasl
 819c42916c85922c9eed5a6d8567c7a9  2019/kanboard/gb_kanboard_xss_vuln.nasl
 0c6b89b3a11c9ae73c5e58b9d894dbbf  2019/pearl/gb_pearl_ip_cameras_default_credentials.nasl
 70889a959595e5dfb448adde545c67c7  2019/nedi/gb_nedi_mult_vuln.nasl
@@ -49940,7 +49956,7 @@ fac8602d29543249fe6a0136d1da9bb8  2019/microsoft/gb_ms_kb4503286.nasl
 ed1554a803adc45c6c7b81f38060def0  2019/microsoft/gb_ms_kb4480973.nasl
 80707377ab94f0384efe975f9d841c5a  2019/microsoft/gb_ms_kb4480059.nasl
 41316bdb4354b1b211eb2c67eea1a2bc  2019/microsoft/gb_visual_studio_code_rce_vuln_mar19.nasl
-47029bb863e2cf6ddb79c38ad2fea879  2019/microsoft/gb_ms_kb4503279.nasl
+847639d6438301a0a7a7bfd2413450e6  2019/microsoft/gb_ms_kb4503279.nasl
 3e669640f83330ffc6fe624234b8e3fa  2019/microsoft/gb_ms_kb4489899.nasl
 75771e101a47fc2045e1292eb0e07ad3  2019/microsoft/gb_ms_kb4480962.nasl
 3b7dbf45c78d018b1cfd867fb0e383d5  2019/microsoft/gb_ms_kb4461601.nasl
@@ -50015,7 +50031,7 @@ e615b1ef6fbdf45921156756464f8011  2019/microsoft/gb_ms_kb4489878.nasl
 a8bedb6a421dfa0abe16e262f09ef82e  2019/microsoft/gb_visual_studio_nuget_tampering_vuln_mac.nasl
 f9f0d042478eebf002bb69d805001398  2019/microsoft/gb_ms_kb4487017.nasl
 a1b4922162116bcad57e391e7db49612  2019/microsoft/gb_ms_kb4499164.nasl
-2d1f9e8e0ac2634e29b17db44647b4e1  2019/microsoft/gb_ms_kb4503284.nasl
+62c68c97f4d20c984e0e2e85729eb4ee  2019/microsoft/gb_ms_kb4503284.nasl
 c864f566b6fe0bca8b5bca60127d9c3f  2019/microsoft/gb_ms_kb4494441.nasl
 ba0fe4ef5fef73e2c64f136a2efb5667  2019/microsoft/gb_ms_kb4499154.nasl
 549838a6d4207b801234de6eb287aaa6  2019/microsoft/gb_ms_office_click2run_mult_vuln_jan19.nasl
@@ -50065,7 +50081,7 @@ ef761a589cea77dc6011f1756383e1cf  2019/microsoft/gb_dotnet_core_sdk_spoof_vuln_f
 78445bb3353b1f6e1a051f8230c6f6c9  2019/microsoft/gb_ms_kb4462115.nasl
 5999ca50ea759f1a753c83774506dc83  2019/microsoft/gb_ms_kb4480961.nasl
 f40104641080b56dc8b0e34c2688a515  2019/microsoft/gb_ms_kb4462213.nasl
-3f355614033b760ee56260f7e89e3f83  2019/microsoft/gb_ms_kb4503293.nasl
+4c05221800fcc7a3172e97f881b7dbe8  2019/microsoft/gb_ms_kb4503293.nasl
 6924b57e30dc969b6f87f137e5b1427f  2019/microsoft/gb_ms_kb4480966.nasl
 317ed49eaf052b71195907f35785c071  2019/microsoft/gb_ms_kb4018294.nasl
 650b3322cf2d2e13ec23ad72f6804feb  2019/microsoft/gb_ms_kb4494440.nasl
@@ -51325,6 +51341,7 @@ f05ce8b6fbfdc50cae469e65b41a358a  2019/domainmod/gb_domainmod_mult_xss_vuln_jan1
 d91f44189a0b67bf15747b6024f37c07  2019/domainmod/gb_domainmod_mult_xss_vuln_may18_1.nasl
 d87dfa7342472af3f5d2870a167cf560  2019/mybb/gb_mybb_mult_vuln_jun19.nasl
 b3d238c7cf9633f8624f8121e07e6146  2019/mybb/gb_mybb_mult_xss_vuln_mar19.nasl
+660257b9045056ed631da06c6afb838f  2019/mybb/gb_mybb_mult_vuln_jun19_2.nasl
 db6d5b736e31b99ffcc1ee5020915138  2019/amcrest/gb_amcrest_ip_camera_default_credentials.nasl
 f90e91099065b083b3d475b6dc9cd596  2019/ffmpeg/gb_ffmpeg_dos_vuln_apr19_1.nasl
 f1b3f131f73d7a0225f4a1d63dc85409  2019/ffmpeg/gb_ffmpeg_mult_vuln_mar19.nasl
@@ -51462,7 +51479,7 @@ f93a3f911ceb1c7bbb4f0080e598831b  2019/drobo/gb_drobo_nas_mysql_mult_vuln.nasl
 c53feafed715f2967e349675bff57f9b  2019/drobo/gb_drobo_nas_droboaccess_mult_vuln.nasl
 ca25ae093a1c4735b10d2d83083ac208  2019/docker/gb_docker_dos_vuln.nasl
 292ac9f9c5e2038b17e77e21f7a70682  2019/docker/gb_docker_runc_vuln.nasl
-354a38bb2f9c06474dc0c52a622e2101  2019/tenable/gb_tenable_nessus_mult_vuln_tns-2019-02.nasl
+ee6c20b68ec65277cf80ffa9c9fb6816  2019/tenable/gb_tenable_nessus_mult_vuln_tns-2019-02.nasl
 ea2757f3f80c7426fb0070d0f6d176db  2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-17.nasl
 36f56034fe9b1ae31264d36b2af5a104  2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-16.nasl
 9a13e36fa606f9cb279fbdc651a78464  2019/tenable/gb_tenable_nessus_stored_xss_vuln.nasl

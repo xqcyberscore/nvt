@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112115");
-  script_version("2019-06-14T12:02:13+0000");
-  script_tag(name:"last_modification", value:"2019-06-14 12:02:13 +0000 (Fri, 14 Jun 2019)");
+  script_version("2019-06-17T14:16:12+0000");
+  script_tag(name:"last_modification", value:"2019-06-17 14:16:12 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-14 12:51:12 +0200 (Fri, 14 Jun 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,10 +42,10 @@ if (description)
 
   script_tag(name:"summary", value:"The Wordpress plugin Live Chat Support is prone to an improper
   validation check for authentication.");
-  
+
   script_tag(name:"insight", value:"The flaw originates because of an improper validation check
   for authentication that apparently could allow unauthenticated users to access restricted REST API endpoints.");
-  
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to:
 
   - steal the entire chat history for all chat sessions.
@@ -55,9 +55,9 @@ if (description)
   - inject messages into an active chat session, posing as a customer support agent.
 
   - forcefully end active chat sessions, as part of a denial of service (DoS) attack.");
-  
+
   script_tag(name:"affected", value:"WordPress Live Chat Support plugin through version 8.0.32.");
-  
+
   script_tag(name:"solution", value:"Update to version 8.0.33 or later.");
 
   script_xref(name:"URL", value:"https://thehackernews.com/2019/06/wordpress-live-chat-plugin.html");

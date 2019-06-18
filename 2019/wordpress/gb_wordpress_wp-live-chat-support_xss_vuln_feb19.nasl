@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112550");
-  script_version("2019-06-14T12:02:13+0000");
-  script_tag(name:"last_modification", value:"2019-06-14 12:02:13 +0000 (Fri, 14 Jun 2019)");
+  script_version("2019-06-17T14:16:12+0000");
+  script_tag(name:"last_modification", value:"2019-06-17 14:16:12 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 23:47:11 +0100 (Thu, 28 Mar 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,11 +41,11 @@ if (description)
   script_mandatory_keys("wordpress/installed");
 
   script_tag(name:"summary", value:"The Wordpress plugin Live Chat Support is prone to a cross-site scripting (XSS) vulnerability.");
-  
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to inject malicious content into an affected site.");
-  
+
   script_tag(name:"affected", value:"WordPress Live Chat Support plugin before version 8.0.18.");
-  
+
   script_tag(name:"solution", value:"Update to version 8.0.18 or later.");
 
   script_xref(name:"URL", value:"https://lists.openwall.net/full-disclosure/2019/02/05/14");

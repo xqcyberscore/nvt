@@ -23,8 +23,8 @@ CPE = "cpe:/a:adobe:coldfusion";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112084");
-  script_version("2019-06-12T10:35:21+0000");
-  script_tag(name:"last_modification", value:"2019-06-12 10:35:21 +0000 (Wed, 12 Jun 2019)");
+  script_version("2019-06-17T12:10:54+0000");
+  script_tag(name:"last_modification", value:"2019-06-17 12:10:54 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-12 12:22:43 +0200 (Wed, 12 Jun 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The following vulnerabilites exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - File extension blacklist bypass (CVE-2019-7838)
 
