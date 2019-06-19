@@ -320,32 +320,86 @@ function rsop_userprivilegeright(select, keyname) {
 
   infos = kb_smb_wmi_connectinfo();
   if(!infos)
-    exit(0);
+    return;
 
   handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
-  if(!handle) {
-    policy_logging(text:"WMI Connect to host failed.");
-    policy_set_kb(val:"error");
-    exit(0);
-  }
+  if(!handle)
+    return;
 
   query = "SELECT " + select + " FROM RSOP_UserPrivilegeRight WHERE UserRight = '" + keyname + "'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
   wmi_close(wmi_handle:handle);
-  if(res == '')
+  res = chomp(res);
+  if(!res)
     return "None";
 
   splitRes = split(res, keep:FALSE);
   accountList = split(splitRes[1], sep:"|", keep:FALSE);
   MaxIndexAccountList = max_index(accountList);
   for(i = 0; i < MaxIndexAccountList - 2; i++) {
-    returnValue += accountList[i];
-    if( i < MaxIndexAccountList - 3 ) {
-      returnValue += ", ";
-    }
+    returnValue += ", " + accountList[i];
   }
 
-  return(string(returnValue));
+  returnValue = str_replace(string:returnValue, find:", ", replace:"", count:1);
+  return(returnValue);
+}
+
+# @brief query wmi db RSOP_UserPrivilegeRight for specific right and compare to default
+#
+# @param select what to show from db
+# @param keyname which user right to search for
+# @param default set point to be compliant
+#
+# @note rsop only delivers results for domain admins
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_rsop_match(select, keyname, default){
+  local_var select, keyname, default, ret, user_list, user, default_list, user_list_split;
+
+  if(!(user_list = rsop_userprivilegeright(select:select, keyname:keyname))){
+    ret["compliant"] = "incomplete";
+    ret["value"] = "None";
+    ret["comment"] = "No WMI query possible";
+    return(ret);
+  }
+
+  if(user_list == "None" && default == "None"){
+    ret["compliant"] = "yes";
+    ret["value"] = "None";
+    ret["comment"] = "No account found for this setting";
+    return(ret);
+  }else if(user_list == "None"){
+    ret["compliant"] = "no";
+    ret["value"] = "None";
+    ret["comment"] = "No account found for this setting";
+    return(ret);
+  }
+
+  ret["compliant"] = "yes";
+  ret["comment"] = "";
+  ret["value"] = user_list;
+
+  user_list_split = split(user_list, sep:',', keep:FALSE);
+  foreach user (user_list_split){
+    user = ereg_replace(string:chomp(user), pattern:"^\s+", replace:"");
+    if(user >< default)
+      continue;
+
+    ret["compliant"] = "no";
+  }
+
+  default_list = split(default, sep:",", keep:FALSE);
+  foreach user (default_list){
+    user = ereg_replace(string:chomp(user), pattern:"^\s+", replace:"");
+    if(user >< user_list)
+      continue;
+
+    ret["compliant"] = "no";
+  }
+
+  return(ret);
+
 }
 
 # @brief gets the status of a user account on windows hosts
@@ -805,6 +859,68 @@ function policy_match_exact_dword_profiles(key, item, default, sids){
     ret["comment"] += "Non compliant SIDs: " + str_replace(string:fail_sids, find:", ", replace:"",
       count:1);
   }
+
+  return(ret);
+}
+
+
+# @brief Checks if the host runs Windows 10.
+#
+# @return bool TRUE if host runs Microsoft Windows 10, FALSE if not
+#
+function policy_host_runs_windows_10(){
+  local_var win_ver, host_cpe;
+
+  if(!isnull(__kb_smb_ver)){
+    win_ver = string(__kb_smb_ver);
+  }else{
+    win_ver = string(get_kb_item("SMB/WindowsVersion"));
+    if(strlen(win_ver) > 0) {
+      __kb_smb_ver = win_ver;
+    }else{
+      return(FALSE);
+    }
+  }
+
+  if(!isnull(__kb_host_cpe)){
+    host_cpe = string(__kb_host_cpe);
+  }else{
+    host_cpe = best_os_cpe();
+    if(strlen(host_cpe) > 0) {
+      __kb_host_cpe = host_cpe;
+    }else{
+      return(FALSE);
+    }
+  }
+
+  if(win_ver && (host_cpe =~ "microsoft:windows_10"))
+    return(TRUE);
+
+  return(FALSE);
+}
+
+# @brief Checks if wmi access to the host was possible
+#
+# @return TRUE if WMI access is possible, FALSE if not
+#
+function policy_wmi_access(){
+
+  if(!get_kb_item("WMI/access_successful"))
+    return(FALSE);
+
+  return(TRUE);
+}
+
+# @brief Returns reporting variables for no WMI access
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_report_no_wmi_access(){
+  local_var ret;
+
+  ret["value"] = "None";
+  ret["comment"] = "No WMI access to the host possible.";
+  ret["compliant"] = "incomplete";
 
   return(ret);
 }

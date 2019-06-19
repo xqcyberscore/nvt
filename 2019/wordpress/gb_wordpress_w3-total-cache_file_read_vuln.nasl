@@ -21,8 +21,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142389");
-  script_version("2019-05-09T12:45:43+0000");
-  script_tag(name:"last_modification", value:"2019-05-09 12:45:43 +0000 (Thu, 09 May 2019)");
+  script_version("2019-06-19T01:23:18+0000");
+  script_tag(name:"last_modification", value:"2019-06-19 01:23:18 +0000 (Wed, 19 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-09 12:34:02 +0000 (Thu, 09 May 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -33,7 +33,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("WordPress W3 Total Cache Plugin < 9.4.0 File Read Vulnerability");
+  script_name("WordPress W3 Total Cache Plugin < 0.9.4 File Read Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -50,9 +50,9 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"affected", value:"WordPress W3 Total Cache plugin before version 9.4.0.");
+  script_tag(name:"affected", value:"WordPress W3 Total Cache plugin before version 0.9.4.");
 
-  script_tag(name:"solution", value:"Update to version 9.4.0 or later.");
+  script_tag(name:"solution", value:"Update to version 0.9.4 or later.");
 
   script_xref(name:"URL", value:"https://wordpress.org/plugins/w3-total-cache/#developers");
   script_xref(name:"URL", value:"https://vinhjaxt.github.io/2019/03/cve-2019-6715");
@@ -80,8 +80,8 @@ res = http_get_cache(port: port, item: url);
 if ("W3 Total Cache" >< res && "Changelog" >< res) {
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
   if (!isnull(vers[1])) {
-    if (version_is_less(version: vers[1], test_version: "9.4.0")) {
-      report = report_fixed_ver(installed_version: vers[1], fixed_version: "9.4.0", file_checked: url);
+    if (version_is_less(version: vers[1], test_version: "0.9.4")) {
+      report = report_fixed_ver(installed_version: vers[1], fixed_version: "0.9.4", file_checked: url);
       security_message(port: port, data: report);
       exit(0);
     }
