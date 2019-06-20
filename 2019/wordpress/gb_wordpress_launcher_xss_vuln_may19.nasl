@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113393");
-  script_version("2019-05-24T13:14:04+0000");
-  script_tag(name:"last_modification", value:"2019-05-24 13:14:04 +0000 (Fri, 24 May 2019)");
+  script_version("2019-06-20T07:17:35+0000");
+  script_tag(name:"last_modification", value:"2019-06-20 07:17:35 +0000 (Thu, 20 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-20 10:36:33 +0200 (Mon, 20 May 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -60,7 +60,7 @@ if(description)
   - Social Links (Facebook Page URL, Twitter Page URL, Instagram Page URL, YouTube Page URL,
     LinkedIn Page URL, Google+ Page URL, RSS URL)");
   script_tag(name:"affected", value:"WordPress MyThemeShop Launcher plugin through version 1.0.8.");
-  script_tag(name:"solution", value:"No known solution is available as of 20th May, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 20th June, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://metamorfosec.com/Files/Advisories/METS-2019-002-Multiple_Stored_XSS_Vulnerabilities_in_the_MyThemeShop_Launcher_plugin_v1.0.8_for_WordPress.txt");

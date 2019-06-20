@@ -20,8 +20,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113368");
-  script_version("2019-04-25T11:36:15+0000");
-  script_tag(name:"last_modification", value:"2019-04-25 11:36:15 +0000 (Thu, 25 Apr 2019)");
+  script_version("2019-06-18T08:52:17+0000");
+  script_tag(name:"last_modification", value:"2019-06-18 08:52:17 +0000 (Tue, 18 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-08 10:45:55 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,17 +67,17 @@ include( "http_keepalive.inc" );
 #nb: Same for P3015
 #nb: CP Printers are sometimes detected as "laserjet" and sometimes as "color_laserjet"
 
-cpe_list = make_list( 'cpe:/h:hp:laserjet:p4014',
-                      'cpe:/h:hp:laserjet:p4015',
-                      'cpe:/h:hp:laserjet:5200',
-                      'cpe:/h:hp:laserjet:cp4520',
-                      'cpe:/h:hp:color_laserjet:cp4520',
-                      'cpe:/h:hp:laserjet:cp4025',
-                      'cpe:/h:hp:color_laserjet:cp4025',
-                      'cpe:/h:hp:laserjet:cp4020',
-                      'cpe:/h:hp:color_laserjet:cp4020',
-                      'cpe:/h:hp:laserjet:p3015',
-                      'cpe:/h:hp:laserjet:p3010' );
+cpe_list = make_list( 'cpe:/h:hp:laserjet_p4014',
+                      'cpe:/h:hp:laserjet_p4015',
+                      'cpe:/h:hp:laserjet_5200',
+                      'cpe:/h:hp:laserjet_cp4520',
+                      'cpe:/h:hp:color_laserjet_cp4520',
+                      'cpe:/h:hp:laserjet_cp4025',
+                      'cpe:/h:hp:color_laserjet_cp4025',
+                      'cpe:/h:hp:laserjet_cp4020',
+                      'cpe:/h:hp:color_laserjet_cp4020',
+                      'cpe:/h:hp:laserjet_p3015',
+                      'cpe:/h:hp:laserjet_p3010' );
 
 if( isnull( result = get_single_app_ports_from_list( cpe_list: cpe_list ) ) ) exit( 0 );
 

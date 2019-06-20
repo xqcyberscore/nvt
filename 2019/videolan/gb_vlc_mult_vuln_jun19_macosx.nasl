@@ -23,10 +23,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815203");
-  script_version("2019-06-11T12:42:30+0000");
+  script_version("2019-06-20T06:01:12+0000");
+  script_cve_id("CVE-2019-5439");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-11 12:42:30 +0000 (Tue, 11 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-06-20 06:01:12 +0000 (Thu, 20 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-11 11:04:34 +0530 (Tue, 11 Jun 2019)");
 
   script_tag(name:"qod_type", value:"executable_version");
@@ -64,10 +65,11 @@ if(description)
   to execute arbitrary code in the context of the affected application, cause
   denial of service or launch other attacks.");
 
-  script_tag(name:"affected", value:"VideoLAN VLC media player version 3.0.x
-  before 3.0.7 on Mac OS X.");
+  script_tag(name:"affected", value:"VideoLAN VLC media player version before 3.0.7
+  on Mac OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to version 3.0.7 or later. Please see the references for more information.");
+  script_tag(name:"solution", value:"Upgrade to version 3.0.7 or later. Please see the
+  references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.videolan.org/developers/vlc-branch/NEWS");
@@ -88,7 +90,7 @@ if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0)
 vlcVer = infos['version'];
 vlcpath = infos['location'];
 
-if(version_in_range(version:vlcVer, test_version:"3.0.0", test_version2:"3.0.6"))
+if(version_is_less(version:vlcVer, test_version:"3.0.7"))
 {
   report = report_fixed_ver(installed_version:vlcVer, fixed_version:"3.0.7", install_path: vlcpath);
   security_message(data:report);
