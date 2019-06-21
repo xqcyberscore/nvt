@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891735");
-  script_version("2019-04-04T06:23:28+0000");
+  script_version("2019-06-21T07:26:45+0000");
   script_cve_id("CVE-2019-8320", "CVE-2019-8322", "CVE-2019-8323", "CVE-2019-8324", "CVE-2019-8325");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-04 06:23:28 +0000 (Thu, 04 Apr 2019)");
+  script_tag(name:"cvss_base", value:"8.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-21 07:26:45 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-02 20:00:00 +0000 (Tue, 02 Apr 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1735-1] ruby2.1 security update)");
   script_category(ACT_GATHER_INFO);

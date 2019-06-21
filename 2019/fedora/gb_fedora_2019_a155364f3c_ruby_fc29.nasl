@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876000");
-  script_version("2019-05-14T05:04:40+0000");
+  script_version("2019-06-21T07:26:45+0000");
   script_cve_id("CVE-2019-8320", "CVE-2019-8321", "CVE-2019-8322", "CVE-2019-8323", "CVE-2019-8324", "CVE-2019-8325");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-14 05:04:40 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"cvss_base", value:"8.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-21 07:26:45 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-05-07 02:31:07 +0000 (Tue, 07 May 2019)");
   script_name("Fedora Update for ruby FEDORA-2019-a155364f3c");
   script_category(ACT_GATHER_INFO);

@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107637");
-  script_version("2019-04-25T11:36:15+0000");
-  script_tag(name:"last_modification", value:"2019-04-25 11:36:15 +0000 (Thu, 25 Apr 2019)");
+  script_version("2019-06-20T12:01:41+0000");
+  script_tag(name:"last_modification", value:"2019-06-20 12:01:41 +0000 (Thu, 20 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-06 13:44:05 +0200 (Sat, 06 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,9 +37,9 @@ if(description)
   script_mandatory_keys("advantech/webaccess/detected");
 
   script_tag(name:"summary", value:"Reports on findings if an installation of
-  Schneider Electric Indusoft Web Studio has been found on the target system.");
+  Advantech WebAccess has been found on the target system.");
 
-  script_xref(name:"URL", value:"http://www.indusoft.com/");
+  script_xref(name:"URL", value:"https://www.advantech.com/industrial-automation/webaccess");
 
   exit(0);
 }

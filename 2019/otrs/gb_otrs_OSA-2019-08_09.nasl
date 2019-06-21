@@ -23,11 +23,11 @@ CPE = 'cpe:/a:otrs:otrs';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108592");
-  script_version("2019-06-07T11:10:01+0000");
-  script_tag(name:"last_modification", value:"2019-06-07 11:10:01 +0000 (Fri, 07 Jun 2019)");
+  script_version("2019-06-21T07:26:45+0000");
+  script_tag(name:"last_modification", value:"2019-06-21 07:26:45 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-07 10:27:29 +0000 (Fri, 07 Jun 2019)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2019-12248", "CVE-2019-12497");
 

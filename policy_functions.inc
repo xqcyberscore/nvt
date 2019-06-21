@@ -183,32 +183,32 @@ function policy_reporting(result, default, compliant, fixtext, type, test, info)
   local_var result, default, compliant, fixtext, type, test, info;
   local_var report;
 
-  if(!result) {
+  if(!string(result)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#result");
     return;
   }
 
-  if(!default) {
+  if(!string(default)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#default");
     return;
   }
 
-  if(!compliant) {
+  if(!string(compliant)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#compliant");
     return;
   }
 
-  if(!fixtext) {
+  if(!string(fixtext)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#fixtext");
     return;
   }
 
-  if(!type) {
+  if(!string(type)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#type");
     return;
   }
 
-  if(!test) {
+  if(!string(test)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#test");
     return;
   }
@@ -223,7 +223,7 @@ function policy_reporting(result, default, compliant, fixtext, type, test, info)
   report += "Test:         " + test + '\n';
   report += "Solution:     " + fixtext;
 
-  if(info){
+  if(string(info)){
     report += '\n' + "Notes:        " + info;
   }
 

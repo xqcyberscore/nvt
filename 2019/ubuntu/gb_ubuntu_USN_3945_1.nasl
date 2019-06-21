@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843974");
-  script_version("2019-04-15T10:53:26+0000");
+  script_version("2019-06-21T07:26:45+0000");
   script_cve_id("CVE-2019-8320", "CVE-2019-8321", "CVE-2019-8322", "CVE-2019-8323",
                 "CVE-2019-8324", "CVE-2019-8325");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-15 10:53:26 +0000 (Mon, 15 Apr 2019)");
+  script_tag(name:"cvss_base", value:"8.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-21 07:26:45 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-04-12 02:00:22 +0000 (Fri, 12 Apr 2019)");
   script_name("Ubuntu Update for ruby2.5 USN-3945-1");
   script_category(ACT_GATHER_INFO);

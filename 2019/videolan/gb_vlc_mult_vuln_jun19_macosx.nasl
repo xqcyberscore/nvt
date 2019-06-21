@@ -23,11 +23,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815203");
-  script_version("2019-06-20T06:01:12+0000");
+  script_version("2019-06-21T07:26:45+0000");
   script_cve_id("CVE-2019-5439");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-20 06:01:12 +0000 (Thu, 20 Jun 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-06-21 07:26:45 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-11 11:04:34 +0530 (Tue, 11 Jun 2019)");
 
   script_tag(name:"qod_type", value:"executable_version");
