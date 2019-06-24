@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3590_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for irssi USN-3590-1
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843714");
-  script_version("$Revision: 14288 $");
-  script_cve_id("CVE-2018-7050", "CVE-2018-7051", "CVE-2018-7052", "CVE-2018-7053", "CVE-2018-7054", "CVE-2018-7073");
+  script_version("2019-06-22T13:31:53+0000");
+  script_cve_id("CVE-2018-7050", "CVE-2018-7051", "CVE-2018-7052", "CVE-2018-7053", "CVE-2018-7054");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-22 13:31:53 +0000 (Sat, 22 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-10-26 06:10:14 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for irssi USN-3590-1");
   script_category(ACT_GATHER_INFO);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801984");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-06-24T11:38:56+0000");
+  script_tag(name:"last_modification", value:"2019-06-24 11:38:56 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-1509");
   script_tag(name:"cvss_base", value:"5.0");
@@ -41,9 +41,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
-  script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
+  script_dependencies("gb_manageengine_servicedesk_plus_consolidation.nasl");
+  script_mandatory_keys("manageengine/servicedesk_plus/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to get user names
   and passwords of registered users. This may allow an attacker to steal
@@ -66,19 +65,24 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:8080);
+CPE = "cpe:/a:zohocorp:manageengine_servicedesk_plus";
 
-if(!vers = get_version_from_kb(port:port,app:"ManageEngine")){
-  exit(0);
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+version = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:version, test_version:"8.0b8014" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"8.0 (Build 8014)", install_path:path );
+  security_message( data:report, port:port );
+  exit( 0 );
 }
 
-if(' Build ' >< vers){
-  vers = ereg_replace(pattern:" Build ", string:vers, replace:".");
-}
-
-if(version_is_less_equal(version:vers, test_version:"8.0.0.8013")){
-  security_message(port:port);
-}
+exit( 99 );

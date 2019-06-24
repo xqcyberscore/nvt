@@ -7,7 +7,7 @@
 # Noam Rathaus <noamr@securiteam.com>
 #
 # Copyright:
-# Copyright (C) 1999 SecuriTeam
+# Copyright (C) 2005 SecuriTeam
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("2019-05-02T04:45:21+0000");
-  script_tag(name:"last_modification", value:"2019-05-02 04:45:21 +0000 (Thu, 02 May 2019)");
+  script_version("2019-06-24T08:34:07+0000");
+  script_tag(name:"last_modification", value:"2019-06-24 08:34:07 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("FTP Banner Detection");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 1999 SecuriTeam");
+  script_copyright("This script is Copyright (C) 2005 SecuriTeam");
   script_family("Product detection");
   # nb: get_ftp_banner() is using a FTP command internally which requires a
   # successful login so the secpod_ftp_anonymous.nasl is expected to be
@@ -428,8 +428,7 @@ foreach port( ports ) {
   }
 
   if( "Serv-U FTP Server" >< banner ) {
-    set_kb_item( name:"ssh_or_ftp/serv-u/detected", value:TRUE );
-    set_kb_item( name:"ftp/serv-u/ftp/detected", value:TRUE );
+    set_kb_item( name:"ftp/serv-u/detected", value:TRUE );
     guess += '\n- Serv-U FTP';
   }
 

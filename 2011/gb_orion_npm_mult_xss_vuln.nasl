@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_npm_mult_xss_vuln.nasl 13766 2019-02-19 15:28:10Z cfischer $
 #
 # SolarWinds Orion NPM Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:solarwinds:orion_network_performance_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801986");
-  script_version("$Revision: 13766 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 16:28:10 +0100 (Tue, 19 Feb 2019) $");
+  script_version("2019-06-24T11:54:34+0000");
+  script_tag(name:"last_modification", value:"2019-06-24 11:54:34 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2011-09-20 15:38:54 +0200 (Tue, 20 Sep 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +51,7 @@ if(description)
   HTML and script code in a user's browser session in the context of a vulnerable
   site. This may allow an attacker to steal cookie-based authentications and launch further attacks.");
 
-  script_tag(name:"affected", value:"SolarWinds Orion Network Performance Monitor (NPM) 10.1.2 SP1");
+  script_tag(name:"affected", value:"SolarWinds Orion Network Performance Monitor (NPM) 10.1.2 SP1.");
 
   script_tag(name:"insight", value:"The flaws are due to an input validation error in
   NetPerfMon/CustomChart.aspx and NetPerfMon/MapView.aspx pages when processing the 'Title' parameter.");
@@ -72,7 +71,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if (!isnull(port = get_app_port(cpe: CPE)))
+if (isnull(port = get_app_port(cpe: CPE)))
   exit(0);
 
 if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))

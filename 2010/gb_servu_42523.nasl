@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servu_42523.nasl 13608 2019-02-12 14:34:26Z cfischer $
 #
 # Serv-U Denial of Service and Security Bypass Vulnerabilities
 #
@@ -24,11 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:serv-u:serv-u";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100767");
-  script_version("$Revision: 13608 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 15:34:26 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-06-24T07:41:01+0000");
+  script_tag(name:"last_modification", value:"2019-06-24 07:41:01 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2010-08-31 14:30:50 +0200 (Tue, 31 Aug 2010)");
   script_bugtraq_id(42523);
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,15 +38,13 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42523");
   script_xref(name:"URL", value:"http://www.serv-u.com/releasenotes/");
-  script_xref(name:"URL", value:"http://www.serv-u.com/");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_rhinosoft_serv-u_detect.nasl");
-  script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("Serv-U/FTP/Ver");
+  script_dependencies("gb_solarwinds_serv-u_consolidation.nasl");
+  script_mandatory_keys("solarwinds/servu/detected");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -62,26 +61,16 @@ if(description)
   exit(0);
 }
 
-include("ftp_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_ftp_port(default:21);
+if (!version = get_app_version(cpe: CPE, nofork: TRUE))
+  exit(0);
 
-if(!version = get_kb_item(string("ftp/", port, "/Serv-U"))) {
-  if(!version = get_kb_item(string("Serv-U/FTP/Ver"))) {
-    exit(0);
-  }
+if (version_is_less(version: version, test_version: "10.2.0.0")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "10.2.0.0");
+  security_message(port: 0, data: report);
+  exit(0);
 }
 
-if(!isnull(version[1])) {
-  vers = version[1];
-}
-
-if(!isnull(vers)) {
-  if(version_is_less(version:vers, test_version:"10.2") ) {
-    security_message(port: port);
-    exit(0);
-  }
-}
-
-exit(0);
+exit(99);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_orion_npm_mult_vuln.nasl 13766 2019-02-19 15:28:10Z cfischer $
 #
 # SolarWinds Orion NPM Multiple Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:solarwinds:orion_network_performance_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812219");
-  script_version("$Revision: 13766 $");
+  script_version("2019-06-24T11:54:34+0000");
   script_cve_id("CVE-2017-9538", "CVE-2017-9537", "CVE-2017-9539");
   script_bugtraq_id(101066, 101071);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 16:28:10 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-24 11:54:34 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-21 11:43:13 +0530 (Tue, 21 Nov 2017)");
 
   script_name("SolarWinds Orion NPM Multiple Vulnerabilities");
@@ -83,7 +82,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if (!isnull(port = get_app_port(cpe: CPE)))
+if (isnull(port = get_app_port(cpe: CPE)))
   exit(0);
 
 if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_plus_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities
 #
@@ -25,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:manageengine:servicedesk_plus';
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106319");
-  script_version("$Revision: 12149 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_version("2019-06-24T11:38:56+0000");
+  script_tag(name:"last_modification", value:"2019-06-24 11:38:56 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,8 +45,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
-  script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
+  script_dependencies("gb_manageengine_servicedesk_plus_consolidation.nasl");
+  script_mandatory_keys("manageengine/servicedesk_plus/detected");
 
   script_tag(name:"summary", value:"ManageEngine ServiceDesk Plus is prone to multiple vulnerabilities.");
 
@@ -60,7 +57,7 @@ if (description)
   - Using an insecure method for generating cookies (CVE-2016-4890).");
 
   script_tag(name:"impact", value:"An arbitrary script may be executed on a web browser of a user that is
-logged in. If an attacker obtains a user's cookie, the password contained in the cookie can be easily guessed.");
+  logged in. If an attacker obtains a user's cookie, the password contained in the cookie can be easily guessed.");
 
   script_tag(name:"affected", value:"ServiceDesk Plus before version 9.2 build 9228.");
 
@@ -78,18 +75,21 @@ logged in. If an attacker obtains a user's cookie, the password contained in the
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe:CPE))
-  exit(0);
+CPE = "cpe:/a:zohocorp:manageengine_servicedesk_plus";
 
-if (!version = get_app_version(cpe: CPE, port: port))
-  exit(0);
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
 
-vers = str_replace(string: version, find: "build", replace: ".");
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
 
-if (version_is_less(version: vers, test_version: "9.2.9228")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "9.2 build 9228");
-  security_message(port: port, data: report);
-  exit(0);
+version = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:version, test_version:"9.2b9228" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"9.2 (Build 9228)", install_path:path );
+  security_message( data:report, port:port );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

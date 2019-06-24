@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-06-15T13:46:14+0000");
-  script_tag(name:"last_modification", value:"2019-06-15 13:46:14 +0000 (Sat, 15 Jun 2019)");
+  script_version("2019-06-24T06:26:47+0000");
+  script_tag(name:"last_modification", value:"2019-06-24 06:26:47 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1132,6 +1132,20 @@ if( "% invalid command detected" >< uname )
 
     register_and_report_os( os:"Cisco Application Deployment Engine OS", cpe:ade_cpe, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
+  }
+
+  exit( 0 );
+}
+
+# Some Cisco devices (e.g. Cisco FTD) don't respond correctly if an unknown command is executed
+if( "uname-a" >< uname ) {
+  # We need a clean new connection otherwise the cli stucks
+  ssh_reconnect( sock:sock);
+  show_ver = ssh_cmd( socket:sock, cmd:"show version", nosh:TRUE, pty:TRUE, pattern:"Cisco", clear_buffer:TRUE );
+  if( show_ver ) {
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/force/pty", value:TRUE );
+    set_kb_item( name:"cisco/detected", value:TRUE );
   }
 
   exit( 0 );

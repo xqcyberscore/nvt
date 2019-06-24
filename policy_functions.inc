@@ -924,3 +924,35 @@ function policy_report_no_wmi_access(){
 
   return(ret);
 }
+
+# @brief Performs a WMI query against a host and returns finding
+#
+# @param query The WMI query to use.
+#
+# @return A string containing the result of the WMI query or FALSE if
+#         no connection to the remote host was possible or if the query failed.
+#
+function policy_wmi_query(query){
+  local_var query, infos, handle, res;
+
+  if(!string(query)) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_wmi_query#-#query");
+    return(FALSE);
+  }
+
+  infos = kb_smb_wmi_connectinfo();
+  if(!infos)
+    return(FALSE);
+
+  handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"]);
+  if(!handle)
+    return(FALSE);
+
+  res = wmi_query(wmi_handle:handle, query:query);
+  wmi_close(wmi_handle:handle);
+
+  if(!res || "NTSTATUS" >< res)
+    return(FALSE);
+
+  return(res);
+}

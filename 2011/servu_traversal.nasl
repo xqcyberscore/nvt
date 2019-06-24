@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: servu_traversal.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Serv-U FTP Server Jail Break
 #
@@ -24,24 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:rhinosoft:serv-u";
+CPE = "cpe:/a:serv-u:serv-u";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103354");
-  script_version("$Revision: 13494 $");
+  script_version("2019-06-24T07:41:01+0000");
   script_bugtraq_id(50875);
   script_cve_id("CVE-2011-4800");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+
   script_name("Serv-U FTP Server Jail Break");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+
+  script_tag(name:"last_modification", value:"2019-06-24 07:41:01 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2011-12-02 11:28:44 +0100 (Fri, 02 Dec 2011)");
   script_category(ACT_ATTACK);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("gb_rhinosoft_serv-u_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Serv-U/FTP/installed");
+  script_dependencies("gb_solarwinds_serv-u_consolidation.nasl", "os_detection.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("solarwinds/servu/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47021");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50875");
@@ -70,8 +72,11 @@ include("ftp_func.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port(cpe:CPE, service:"ftp") ) exit(0);
-if( ! get_app_location(cpe:CPE, port:port)) exit(0);
+if(!port = get_app_port(cpe:CPE, service:"ftp"))
+  exit(0);
+
+if(!get_app_location(cpe:CPE, port:port))
+  exit(0);
 
 files = traversal_files("windows");
 

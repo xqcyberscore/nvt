@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_mult_vuln_feb15.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # ZOHO ManageEngine ServiceDesk Plus (SDP) Multiple Vulnerabilities - Feb15
 #
@@ -24,16 +23,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:manageengine:servicedesk_plus";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805138");
-  script_version("$Revision: 11975 $");
+  script_version("2019-06-24T11:38:56+0000");
   script_cve_id("CVE-2015-1479", "CVE-2015-1480");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-24 11:38:56 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2015-02-12 17:19:03 +0530 (Thu, 12 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ZOHO ManageEngine ServiceDesk Plus (SDP) Multiple Vulnerabilities - Feb15");
@@ -69,36 +66,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
-  script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_manageengine_servicedesk_plus_consolidation.nasl");
+  script_mandatory_keys("manageengine/servicedesk_plus/detected");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!appPort = get_app_port(cpe:CPE)){
-  exit(0);
+CPE = "cpe:/a:zohocorp:manageengine_servicedesk_plus";
+
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+version = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:version, test_version:"9.0b9031" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"9.0 (Build 9031)", install_path:path );
+  security_message( data:report, port:port );
+  exit( 0 );
 }
 
-if(!appVer = get_app_version(cpe:CPE, port:appPort))
-{
-  exit(0);
-}
-
-versions = split(appVer, sep:"build", keep:0);
-major = versions[0];
-build = versions[1];
-
-if(major && build)
-{
-  if(int(major) <= "9.0" && int(build) < "9031")
-  {
-    report = 'Installed version: ' + appVer + '\n' +
-             'Fixed version:     9.0 build 9031\n';
-    security_message(data:report, port:appPort);
-    exit(0);
-  }
-}
+exit( 99 );

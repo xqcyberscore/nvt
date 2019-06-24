@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812075");
-  script_version("2019-05-17T13:14:58+0000");
+  script_version("2019-06-17T09:44:09+0000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-06-17 09:44:09 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-10 13:53:35 +0530 (Fri, 10 Nov 2017)");
   script_name("Microsoft Outlook 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)");
 
@@ -81,55 +81,54 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 outVer = get_kb_item("SMB/Office/Outlook/Version");
-if(!outVer){
+if(!outVer)
   exit(0);
-}
 
-outPath = get_kb_item("SMB/Office/Outlook/Install/Path");
-if(!outPath){
-  outPath = "Unable to fetch the install path";
-}
-
-if(outVer =~ "^16")
-{
+if(outVer =~ "^16\.")
   offVer = "16.0";
-  office = '2016';
-} else if(outVer =~ "^15")
-{
+else if(outVer =~ "^15\.")
   offVer = "15.0";
-  office = '2013';
-} else if(outVer =~ "^14")
-{
+else if(outVer =~ "^14\.")
   offVer = "14.0";
-  office = '2010';
-} else if(outVer =~ "^12")
-{
+else if(outVer =~ "^12\.")
   offVer = "12.0";
-  office = '2007';
-}
+else
+  exit(99);
 
-if(offVer =~ "^(14|15|16)")
-  {
+if(offVer =~ "^1[4-6]") {
   keyOff = "Software\Microsoft\Office\" + offVer + "\Word\Options\WordMail";
   item = "DontUpdateLinks";
-} else if (offVer =~ "^12")
-{
+} else if(offVer =~ "^12") {
   keyOff = "Software\Microsoft\Office\" + offVer + "\Word\Options\vpref";
   item = "fNoCalclinksOnopen_90_1";
 }
-if(!registry_key_exists(key:keyOff, type:"HKCU")){
+
+if(!registry_key_exists(key:keyOff, type:"HKCU"))
+  exit(0);
+
+ddedisableitem = registry_get_dword(key:keyOff, item:item, type:"HKCU");
+
+# TODO: We need something like registry_item_exists() similar to registry_key_exists() as registry_get_dword will
+# return NULL for a non-existent item as well as if there was e.g. a connectivity problem to the remote host.
+if(isnull(ddedisableitem))
+  exit(0);
+
+# nb: DDE disabled == 1. If item not present or ddedisableitem == 0, then DDE enabled.
+if(ddedisableitem == "1") {
+  exit(99);
+} else {
+
+  outPath = get_kb_item("SMB/Office/Outlook/Install/Path");
+  if(!outPath)
+    outPath = "Unable to fetch the install path from the registry";
+
+  report  = "Reg-Key checked:  HKCU\" + keyOff + '\n';
+  report += 'Reg-Item checked: ' + item + '\n';
+  report += 'Expected value:   1\n';
+  report += 'Current value:    ' + ddedisableitem + '\n\n';
+  report += 'Install path:     ' + outPath;
+  security_message(port:0, data:report);
   exit(0);
 }
 
-ddedisableitem = registry_get_dword(key:keyOff, item:item, type:"HKCU");
-##DDE disabled == 1
-if(ddedisableitem == "1"){
-  exit(0);
-} else
-{
-  ##If item not present or ddedisableitem == 0, then DDE enabled
-  report = report_fixed_ver(installed_version: outVer, fixed_version: "Disable DDE", install_path:outPath);
-  security_message(data:report);
-  exit(0);
-}
-exit(0);
+exit(99);

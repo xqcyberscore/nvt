@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812074");
-  script_version("2019-05-17T13:14:58+0000");
+  script_version("2019-06-17T09:44:09+0000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-06-17 09:44:09 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-11-10 10:53:35 +0530 (Fri, 10 Nov 2017)");
   script_name("Microsoft Excel 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)");
 
@@ -81,49 +81,47 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
-if(!excelVer){
+if(!excelVer)
   exit(0);
-}
 
-excelPath = get_kb_item("SMB/Office/Excel/Install/Path");
-if(!excelPath){
-  excelPath = "Unable to fetch the install path";
-}
-
-if(excelVer =~ "^16")
-{
+if(excelVer =~ "^16\.")
   offVer = "16.0";
-  office = '2016';
-} else if(excelVer =~ "^15")
-{
+else if(excelVer =~ "^15\.")
   offVer = "15.0";
-  office = '2013';
-} else if(excelVer =~ "^14")
-{
+else if(excelVer =~ "^14\.")
   offVer = "14.0";
-  office = '2010';
-} else if(excelVer =~ "^12")
-{
+else if(excelVer =~ "^12\.")
   offVer = "12.0";
-  office = '2007';
-}
+else
+  exit(99);
 
-keyOff = "Software\Microsoft\Office\" + offVer + "\Excel\Security" ;
-
-if(!registry_key_exists(key:keyOff, type:"HKCU")){
+keyOff = "Software\Microsoft\Office\" + offVer + "\Excel\Security";
+if(!registry_key_exists(key:keyOff, type:"HKCU"))
   exit(0);
-}
 
 workbooklinkwarning = registry_get_dword(key:keyOff, item:"WorkbookLinkWarnings", type:"HKCU");
 
-##DDE disabled == 2
-if(workbooklinkwarning == "2"){
+# TODO: We need something like registry_item_exists() similar to registry_key_exists() as registry_get_dword will
+# return NULL for a non-existent item as well as if there was e.g. a connectivity problem to the remote host.
+if(isnull(workbooklinkwarning))
   exit(0);
-} else
-{
-  ##If item not present or workbooklinkwarning == 0, then DDE enabled
-  report = report_fixed_ver(installed_version: excelVer, fixed_version: "Disable DDE", install_path:excelPath);
-  security_message(data:report);
+
+# nb: DDE disabled == 2. If item not present or workbooklinkwarning == 0, then DDE enabled.
+if(workbooklinkwarning == "2") {
+  exit(99);
+} else {
+
+  excelPath = get_kb_item("SMB/Office/Excel/Install/Path");
+  if(!excelPath)
+    excelPath = "Unable to fetch the install path from the registry";
+
+  report  = "Reg-Key checked:  HKCU\" + keyOff + '\n';
+  report += 'Reg-Item checked: WorkbookLinkWarnings\n';
+  report += 'Expected value:   2\n';
+  report += 'Current value:    ' + workbooklinkwarning + '\n\n';
+  report += 'Install path:     ' + excelPath;
+  security_message(port:0, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_mult_unauth_info_disc_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ManageEngine ServiceDesk Plus Multiple Unauthorized Information Disclosure Vulnerabilities
 #
@@ -24,15 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:manageengine:servicedesk_plus";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809071");
-  script_version("$Revision: 12149 $");
+  script_version("2019-06-24T11:38:56+0000");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-24 11:38:56 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2016-10-20 12:16:44 +0530 (Thu, 20 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine ServiceDesk Plus Multiple Unauthorized Information Disclosure Vulnerabilities");
@@ -64,29 +61,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
-  script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_manageengine_servicedesk_plus_consolidation.nasl");
+  script_mandatory_keys("manageengine/servicedesk_plus/detected");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!deskPort = get_app_port(cpe:CPE)){
-  exit(0);
+CPE = "cpe:/a:zohocorp:manageengine_servicedesk_plus";
+
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+version = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:version, test_version:"9.2b9229" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"9.2 (Build 9229)", install_path:path );
+  security_message( data:report, port:port );
+  exit( 0 );
 }
 
-if(!deskVer = get_app_version(cpe:CPE, port:deskPort)){
-  exit(0);
-}
-
-vers = str_replace(string:deskVer, find:"build", replace:".");
-
-if(version_is_equal(version:vers, test_version:"9.2.9207"))
-{
-  report = report_fixed_ver(installed_version:deskVer, fixed_version:"9.2 build9229");
-  security_message(data:report, port:deskPort);
-  exit(0);
-}
+exit( 99 );

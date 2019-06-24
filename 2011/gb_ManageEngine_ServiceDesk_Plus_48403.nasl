@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ManageEngine_ServiceDesk_Plus_48403.nasl 12102 2018-10-25 14:45:31Z cfischer $
 #
 # ManageEngine ServiceDesk Plus 'FILENAME' Parameter Directory Traversal Vulnerability
 #
@@ -24,13 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:manageengine:servicedesk_plus";
+CPE = "cpe:/a:zohocorp:manageengine_servicedesk_plus";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103184");
-  script_version("$Revision: 12102 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 16:45:31 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-06-24T11:38:56+0000");
+  script_tag(name:"last_modification", value:"2019-06-24 11:38:56 +0000 (Mon, 24 Jun 2019)");
   script_tag(name:"creation_date", value:"2011-06-29 13:12:40 +0200 (Wed, 29 Jun 2011)");
   script_cve_id("CVE-2011-2757");
   script_bugtraq_id(48403);
@@ -40,11 +39,11 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
+  script_dependencies("gb_manageengine_servicedesk_plus_consolidation.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 8080);
+  script_mandatory_keys("manageengine/servicedesk_plus/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/48403");
-  script_xref(name:"URL", value:"http://manageengine.adventnet.com/products/service-desk/");
 
   script_tag(name:"summary", value:"ManageEngine ServiceDesk Plus is prone to a directory-traversal
   vulnerability because the application fails to properly sanitize user-supplied input.");
@@ -70,7 +69,7 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) )
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
   exit( 0 );
 
 if( ! dir = get_app_location( cpe:CPE, port:port ) )
@@ -99,4 +98,4 @@ foreach pattern( keys( files ) ) {
   }
 }
 
-exit( 0 );
+exit( 99 );
