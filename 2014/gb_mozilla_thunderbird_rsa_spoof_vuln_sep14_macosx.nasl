@@ -1,6 +1,5 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_rsa_spoof_vuln_sep14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mozilla Thunderbird RSA Spoof Vulnerability September14 (Macosx)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804923");
-  script_version("$Revision: 11867 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2014-09-30 09:27:07 +0530 (Tue, 30 Sep 2014)");
 
   script_name("Mozilla Thunderbird RSA Spoof Vulnerability September14 (Macosx)");
@@ -66,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }

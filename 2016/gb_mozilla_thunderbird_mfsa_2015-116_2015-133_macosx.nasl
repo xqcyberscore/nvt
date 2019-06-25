@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2015-116_2015-133_macosx.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2015-116_2015-133 )-MAC OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807636");
-  script_version("$Revision: 12363 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183", "CVE-2015-7197",
 		"CVE-2015-7198", "CVE-2015-7199", "CVE-2015-7200", "CVE-2015-7194",
 	        "CVE-2015-7193", "CVE-2015-7189", "CVE-2015-7188", "CVE-2015-4513",
@@ -37,7 +36,7 @@ if(description)
   script_bugtraq_id(77416, 77415, 77411);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:49 +0530 (Wed, 06 Apr 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2015-116_2015-133 )-MAC OS X");
 
@@ -98,7 +97,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }

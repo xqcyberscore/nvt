@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804735");
-  script_version("$Revision: 11867 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2014-1549", "CVE-2014-1548", "CVE-2014-1560", "CVE-2014-1559",
                 "CVE-2014-1547", "CVE-2014-1558", "CVE-2014-1552", "CVE-2014-1555",
                 "CVE-2014-1557", "CVE-2014-1544", "CVE-2014-1556", "CVE-2014-1550");
@@ -37,7 +37,7 @@ if(description)
                     68814, 68824, 68816, 68822, 68810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2014-08-07 16:04:43 +0530 (Thu, 07 Aug 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 August14 (Mac OS X)");
 
@@ -72,7 +72,7 @@ restrictions and compromise a user's system.");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }

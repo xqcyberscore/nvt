@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_macosx_feb12.nasl 14317 2019-03-19 11:39:17Z cfischer $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802584");
-  script_version("$Revision: 14317 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2012-0442", "CVE-2012-0444", "CVE-2012-0449", "CVE-2011-3659");
   script_bugtraq_id(51756, 51753, 51754, 51755);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 12:39:17 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2012-02-06 13:59:08 +0530 (Mon, 06 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X)");
 
@@ -95,7 +94,7 @@ if(!isnull(seaVer))
   }
 }
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 if(!isnull(tbVer))
 {
   if(version_is_less(version:tbVer, test_version:"3.1.18") ||

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_clickjacking_vuln_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Mozilla Products Certificate Page Clickjacking Vulnerability (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802894");
-  script_version("$Revision: 11818 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2012-1964");
   script_bugtraq_id(54581);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2012-07-23 18:40:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Certificate Page Clickjacking Vulnerability (Mac OS X)");
 
@@ -97,7 +96,7 @@ if(seaVer)
   }
 }
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 
 if(tbVer)
 {

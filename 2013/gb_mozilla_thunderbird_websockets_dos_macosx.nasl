@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_websockets_dos_macosx.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Thunderbird 'WebSockets' Denial of Service Vulnerability (Mac OS X)
 #
@@ -37,12 +36,12 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Mozilla Thunderbird and is prone to multiple
   vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803394");
-  script_version("$Revision: 12072 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -55,14 +54,14 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 if(tbVer)
 {
   if(version_is_less(version:tbVer, test_version:"16.0.1")){

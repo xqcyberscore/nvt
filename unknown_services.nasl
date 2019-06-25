@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("2019-05-09T07:03:38+0000");
-  script_tag(name:"last_modification", value:"2019-05-09 07:03:38 +0000 (Thu, 09 May 2019)");
+  script_version("2019-06-22T09:01:36+0000");
+  script_tag(name:"last_modification", value:"2019-06-22 09:01:36 +0000 (Sat, 22 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -63,6 +63,7 @@ if(description)
                       "gb_memcachedb_detect.nasl",
                       "gb_memcached_detect.nasl", "gb_modbus_detect.nasl",
                       "gb_mongodb_detect.nasl", "gb_mqtt_detect.nasl",
+                      "gb_ndmp_detect.nasl",
                       "gb_netware_core_protocol_detect.nasl", "gb_niagara_fox_detect.nasl",
                       "gb_opc_ua_detect.nasl", "gb_openvas_administrator_detect.nasl",
                       "gb_openvas_manager_detect.nasl", "gb_openvpn_detect.nasl",

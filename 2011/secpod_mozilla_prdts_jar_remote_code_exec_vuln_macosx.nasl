@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_jar_remote_code_exec_vuln_macosx.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Mozilla Products jar Files Remote Code Execution Vulnerability (MAC OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902777");
-  script_version("$Revision: 12018 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2011-3666");
   script_bugtraq_id(51139);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2011-12-22 13:17:34 +0530 (Thu, 22 Dec 2011)");
   script_name("Mozilla Products jar Files Remote Code Execution Vulnerability (MAC OS X)");
 
@@ -74,7 +73,7 @@ if(ffVer)
   }
 }
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 if(tbVer != NULL)
 {
   if(version_is_less(version:tbVer, test_version:"3.1.17")){

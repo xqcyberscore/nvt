@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_oct12_macosx.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - Oct 12 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803658");
-  script_version("$Revision: 12072 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2012-5354", "CVE-2012-3989", "CVE-2012-3985", "CVE-2012-3984");
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-07-12 11:45:08 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - Oct 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -44,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct cross-site scripting,
   clickjacking attacks or cause a denial of service or possibly execute
   arbitrary code.");
@@ -73,7 +72,7 @@ if(description)
 
 include("version_func.inc");
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 if(tbVer)
 {
   if(version_is_less(version:tbVer, test_version:"16.0")){

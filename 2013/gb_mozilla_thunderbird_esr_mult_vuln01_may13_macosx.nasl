@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_may13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities -01 May13 (Mac OS X)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803612");
-  script_version("$Revision: 11865 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1672", "CVE-2013-1670", "CVE-2013-0801");
@@ -35,7 +34,7 @@ if(description)
                     59865, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-05-27 13:37:02 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities -01 May13 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028555");
@@ -44,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird-ESR/MacOSX/Version");
+  script_mandatory_keys("Thunderbird-ESR/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
   memory corruption, bypass certain security restrictions and compromise
   a user's system.");
@@ -76,7 +75,7 @@ if(description)
 
 include("version_func.inc");
 
-tbVer = get_kb_item("ThunderBird-ESR/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird-ESR/MacOSX/Version");
 
 if(tbVer && tbVer =~ "^(17.0)")
 {

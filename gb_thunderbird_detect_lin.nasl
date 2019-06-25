@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800018");
-  script_version("2019-06-03T11:22:42+0000");
-  script_tag(name:"last_modification", value:"2019-06-03 11:22:42 +0000 (Mon, 03 Jun 2019)");
+  script_version("2019-06-25T08:25:15+0000");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,7 +39,7 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name:"summary", value:"This script retrieves Mozilla ThunderBird Version and
+  script_tag(name:"summary", value:"This script retrieves Mozilla Thunderbird Version and
   saves it in KB.");
 
   script_tag(name:"qod_type", value:"executable_version");

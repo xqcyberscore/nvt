@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_may12_macosx.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802843");
-  script_version("$Revision: 11861 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2012-0475");
   script_bugtraq_id(53230);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:29:59 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2012-05-02 12:29:17 +0530 (Wed, 02 May 2012)");
   script_name("Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)");
 
@@ -91,7 +90,7 @@ if(!isnull(seaVer))
   }
 }
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 
 if(!isnull(tbVer))
 {

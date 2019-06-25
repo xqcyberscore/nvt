@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804140");
-  script_version("$Revision: 11865 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2013-5604", "CVE-2013-5602", "CVE-2013-5601", "CVE-2013-5600",
                 "CVE-2013-5599", "CVE-2013-5597", "CVE-2013-5590", "CVE-2013-5595");
   script_bugtraq_id(63430, 63424, 63428, 63427, 63423, 63422, 63415, 63421);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-11-07 19:28:51 +0530 (Thu, 07 Nov 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities-01 Nov13 (Mac OS X)");
 
@@ -76,7 +76,7 @@ cause a denial of service and conduct buffer overflow attacks.");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird-ESR/MacOSX/Version");
+  script_mandatory_keys("Thunderbird-ESR/MacOSX/Version");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }

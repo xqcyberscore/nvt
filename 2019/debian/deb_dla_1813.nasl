@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891813");
-  script_version("2019-06-04T02:00:07+0000");
+  script_version("2019-06-25T09:45:07+0000");
   script_cve_id("CVE-2019-11039", "CVE-2019-11040");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-04 02:00:07 +0000 (Tue, 04 Jun 2019)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-06-25 09:45:07 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-04 02:00:07 +0000 (Tue, 04 Jun 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1813-1] php5 security update)");
   script_category(ACT_GATHER_INFO);

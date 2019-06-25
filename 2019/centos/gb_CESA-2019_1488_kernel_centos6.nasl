@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883065");
-  script_version("2019-06-20T06:01:12+0000");
+  script_version("2019-06-25T09:45:07+0000");
   script_cve_id("CVE-2019-3896", "CVE-2019-11477", "CVE-2019-11478", "CVE-2019-11479");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-20 06:01:12 +0000 (Thu, 20 Jun 2019)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"2019-06-25 09:45:07 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-19 02:00:43 +0000 (Wed, 19 Jun 2019)");
   script_name("CentOS Update for kernel CESA-2019:1488 centos6 ");
   script_category(ACT_GATHER_INFO);

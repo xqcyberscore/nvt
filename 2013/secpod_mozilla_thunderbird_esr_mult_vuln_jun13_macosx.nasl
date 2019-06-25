@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_thunderbird_esr_mult_vuln_jun13_macosx.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Mac OS X)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903221");
-  script_version("$Revision: 11883 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686", "CVE-2013-1687",
                  "CVE-2013-1690", "CVE-2013-1692", "CVE-2013-1693", "CVE-2013-1694",
                  "CVE-2013-1697", "CVE-2013-1692");
@@ -35,7 +34,7 @@ if(description)
                     60765);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-06-26 18:40:17 +0530 (Wed, 26 Jun 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53970");
@@ -45,7 +44,7 @@ if(description)
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird-ESR/MacOSX/Version");
+  script_mandatory_keys("Thunderbird-ESR/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
   obtain potentially sensitive information, gain escalated privileges, bypass
   security restrictions, and perform unauthorized actions. Other attacks may
@@ -82,7 +81,7 @@ if(description)
 
 include("version_func.inc");
 
-tbVer = get_kb_item("ThunderBird-ESR/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird-ESR/MacOSX/Version");
 if(tbVer && tbVer =~ "^17\.0")
 {
   if(version_in_range(version:tbVer, test_version:"17.0", test_version2:"17.0.6"))

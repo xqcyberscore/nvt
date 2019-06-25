@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_aug13_macosx.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - August 13 (Mac OS X)
 #
@@ -27,14 +26,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803857");
-  script_version("$Revision: 12072 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2013-1701", "CVE-2013-1706", "CVE-2013-1707", "CVE-2013-1709",
                 "CVE-2013-1710", "CVE-2013-1712", "CVE-2013-1713", "CVE-2013-1714",
                 "CVE-2013-1717");
   script_bugtraq_id(61641);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-08-08 15:49:37 +0530 (Thu, 08 Aug 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - August 13 (Mac OS X)");
   script_tag(name:"summary", value:"The host is installed with Mozilla Thunderbird and is prone to multiple
@@ -74,7 +73,7 @@ also be possible.");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
@@ -82,7 +81,7 @@ also be possible.");
 
 include("version_func.inc");
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 
 if(tbVer)
 {

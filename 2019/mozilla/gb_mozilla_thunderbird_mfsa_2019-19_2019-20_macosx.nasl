@@ -23,11 +23,11 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815143");
-  script_version("2019-06-21T10:27:33+0000");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2019-11707", "CVE-2019-11708");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-21 10:27:33 +0000 (Fri, 21 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-21 12:17:08 +0530 (Fri, 21 Jun 2019)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2019-19_2019-20 )-MAC OS X");
 
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   exit(0);
 }
 

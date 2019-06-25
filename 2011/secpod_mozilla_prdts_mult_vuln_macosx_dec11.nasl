@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_macosx_dec11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mozilla Products Multiple Vulnerabilities - Dec 11 (MAC OS X)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902778");
-  script_version("$Revision: 11997 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3663", "CVE-2011-3665");
   script_bugtraq_id(51133, 51135, 51136, 51134);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-22 12:14:45 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_name("Mozilla Products Multiple Vulnerabilities - Dec 11 (MAC OS X)");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47302/");
@@ -99,7 +98,7 @@ if(seaVer)
   }
 }
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
 if(tbVer != NULL)
 {
   if(version_in_range(version:tbVer, test_version:"5.0", test_version2:"8.0")){

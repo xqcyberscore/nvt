@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln02_jan13_macosx.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities-02 January13 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803201");
-  script_version("$Revision: 11866 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2013-0762", "CVE-2013-0766", "CVE-2013-0767", "CVE-2013-0769");
   script_bugtraq_id(57193, 57194, 57203);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-01-16 16:06:20 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Products Multiple Vulnerabilities-02 January13 (Mac OS X)");
 
@@ -110,8 +109,8 @@ if(seaVer)
   }
 }
 
-tbVer = get_kb_item("ThunderBird/MacOSX/Version");
-tbesrVer = get_kb_item("ThunderBird-ESR/MacOSX/Version");
+tbVer = get_kb_item("Thunderbird/MacOSX/Version");
+tbesrVer = get_kb_item("Thunderbird-ESR/MacOSX/Version");
 
 if(tbVer || tbesrVer)
 {

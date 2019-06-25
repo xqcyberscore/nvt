@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_xss_vuln_feb14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mozilla:thunderbird_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804506");
-  script_version("$Revision: 11867 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2013-6674", "CVE-2014-2018");
   script_bugtraq_id(65158, 65620);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2014-02-19 16:45:33 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Mac OS X)");
 
@@ -59,7 +58,7 @@ browser and the server.");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird-ESR/MacOSX/Version");
+  script_mandatory_keys("Thunderbird-ESR/MacOSX/Version");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }

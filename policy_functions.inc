@@ -925,6 +925,75 @@ function policy_report_no_wmi_access(){
   return(ret);
 }
 
+
+# @brief Returns results variables for exact reg_dword check
+#
+# @param key Registry key to check
+# @param item Registry item to check
+# @param type Registry type to check
+# @param default set point to check the actual value against
+# @param min default is the minimum value, actual value can not be higher
+# @param max default is the maximum value, actula value can not be higher
+# @param not_zero if a maximum is given, the actual value can not be 0
+# @param as_sz if the value is saved as sz, this can be tested
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_min_max_reg_dword(key, item, type, default, min, max, not_zero, as_sz){
+  local_var key, item, type, default, min, max, not_zero, as_sz;
+  local_var value, comment, compliant, ret;
+
+  if(!min && !max){
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_min_max_reg_dword#-#min_max");
+  }
+
+  if(as_sz)
+    value = registry_get_sz(key:key, item:item, type:type);
+  else
+    value = registry_get_dword(key:key, item:item, type:type);
+
+  value = chomp(value);
+
+  if(value == ""){
+    comment = "Registry key not found.";
+  }else{
+    if(min){
+      if(int(value) >= int(default))
+        compliant = "yes";
+      else
+        compliant = "no";
+    }
+
+    if(max){
+      if(int(value) <= int(default)){
+        if(not_zero && int(value) == 0)
+          compliant = "no";
+        else
+          compliant = "yes";
+      }else{
+        compliant = "no";
+      }
+    }
+  }
+
+  if(!value)
+    ret["value"] = "None";
+  else
+    ret["value"] = value;
+
+  if(!compliant)
+    ret["compliant"] = "incomplete";
+  else
+    ret["compliant"] = compliant;
+
+  if(!comment)
+    ret["comment"] = "";
+  else
+    ret["comment"] = comment;
+
+  return ret;
+}
+
 # @brief Performs a WMI query against a host and returns finding
 #
 # @param query The WMI query to use.

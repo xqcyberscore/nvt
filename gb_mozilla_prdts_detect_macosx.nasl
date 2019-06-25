@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_detect_macosx.nasl 10467 2018-07-09 13:33:50Z cfischer $
 #
 # Mozilla Products Version Detection (Mac OS X)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802179");
-  script_version("$Revision: 10467 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 15:33:50 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_name("Mozilla Products Version Detection (Mac OS X)");
   script_category(ACT_GATHER_INFO);
@@ -142,11 +141,11 @@ if(strlen(tbVerCmd) > 0 && "does not exist" >!< tbVerCmd){
     }
 
     if(isTbEsr){
-      set_kb_item(name:"ThunderBird-ESR/MacOSX/Version", value:tbVer);
+      set_kb_item(name:"Thunderbird-ESR/MacOSX/Version", value:tbVer);
       set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE);
       register_and_report_cpe(app:"Mozilla Thunderbird ESR", ver:tbVer, base:"cpe:/a:mozilla:thunderbird_esr:", expr:"^([0-9.]+)([a-zA-Z0-9]+)?", insloc:"/Applications/Thunderbird.app", concluded:tbVerCmd);
     }else{
-      set_kb_item(name:"ThunderBird/MacOSX/Version", value:tbVer);
+      set_kb_item(name:"Thunderbird/MacOSX/Version", value:tbVer);
       set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE);
       register_and_report_cpe(app:"Mozilla Thunderbird", ver:tbVer, base:"cpe:/a:mozilla:thunderbird:", expr:"^([0-9.]+)([a-zA-Z0-9]+)?", insloc:"/Applications/Thunderbird.app", concluded:tbVerCmd);
     }

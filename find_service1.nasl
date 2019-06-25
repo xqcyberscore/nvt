@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-05-09T06:09:02+0000");
-  script_tag(name:"last_modification", value:"2019-05-09 06:09:02 +0000 (Thu, 09 May 2019)");
+  script_version("2019-06-21T04:23:37+0000");
+  script_tag(name:"last_modification", value:"2019-06-21 04:23:37 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -971,37 +971,6 @@ if( port == 514 && "getnameinfo: Temporary failure in name resolution" >< r ) {
 if( rhexstr =~ "^01010018.{16}00000000.{64}0{32}.{64}$" ) {
   register_service( port:port, proto:"nping-echo", message:"An nping-echo server seems to be running on this port." );
   log_message( port:port, data:"An nping-echo server seems to be running on this port." );
-  exit( 0 );
-}
-
-# NDMP Service from NetApp: https://library.netapp.com/ecmdocs/ECMP1155586/html/GUID-0EAD04D4-A046-4526-ADE1-6EF57C3E4965.html
-#
-# nb: Note that the four chars after 01 are dynamic.
-#
-# 0x00:  80 00 00 38 00 00 00 01 5C CA 9C F9 00 00 00 00    ...8....\.......
-# 0x10:  00 00 05 02 00 00 00 00 00 00 00 00 00 00 00 02    ................
-# 0x20:  00 00 00 04 00 00 00 12 43 6F 6E 6E 65 63 74 69    ........Connecti
-# 0x30:  6F 6E 20 72 65 66 75 73 65 64 00 00                on refused..
-#
-# or:
-#
-# 0x00:  80 00 00 3C 00 00 00 01 5C 85 70 71 00 00 00 00 ...<....\.pq....
-# 0x10:  00 00 05 02 00 00 00 00 00 00 00 00 00 00 00 00 ................
-# 0x20:  00 00 00 04 00 00 00 15 43 6F 6E 6E 65 63 74 69 ........Connecti
-# 0x30:  6F 6E 20 73 75 63 63 65 73 73 66 75 6C 00 00 00 on successful...
-#
-# or:
-#
-# 0x00:  80 00 00 24 00 00 00 01 01 5C 00 00 00 00 00 00
-# 0x10:  05 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-# 0x03:  04 00 00 00 00
-#
-
-if( rhexstr =~ "^8000003[8C]00000001........000000000000050200000000000000000000000[02]00000004000000(15|12)436F6E6E656374696F6E20(726566757365640000|7375636365737366756C000000)$" ||
-    rhexstr =~ "^8000002400000001........000000000000050200000000000000000000000000000004000000000$" ) {
-  register_service( port:port, proto:"ndmp", message:"A NetApp service supporting the Network Data Management Protocol (NDMP) seems to be running on this port." );
-  log_message( port:port, data:"A NetApp service supporting the Network Data Management Protocol (NDMP) seems to be running on this port." );
-  set_kb_item( name:"ndmp/" + port + "/hex_banner", value:rhexstr );
   exit( 0 );
 }
 

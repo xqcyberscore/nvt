@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_sep14_macosx.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 September14 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804835");
-  script_version("$Revision: 11974 $");
+  script_version("2019-06-25T08:25:15+0000");
   script_cve_id("CVE-2014-1562", "CVE-2014-1567");
   script_bugtraq_id(69519, 69520);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
   script_tag(name:"creation_date", value:"2014-09-05 20:15:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 September14 (Mac OS X)");
@@ -68,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Thunderbird/MacOSX/Version");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }

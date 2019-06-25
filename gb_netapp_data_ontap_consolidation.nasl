@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141923");
-  script_version("2019-05-06T06:47:54+0000");
-  script_tag(name:"last_modification", value:"2019-05-06 06:47:54 +0000 (Mon, 06 May 2019)");
+  script_version("2019-06-21T04:23:37+0000");
+  script_tag(name:"last_modification", value:"2019-06-21 04:23:37 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 12:54:35 +0700 (Fri, 25 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -120,6 +120,10 @@ if (snmp_ports = get_kb_list("netapp_data_ontap/snmp/port")) {
 if (ndmp_ports = get_kb_list("netapp_data_ontap/ndmp/port")) {
   foreach port (ndmp_ports) {
     extra += 'NDMP on port ' + port + '/tcp\n';
+
+    concluded = get_kb_item("netapp_data_ontap/ndmp/" + port + "/concluded");
+    if (concluded)
+      extra += 'Concluded from NDMP host info: ' + concluded + '\n';
 
     register_product(cpe: cpe, location: '/', port: port, service: "ndmp");
   }
