@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140781");
-  script_version("2019-06-25T11:13:03+0000");
-  script_tag(name:"last_modification", value:"2019-06-25 11:13:03 +0000 (Tue, 25 Jun 2019)");
+  script_version("2019-06-26T06:38:34+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 06:38:34 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-02-16 10:56:02 +0700 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -83,7 +83,7 @@ if( "<title>ManageEngine ServiceDesk Plus - MSP</title>" >< res && "j_security_c
   if( ! isnull( buildnumber[2] ) ) {
     build = buildnumber[2];
     appVer = major + 'b' + build;
-    concluded += '\n    Build:  ' + buildnumber[0];
+    concluded += '\n    Build:   ' + buildnumber[0];
     set_kb_item( name:"manageengine/servicedesk_plus_msp/http/" + port + "/build", value:build );
   }
 

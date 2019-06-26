@@ -331,9 +331,16 @@ eol_cpes[ 'cpe:/a:postgresql:postgresql'] = make_array(
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
+# https://doc.powerdns.com/authoritative/appendices/EOL.html
 # https://doc.powerdns.com/md/end-of-life/#end-of-life-statements
 eol_cpes[ 'cpe:/a:powerdns:authoritative_server' ] = make_array(
-  'versions',      '2.9:2015-05-21',
+  'versions',      '3.4:2017-12-01;3.3:2017-12-01;3.2:2017-12-01;3.1:2017-12-01;3.0:2017-12-01;2.9:2015-05-21',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://doc.powerdns.com/recursor/appendices/EOL.html
+eol_cpes[ 'cpe:/a:powerdns:recursor' ] = make_array(
+  'versions',      '3.7:unknown;3.6:unknown;3.5:unknown;3.3:unknown;3.2:unknown;3.1:unknown;3.0:unknown',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 

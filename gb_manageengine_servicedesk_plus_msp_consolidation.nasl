@@ -21,8 +21,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107026");
-  script_version("2019-06-25T11:13:03+0000");
-  script_tag(name:"last_modification", value:"2019-06-25 11:13:03 +0000 (Tue, 25 Jun 2019)");
+  script_version("2019-06-26T06:33:49+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 06:33:49 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-25 11:28:22 +0200 (Tue, 25 Jun 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -108,11 +108,13 @@ if( http_ports = get_kb_list( "manageengine/servicedesk_plus_msp/http/port" ) ) 
 
 report = build_detection_report( app:"ManageEngine ServiceDesk Plus - MSP",
                                  version:version,
+                                 patch:build,
                                  install:"/",
                                  cpe:CPE );
-if( extra )
+if( extra ) {
   report += '\n\nDetection methods:\n';
   report += extra;
+}
 
 log_message( port:0, data:report );
 

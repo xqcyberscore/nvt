@@ -183,32 +183,34 @@ function policy_reporting(result, default, compliant, fixtext, type, test, info)
   local_var result, default, compliant, fixtext, type, test, info;
   local_var report;
 
+  # Be aware that a backslash in a result value causes the string() function to throw an error
   if(!string(result)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#result");
     return;
   }
 
+  # Be aware that a backslash in a default value causes the string() function to throw an error
   if(!string(default)) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#default");
     return;
   }
 
-  if(!string(compliant)) {
+  if(!compliant) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#compliant");
     return;
   }
 
-  if(!string(fixtext)) {
+  if(!fixtext) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#fixtext");
     return;
   }
 
-  if(!string(type)) {
+  if(!type) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#type");
     return;
   }
 
-  if(!string(test)) {
+  if(!test) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#test");
     return;
   }
@@ -223,7 +225,7 @@ function policy_reporting(result, default, compliant, fixtext, type, test, info)
   report += "Test:         " + test + '\n';
   report += "Solution:     " + fixtext;
 
-  if(string(info)){
+  if(info){
     report += '\n' + "Notes:        " + info;
   }
 
