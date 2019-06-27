@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140780");
-  script_version("2019-06-24T12:35:18+0000");
-  script_tag(name:"last_modification", value:"2019-06-24 12:35:18 +0000 (Mon, 24 Jun 2019)");
+  script_version("2019-06-26T12:44:12+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 12:44:12 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-02-16 10:29:54 +0700 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("ManageEngine ServiceDesk Plus Detection (HTTP)");
   script_category(ACT_GATHER_INFO);
-
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
@@ -61,19 +60,20 @@ res = http_get_cache( port:port, item:"/" );
 
 if( "<title>ManageEngine ServiceDesk Plus</title>" >< res && "j_security_check" >< res ) {
 
-  location = "/";
+  location  = "/";
+  concluded = '    URL:     ' + report_vuln_url( port:port, url:location, url_only:TRUE );
 
   # title='ManageEngine ServiceDesk Plus'>ManageEngine ServiceDesk Plus</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;8.0.0</span></b></td></tr>
   version = eregmatch( string:res, pattern:"ManageEngine ServiceDesk Plus</a><span>&nbsp;&nbsp;\|&nbsp;&nbsp;([0-9.]+)", icase:TRUE);
   if( isnull( version[1] ) ) {
-    # getCustomHtml('/custom/login/log-logo.png','ManageEngine ServiceDesk Plus','http://www.manageengine.com/products/service-desk/index.html','10.0',''); //NO OUTPUTENCODING
-    # getCustomHtml('/custom/customimages/Custom_LoginLogo.gif','ManageEngine ServiceDesk Plus','http://www.manageengine.com/products/service-desk/index.html','9.3'); //NO OUTPUTENCODING
-    version = eregmatch( string:res, pattern:"ManageEngine ServiceDesk Plus','http://.*','([0-9.]+)'",icase:TRUE );
+    # example: getCustomHtml('/custom/login/log-logo.png','ManageEngine ServiceDesk Plus','http://www.manageengine.com/products/service-desk/index.html','10.0',''); //NO OUTPUTENCODING
+    # or: getCustomHtml('/custom/customimages/Custom_LoginLogo.gif','ManageEngine ServiceDesk Plus','http://www.manageengine.com/products/service-desk/index.html','9.3'); //NO OUTPUTENCODING
+    version = eregmatch( string:res, pattern:"ManageEngine ServiceDesk Plus','http://.*','([0-9.]+)'", icase:TRUE );
   }
 
   if( ! isnull( version[1] ) ) {
     major = version[1];
-    concluded = '\n    Version: ' + version[0];
+    concluded += '\n    Version: ' + version[0];
     set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/version", value:major );
   }
 
@@ -86,17 +86,15 @@ if( "<title>ManageEngine ServiceDesk Plus</title>" >< res && "j_security_check" 
   if( ! isnull( buildnumber[2] ) ) {
     build = buildnumber[2];
     appVer = major + 'b' + build;
-    concluded += '\n    Build:  ' + buildnumber[0];
+    concluded += '\n    Build:   ' + buildnumber[0];
     set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/build", value:build );
   }
 
   set_kb_item( name:"manageengine/servicedesk_plus/detected", value:TRUE );
   set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/detected", value:TRUE );
-  set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/location", value:"/" );
+  set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/location", value:location );
   set_kb_item( name:"manageengine/servicedesk_plus/http/port", value:port );
-  if( concluded )
-    set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/concluded", value:concluded );
-
+  set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/concluded", value:concluded );
 }
 
 exit( 0 );

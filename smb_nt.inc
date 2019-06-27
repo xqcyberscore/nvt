@@ -6738,13 +6738,14 @@ function registry_get_binary( key, item, type ) {
 # @param item The item within the specified key to query, e.g. "Start"
 # @param type The type of the registry tree to query. Valid values are "HKLM, HKU and HKCU". If no type was specified the function
 #             defaults to "HKLM".
+# @param multi_sz If the value is a multi_sz, newlines should be considered.
 #
 # @return NULL if important connection parameters are missing or a connection couldn't be established,
 #         FALSE if the key or item could not be found and the value of the queried item within the specified key otherwise.
 #
-function registry_get_sz( key, item, type ) {
+function registry_get_sz( key, item, type, multi_sz ) {
 
-  local_var key, item, type;
+  local_var key, item, type, multi_sz;
   local_var kb_proxy_key, kb_proxy, name, _smb_port, login, pass, domain, soc;
   local_var r, prot, uid, tid, pipe, r2, r3, r3_value;
 
@@ -6881,6 +6882,21 @@ function registry_get_sz( key, item, type ) {
       r3_value = registry_decode_sz( data:r3, uid:uid );
 
     close( soc );
+
+    if(multi_sz){
+      # item is MULTI_SZ, which are multiple lines. Could not find another way to replace the "newline" char.
+      for(i = 0; i<strlen(r3_value)-1; i++){
+        if(hexstr(r3_value[i]) == '00')
+          val += '\n';
+        else
+          val += r3_value[i];
+      }
+      if(!val)
+        val = "";
+
+      set_kb_item( name:kb_proxy_key, value:val);
+      return val;
+    }
 
     # Place value into the KB
     if( ! isnull( r3_value ) ) {

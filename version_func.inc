@@ -400,24 +400,26 @@ function get_version( dllPath, string, offs ) {
   return prVersion;
 }
 
-function report_fixed_ver( installed_version, installed_build, installed_patch, vulnerable_range, file_checked,
-                           file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url ) {
+function report_fixed_ver( installed_version, installed_build, installed_patch, vulnerable_range, file_checked, file_version, reg_checked, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url ) {
 
-  local_var installed_version, installed_build, installed_patch, vulnerable_range, file_checked;
-  local_var file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url, report;
+  local_var installed_version, installed_build, installed_patch, vulnerable_range, file_checked, file_version;
+  local_var reg_checked, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url, report;
 
   if( ! installed_version && ! file_checked ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#installed_version/file_checked#-#report_fixed_ver" );
   if( ! fixed_version && ! vulnerable_range ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fixed_version/vulnerable_range#-#report_fixed_ver" );
 
   if( installed_version ) report += 'Installed version: ' + installed_version + '\n';
-  if( file_checked )      report += 'File checked:      ' + file_checked + '\n';
-  if( file_version )      report += 'File version:      ' + file_version + '\n';
-  if( vulnerable_range )  report += 'Vulnerable range:  ' + vulnerable_range + '\n';
-  if( fixed_version )     report += 'Fixed version:     ' + fixed_version + '\n';
   if( installed_build )   report += 'Installed build:   ' + installed_build + '\n';
   if( installed_patch )   report += 'Installed patch:   ' + installed_patch + '\n';
+  if( fixed_version )     report += 'Fixed version:     ' + fixed_version + '\n';
   if( fixed_build )       report += 'Fixed build:       ' + fixed_build + '\n';
   if( fixed_patch )       report += 'Fixed patch:       ' + fixed_patch + '\n';
+  if( vulnerable_range )  report += 'Vulnerable range:  ' + vulnerable_range + '\n';
+
+  if( file_checked )      report += 'File checked:      ' + file_checked + '\n';
+  if( file_version )      report += 'File version:      ' + file_version + '\n';
+  if( reg_checked )       report += 'Reg-Key checked:   ' + reg_checked + '\n';
+
   if( install_path ) {
                           report += 'Installation\n';
                           report += 'path / port:       ' + install_path + '\n';

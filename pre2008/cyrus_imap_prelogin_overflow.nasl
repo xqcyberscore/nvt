@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cyrus_imap_prelogin_overflow.nasl 11272 2018-09-07 02:40:14Z ckuersteiner $
 #
 # Cyrus IMAP pre-login buffer overflow
 #
@@ -24,13 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cmu:cyrus_imap_server";
+CPE = "cpe:/a:cyrus:imap";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11196");
-  script_version("$Revision: 11272 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 04:40:14 +0200 (Fri, 07 Sep 2018) $");
+  script_version("2019-06-26T09:58:31+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 09:58:31 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,8 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2002 Paul Johnston, Westpoint Ltd");
   script_family("Gain a shell remotely");
   script_dependencies("secpod_cyrus_imap_server_detect.nasl");
-  script_require_ports("Services/imap", 143, "Services/pop3", 110);
-  script_mandatory_keys("Cyrus/installed");
+  script_mandatory_keys("cyrus/imap_server/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/301864");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/6298");
@@ -67,8 +65,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( egrep( pattern:"^(1\.*|2\.0\.*|2\.1\.[1-9][^0-9]|2\.1\.10)[0-9]*$", string:vers ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );

@@ -51,7 +51,7 @@ eol_cpes[ 'cpe:/a:apache:tomcat' ] = make_array(
 # https://dotcms.com/docs/latest/release-lifecycle
 eol_cpes[ 'cpe:/a:dotcms:dotcms' ] = make_array(
   'versions',      '4:2019-03-31;3:2018-03-31;2:2015-12-31;1:2013-07-31',
-  'version_regex', '^([0-9])'
+  'version_regex', '^([0-9]+)'
 );
 
 # https://www.drupal.org/forum/general/news-and-announcements/2015-11-09/drupal-6-end-of-life-announcement
@@ -144,25 +144,25 @@ eol_cpes[ 'cpe:/a:mariadb:mariadb' ] = make_array(
 # https://kc.mcafee.com/corporate/index?page=content&id=KB85857
 eol_cpes[ 'cpe:/a:mcafee:email_gateway' ] = make_array(
   'versions', '7.6:2016-10-12',
-  'version_regex', '^([0-9]\\.[0-9])'
+  'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://kc.mcafee.com/corporate/index?page=content&id=KB88252
 eol_cpes[ 'cpe:/a:mcafee:epolicy_orchestrator' ] = make_array(
   'versions', '5.3:2019-01-31;5.1:2017-12-3',
-  'version_regex', '^([0-9]\\.[0-9])'
+  'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://kc.mcafee.com/corporate/index?page=content&id=KB86212
 eol_cpes[ 'cpe:/a:mcafee:virusscan_enterprise_for_linux' ] = make_array(
   'versions', '2.0.2:2017-12-31;2.0.1:2016-12-31;2.0.0:2016-12-31;1.9.1:2017-12-31;1.9.0:2016-12-31',
-  'version_regex', '^([0-9]\\.[0-9]\\.[0-9])'
+  'version_regex', '^([0-9]+\\.[0-9]+\\.[0-9]+)'
 );
 
 # https://kc.mcafee.com/corporate/index?page=content&id=KB88950
 eol_cpes[ 'cpe:/a:mcafee:web_gateway' ] = make_array(
   'versions', '7.6:2018-12-31;7.5:2017-12-31;7.4:2016-12-31',
-  'version_regex', '^([0-9]\\.[0-9])'
+  'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://www.mediawiki.org/wiki/Version_lifecycle
@@ -174,7 +174,7 @@ eol_cpes[ 'cpe:/a:mediawiki:mediawiki' ] = make_array(
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=exchange%20server&Filter=FilterNO
 eol_cpes[ 'cpe:/a:microsoft:exchange_server' ] = make_array(
   'versions',      '2013sp3:2017-10-01;2013sp2:2017-01-01;2013sp1:2017-01-01;2013:2017-01-01;2007:2017-01-01;5.5:2010-01-01',
-  'version_regex', '^([0-9]+)\\.?(sp[0-9])?'
+  'version_regex', '^([0-9]+)(\\.)?(sp[0-9]+)?'
 );
 
 # IIS EOL dates are mostly coupled to the EOL of the OS, see os_eol.inc
@@ -186,13 +186,13 @@ eol_cpes[ 'cpe:/a:microsoft:iis' ] = make_array(
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sharepoint%20foundation&Filter=FilterNO
 eol_cpes[ 'cpe:/a:microsoft:sharepoint_foundation' ] = make_array(
   'versions',      '2013sp1:2023-04-11;2013:2015-04-14;2010sp2:2020-10-13;2010sp1:2014-10-14;2010:2012-07-10',
-  'version_regex', '^([0-9]+)\\.?(sp[0-9])?'
+  'version_regex', '^([0-9]+)(\\.)?(sp[0-9]+)?'
 );
 
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sharepoint%20server&Filter=FilterNO
 eol_cpes[ 'cpe:/a:microsoft:sharepoint_server' ] = make_array(
   'versions',      '2016:2026-07-14;2013sp1:2023-04-11;2013:2015-04-14;2010sp2:2020-10-13;2010sp1:2014-10-14;2010:2012-07-10;2007sp3:2017-10-10;2007sp2:2013-01-08;2007sp1:2010-07-13;2007:2009-01-13;2003:2014-04-08',
-  'version_regex', '^([0-9.+)\\.?(sp[0-9])?'
+  'version_regex', '^([0-9.+)(\\.)?(sp[0-9]+)?'
 );
 
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sql%20server&Filter=FilterNO
@@ -265,7 +265,7 @@ eol_cpes[ 'cpe:/a:novell:imanager' ] = make_array(
 # https://www.microfocus.com/lifecycle/
 eol_cpes[ 'cpe:/a:novell:open_enterprise_server' ] = make_array(
   'versions',      '2018:2022-11-28;2015.sp1:2019-03-31;2015:2017-06-14;11sp3:2017-06-13;11sp2:2017-06-13;11sp1:2015-01-29:11:2013-08-28;2sp3:2012-12-22;2sp2:2009-11-11;2sp1:2008-12-01',
-  'version_regex', '^([0-9]+)\\.?([sp0-9])?'
+  'version_regex', '^([0-9]+)(\\.)?([sp0-9]+)?'
 );
 
 # https://www.microfocus.com/lifecycle/
@@ -313,7 +313,7 @@ eol_cpes[ 'cpe:/a:php:php' ] = make_array(
 # below is just grabbing one digit of the minor version for now.
 eol_cpes[ 'cpe:/a:phpmailer_project:phpmailer' ] = make_array(
   'versions',      '5.2:2018-12-31;5.1:unknown;5.0:unknown;2.3:unknown;2.2:unknown;2.1:unknown;2.0:unknown;1.7:unknown;1.6:unknown;1.5:unknown;1.4:unknown;1.2:unknown;1.1:unknown;1.0:unknown;0.9:unknown',
-  'version_regex', '^([0-9]+\\.[0-9])'
+  'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://www.phpmyadmin.net/downloads/#support
@@ -391,19 +391,19 @@ eol_cpes[ 'cpe:/a:wordpress:wordpress' ] = make_array(
 # https://www.zarafa.com/?
 eol_cpes[ 'cpe:/a:zarafa:zarafa' ] = make_array(
   'versions',      '7:2017-05-01;6:2017-05-01;5:2017-05-01;4:2017-05-01;3:2017-05-01;2:2017-05-01;1:2017-05-01',
-  'version_regex', '^([0-9])'
+  'version_regex', '^([0-9]+)'
 );
 
 # https://documentation.zarafa.com/zarafa_changelog/zcp.html
 eol_cpes[ 'cpe:/a:zarafa:zarafa_collaboration_platform' ] = make_array(
   'versions',      '7:2017-05-01;6:2017-05-01;5:2017-05-01;4:2017-05-01;3:2017-05-01;2:2017-05-01;1:2017-05-01',
-  'version_regex', '^([0-9])'
+  'version_regex', '^([0-9]+)'
 );
 
 # https://documentation.zarafa.com/zarafa_changelog/webapp.html
 eol_cpes[ 'cpe:/a:zarafa:webapp' ] = make_array(
   'versions',      '2:2017-05-01;1:2017-05-01',
-  'version_regex', '^([0-9])'
+  'version_regex', '^([0-9]+)'
 );
 
 function product_reached_eol( cpe, version, debug ) {

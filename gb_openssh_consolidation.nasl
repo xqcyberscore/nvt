@@ -52,6 +52,11 @@ report = ""; # nb: To make openvas-nasl-lint happy...
 foreach source( make_list( "ssh-login", "ssh" ) ) {
 
   install_list = get_kb_list( "openssh/" + source + "/*/installs" );
+  if( ! install_list )
+    continue;
+
+  # nb: Note that sorting the array above is currently dropping the named array index
+  install_list = sort( install_list );
 
   foreach install( install_list ) {
 

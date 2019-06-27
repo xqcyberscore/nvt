@@ -21,8 +21,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107026");
-  script_version("2019-06-26T06:33:49+0000");
-  script_tag(name:"last_modification", value:"2019-06-26 06:33:49 +0000 (Wed, 26 Jun 2019)");
+  script_version("2019-06-26T14:28:16+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 14:28:16 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-25 11:28:22 +0200 (Tue, 25 Jun 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,8 +36,7 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_manageengine_servicedesk_plus_msp_detect.nasl");
-  if(FEED_NAME == "GSF" || FEED_NAME == "SCM")
-  script_dependencies("gsf/gb_manageengine_servicedesk_plus_msp_smb_detect.nasl");
+  if(FEED_NAME == "GSF" || FEED_NAME == "SCM")  script_dependencies("gsf/gb_manageengine_servicedesk_plus_msp_smb_detect.nasl");
   script_mandatory_keys("manageengine/servicedesk_plus_msp/detected");
 
   script_tag(name:"summary", value:"The script reports a detected ManageEngine ServiceDesk Plus - MSP including the
@@ -85,22 +84,29 @@ foreach proto( make_list( "smb", "http" ) ) {
 
 if( ! isnull( concl = get_kb_item( "manageengine/servicedesk_plus_msp/smb/0/concluded" ) ) ) {
   insloc = get_kb_item( "manageengine/servicedesk_plus_msp/smb/0/location" );
-  extra += '  \nLocal Detection over SMB:\n';
-  extra += 'Location:       ' + insloc + '\n';
-  extra += 'Concluded from:\n' + concl + '\n';
+  extra += '\n- Local Detection over SMB:\n';
+  extra += '\n  Location:      ' + insloc;
+  extra += '\n  Concluded from:\n' + concl;
 
-  register_product( cpe:CPE, location:insloc, port:0, service:"smb-login");
+  register_product( cpe:CPE, location:insloc, port:0, service:"smb-login" );
 }
 
 if( http_ports = get_kb_list( "manageengine/servicedesk_plus_msp/http/port" ) ) {
-  extra += '\nRemote Detection over HTTP(s):\n';
+
+  if( extra )
+    extra += '\n';
+
+  extra += '\n- Remote Detection over HTTP(s):';
 
   foreach port( http_ports ) {
-    concl = get_kb_item( "manageengine/servicedesk_plus_msp/http/" + port + "/concluded" );
-    loc = get_kb_item( "manageengine/servicedesk_plus_msp/http/" + port + "/location" );
-    extra += 'Port:           ' + port + '/tcp\n';
-    extra += 'Location:       ' + loc + '\n';
-    extra += 'Concluded from: ' + concl + '\n';
+    concl  = get_kb_item( "manageengine/servicedesk_plus_msp/http/" + port + "/concluded" );
+    loc    = get_kb_item( "manageengine/servicedesk_plus_msp/http/" + port + "/location" );
+    extra += '\n';
+    extra += '\n  Port:           ' + port + "/tcp";
+    extra += '\n  Location:       ' + loc;
+
+    if( concl )
+      extra += '\n  Concluded from:\n' + concl;
 
     register_product( cpe:CPE, location:loc, port:port, service:"www" );
   }

@@ -19,17 +19,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113413");
-  script_version("2019-06-20T09:19:59+0000");
-  script_tag(name:"last_modification", value:"2019-06-20 09:19:59 +0000 (Thu, 20 Jun 2019)");
+  script_version("2019-06-26T12:18:51+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 12:18:51 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-20 10:52:47 +0000 (Thu, 20 Jun 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_cve_id("CVE-2019-10018", "CVE-2019-10019", "CVE-2019-10020", "CVE-2019-10021", "CVE-2019-10022", "CVE-2019-10023", "CVE-2019-10024", "CVE-2019-10025", "CVE-2019-10026");
+  script_cve_id("CVE-2019-10018", "CVE-2019-10019", "CVE-2019-10020", "CVE-2019-10021", "CVE-2019-10022", "CVE-2019-10023",
+  "CVE-2019-10024", "CVE-2019-10025", "CVE-2019-10026", "CVE-2019-12957", "CVE-2019-12958");
 
   script_name("Xpdf <= 4.01.01 Multiple Vulnerabilities");
 
@@ -60,8 +61,17 @@ if(description)
 
   - FPE in the function ImageStream::ImageStream at Stream.cc for nBits
 
-  - FPE in the function PostScriptFunction::exec in Function.cc for the psOpRoll case");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to crash the application.");
+  - FPE in the function PostScriptFunction::exec in Function.cc for the psOpRoll case
+
+  - A buffer over-read could be triggered in FOFIType1C::convertToType1 in fofi/FoFiType1C.cc when
+    the index number is larger than the charset array bounds. It can, for example, be triggered by
+    sending a crafted PDF document to the pdftops tool. It allows an attacker to use a crafted PDF file
+    to cause a Denial of Service or an information leak, or possibly have unspecified other impact.
+
+  - A heap-based buffer over-read could be triggered in FoFiType1C::convertToType0 in fofi/FoFiType1C.cc when
+    it is trying to access the second privateDicts array element, because the array has only one element allowed.");
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to crash the application
+  or access sensitive information.");
   script_tag(name:"affected", value:"Xpdf through version 4.01.01.");
   script_tag(name:"solution", value:"No known solution is available as of 20th June, 2019.
   Information regarding this issue will be updated once solution details are available.");
@@ -70,6 +80,8 @@ if(description)
   script_xref(name:"URL", value:"https://forum.xpdfreader.com/viewtopic.php?f=3&t=41274");
   script_xref(name:"URL", value:"https://forum.xpdfreader.com/viewtopic.php?f=3&t=41275");
   script_xref(name:"URL", value:"https://forum.xpdfreader.com/viewtopic.php?f=3&t=41276");
+  script_xref(name:"URL", value:"https://forum.xpdfreader.com/viewtopic.php?f=3&t=41813");
+  script_xref(name:"URL", value:"https://forum.xpdfreader.com/viewtopic.php?f=3&t=41815");
 
   exit(0);
 }

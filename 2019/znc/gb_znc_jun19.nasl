@@ -21,8 +21,8 @@ CPE = "cpe:/a:znc:znc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108605");
-  script_version("2019-06-20T07:06:21+0000");
-  script_tag(name:"last_modification", value:"2019-06-20 07:06:21 +0000 (Thu, 20 Jun 2019)");
+  script_version("2019-06-27T05:52:27+0000");
+  script_tag(name:"last_modification", value:"2019-06-27 05:52:27 +0000 (Thu, 27 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-17 06:47:14 +0000 (Mon, 17 Jun 2019)");
   script_cve_id("CVE-2019-12816");
   script_tag(name:"cvss_base", value:"6.5");
@@ -67,7 +67,7 @@ if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:
 vers = infos["version"];
 path = infos["location"];
 
-if( version_is_less_equal( version:vers, test_version2:"1.7.3" ) ) {
+if( version_is_less_equal( version:vers, test_version:"1.7.3" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.7.4-rc1", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );

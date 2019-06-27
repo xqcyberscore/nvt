@@ -732,11 +732,17 @@ function policy_match_exact_reg_dword(key, item, type, default){
 #
 # @return ret array with value, comment and compliant strings
 #
-function policy_match_reg_sz(key, item, type, default, partial){
-  local_var key, item, type, default, partial;
+function policy_match_reg_sz(key, item, type, default, partial, multi_sz){
+  local_var key, item, type, default, partial, multi_sz;
   local_var value, comment, compliant, ret;
 
-  value = registry_get_sz(key:key, item:item, type:type);
+  if(multi_sz){
+    value = registry_get_sz(key:key, item:item, type:type, multi_sz:TRUE);
+    value = str_replace(string:value, find:'\n', replace:",");
+  }else{
+    value = registry_get_sz(key:key, item:item, type:type);
+  }
+
   value = chomp(value);
 
   if(value == ""){
@@ -1026,4 +1032,65 @@ function policy_wmi_query(query){
     return(FALSE);
 
   return(res);
+}
+
+
+# @brief Performs a powershell command against a Windows host
+#
+# @param cmd The powershell command to run
+#
+# @return string with the command result from windows, FALSE if no result was returned
+#
+function policy_powershell_cmd(cmd){
+  local_var cmd, ret, parameter, result;
+  local_var username, password, domain, param;
+
+  if(defined_func("win_cmd_exec")){
+    username = kb_smb_login();
+    password = kb_smb_password();
+    domain = kb_smb_domain();
+    if( domain ) username = domain + "/" + username;
+
+    cmd = 'powershell -Command " & {' + cmd + '}"';
+    result = win_cmd_exec(cmd:cmd, password:password, username:username);
+    if(result){
+      # Get rid of wmiexec.py prefix and any trailing / leading whitespaces
+      result = ereg_replace(string:result, pattern:"(Impacket .+ dialect used)", replace:"");
+      result = ereg_replace(string:chomp(result), pattern:'^\\s+', replace:"");
+      if(result){
+        return(result);
+      }
+    }
+  }
+  return;
+}
+
+
+# @brief Returns reporting variables for no powershell return
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_report_no_powershell_result(){
+  local_var ret;
+
+  ret["value"] = "None";
+  ret["comment"] = "The powershell command did not return any result.";
+  ret["compliant"] = "incomplete";
+
+  return(ret);
+}
+
+
+# @brief Returns reporting variables for powershell return
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_report_powershell_result(value){
+  local_var ret, value;
+
+  ret["value"] = value;
+  ret["comment"] = "This script only shows the output of the powershell command.";
+  ret["compliant"] = "yes";
+
+  return(ret);
 }

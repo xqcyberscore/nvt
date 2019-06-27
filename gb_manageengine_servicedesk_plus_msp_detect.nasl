@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# ManageEngine ServiceDesk Plus MSP Detection
+# ManageEngine ServiceDesk Plus - MSP Detection (HTTP)
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -27,30 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140781");
-  script_version("2019-06-26T06:38:34+0000");
-  script_tag(name:"last_modification", value:"2019-06-26 06:38:34 +0000 (Wed, 26 Jun 2019)");
+  script_version("2019-06-26T14:28:16+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 14:28:16 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2018-02-16 10:56:02 +0700 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_name("ManageEngine ServiceDesk Plus MSP Detection");
-
-  script_tag(name:"summary", value:"Detection of ManageEngine ServiceDesk Plus MSP.
-
-The script sends a connection request to the server and attempts to detect ManageEngine ServiceDesk Plus MSP and to
-extract its version.");
-
+  script_name("ManageEngine ServiceDesk Plus - MSP Detection (HTTP)");
   script_category(ACT_GATHER_INFO);
-
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value:"https://www.manageengine.com/products/service-desk-msp/");
+  script_tag(name:"summary", value:"Detection of ManageEngine ServiceDesk Plus - MSP.
+
+  The script sends a connection request to the server and attempts to detect ManageEngine ServiceDesk Plus - MSP and to
+  extract its version.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -65,21 +60,29 @@ res = http_get_cache( port:port, item:"/" );
 
 if( "<title>ManageEngine ServiceDesk Plus - MSP</title>" >< res && "j_security_check" >< res ) {
 
-  location = "/";
+  location  = "/";
+  concluded = '    URL:     ' + report_vuln_url( port:port, url:location, url_only:TRUE );
 
+  # title='ManageEngine ServiceDesk Plus - MSP'>ManageEngine ServiceDesk Plus - MSP</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;8.0.0</span></b></td></tr>
   version = eregmatch( string:res, pattern:"ManageEngine ServiceDesk Plus - MSP</a><span>&nbsp;&nbsp;\|&nbsp;&nbsp;([0-9.]+)", icase:TRUE);
   if( isnull( version[1] ) ) {
+    # example: getCustomHtml('/custom/login/log-logo.png','ManageEngine ServiceDesk Plus - MSP','http://www.manageengine.com/products/service-desk/index.html','10.0',''); //NO OUTPUTENCODING
+    # or: getCustomHtml('/custom/customimages/Custom_LoginLogo.gif','ManageEngine ServiceDesk Plus - MSP','http://www.manageengine.com/products/service-desk/index.html','9.3'); //NO OUTPUTENCODING
     version = eregmatch( string:res, pattern:"ManageEngine ServiceDesk Plus - MSP','http://.*','([0-9.]+)'",icase:TRUE );
   }
 
   if( ! isnull( version[1] ) ) {
     major = version[1];
-    concluded = '\n    Version: ' + version[0];
+    concluded += '\n    Version: ' + version[0];
     set_kb_item( name:"manageengine/servicedesk_plus_msp/http/" + port + "/version", value:major );
   }
 
-  # eg. loginstyle.css?9328 or Login.js?9328
-  buildnumber = eregmatch( pattern:"\.(css|js)?\?([0-9]+)", string:res);
+  # e.g.:
+  # loginstyle.css?9328
+  # Login.js?9328
+  # /scripts/Login.js?8022
+  # /style/select2.css?9425
+  buildnumber = eregmatch( pattern:"\.(css|js)\?([0-9]+)", string:res);
   if( ! isnull( buildnumber[2] ) ) {
     build = buildnumber[2];
     appVer = major + 'b' + build;
@@ -89,12 +92,9 @@ if( "<title>ManageEngine ServiceDesk Plus - MSP</title>" >< res && "j_security_c
 
   set_kb_item( name:"manageengine/servicedesk_plus_msp/detected", value:TRUE );
   set_kb_item( name:"manageengine/servicedesk_plus_msp/http/" + port + "/detected", value:TRUE );
-  set_kb_item( name:"manageengine/servicedesk_plus_msp/http/" + port + "/location", value:"/" );
+  set_kb_item( name:"manageengine/servicedesk_plus_msp/http/" + port + "/location", value:location );
   set_kb_item( name:"manageengine/servicedesk_plus_msp/http/port", value:port );
-  if( concluded )
-    set_kb_item( name:"manageengine/servicedesk_plus_msp/http/" + port + "/concluded", value:concluded );
-
-  exit( 0 );
+  set_kb_item( name:"manageengine/servicedesk_plus_msp/http/" + port + "/concluded", value:concluded );
 }
 
 exit( 0 );
