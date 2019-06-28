@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844066");
-  script_version("2019-06-27T06:30:18+0000");
+  script_version("2019-06-28T07:09:02+0000");
   script_cve_id("CVE-2019-12817");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-27 06:30:18 +0000 (Thu, 27 Jun 2019)");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-06-28 07:09:02 +0000 (Fri, 28 Jun 2019)");
   script_tag(name:"creation_date", value:"2019-06-25 02:00:45 +0000 (Tue, 25 Jun 2019)");
   script_name("Ubuntu Update for linux USN-4031-1");
   script_category(ACT_GATHER_INFO);

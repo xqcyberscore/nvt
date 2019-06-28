@@ -32,7 +32,7 @@ function get_hp_detect_urls() {
   hp_detect_urls = make_array();
   hp_detect_urls['/info_deviceStatus.html']                             = '<title>HP (LaserJet [^ ]+) Series'; # HP LaserJet P2015 a.o.
   hp_detect_urls['/hp/device/']                                         =  '<title> HP Color i(LaserJet [^\n ]+)'; # HP Color LaserJet 2840 a.o.
-  hp_detect_urls['/info_deviceStatus.html?tab=Status']                  = '<title>HP Color (LaserJet [^& ]+)'; # HP Color LaserJet CP2025n a.o.
+  hp_detect_urls['/info_deviceStatus.html?tab=Status']                  = '<title>HP Color (LaserJet [^&]+)'; # HP Color LaserJet CP2025n a.o.
   hp_detect_urls['/info_deviceStatus.html?']                            = '<title>HP (LaserJet [^&]+)'; # HP LaserJet 400 M401n a.o.
   hp_detect_urls['/index_top.htm']                                      =  string("(HP (LaserJet [^\n ]+)|HP Color (LaserJet [^\n ]+)|(DesignJet [^ ]+)|(psc [^ ]+) series)"); # LaserJet 3600 a.o.
   hp_detect_urls['/index.htm?cat=info&page=printerInfo']                =  string("((Officejet Pro [^& ]+)|(Officejet [^\n ]+))"); # K5400 a.o.

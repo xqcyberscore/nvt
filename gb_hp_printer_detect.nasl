@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103675");
-  script_version("2019-06-18T08:52:17+0000");
-  script_tag(name:"last_modification", value:"2019-06-18 08:52:17 +0000 (Tue, 18 Jun 2019)");
+  script_version("2019-06-28T04:56:03+0000");
+  script_tag(name:"last_modification", value:"2019-06-28 04:56:03 +0000 (Fri, 28 Jun 2019)");
   script_tag(name:"creation_date", value:"2013-03-07 14:31:24 +0100 (Thu, 07 Mar 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -88,26 +88,38 @@ foreach url( keys( urls ) ) {
     # There are a lot of different places where the version information can be found
     if( "Server: HP HTTP Server" >< buf )  {
       version = eregmatch( pattern:'Server: HP HTTP Server.*\\{([^},]+).*\\}[\r\n]+', string:buf );
-      if( ! isnull( version[1] ) ) fw_ver = version[1];
+      if( ! isnull( version[1] ) ) {
+        fw_ver = version[1];
+        concUrl = url;
+      }
     }
 
     if( '<strong id="FirmwareRevision">' >< buf ) {
       version = eregmatch( pattern:'<strong id="FirmwareRevision">([0-9_]*)', string:buf );
-      if( ! isnull( version[1] ) ) fw_ver = version[1];
+      if( ! isnull( version[1] ) ) {
+        fw_ver = version[1];
+        concUrl = url;
+      }
     }
 
     if( isnull( fw_ver ) ) {
       url = "/jd_diag.htm";
       res = http_get_cache( item:url, port:port );
       version = eregmatch( pattern:'([A-Z0-9_]{9,}[.]{1}[0-9]+)', string:res );
-      if( ! isnull( version[1] ) ) fw_ver = version[1];
+      if( ! isnull( version[1] ) ) {
+        fw_ver = version[1];
+        concUrl = url;
+      }
     }
 
     if( isnull( fw_ver ) ) {
       url = "/hp/device/webAccess/index.htm?content=auto_firmware_update_manifest";
       res = http_get_cache( item:url, port:port );
       version = eregmatch( pattern:'<b>Firmware version:&nbsp;</b>([A-Z0-9_.]+)<br/><b>Published:', string:res );
-      if( ! isnull( version[1] ) ) fw_ver = version[1];
+      if( ! isnull( version[1] ) ) {
+        fw_ver = version[1];
+        concUrl = url;
+      }
     }
 
     if( isnull( fw_ver ) ) {
@@ -115,7 +127,20 @@ foreach url( keys( urls ) ) {
       res = http_get_cache( item:url, port:port );
       version = eregmatch( pattern:'<prdcfgdyn:ProductInformation>.*<dd:Revision>([^>]+)</dd:Revision>',
                            string:res );
-      if( ! isnull( version[1] ) ) fw_ver = version[1];
+      if( ! isnull( version[1] ) ) {
+        fw_ver = version[1];
+        concUrl = url;
+      }
+    }
+
+    if( isnull( fw_ver ) ) {
+      url = "/info_configuration.html";
+      res = http_get_cache( item:url, port:port );
+      version = eregmatch( pattern:'>Firmware Datecode:</td>[^>]+>([^<]+)</td>', string:res );
+      if( ! isnull( version[1] ) ) {
+        fw_ver = version[1];
+        concUrl = url;
+      }
     }
 
     set_kb_item( name:"target_is_printer", value:TRUE );
@@ -142,7 +167,7 @@ foreach url( keys( urls ) ) {
     report += 'CPE:              ' + cpe + '\n\n';
 
     report += 'Concluded:        ' + match[0] + '\n';
-    report += 'ConcludedURL:     ' + report_vuln_url( port:port, url:url, url_only:TRUE );
+    report += 'ConcludedURL:     ' + report_vuln_url( port:port, url:concUrl, url_only:TRUE );
 
     log_message( data:report, port:port );
 
