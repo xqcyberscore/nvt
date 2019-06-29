@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("2019-05-23T10:58:26+0000");
-  script_tag(name:"last_modification", value:"2019-05-23 10:58:26 +0000 (Thu, 23 May 2019)");
+  script_version("2019-06-28T06:52:39+0000");
+  script_tag(name:"last_modification", value:"2019-06-28 06:52:39 +0000 (Fri, 28 Jun 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -390,5 +390,6 @@ set_mandatory_key( key:"WebLogic", regex: "^Server:.*WebLogic", banner:banner );
 set_mandatory_key( key:"QuickTime_Darwin", regex: "(QuickTime|DSS)", banner:banner );
 set_mandatory_key( key:"mini_httpd_or_thttpd", regex: "^Server: (mini_|t)httpd", banner:banner );
 set_mandatory_key( key:"Oracle-Application-or-HTTP-Server", regex:"Oracle-(Application|HTTP)-Server", banner:banner );
+set_mandatory_key( key:"NetData", regex:"NetData Embedded HTTP Server", banner:banner );
 
 exit( 0 );

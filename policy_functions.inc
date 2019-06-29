@@ -744,19 +744,14 @@ function policy_match_reg_sz(key, item, type, default, partial, multi_sz){
   }
 
   value = chomp(value);
+  if(!value) value = "None";
 
-  if(value == ""){
-    comment = "Registry key not found.";
-    compliant = "incomplete";
-    value = "None";
+  if(partial && default >< value){
+    compliant = "yes";
+  }else if(value == default){
+    compliant = "yes";
   }else{
-    if(partial && default >< value){
-      compliant = "yes";
-    }else if(value == default){
-      compliant = "yes";
-    }else{
-      compliant = "no";
-    }
+    compliant = "no";
   }
 
   ret["value"] = value;
