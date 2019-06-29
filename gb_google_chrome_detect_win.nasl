@@ -49,6 +49,7 @@ the version from registry.");
   exit(0);
 }
 
+include("wmi_file.inc");
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
@@ -71,6 +72,15 @@ if(!registry_key_exists(key:key)){
   exit(0);
 }
 
+host    = get_host_ip();
+usrname = kb_smb_login();
+domain  = kb_smb_domain();
+if (domain){
+  usrname = domain + '\\' + usrname;
+}
+passwd = kb_smb_password();
+handle = wmi_connect(host:host, username:usrname, password:passwd);
+
 foreach item (registry_enum_keys(key:key))
 {
   appName = registry_get_sz(key:key + item, item:"DisplayName");
@@ -81,7 +91,10 @@ foreach item (registry_enum_keys(key:key))
     if(chromeVer)
     {
       chromePath = registry_get_sz(key:key + item, item:"InstallLocation");
+      if(handle)
+        dirExists = wmi_file_check_dir_exists(handle:handle, dirPath:chromePath);
 
+      if(dirExists){
       set_kb_item(name:"GoogleChrome/Win/Ver", value:chromeVer);
 
       cpe = build_cpe(value:chromeVer, exp:"^([0-9.]+)", base:"cpe:/a:google:chrome:");
@@ -97,6 +110,7 @@ foreach item (registry_enum_keys(key:key))
                                                install: chromePath,
                                                    cpe: cpe,
                                              concluded: chromeVer));
+      }
     }
   }
 }
@@ -114,7 +128,10 @@ foreach key (enumKeys)
   if(chromeVer)
   {
     chromePath = registry_get_sz(key:key + "\Software\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome", item:"InstallLocation", type:"HKU");
+    if(handle)
+      dirExists = wmi_file_check_dir_exists(handle:handle, dirPath:chromePath);
 
+    if(dirExists){
     set_kb_item(name:"GoogleChrome/Win/Ver", value:chromeVer);
 
     cpe = build_cpe(value:chromeVer, exp:"^([0-9.]+)", base:"cpe:/a:google:chrome:");
@@ -132,5 +149,6 @@ foreach key (enumKeys)
                                              concluded: chromeVer));
 
 
+    }
   }
 }

@@ -6,6 +6,7 @@
 #
 # Authors:
 # Stephen Penn <stephen.penn@xqcyber.com>
+# Alex Mills <alex.mills@xqcyber.com>
 #
 # Copyright:
 # Copyright (c) 2017 XQ Digital Resilience Limited
@@ -64,7 +65,7 @@ if(!OSVER || OSVER >< "none"){
     exit(1);
 }
 
-if((OSVER == '5.2' || OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OSTYPE > 1){ #Windows Server 2000, 2003, 2008, 2008 R2 and Server 2012
+if(ereg(pattern:"^Microsoft Windows Server", string:OSNAME, icase:TRUE)) {
 	log_message(data:"Host appears to be a Windows server.");
 	exit(1);
 }
@@ -72,29 +73,29 @@ if((OSVER == '5.2' || OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OST
 handle = wmi_connect(host:host, username:usrname, password:passwd);
 
 if(!handle){
-    set_kb_item(name:"WMI/Antivir", value:"error");
-    set_kb_item(name:"WMI/Antivir/log", value:"wmi_connect: WMI Connect failed.");
+    set_kb_item(name:"WMI/Firewal", value:"error");
+    set_kb_item(name:"WMI/Firewal/log", value:"wmi_connect: WMI Connect failed.");
     wmi_close(wmi_handle:handle);
     exit(1);
 }
 
-# Query AntivirusProduct
+# Query FirewallProduct
 ns = 'root\\SecurityCenter2';
 query = 'select displayName, productState from FirewallProduct';
 handle = wmi_connect(host:host, username:usrname, password:passwd, ns:ns);
 if(!handle){
     log_message(port:0, data:"wmi_connect: WMI Connect failed to query security center.");
-    set_kb_item(name:"WMI/Antivir", value:"error");
+    set_kb_item(name:"WMI/Firewal", value:"error");
     exit(1);
 }
-AntiVirus = wmi_query(wmi_handle:handle, query:query);
+Firewall = wmi_query(wmi_handle:handle, query:query);
 wmi_close(wmi_handle:handle);
 
 # If the returned data is null, report the error
-if(AntiVirus == ""){
+if(Firewall == ""){
     log_message(data:"WMI Connect returned an empty string.");
     exit(1);
 }
 
-log_message(data:AntiVirus);
+log_message(data:Firewall);
 exit(0);

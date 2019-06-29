@@ -6,6 +6,7 @@
 #
 # Authors:
 # Alex Harwood <alex.harwood@xqcyber.com>
+# Alex Mills <alex.mills@xqcyber.com>
 #
 # Copyright:
 # Copyright (c) 2017 XQ Digital Resilience Limited
@@ -65,9 +66,8 @@ if(!OSVER || OSVER >< "none"){
     exit(1);
 }
 
-if((OSVER == '5.2' || OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OSTYPE > 1){ #Windows Server 2000, 2003, 2008, 2008 R2 and Server 2012
-    AntiVir = "Host appears to be a Windows server.";
-	log_message(data:AntiVir);
+if(ereg(pattern:"^Microsoft Windows Server", string:OSNAME, icase:TRUE)) {
+	log_message(data:"Host appears to be a Windows server.");
 	exit(1);
 }
 
