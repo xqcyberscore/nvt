@@ -7942,7 +7942,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 569372e634dac843f3eb1d55567d5fd6  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-bea7bfd8eefb3c0e32afc6c15e6d1241  plugin_feed_info.inc
+eb1d9dd0deb89f85abb97551d490a335  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -49885,7 +49885,7 @@ c5646a386c2aed1ac5e672be7e4cedc8  2019/ubuntu/gb_ubuntu_USN_3887_1.nasl
 f0f17682400bf607f94776b1c98e810a  2019/ubuntu/gb_ubuntu_USN_4023_1.nasl
 3eb8d59eada7e558ab3f555980fdbe6c  2019/ubuntu/gb_ubuntu_USN_3985_1.nasl
 0d513015540ac818a97b3da3c1afcbd6  2019/ubuntu/gb_ubuntu_USN_4012_1.nasl
-1a6d319abe2002c135dc71ef1e5f3a24  2019/ubuntu/gb_ubuntu_USN_4027_1.nasl
+739347434b3bcc1dbb7eaba23c1e4b99  2019/ubuntu/gb_ubuntu_USN_4027_1.nasl
 7abcf668388eb347cc6db999edd39a2f  2019/ubuntu/gb_ubuntu_USN_4003_1.nasl
 bfc6d5248f693cfd71d7e1d30d888d1f  2019/ubuntu/gb_ubuntu_USN_4002_1.nasl
 2a2326a4ce04bada303d76abe61a0895  2019/ubuntu/gb_ubuntu_USN_3862_1.nasl
@@ -49953,7 +49953,7 @@ bdc8a4a02d06308f6e34b4da4e6f19ca  2019/ubuntu/gb_ubuntu_USN_3976_1.nasl
 5ba730399aed25d5b91a28c5f8bb6d46  2019/ubuntu/gb_ubuntu_USN_3948_1.nasl
 a63e4910ca5d64737c24b39a904b4914  2019/ubuntu/gb_ubuntu_USN_4018_1.nasl
 2b040d967c5b68205168c31820144fac  2019/ubuntu/gb_ubuntu_USN_4011_1.nasl
-48f453d806f9594daa7b7f7041d025af  2019/ubuntu/gb_ubuntu_USN_3852_1.nasl
+47d77c93287b08c51170c03ce861f4c4  2019/ubuntu/gb_ubuntu_USN_3852_1.nasl
 3ed71cee4e4a76cbcda633d4effb52c0  2019/ubuntu/gb_ubuntu_USN_3917_1.nasl
 36297358a1e870a15423fe00d3824bde  2019/ubuntu/gb_ubuntu_USN_4008_2.nasl
 dc7c4c2399e266d556e470177ac55e57  2019/ubuntu/gb_ubuntu_USN_3871_5.nasl
@@ -51065,7 +51065,7 @@ e705e0831ed00b21d7cdb1db2f3a9d73  2019/suitecrm/gb_suitecrm_sql_inj_vuln_jun19_1
 fc1930badcde785be48443226f786e75  2019/suitecrm/gb_suitecrm_xss_vuln_apr19.nasl
 d0d41387929e43ee1cd64c37b95e5f4e  2019/suitecrm/gb_suitecrm_sql_inj_vuln_jun19_2.nasl
 828895f999cfdb4016a78b7d08b6d63e  2019/zoneminder/gb_zoneminder_mult_vuln_mar17.nasl
-611e7d2f7d525c4c0d3bdfc01ad04358  2019/zoneminder/gb_zoneminder_mult_vuln.nasl
+b24ae25acba63faeda3941fe18da7753  2019/zoneminder/gb_zoneminder_mult_vuln.nasl
 7a5125c22f02dc07740b1b3a3a5128e5  2019/zoneminder/gb_zoneminder_mult_vuln_jan19.nasl
 f0bb2ff6caf14a6255201cdae01c4ac3  2019/zoneminder/gb_zoneminder_xss_vuln.nasl
 848acf7aa2d313c2b2c5e1b7ac1fc361  2019/joomla/gb_joomla_mult_vuln_mar19.nasl
@@ -51545,6 +51545,7 @@ aa12a2c4cd0c0fd0558522d3e0763bc3  2019/prestashop/gb_prestashop_rce_vuln.nasl
 88842d25c8c79c3675b18eae19cf412c  2019/videolan/gb_vlc_mult_vuln_jun19_macosx.nasl
 6eec4e5705d2876f46b2c42f4bc68f72  2019/videolan/gb_vlc_mult_vuln_jun19_win.nasl
 22fe8b30bd553f27da47046fe2a972d9  2019/videolan/gb_vlc_mult_vuln_jun19_lin.nasl
+13639553c41093eaa61285d5394c064f  2019/cesanta/gb_mongoose_heap_ovflw_vuln.nasl
 96e52e3cb02b3fc6efa61de240330de7  2019/traccar/gb_traccar_xxe_vuln.nasl
 2131eb8de903df37f4dd16ab08b9646f  2019/irssi/gb_irssi_use-after-free_vuln.nasl
 32f4dd73a7b775a792eba86c7886fa05  2019/finalwire/gb_aida64_bof_vuln_apr19.nasl

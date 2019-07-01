@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844062");
-  script_version("2019-06-27T06:30:18+0000");
+  script_version("2019-07-01T06:51:20+0000");
   script_cve_id("CVE-2019-10164");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-27 06:30:18 +0000 (Thu, 27 Jun 2019)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-07-01 06:51:20 +0000 (Mon, 01 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-21 02:00:53 +0000 (Fri, 21 Jun 2019)");
   script_name("Ubuntu Update for postgresql-11 USN-4027-1");
   script_category(ACT_GATHER_INFO);
