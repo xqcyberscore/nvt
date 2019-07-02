@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wsftp_server_sec_bypass_vuln.nasl 14310 2019-03-19 10:27:27Z cfischer $
 #
 # WS_FTP Server Manager Security Bypass Vulnerability
 #
@@ -24,24 +23,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:ipswitch:ws_ftp";
+CPE = "cpe:/a:ipswitch:ws_ftp_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900451");
-  script_version("$Revision: 14310 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:27:27 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-06-26T08:42:42+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 08:42:42 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2008-5692", "CVE-2008-5693");
   script_bugtraq_id(27654);
+
   script_name("WS_FTP Server Manager Security Bypass Vulnerability");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("FTP");
   script_dependencies("secpod_wsftp_win_detect.nasl");
-  script_mandatory_keys("WS_FTP/detected");
+  script_mandatory_keys("ipswitch/ws_ftp_server/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes in the
   compressed rar archive and can cause memory corruption or buffer overflows.");

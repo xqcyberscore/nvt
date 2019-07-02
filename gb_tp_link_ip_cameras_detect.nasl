@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114097");
-  script_version("2019-05-21T11:04:26+0000");
+  script_version("2019-07-01T11:19:58+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-21 11:04:26 +0000 (Tue, 21 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-01 11:19:58 +0000 (Mon, 01 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-05-09 13:37:18 +0200 (Thu, 09 May 2019)");
   script_name("TP-Link IP Cameras Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -75,7 +75,7 @@ if(res =~ 'initProdNbr="([^"]+)";' && res =~ 'BrandCopyright="TP-Link\\s*";') {
     os_name = "TP-Link IP Camera " + model + " Firmware";
     extra_info = "Detected model: " + model;
   } else {
-    hw_cpe = "cpe:/h:tp-link:ip_camera:";
+    hw_cpe = "cpe:/h:tp-link:ip_camera_unknown_model:";
     os_cpe = "cpe:/o:tp-link:ip_camera_unknown_model_firmware";
     os_name = "TP-Link IP Camera Unknown Model Firmware";
   }

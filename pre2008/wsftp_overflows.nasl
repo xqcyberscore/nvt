@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wsftp_overflows.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # WS FTP overflows
 #
@@ -24,22 +23,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:ipswitch:ws_ftp_server";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11094");
-  script_version("$Revision: 13613 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-06-26T08:42:42+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 08:42:42 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2001-1021");
+
   script_name("WS FTP overflows");
-  script_category(ACT_MIXED_ATTACK);
+
+  script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("FTP");
-  script_dependencies("ftpserver_detect_type_nd_version.nasl");
-  script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp/ws_ftp/detected");
+  script_dependencies("secpod_wsftp_win_detect.nasl");
+  script_mandatory_keys("ipswitch/ws_ftp_server/detected");
 
   script_tag(name:"summary", value:"It was possible to shut down the remote
   FTP server by issuing a command followed by a too long argument.");
@@ -56,61 +58,19 @@ if(description)
   exit(0);
 }
 
-include ("ftp_func.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_ftp_port( default:21 );
-banner = get_ftp_banner( port:port );
-if( ! banner || "WS_FTP Server" >!< banner )
-  exit( 0 );
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-kb_creds = ftp_get_kb_creds();
-login = kb_creds["login"];
-password = kb_creds["pass"];
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if( safe_checks() || ! login ) {
-  if( egrep( pattern:"WS_FTP Server 2\.0\.[0-2]", string:banner ) ) {
-    security_message( port:port );
-    exit( 0 );
-  }
-  exit( 99 );
+if (version =~ "^2\.0\.[0-2]") {
+  report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
-soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
-
-if( ! ftp_authenticate( socket:soc, user:login, pass:password ) ) {
-  ftp_close( socket:soc );
-  exit( 0 );
-}
-
-cmd[0] = "DELE";
-cmd[1] = "MDTM";
-cmd[2] = "MLST";
-cmd[3] = "MKD";
-cmd[4] = "RMD";
-cmd[5] = "RNFR";
-cmd[6] = "RNTO";
-cmd[7] = "SIZE";
-cmd[8] = "STAT";
-cmd[9] = "XMKD";
-cmd[10] = "XRMD ";
-
-pb = 0;
-for( i = 0; i < 11; i = i + 1 ) {
-  s = string( cmd[i], " /", crap(4096), "\r\n" );
-  send( socket:soc, data:s );
-  r = recv_line( socket:soc, length:1024 );
-  #if(!r) pb=pb+1;
-  ftp_close( socket:soc );
-
-  soc = open_sock_tcp( port );
-  if( ! soc ) {
-    security_message( port:port );
-    exit( 0 );
-  }
-  ftp_authenticate( socket:soc, user:login, pass:password );
-}
-
-ftp_close( socket:soc );
-
-#if (pb) security_message(port);    # => False positive?
+exit(99);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wsftp_win_detect.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # WS_FTP Server Detection
 #
@@ -27,12 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900608");
-  script_version("$Revision: 13497 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
+  script_version("2019-06-26T08:42:42+0000");
+  script_tag(name:"last_modification", value:"2019-06-26 08:42:42 +0000 (Wed, 26 Jun 2019)");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("WS_FTP Server Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -59,17 +60,15 @@ if(! banner || "WS_FTP Server" >!< banner )
 
 install = port + "/tcp";
 version = "unknown";
-set_kb_item( name:"WS_FTP/detected", value:TRUE );
+set_kb_item( name:"ipswitch/ws_ftp_server/detected", value:TRUE );
 
 vers = eregmatch( pattern:"WS_FTP Server ([0-9.]+)", string:banner );
-if( ! isnull( vers[1] ) ) {
+if( ! isnull( vers[1] ) )
   version = vers[1];
-  set_kb_item( name:"WSFTP/Win/Ver", value:version );
-}
 
-cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ipswitch:ws_ftp:");
-if( isnull( cpe ) )
-  cpe = "cpe:/a:ipswitch:ws_ftp";
+cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ipswitch:ws_ftp_server:");
+if( ! cpe )
+  cpe = "cpe:/a:ipswitch:ws_ftp_server";
 
 register_product( cpe:cpe, location:install, port:port, service:"ftp" );
 
@@ -78,6 +77,6 @@ log_message( data:build_detection_report( app:"WS_FTP Server",
                                           install:install,
                                           cpe:cpe,
                                           concluded:vers[0] ),
-                                          port:port );
+             port:port );
 
 exit( 0 );
