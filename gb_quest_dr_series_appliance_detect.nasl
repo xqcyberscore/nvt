@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quest_dr_series_appliance_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Quest DR Series Appliance Remote Detection
 #
@@ -27,11 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813011");
-  script_version("$Revision: 10888 $");
+  script_version("2019-07-03T03:02:42+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-03 03:02:42 +0000 (Wed, 03 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-12 13:08:38 +0530 (Mon, 12 Mar 2018)");
+
   script_name("Quest DR Series Appliance Remote Detection");
 
   script_tag(name:"summary", value:"Detection of Quest DR Series Appliance.
@@ -40,33 +40,68 @@ if(description)
   presence of Quest DR Series Appliance.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
+  script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
-include("http_func.inc");
+include("cpe.inc");
 include("host_details.inc");
+include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-drPort = get_http_port(default:80);
+port = get_http_port(default: 443);
 
-res = http_get_cache(port:drPort, item:"/");
-if('title="Quest Software Inc' >< res && 'ng-app="drConsoleApp' >< res &&
-   '<dr-masthead-application-name>' >< res)
-{
+res = http_get_cache(port: port, item: "/");
+
+if ('ng-app="drConsoleApp' >< res && '<dr-masthead-application-name>' >< res) {
   version = "unknown";
+
+  data = '{"jsonrpc":"2.0","method":"getPreLoginInfo","params":{"classname":"DRPreLoginAccess"},"id":1}';
+
+  url = "/ws/v1.0/jsonrpc";
+
+  headers = make_array("Content-Type", "application/json-rpc");
+
+  req = http_post_req(port: port, url: url, data: data, add_headers: headers);
+  res = http_keepalive_send_recv(port: port, data: req, bodyonly: TRUE);
+
+  # "jsonrpc":"2.0","id":1,"result":{"keys":["CreationClassName","ServiceID"],"objects":[{"fqdn":"dell-storage.example.com","reset_option":"no","ip_addr":"1.1.1.1","service_tag":"993Y8F2","version":"4.0.0273.0 ","hostname":"dell-storage","ServiceID":"DL6000-test","CreationClassName":"DRPreLoginAccess","product_name":"Dell DR6300"}]}}
+  vers = eregmatch(pattern: '"version":"([0-9a-z.]+)', string: res);
+  if (!isnull(vers[1])) {
+    version = vers[1];
+    concUrl = url;
+  }
+
+  mod = eregmatch(pattern: '"product_name":"([^ ]+ )?([^"]+)', string: res);
+  if (!isnull(mod[2]))
+    model = mod[2];
+
   set_kb_item(name:"quest/dr/appliance/detected", value:TRUE);
 
-  cpe = 'cpe:/a:quest:dr_appliance';
-  register_product( cpe:cpe, location:"/", port:drPort,  service:"www");
-  log_message(data: build_detection_report(app: "Quest DR Series Appliance", version:version, install: "/",
-                                           cpe: cpe, concluded: "Quest DR Series Appliance Detected"),
-                                           port: drPort);
+  if (model) {
+    cpe = build_cpe(value: version, exp: "^([0-9a-z.]+)", base: "cpe:/a:quest:" + tolower(model) + ":");
+    if (!cpe)
+      cpe = 'cpe:/a:quest:' + tolower(model);
+  } else {
+    cpe = build_cpe(value: version, exp: "^([0-9a-z.]+)", base: "cpe:/a:quest:disk_backup:");
+    if (!cpe)
+      cpe = 'cpe:/a:quest:disk_backup';
+  }
+
+  register_product(cpe: cpe, location: "/", port: port, service: "www");
+
+  log_message(data: build_detection_report(app: "Quest DR Series " + model, version: version, install: "/",
+                                           cpe: cpe, concluded: vers[0], concludedUrl: concUrl),
+              port: port);
   exit(0) ;
 }
-exit( 0 );
+
+exit(0);

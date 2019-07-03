@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_fd194a1f14_chromium_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for chromium FEDORA-2018-fd194a1f14
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875299");
-  script_version("$Revision: 14223 $");
+  script_version("2019-07-02T10:26:41+0000");
   script_cve_id("CVE-2018-17478", "CVE-2018-17479", "CVE-2018-16435", "CVE-2018-17462", "CVE-2018-17463", "CVE-2018-17464", "CVE-2018-17465", "CVE-2018-17466", "CVE-2018-17467", "CVE-2018-17468", "CVE-2018-17469", "CVE-2018-17470", "CVE-2018-17471", "CVE-2018-17473", "CVE-2018-17474", "CVE-2018-17475", "CVE-2018-17476", "CVE-2018-5179", "CVE-2018-17477", "CVE-2018-17472");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-02 10:26:41 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-12-04 08:19:58 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for chromium FEDORA-2018-fd194a1f14");
   script_category(ACT_GATHER_INFO);

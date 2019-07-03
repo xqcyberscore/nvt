@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alas-2016-738.nasl 11703 2018-10-01 08:05:31Z cfischer $
 #
 # Amazon Linux security check
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120727");
-  script_version("$Revision: 11703 $");
+  script_version("2019-07-02T09:11:25+0000");
   script_tag(name:"creation_date", value:"2016-10-26 15:38:21 +0300 (Wed, 26 Oct 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-02 09:11:25 +0000 (Tue, 02 Jul 2019)");
   script_name("Amazon Linux Local Check: alas-2016-738");
   script_tag(name:"solution", value:"Run yum update mysql55 to update your system.");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -58,39 +57,43 @@ res = "";
 
 if(release == "AMAZON")
 {
-  if ((res = isrpmvuln(pkg:"libs", rpm:"libs~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-libs", rpm:"mysql55-libs~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"debuginfo", rpm:"debuginfo~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-debuginfo", rpm:"mysql55-debuginfo~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"bench", rpm:"bench~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-bench", rpm:"mysql55-bench~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"embedded-devel", rpm:"embedded-devel~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-embedded-devel", rpm:"mysql55-embedded-devel~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"test", rpm:"test~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-test", rpm:"mysql55-test~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"devel", rpm:"devel~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-devel", rpm:"mysql55-devel~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"server", rpm:"server~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-server", rpm:"mysql55-server~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mysql-config", rpm:"mysql-config~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-mysql-config", rpm:"mysql55-mysql-config~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"embedded", rpm:"embedded~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"mysql55-embedded", rpm:"mysql55-embedded~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
+    security_message(data:res);
+    exit(0);
+  }
+  if ((res = isrpmvuln(pkg:"mysql55", rpm:"mysql55~5.5.51~1.11.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }

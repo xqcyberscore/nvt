@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("2019-06-01T08:20:43+0000");
-  script_tag(name:"last_modification", value:"2019-06-01 08:20:43 +0000 (Sat, 01 Jun 2019)");
+  script_version("2019-07-02T11:55:38+0000");
+  script_tag(name:"last_modification", value:"2019-07-02 11:55:38 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -73,6 +73,7 @@ if(description)
                       "gb_rockwell_micrologix_consolidation.nasl", "gb_rockwell_powermonitor_http_detect.nasl",
                       "gb_beward_ip_cameras_detect_consolidation.nasl", "gb_zavio_ip_cameras_detect.nasl",
                       "gb_tp_link_ip_cameras_detect.nasl", "gb_pearl_ip_cameras_detect.nasl",
+                      "gb_qsee_ip_camera_detect.nasl",
                       "gb_riverbed_steelcentral_version.nasl", "gb_riverbed_steelhead_ssh_detect.nasl",
                       "gb_riverbed_steelhead_http_detect.nasl", "gb_windows_cpe_detect.nasl",
                       "gather-package-list.nasl", "gb_cisco_pis_version.nasl",

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alas-2016-754.nasl 11711 2018-10-01 12:30:57Z cfischer $
 #
 # Amazon Linux security check
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120743");
-  script_version("$Revision: 11711 $");
+  script_version("2019-07-02T09:11:25+0000");
   script_tag(name:"creation_date", value:"2016-10-26 15:38:27 +0300 (Wed, 26 Oct 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 14:30:57 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-02 09:11:25 +0000 (Tue, 02 Jul 2019)");
   script_name("Amazon Linux Local Check: alas-2016-754");
   script_tag(name:"insight", value:"Multiple flaws were found in PHP. Please see the references for more information.");
   script_tag(name:"solution", value:"Run yum update php70 to update your system.");
@@ -59,135 +58,139 @@ res = "";
 
 if(release == "AMAZON")
 {
-  if ((res = isrpmvuln(pkg:"enchant", rpm:"enchant~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-enchant", rpm:"php70-enchant~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"bcmath", rpm:"bcmath~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-bcmath", rpm:"php70-bcmath~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"process", rpm:"process~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-process", rpm:"php70-process~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"intl", rpm:"intl~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-intl", rpm:"php70-intl~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"gmp", rpm:"gmp~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-gmp", rpm:"php70-gmp~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"soap", rpm:"soap~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-soap", rpm:"php70-soap~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"xml", rpm:"xml~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-xml", rpm:"php70-xml~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mbstring", rpm:"mbstring~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-mbstring", rpm:"php70-mbstring~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mcrypt", rpm:"mcrypt~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-mcrypt", rpm:"php70-mcrypt~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"json", rpm:"json~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-json", rpm:"php70-json~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"gd", rpm:"gd~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-gd", rpm:"php70-gd~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"recode", rpm:"recode~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-recode", rpm:"php70-recode~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"snmp", rpm:"snmp~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-snmp", rpm:"php70-snmp~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"imap", rpm:"imap~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-imap", rpm:"php70-imap~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"ldap", rpm:"ldap~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-ldap", rpm:"php70-ldap~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"tidy", rpm:"tidy~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-tidy", rpm:"php70-tidy~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"cli", rpm:"cli~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-cli", rpm:"php70-cli~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"odbc", rpm:"odbc~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-odbc", rpm:"php70-odbc~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"zip", rpm:"zip~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-zip", rpm:"php70-zip~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"common", rpm:"common~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-common", rpm:"php70-common~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"embedded", rpm:"embedded~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-embedded", rpm:"php70-embedded~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"pdo-dblib", rpm:"pdo-dblib~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-pdo-dblib", rpm:"php70-pdo-dblib~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"fpm", rpm:"fpm~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-fpm", rpm:"php70-fpm~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"pdo", rpm:"pdo~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-pdo", rpm:"php70-pdo~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"devel", rpm:"devel~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-devel", rpm:"php70-devel~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mysqlnd", rpm:"mysqlnd~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-mysqlnd", rpm:"php70-mysqlnd~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"dba", rpm:"dba~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-dba", rpm:"php70-dba~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"xmlrpc", rpm:"xmlrpc~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-xmlrpc", rpm:"php70-xmlrpc~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"dbg", rpm:"dbg~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-dbg", rpm:"php70-dbg~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"pgsql", rpm:"pgsql~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-pgsql", rpm:"php70-pgsql~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"pspell", rpm:"pspell~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-pspell", rpm:"php70-pspell~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"opcache", rpm:"opcache~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-opcache", rpm:"php70-opcache~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"debuginfo", rpm:"debuginfo~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php70-debuginfo", rpm:"php70-debuginfo~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
+    security_message(data:res);
+    exit(0);
+  }
+  if ((res = isrpmvuln(pkg:"php70", rpm:"php70~7.0.11~1.16.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }

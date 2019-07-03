@@ -1089,3 +1089,31 @@ function policy_report_powershell_result(value){
 
   return(ret);
 }
+
+
+# @brief Returns reporting variables for advanced audit setting on Windows hosts
+#
+# @param key The name of the auditing variable
+# @param default The default value it should have
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_win_get_advanced_audit_results(key, default){
+  local_var ret, key, default, value;
+
+  value = get_kb_item(key);
+
+  if(!value){
+    ret["value"] = "None";
+    ret["compliant"] = "incomplete";
+    ret["comment"] = "Can not determine audit status";
+  }else{
+    ret["value"] = value;
+    if(value == default)
+      ret["compliant"] = "yes";
+    else
+      ret["compliant"] = "no";
+  }
+
+  return(ret);
+}

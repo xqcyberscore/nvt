@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_0094_iwl1000-firmware_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for iwl1000-firmware CESA-2018:0094 centos7
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882829");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-07-02T12:56:28+0000");
+  script_tag(name:"last_modification", value:"2019-07-02 12:56:28 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-18 07:36:03 +0100 (Thu, 18 Jan 2018)");
   script_cve_id("CVE-2017-5715");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30");
   script_name("CentOS Update for iwl1000-firmware CESA-2018:0094 centos7");
   script_tag(name:"summary", value:"Check the version of iwl1000-firmware");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");

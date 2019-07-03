@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3871_1.nasl 12543 2018-11-27 07:43:51Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2018:3871-1 (chromium)
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852148");
-  script_version("$Revision: 12543 $");
+  script_version("2019-07-02T10:26:41+0000");
   script_cve_id("CVE-2018-17479");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-27 08:43:51 +0100 (Tue, 27 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-02 10:26:41 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 15:09:12 +0100 (Mon, 26 Nov 2018)");
   script_name("SuSE Update for chromium openSUSE-SU-2018:3871-1 (chromium)");
   script_category(ACT_GATHER_INFO);

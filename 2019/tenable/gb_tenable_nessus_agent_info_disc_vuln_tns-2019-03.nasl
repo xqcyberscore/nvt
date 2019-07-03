@@ -23,14 +23,14 @@ CPE = "cpe:/a:tenable:nessus_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107028");
-  script_version("2019-06-27T07:02:37+0000");
+  script_version("2019-07-02T10:30:17+0000");
   script_cve_id("CVE-2019-1559");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-27 07:02:37 +0000 (Thu, 27 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-02 10:30:17 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-26 15:26:25 +0200 (Wed, 26 Jun 2019)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Tenable Nessus Agent < 7.4.0 Information Disclosure Vulnerabuility in OpenSSL (TNS-2019-03)");
+  script_name("Tenable Nessus Agent < 7.4.0 Information Disclosure Vulnerability in OpenSSL (TNS-2019-03)");
 
   script_tag(name:"summary", value:"This host is running Tenable Nessus Agent and is prone to an
   information disclosure vulnerability in OpenSSL.");

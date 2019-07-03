@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alas-2016-753.nasl 11711 2018-10-01 12:30:57Z cfischer $
 #
 # Amazon Linux security check
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120742");
-  script_version("$Revision: 11711 $");
+  script_version("2019-07-02T09:11:25+0000");
   script_tag(name:"creation_date", value:"2016-10-26 15:38:27 +0300 (Wed, 26 Oct 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 14:30:57 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-02 09:11:25 +0000 (Tue, 02 Jul 2019)");
   script_name("Amazon Linux Local Check: alas-2016-753");
   script_tag(name:"insight", value:"Multiple flaws were found in PHP. Please see the references for more information.");
   script_tag(name:"solution", value:"Run yum update php56 to update your system.");
@@ -59,127 +58,131 @@ res = "";
 
 if(release == "AMAZON")
 {
-  if ((res = isrpmvuln(pkg:"tidy", rpm:"tidy~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-tidy", rpm:"php56-tidy~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"bcmath", rpm:"bcmath~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-bcmath", rpm:"php56-bcmath~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"fpm", rpm:"fpm~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-fpm", rpm:"php56-fpm~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mysqlnd", rpm:"mysqlnd~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-mysqlnd", rpm:"php56-mysqlnd~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"intl", rpm:"intl~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-intl", rpm:"php56-intl~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"cli", rpm:"cli~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-cli", rpm:"php56-cli~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mssql", rpm:"mssql~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-mssql", rpm:"php56-mssql~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"enchant", rpm:"enchant~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-enchant", rpm:"php56-enchant~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"dba", rpm:"dba~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-dba", rpm:"php56-dba~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"soap", rpm:"soap~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-soap", rpm:"php56-soap~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"common", rpm:"common~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-common", rpm:"php56-common~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mcrypt", rpm:"mcrypt~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-mcrypt", rpm:"php56-mcrypt~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"gmp", rpm:"gmp~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-gmp", rpm:"php56-gmp~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"process", rpm:"process~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-process", rpm:"php56-process~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"pspell", rpm:"pspell~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-pspell", rpm:"php56-pspell~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"mbstring", rpm:"mbstring~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-mbstring", rpm:"php56-mbstring~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"pgsql", rpm:"pgsql~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-pgsql", rpm:"php56-pgsql~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"debuginfo", rpm:"debuginfo~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-debuginfo", rpm:"php56-debuginfo~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"dbg", rpm:"dbg~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-dbg", rpm:"php56-dbg~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"imap", rpm:"imap~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-imap", rpm:"php56-imap~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"odbc", rpm:"odbc~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-odbc", rpm:"php56-odbc~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"snmp", rpm:"snmp~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-snmp", rpm:"php56-snmp~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"ldap", rpm:"ldap~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-ldap", rpm:"php56-ldap~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"embedded", rpm:"embedded~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-embedded", rpm:"php56-embedded~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"xmlrpc", rpm:"xmlrpc~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-xmlrpc", rpm:"php56-xmlrpc~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"devel", rpm:"devel~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-devel", rpm:"php56-devel~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"pdo", rpm:"pdo~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-pdo", rpm:"php56-pdo~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"gd", rpm:"gd~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-gd", rpm:"php56-gd~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"opcache", rpm:"opcache~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-opcache", rpm:"php56-opcache~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"recode", rpm:"recode~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-recode", rpm:"php56-recode~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }
-  if ((res = isrpmvuln(pkg:"xml", rpm:"xml~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+  if ((res = isrpmvuln(pkg:"php56-xml", rpm:"php56-xml~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
+    security_message(data:res);
+    exit(0);
+  }
+  if ((res = isrpmvuln(pkg:"php56", rpm:"php56~5.6.26~1.128.amzn1", rls:"AMAZON")) != NULL) {
     security_message(data:res);
     exit(0);
   }

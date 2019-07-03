@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_tls.nasl 12662 2018-12-05 11:27:06Z cfischer $
 #
 # SSL/TLS: Policy Check
 #
@@ -10,7 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2016 Greenbone Networks GmbH, http://www.greenbone.net
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105778");
-  script_version("$Revision: 12662 $");
+  script_version("2019-07-02T12:50:34+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 12:27:06 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-02 12:50:34 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-28 11:57:08 +0200 (Tue, 28 Jun 2016)");
   script_name("SSL/TLS: Policy Check");
   script_category(ACT_GATHER_INFO);
@@ -41,7 +39,8 @@ if(description)
   script_dependencies("gb_tls_version_get.nasl");
   script_mandatory_keys("ssl_tls/port");
 
-  script_add_preference(name:"Minimum allowed TLS version:", type:"radio", value:"TLS 1.3;TLS 1.2;TLS 1.1;TLS 1.0;SSL v3");
+  # nb: TLS 1.3; was removed as there is currently no TLSv1.3 support on NASL side.
+  script_add_preference(name:"Minimum allowed TLS version:", type:"radio", value:"TLS 1.2;TLS 1.1;TLS 1.0;SSL v3");
   script_add_preference(name:"Perform check:", type:"checkbox", value:"no");
   script_add_preference(name:"Report passed tests:", type:"checkbox", value:"no");
 

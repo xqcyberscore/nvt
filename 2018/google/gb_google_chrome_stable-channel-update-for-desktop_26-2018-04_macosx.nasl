@@ -28,11 +28,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813328");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-02T10:26:41+0000");
   script_cve_id("CVE-2018-6118");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-02 10:26:41 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-03 12:41:09 +0530 (Thu, 03 May 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_26-2018-04)-MAC OS X");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3817_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for python2.7 USN-3817-1
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843817");
-  script_version("$Revision: 14288 $");
+  script_version("2019-07-02T12:56:28+0000");
   script_cve_id("CVE-2018-1000030", "CVE-2018-1000802", "CVE-2018-1060", "CVE-2018-1061", "CVE-2018-14647");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-02 12:56:28 +0000 (Tue, 02 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-14 06:09:22 +0100 (Wed, 14 Nov 2018)");
   script_name("Ubuntu Update for python2.7 USN-3817-1");
   script_category(ACT_GATHER_INFO);
@@ -76,7 +75,7 @@ leading to a denial of service. (CVE-2018-14647)");
   script_tag(name:"solution", value:"Please install the updated package(s).");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod", value:"30");
 
   exit(0);
 }
