@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4132.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4132-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704132");
-  script_version("$Revision: 14275 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-13194");
   script_name("Debian Security Advisory DSA 4132-1 (libvpx - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-04 00:00:00 +0100 (Sun, 04 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -56,10 +55,7 @@ in version 1.3.0-3+deb8u1.
 For the stable distribution (stretch), this problem has been fixed in
 version 1.6.1-3+deb9u1.
 
-We recommend that you upgrade your libvpx packages.
-
-For the detailed security status of libvpx please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your libvpx packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/libvpx");
   script_tag(name:"summary", value:"It was discovered that incorrect validation of frame widths in the libvpx
@@ -75,31 +71,31 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libvpx-dev", ver:"1.3.0-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvpx-dev", ver:"1.3.0-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvpx-doc", ver:"1.3.0-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvpx-doc", ver:"1.3.0-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvpx1", ver:"1.3.0-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvpx1", ver:"1.3.0-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvpx1-dbg", ver:"1.3.0-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvpx1-dbg", ver:"1.3.0-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vpx-tools", ver:"1.3.0-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vpx-tools", ver:"1.3.0-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvpx-dev", ver:"1.6.1-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvpx-dev", ver:"1.6.1-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvpx-doc", ver:"1.6.1-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvpx-doc", ver:"1.6.1-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvpx4", ver:"1.6.1-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvpx4", ver:"1.6.1-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vpx-tools", ver:"1.6.1-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vpx-tools", ver:"1.6.1-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

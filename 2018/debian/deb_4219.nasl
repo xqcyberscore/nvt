@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4219.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4219-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704219");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-1000073", "CVE-2018-1000074", "CVE-2018-1000075", "CVE-2018-1000076", "CVE-2018-1000077",
                 "CVE-2018-1000078", "CVE-2018-1000079");
   script_name("Debian Security Advisory DSA 4219-1 (jruby - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-08 00:00:00 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,10 +61,7 @@ discontinued.
 
 Users of jruby in Debian 8 that want security updates are strongly
 encouraged to upgrade now to the current Debian 9 stable release
-(stretch).
-
-For the detailed security status of jruby please refer to
-its security tracker page linked in the references.");
+(stretch).");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/jruby");
   script_tag(name:"summary", value:"Several vulnerabilities were discovered in jruby, a Java
@@ -83,7 +79,7 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"jruby", ver:"1.7.26-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"jruby", ver:"1.7.26-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

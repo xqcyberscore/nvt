@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4142.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4142-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704142");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-6758", "CVE-2018-7490");
   script_name("Debian Security Advisory DSA 4142-1 (uwsgi - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-17 00:00:00 +0100 (Sat, 17 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,10 +58,7 @@ point release.
 For the stable distribution (stretch), this problem has been fixed in
 version 2.0.14+20161117-3+deb9u2.
 
-We recommend that you upgrade your uwsgi packages.
-
-For the detailed security status of uwsgi please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your uwsgi packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/uwsgi");
   script_tag(name:"summary", value:"Marios Nicolaides discovered that the PHP plugin in uWSGI, a fast,
@@ -81,283 +77,283 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-uwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-uwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-uwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-uwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python-uwsgidecorators", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python-uwsgidecorators", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python3-uwsgidecorators", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python3-uwsgidecorators", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-app-integration-plugins", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-app-integration-plugins", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-core", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-core", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-dbg", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-emperor", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-emperor", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-extra", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-extra", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-infrastructure-plugins", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-infrastructure-plugins", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-curl", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-curl", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-xmpp", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-xmpp", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-curl-cron", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-curl-cron", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-emperor-pg", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-emperor-pg", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-fiber", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-fiber", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-geoip", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-geoip", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-graylog2", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-graylog2", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-greenlet-python", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-greenlet-python", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-jvm-openjdk-7", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-jvm-openjdk-7", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-jwsgi-openjdk-7", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-jwsgi-openjdk-7", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-ldap", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-ldap", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.1", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.1", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.2", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.2", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-luajit", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-luajit", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-php", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-php", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-psgi", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-psgi", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-python", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-python", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-python3", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-python3", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-rack-ruby2.1", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-rack-ruby2.1", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-rados", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-rados", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-rbthreads", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-rbthreads", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-router-access", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-router-access", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-sqlite3", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-sqlite3", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-v8", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-v8", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-xslt", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-xslt", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugins-all", ver:"2.0.7-1+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugins-all", ver:"2.0.7-1+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-proxy-uwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-ruwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-uwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-uwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-uwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-uwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python-uwsgidecorators", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python-uwsgidecorators", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python3-uwsgidecorators", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python3-uwsgidecorators", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-app-integration-plugins", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-app-integration-plugins", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-core", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-core", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-dbg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-emperor", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-emperor", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-extra", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-extra", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-infrastructure-plugins", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-infrastructure-plugins", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-mongodb-plugins", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-mongodb-plugins", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-curl", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-curl", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-xmpp", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-alarm-xmpp", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-asyncio-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-asyncio-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-asyncio-python3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-asyncio-python3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-curl-cron", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-curl-cron", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-emperor-pg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-emperor-pg", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-fiber", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-fiber", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-gccgo", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-gccgo", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-geoip", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-geoip", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-gevent-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-gevent-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-glusterfs", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-glusterfs", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-graylog2", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-graylog2", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-greenlet-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-greenlet-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-jvm-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-jvm-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-jwsgi-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-jwsgi-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-ldap", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-ldap", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.1", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.1", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.2", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-lua5.2", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-luajit", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-luajit", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-mono", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-mono", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-php", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-php", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-psgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-psgi", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-python3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-python3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-rack-ruby2.3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-rack-ruby2.3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-rados", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-rados", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-rbthreads", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-rbthreads", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-ring-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-ring-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-router-access", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-router-access", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-servlet-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-servlet-openjdk-8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-sqlite3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-sqlite3", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-tornado-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-tornado-python", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-v8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-v8", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugin-xslt", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugin-xslt", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-plugins-all", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-plugins-all", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"uwsgi-src", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"uwsgi-src", ver:"2.0.14+20161117-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

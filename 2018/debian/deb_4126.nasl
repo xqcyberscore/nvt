@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4126.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4126-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704126");
-  script_version("$Revision: 14275 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-0489");
   script_name("Debian Security Advisory DSA 4126-1 (xmltooling - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-27 00:00:00 +0100 (Tue, 27 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -56,10 +55,7 @@ in version 1.5.3-2+deb8u3.
 For the stable distribution (stretch), this problem has been fixed in
 version 1.6.0-4+deb9u1.
 
-We recommend that you upgrade your xmltooling packages.
-
-For the detailed security status of xmltooling please refer to its
-security tracker page linked in the references.");
+We recommend that you upgrade your xmltooling packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/xmltooling");
   script_tag(name:"summary", value:"Kelby Ludwig and Scott Cantor discovered that the Shibboleth service
@@ -75,28 +71,28 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.6.0-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.6.0-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxmltooling7", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxmltooling7", ver:"1.6.0-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.6.0-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.5.3-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.5.3-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxmltooling6", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxmltooling6", ver:"1.5.3-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.5.3-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
 

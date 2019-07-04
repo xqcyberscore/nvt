@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4183.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4183-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704183");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-0490");
   script_name("Debian Security Advisory DSA 4183-1 (tor - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-28 00:00:00 +0200 (Sat, 28 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 0.2.9.15-1.
 
-We recommend that you upgrade your tor packages.
-
-For the detailed security status of tor please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your tor packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/tor");
   script_tag(name:"summary", value:"It has been discovered that Tor, a connection-based low-latency
@@ -73,13 +69,13 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"tor", ver:"0.2.9.15-1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor", ver:"0.2.9.15-1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.9.15-1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.9.15-1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.9.15-1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.9.15-1", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4150.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4150-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704150");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-15422");
   script_name("Debian Security Advisory DSA 4150-1 (icu - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-23 00:00:00 +0100 (Fri, 23 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -56,10 +55,7 @@ in version 52.1-8+deb8u7.
 For the stable distribution (stretch), this problem has been fixed in
 version 57.1-6+deb9u2.
 
-We recommend that you upgrade your icu packages.
-
-For the detailed security status of icu please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your icu packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/icu");
   script_tag(name:"summary", value:"It was discovered that an integer overflow in the International
@@ -75,37 +71,37 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"icu-devtools", ver:"52.1-8+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"icu-devtools", ver:"52.1-8+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"icu-doc", ver:"52.1-8+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"icu-doc", ver:"52.1-8+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libicu-dev", ver:"52.1-8+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libicu-dev", ver:"52.1-8+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libicu52", ver:"52.1-8+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libicu52", ver:"52.1-8+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libicu52-dbg", ver:"52.1-8+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libicu52-dbg", ver:"52.1-8+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"icu-devtools", ver:"57.1-6+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"icu-devtools", ver:"57.1-6+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"icu-devtools-dbg", ver:"57.1-6+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"icu-devtools-dbg", ver:"57.1-6+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"icu-doc", ver:"57.1-6+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"icu-doc", ver:"57.1-6+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libicu-dev", ver:"57.1-6+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libicu-dev", ver:"57.1-6+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libicu57", ver:"57.1-6+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libicu57", ver:"57.1-6+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libicu57-dbg", ver:"57.1-6+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libicu57-dbg", ver:"57.1-6+deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4213.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4213-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704213");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-15038", "CVE-2017-15119", "CVE-2017-15124", "CVE-2017-15268", "CVE-2017-15289",
                 "CVE-2017-16845", "CVE-2017-17381", "CVE-2017-18043", "CVE-2017-5715", "CVE-2018-5683",
                 "CVE-2018-7550");
   script_name("Debian Security Advisory DSA 4213-1 (qemu - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-29 00:00:00 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,10 +54,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 1:2.8+dfsg-6+deb9u4.
 
-We recommend that you upgrade your qemu packages.
-
-For the detailed security status of qemu please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your qemu packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/qemu");
   script_tag(name:"summary", value:"Several vulnerabilities were discovered in qemu, a fast processor
@@ -119,52 +115,52 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"qemu", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-block-extra", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-block-extra", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-guest-agent", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-guest-agent", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-kvm", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-kvm", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system-arm", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system-arm", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system-common", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system-common", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system-mips", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system-mips", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system-misc", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system-misc", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system-ppc", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system-ppc", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system-sparc", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system-sparc", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-system-x86", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-system-x86", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-user", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-user", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-user-binfmt", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-user-binfmt", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-user-static", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-user-static", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"qemu-utils", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"qemu-utils", ver:"1:2.8+dfsg-6+deb9u4", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4174.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4174-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704174");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-1084");
   script_name("Debian Security Advisory DSA 4174-1 (corosync - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-17 00:00:00 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 2.4.2-3+deb9u1.
 
-We recommend that you upgrade your corosync packages.
-
-For the detailed security status of corosync please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your corosync packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/corosync");
   script_tag(name:"summary", value:"The Citrix Security Response Team discovered that corosync, a cluster
@@ -72,70 +68,70 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"corosync", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"corosync", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"corosync-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"corosync-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"corosync-doc", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"corosync-doc", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"corosync-notifyd", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"corosync-notifyd", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"corosync-qdevice", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"corosync-qdevice", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"corosync-qnetd", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"corosync-qnetd", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcfg-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcfg-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcfg6", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcfg6", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcmap-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcmap-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcmap4", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcmap4", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcorosync-common-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcorosync-common-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcorosync-common4", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcorosync-common4", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcpg-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcpg-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libcpg4", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libcpg4", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libquorum-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libquorum-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libquorum5", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libquorum5", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsam-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsam-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsam4", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsam4", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtotem-pg-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtotem-pg-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtotem-pg5", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtotem-pg5", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvotequorum-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvotequorum-dev", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvotequorum8", ver:"2.4.2-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvotequorum8", ver:"2.4.2-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852300");
-  script_version("$Revision: 13849 $");
+  script_version("2019-07-04T07:32:14+0000");
   script_cve_id("CVE-2019-5754", "CVE-2019-5755", "CVE-2019-5756", "CVE-2019-5757",
                 "CVE-2019-5758", "CVE-2019-5759", "CVE-2019-5760", "CVE-2019-5761",
                 "CVE-2019-5762", "CVE-2019-5763", "CVE-2019-5764", "CVE-2019-5765",
@@ -30,9 +30,9 @@ if(description)
                 "CVE-2019-5774", "CVE-2019-5775", "CVE-2019-5776", "CVE-2019-5777",
                 "CVE-2019-5778", "CVE-2019-5779", "CVE-2019-5780", "CVE-2019-5781",
                 "CVE-2019-5782", "CVE-2019-5784");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-04 07:32:14 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-19 04:06:09 +0100 (Tue, 19 Feb 2019)");
   script_name("SuSE Update for chromium openSUSE-SU-2019:0205-1 (chromium)");
   script_category(ACT_GATHER_INFO);

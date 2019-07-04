@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4270.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4270-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704270");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-14424");
   script_name("Debian Security Advisory DSA 4270-1 (gdm3 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-13 00:00:00 +0200 (Mon, 13 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 3.22.3-3+deb9u2.
 
-We recommend that you upgrade your gdm3 packages.
-
-For the detailed security status of gdm3 please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your gdm3 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/gdm3");
   script_tag(name:"summary", value:"Chris Coulson discovered a use-after-free flaw in the GNOME Display
@@ -73,16 +69,16 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"gdm3", ver:"3.22.3-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gdm3", ver:"3.22.3-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gir1.2-gdm-1.0", ver:"3.22.3-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gir1.2-gdm-1.0", ver:"3.22.3-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdm-dev", ver:"3.22.3-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdm-dev", ver:"3.22.3-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdm1", ver:"3.22.3-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdm1", ver:"3.22.3-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

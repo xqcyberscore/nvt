@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4140.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4140-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704140");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-5146");
   script_name("Debian Security Advisory DSA 4140-1 (libvorbis - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-16 00:00:00 +0100 (Fri, 16 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 1.3.4-2+deb8u1.
 For the stable distribution (stretch), this problem has been fixed in
 version 1.3.5-4+deb9u2.
 
-We recommend that you upgrade your libvorbis packages.
-
-For the detailed security status of libvorbis please refer to its
-security tracker page linked in the references.");
+We recommend that you upgrade your libvorbis packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/libvorbis");
   script_tag(name:"summary", value:"Richard Zhu discovered that an out-of-bounds memory write in the
@@ -75,34 +71,34 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.5-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.5-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.5-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.5-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.5-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.4-2+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.4-2+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.4-2+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.4-2+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.4-2+deb8u1", rls:"DEB8"))) {
   report += res;
 }
 

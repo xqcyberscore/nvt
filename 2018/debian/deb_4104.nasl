@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4104.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4104-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704104");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-17969");
   script_name("Debian Security Advisory DSA 4104-1 (p7zip - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-04 00:00:00 +0100 (Sun, 04 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 9.20.1~dfsg.1-4.1+deb8u3.
 For the stable distribution (stretch), this problem has been fixed in
 version 16.02+dfsg-3+deb9u1.
 
-We recommend that you upgrade your p7zip packages.
-
-For the detailed security status of p7zip please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your p7zip packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/p7zip");
   script_tag(name:"summary", value:"'landave' discovered a heap-based buffer overflow vulnerability in the
@@ -78,16 +74,16 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"p7zip", ver:"9.20.1~dfsg.1-4.1+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"p7zip", ver:"9.20.1~dfsg.1-4.1+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"p7zip-full", ver:"9.20.1~dfsg.1-4.1+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"p7zip-full", ver:"9.20.1~dfsg.1-4.1+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"p7zip", ver:"16.02+dfsg-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"p7zip", ver:"16.02+dfsg-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"p7zip-full", ver:"16.02+dfsg-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"p7zip-full", ver:"16.02+dfsg-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4222.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4222-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704222");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-12020");
   script_name("Debian Security Advisory DSA 4222-1 (gnupg2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-08 00:00:00 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -56,10 +55,7 @@ in version 2.0.26-6+deb8u2.
 For the stable distribution (stretch), this problem has been fixed in
 version 2.1.18-8~deb9u2.
 
-We recommend that you upgrade your gnupg2 packages.
-
-For the detailed security status of gnupg2 please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your gnupg2 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/gnupg2");
   script_tag(name:"summary", value:"Marcus Brinkmann discovered that GnuPG performed insufficient
@@ -75,52 +71,52 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"gnupg-agent", ver:"2.0.26-6+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg-agent", ver:"2.0.26-6+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gnupg2", ver:"2.0.26-6+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg2", ver:"2.0.26-6+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgsm", ver:"2.0.26-6+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgsm", ver:"2.0.26-6+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgv2", ver:"2.0.26-6+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgv2", ver:"2.0.26-6+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"scdaemon", ver:"2.0.26-6+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"scdaemon", ver:"2.0.26-6+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"dirmngr", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"dirmngr", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gnupg", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gnupg-agent", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg-agent", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gnupg-l10n", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg-l10n", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gnupg2", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg2", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgsm", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgsm", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgv", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgv", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgv-static", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgv-static", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgv-win32", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgv-win32", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgv2", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgv2", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"scdaemon", ver:"2.1.18-8~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"scdaemon", ver:"2.1.18-8~deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

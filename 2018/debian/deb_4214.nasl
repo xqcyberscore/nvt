@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4214.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4214-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704214");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-8012");
   script_name("Debian Security Advisory DSA 4214-1 (zookeeper - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-01 00:00:00 +0200 (Fri, 01 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -57,10 +56,7 @@ in version 3.4.9-3+deb8u1.
 For the stable distribution (stretch), this problem has been fixed in
 version 3.4.9-3+deb9u1.
 
-We recommend that you upgrade your zookeeper packages.
-
-For the detailed security status of zookeeper please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your zookeeper packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/zookeeper");
   script_tag(name:"summary", value:"It was discovered that Zookeeper, a service for maintaining configuration
@@ -79,70 +75,70 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libzookeeper-java", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-java", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-java-doc", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-java-doc", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-mt-dev", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-mt-dev", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-mt2", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-mt2", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-st-dev", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-st-dev", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-st2", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-st2", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper2", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper2", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python-zookeeper", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python-zookeeper", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"zookeeper", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"zookeeper", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"zookeeper-bin", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"zookeeper-bin", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"zookeeperd", ver:"3.4.9-3+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"zookeeperd", ver:"3.4.9-3+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-java", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-java", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-java-doc", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-java-doc", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-mt-dev", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-mt-dev", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-mt2", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-mt2", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-st-dev", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-st-dev", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper-st2", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper-st2", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libzookeeper2", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libzookeeper2", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python-zookeeper", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python-zookeeper", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"zookeeper", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"zookeeper", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"zookeeper-bin", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"zookeeper-bin", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"zookeeperd", ver:"3.4.9-3+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"zookeeperd", ver:"3.4.9-3+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

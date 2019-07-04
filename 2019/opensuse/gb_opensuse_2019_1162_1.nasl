@@ -21,14 +21,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852404");
-  script_version("2019-04-06T02:01:00+0000");
+  script_version("2019-07-04T07:32:14+0000");
   script_cve_id("CVE-2018-18335", "CVE-2018-18356", "CVE-2018-18506", "CVE-2018-18509",
                 "CVE-2019-5785", "CVE-2019-9788", "CVE-2019-9790", "CVE-2019-9791",
                 "CVE-2019-9792", "CVE-2019-9793", "CVE-2019-9794", "CVE-2019-9795",
                 "CVE-2019-9796", "CVE-2019-9801", "CVE-2019-9810", "CVE-2019-9813");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-06 02:01:00 +0000 (Sat, 06 Apr 2019)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-04 07:32:14 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-06 02:01:00 +0000 (Sat, 06 Apr 2019)");
   script_name("openSUSE Update for MozillaThunderbird openSUSE-SU-2019:1162-1 (MozillaThunderbird)");
   script_category(ACT_GATHER_INFO);

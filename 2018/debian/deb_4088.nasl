@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4088.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4088-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704088");
-  script_version("$Revision: 14275 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-1000422", "CVE-2017-6312", "CVE-2017-6313", "CVE-2017-6314");
   script_name("Debian Security Advisory DSA 4088-1 (gdk-pixbuf - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-15 00:00:00 +0100 (Mon, 15 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -58,10 +57,7 @@ version 2.36.5-2+deb9u2. In addition this update provides fixes for
 CVE-2017-6312, CVE-2017-6313 and CVE-2017-6314
 .
 
-We recommend that you upgrade your gdk-pixbuf packages.
-
-For the detailed security status of gdk-pixbuf please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your gdk-pixbuf packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/gdk-pixbuf");
   script_tag(name:"summary", value:"It was discovered that multiple integer overflows in the GIF image loader
@@ -77,37 +73,37 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.36.5-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.36.5-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.36.5-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.36.5-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.36.5-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.31.1-2+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.31.1-2+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0-dbg", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0-dbg", ver:"2.31.1-2+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.31.1-2+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.31.1-2+deb8u7", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.31.1-2+deb8u7", rls:"DEB8"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4284.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4284-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704284");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-16435");
   script_name("Debian Security Advisory DSA 4284-1 (lcms2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-04 00:00:00 +0200 (Tue, 04 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 2.8-4+deb9u1.
 
-We recommend that you upgrade your lcms2 packages.
-
-For the detailed security status of lcms2 please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your lcms2 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/lcms2");
   script_tag(name:"summary", value:"Quang Nguyen discovered an integer overflow in the Little CMS 2 colour
@@ -73,13 +69,13 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.8-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.8-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblcms2-dev", ver:"2.8-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblcms2-dev", ver:"2.8-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.8-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.8-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4081.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4081-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704081");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-11142", "CVE-2017-11143", "CVE-2017-11144", "CVE-2017-11145", "CVE-2017-11628", "CVE-2017-12933", "CVE-2017-16642");
   script_name("Debian Security Advisory DSA 4081-1 (php5 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-08 00:00:00 +0100 (Mon, 08 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 5.6.33+dfsg-0+deb8u1.
 
-We recommend that you upgrade your php5 packages.
-
-For the detailed security status of php5 please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your php5 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/php5");
   script_tag(name:"summary", value:"Several vulnerabilities were found in PHP, a widely-used open source
@@ -93,106 +89,106 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libapache2-mod-php5", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-php5", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libapache2-mod-php5filter", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libapache2-mod-php5filter", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libphp5-embed", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libphp5-embed", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php-pear", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php-pear", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-cgi", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-cgi", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-cli", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-cli", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-common", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-common", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-curl", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-curl", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-dbg", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-dbg", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-dev", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-dev", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-enchant", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-enchant", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-fpm", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-fpm", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-gd", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-gd", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-gmp", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-gmp", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-imap", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-imap", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-interbase", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-interbase", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-intl", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-intl", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-ldap", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-ldap", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-mcrypt", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-mcrypt", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-mysql", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-mysql", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-mysqlnd", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-mysqlnd", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-odbc", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-odbc", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-pgsql", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-pgsql", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-phpdbg", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-phpdbg", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-pspell", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-pspell", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-readline", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-readline", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-recode", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-recode", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-snmp", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-snmp", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-sqlite", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-sqlite", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-sybase", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-sybase", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-tidy", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-tidy", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-xmlrpc", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-xmlrpc", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"php5-xsl", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"php5-xsl", ver:"5.6.33+dfsg-0+deb8u1", rls:"DEB8"))) {
   report += res;
 }
 

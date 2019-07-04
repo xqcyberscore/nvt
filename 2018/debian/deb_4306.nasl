@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4306.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4306-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704306");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-1000802", "CVE-2018-1060", "CVE-2018-1061", "CVE-2018-14647");
   script_name("Debian Security Advisory DSA 4306-1 (python2.7 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-27 00:00:00 +0200 (Thu, 27 Sep 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 2.7.13-2+deb9u3.
 
-We recommend that you upgrade your python2.7 packages.
-
-For the detailed security status of python2.7 please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your python2.7 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/python2.7");
   script_tag(name:"summary", value:"Multiple security issues were discovered in Python: ElementTree failed
@@ -73,43 +69,43 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"idle-python2.7", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"idle-python2.7", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libpython2.7", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libpython2.7", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libpython2.7-dbg", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libpython2.7-dbg", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libpython2.7-dev", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libpython2.7-dev", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libpython2.7-minimal", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libpython2.7-minimal", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libpython2.7-stdlib", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libpython2.7-stdlib", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libpython2.7-testsuite", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libpython2.7-testsuite", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python2.7", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python2.7", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python2.7-dbg", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python2.7-dbg", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python2.7-dev", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python2.7-dev", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python2.7-doc", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python2.7-doc", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python2.7-examples", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python2.7-examples", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.13-2+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.13-2+deb9u3", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4137.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4137-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704137");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-1064", "CVE-2018-5748", "CVE-2018-6764");
   script_name("Debian Security Advisory DSA 4137-1 (libvirt - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-14 00:00:00 +0100 (Wed, 14 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -56,10 +55,7 @@ in version 1.2.9-9+deb8u5.
 For the stable distribution (stretch), these problems have been fixed in
 version 3.0.0-4+deb9u3.
 
-We recommend that you upgrade your libvirt packages.
-
-For the detailed security status of libvirt please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your libvirt packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/libvirt");
   script_tag(name:"summary", value:"Several vulnerabilities were discovered in Libvirt, a virtualisation
@@ -89,55 +85,55 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libnss-libvirt", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libnss-libvirt", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-clients", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-clients", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-daemon", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-daemon", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-daemon-system", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-daemon-system", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-dev", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-dev", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-doc", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-doc", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-sanlock", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-sanlock", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt0", ver:"3.0.0-4+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt0", ver:"3.0.0-4+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-bin", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-bin", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-clients", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-clients", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-daemon", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-daemon", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-daemon-system", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-daemon-system", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-dev", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-dev", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-doc", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-doc", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt-sanlock", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt-sanlock", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt0", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt0", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvirt0-dbg", ver:"1.2.9-9+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvirt0-dbg", ver:"1.2.9-9+deb8u5", rls:"DEB8"))) {
   report += res;
 }
 

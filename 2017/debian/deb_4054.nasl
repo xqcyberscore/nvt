@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4054.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4054-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704054");
-  script_version("$Revision: 14284 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-8819", "CVE-2017-8820", "CVE-2017-8821", "CVE-2017-8822", "CVE-2017-8823");
   script_name("Debian Security Advisory DSA 4054-1 (tor - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-12-03 00:00:00 +0100 (Sun, 03 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 0.2.5.16-1.
 For the stable distribution (stretch), these problems have been fixed in
 version 0.2.9.14-1.
 
-We recommend that you upgrade your tor packages.
-
-For the detailed security status of tor please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your tor packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/tor");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been found in Tor, a connection-based
@@ -74,22 +70,22 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"tor", ver:"0.2.9.14-1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor", ver:"0.2.9.14-1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.9.14-1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.9.14-1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.9.14-1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.9.14-1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tor", ver:"0.2.5.16-1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor", ver:"0.2.5.16-1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.5.16-1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.5.16-1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.5.16-1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.5.16-1", rls:"DEB8"))) {
   report += res;
 }
 

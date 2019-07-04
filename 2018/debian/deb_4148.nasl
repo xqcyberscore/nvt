@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4148.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4148-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704148");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-8828");
   script_name("Debian Security Advisory DSA 4148-1 (kamailio - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-22 00:00:00 +0100 (Thu, 22 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 4.2.0-2+deb8u3.
 For the stable distribution (stretch), this problem has been fixed in
 version 4.4.4-2+deb9u1.
 
-We recommend that you upgrade your kamailio packages.
-
-For the detailed security status of kamailio please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your kamailio packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/kamailio");
   script_tag(name:"summary", value:"Alfred Farrugia and Sandro Gauci discovered an off-by-one heap overflow
@@ -75,217 +71,217 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"kamailio", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-autheph-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-autheph-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-berkeley-bin", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-berkeley-bin", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-berkeley-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-berkeley-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-carrierroute-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-carrierroute-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-cnxcc-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-cnxcc-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-cpl-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-cpl-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-dbg", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-dbg", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-erlang-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-erlang-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-extra-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-extra-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-geoip-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-geoip-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-ims-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-ims-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-java-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-java-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-json-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-json-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-kazoo-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-kazoo-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-ldap-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-ldap-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-lua-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-lua-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-memcached-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-memcached-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-mono-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-mono-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-mysql-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-mysql-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-outbound-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-outbound-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-perl-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-perl-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-postgres-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-postgres-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-presence-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-presence-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-purple-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-purple-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-python-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-python-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-radius-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-radius-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-redis-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-redis-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-sctp-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-sctp-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-snmpstats-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-snmpstats-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-sqlite-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-sqlite-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-tls-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-tls-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-unixodbc-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-unixodbc-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-utils-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-utils-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-websocket-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-websocket-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-xml-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-xml-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-xmpp-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-xmpp-modules", ver:"4.4.4-2+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-autheph-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-autheph-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-berkeley-bin", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-berkeley-bin", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-berkeley-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-berkeley-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-carrierroute-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-carrierroute-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-cpl-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-cpl-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-dbg", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-dbg", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-dnssec-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-dnssec-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-extra-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-extra-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-geoip-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-geoip-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-ims-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-ims-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-java-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-java-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-json-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-json-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-ldap-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-ldap-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-lua-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-lua-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-memcached-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-memcached-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-mono-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-mono-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-mysql-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-mysql-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-outbound-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-outbound-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-perl-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-perl-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-postgres-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-postgres-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-presence-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-presence-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-python-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-python-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-radius-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-radius-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-redis-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-redis-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-sctp-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-sctp-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-snmpstats-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-snmpstats-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-sqlite-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-sqlite-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-tls-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-tls-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-unixodbc-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-unixodbc-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-utils-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-utils-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-websocket-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-websocket-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-xml-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-xml-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"kamailio-xmpp-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"kamailio-xmpp-modules", ver:"4.2.0-2+deb8u3", rls:"DEB8"))) {
   report += res;
 }
 

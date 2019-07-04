@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4343.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4343-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704343");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-4013");
   script_name("Debian Security Advisory DSA 4343-1 (liblivemedia - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-23 00:00:00 +0100 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 2016.11.28-1+deb9u1.
 
-We recommend that you upgrade your liblivemedia packages.
-
-For the detailed security status of liblivemedia please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your liblivemedia packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/liblivemedia");
   script_tag(name:"summary", value:"It was discovered that a buffer overflow in liveMedia, a set of C++
@@ -72,22 +68,22 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libbasicusageenvironment1", ver:"2016.11.28-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libbasicusageenvironment1", ver:"2016.11.28-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libgroupsock8", ver:"2016.11.28-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libgroupsock8", ver:"2016.11.28-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblivemedia-dev", ver:"2016.11.28-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblivemedia-dev", ver:"2016.11.28-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblivemedia57", ver:"2016.11.28-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblivemedia57", ver:"2016.11.28-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libusageenvironment3", ver:"2016.11.28-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libusageenvironment3", ver:"2016.11.28-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"livemedia-utils", ver:"2016.11.28-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"livemedia-utils", ver:"2016.11.28-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

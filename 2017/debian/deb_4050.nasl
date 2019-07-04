@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4050.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4050-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704050");
-  script_version("$Revision: 14284 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-14316", "CVE-2017-14317", "CVE-2017-14318", "CVE-2017-14319", "CVE-2017-15588", "CVE-2017-15589", "CVE-2017-15590", "CVE-2017-15592", "CVE-2017-15593", "CVE-2017-15594", "CVE-2017-15595", "CVE-2017-15597", "CVE-2017-17044", "CVE-2017-17045", "CVE-2017-17046");
   script_name("Debian Security Advisory DSA 4050-1 (xen - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-11-28 00:00:00 +0100 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -56,10 +55,7 @@ released.
 For the stable distribution (stretch), these problems have been fixed in
 version 4.8.2+xsa245-0+deb9u1.
 
-We recommend that you upgrade your xen packages.
-
-For the detailed security status of xen please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your xen packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/xen");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in the Xen hypervisor, which
@@ -75,40 +71,40 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libxen-4.8", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxen-4.8", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxen-dev", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxen-dev", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxenstore3.0", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxenstore3.0", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-amd64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-hypervisor-4.8-amd64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-arm64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-hypervisor-4.8-arm64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-armhf", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-hypervisor-4.8-armhf", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-system-arm64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-system-arm64", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-system-armhf", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-system-armhf", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-utils-4.8", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-utils-4.8", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.8.2+xsa245-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

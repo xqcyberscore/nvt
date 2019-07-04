@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4224.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4224-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704224");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-12020");
   script_name("Debian Security Advisory DSA 4224-1 (gnupg - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-08 00:00:00 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 1.4.18-7+deb8u5.
 
-We recommend that you upgrade your gnupg packages.
-
-For the detailed security status of gnupg please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your gnupg packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/gnupg");
   script_tag(name:"summary", value:"Marcus Brinkmann discovered that GnuPG performed insufficient
@@ -72,16 +68,16 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"gnupg", ver:"1.4.18-7+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg", ver:"1.4.18-7+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gnupg-curl", ver:"1.4.18-7+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gnupg-curl", ver:"1.4.18-7+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgv", ver:"1.4.18-7+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgv", ver:"1.4.18-7+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gpgv-win32", ver:"1.4.18-7+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gpgv-win32", ver:"1.4.18-7+deb8u5", rls:"DEB8"))) {
   report += res;
 }
 

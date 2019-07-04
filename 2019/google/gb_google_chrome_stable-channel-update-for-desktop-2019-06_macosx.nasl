@@ -24,14 +24,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815201");
-  script_version("2019-06-06T13:02:35+0000");
+  script_version("2019-07-04T07:32:14+0000");
   script_cve_id("CVE-2019-5828", "CVE-2019-5829", "CVE-2019-5830", "CVE-2019-5831",
                 "CVE-2019-5832", "CVE-2019-5833", "CVE-2019-5834", "CVE-2019-5835",
                 "CVE-2019-5836", "CVE-2019-5837", "CVE-2019-5838", "CVE-2019-5839",
                 "CVE-2019-5840");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-06-06 13:02:35 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-04 07:32:14 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-06 10:58:30 +0530 (Thu, 06 Jun 2019)");
   script_name("Google Chrome Security Updates (stable-channel-update-for-desktop-2019-06)-MAC OS X");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4103.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4103-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704103");
-  script_version("$Revision: 14275 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-15420", "CVE-2017-15429", "CVE-2018-6031", "CVE-2018-6032", "CVE-2018-6033", "CVE-2018-6034", "CVE-2018-6035", "CVE-2018-6036", "CVE-2018-6037", "CVE-2018-6038", "CVE-2018-6039", "CVE-2018-6040", "CVE-2018-6041", "CVE-2018-6042", "CVE-2018-6043", "CVE-2018-6045", "CVE-2018-6046", "CVE-2018-6047", "CVE-2018-6048", "CVE-2018-6049", "CVE-2018-6050", "CVE-2018-6051", "CVE-2018-6052", "CVE-2018-6053", "CVE-2018-6054");
   script_name("Debian Security Advisory DSA 4103-1 (chromium-browser - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-31 00:00:00 +0100 (Wed, 31 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ has been discontinued.
 For the stable distribution (stretch), these problems have been fixed in
 version 64.0.3282.119-1~deb9u1.
 
-We recommend that you upgrade your chromium-browser packages.
-
-For the detailed security status of chromium-browser please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your chromium-browser packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/chromium-browser");
   script_tag(name:"summary", value:"Several vulnerabilities have been discovered in the chromium web browser.
@@ -153,22 +149,22 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"chromedriver", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromedriver", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-driver", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-driver", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-l10n", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-l10n", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-shell", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-shell", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-widevine", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-widevine", ver:"64.0.3282.119-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

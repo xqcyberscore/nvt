@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4210.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4210-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704210");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-3639");
   script_name("Debian Security Advisory DSA 4210-1 (xen - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-25 00:00:00 +0200 (Fri, 25 May 2018)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7.
 
-We recommend that you upgrade your xen packages.
-
-For the detailed security status of xen please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your xen packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/xen");
   script_tag(name:"summary", value:"This update provides mitigations for the Spectre v4 variant in x86-based
@@ -76,40 +72,40 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libxen-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxen-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxen-dev", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxen-dev", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxenstore3.0", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxenstore3.0", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-hypervisor-4.8-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-arm64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-hypervisor-4.8-arm64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-armhf", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-hypervisor-4.8-armhf", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-system-arm64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-system-arm64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-system-armhf", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-system-armhf", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-utils-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-utils-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u7", rls:"DEB9"))) {
   report += res;
 }
 

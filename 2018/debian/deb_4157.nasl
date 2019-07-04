@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4157.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4157-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704157");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-3738", "CVE-2018-0739");
   script_name("Debian Security Advisory DSA 4157-1 (openssl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-29 00:00:00 +0200 (Thu, 29 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -58,10 +57,7 @@ by CVE-2017-3738
 For the stable distribution (stretch), these problems have been fixed in
 version 1.1.0f-3+deb9u2.
 
-We recommend that you upgrade your openssl packages.
-
-For the detailed security status of openssl please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your openssl packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/openssl");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in OpenSSL, a Secure
@@ -87,31 +83,31 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl-dev", ver:"1.1.0f-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl-doc", ver:"1.1.0f-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libssl1.1", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl1.1", ver:"1.1.0f-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openssl", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openssl", ver:"1.1.0f-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1t-1+deb8u8", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1t-1+deb8u8", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1t-1+deb8u8", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1t-1+deb8u8", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openssl", ver:"1.0.1t-1+deb8u8", rls:"DEB8"))) {
   report += res;
 }
 

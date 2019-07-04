@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704405");
-  script_version("$Revision: 14285 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-17480", "CVE-2018-14423", "CVE-2018-18088", "CVE-2018-5785", "CVE-2018-6616");
   script_name("Debian Security Advisory DSA 4405-1 (openjpeg2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-03-10 00:00:00 +0100 (Sun, 10 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,10 +43,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 2.1.2-1.1+deb9u3.
 
-We recommend that you upgrade your openjpeg2 packages.
-
-For the detailed security status of openjpeg2 please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your openjpeg2 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/openjpeg2");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in openjpeg2, the
@@ -83,34 +80,34 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libopenjp2-7", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjp2-7", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjp2-7-dbg", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjp2-7-dbg", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjp2-7-dev", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjp2-7-dev", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjp2-tools", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjp2-tools", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjp3d-tools", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjp3d-tools", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjp3d7", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjp3d7", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjpip-dec-server", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjpip-dec-server", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjpip-server", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjpip-server", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjpip-viewer", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjpip-viewer", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libopenjpip7", ver:"2.1.2-1.1+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libopenjpip7", ver:"2.1.2-1.1+deb9u3", rls:"DEB9"))) {
   report += res;
 }
 

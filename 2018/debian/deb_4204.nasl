@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4204.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4204-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704204");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-10995", "CVE-2017-11533", "CVE-2017-11535", "CVE-2017-11639", "CVE-2017-13143",
                 "CVE-2017-17504", "CVE-2017-17879", "CVE-2018-5248");
   script_name("Debian Security Advisory DSA 4204-1 (imagemagick - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-18 00:00:00 +0200 (Fri, 18 May 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -54,10 +53,7 @@ if(description)
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 8:6.8.9.9-5+deb8u12.
 
-We recommend that you upgrade your imagemagick packages.
-
-For the detailed security status of imagemagick please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your imagemagick packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/imagemagick");
   script_tag(name:"summary", value:"This update fixes several vulnerabilities in imagemagick, a graphical
@@ -74,70 +70,70 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"imagemagick-common", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"imagemagick-common", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"imagemagick-dbg", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"imagemagick-dbg", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"imagemagick-doc", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"imagemagick-doc", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libimage-magick-perl", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libimage-magick-perl", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libimage-magick-q16-perl", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libimage-magick-q16-perl", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagick++-6-headers", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagick++-6-headers", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagick++-6.q16-5", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagick++-6.q16-5", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagick++-6.q16-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagick++-6.q16-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagick++-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagick++-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickcore-6-arch-config", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickcore-6-arch-config", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickcore-6-headers", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickcore-6-headers", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickcore-6.q16-2", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickcore-6.q16-2", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickcore-6.q16-2-extra", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickcore-6.q16-2-extra", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickcore-6.q16-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickcore-6.q16-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickcore-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickcore-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickwand-6-headers", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickwand-6-headers", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickwand-6.q16-2", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickwand-6.q16-2", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickwand-6.q16-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickwand-6.q16-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmagickwand-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmagickwand-dev", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"perlmagick", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"perlmagick", ver:"8:6.8.9.9-5+deb8u12", rls:"DEB8"))) {
   report += res;
 }
 

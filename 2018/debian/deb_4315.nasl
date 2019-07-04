@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4315.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4315-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704315");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-16056", "CVE-2018-16057", "CVE-2018-16058");
   script_name("Debian Security Advisory DSA 4315-1 (wireshark - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-12 00:00:00 +0200 (Fri, 12 Oct 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,10 +53,7 @@ if(description)
 version 2.6.3-1~deb9u1. This update upgrades Wireshark to the 2.6.x
 release branch, future security upgrades will be based on this series.
 
-We recommend that you upgrade your wireshark packages.
-
-For the detailed security status of wireshark please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your wireshark packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/wireshark");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in Wireshark, a network
@@ -73,52 +69,52 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libwireshark-data", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libwireshark-data", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libwireshark-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libwireshark-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libwiretap-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libwiretap-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libwsutil-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libwsutil-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"tshark", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tshark", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"wireshark", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"wireshark", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"wireshark-common", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"wireshark-common", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"wireshark-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"wireshark-dev", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"wireshark-doc", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"wireshark-doc", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"wireshark-gtk", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"wireshark-gtk", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"wireshark-qt", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"wireshark-qt", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
 
 # nb: For some reason libwireshark8, libwiretap6, libwscodecs1 and libwsutil7 are still at 2.2.6+g32dac6a-2+deb9u3 in stretch.
 # Keep those commented out for now to avoid possible FPs...
-#if((res = isdpkgvuln(pkg:"libwireshark8", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+#if(!isnull(res = isdpkgvuln(pkg:"libwireshark8", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
 #    report += res;
 #}
-#if((res = isdpkgvuln(pkg:"libwiretap6", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+#if(!isnull(res = isdpkgvuln(pkg:"libwiretap6", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
 #    report += res;
 #}
-#if((res = isdpkgvuln(pkg:"libwscodecs1", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+#if(!isnull(res = isdpkgvuln(pkg:"libwscodecs1", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
 #    report += res;
 #}
-#if((res = isdpkgvuln(pkg:"libwsutil7", ver:"2.6.3-1~deb9u1", rls:"DEB9")) != NULL) {
+#if(!isnull(res = isdpkgvuln(pkg:"libwsutil7", ver:"2.6.3-1~deb9u1", rls:"DEB9"))) {
 #    report += res;
 #}
 

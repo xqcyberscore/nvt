@@ -23,25 +23,27 @@ CPE = "cpe:/a:tenable:nessus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107029");
-  script_version("2019-06-27T07:02:37+0000");
-  script_cve_id("CVE-2019-3961");
+  script_version("2019-07-04T05:26:13+0000");
+  script_cve_id("CVE-2019-3961", "CVE-2019-3962");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-06-27 07:02:37 +0000 (Thu, 27 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-04 05:26:13 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-26 15:43:12 +0200 (Wed, 26 Jun 2019)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Tenable Nessus <= 8.4.0 XSS Vulnerability (TNS-2019-04)");
+  script_name("Tenable Nessus <= 8.4.0 Multiple XSS Vulnerabilities (TNS-2019-04)");
 
   script_tag(name:"summary", value:"This host is running Tenable Nessus and is prone to
-  multiple vulnerabilities.");
+  multiple XSS vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Tenable Nessus versions 8.4.0 and earlier were found to contain a reflected XSS 
-  vulnerability due to improper validation of user-supplied input.");
+  script_tag(name:"impact", value:"For CVE-2019-3961, an unauthenticated, remote attacker could exploit
+  this vulnerability via a specially crafted request to execute arbitrary script code in a user's browser session.
 
-  script_tag(name:"impact", value:"An unauthenticated, remote attacker could potentially exploit this
-  vulnerability via a specially crafted request to execute arbitrary script code in a user's browser session.");
+  For CVE-2019-3962, an authenticated, local attacker could exploit this vulnerability by convincing
+  another targeted Nessus user to view a malicious URL and use Nessus to send fraudulent messages.
+  Successful exploitation could allow the authenticated adversary to inject arbitrary text into the
+  feed status, which will remain saved post session expiration.");
 
   script_tag(name:"affected", value:"Tenable Nessus through to version 8.4.0.");
 

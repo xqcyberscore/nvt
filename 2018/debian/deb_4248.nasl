@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4248.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4248-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +30,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704248");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-12081", "CVE-2017-12082", "CVE-2017-12086", "CVE-2017-12099", "CVE-2017-12100",
                 "CVE-2017-12101", "CVE-2017-12102", "CVE-2017-12103", "CVE-2017-12104", "CVE-2017-12105",
                 "CVE-2017-2899", "CVE-2017-2900", "CVE-2017-2901", "CVE-2017-2902", "CVE-2017-2903",
                 "CVE-2017-2904", "CVE-2017-2905", "CVE-2017-2906", "CVE-2017-2907", "CVE-2017-2908",
                 "CVE-2017-2918");
   script_name("Debian Security Advisory DSA 4248-1 (blender - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-17 00:00:00 +0200 (Tue, 17 Jul 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -58,10 +57,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 2.79.b+dfsg0-1~deb9u1.
 
-We recommend that you upgrade your blender packages.
-
-For the detailed security status of blender please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your blender packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/blender");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in various parsers of
@@ -78,13 +74,13 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"blender", ver:"2.79.b+dfsg0-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"blender", ver:"2.79.b+dfsg0-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"blender-data", ver:"2.79.b+dfsg0-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"blender-data", ver:"2.79.b+dfsg0-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"blender-dbg", ver:"2.79.b+dfsg0-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"blender-dbg", ver:"2.79.b+dfsg0-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

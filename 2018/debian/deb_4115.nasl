@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4115.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4115-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704115");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-5378", "CVE-2018-5379", "CVE-2018-5380", "CVE-2018-5381");
   script_name("Debian Security Advisory DSA 4115-1 (quagga - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-15 00:00:00 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 0.99.23.1-1+deb8u5.
 For the stable distribution (stretch), these problems have been fixed in
 version 1.1.1-3+deb9u2.
 
-We recommend that you upgrade your quagga packages.
-
-For the detailed security status of quagga  please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your quagga packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/quagga");
   script_tag(name:"summary", value:"Several vulnerabilities have been discovered in Quagga, a routing
@@ -101,43 +97,43 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"quagga", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-bgpd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-bgpd", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-core", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-core", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-doc", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-doc", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-isisd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-isisd", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-ospf6d", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-ospf6d", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-ospfd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-ospfd", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-pimd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-pimd", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-ripd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-ripd", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-ripngd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-ripngd", ver:"1.1.1-3+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga", ver:"0.99.23.1-1+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga", ver:"0.99.23.1-1+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-dbg", ver:"0.99.23.1-1+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-dbg", ver:"0.99.23.1-1+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"quagga-doc", ver:"0.99.23.1-1+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"quagga-doc", ver:"0.99.23.1-1+deb8u5", rls:"DEB8"))) {
   report += res;
 }
 

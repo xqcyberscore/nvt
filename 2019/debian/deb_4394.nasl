@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704394");
-  script_version("$Revision: 14300 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-20174", "CVE-2018-20175", "CVE-2018-20176", "CVE-2018-20177", "CVE-2018-20178",
                 "CVE-2018-20179", "CVE-2018-20180", "CVE-2018-20181", "CVE-2018-20182", "CVE-2018-8791",
                 "CVE-2018-8792", "CVE-2018-8793", "CVE-2018-8794", "CVE-2018-8795", "CVE-2018-8796",
                 "CVE-2018-8797", "CVE-2018-8798", "CVE-2018-8799", "CVE-2018-8800");
   script_name("Debian Security Advisory DSA 4394-1 (rdesktop - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:52:26 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-18 00:00:00 +0100 (Mon, 18 Feb 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,10 +46,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 1.8.4-1~deb9u1.
 
-We recommend that you upgrade your rdesktop packages.
-
-For the detailed security status of rdesktop please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your rdesktop packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/rdesktop");
   script_tag(name:"summary", value:"Multiple security issues were found in the rdesktop RDP client, which
@@ -65,7 +62,7 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"rdesktop", ver:"1.8.4-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"rdesktop", ver:"1.8.4-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

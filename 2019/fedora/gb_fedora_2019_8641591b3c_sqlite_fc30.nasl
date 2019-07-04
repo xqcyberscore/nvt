@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876388");
-  script_version("2019-05-22T11:13:26+0000");
+  script_version("2019-07-04T07:32:14+0000");
   script_cve_id("CVE-2019-5827", "CVE-2019-9937", "CVE-2019-9936");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-22 11:13:26 +0000 (Wed, 22 May 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-04 07:32:14 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-05-20 02:10:55 +0000 (Mon, 20 May 2019)");
   script_name("Fedora Update for sqlite FEDORA-2019-8641591b3c");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4212.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4212-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704212");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-11235");
   script_name("Debian Security Advisory DSA 4212-1 (git - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-29 00:00:00 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 1:2.1.4-2.1+deb8u6.
 For the stable distribution (stretch), this problem has been fixed in
 version 1:2.11.0-3+deb9u3.
 
-We recommend that you upgrade your git packages.
-
-For the detailed security status of git please refer to its security
-tracker page linked in the references.");
+We recommend that you upgrade your git packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/git");
   script_tag(name:"summary", value:"Etienne Stalmans discovered that git, a fast, scalable, distributed
@@ -76,100 +72,100 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"git", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-all", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-all", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-arch", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-arch", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-core", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-core", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-cvs", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-cvs", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-daemon-run", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-daemon-run", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-daemon-sysvinit", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-daemon-sysvinit", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-doc", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-doc", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-el", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-el", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-email", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-email", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-gui", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-gui", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-man", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-man", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-mediawiki", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-mediawiki", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-svn", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-svn", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gitk", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gitk", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gitweb", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gitweb", ver:"1:2.1.4-2.1+deb8u6", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-all", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-all", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-arch", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-arch", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-core", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-core", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-cvs", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-cvs", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-daemon-run", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-daemon-run", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-daemon-sysvinit", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-daemon-sysvinit", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-doc", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-doc", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-el", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-el", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-email", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-email", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-gui", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-gui", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-man", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-man", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-mediawiki", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-mediawiki", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"git-svn", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"git-svn", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gitk", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gitk", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"gitweb", ver:"1:2.11.0-3+deb9u3", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"gitweb", ver:"1:2.11.0-3+deb9u3", rls:"DEB9"))) {
   report += res;
 }
 

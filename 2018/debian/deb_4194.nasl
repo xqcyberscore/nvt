@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4194.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4194-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704194");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-1308");
   script_name("Debian Security Advisory DSA 4194-1 (lucene-solr - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-06 00:00:00 +0200 (Sun, 06 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,10 +55,7 @@ in version 3.6.2+dfsg-5+deb8u2.
 For the stable distribution (stretch), this problem has been fixed in
 version 3.6.2+dfsg-10+deb9u2.
 
-We recommend that you upgrade your lucene-solr packages.
-
-For the detailed security status of lucene-solr please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your lucene-solr packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/lucene-solr");
   script_tag(name:"summary", value:"An XML external entity expansion vulnerability was discovered in the
@@ -75,46 +71,46 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"liblucene3-contrib-java", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblucene3-contrib-java", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblucene3-java", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblucene3-java", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblucene3-java-doc", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblucene3-java-doc", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsolr-java", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsolr-java", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"solr-common", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"solr-common", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"solr-jetty", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"solr-jetty", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"solr-tomcat", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"solr-tomcat", ver:"3.6.2+dfsg-5+deb8u2", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblucene3-contrib-java", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblucene3-contrib-java", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblucene3-java", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblucene3-java", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"liblucene3-java-doc", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"liblucene3-java-doc", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsolr-java", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsolr-java", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"solr-common", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"solr-common", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"solr-jetty", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"solr-jetty", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"solr-tomcat", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"solr-tomcat", ver:"3.6.2+dfsg-10+deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

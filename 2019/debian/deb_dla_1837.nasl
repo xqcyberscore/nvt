@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891837");
-  script_version("2019-06-26T02:00:31+0000");
+  script_version("2019-07-04T09:25:28+0000");
   # TODO: No CVE assigned yet.
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-26 02:00:31 +0000 (Wed, 26 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-26 02:00:31 +0000 (Wed, 26 Jun 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1837-1] rdesktop security update)");
   script_category(ACT_GATHER_INFO);
@@ -52,10 +52,7 @@ arbitrary code.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 1.8.6-0+deb8u1.
 
-We recommend that you upgrade your rdesktop packages.
-
-For the detailed security status of rdesktop please refer to its
-security tracker page at:");
+We recommend that you upgrade your rdesktop packages.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");

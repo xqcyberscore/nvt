@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4251.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4251-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704251");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-11529");
   script_name("Debian Security Advisory DSA 4251-1 (vlc - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-18 00:00:00 +0200 (Wed, 18 Jul 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 3.0.3-1-0+deb9u1.
 
-We recommend that you upgrade your vlc packages.
-
-For the detailed security status of vlc please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your vlc packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/vlc");
   script_tag(name:"summary", value:"A use-after-free was discovered in the MP4 demuxer of the VLC media
@@ -72,79 +68,79 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libvlc-bin", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvlc-bin", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvlc-dev", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvlc-dev", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvlc5", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvlc5", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvlccore-dev", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvlccore-dev", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvlccore8", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvlccore8", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libvlccore9", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libvlccore9", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-bin", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-bin", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-data", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-data", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-l10n", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-l10n", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-nox", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-nox", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-access-extra", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-access-extra", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-base", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-base", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-fluidsynth", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-fluidsynth", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-jack", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-jack", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-notify", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-notify", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-qt", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-qt", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-samba", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-samba", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-sdl", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-sdl", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-skins2", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-skins2", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-svg", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-svg", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-video-output", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-video-output", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-video-splitter", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-video-splitter", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-visualization", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-visualization", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"vlc-plugin-zvbi", ver:"3.0.3-1-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"vlc-plugin-zvbi", ver:"3.0.3-1-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

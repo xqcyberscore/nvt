@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4348.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4348-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704348");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-0732", "CVE-2018-0734", "CVE-2018-0735", "CVE-2018-0737", "CVE-2018-5407");
   script_name("Debian Security Advisory DSA 4348-1 (openssl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-30 00:00:00 +0100 (Fri, 30 Nov 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,10 +53,7 @@ if(description)
 version 1.1.0j-1~deb9u1. Going forward, openssl security updates for
 stretch will be based on the 1.1.0x upstream releases.
 
-We recommend that you upgrade your openssl packages.
-
-For the detailed security status of openssl please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your openssl packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/openssl");
   script_tag(name:"summary", value:"Several local side channel attacks and a denial of service via large
@@ -73,13 +69,13 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.1.0j-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl-dev", ver:"1.1.0j-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libssl1.1", ver:"1.1.0j-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libssl1.1", ver:"1.1.0j-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openssl", ver:"1.1.0j-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openssl", ver:"1.1.0j-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

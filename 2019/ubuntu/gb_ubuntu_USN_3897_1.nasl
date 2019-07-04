@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843914");
-  script_version("$Revision: 14288 $");
+  script_version("2019-07-04T07:32:14+0000");
   script_cve_id("CVE-2016-5824", "CVE-2018-18356", "CVE-2018-18500", "CVE-2019-5785", "CVE-2018-18501", "CVE-2018-18505", "CVE-2018-18509");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-04 07:32:14 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-27 04:14:42 +0100 (Wed, 27 Feb 2019)");
   script_name("Ubuntu Update for thunderbird USN-3897-1");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4070.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4070-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704070");
-  script_version("$Revision: 14284 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-17843", "CVE-2017-17844", "CVE-2017-17845", "CVE-2017-17846", "CVE-2017-17847", "CVE-2017-17848");
   script_name("Debian Security Advisory DSA 4070-1 (enigmail - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-12-21 00:00:00 +0100 (Thu, 21 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 2:1.9.9-1~deb8u1.
 For the stable distribution (stretch), this problem has been fixed in
 version 2:1.9.9-1~deb9u1.
 
-We recommend that you upgrade your enigmail packages.
-
-For the detailed security status of enigmail please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your enigmail packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/enigmail");
   script_tag(name:"summary", value:"Multiple vulnerabilities were discovered in Enigmail, an OpenPGP
@@ -76,10 +72,10 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.9-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.9-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.9-1~deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.9-1~deb8u1", rls:"DEB8"))) {
   report += res;
 }
 

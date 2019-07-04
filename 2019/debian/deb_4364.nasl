@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4364.nasl 14285 2019-03-18 15:08:34Z cfischer $
 #
 # Auto-generated from advisory DSA 4364-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704364");
-  script_version("$Revision: 14285 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-16468");
   script_name("Debian Security Advisory DSA 4364-1 (ruby-loofah - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-08 00:00:00 +0100 (Tue, 08 Jan 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 2.0.3-2+deb9u2.
 
-We recommend that you upgrade your ruby-loofah packages.
-
-For the detailed security status of ruby-loofah please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your ruby-loofah packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/ruby-loofah");
   script_tag(name:"summary", value:"It was discovered that ruby-loofah, a general library for manipulating
@@ -72,7 +68,7 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"ruby-loofah", ver:"2.0.3-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"ruby-loofah", ver:"2.0.3-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

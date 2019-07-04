@@ -29,11 +29,11 @@ CPE = "cpe:/h:electroindustries_gaugetech:total_websolutions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813629");
-  script_version("2019-06-11T10:18:21+0000");
+  script_version("2019-07-04T09:08:48+0000");
   script_cve_id("CVE-2018-12921");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-11 10:18:21 +0000 (Tue, 11 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-04 09:08:48 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-04 11:28:37 +0530 (Wed, 04 Jul 2018)");
 
   script_name("Electro Industries GaugeTech Nexus series Products Information Disclosure Vulnerability");
@@ -54,10 +54,11 @@ if(description)
   script_tag(name:"affected", value:"Electro Industries GaugeTech Nexus series
   Products.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th June, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   script_xref(name:"URL", value:"https://www.seebug.org/vuldb/ssvid-97371");

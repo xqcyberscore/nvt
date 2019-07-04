@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4341.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4341-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,7 +30,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704341");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-10268", "CVE-2017-10378", "CVE-2017-15365", "CVE-2018-2562", "CVE-2018-2612",
                 "CVE-2018-2622", "CVE-2018-2640", "CVE-2018-2665", "CVE-2018-2668", "CVE-2018-2755",
                 "CVE-2018-2761", "CVE-2018-2766", "CVE-2018-2767", "CVE-2018-2771", "CVE-2018-2781",
@@ -40,7 +39,7 @@ if(description)
                 "CVE-2018-3081", "CVE-2018-3143", "CVE-2018-3156", "CVE-2018-3174", "CVE-2018-3251",
                 "CVE-2018-3282");
   script_name("Debian Security Advisory DSA 4341-1 (mariadb-10.1 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-19 00:00:00 +0100 (Mon, 19 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
@@ -70,10 +69,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 10.1.37-0+deb9u1.
 
-We recommend that you upgrade your mariadb-10.1 packages.
-
-For the detailed security status of mariadb-10.1 please refer to its
-security tracker page linked in the references.");
+We recommend that you upgrade your mariadb-10.1 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/mariadb-10.1");
   script_tag(name:"summary", value:"Several issues have been discovered in the MariaDB database server. The
@@ -91,70 +87,70 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libmariadbclient-dev", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmariadbclient-dev", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmariadbclient-dev-compat", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmariadbclient-dev-compat", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmariadbclient18", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmariadbclient18", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmariadbd-dev", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmariadbd-dev", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libmariadbd18", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libmariadbd18", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-client", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-client", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-client-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-client-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-client-core-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-client-core-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-common", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-common", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-connect", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-connect", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-cracklib-password-check", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-cracklib-password-check", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-gssapi-client", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-gssapi-client", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-gssapi-server", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-gssapi-server", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-mroonga", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-mroonga", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-oqgraph", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-oqgraph", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-spider", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-spider", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-plugin-tokudb", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-plugin-tokudb", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-server", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-server", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-server-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-server-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-server-core-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-server-core-10.1", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-test", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-test", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"mariadb-test-data", ver:"10.1.37-0+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"mariadb-test-data", ver:"10.1.37-0+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704397");
-  script_version("$Revision: 14285 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2019-3824");
   script_name("Debian Security Advisory DSA 4397-1 (ldb - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-28 00:00:00 +0100 (Thu, 28 Feb 2019)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -43,10 +43,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 2:1.1.27-1+deb9u1.
 
-We recommend that you upgrade your ldb packages.
-
-For the detailed security status of ldb please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your ldb packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/ldb");
   script_tag(name:"summary", value:"Garming Sam reported an out-of-bounds read in the ldb_wildcard_compare()
@@ -62,19 +59,19 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"ldb-tools", ver:"2:1.1.27-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"ldb-tools", ver:"2:1.1.27-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libldb-dev", ver:"2:1.1.27-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libldb-dev", ver:"2:1.1.27-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libldb1", ver:"2:1.1.27-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libldb1", ver:"2:1.1.27-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python-ldb", ver:"2:1.1.27-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python-ldb", ver:"2:1.1.27-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"python-ldb-dev", ver:"2:1.1.27-1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"python-ldb-dev", ver:"2:1.1.27-1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704406");
-  script_version("2019-04-15T07:08:44+0000");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2019-0804");
   script_name("Debian Security Advisory DSA 4406-1 (waagent - security update)");
-  script_tag(name:"last_modification", value:"2019-04-15 07:08:44 +0000 (Mon, 15 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-03-12 00:00:00 +0100 (Tue, 12 Mar 2019)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -43,10 +43,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 2.2.18-3~deb9u2.
 
-We recommend that you upgrade your waagent packages.
-
-For the detailed security status of waagent please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your waagent packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/waagent");
   script_tag(name:"summary", value:"Francis McBratney discovered that the Windows Azure Linux Agent created
@@ -62,7 +59,7 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"waagent", ver:"2.2.18-3~deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"waagent", ver:"2.2.18-3~deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704387");
-  script_version("$Revision: 14285 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-20685", "CVE-2019-6109", "CVE-2019-6111");
   script_name("Debian Security Advisory DSA 4387-1 (openssh - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-09 00:00:00 +0100 (Sat, 09 Feb 2019)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -43,10 +43,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 1:7.4p1-10+deb9u5.
 
-We recommend that you upgrade your openssh packages.
-
-For the detailed security status of openssh please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your openssh packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/openssh");
   script_tag(name:"summary", value:"Harry Sintonen from F-Secure Corporation discovered multiple vulnerabilities in
@@ -83,25 +80,25 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"openssh-client", ver:"1:7.4p1-10+deb9u5", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openssh-client", ver:"1:7.4p1-10+deb9u5", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openssh-client-ssh1", ver:"1:7.4p1-10+deb9u5", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openssh-client-ssh1", ver:"1:7.4p1-10+deb9u5", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openssh-server", ver:"1:7.4p1-10+deb9u5", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openssh-server", ver:"1:7.4p1-10+deb9u5", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openssh-sftp-server", ver:"1:7.4p1-10+deb9u5", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openssh-sftp-server", ver:"1:7.4p1-10+deb9u5", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"ssh", ver:"1:7.4p1-10+deb9u5", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"ssh", ver:"1:7.4p1-10+deb9u5", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"ssh-askpass-gnome", ver:"1:7.4p1-10+deb9u5", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"ssh-askpass-gnome", ver:"1:7.4p1-10+deb9u5", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"ssh-krb5", ver:"1:7.4p1-10+deb9u5", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"ssh-krb5", ver:"1:7.4p1-10+deb9u5", rls:"DEB9"))) {
   report += res;
 }
 

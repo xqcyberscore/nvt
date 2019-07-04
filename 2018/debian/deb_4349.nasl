@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4349.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4349-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704349");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-11613", "CVE-2017-17095", "CVE-2018-10963", "CVE-2018-15209", "CVE-2018-16335",
                 "CVE-2018-17101", "CVE-2018-18557", "CVE-2018-5784", "CVE-2018-7456", "CVE-2018-8905");
   script_name("Debian Security Advisory DSA 4349-1 (tiff - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-30 00:00:00 +0100 (Fri, 30 Nov 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -54,10 +53,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 4.0.8-2+deb9u4.
 
-We recommend that you upgrade your tiff packages.
-
-For the detailed security status of tiff please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your tiff packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/tiff");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in the libtiff library and
@@ -73,22 +69,22 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libtiff-doc", ver:"4.0.8-2+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtiff-doc", ver:"4.0.8-2+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtiff-opengl", ver:"4.0.8-2+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtiff-opengl", ver:"4.0.8-2+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.8-2+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.8-2+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.8-2+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.8-2+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtiff5-dev", ver:"4.0.8-2+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtiff5-dev", ver:"4.0.8-2+deb9u4", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtiffxx5", ver:"4.0.8-2+deb9u4", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtiffxx5", ver:"4.0.8-2+deb9u4", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4184.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4184-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704184");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-12122", "CVE-2017-14440", "CVE-2017-14441", "CVE-2017-14442", "CVE-2017-14448",
                 "CVE-2017-14450", "CVE-2017-2887", "CVE-2018-3837", "CVE-2018-3838", "CVE-2018-3839");
   script_name("Debian Security Advisory DSA 4184-1 (sdl-image1.2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-28 00:00:00 +0200 (Sat, 28 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -57,10 +56,7 @@ in version 1.2.12-5+deb8u1.
 For the stable distribution (stretch), these problems have been fixed in
 version 1.2.12-5+deb9u1.
 
-We recommend that you upgrade your sdl-image1.2 packages.
-
-For the detailed security status of sdl-image1.2 please refer to its
-security tracker page linked in the references.");
+We recommend that you upgrade your sdl-image1.2 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/sdl-image1.2");
   script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in the image loading
@@ -77,22 +73,22 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libsdl-image1.2", ver:"1.2.12-5+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsdl-image1.2", ver:"1.2.12-5+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsdl-image1.2-dbg", ver:"1.2.12-5+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsdl-image1.2-dbg", ver:"1.2.12-5+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsdl-image1.2-dev", ver:"1.2.12-5+deb8u1", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsdl-image1.2-dev", ver:"1.2.12-5+deb8u1", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsdl-image1.2", ver:"1.2.12-5+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsdl-image1.2", ver:"1.2.12-5+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsdl-image1.2-dbg", ver:"1.2.12-5+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsdl-image1.2-dbg", ver:"1.2.12-5+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsdl-image1.2-dev", ver:"1.2.12-5+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsdl-image1.2-dev", ver:"1.2.12-5+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

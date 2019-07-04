@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4265.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4265-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704265");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   #TODO: No CVE assigned yet, see the references...
   script_name("Debian Security Advisory DSA 4265-1 (xml-security-c - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-05 00:00:00 +0200 (Sun, 05 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,10 +55,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 1.7.3-4+deb9u1.
 
-We recommend that you upgrade your xml-security-c packages.
-
-For the detailed security status of xml-security-c please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your xml-security-c packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/xml-security-c");
   script_tag(name:"summary", value:"It was discovered that the Apache XML Security for C++ library performed
@@ -76,13 +72,13 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libxml-security-c-dev", ver:"1.7.3-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxml-security-c-dev", ver:"1.7.3-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libxml-security-c17v5", ver:"1.7.3-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libxml-security-c17v5", ver:"1.7.3-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"xml-security-c-utils", ver:"1.7.3-4+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"xml-security-c-utils", ver:"1.7.3-4+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4129.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4129-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704129");
-  script_version("$Revision: 14275 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-7435", "CVE-2018-7436", "CVE-2018-7437", "CVE-2018-7438", "CVE-2018-7439");
   script_name("Debian Security Advisory DSA 4129-1 (freexl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-02 00:00:00 +0100 (Fri, 02 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,10 +55,7 @@ in version 1.0.0g-1+deb8u5.
 For the stable distribution (stretch), these problems have been fixed in
 version 1.0.2-2+deb9u2.
 
-We recommend that you upgrade your freexl packages.
-
-For the detailed security status of freexl please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your freexl packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/freexl");
   script_tag(name:"summary", value:"Multiple heap buffer over reads were discovered in freexl, a library to
@@ -75,22 +71,22 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libfreexl-dev", ver:"1.0.0g-1+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libfreexl-dev", ver:"1.0.0g-1+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libfreexl1", ver:"1.0.0g-1+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libfreexl1", ver:"1.0.0g-1+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libfreexl1-dbg", ver:"1.0.0g-1+deb8u5", rls:"DEB8")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libfreexl1-dbg", ver:"1.0.0g-1+deb8u5", rls:"DEB8"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libfreexl-dev", ver:"1.0.2-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libfreexl-dev", ver:"1.0.2-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libfreexl1", ver:"1.0.2-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libfreexl1", ver:"1.0.2-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libfreexl1-dbg", ver:"1.0.2-2+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libfreexl1-dbg", ver:"1.0.2-2+deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

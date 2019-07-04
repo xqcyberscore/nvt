@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704395");
-  script_version("$Revision: 14285 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-17481", "CVE-2019-5754", "CVE-2019-5755", "CVE-2019-5756", "CVE-2019-5757",
                 "CVE-2019-5758", "CVE-2019-5759", "CVE-2019-5760", "CVE-2019-5762", "CVE-2019-5763",
                 "CVE-2019-5764", "CVE-2019-5765", "CVE-2019-5766", "CVE-2019-5767", "CVE-2019-5768",
@@ -29,10 +29,10 @@ if(description)
                 "CVE-2019-5775", "CVE-2019-5776", "CVE-2019-5777", "CVE-2019-5778", "CVE-2019-5779",
                 "CVE-2019-5780", "CVE-2019-5781", "CVE-2019-5782", "CVE-2019-5783", "CVE-2019-5784");
   script_name("Debian Security Advisory DSA 4395-1 (chromium - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-18 00:00:00 +0100 (Mon, 18 Feb 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
@@ -48,10 +48,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 72.0.3626.96-1~deb9u1.
 
-We recommend that you upgrade your chromium packages.
-
-For the detailed security status of chromium please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your chromium packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/chromium");
   script_tag(name:"summary", value:"Several vulnerabilities have been discovered in the chromium web browser.
@@ -166,22 +163,22 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"chromedriver", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromedriver", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-driver", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-driver", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-l10n", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-l10n", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-shell", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-shell", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"chromium-widevine", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"chromium-widevine", ver:"72.0.3626.96-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

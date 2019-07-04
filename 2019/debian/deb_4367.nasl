@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4367.nasl 14285 2019-03-18 15:08:34Z cfischer $
 #
 # Auto-generated from advisory DSA 4367-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704367");
-  script_version("$Revision: 14285 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-16864", "CVE-2018-16865", "CVE-2018-16866");
   script_name("Debian Security Advisory DSA 4367-1 (systemd - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-13 00:00:00 +0100 (Sun, 13 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,10 +53,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 232-25+deb9u7.
 
-We recommend that you upgrade your systemd packages.
-
-For the detailed security status of systemd please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your systemd packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/systemd");
   script_tag(name:"summary", value:"The Qualys Research Labs discovered multiple vulnerabilities in
@@ -80,52 +76,52 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"tmpreaper", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"tmpreaper", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libnss-myhostname", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libnss-myhostname", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libnss-mymachines", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libnss-mymachines", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libnss-resolve", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libnss-resolve", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libnss-systemd", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libnss-systemd", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libpam-systemd", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libpam-systemd", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsystemd-dev", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsystemd-dev", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libsystemd0", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libsystemd0", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libudev-dev", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libudev-dev", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libudev1", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libudev1", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"systemd", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"systemd", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"systemd-container", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"systemd-container", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"systemd-coredump", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"systemd-coredump", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"systemd-journal-remote", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"systemd-journal-remote", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"systemd-sysv", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"systemd-sysv", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"udev", ver:"232-25+deb9u7", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"udev", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }
 

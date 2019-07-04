@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4144.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4144-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704144");
-  script_version("$Revision: 14275 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-2579", "CVE-2018-2582", "CVE-2018-2588", "CVE-2018-2599", "CVE-2018-2602",
                 "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629", "CVE-2018-2633", "CVE-2018-2634",
                 "CVE-2018-2637", "CVE-2018-2641", "CVE-2018-2663", "CVE-2018-2677", "CVE-2018-2678");
   script_name("Debian Security Advisory DSA 4144-1 (openjdk-8 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-17 00:00:00 +0100 (Sat, 17 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -55,10 +54,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been
 fixed in version 8u162-b12-1~deb9u1.
 
-We recommend that you upgrade your openjdk-8 packages.
-
-For the detailed security status of openjdk-8 please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your openjdk-8 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/openjdk-8");
   script_tag(name:"summary", value:"Several vulnerabilities have been discovered in OpenJDK, an
@@ -76,31 +72,31 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"openjdk-8-dbg", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-dbg", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-demo", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-demo", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-doc", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-doc", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-jdk", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-jdk", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-jdk-headless", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-jdk-headless", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-jre", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-jre", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-jre-headless", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-jre-headless", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-jre-zero", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-jre-zero", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"openjdk-8-source", ver:"8u162-b12-1~deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"openjdk-8-source", ver:"8u162-b12-1~deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

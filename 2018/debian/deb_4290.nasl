@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4290.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4290-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704290");
-  script_version("$Revision: 14270 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2018-14346", "CVE-2018-14347", "CVE-2018-16430");
   script_name("Debian Security Advisory DSA 4290-1 (libextractor - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-10 00:00:00 +0200 (Mon, 10 Sep 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 1:1.3-4+deb9u2.
 
-We recommend that you upgrade your libextractor packages.
-
-For the detailed security status of libextractor please refer to its
-security tracker page linked in the references.");
+We recommend that you upgrade your libextractor packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/libextractor");
   script_tag(name:"summary", value:"Several vulnerabilities were discovered in libextractor, a library to
@@ -73,16 +69,16 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"extract", ver:"1:1.3-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"extract", ver:"1:1.3-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libextractor-dbg", ver:"1:1.3-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libextractor-dbg", ver:"1:1.3-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libextractor-dev", ver:"1:1.3-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libextractor-dev", ver:"1:1.3-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libextractor3", ver:"1:1.3-4+deb9u2", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libextractor3", ver:"1:1.3-4+deb9u2", rls:"DEB9"))) {
   report += res;
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4106.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4106-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704106");
-  script_version("$Revision: 14281 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2017-10790", "CVE-2018-6003");
   script_name("Debian Security Advisory DSA 4106-1 (libtasn1-6 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,10 +52,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 4.10-1.1+deb9u1.
 
-We recommend that you upgrade your libtasn1-6 packages.
-
-For the detailed security status of libtasn1-6 please refer to its
-security tracker page linked in the references.");
+We recommend that you upgrade your libtasn1-6 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/libtasn1-6");
   script_tag(name:"summary", value:"Two vulnerabilities were discovered in Libtasn1, a library to manage
@@ -72,19 +68,19 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libtasn1-3-bin", ver:"4.10-1.1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtasn1-3-bin", ver:"4.10-1.1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtasn1-6", ver:"4.10-1.1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtasn1-6", ver:"4.10-1.1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtasn1-6-dev", ver:"4.10-1.1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtasn1-6-dev", ver:"4.10-1.1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtasn1-bin", ver:"4.10-1.1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtasn1-bin", ver:"4.10-1.1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
-if((res = isdpkgvuln(pkg:"libtasn1-doc", ver:"4.10-1.1+deb9u1", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"libtasn1-doc", ver:"4.10-1.1+deb9u1", rls:"DEB9"))) {
   report += res;
 }
 

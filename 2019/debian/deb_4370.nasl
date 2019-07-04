@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4370.nasl 14285 2019-03-18 15:08:34Z cfischer $
 #
 # Auto-generated from advisory DSA 4370-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704370");
-  script_version("$Revision: 14285 $");
+  script_version("2019-07-04T09:25:28+0000");
   script_cve_id("CVE-2019-6338", "CVE-2019-6339", "CVE-2018-1000888");
   script_name("Debian Security Advisory DSA 4370-1 (drupal7 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-17 00:00:00 +0100 (Thu, 17 Jan 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,10 +54,7 @@ if(description)
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 7.52-2+deb9u6.
 
-We recommend that you upgrade your drupal7 packages.
-
-For the detailed security status of drupal7 please refer to
-its security tracker page linked in the references.");
+We recommend that you upgrade your drupal7 packages.");
 
   script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/drupal7");
   script_tag(name:"summary", value:"Two vulnerabilities were found in Drupal, a fully-featured content
@@ -76,7 +72,7 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"drupal7", ver:"7.52-2+deb9u6", rls:"DEB9")) != NULL) {
+if(!isnull(res = isdpkgvuln(pkg:"drupal7", ver:"7.52-2+deb9u6", rls:"DEB9"))) {
   report += res;
 }
 
