@@ -28,11 +28,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813603");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T07:30:39+0000");
   script_cve_id("CVE-2018-6149");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-05 07:30:39 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-14 10:21:07 +0530 (Thu, 14 Jun 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_12-2018-06)-Windows");
 

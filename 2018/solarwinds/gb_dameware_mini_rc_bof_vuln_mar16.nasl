@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dameware_mini_rc_bof_vuln_mar16.nasl 13699 2019-02-15 14:29:50Z cfischer $
 #
 # DameWare Mini Remote Control < 12.0.3 Buffer Overflow Vulnerability (Windows)
 #
@@ -28,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107380");
-  script_version("$Revision: 13699 $");
+  script_version("2019-07-03T14:16:41+0000");
   script_cve_id("CVE-2016-2345");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-03 14:16:41 +0000 (Wed, 03 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 11:55:31 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,7 +40,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_dameware_mini_rc_detect_win.nasl");
-  script_mandatory_keys("dameware/mini_remote_control/win/detected");
+  script_mandatory_keys("dameware/mini_remote_control/detected");
 
   script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer overflow vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");

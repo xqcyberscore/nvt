@@ -734,7 +734,7 @@ function policy_match_exact_reg_dword(key, item, type, default){
 #
 function policy_match_reg_sz(key, item, type, default, partial, multi_sz){
   local_var key, item, type, default, partial, multi_sz;
-  local_var value, comment, compliant, ret;
+  local_var value, comment, compliant, ret, lower_value, lower_default;
 
   if(multi_sz){
     value = registry_get_sz(key:key, item:item, type:type, multi_sz:TRUE);
@@ -746,9 +746,12 @@ function policy_match_reg_sz(key, item, type, default, partial, multi_sz){
   value = chomp(value);
   if(!value) value = "None";
 
-  if(partial && default >< value){
+  lower_value = tolower(value);
+  lower_default = tolower(default);
+
+  if(partial && lower_default >< lower_value){
     compliant = "yes";
-  }else if(value == default){
+  }else if(lower_value == lower_default){
     compliant = "yes";
   }else{
     compliant = "no";

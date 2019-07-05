@@ -27,11 +27,11 @@ CPE = "cpe:/a:icewarp:mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813464");
-  script_version("2019-05-09T15:03:03+0000");
+  script_version("2019-07-05T08:05:00+0000");
   script_cve_id("CVE-2018-7475");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-09 15:03:03 +0000 (Thu, 09 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:05:00 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-04 15:17:55 +0530 (Wed, 04 Jul 2018)");
 
   script_name("IceWarp Mail Server Cross Site Scripting Vulnerability");
@@ -49,13 +49,14 @@ if(description)
 
   script_tag(name:"affected", value:"IceWarp Mail Server version 12.0.3");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th May, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name:"URL", value:"https://dinhbaoluciusteam.wordpress.com/2018/06/21/cve-2018-7475");
+  script_xref(name:"URL", value:"https://0xd0ff9.wordpress.com/2018/06/21/cve-2018-7475");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

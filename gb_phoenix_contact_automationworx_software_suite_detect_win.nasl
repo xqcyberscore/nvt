@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107344");
-  script_version("2019-06-14T09:32:36+0000");
-  script_tag(name:"last_modification", value:"2019-06-14 09:32:36 +0000 (Fri, 14 Jun 2019)");
+  script_version("2019-07-05T11:31:30+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 11:31:30 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-12-04 16:23:37 +0100 (Tue, 04 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -33,7 +33,7 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"This script detects the installed version
-of PHOENIX CONTACT AUTOMATIONWORX Software Suite for Windows.");
+  of PHOENIX CONTACT AUTOMATIONWORX Software Suite for Windows.");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -46,75 +46,53 @@ include("host_details.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
 
-os_arch = get_kb_item("SMB/Windows/Arch");
-if (!os_arch) exit(0);
+os_arch = get_kb_item( "SMB/Windows/Arch" );
+if( ! os_arch )
+  exit( 0 );
 
-if ("x86" >< os_arch) {
-  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
-} else if ("x64" >< os_arch) {
-  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
-                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+if( "x86" >< os_arch ) {
+  key_list = make_list( "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" );
+} else if( "x64" >< os_arch ) {
+  key_list = make_list( "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\" );
 }
 
-if (isnull(key_list)) exit(0);
+if( isnull( key_list ) )
+  exit( 0 );
 
-suite_exists = FALSE;
+foreach key( key_list ) {
+  foreach item( registry_enum_keys( key:key ) ) {
 
-foreach key (key_list) {
-  foreach item (registry_enum_keys(key:key)) {
+    appName = registry_get_sz( key:key + item, item:"DisplayName" );
 
-    appName = registry_get_sz(key:key + item, item:"DisplayName");
+    if( ! appName || appName !~ "AUTOMATIONWORX" )
+      continue;
 
-    if(!appName || appName !~ "AUTOMATIONWORX") continue;
+    concluded = "Registry-Key:   " + key + item + '\n';
+    concluded += "DisplayName:    " + appName;
     version = "unknown";
     location = "unknown";
 
-    loc = registry_get_sz(key:key + item, item:"InstallLocation");
-    if(loc) location = loc;
+    loc = registry_get_sz( key:key + item, item:"InstallLocation" );
+    if( loc )
+      location = loc;
 
-    vers = registry_get_sz(key:key + item, item:"DisplayVersion");
-    if(vers){
-      version = vers;
-      concluded += " " + vers;
+    # 1.86.2519.0 in 'DisplayVersion' but only 1.86 is relevant
+    regvers = registry_get_sz( key:key + item, item:"DisplayVersion" );
+    if( regvers ) {
+      match = eregmatch( string:regvers, pattern:'([0-9]+)\\.([0-9]+)' );
+      if( match[0] )
+        version = match[0];
+      concluded += '\nDisplayVersion: ' + regvers + '\n';
     }
 
-    set_kb_item(name:"phoenixcontact-software/automationworx_software_suite/win/detected", value:TRUE);
+    set_kb_item( name:"phoenixcontact-software/automationworx_software_suite/detected", value:TRUE );
 
-    register_and_report_cpe(app:"PHOENIX CONTACT " + appName, ver:version, concluded:concluded,
-                            base:"cpe:/a:phoenixcontact-software:automationworx_software_suite:",
-                            expr:"^([0-9.]+)", insloc:location);
-  }
-
-  suite_exists = TRUE;
-}
-
-if(!suite_exists) exit(0);
-
-key_list = make_list("SOFTWARE\WOW6432Node\Phoenix Contact\Software Suite\", "SOFTWARE\Phoenix Contact\Software Suite\");
-
-foreach key(key_list) {
-  foreach item(registry_enum_keys(key:key)) {
-    foreach subkey(registry_enum_keys(key:key + item)) {
-
-      appName = registry_get_sz(key:key + item + "\" + subkey, item:"ProductName");
-      if(!appName) continue;
-      version = "unknown";
-      location = "unknown";
-      match = eregmatch(string:appName, pattern:'([^0-9]+) ([0-9.]+)$');
-      name = match[1];
-      version = match[2];
-      concluded = "PHOENIX CONTACT " + match[0];
-      lower_name = tolower(name);
-      name = ereg_replace(pattern:' ', string:lower_name, replace:'_');
-      if(get_kb_item("phoenixcontact-software/" + name + "/win/detected") == TRUE) continue;
-
-      set_kb_item(name:"phoenixcontact-software/" + name + "/win/detected", value:TRUE);
-
-      register_and_report_cpe(app:"PHOENIX CONTACT " + appName, ver:version, concluded:concluded,
-                              base:"cpe:/a:phoenixcontact-software:" + name + ":",
-                              expr:"^([0-9.]+)", insloc:location);
-    }
+    register_and_report_cpe( app:"PHOENIX CONTACT " + appName, ver:version, concluded:concluded,
+                             base:"cpe:/a:phoenixcontact-software:automationworx_software_suite:",
+                             expr:"^([0-9.]+)", insloc:location );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 0 );

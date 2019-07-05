@@ -22,9 +22,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107381");
-  script_version("2019-06-14T08:55:13+0000");
+  script_version("2019-07-03T14:16:41+0000");
   script_cve_id("CVE-2015-8220");
-  script_tag(name:"last_modification", value:"2019-06-14 08:55:13 +0000 (Fri, 14 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-03 14:16:41 +0000 (Wed, 03 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 13:45:13 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -35,7 +35,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_dameware_mini_rc_detect_win.nasl");
-  script_mandatory_keys("dameware/mini_remote_control/win/detected");
+  script_mandatory_keys("dameware/mini_remote_control/detected");
 
   script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer overflow
 vulnerability.");

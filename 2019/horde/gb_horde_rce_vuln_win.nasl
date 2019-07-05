@@ -21,8 +21,8 @@ CPE = "cpe:/a:horde:horde_groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142488");
-  script_version("2019-06-04T09:20:09+0000");
-  script_tag(name:"last_modification", value:"2019-06-04 09:20:09 +0000 (Tue, 04 Jun 2019)");
+  script_version("2019-07-05T08:05:00+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 08:05:00 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-04 09:18:45 +0000 (Tue, 04 Jun 2019)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ if (description)
 
   script_tag(name:"affected", value:"Horde Groupware Webmail version 5.2.22 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 05th July, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.ratiosec.com/2019/horde-groupware-webmail-authenticated-arbitrary-file-injection-to-rce/");

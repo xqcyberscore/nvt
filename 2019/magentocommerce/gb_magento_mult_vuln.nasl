@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mult_vuln.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # Magento Multiple Vulnerabilities (Nov18)
 #
@@ -30,13 +29,13 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141927");
-  script_version("$Revision: 13783 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
+  script_version("2019-07-04T13:06:41+0000");
+  script_tag(name:"last_modification", value:"2019-07-04 13:06:41 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-25 16:26:16 +0700 (Fri, 25 Jan 2019)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:C/I:C/A:C");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # patch version not retrievable
 
   script_tag(name:"solution_type", value:"VendorFix");
 
