@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142502");
-  script_version("2019-06-25T06:25:10+0000");
-  script_tag(name:"last_modification", value:"2019-06-25 06:25:10 +0000 (Tue, 25 Jun 2019)");
+  script_version("2019-07-08T07:18:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-08 07:18:25 +0000 (Mon, 08 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-11 09:04:55 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -63,8 +63,7 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_http_port(default: 80))
-  exit(0);
+port = get_http_port(default: 80);
 
 res = http_get_cache(port: port, item: "/");
 

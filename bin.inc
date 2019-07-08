@@ -1,6 +1,5 @@
 #########################################################################
 # OpenVAS Include File
-# $Id$
 #
 # Developed by LSS Security Team <http://security.lss.hr>
 #
@@ -18,9 +17,6 @@
 # You should have received a copy of the GNU General Public
 # License along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
-#
-# $Revision$
-#
 #########################################################################
 
 #########################################################################
@@ -44,7 +40,7 @@
 #
 #  Examples of binary protocols: ethernet, tcp/udp, ip, netbios, smb, dce/rpc...
 #  Examples of non-binary/plain-text/human-readable  protocols: http, irc, smtp, pop3...
-#  
+#
 #  Read/Write operators for bin_unpack and bin_pack methods:
 #    1) B - uint8 <-> 1B blob
 #    2) S - uint16 <-> 2B blob
@@ -625,3 +621,26 @@ function unpack_string_hex(blob, pos, len){
   return result;
 }
 
+# @brief Reverse the byte order of a blob (e.g. little endian to big endian and vice versa)
+#
+# @param blob Blob to reverse.
+#
+# @return Returns the reversed blob
+#
+# @example 0x01, 0x02, 0x03, 0x04 -> 0x04, 0x03, 0x02, 0x01
+#
+function reverse_blob(blob) {
+
+  local_var blob;
+  local_var i, result;
+
+  if(isnull(blob)) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#blob#-#reverse_blob");
+    return;
+  }
+
+  for (i = 0; i < strlen(blob); i++)
+    result = blob[i] + result;
+
+  return result;
+}

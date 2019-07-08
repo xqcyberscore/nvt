@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811096");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-07-08T07:18:25+0000");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-08 07:18:25 +0000 (Mon, 08 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-14 12:44:26 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft OneNote Remote Code Execution Vulnerability (KB3191908)");
 
@@ -72,25 +72,27 @@ include("secpod_smb_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
 
 exeVer = infos['version'];
-if( ! exeVer || ! ( exeVer =~ "^(14\.)" ) ) exit( 0 );
+if( ! exeVer || exeVer !~ "^14\." )
+  exit( 0 );
 
 notePath = infos['location'];
-if( ! notePath || "Could not find the install location" >< notePath ) {
+if( ! notePath || "Could not find the install location" >< notePath )
   exit( 0 );
-}
 
-noteVer = fetch_file_version(sysPath:notePath, file_name:"onenotesyncpc.dll");
-if(!noteVer) exit(0);
+noteVer = fetch_file_version( sysPath:notePath, file_name:"onenotesyncpc.dll" );
+if( ! noteVer )
+  exit( 0 );
 
-if(noteVer =~ "^(14\.)" && version_is_less(version:noteVer, test_version:"14.0.7182.5000")) {
+if( noteVer =~ "^14\." && version_is_less( version:noteVer, test_version:"14.0.7182.5000" ) ) {
    report = 'File checked:     ' + notePath + "\onenotesyncpc.dll"  + '\n' +
             'File version:     ' + noteVer  + '\n' +
             'Vulnerable range: ' + "14.0 - 14.0.7182.4999" + '\n' ;
-   security_message(data:report);
-   exit(0);
+   security_message( data:report );
+   exit( 0 );
 }
 
 exit( 99 );
