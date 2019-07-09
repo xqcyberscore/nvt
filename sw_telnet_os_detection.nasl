@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("2019-06-06T07:39:31+0000");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_version("2019-07-04T07:54:10+0000");
+  script_tag(name:"last_modification", value:"2019-07-04 07:54:10 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -219,6 +219,18 @@ if( telnet_has_login_prompt( data:banner ) ) {
   # nb: More detailed OS Detection covered in gb_netapp_data_ontap_consolidation.nasl
   if( banner =~ '^\r\n\r\nData ONTAP' ) {
     register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # nb: More detailed OS Detection covered in gsf/gb_synetica_datastream_devices_detect_telnet.nasl
+  if( "Welcome to the DataStream " >< banner ) {
+    mod = eregmatch( pattern:"Welcome to the DataStream\s*([^- ]+)", string:banner );
+    if( ! isnull( mod[1] ) ) {
+      cpe_model = str_replace( string:tolower( mod[1] ), find:" ", replace:"_" );
+      register_and_report_os( os:"Synetica DataStream - " + mod[1] + " Firmware", cpe:"cpe:/o:synetica:datastream_" + cpe_model + "_firmware", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+      register_and_report_os( os:"Synetica DataStream - Unknown Model Firmware", cpe:"cpe:/o:synetica:datastream_unknown_model_firmware", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
     exit( 0 );
   }
 

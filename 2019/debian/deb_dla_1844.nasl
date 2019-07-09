@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891844");
-  script_version("2019-07-05T02:00:09+0000");
+  script_version("2019-07-09T06:42:57+0000");
   script_cve_id("CVE-2019-13031");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 02:00:09 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-09 06:42:57 +0000 (Tue, 09 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-05 02:00:09 +0000 (Fri, 05 Jul 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1844-1] lemonldap-ng security update)");
   script_category(ACT_GATHER_INFO);

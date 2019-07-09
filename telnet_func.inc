@@ -357,6 +357,8 @@ function telnet_close_socket( socket, data ) {
     'Please type "menu" for the MENU system,' >< data || 'or "?" for help, or "/" for current settings' >< data || # nb: HP JetDirect
     "Welcome to NetLinx" >< data || "Local devices for system" >< data ) { # nb: Both for AMX NetLinx
     send( socket:socket, data:'exit\r\n' );
+  } else if( "X - Exit Telnet Session" >< data ) { # nb: DataStream DS800
+    send( socket:socket, data:'x\r\n' );
   }
 
   close( socket );

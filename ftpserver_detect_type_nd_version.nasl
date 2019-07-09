@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("2019-06-24T08:34:07+0000");
-  script_tag(name:"last_modification", value:"2019-06-24 08:34:07 +0000 (Mon, 24 Jun 2019)");
+  script_version("2019-07-04T07:43:09+0000");
+  script_tag(name:"last_modification", value:"2019-07-04 07:43:09 +0000 (Thu, 04 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -501,6 +501,13 @@ foreach port( ports ) {
   if( "Data ONTAP" >< banner ) {
     set_kb_item( name:"ftp/netapp/data_ontap/detected", value:TRUE );
     guess += '\n- NetApp Data ONTAP';
+  }
+
+  if( banner =~ "NET+OS [0-9.]+ FTP server ready\." ) {
+    set_kb_item( name:"ftp/net_os/detected", value:TRUE );
+    set_kb_item( name:"ftp/datastream/detected", value:TRUE );
+    guess += '\n- NET+OS';
+    guess += '\n- DataStream (DS800) Device';
   }
 
   report = 'Remote FTP server banner:\n\n' + banner;
