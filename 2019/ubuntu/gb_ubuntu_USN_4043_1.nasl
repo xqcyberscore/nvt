@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844076");
-  script_version("2019-07-04T09:58:18+0000");
+  script_version("2019-07-10T08:41:06+0000");
   script_cve_id("CVE-2019-12308", "CVE-2019-12781");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-04 09:58:18 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-07-10 08:41:06 +0000 (Wed, 10 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-02 02:00:44 +0000 (Tue, 02 Jul 2019)");
   script_name("Ubuntu Update for python-django USN-4043-1");
   script_category(ACT_GATHER_INFO);

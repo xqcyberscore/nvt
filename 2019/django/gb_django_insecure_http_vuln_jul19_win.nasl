@@ -19,11 +19,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113424");
-  script_version("2019-07-04T09:04:55+0000");
-  script_tag(name:"last_modification", value:"2019-07-04 09:04:55 +0000 (Thu, 04 Jul 2019)");
+  script_version("2019-07-10T08:41:06+0000");
+  script_tag(name:"last_modification", value:"2019-07-10 08:41:06 +0000 (Wed, 10 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-04 10:25:13 +0000 (Thu, 04 Jul 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"package");
 

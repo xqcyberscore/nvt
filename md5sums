@@ -6429,7 +6429,7 @@ e5dca93bef6dbf206bf2798a783237d1  gb_strongswan_detect.nasl
 3f2eae440858f2a7147d27220ab7a983  gb_ibm_qradar_http_detect.nasl
 9b72e7cc28b6927fef03c8bf1fd7b8db  gb_cisco_firesight_management_center_http_detect.nasl
 4b8ad2fabbc608af278061ae74889674  gb_enterasys_switch_detect.nasl
-a4a6cf41abe324edd41cd841c7d4d4f3  gb_getsimple_cms_detect.nasl
+4b2990cf828d29dad9bb26b944b3d686  gb_getsimple_cms_detect.nasl
 3e40a0321866ac3bf0981abef7a7e56b  gb_adobe_acrobat_dc_classic_detect_macosx.nasl
 ed1fbfd8d8e4e0f0d1d4b132752e1a01  gb_elba5_netinstall_detect_win.nasl
 eac4bafcf5ca1ae16170cb7651c1aca2  2010/gb_bugzilla_41141.nasl
@@ -7943,7 +7943,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 569372e634dac843f3eb1d55567d5fd6  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-397660f5982b8b3361f895f499d46579  plugin_feed_info.inc
+c9f519bc1ccd19b3f59c4da8ed3968fb  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -49338,7 +49338,7 @@ f6fe89070eed3a70a33adaa8d514f863  2019/debian/deb_dla_1665.nasl
 41c564ab33e9706a248f1b16146f88ec  2019/debian/deb_dla_1687.nasl
 76d54e043bb0aa22322133ff41df81bd  2019/debian/deb_4475.nasl
 641c6d3f372123f698cd8cf019fb6ecf  2019/debian/deb_dla_1742.nasl
-799758e8fcd3b3c90df440d35149bc56  2019/debian/deb_dla_1842.nasl
+917b5c7a2e7335d9f3e2f6dad81ef13c  2019/debian/deb_dla_1842.nasl
 4b6debcf214a222efdcf3603be99557c  2019/debian/deb_4435.nasl
 ccd6cc156b609b1b7fbd32ab769159d8  2019/debian/deb_4384.nasl
 ebd67cccf7b8c103db907c8a7680437b  2019/debian/deb_dla_1623.nasl
@@ -49488,7 +49488,7 @@ fa7fd8bd0a59a6cb3627cca6be4b9a20  2019/debian/deb_4409.nasl
 739af15e6fec9fb8a57e2427e5b6ff74  2019/debian/deb_4370.nasl
 5c036f1631d8b3e0c1970864a6d111a6  2019/debian/deb_dla_1635.nasl
 9766e4d1b5793de87d66f38500de6461  2019/debian/deb_4416.nasl
-4b481db0243373b6ab55991c59966012  2019/debian/deb_4476.nasl
+fcc5627a6e4dff722a2597500014203e  2019/debian/deb_4476.nasl
 09d0d293be97bd6b0bd4f81175e316cf  2019/debian/deb_dla_1629.nasl
 ac9a12d84c6677a2ef59cd7ed0a38257  2019/debian/deb_dla_1713.nasl
 6f07908091f14cf5660d4c2ff1d83128  2019/debian/deb_dla_1712.nasl
@@ -49937,7 +49937,7 @@ a47d0b3130149288ae038d58e46c423c  2019/ubuntu/gb_ubuntu_USN_3976_3.nasl
 a3dec0d9b5af02d2a04e66623f9eaa58  2019/ubuntu/gb_ubuntu_USN_3930_2.nasl
 a7574bf37c3a2cc63eac285289854ba2  2019/ubuntu/gb_ubuntu_USN_3953_1.nasl
 94a9020b33f985b64ee317e9388b861b  2019/ubuntu/gb_ubuntu_USN_3857_1.nasl
-bdc98e618df4b06d2832b3292757945d  2019/ubuntu/gb_ubuntu_USN_4043_1.nasl
+709d7655ade97b97967345dd13d668d6  2019/ubuntu/gb_ubuntu_USN_4043_1.nasl
 9dc212398df2f52027fa64883956a11a  2019/ubuntu/gb_ubuntu_USN_4031_1.nasl
 13d8989e628a3e0f77131b61d7d75a1a  2019/ubuntu/gb_ubuntu_USN_3994_1.nasl
 17cf92320c14612ee33b11a9976678e1  2019/ubuntu/gb_ubuntu_USN_3934_1.nasl
@@ -51099,13 +51099,13 @@ a22307e32385c841aed7c9631b66de85  2019/fedora/gb_fedora_2019_87e7046631_kernel_f
 b7e9647d254a52b0b413f9ca6fe2093d  2019/tiki/gb_tikiwiki_sql_inj_vuln.nasl
 675809e17546851b94957177bfc22152  2019/smf/gb_simple_machines_forum_mult_vuln_mar19.nasl
 3cc621523f1b663fd1406664837b4559  2019/django/gb_django_xss_vuln_jun19_win.nasl
-2689de12f64200309277e6774fa0d0b6  2019/django/gb_django_insecure_http_vuln_jul19_win.nasl
+782f575bb9f532cd2032f09bcab7f468  2019/django/gb_django_insecure_http_vuln_jul19_win.nasl
 71d8481ca7e296381dea5fd47710c54e  2019/django/gb_django_memory_consumption_vuln_feb19_lin.nasl
 e153749318cfb2861fc3290499537694  2019/django/gb_django_jquery_vuln_jun19_lin.nasl
 b047b7536426f52e0f02d45c41d4f7bc  2019/django/gb_django_xss_vuln_jun19_lin.nasl
 9ea995e59fb4ead8b8c66445e285b56d  2019/django/gb_django_memory_consumption_vuln_feb19_win.nasl
 093efe8e2534b629ce3769201b89de7c  2019/django/gb_django_jquery_vuln_jun19_win.nasl
-b781e187a909ef0b3444b51c496e7a69  2019/django/gb_django_insecure_http_vuln_jul19_lin.nasl
+ba6005ccc81e0bb842dbc158039169a9  2019/django/gb_django_insecure_http_vuln_jul19_lin.nasl
 1ed4faccfa1509177d68e791e90fcf97  2019/modx/gb_modx_cms_mult_xss_vuln.nasl
 50afe0b43c60f822a767b8538c4c9c70  2019/concrete5/gb_concrete5_xss_vuln_apr19.nasl
 4395508e4cd0e7a2cc1c74b1af6a97ea  2019/nrel/gb_nrel_beopt_rce_vuln.nasl
@@ -51120,6 +51120,8 @@ fe90edaa9683ec2e81604533ad7801c4  2019/gitea/gb_gitea_access_ctrl_vuln.nasl
 e705e0831ed00b21d7cdb1db2f3a9d73  2019/suitecrm/gb_suitecrm_sql_inj_vuln_jun19_1.nasl
 fc1930badcde785be48443226f786e75  2019/suitecrm/gb_suitecrm_xss_vuln_apr19.nasl
 d0d41387929e43ee1cd64c37b95e5f4e  2019/suitecrm/gb_suitecrm_sql_inj_vuln_jun19_2.nasl
+183095f12516f1ce05b057d1ade8f039  2019/getsimple/gb_getsimple_cms_open_redirect_vuln.nasl
+4246bbb320bf6be13380552130b52bfe  2019/getsimple/gb_getsimple_cms_rce_vuln.nasl
 828895f999cfdb4016a78b7d08b6d63e  2019/zoneminder/gb_zoneminder_mult_vuln_mar17.nasl
 b24ae25acba63faeda3941fe18da7753  2019/zoneminder/gb_zoneminder_mult_vuln.nasl
 7a5125c22f02dc07740b1b3a3a5128e5  2019/zoneminder/gb_zoneminder_mult_vuln_jan19.nasl

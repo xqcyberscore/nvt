@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704476");
-  script_version("2019-07-07T02:00:06+0000");
+  script_version("2019-07-10T08:41:06+0000");
   script_cve_id("CVE-2019-12308", "CVE-2019-12781", "CVE-2019-6975");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-07 02:00:06 +0000 (Sun, 07 Jul 2019)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-07-10 08:41:06 +0000 (Wed, 10 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-07 02:00:06 +0000 (Sun, 07 Jul 2019)");
   script_name("Debian Security Advisory DSA 4476-1 (python-django - security update)");
   script_category(ACT_GATHER_INFO);
