@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_dreamweaver_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Adobe Dreamweaver Version Detection
 #
@@ -32,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901148");
-  script_version("$Revision: 11279 $");
+  script_version("2019-07-12T06:29:03+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-12 06:29:03 +0000 (Fri, 12 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Version Detection");
@@ -60,12 +59,14 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Registry key is different for Dreamweaver CC 2018
+##Registry key is different for Dreamweaver CC 2018 and Dreamweaver CC 2019
 if(!registry_key_exists(key:"SOFTWARE\Adobe\Dreamweaver\") &&
-   !registry_key_exists(key:"SOFTWARE\Adobe\Dreamweaver CC 2018\"))
+  !registry_key_exists(key:"SOFTWARE\Adobe\Dreamweaver CC 2018\") &&
+   !registry_key_exists(key:"SOFTWARE\Adobe\Dreamweaver CC 2019\"))
 {
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Dreamweaver\") &&
-     !registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Dreamweaver CC 2018\")){
+     !registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Dreamweaver CC 2018\")&&
+     !registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe\Dreamweaver CC 2019\")){
     exit(0);
   }
 }
