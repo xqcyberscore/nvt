@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112599");
-  script_version("2019-07-05T11:29:05+0000");
-  script_tag(name:"last_modification", value:"2019-07-05 11:29:05 +0000 (Fri, 05 Jul 2019)");
+  script_version("2019-07-12T13:28:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-12 13:28:16 +0000 (Fri, 12 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-05 13:23:00 +0200 (Fri, 05 Jul 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"affected", value:"WordPress Widget Logic plugin before version 5.10.2.");
   script_tag(name:"solution", value:"Update to version 5.10.2 or later.");
 
-  script_xref(name:"URL", value:"https://de.wordpress.org/plugins/widget-logic/#developers");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/widget-logic/#developers");
   script_xref(name:"URL", value:"https://dannewitz.ninja/posts/widget-logic-csrf-to-rce");
 
   exit(0);

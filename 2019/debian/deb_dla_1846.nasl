@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891846");
-  script_version("2019-07-08T02:00:09+0000");
+  script_version("2019-07-15T07:04:48+0000");
   script_cve_id("CVE-2019-13232");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-08 02:00:09 +0000 (Mon, 08 Jul 2019)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-07-15 07:04:48 +0000 (Mon, 15 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-08 02:00:09 +0000 (Mon, 08 Jul 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1846-1] unzip security update)");
   script_category(ACT_GATHER_INFO);

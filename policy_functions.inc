@@ -839,7 +839,7 @@ function policy_match_exact_dword_profiles(key, item, default, sids){
     # filter non-standard-accounts
     if(sid !~ "^S-1-5-[0-9,-]+$" || sid =~ "^S-1-5-(18|19|20)") continue;
     key = strcat(sid, "\", key);
-    value = registry_get_dword(key:key, item:item, type:type);
+    value = registry_get_dword(key:key, item:item, type:"HKU");
     value = chomp(value);
     if(!value){
       incomplete_sids += ", " + sid;
@@ -1119,4 +1119,57 @@ function policy_win_get_advanced_audit_results(key, default){
   }
 
   return(ret);
+}
+
+
+# @brief Returns results variables for multiple reg keys at once
+#
+# @param key Registry key to check
+# @param item_default_array array of items and defaults to check
+# @param type Registry type to check
+# @param reg_sz If registry value is REG_SZ
+# @param reg_dword If registry value is REG_DWORD
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_match_multiple_reg_values(key, type, item_default_array, reg_sz, reg_dword){
+  local_var key, item_default_array, type, reg_sz, reg_dword;
+  local_var value, comment, compliant, ret, item, default;
+
+  if(!item_default_array || !key || !type){
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_match_multiple_reg_values#-#VALUES");
+    return;
+  }
+
+  compliant = "yes";
+
+  foreach item (keys(item_default_array)){
+    default = item_default_array[item];
+
+    if(reg_sz)
+      value = registry_get_sz(key:key, item:item, type:type);
+    else
+      value = registry_get_dword(key:key, item:item, type:type);
+
+    value = chomp(value);
+    if(value == ""){
+      comment += ", Registry key not found: " + item;
+      if(compliant != "no")
+        compliant = "incomplete";
+      total_value += ", " + item + ": None";
+    }else{
+      if(value != default)
+        compliant = "no";
+      total_value += ", " + item + ": " + value;
+    }
+  }
+
+  ret["value"] = str_replace(string:total_value, find:", ", replace:"", count:1);
+  ret["compliant"] = compliant;
+  if(comment)
+    ret["comment"] = str_replace(string:comment, find:", ", replace:"", count:1);
+  else
+    ret["comment"] = "";
+
+  return ret;
 }

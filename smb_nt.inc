@@ -8069,7 +8069,7 @@ function smb_get_system32root() {
 function registry_hku_subkeys() {
 
   local_var list, kb_proxy_key, kb_proxy, name, port, soc, r, prot;
-  local_var login, pass, domain, uid, tid, pipe, handle, _list;
+  local_var login, pass, domain, uid, tid, pipe, handle, _list, item;
 
   # This function is mostly called in foreach loops. Make sure to always return
   # an empty list here instead of the previously behavior to return FALSE if any of
