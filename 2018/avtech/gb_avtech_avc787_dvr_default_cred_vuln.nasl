@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_avc787_dvr_default_cred_vuln.nasl 12928 2019-01-03 08:54:17Z ckuersteiner $
 #
 # AVTech AVC 787 DVR Web Interface Default Credentials Vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813818");
-  script_version("2019-03-27T10:56:08+0000");
+  script_version("2019-07-15T12:45:34+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-27 10:56:08 +0000 (Wed, 27 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-07-15 12:45:34 +0000 (Mon, 15 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-07 12:34:02 +0530 (Tue, 07 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -42,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Sends crafted data via an HTTP POST request
   and checks whether it is possible to login or not.");
 
-  script_tag(name:"insight", value:"The installation of Amcrest's IP camera software is lacking a proper
+  script_tag(name:"insight", value:"The web interface for the AVTech AVC 787 DVR is lacking a proper
   password configuration, which makes critical information and actions accessible for people with knowledge
   of the default credentials.");
 
