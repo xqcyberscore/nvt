@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_http_header_sec_bypass_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806127");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2015-7031");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-10-29 13:05:48 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability");
 
@@ -64,10 +63,8 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_apple_macosx_server_detect.nasl");
   script_mandatory_keys("Apple/OSX/Server/Version");
-  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

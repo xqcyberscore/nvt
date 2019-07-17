@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_convert_to_pdf_mult_vuln_win.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Foxit PhantomPDF Multiple Vulnerabilities - May17 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810595");
-  script_version("$Revision: 12131 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2017-6883", "CVE-2017-8454", "CVE-2017-8455", "CVE-2017-8453");
   script_bugtraq_id(96870, 98317, 98320, 98319);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-05 18:47:49 +0530 (Wed, 05 Apr 2017)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities - May17 (Windows)");
 
@@ -78,10 +77,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
   script_mandatory_keys("foxit/phantompdf/ver");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

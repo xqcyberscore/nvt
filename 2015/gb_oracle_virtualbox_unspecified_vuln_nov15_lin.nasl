@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln_nov15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle Virtualbox Unspecified Vulnerability Nov15 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806607");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2015-4856");
   script_bugtraq_id(77202);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-11-02 14:26:35 +0530 (Mon, 02 Nov 2015)");
   script_name("Oracle Virtualbox Unspecified Vulnerability Nov15 (Linux)");
 
@@ -66,10 +65,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

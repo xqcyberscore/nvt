@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_stored_xss_vuln_sep16_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ownCloud Stored XSS Vulnerability Sep16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809290");
-  script_version("$Revision: 12149 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2015-5953");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-23 14:44:28 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Stored XSS Vulnerability Sep16 (Windows)");
 
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

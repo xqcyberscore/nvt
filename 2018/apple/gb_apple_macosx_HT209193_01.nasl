@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814421");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-0898", "CVE-2017-10784", "CVE-2017-14033", "CVE-2017-14064",
                 "CVE-2017-17405", "CVE-2017-17742", "CVE-2018-6914", "CVE-2018-8777",
                 "CVE-2018-8778", "CVE-2018-8779", "CVE-2018-8780", "CVE-2018-6797",
@@ -34,7 +34,7 @@ if(description)
                 "CVE-2018-4291", "CVE-2018-4334", "CVE-2018-4242");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-02 10:56:30 +0530 (Fri, 02 Nov 2018)");
   script_name("Apple MacOSX Security Updates(HT209193)-01");
 
@@ -65,7 +65,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_xref(name:"URL", value:"https://support.apple.com/en-us/HT209193");
-  script_xref(name:"URL", value:"https://www.apple.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_mult_vuln01_sep15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # pfSense Multiple Vulnerabilities - 01 Sep15
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805970");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2014-4687", "CVE-2014-4688", "CVE-2014-4689", "CVE-2014-4690",
                 "CVE-2014-4691", "CVE-2014-4692");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-09-04 14:53:21 +0530 (Fri, 04 Sep 2015)");
   script_name("pfSense Multiple Vulnerabilities - 01 Sep15");
 
@@ -93,7 +92,6 @@ if (description)
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_pfsense_detect.nasl");
   script_mandatory_keys("pfsense/installed");
-  script_xref(name:"URL", value:"https://www.pfsense.org");
   exit(0);
 }
 

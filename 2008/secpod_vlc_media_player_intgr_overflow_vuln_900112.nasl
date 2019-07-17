@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_intgr_overflow_vuln_900112.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: VLC Media Player TTA Processing Integer Overflow Vulnerability
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900112");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3732");
   script_bugtraq_id(30718);
@@ -54,7 +53,6 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to VLC Media Player version 1.0 or later.");
   script_tag(name:"impact", value:"Remote exploitation will cause application to crash or allow
         execution of arbitrary code or deny the service.");
-  script_xref(name:"URL", value:"http://www.videolan.org/");
   exit(0);
 }
 

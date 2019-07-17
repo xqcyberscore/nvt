@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_code_exec_vuln_HT208221.nasl 14295 2019-03-18 20:16:46Z cfischer $
 #
 # Apple MacOSX Multiple Code Execution Vulnerabilities HT208221
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811960");
-  script_version("$Revision: 14295 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-13832", "CVE-2016-2161", "CVE-2016-5387", "CVE-2016-8740",
 		"CVE-2016-8743", "CVE-2017-3167", "CVE-2017-3169", "CVE-2017-7659",
 		"CVE-2017-7668", "CVE-2017-7679", "CVE-2017-9788", "CVE-2017-9789",
@@ -44,7 +43,7 @@ if(description)
                     99569, 99568, 99551, 93055, 101637);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 21:16:46 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-20 12:23:38 +0530 (Thu, 20 Jul 2017)");
   script_name("Apple MacOSX Multiple Code Execution Vulnerabilities HT208221");
 
@@ -73,7 +72,6 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[12]");
-  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
 

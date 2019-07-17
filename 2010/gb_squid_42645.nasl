@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_42645.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Squid 'DNS' Reply Remote Buffer Overflow Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100774");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +46,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42645");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=62692");
   script_xref(name:"URL", value:"http://marc.info/?l=squid-users&m=128263555724981&w=2");
-  script_xref(name:"URL", value:"http://www.squid-cache.org/");
 
   script_tag(name:"affected", value:"Squid 3.1.6 is vulnerable. Other versions may also be affected.");
 

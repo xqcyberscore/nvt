@@ -28,11 +28,11 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813854");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:21:18+0000");
   script_cve_id("CVE-2018-12808", "CVE-2018-12799");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:21:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-16 11:03:52 +0530 (Thu, 16 Aug 2018)");
   script_name("Adobe Acrobat Reader DC (Continuous Track) Multiple Arbitrary Code Execution Vulnerabilities-apsb18-29 (Windows)");
 
@@ -61,7 +61,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb18-29.html");
-  script_xref(name:"URL", value:"https://helpx.adobe.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -73,14 +72,13 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 
 ##2018.011.20058 == 18.011.20058
-if(version_is_less(version:vers, test_version:"18.011.20058"))
-{
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"2018.011.20058", install_path:path);
+if(version_is_less(version:vers, test_version:"18.011.20058")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"18.011.20058 (2018.011.20058)", install_path:path);
   security_message(data:report);
   exit(0);
 }

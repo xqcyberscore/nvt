@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_n_dire_trav_vuln_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # WordPress Core Ajax handlers CSRF and Directory Traversal Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809156");
-  script_version("$Revision: 11961 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2016-6896", "CVE-2016-6897", "CVE-2016-10148");
   script_bugtraq_id(92573, 92572);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-08-26 14:01:02 +0530 (Fri, 26 Aug 2016)");
   script_name("WordPress Core Ajax handlers CSRF and Directory Traversal Vulnerabilities (Windows)");
 
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Apple QuickTime Malformed .mov File Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800319");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-12-18 14:07:48 +0100 (Thu, 18 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -53,7 +52,6 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.6.6 or later.");
   script_tag(name:"summary", value:"This host has QuickTime installed, which is prone to Buffer Overflow
   Vulnerability.");
-  script_xref(name:"URL", value:"http://www.apple.com/");
   exit(0);
 }
 

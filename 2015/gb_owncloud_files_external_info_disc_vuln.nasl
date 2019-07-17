@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805283");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2014-5341");
   script_bugtraq_id(70039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-02-19 17:25:47 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability");
 
@@ -67,7 +66,6 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl");
   script_mandatory_keys("owncloud/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

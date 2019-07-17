@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_old_auth_user_enum_vuln.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # MySQL/MariaDB Authentication Error Message User Enumeration Vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802046");
-  script_version("$Revision: 12175 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_bugtraq_id(56766);
   script_cve_id("CVE-2012-5615");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-12-07 16:13:41 +0530 (Fri, 07 Dec 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -67,9 +66,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
-  script_xref(name:"URL", value:"https://mariadb.org/");
-  script_xref(name:"URL", value:"https://www.mysql.com/");
 
   exit(0);
 }

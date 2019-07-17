@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:media_encoder";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815081");
-  script_version("2019-05-27T07:36:21+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2019-7842", "CVE-2019-7844");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-27 07:36:21 +0000 (Mon, 27 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-05-17 12:30:03 +0530 (Fri, 17 May 2019)");
   script_name("Adobe Media Encoder Security Updates(APSB19-29)-Windows");
 
@@ -56,7 +56,6 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/media-encoder/apsb19-29.html");
-  script_xref(name:"URL", value:"https://www.adobe.com/in/products/media-encoder.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");
@@ -64,7 +63,6 @@ if(description)
   script_mandatory_keys("adobe/mediaencoder/win/detected");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

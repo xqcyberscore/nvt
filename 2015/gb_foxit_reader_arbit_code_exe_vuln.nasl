@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbit_code_exe_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Foxit Reader Arbitrary Code Execution Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806903");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2015-8580");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-12-31 18:46:31 +0530 (Thu, 31 Dec 2015)");
   script_name("Foxit Reader Arbitrary Code Execution Vulnerability");
 
@@ -66,7 +65,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_detect.nasl 14169 2019-03-14 09:23:14Z jschulte $
 #
 # LIVE555 Streaming Media Server Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107180");
-  script_version("$Revision: 14169 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:23:14 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-07-16T12:33:17+0000");
+  script_tag(name:"last_modification", value:"2019-07-16 12:33:17 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,11 +55,11 @@ include( "misc_func.inc" );
 include( "cpe.inc" );
 include( "host_details.inc" );
 
-port = get_port_for_service( proto: "rtsp", default: 8854 );
+port = get_port_for_service(proto: "rtsp", default: 8854);
 
 #nb: HTTP GET against RTSP port request may deliver the Server Banner
 #    even if RTSP fails to do so
-if (!banner = get_kb_item("RTSP/" + port + "/Server"))
+if (!banner = get_kb_item("RTSP/" + port + "/server_banner"))
   if(!banner = get_kb_item("www/banner/" + port))
     exit( 0 );
 

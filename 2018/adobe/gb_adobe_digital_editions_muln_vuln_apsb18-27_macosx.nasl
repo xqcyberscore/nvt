@@ -28,13 +28,13 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814089");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2018-12814", "CVE-2018-12813", "CVE-2018-12823", "CVE-2018-12816",
                 "CVE-2018-12818", "CVE-2018-12819", "CVE-2018-12820", "CVE-2018-12821",
                 "CVE-2018-12822");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-11 10:35:08 +0530 (Thu, 11 Oct 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Editions Mulptiple Vulnerabilities(APSB18-27)-Mac OS X");
@@ -62,7 +62,6 @@ if(description)
   4.5.9 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"https://www.adobe.com/in/solutions/ebook/digital-editions/download.html");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/Digital-Editions/apsb18-27.html");
 
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_proplayer_49046.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # WordPress ProPlayer Plugin  'playlist-controller.php' Parameter SQL Injection Vulnerability
 #
@@ -23,13 +22,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:wordpress:wordpress";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103196");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-08-11 14:25:35 +0200 (Thu, 11 Aug 2011)");
   script_bugtraq_id(49046);
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,7 +38,6 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49046");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17616/");
-  script_xref(name:"URL", value:"http://wordpress.org/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);

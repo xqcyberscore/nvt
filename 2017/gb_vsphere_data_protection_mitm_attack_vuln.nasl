@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsphere_data_protection_mitm_attack_vuln.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # VMware vSphere Data Protection (VDP) Man-in-the-Middle Attack Vulnerability
 #
@@ -28,12 +27,12 @@ CPE = "cpe:/a:vmware:vsphere_data_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810683");
-  script_version("$Revision: 14175 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2014-4632");
   script_bugtraq_id(72367);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-11 12:14:20 +0530 (Tue, 11 Apr 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("VMware vSphere Data Protection (VDP) Man-in-the-Middle Attack Vulnerability");
@@ -66,7 +65,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_vsphere_data_protection_version.nasl");
   script_mandatory_keys("vmware/vSphere_Data_Protection/version");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_38533.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL 'dtls1_retrieve_buffered_fragment()' Remote Denial of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100588");
-  script_version("$Revision: 13898 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_version("2019-07-05T09:29:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-04-20 13:41:39 +0200 (Tue, 20 Apr 2010)");
   script_bugtraq_id(38533);
   script_cve_id("CVE-2010-0433");
@@ -42,7 +41,6 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=569774");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/03/03/5");
   script_xref(name:"URL", value:"http://cvs.openssl.org/chngview?cn=19374");
-  script_xref(name:"URL", value:"http://www.openssl.org");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/510726");
 
   script_tag(name:"cvss_base", value:"4.3");

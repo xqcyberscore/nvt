@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_pro_buffer_overflow_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Avast Pro Heap-Based Buffer Overflow Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:avast:avast_pro_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808057");
-  script_version("$Revision: 12051 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-8620");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-03 18:35:08 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Pro Heap-Based Buffer Overflow Vulnerability");
 
@@ -64,7 +63,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_avast_pro_detect.nasl");
   script_mandatory_keys("Avast/Pro_Antivirus/Win/Ver");
-  script_xref(name:"URL", value:"https://www.avast.com");
   exit(0);
 }
 

@@ -28,11 +28,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813471");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2018-7160");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-09 17:20:49 +0530 (Mon, 09 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js DNS rebinding vulnerability (Windows)");
@@ -57,7 +57,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://nodejs.org/en/blog/vulnerability/june-2018-security-releases/");
-  script_xref(name:"URL", value:"https://nodejs.org");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

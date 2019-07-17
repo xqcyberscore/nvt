@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813082");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2018-4925", "CVE-2018-4926");
   script_bugtraq_id(103712);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-12 11:46:01 +0530 (Thu, 12 Apr 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Editions Multiple Information Disclosure Vulnerabilities-APSB18-13 (Mac OS X)");
@@ -56,7 +56,6 @@ if(description)
   4.5.8 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"https://www.adobe.com/in/solutions/ebook/digital-editions/download.html");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/Digital-Editions/apsb18-13.html");
 
   script_category(ACT_GATHER_INFO);

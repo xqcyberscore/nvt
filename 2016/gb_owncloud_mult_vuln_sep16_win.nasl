@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_sep16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # ownCloud Multiple Vulnerabilities Sep16 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809292");
-  script_version("$Revision: 11969 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2015-4718", "CVE-2015-4717");
   script_bugtraq_id(76162, 76161);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-23 15:12:02 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Multiple Vulnerabilities Sep16 (Windows)");
 
@@ -71,7 +70,6 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

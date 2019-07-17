@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_xss_vuln_july17.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Cross Site Scripting Vulnerability July17
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810973");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-6846");
   script_bugtraq_id(93458);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-05 11:26:23 +0530 (Wed, 05 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Cross Site Scripting Vulnerability July17");
@@ -68,7 +67,6 @@ if(description)
   script_dependencies("gb_ox_app_suite_detect.nasl");
   script_mandatory_keys("open_xchange_appsuite/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.open-xchange.com");
   exit(0);
 }
 

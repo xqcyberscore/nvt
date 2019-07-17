@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wordpress_38368.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # WordPress Trashed Posts Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100505");
-  script_version("$Revision: 14012 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-02-24 18:35:31 +0100 (Wed, 24 Feb 2010)");
   script_bugtraq_id(38368);
   script_cve_id("CVE-2010-0682");
@@ -42,7 +41,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38368");
   script_xref(name:"URL", value:"http://tmacuk.co.uk/?p=180");
   script_xref(name:"URL", value:"http://wordpress.org/development/2010/02/wordpress-2-9-2/");
-  script_xref(name:"URL", value:"http://wordpress.org/");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);

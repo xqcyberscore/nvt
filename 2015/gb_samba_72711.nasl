@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_72711.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Samba 'TALLOC_FREE()' Function Remote Code Execution Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105231");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-03-04 10:23:51 +0100 (Wed, 04 Mar 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,7 +44,6 @@ if(description)
   script_mandatory_keys("samba/smb_or_ssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/72711");
-  script_xref(name:"URL", value:"http://www.samba.org");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code with root
   privileges. Failed exploit attempts will cause a denial-of-service condition");

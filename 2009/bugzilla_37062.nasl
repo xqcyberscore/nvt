@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_37062.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Bugzilla Bug Alias Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mozilla:bugzilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100358");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-11-20 12:35:38 +0100 (Fri, 20 Nov 2009)");
   script_cve_id("CVE-2009-3386");
   script_bugtraq_id(37062);
@@ -40,7 +39,6 @@ if(description)
   script_name("Bugzilla Bug Alias Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37062");
-  script_xref(name:"URL", value:"http://www.bugzilla.org");
   script_xref(name:"URL", value:"http://www.bugzilla.org/security/3.4.3/");
 
   script_category(ACT_GATHER_INFO);

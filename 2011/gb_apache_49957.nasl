@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_49957.nasl 9391 2018-04-06 15:31:30Z cfischer $
 #
 # Apache HTTP Server 'mod_proxy' Reverse Proxy Information Disclosure Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103293");
-  script_version("$Revision: 9391 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_bugtraq_id(49957, 50802);
   script_cve_id("CVE-2011-3368", "CVE-2011-4317");
   script_tag(name:"creation_date", value:"2011-10-11 17:46:33 +0200 (Tue, 11 Oct 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 17:31:30 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Apache HTTP Server 'mod_proxy' Reverse Proxy Information Disclosure Vulnerability");
@@ -45,7 +44,6 @@ if(description)
   script_mandatory_keys("apache/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49957");
-  script_xref(name:"URL", value:"http://httpd.apache.org/");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Oct/232");
 
   script_tag(name:"summary", value:"Apache HTTP Server is prone to an information disclosure

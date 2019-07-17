@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_remote_file_include.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # PhpGroupWare unspecified remote file include vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:phpgroupware:phpgroupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14294");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2003-0504");
   script_bugtraq_id(8265);
@@ -46,7 +45,6 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("phpGroupWare/installed");
 
-  script_xref(name:"URL", value:"http://www.phpgroupware.org/");
 
   script_tag(name:"solution", value:"Update to version 0.9.14.006 or newer");
   script_tag(name:"summary", value:"The remote host seems to be running PhpGroupWare, is a multi-user groupware

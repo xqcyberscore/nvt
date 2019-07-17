@@ -28,11 +28,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813441");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2018-5751", "CVE-2018-5752", "CVE-2018-5756");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-19 11:01:29 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities-01(June18)");
@@ -80,7 +80,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://www.open-xchange.com");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44881");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Jun/23");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/148118");

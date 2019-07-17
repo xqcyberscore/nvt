@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_imc_mult_rce_vul.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # HP Intelligent Management Center (iMC) Multiple RCE Vulnerabilities
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:hp:intelligent_management_center";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811626");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2017-12487", "CVE-2017-12488", "CVE-2017-12489", "CVE-2017-12490",
 		"CVE-2017-12491", "CVE-2017-12492", "CVE-2017-12493", "CVE-2017-12494",
 		"CVE-2017-12495", "CVE-2017-12496", "CVE-2017-12497", "CVE-2017-12498",
@@ -47,7 +46,7 @@ if(description)
   script_bugtraq_id(100367);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-17 15:32:25 +0530 (Thu, 17 Aug 2017)");
   script_name("HP Intelligent Management Center (iMC) Multiple RCE Vulnerabilities");
 
@@ -76,7 +75,6 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_hp_imc_detect.nasl");
   script_mandatory_keys("HPE/iMC/Win/Ver");
-  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

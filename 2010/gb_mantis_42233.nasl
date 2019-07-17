@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_42233.nasl 12958 2019-01-07 10:57:12Z cfischer $
 #
 # Mantis 'manage_proj_cat_add.php' HTML Injection Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100746");
-  script_version("$Revision: 12958 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:57:12 +0100 (Mon, 07 Jan 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-08-06 12:49:38 +0200 (Fri, 06 Aug 2010)");
   script_bugtraq_id(42233);
   script_tag(name:"cvss_base", value:"2.1");
@@ -40,7 +39,6 @@ if (description)
   script_name("Mantis 'manage_proj_cat_add.php' HTML Injection Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42233");
-  script_xref(name:"URL", value:"http://www.mantisbt.org/");
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2010-103/");
 
   script_tag(name:"qod_type", value:"remote_banner");

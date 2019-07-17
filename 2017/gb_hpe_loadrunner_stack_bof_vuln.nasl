@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_stack_bof_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # HPE LoadRunner 'magentproc.exe' Stack Buffer Overflow Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810529");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2013-4800");
   script_bugtraq_id(61446);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:14 +0530 (Fri, 03 Feb 2017)");
   script_name("HPE LoadRunner 'magentproc.exe' Stack Buffer Overflow Vulnerability");
 
@@ -64,7 +63,6 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_loadrunner_detect.nasl");
   script_mandatory_keys("HPE/LoadRunner/Win/Ver");
-  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

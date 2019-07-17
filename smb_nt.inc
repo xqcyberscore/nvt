@@ -6739,13 +6739,14 @@ function registry_get_binary( key, item, type ) {
 # @param type The type of the registry tree to query. Valid values are "HKLM, HKU and HKCU". If no type was specified the function
 #             defaults to "HKLM".
 # @param multi_sz If the value is a multi_sz, newlines should be considered.
+# @param no_cache Specifies if the returned item should be cached into the internal redis KB.
 #
 # @return NULL if important connection parameters are missing or a connection couldn't be established,
 #         FALSE if the key or item could not be found and the value of the queried item within the specified key otherwise.
 #
-function registry_get_sz( key, item, type, multi_sz ) {
+function registry_get_sz( key, item, type, multi_sz, no_cache ) {
 
-  local_var key, item, type, multi_sz;
+  local_var key, item, type, multi_sz, no_cache;
   local_var kb_proxy_key, kb_proxy, name, _smb_port, login, pass, domain, soc;
   local_var r, prot, uid, tid, pipe, r2, r3, r3_value;
 
@@ -6767,7 +6768,7 @@ function registry_get_sz( key, item, type, multi_sz ) {
   # Query KB ("proxy") first.
   kb_proxy_key = "SMB//registry_get_sz//Registry//" + type + "//" + tolower( key ) + "//" + tolower( item );
   kb_proxy = get_kb_item( kb_proxy_key );
-  if( ! isnull( kb_proxy )|| kb_proxy )
+  if( ! no_cache && ( ! isnull( kb_proxy ) || kb_proxy ) )
     return kb_proxy;
 
   if( kb_smb_is_samba() ) {
@@ -6883,25 +6884,27 @@ function registry_get_sz( key, item, type, multi_sz ) {
 
     close( soc );
 
-    if(multi_sz){
+    if( multi_sz ) {
       # item is MULTI_SZ, which are multiple lines. Could not find another way to replace the "newline" char.
-      for(i = 0; i<strlen(r3_value)-1; i++){
-        if(hexstr(r3_value[i]) == '00')
+      for( i = 0; i < strlen( r3_value ) - 1; i++ ) {
+        if( hexstr( r3_value[i]) == '00' )
           val += '\n';
         else
           val += r3_value[i];
       }
-      if(!val)
+      if( ! val )
         val = "";
 
-      set_kb_item( name:kb_proxy_key, value:val);
+      if( ! no_cache )
+        set_kb_item( name:kb_proxy_key, value:val );
       return val;
     }
 
     # Place value into the KB
     if( ! isnull( r3_value ) ) {
       r3_value = chomp( r3_value ); # Sometimes we're getting a trailing newline back so make sure that this is removed.
-      set_kb_item( name:kb_proxy_key, value:r3_value );
+      if( ! no_cache )
+        set_kb_item( name:kb_proxy_key, value:r3_value );
     } else {
       r3_value = FALSE;
     }

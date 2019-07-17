@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_access_bypass_vuln_sep16_lin.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # ownCloud Access Bypass Vulnerability Sep16 (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809296");
-  script_version("$Revision: 12455 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2015-5954");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-23 16:02:07 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Access Bypass Vulnerability Sep16 (Linux)");
 
@@ -67,7 +66,6 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_code_exec_vuln_win.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # XnView File Search Path Executable File Injection Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802309");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-07-15 12:23:42 +0200 (Fri, 15 Jul 2011)");
   script_cve_id("CVE-2011-1338");
   script_bugtraq_id(48562);
@@ -55,10 +54,8 @@ if(description)
   executables.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.xnview.com/");
   exit(0);
 }
-
 
 include("version_func.inc");
 

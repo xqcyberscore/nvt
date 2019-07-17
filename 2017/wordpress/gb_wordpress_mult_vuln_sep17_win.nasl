@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_sep17_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress Multiple Vulnerabilities - Sep 2017 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811783");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-14723");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-21 12:01:02 +0530 (Thu, 21 Sep 2017)");
   script_name("WordPress Multiple Vulnerabilities - Sep 2017 (Windows)");
 
@@ -67,7 +66,6 @@ if(description)
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

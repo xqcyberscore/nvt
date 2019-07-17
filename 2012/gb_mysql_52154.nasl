@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_52154.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # MySQL 5.5.20 Unspecified Remote Code Execution Vulnerability
 #
@@ -31,19 +30,18 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103472");
   script_bugtraq_id(52154);
-  script_version("$Revision: 11855 $");
+  script_version("2019-07-05T09:54:18+0000");
 
   script_name("MySQL 5.5.20 Unspecified Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52154");
   script_xref(name:"URL", value:"https://lists.immunityinc.com/pipermail/canvas/2012-February/000014.html");
   script_xref(name:"URL", value:"http://www.intevydis.com/index.shtml");
-  script_xref(name:"URL", value:"http://www.mysql.com/");
 
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-04-19 11:48:24 +0200 (Thu, 19 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

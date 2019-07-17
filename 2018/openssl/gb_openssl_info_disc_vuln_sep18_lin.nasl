@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813794");
-  script_version("$Revision: 13898 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2016-7056");
   script_bugtraq_id(95375);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-11 11:57:47 +0530 (Tue, 11 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)");
@@ -63,7 +62,6 @@ if(description)
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=52295");
   script_xref(name:"URL", value:"https://eprint.iacr.org/2016/1195");
   script_xref(name:"URL", value:"https://git.openssl.org/?p=openssl.git;a=commit;h=8aed2a7548362e88e84a7feb795a3a97e8395008");
-  script_xref(name:"URL", value:"https://www.openssl.org");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

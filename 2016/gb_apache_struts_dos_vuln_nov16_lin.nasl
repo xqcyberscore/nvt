@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_vuln_nov16_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Apache Struts Denial of Service Vulnerability Nov16 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809477");
-  script_version("$Revision: 12051 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2016-4465");
   script_bugtraq_id(91278);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-18 14:41:28 +0530 (Fri, 18 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Denial of Service Vulnerability Nov16 (Linux)");
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 
@@ -83,7 +81,7 @@ if(!appVer = get_app_version(cpe:CPE, port:appPort)){
 
 ## Vulnerable version according to Advisory
 
-if(appVer =~ "^(2\.)")
+if(appVer =~ "^2\.")
 {
   if(version_is_equal(version:appVer, test_version:"2.5"))
   {

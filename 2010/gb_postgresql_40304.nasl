@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_40304.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PostgreSQL 'RESET ALL' Unauthorized Access Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100648");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-05T10:04:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-05-21 13:16:55 +0200 (Fri, 21 May 2010)");
   script_bugtraq_id(40304);
   script_cve_id("CVE-2010-1975");
@@ -49,7 +48,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/current/static/release-8-2-17.html");
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/current/static/release-8-1-21.html");
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/current/static/release-8-3-11.html");
-  script_xref(name:"URL", value:"http://www.postgresql.org/");
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/current/static/release-8-0-25.html");
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/current/static/release-7-4-29.html");
 

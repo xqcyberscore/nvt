@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_mult_vuln01_oct16_win.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Ruby on Rails Multiple Vulnerabilities-01 Oct16 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809356");
-  script_version("$Revision: 12455 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-0752", "CVE-2016-0751", "CVE-2015-7576");
   script_bugtraq_id(81801, 81800, 81803);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-10-17 18:48:40 +0530 (Mon, 17 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Multiple Vulnerabilities-01 Oct16 (Windows)");
@@ -76,10 +75,8 @@ if(description)
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_windows");
   script_require_ports("Services/www", 3000);
-  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_49042.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Bugzilla Multiple Security Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mozilla:bugzilla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103215");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
   script_bugtraq_id(49042);
   script_cve_id("CVE-2011-2379", "CVE-2011-2380", "CVE-2011-2381", "CVE-2011-2976", "CVE-2011-2977", "CVE-2011-2978",
@@ -41,7 +40,6 @@ if (description)
   script_name("Bugzilla Multiple Security Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49042");
-  script_xref(name:"URL", value:"http://www.bugzilla.org");
   script_xref(name:"URL", value:"http://www.bugzilla.org/security/3.4.11/");
 
   script_tag(name:"qod_type", value:"remote_banner");

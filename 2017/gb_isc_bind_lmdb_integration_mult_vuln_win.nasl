@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_lmdb_integration_mult_vuln_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ISC BIND LMDB Integration Multiple Vulnerabilities (Windows)
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810957");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-21 17:50:15 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ISC BIND LMDB Integration Multiple Vulnerabilities (Windows)");
@@ -61,10 +60,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("bind_version.nasl", "os_detection.nasl");
   script_mandatory_keys("ISC BIND/installed", "Host/runs_windows");
-  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

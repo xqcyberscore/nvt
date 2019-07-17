@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_web_interface_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # VideoLAN VLC Media Player Web Interface Cross-Site Scripting Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806027");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2014-9743");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-09-03 18:31:56 +0530 (Thu, 03 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("VideoLAN VLC Media Player Web Interface Cross-Site Scripting Vulnerability");
@@ -68,7 +67,6 @@ if(description)
   script_dependencies("gb_vlc_media_player_remote_detect.nasl");
   script_mandatory_keys("VLC Media Player/Installed");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://www.videolan.org");
   exit(0);
 }
 

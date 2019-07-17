@@ -22,16 +22,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:apple:icloud";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812667");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2018-4088", "CVE-2018-4096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-24 12:10:39 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple iCloud Security Updates( HT208473 )");
 
@@ -59,7 +60,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_icloud_detect_win.nasl");
   script_mandatory_keys("apple/icloud/Win/Ver");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

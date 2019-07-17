@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_bridge_mult_vuln_feb16.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Adobe Bridge CC Multiple Vulnerabilities Feb16
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:bridge_cc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806871");
-  script_version("$Revision: 11903 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2016-0951", "CVE-2016-0952", "CVE-2016-0953");
   script_bugtraq_id(83114);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-15 13:37:52 +0530 (Mon, 15 Feb 2016)");
   script_name("Adobe Bridge CC Multiple Vulnerabilities Feb16");
 
@@ -65,10 +64,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_bridge_cc_detect.nasl");
   script_mandatory_keys("Adobe/Bridge/Ver");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/bridge.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

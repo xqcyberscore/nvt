@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_40097.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba Multiple Remote Denial of Service Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100644");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-05-19 12:58:40 +0200 (Wed, 19 May 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +46,6 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.samba.org/show_bug.cgi?id=7254");
   script_xref(name:"URL", value:"http://samba.org/samba/history/samba-3.4.8.html");
   script_xref(name:"URL", value:"http://samba.org/samba/history/samba-3.5.2.html");
-  script_xref(name:"URL", value:"http://www.samba.org");
 
   script_tag(name:"summary", value:"Samba is prone to multiple remote denial-of-service vulnerabilities.");
 

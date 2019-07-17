@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_51281.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities
 #
@@ -36,15 +35,14 @@ if (description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_version("$Revision: 13898 $");
+  script_version("2019-07-05T09:29:25+0000");
 
   script_name("OpenSSL Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51281");
-  script_xref(name:"URL", value:"http://www.openssl.org");
   script_xref(name:"URL", value:"http://www.openssl.org/news/secadv_20120104.txt");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-01-20 11:28:16 +0100 (Fri, 20 Jan 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

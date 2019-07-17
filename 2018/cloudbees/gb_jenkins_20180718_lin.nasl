@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180718_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins < 2.133 and < 2.121.2 LTS Multiple Vulnerabilities (Linux)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112331");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2018-1999001", "CVE-2018-1999002", "CVE-2018-1999003", "CVE-2018-1999004",
   "CVE-2018-1999005", "CVE-2018-1999006", "CVE-2018-1999007");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-24 10:15:00 +0200 (Tue, 24 Jul 2018)");
   script_name("Jenkins < 2.133 and < 2.121.2 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -71,8 +70,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
-  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

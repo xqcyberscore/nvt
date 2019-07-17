@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_lin.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # WordPress Core Multiple Vulnerabilities Feb16 (Linux)
 #
@@ -23,15 +22,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807060");
-  script_version("$Revision: 11938 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-08 14:40:48 +0530 (Mon, 08 Feb 2016)");
   script_name("WordPress Core Multiple Vulnerabilities Feb16 (Linux)");
 
@@ -67,7 +67,6 @@ if(description)
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

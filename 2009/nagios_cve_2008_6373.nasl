@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nagios_cve_2008_6373.nasl 12962 2019-01-08 07:46:53Z ckuersteiner $
 #
 # Nagios External Commands and Adaptive Commands Unspecified
 # Vulnerability
@@ -30,8 +29,8 @@ CPE = "cpe:/a:nagios:nagios";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100188");
-  script_version("$Revision: 12962 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:46:53 +0100 (Tue, 08 Jan 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-06 14:55:27 +0200 (Wed, 06 May 2009)");
   script_bugtraq_id(32611);
   script_cve_id("CVE-2008-6373");
@@ -58,7 +57,6 @@ if (description)
   The issue affects versions prior to Nagios 3.0.6.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/32611");
-  script_xref(name:"URL", value:"http://www.nagios.org/");
 
   exit(0);
 }

@@ -23,11 +23,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814878");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2019-10900", "CVE-2019-10902", "CVE-2019-10898", "CVE-2019-10897");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-12 15:19:37 +0530 (Fri, 12 Apr 2019)");
   script_name("Wireshark Security Updates (Windows)-02");
 
@@ -49,7 +49,6 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 3.0.1 or later. Please see the references for more information.");
 
-  script_xref(name:"URL", value:"https://www.wireshark.org");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2019-13");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2019-16");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2019-12");
@@ -63,7 +62,6 @@ if(description)
   script_mandatory_keys("Wireshark/Win/Ver");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

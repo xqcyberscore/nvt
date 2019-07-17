@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Sonatype Nexus OSS/Pro Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805324");
-  script_version("$Revision: 10888 $");
+  script_version("2019-07-16T07:41:29+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-16 07:41:29 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-01-20 13:00:12 +0530 (Tue, 20 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Version Detection");
 
@@ -62,7 +61,6 @@ nexusPort = get_http_port(default:8081);
 banner = get_http_banner(port:nexusPort);
 
 if(banner && "erver: Nexus" >< banner) {
-  installed = TRUE;
   version = "unknown";
 
   nexusVer = eregmatch(pattern:"Server: Nexus.([0-9.]+(-[0-9]+)?)", string:banner, icase:TRUE);
@@ -70,33 +68,47 @@ if(banner && "erver: Nexus" >< banner) {
     version = nexusVer[1];
     install = "/";
   }
+
+  set_kb_item(name:"nexus/installed",value:TRUE);
+
+  cpe = build_cpe(value:version, exp:"([0-9.]+)", base:"cpe:/a:sonatype:nexus:");
+  if(!cpe)
+    cpe = "cpe:/a:sonatype:nexus";
+
+  register_product(cpe:cpe, location:install, port:nexusPort);
+
+  log_message(data: build_detection_report(app: "Sonatype Nexus", version:version, install:install, cpe:cpe,
+                                           concluded:nexusVer[0]),
+              port:nexusPort);
+  exit(0);
 }
 
-if(!nexusVer) {
-  foreach dir (make_list_unique("/", "/nexus",  cgi_dirs(port:nexusPort))) {
-    install = dir;
-    if(dir == "/") dir = "";
+foreach dir (make_list_unique("/", "/nexus",  cgi_dirs(port:nexusPort))) {
+  install = dir;
+  if(dir == "/") dir = "";
 
-    ## if version is not available in banner request for '/#welcome' page
-    rcvRes = http_get_cache(item: dir + "/#welcome", port:nexusPort);
+  ## if version is not available in banner request for '/#welcome' page
+  rcvRes = http_get_cache(item: dir + "/#welcome", port:nexusPort);
 
-    if(rcvRes && (">Sonatype Nexus<" >< rcvRes || ">Sonatype Nexus Professional<" >< rcvRes)) {
-      installed = TRUE;
+  if(rcvRes && (">Sonatype Nexus<" >< rcvRes || ">Sonatype Nexus Professional<" >< rcvRes)) {
+    version = "unknown";
+
+    nexusVer = eregmatch(pattern:"nexusVersion=([0-9.]+(-[0-9]+)?)", string:rcvRes);
+    if(!isnull(nexusVer[1]))
+      version = nexusVer[1];
+  } else {
+    rcvRes = http_get_cache(item: dir + "/#browse/welcome", port: nexusPort);
+
+    if("Nexus Repository Manager" >< rcvRes) {
       version = "unknown";
 
-      nexusVer = eregmatch(pattern:"nexusVersion=([0-9.]+(-[0-9]+)?)", string:rcvRes);
+      # loading-prod.css?_v=3.15.2-01">
+      nexusVer = eregmatch(pattern: "_v=([0-9.-]+)", string: rcvRes);
       if(!isnull(nexusVer[1]))
         version = nexusVer[1];
     }
   }
-}
 
-if(installed) {
-  # version will be in this format nexusVer = "2.11.1-01"
-  # for replacing '-' with '.'
-  version = str_replace(string:version, find:"-", replace:".");
-
-  set_kb_item(name:"www/" + nexusPort + "/nexus", value:version);
   set_kb_item(name:"nexus/installed",value:TRUE);
 
   cpe = build_cpe(value:version, exp:"([0-9.]+)", base:"cpe:/a:sonatype:nexus:");

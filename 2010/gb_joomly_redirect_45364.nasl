@@ -26,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100946");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-12-14 13:08:24 +0100 (Tue, 14 Dec 2010)");
   script_bugtraq_id(45364);
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,7 +36,6 @@ if (description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45364");
   script_xref(name:"URL", value:"http://www.tutorialjoomla.net/2010/11/joomla-extensions-redirect-for-joomla-1-5/");
-  script_xref(name:"URL", value:"http://www.joomla.org/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);

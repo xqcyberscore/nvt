@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_40502.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Cryptographic Message Syntax Memory Corruption Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100668");
-  script_version("$Revision: 13898 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_version("2019-07-05T09:29:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-06-04 13:05:19 +0200 (Fri, 04 Jun 2010)");
   script_bugtraq_id(40502);
   script_tag(name:"cvss_base", value:"7.5");
@@ -40,7 +39,6 @@ if(description)
   script_name("OpenSSL Cryptographic Message Syntax Memory Corruption Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40502");
-  script_xref(name:"URL", value:"http://www.openssl.org");
   script_xref(name:"URL", value:"http://www.openssl.org/news/secadv_20100601.txt");
 
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_38977.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # vBulletin Multiple Unspecified Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100557");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-05T10:04:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-03-29 12:55:36 +0200 (Mon, 29 Mar 2010)");
   script_bugtraq_id(38977);
   script_tag(name:"cvss_base", value:"4.3");
@@ -39,7 +38,6 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38977");
   script_xref(name:"URL", value:"http://www.vbulletin.com/forum/showthread.php?346761-Security-Patch-Release-4.0.2-PL3");
   script_xref(name:"URL", value:"http://www.vbulletin.com/forum/showthread.php?346897-Security-Patch-Release-4.0.2-PL4");
-  script_xref(name:"URL", value:"http://www.vbulletin.com/");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esx_web_detect.nasl 10312 2018-06-25 11:10:27Z cfischer $
 #
 # VMware ESX Detection (Web)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103418");
-  script_version("$Revision: 10312 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:10:27 +0200 (Mon, 25 Jun 2018) $");
+  script_version("2019-07-05T09:40:33+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:40:33 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-02-14 11:30:38 +0100 (Tue, 14 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

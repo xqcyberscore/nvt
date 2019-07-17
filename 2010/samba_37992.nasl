@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: samba_37992.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba 'mount.cifs' Utility Local Privilege Escalation Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100476");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-01-29 17:41:41 +0100 (Fri, 29 Jan 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,7 +43,6 @@ if(description)
   script_mandatory_keys("samba/smb_or_ssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37992");
-  script_xref(name:"URL", value:"http://www.samba.org");
 
   script_tag(name:"summary", value:"Samba is prone to a local privilege-escalation vulnerability in the
   'mount.cifs' utility.");

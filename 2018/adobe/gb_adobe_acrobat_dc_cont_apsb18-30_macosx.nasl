@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Adobe Acrobat DC Security Updates(apsb18-30)-MAC OS X
+# Adobe Acrobat DC Security Updates (apsb18-30)-MAC OS X
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814229");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:21:18+0000");
   script_cve_id("CVE-2018-15955", "CVE-2018-15954", "CVE-2018-15952", "CVE-2018-15945",
                 "CVE-2018-15944", "CVE-2018-15941", "CVE-2018-15940", "CVE-2018-15939",
                 "CVE-2018-15938", "CVE-2018-15936", "CVE-2018-15935", "CVE-2018-15934",
@@ -53,9 +53,9 @@ if(description)
                 "CVE-2018-15930", "CVE-2018-15966", "CVE-2018-19722");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:21:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 16:53:22 +0530 (Wed, 03 Oct 2018)");
-  script_name("Adobe Acrobat DC Security Updates(apsb18-30)-MAC OS X");
+  script_name("Adobe Acrobat DC Security Updates (apsb18-30) - Mac OS X");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat DC
   and is prone to multiple vulnerabilities.");
@@ -82,7 +82,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb18-30.html");
-  script_xref(name:"URL", value:"https://helpx.adobe.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -94,13 +93,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
-readerVer = infos['version'];
-InstallPath = infos['location'];
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
+vers = infos['version'];
+path = infos['location'];
 
-if(version_is_less(version:readerVer, test_version:"19.008.20071"))
-{
-  report = report_fixed_ver(installed_version:readerVer, fixed_version:"2019.008.20071", install_path:InstallPath);
+if(version_is_less(version:vers, test_version:"19.008.20071")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"19.008.20071 (2019.008.20071)", install_path:path);
   security_message(data:report);
   exit(0);
 }

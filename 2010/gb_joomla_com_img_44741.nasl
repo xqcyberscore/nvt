@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_img_44741.nasl 11101 2018-08-24 09:42:11Z ckuersteiner $
 #
 # Joomla Component 'com_img' Local File Include Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100920");
-  script_version("$Revision: 11101 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 11:42:11 +0200 (Fri, 24 Aug 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-11-29 13:18:51 +0100 (Mon, 29 Nov 2010)");
   script_bugtraq_id(44741);
   script_tag(name:"cvss_base", value:"5.1");
@@ -41,7 +40,6 @@ if (description)
   script_name("Joomla Component 'com_img' Local File Include Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44741");
-  script_xref(name:"URL", value:"http://www.joomla.org/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);

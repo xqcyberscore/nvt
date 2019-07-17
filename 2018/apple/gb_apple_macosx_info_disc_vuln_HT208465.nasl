@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_info_disc_vuln_HT208465.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple Mac OS X Speculative Execution Side-Channel Vulnerability-Meltdown (HT208465)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812662");
-  script_version("$Revision: 14292 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-5754");
   script_bugtraq_id(102378);
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-24 10:47:13 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple Mac OS X Speculative Execution Side-Channel Vulnerability-Meltdown (HT208465)");
 
@@ -65,7 +64,6 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[12]");
-  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
 

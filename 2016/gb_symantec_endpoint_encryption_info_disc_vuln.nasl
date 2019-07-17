@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_encryption_info_disc_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Symantec Endpoint Encryption Client Memory Dump Information Disclosure Vulnerability
 #
@@ -29,11 +28,11 @@ CPE= "cpe:/a:symantec:endpoint_encryption";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808071");
-  script_version("$Revision: 11903 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-6556");
   script_tag(name:"cvss_base", value:"2.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-07 13:17:49 +0530 (Tue, 07 Jun 2016)");
   script_name("Symantec Endpoint Encryption Client Memory Dump Information Disclosure Vulnerability");
 
@@ -65,7 +64,6 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_symantec_endpoint_encryption_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Encryption/Win/Ver");
-  script_xref(name:"URL", value:"http://www.symantec.com");
   exit(0);
 }
 

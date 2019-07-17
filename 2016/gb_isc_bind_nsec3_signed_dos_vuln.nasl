@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_nsec3_signed_dos_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # ISC BIND NSEC3 Signed Zones Queries Denial of Service Vulnerability - Jan16
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807216");
-  script_version("$Revision: 12455 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2014-0591");
   script_bugtraq_id(64801);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-28 12:39:11 +0530 (Thu, 28 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND NSEC3 Signed Zones Queries Denial of Service Vulnerability - Jan16");
@@ -65,7 +64,6 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
-  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 

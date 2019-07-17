@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_message_dos_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805502");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-1609");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-03-12 15:36:05 +0530 (Thu, 12 Mar 2015)");
   script_name("MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability");
 
@@ -65,10 +64,8 @@ if(description)
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/mongodb", 27017);
   script_mandatory_keys("mongodb/installed", "Host/runs_windows");
-  script_xref(name:"URL", value:"http://www.mongodb.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_info_disc_n_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Joomla! Information Disclosure and Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811042");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-7983", "CVE-2017-7986", "CVE-2017-7985");
   script_bugtraq_id(98016, 98024, 98020);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-15 15:21:09 +0530 (Mon, 15 May 2017)");
   script_name("Joomla! Information Disclosure and Cross-Site Scripting Vulnerabilities");
 
@@ -74,7 +73,6 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

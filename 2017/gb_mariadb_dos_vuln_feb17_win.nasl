@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_feb17_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # MariaDB Denial Of Service Vulnerability Feb17 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810605");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-3302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-16 15:35:00 +0530 (Thu, 16 Feb 2017)");
   script_name("MariaDB Denial Of Service Vulnerability Feb17 (Windows)");
 
@@ -73,7 +72,6 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MariaDB/installed", "Host/runs_windows");
 
-  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
 

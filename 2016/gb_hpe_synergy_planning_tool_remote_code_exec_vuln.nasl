@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_synergy_planning_tool_remote_code_exec_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # HPE Synergy Planning Tool Remote Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:hp:synergy_planning_tool";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809195");
-  script_version("$Revision: 12338 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-02 17:42:08 +0530 (Fri, 02 Sep 2016)");
   script_name("HPE Synergy Planning Tool Remote Arbitrary Code Execution Vulnerability");
 
@@ -65,7 +64,6 @@ if(description)
   script_dependencies("gb_hpe_synergy_planning_tool_detect.nasl");
   script_mandatory_keys("HPE/Synergy/Planning/Tool/Win/Ver");
 
-  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

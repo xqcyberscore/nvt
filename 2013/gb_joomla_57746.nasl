@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_57746.nasl 12458 2018-11-21 10:18:26Z cfischer $
 #
 # Joomla! 'highlight' Parameter PHP Object Injection Vulnerability
 #
@@ -34,9 +33,9 @@ if(description)
   script_cve_id("CVE-2013-1453");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12458 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_name("Joomla! 'highlight' Parameter PHP Object Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 11:18:26 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-03-03 10:29:04 +0100 (Sun, 03 Mar 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -46,7 +45,6 @@ if(description)
   script_mandatory_keys("joomla/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57746");
-  script_xref(name:"URL", value:"http://www.joomla.org/");
 
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
   information.");

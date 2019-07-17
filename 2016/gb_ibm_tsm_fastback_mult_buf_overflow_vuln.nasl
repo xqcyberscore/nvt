@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_fastback_mult_buf_overflow_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # IBM Tivoli Storage Manager FastBack Server Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager_fastback";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807350");
-  script_version("$Revision: 12313 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2015-8519", "CVE-2015-8520", "CVE-2015-8521", "CVE-2015-8522",
                 "CVE-2015-8523");
   script_bugtraq_id(84161, 84166, 84167, 84163, 84164);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-07-11 13:09:13 +0530 (Mon, 11 Jul 2016)");
   script_name("IBM Tivoli Storage Manager FastBack Server Multiple Buffer Overflow Vulnerabilities");
 
@@ -68,10 +67,8 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_ibm_tsm_fastback_detect.nasl");
   script_mandatory_keys("IBM/Tivoli/Storage/Manager/FastBack/Win/Ver");
-  script_xref(name:"URL", value:"https://www.ibm.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

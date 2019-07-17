@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208692_03.nasl 14293 2019-03-18 18:52:01Z cfischer $
 #
 # Apple MacOSX Security Updates(HT208692)-03
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813114");
-  script_version("$Revision: 14293 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-8816", "CVE-2017-13890");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:52:01 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-02 10:46:36 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple MacOSX Security Updates(HT208692)-03");
 
@@ -63,7 +62,6 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[12]");
-  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsphere_data_protection_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # VMware vSphere Data Protection (VDP) Multiple Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:vmware:vsphere_data_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811319");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-4914", "CVE-2017-4917");
   script_bugtraq_id(98936, 98939);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-30 16:55:06 +0530 (Wed, 30 Aug 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("VMware vSphere Data Protection (VDP) Multiple Vulnerabilities");
@@ -67,7 +66,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_vsphere_data_protection_version.nasl");
   script_mandatory_keys("vmware/vSphere_Data_Protection/version");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
 

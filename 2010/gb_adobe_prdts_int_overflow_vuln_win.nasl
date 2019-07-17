@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_int_overflow_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Reader/Acrobat Font Parsing Integer Overflow Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801419");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-07-05T09:29:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,7 +54,6 @@ table of a TrueType font.");
 parsing integer overflow vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

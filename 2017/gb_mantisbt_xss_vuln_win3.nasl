@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_win3.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT 'window_title' Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108103");
-  script_version("$Revision: 12818 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-7222");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-23 09:57:33 +0100 (Thu, 23 Mar 2017)");
 
   script_name("MantisBT 'view_type' Cross Site Scripting Vulnerability (Windows)");
@@ -63,8 +62,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_xref(name:"URL", value:"https://mantisbt.org");
   exit(0);
 }
 

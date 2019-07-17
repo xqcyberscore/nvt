@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wordpress_37005.nasl 14024 2019-03-07 07:16:22Z mmartin $
 #
 # WordPress 'wp-admin/includes/file.php' Arbitrary File Upload Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100345");
-  script_version("$Revision: 14024 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:16:22 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-11-13 18:49:45 +0100 (Fri, 13 Nov 2009)");
   script_bugtraq_id(37005);
   script_cve_id("CVE-2009-3890");
@@ -40,7 +39,6 @@ if (description)
   script_name("WordPress 'wp-admin/includes/file.php' Arbitrary File Upload Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37005");
-  script_xref(name:"URL", value:"http://wordpress.org/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/507819");
   script_xref(name:"URL", value:"http://wordpress.org/development/2009/11/wordpress-2-8-6-security-release/");
 

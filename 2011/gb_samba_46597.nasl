@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_46597.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba 'FD_SET' Memory Corruption Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103095");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-03-01 13:10:12 +0100 (Tue, 01 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,7 +43,6 @@ if(description)
   script_mandatory_keys("samba/smb_or_ssh/detected");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46597");
-  script_xref(name:"URL", value:"http://www.samba.org");
   script_xref(name:"URL", value:"http://samba.org/samba/security/CVE-2011-0719.html");
 
   script_tag(name:"summary", value:"Samba is prone to a memory-corruption vulnerability.");

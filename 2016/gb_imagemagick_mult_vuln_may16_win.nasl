@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_vuln_may16_win.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # ImageMagick Multiple Vulnerabilities May16 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807568");
-  script_version("$Revision: 11922 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-3714", "CVE-2016-3715", "CVE-2016-3716", "CVE-2016-3717",
                 "CVE-2016-3718");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-05 14:06:00 +0530 (Thu, 05 May 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Multiple Vulnerabilities May16 (Windows)");
@@ -77,7 +76,6 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
 

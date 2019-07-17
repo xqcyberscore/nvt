@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_ccs_67899.nasl 12865 2018-12-21 10:51:07Z cfischer $
 #
 # SSL/TLS: OpenSSL CCS Man in the Middle Security Bypass Vulnerability
 #
@@ -28,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105042");
-  script_version("$Revision: 12865 $");
+  script_version("2019-07-05T10:04:07+0000");
   script_bugtraq_id(67899);
   script_cve_id("CVE-2014-0224");
   script_name("SSL/TLS: OpenSSL CCS Man in the Middle Security Bypass Vulnerability");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 11:51:07 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-06-10 17:18:54 +0200 (Tue, 10 Jun 2014)");
   script_category(ACT_ATTACK);
   script_family("SSL and TLS");
@@ -44,7 +43,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20140605.txt");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67899");
-  script_xref(name:"URL", value:"http://openssl.org/");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow attackers to obtain
   sensitive information by conducting a man-in-the-middle attack. This may lead to other attacks.");

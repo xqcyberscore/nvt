@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgreSQL_multiple_security_vulnerabilities.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PostgreSQL Multiple Security Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100273");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T10:04:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
   script_bugtraq_id(36314);
   script_cve_id("CVE-2009-3229", "CVE-2009-3230", "CVE-2009-3231");
@@ -46,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36314");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=522085#c1");
-  script_xref(name:"URL", value:"http://www.postgresql.org/");
   script_xref(name:"URL", value:"http://www.postgresql.org/support/security");
   script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/2088");
 

@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812961");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-16T10:51:36+0000");
   script_cve_id("CVE-2017-16377", "CVE-2017-16378", "CVE-2017-16360", "CVE-2017-16388",
 		"CVE-2017-16389", "CVE-2017-16390", "CVE-2017-16393", "CVE-2017-16398",
 		"CVE-2017-16381", "CVE-2017-16385", "CVE-2017-16392", "CVE-2017-16395",
@@ -50,7 +50,7 @@ if(description)
                     101830, 101820, 101814, 101817, 101815, 101813);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-16 10:51:36 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-06 11:59:24 +0530 (Tue, 06 Mar 2018)");
   script_name("Adobe Acrobat 2017 Multiple Vulnerabilities-apsb17-36 (Windows)");
 
@@ -128,15 +128,17 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
+
 vers = infos['version'];
 path = infos['location'];
 
 ##2017.011.30068 == 17.011.30068
-if(version_in_range(version:vers, test_version:"17.0", test_version2:"17.011.30067"))
-{
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"2017.011.30068", install_path:path);
+if(version_in_range(version:vers, test_version:"17.0", test_version2:"17.011.30067")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"17.011.30068 (2017.011.30068)", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

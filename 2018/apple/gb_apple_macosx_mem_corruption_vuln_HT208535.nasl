@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mem_corruption_vuln_HT208535.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple MacOSX Memory Corruption Vulnerability (HT208535)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812939");
-  script_version("$Revision: 14292 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2018-4124");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-21 18:05:29 +0530 (Wed, 21 Feb 2018)");
   script_name("Apple MacOSX Memory Corruption Vulnerability (HT208535)");
 
@@ -60,7 +59,6 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.13");
-  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
 

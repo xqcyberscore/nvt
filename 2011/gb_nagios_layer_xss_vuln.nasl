@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_layer_xss_vuln.nasl 12962 2019-01-08 07:46:53Z ckuersteiner $
 #
 # Nagios 'layer' Cross-Site Scripting Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801865");
-  script_version("$Revision: 12962 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:46:53 +0100 (Tue, 08 Jan 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_bugtraq_id(46826);
   script_cve_id("CVE-2011-1523");
@@ -68,7 +67,6 @@ vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.nagios.org/");
   exit(0);
 }
 
@@ -86,9 +84,9 @@ if (dir == "/")
   dir = "";
 
 url = dir + "/cgi-bin/statusmap.cgi?layer=%27%20onmouseover=%22alert" +
-            "(%27openvas-xss-test%27)%22";
+            "(%27vt-xss-test%27)%22";
 
-if (http_vuln_check(port:port, url:url, check_header: TRUE, pattern:"alert\('openvas-xss-test'\)")) {
+if (http_vuln_check(port:port, url:url, check_header: TRUE, pattern:"alert\('vt-xss-test'\)")) {
   report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_49235.nasl 12958 2019-01-07 10:57:12Z cfischer $
 #
 # MantisBT Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103214");
-  script_version("$Revision: 12958 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:57:12 +0100 (Mon, 07 Jan 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-08-19 14:58:19 +0200 (Fri, 19 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,7 +40,6 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49235");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/104149/mantisbt-sqlxss.txt");
-  script_xref(name:"URL", value:"http://www.mantisbt.org");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);

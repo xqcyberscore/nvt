@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("2019-05-24T11:20:30+0000");
-  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
+  script_version("2019-07-08T14:12:44+0000");
+  script_tag(name:"last_modification", value:"2019-07-08 14:12:44 +0000 (Mon, 08 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,25 +36,25 @@ if(description)
   script_family("Port scanners");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
 
-  script_add_preference(name:"Use nmap", type:"checkbox", value:"yes");
+  script_add_preference(name:"Use nmap", type:"checkbox", value:"yes", id:8);
 
   # Don't change the preference names, those names are hardcoded within some manager functions...
   # nb: Same goes for id: parameter, those numbers are hardcoded in the manager as well.
 
   ### In the following two lines, unreachable is spelled incorrectly.
   ### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
-  script_add_preference(name:"Report about unrechable Hosts", type:"checkbox", value:"no");
-  script_add_preference(name:"Mark unrechable Hosts as dead (not scanning)", type:"checkbox", value:"yes", id:5);
-  script_add_preference(name:"Report about reachable Hosts", type:"checkbox", value:"no");
-  script_add_preference(name:"Use ARP", type:"checkbox", value:"no", id:4);
-  script_add_preference(name:"Do a TCP ping", type:"checkbox", value:"no", id:1);
-  script_add_preference(name:"TCP ping tries also TCP-SYN ping", type:"checkbox", value:"no", id:2);
-  script_add_preference(name:"TCP ping tries only TCP-SYN ping", type:"checkbox", value:"no", id:7);
-  script_add_preference(name:"Do an ICMP ping", type:"checkbox", value:"yes", id:3);
-  script_add_preference(name:"nmap additional ports for -PA", type:"entry", value:"137,587,3128,8081");
-  script_add_preference(name:"nmap: try also with only -sP", type:"checkbox", value:"no");
-  script_add_preference(name:"Log nmap output", type:"checkbox", value:"no");
-  script_add_preference(name:"Log failed nmap calls", type:"checkbox", value:"no");
+  script_add_preference(name:"Report about unrechable Hosts", type:"checkbox", value:"no", id:6);
+  script_add_preference(name:"Mark unrechable Hosts as dead (not scanning)", type:"checkbox", value:"yes", id:5); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"Report about reachable Hosts", type:"checkbox", value:"no", id:9);
+  script_add_preference(name:"Use ARP", type:"checkbox", value:"no", id:4); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"Do a TCP ping", type:"checkbox", value:"no", id:1); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"TCP ping tries also TCP-SYN ping", type:"checkbox", value:"no", id:2); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"TCP ping tries only TCP-SYN ping", type:"checkbox", value:"no", id:7); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"Do an ICMP ping", type:"checkbox", value:"yes", id:3); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"nmap additional ports for -PA", type:"entry", value:"137,587,3128,8081", id:10);
+  script_add_preference(name:"nmap: try also with only -sP", type:"checkbox", value:"no", id:11);
+  script_add_preference(name:"Log nmap output", type:"checkbox", value:"no", id:12);
+  script_add_preference(name:"Log failed nmap calls", type:"checkbox", value:"no", id:13);
 
   script_tag(name:"summary", value:"This check tries to determine whether a remote host is up (alive).
 
@@ -154,18 +154,18 @@ function run_tcp_syn_ping( argv, pa_ports, ip, pattern, report_up, log_nmap_outp
   }
 }
 
-use_nmap = script_get_preference("Use nmap");
+use_nmap = script_get_preference("Use nmap", id:8);
 if( isnull( use_nmap ) )
   use_nmap = "yes";
 
-report_up = script_get_preference("Report about reachable Hosts");
+report_up = script_get_preference("Report about reachable Hosts", id:9);
 if( isnull( report_up ) )
   report_up = "no";
 
 ### In the following two lines, unreachable is spelled incorrectly.
 ### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
-report_dead = script_get_preference("Report about unrechable Hosts");
-mark_dead   = script_get_preference("Mark unrechable Hosts as dead (not scanning)");
+report_dead = script_get_preference("Report about unrechable Hosts", id:6);
+mark_dead   = script_get_preference("Mark unrechable Hosts as dead (not scanning)", id:5);
 if( isnull( report_dead ) )
   report_dead = "no";
 
@@ -192,15 +192,15 @@ arp_ping = script_get_preference("Use ARP", id:4);
 if( isnull( arp_ping ) )
   arp_ping = "no";
 
-sp_only = script_get_preference("nmap: try also with only -sP");
+sp_only = script_get_preference("nmap: try also with only -sP", id:11);
 if( isnull( sp_only ) )
   sp_only = "no";
 
-log_nmap_output = script_get_preference("Log nmap output");
+log_nmap_output = script_get_preference("Log nmap output", id:12);
 if( isnull( log_nmap_output ) )
   log_nmap_output = "no";
 
-log_failed_nmap = script_get_preference("Log failed nmap calls");
+log_failed_nmap = script_get_preference("Log failed nmap calls", id:13);
 if( isnull( log_failed_nmap ) )
   log_failed_nmap = "no";
 
@@ -335,7 +335,7 @@ if( "yes" >< use_nmap ) {
 
     # Ports from nmap 7.00 --top-ports 20 (nmap -top-ports=20 -oX -)
     pa_ports = '21,22,23,25,53,80,110,111,135,139,143,443,445,993,995,1723,3306,3389,5900,8080';
-    nmap_pa_additional_ports = script_get_preference("nmap additional ports for -PA");
+    nmap_pa_additional_ports = script_get_preference("nmap additional ports for -PA", id:10);
 
     if( strlen( nmap_pa_additional_ports ) > 0 ) {
       nmap_pa_additional_ports = str_replace( string:nmap_pa_additional_ports, find:" ", replace:"" );

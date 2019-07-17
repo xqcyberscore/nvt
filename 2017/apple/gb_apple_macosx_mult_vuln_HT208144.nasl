@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln_HT208144.nasl 14295 2019-03-18 20:16:46Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-HT208144
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811790");
-  script_version("$Revision: 14295 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-7084", "CVE-2017-7074", "CVE-2017-7143", "CVE-2017-7083",
                 "CVE-2017-0381", "CVE-2017-7138", "CVE-2017-7121", "CVE-2017-7122",
                 "CVE-2017-7123", "CVE-2017-7124", "CVE-2017-7125", "CVE-2017-7126",
@@ -43,7 +42,7 @@ if(description)
                     97058, 94337, 97045, 95248, 97046, 97052, 97050, 97051);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 21:16:46 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-26 12:22:46 +0530 (Tue, 26 Sep 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-HT208144");
 
@@ -103,7 +102,6 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.(8|9|10|11|12)");
-  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
 

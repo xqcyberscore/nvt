@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57133.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability
 #
@@ -34,14 +33,13 @@ if(description)
   script_cve_id("CVE-2012-4915");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 13994 $");
+  script_version("2019-07-05T10:41:31+0000");
 
   script_name("WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57133");
-  script_xref(name:"URL", value:"http://www.wordpress.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-01-08 14:00:15 +0100 (Tue, 08 Jan 2013)");
 
   script_category(ACT_ATTACK);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_view_render_dir_trav_vuln_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Ruby on Rails Action View 'render' Directory Traversal Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809355");
-  script_version("$Revision: 12313 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-2097");
   script_bugtraq_id(83726);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-10-14 17:09:25 +0530 (Fri, 14 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Action View 'render' Directory Traversal Vulnerability (Linux)");
@@ -68,10 +67,8 @@ if(description)
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 3000);
-  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

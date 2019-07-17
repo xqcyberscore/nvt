@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_mult_vuln_HT207607.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Apple iCloud Multiple Vulnerabilities-HT207607 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810983");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2017-2493", "CVE-2017-2480", "CVE-2017-2479", "CVE-2017-2463",
                 "CVE-2017-5029", "CVE-2017-2383");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-16 14:51:38 +0530 (Tue, 16 May 2017)");
   script_name("Apple iCloud Multiple Vulnerabilities-HT207607 (Windows)");
 
@@ -68,10 +67,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_icloud_detect_win.nasl");
   script_mandatory_keys("apple/icloud/Win/Ver");
-  script_xref(name:"URL", value:"http://www.apple.com/in/icloud/setup/pc.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -80,7 +77,6 @@ if(!icVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-##  Check for Apple iCloud vulnerable versions
 if(version_is_less(version:icVer, test_version:"6.2"))
 {
   report = report_fixed_ver(installed_version:icVer, fixed_version:"6.2");

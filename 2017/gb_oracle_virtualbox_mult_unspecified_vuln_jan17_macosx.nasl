@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_unspecified_vuln_jan17_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Oracle Virtualbox Multiple Unspecified Vulnerabilities - 01 Jan17 (Mac OS X)
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810511");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-3316", "CVE-2017-3332", "CVE-2017-3290", "CVE-2016-5545");
   script_bugtraq_id(95579, 95599, 95601, 95590);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-19 10:56:17 +0530 (Thu, 19 Jan 2017)");
   script_name("Oracle Virtualbox Multiple Unspecified Vulnerabilities - 01 Jan17 (Mac OS X)");
 
@@ -68,10 +67,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

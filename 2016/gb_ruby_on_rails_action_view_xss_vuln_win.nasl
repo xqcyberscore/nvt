@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_view_xss_vuln_win.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Ruby on Rails Action View Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807379");
-  script_version("$Revision: 12096 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-6316");
   script_bugtraq_id(92430);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-10-13 14:29:50 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Action View Cross Site Scripting Vulnerability (Windows)");
@@ -69,10 +68,8 @@ if(description)
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_windows");
   script_require_ports("Services/www", 3000);
-  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

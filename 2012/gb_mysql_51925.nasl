@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_51925.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # MySQL 'yaSSL' Remote Code Execution Vulnerability
 #
@@ -31,17 +30,16 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103471");
   script_bugtraq_id(51925, 52154);
-  script_version("$Revision: 11855 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2012-0882");
   script_name("MySQL 'yaSSL' Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51925");
-  script_xref(name:"URL", value:"http://www.mysql.com/");
   script_xref(name:"URL", value:"https://lists.immunityinc.com/pipermail/canvas/2012-February/000011.html");
 
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-04-19 11:22:35 +0200 (Thu, 19 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rtsp_detect.nasl 13725 2019-02-18 09:06:02Z cfischer $
 #
 # RTSP Server type and version
 #
@@ -8,7 +7,7 @@
 # Georges Dagousset <georges.dagousset@alert4web.com>
 #
 # Copyright:
-# Copyright (C) 2001 Alert4Web.com
+# Copyright (C) 2005 Alert4Web.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10762");
-  script_version("$Revision: 13725 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 10:06:02 +0100 (Mon, 18 Feb 2019) $");
+  script_version("2019-07-16T12:33:17+0000");
+  script_tag(name:"last_modification", value:"2019-07-16 12:33:17 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("RTSP Server type and version");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
+  script_copyright("This script is Copyright (C) 2005 Alert4Web.com");
   script_family("Service detection");
   script_dependencies("find_service5.nasl");
   script_require_ports("Services/rtsp", 554);
@@ -90,12 +89,21 @@ if( found ) {
     register_service( proto:"rtsp", port:port );
 
   server = egrep( pattern:"Server:", string:header, icase:TRUE );
+  auth   = egrep( pattern:"WWW-Authenticate:", string:header, icase:TRUE );
 
   if( server ) {
     server = chomp( server );
-    set_kb_item( name:"RTSP/banner/available", value:TRUE );
-    set_kb_item( name:"RTSP/" + port + "/Server", value:server );
+    set_kb_item( name:"RTSP/server_banner/available", value:TRUE );
+    set_kb_item( name:"RTSP/server_or_auth_banner/available", value:TRUE );
+    set_kb_item( name:"RTSP/" + port + "/server_banner", value:server );
     report = string( "The remote RTSP server is :\n\n", server, "\n\n" );
+  }
+
+  if( auth ) {
+    auth = chomp( auth );
+    set_kb_item( name:"RTSP/auth_banner/available", value:TRUE );
+    set_kb_item( name:"RTSP/server_or_auth_banner/available", value:TRUE );
+    set_kb_item( name:"RTSP/" + port + "/auth_banner", value:auth );
   }
 
   report += string( "All RTSP Header for 'OPTIONS *' method:\n\n", chomp( header ) );

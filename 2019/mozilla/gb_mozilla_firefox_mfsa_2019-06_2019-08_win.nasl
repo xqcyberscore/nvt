@@ -23,7 +23,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815002");
-  script_version("2019-05-03T10:20:18+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2019-9790", "CVE-2019-9791", "CVE-2019-9792", "CVE-2019-9793",
                 "CVE-2019-9794", "CVE-2019-9795", "CVE-2019-9796", "CVE-2019-9797",
                 "CVE-2019-9789", "CVE-2019-9799", "CVE-2019-9801", "CVE-2019-9802",
@@ -31,7 +31,7 @@ if(description)
                 "CVE-2019-9807", "CVE-2019-9809", "CVE-2019-9808");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 10:20:18 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-03-20 12:38:38 +0530 (Wed, 20 Mar 2019)");
   script_name("Mozilla Firefox Security Updates(mfsa_2019-06_2019-08)-Windows");
 
@@ -95,7 +95,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2019-07");
-  script_xref(name:"URL", value:"https://www.mozilla.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");
@@ -103,7 +102,6 @@ if(description)
   script_mandatory_keys("Firefox/Win/Ver");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_null_point_deref_dos_vuln_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Apache HTTP Server 'mod_http2 null pointer dereference' DoS Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811217");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-7659");
   script_bugtraq_id(99132);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-21 17:56:43 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server 'mod_http2 null pointer dereference' DoS Vulnerability (Windows)");
@@ -66,10 +65,8 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://httpd.apache.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

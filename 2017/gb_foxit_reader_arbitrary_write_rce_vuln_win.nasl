@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbitrary_write_rce_vuln_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Foxit Reader Arbitrary Write RCE Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811501");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2017-10994");
   script_bugtraq_id(99499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-11 11:24:37 +0530 (Tue, 11 Jul 2017)");
   script_name("Foxit Reader Arbitrary Write RCE Vulnerability (Windows)");
 
@@ -67,10 +66,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -28,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814132");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2018-18227");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-15 12:15:57 +0530 (Mon, 15 Oct 2018)");
   script_name("Wireshark MS-WSP Dissector Denial of Service Vulnerability(wnpa-sec-2018-47)-MACOSX");
 
@@ -55,7 +55,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-47.html");
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=59010");
-  script_xref(name:"URL", value:"https://www.wireshark.org");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
@@ -65,7 +64,6 @@ if(description)
   script_mandatory_keys("Wireshark/MacOSX/Version");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

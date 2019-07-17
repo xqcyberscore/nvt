@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_3gp_file_dos_vul_macosx.nasl 11873 2018-10-12 11:25:39Z cfischer $
 #
 # VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806088");
-  script_version("$Revision: 11873 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2015-5949");
   script_bugtraq_id(76448);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:25:39 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-10-13 16:16:33 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Mac OS X)");
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("gb_vlc_media_player_detect_macosx.nasl");
   script_mandatory_keys("VLC/Media/Player/MacOSX/Version");
 
-  script_xref(name:"URL", value:"http://www.videolan.org");
   exit(0);
 }
 

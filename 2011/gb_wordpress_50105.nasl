@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_50105.nasl 10235 2018-06-18 13:14:33Z cfischer $
 #
 # WordPress teachPress 'root' Multiple Local File Include Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103303");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-10-18 13:33:12 +0200 (Tue, 18 Oct 2011)");
   script_bugtraq_id(50105);
   script_tag(name:"cvss_base", value:"5.1");
@@ -46,7 +45,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50105");
   script_xref(name:"URL", value:"http://plugins.trac.wordpress.org/changeset/405672/teachpress/trunk/export.php?old=340149&old_path=teachpress%2Ftrunk%2Fexport.php");
   script_xref(name:"URL", value:"http://plugins.trac.wordpress.org/changeset/405672/teachpress/trunk/feed.php?old=340149&old_path=teachpress%2Ftrunk%2Ffeed.php");
-  script_xref(name:"URL", value:"http://wordpress.org/");
   script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/teachpress/");
 
   script_tag(name:"summary", value:"The teachPress plug-in for WordPress is prone to multiple local file

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_cooltype_mem_crptn_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Adobe Reader and Acrobat 'CoolType.dll' Memory Corruption Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801933");
-  script_version("$Revision: 11997 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2011-0610");
   script_bugtraq_id(47531);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_name("Adobe Reader and Acrobat 'CoolType.dll' Memory Corruption Vulnerability");
 
@@ -61,7 +60,6 @@ Adobe Acrobat version prior to 9.4.4 and 10.x to 10.0.2 on windows");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

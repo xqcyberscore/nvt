@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_toolspack_backdoor_2012.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Backdoored WordPress ToolsPack Plugin
 #
@@ -27,17 +26,15 @@
 
 CPE = "cpe:/a:wordpress:wordpress";
 
-if (description)
+if(description)
 {
-  script_xref(name:"URL", value:"http://www.wordpress.org");
-  script_xref(name:"URL", value:"http://blog.sucuri.net/2012/02/new-wordpress-toolspack-plugin.html");
   script_oid("1.3.6.1.4.1.25623.1.0.103445");
-  script_version("$Revision: 11855 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Backdoored WordPress ToolsPack Plugin");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-03-08 10:26:15 +0100 (Thu, 08 Mar 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -54,6 +51,8 @@ context of the affected webserver process.");
 update WordPress, change passwords, etc.");
 
   script_tag(name:"solution_type", value:"Workaround");
+
+  script_xref(name:"URL", value:"http://blog.sucuri.net/2012/02/new-wordpress-toolspack-plugin.html");
 
   exit(0);
 }

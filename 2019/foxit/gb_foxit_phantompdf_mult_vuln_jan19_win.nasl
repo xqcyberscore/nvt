@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814582");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2018-18688", "CVE-2018-18689", "CVE-2018-3956",
   "CVE-2019-5005", "CVE-2019-5006", "CVE-2019-5007");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:M/C:C/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-04 15:15:18 +0530 (Fri, 04 Jan 2019)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities-Jan 2019 (Windows)");
 
@@ -67,7 +67,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");

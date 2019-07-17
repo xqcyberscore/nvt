@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_nonce_replay_security_bypass_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Squid Nonce Replay Security Bypass Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806902");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2014-9749");
   script_bugtraq_id(77040);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-12-23 13:34:49 +0530 (Wed, 23 Dec 2015)");
   script_name("Squid Nonce Replay Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -67,7 +66,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.squid-cache.org");
   exit(0);
 }
 

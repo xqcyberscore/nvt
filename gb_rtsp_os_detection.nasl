@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rtsp_os_detection.nasl 10573 2018-07-23 10:44:26Z cfischer $
 #
 # RTSP Server OS Identification
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108451");
-  script_version("$Revision: 10573 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 12:44:26 +0200 (Mon, 23 Jul 2018) $");
+  script_version("2019-07-16T12:33:17+0000");
+  script_tag(name:"last_modification", value:"2019-07-16 12:33:17 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-23 10:06:14 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,7 +37,7 @@ if(description)
   script_family("Product detection");
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("rtsp_detect.nasl");
-  script_mandatory_keys("RTSP/banner/available");
+  script_mandatory_keys("RTSP/server_or_auth_banner/available");
 
   script_tag(name:"summary", value:"This script performs RTSP server based OS detection.");
 
@@ -48,21 +47,41 @@ if(description)
 }
 
 include("host_details.inc");
+include("misc_func.inc");
 
 SCRIPT_DESC = "RTSP Server OS Identification";
 BANNER_TYPE = "RTSP Server banner";
 
-port = get_kb_item( "Services/rtsp" );
-if( ! port ) port = 554;
-if( ! get_port_state( port ) ) exit( 0 );
-if( ! banner = get_kb_item( "RTSP/" + port + "/Server" ) ) exit( 0 );
+port = get_port_for_service( default:554, proto:"rtsp" );
 
-# Server: IQinVision Embedded 1.0
-if( "IQinVision Embedded" >< banner ) {
-  register_and_report_os( os:"Linux/Unix (Embedded)", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-  exit( 0 );
+if( server_banner = get_kb_item( "RTSP/" + port + "/server_banner" ) ) {
+
+  # Server: IQinVision Embedded 1.0
+  if( "IQinVision Embedded" >< server_banner ) {
+    register_and_report_os( os:"Linux/Unix (Embedded)", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:server_banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  unknown_banner = server_banner;
 }
 
-register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"rtsp_banner", port:port );
+if( auth_banner = get_kb_item( "RTSP/" + port + "/auth_banner" ) ) {
+
+  auth_banner_lo = tolower( auth_banner );
+
+  # WWW-Authenticate: Basic realm="DahuaRtsp"
+  # nb: Having Server: Rtsp Server/2.0 as its banner
+  if( 'basic realm="dahuartsp"' >< auth_banner_lo ) {
+    register_and_report_os( os:"Linux/Unix (Embedded)", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:auth_banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( unknown_banner )
+    unknown_banner += '\n';
+  unknown_banner += auth_banner;
+}
+
+if( unknown_banner )
+  register_unknown_os_banner( banner:unknown_banner, banner_type_name:BANNER_TYPE, banner_type_short:"rtsp_banner", port:port );
 
 exit( 0 );

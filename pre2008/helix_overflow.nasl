@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: helix_overflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Helix RealServer Buffer Overrun
 #
 # Authors:
@@ -25,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11642");
-  script_version("2019-04-10T13:42:28+0000");
-  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_version("2019-07-16T12:33:17+0000");
+  script_tag(name:"last_modification", value:"2019-07-16 12:33:17 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8476);
   script_cve_id("CVE-2003-0725");
@@ -38,12 +37,12 @@ if(description)
   script_family("Gain a shell remotely");
   script_dependencies("rtsp_detect.nasl");
   script_require_ports("Services/rtsp", 554);
-  script_mandatory_keys("RTSP/banner/available");
+  script_mandatory_keys("RTSP/server_banner/available");
 
   script_tag(name:"solution", value:"Install patches from the vendor.");
 
   script_tag(name:"summary", value:"RealServer 8.0 and earlier and Helix Server 9.0 is
-  vulnerable to a buffer overflow.");
+  vulnerable to a buffer overflow vulnerability.");
 
   script_xref(name:"URL", value:"http://service.real.com/help/faq/security/bufferoverrun030303.html");
 
@@ -53,11 +52,11 @@ if(description)
   exit(0);
 }
 
-port = get_kb_item("Services/rtsp");
-if(!port)
-  port = 554;
+include("misc_func.inc");
 
-serverbanner = get_kb_item("RTSP/" + port + "/Server");
+port = get_port_for_service(default:554, proto:"rtsp");
+
+serverbanner = get_kb_item("RTSP/" + port + "/server_banner");
 if(!serverbanner || "Version " >!< serverbanner)
   exit(0);
 

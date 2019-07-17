@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812731");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-07-16T11:29:09+0000");
   script_cve_id("CVE-2018-0798", "CVE-2018-0801", "CVE-2018-0802", "CVE-2018-0812",
                 "CVE-2018-0804", "CVE-2018-0805", "CVE-2018-0806", "CVE-2018-0807",
                 "CVE-2018-0845", "CVE-2018-0848", "CVE-2018-0849", "CVE-2018-0862");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-16 11:29:09 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-10 11:52:29 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Office 2016 Multiple Remote Code Execution Vulnerabilities (KB4011574)");
 
@@ -78,39 +78,34 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 officeVer = get_kb_item("MS/Office/Ver");
-if(!officeVer){
+if(!officeVer)
   exit(0);
-}
 
-if(officeVer =~ "^16\.")
-{
+if(officeVer =~ "^16\.") {
   os_arch = get_kb_item("SMB/Windows/Arch");
-  if("x86" >< os_arch){
+  if("x86" >< os_arch) {
     key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion");
-  }
-  else if("x64" >< os_arch){
+  } else if("x64" >< os_arch) {
     key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion",
                           "SOFTWARE\Microsoft\Windows\CurrentVersion");
   }
 
-  foreach key(key_list)
-  {
+  foreach key(key_list) {
     propath = registry_get_sz(key:key, item:"ProgramFilesDir");
-    if(propath)
-    {
+    if(propath) {
       offPath = propath + "\Microsoft Office\root\VFS\ProgramFilesCommonX86\Microsoft Shared\EQUATION";
       msdllVer = fetch_file_version(sysPath:offPath, file_name:"eqnedt32.exe");
-      if(!msdllVer){
+      if(!msdllVer) {
         exit(0);
-      }
-      else
-      {
-        report = report_fixed_ver( file_checked:offPath + "\eqnedt32.exe",
-                               file_version:msdllVer, vulnerable_range:"File 'eqnedt32.exe' is present");
+      } else {
+        report = report_fixed_ver(file_checked:offPath + "\eqnedt32.exe",
+                                  file_version:msdllVer, vulnerable_range:"File 'eqnedt32.exe' is present");
         security_message(data:report);
         exit(0);
       }
     }
   }
+  exit(99);
 }
+
 exit(0);

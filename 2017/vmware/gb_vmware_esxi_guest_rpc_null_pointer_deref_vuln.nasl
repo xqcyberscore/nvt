@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esxi_guest_rpc_null_pointer_deref_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # VMware ESXi Guest RPC Null Pointer Dereference Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811840");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-4925");
   script_bugtraq_id(100842);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-22 12:05:44 +0530 (Fri, 22 Sep 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("VMware ESXi Guest RPC Null Pointer Dereference Vulnerability");
@@ -61,7 +60,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_esxi_init.nasl");
   script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: WordPress_35755.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # WordPress Comment Author URI Cross-Site Scripting Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100239");
-  script_version("$Revision: 14012 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-07-22 19:53:45 +0200 (Wed, 22 Jul 2009)");
   script_cve_id("CVE-2009-2851");
   script_bugtraq_id(35755);
@@ -59,7 +58,6 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35755");
   script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=278492");
   script_xref(name:"URL", value:"http://wordpress.org/development/2009/07/wordpress-2-8-2/");
-  script_xref(name:"URL", value:"http://wordpress.org/");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

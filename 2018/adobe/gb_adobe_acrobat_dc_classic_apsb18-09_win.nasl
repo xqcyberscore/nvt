@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Adobe Acrobat DC (Classic Track) Security Updates(apsb18-09)-Windows
+# Adobe Acrobat DC (Classic Track) Security Updates (apsb18-09)-Windows
 #
 # Authors:
 # Rajat Mishra <rajatm@secpod.com>
@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813238");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T08:21:18+0000");
   script_cve_id("CVE-2018-4990", "CVE-2018-4947", "CVE-2018-4948", "CVE-2018-4966",
                 "CVE-2018-4968", "CVE-2018-4978", "CVE-2018-4982", "CVE-2018-4984",
                 "CVE-2018-4996", "CVE-2018-4952", "CVE-2018-4954", "CVE-2018-4958",
@@ -44,9 +44,9 @@ if(description)
                 "CVE-2018-12815");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:21:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-15 12:13:55 +0530 (Tue, 15 May 2018)");
-  script_name("Adobe Acrobat DC (Classic Track) Security Updates(apsb18-09)-Windows");
+  script_name("Adobe Acrobat DC (Classic Track) Security Updates (apsb18-09) - Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat DC
   (Classic Track) and is prone to multiple vulnerabilities.");
@@ -72,7 +72,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb18-09.html");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -92,7 +91,7 @@ vers = infos["version"];
 path = infos["location"];
 
 if(version_is_less(version:vers, test_version:"15.006.30418")) {
-  report = report_fixed_ver(installed_version:vers, fixed_version:"2015.006.30418", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"15.006.30418 (2015.006.30418)", install_path:path);
   security_message(data:report);
   exit(0);
 }

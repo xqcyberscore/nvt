@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_aug18_02_macosx.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Node.js 10.x < 10.9.0 Unintentional Exposure of Uninitialized Memory (Mac OS X)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112364");
-  script_version("$Revision: 12308 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2018-7166");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-27 14:37:00 +0200 (Mon, 27 Aug 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Node.js 10.x < 10.9.0 Unintentional Exposure of Uninitialized Memory (Mac OS X)");
@@ -55,7 +54,6 @@ arguments are derived from user input to return uncleared memory blocks that may
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://nodejs.org/en/blog/vulnerability/august-2018-security-releases");
-  script_xref(name:"URL", value:"https://nodejs.org");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

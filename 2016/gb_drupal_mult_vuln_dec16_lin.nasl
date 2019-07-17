@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_dec16_lin.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Drupal Multiple Vulnerabilities Dec16 (Linux)
 #
@@ -23,17 +22,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = 'cpe:/a:drupal:drupal';
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810224");
-  script_version("$Revision: 11811 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2016-9449", "CVE-2016-9450", "CVE-2016-9451", "CVE-2016-9452");
   script_bugtraq_id(94367);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-12-01 10:54:37 +0530 (Thu, 01 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities Dec16 (Linux)");
@@ -72,7 +72,6 @@ if(description)
   script_dependencies("drupal_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("drupal/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.drupal.org");
   exit(0);
 }
 

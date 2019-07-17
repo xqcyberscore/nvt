@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Mac OS X
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812698");
-  script_version("$Revision: 12116 $");
+  script_version("2019-07-16T15:57:25+0000");
   script_cve_id("CVE-2018-6654");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-16 15:57:25 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-08 16:22:37 +0530 (Thu, 08 Feb 2018)");
   script_name("Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Mac OS X");
 
@@ -65,22 +64,17 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.grammarly.com/");
+
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-version ="";
-sock="";
-
 sock = ssh_login_or_reuse_connection();
-if(!sock) {
+if(!sock)
   exit(0);
-}
 
 filePath = find_file(file_name:"Grammarly.html", file_path:"/", useregex:TRUE,
                   regexpar:"$", sock:sock);

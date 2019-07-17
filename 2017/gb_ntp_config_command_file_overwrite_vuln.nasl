@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_config_command_file_overwrite_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # NTP ':config' Command Arbitrary File Overwrite Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811253");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-7703");
   script_bugtraq_id(77278);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-25 11:30:12 +0530 (Tue, 25 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP ':config' Command Arbitrary File Overwrite Vulnerability");
@@ -68,7 +67,6 @@ if(description)
   script_dependencies("ntp_open.nasl");
   script_mandatory_keys("NTP/Running", "NTP/Linux/Ver");
   script_require_udp_ports(123);
-  script_xref(name:"URL", value:"http://www.ntp.org");
   exit(0);
 }
 

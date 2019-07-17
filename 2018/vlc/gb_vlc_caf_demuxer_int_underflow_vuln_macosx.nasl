@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814376");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2018-19857");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-12-17 10:49:31 +0530 (Mon, 17 Dec 2018)");
   ## not able to detect patched versions
   script_tag(name:"qod_type", value:"executable_version");
@@ -59,7 +59,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://dyntopia.com/advisories/013-vlc");
-  script_xref(name:"URL", value:"https://www.videolan.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -67,7 +66,6 @@ if(description)
   script_mandatory_keys("VLC/Media/Player/MacOSX/Version");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -28,14 +28,14 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813621");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12361", "CVE-2018-12362",
                 "CVE-2018-5188", "CVE-2018-5156", "CVE-2018-12363", "CVE-2018-12364",
                 "CVE-2018-12365", "CVE-2018-12371", "CVE-2018-12366", "CVE-2018-12367",
                 "CVE-2018-12368", "CVE-2018-12369", "CVE-2018-5187");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-27 16:04:11 +0530 (Wed, 27 Jun 2018)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-15_2018-17)-Windows");
 
@@ -80,7 +80,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2018-16");
-  script_xref(name:"URL", value:"https://www.mozilla.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -88,7 +87,6 @@ if(description)
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

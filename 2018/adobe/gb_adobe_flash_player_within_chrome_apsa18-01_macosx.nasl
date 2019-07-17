@@ -22,17 +22,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:adobe:flash_player_chrome";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812688");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-16T15:57:25+0000");
   script_cve_id("CVE-2018-4878", "CVE-2018-4877");
   script_bugtraq_id(102893, 102930);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-16 15:57:25 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-02 11:12:23 +0530 (Fri, 02 Feb 2018)");
   script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Mac OS X");
 
@@ -62,24 +63,23 @@ if(description)
   script_family("General");
   script_dependencies("gb_flash_player_within_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Chrome/MacOSX/Ver");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-playerVer = "";
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 
-if(version_is_less_equal(version:vers, test_version:"28.0.0.137"))
-{
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"28.0.0.161", install_path:path);
+if(version_is_less_equal(version:vers, test_version:"28.0.0.137")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"28.0.0.161", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

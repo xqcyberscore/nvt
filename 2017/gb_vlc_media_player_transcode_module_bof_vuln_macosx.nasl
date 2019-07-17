@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_transcode_module_bof_vuln_macosx.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # VLC Media Player 'audio.c' Heap-Based Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810722");
-  script_version("$Revision: 11936 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2014-6440");
   script_bugtraq_id(72950);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-30 15:38:41 +0530 (Thu, 30 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player 'audio.c' Heap-Based Buffer Overflow Vulnerability (Mac OS X)");
@@ -61,7 +60,6 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2015/q1/751");
   script_xref(name:"URL", value:"http://billblough.net/blog/2015/03/04/cve-2014-6440-heap-overflow-in-vlc-transcode-module");
   script_xref(name:"URL", value:"http://www.videolan.org/developers/vlc-branch/NEWS");
-  script_xref(name:"URL", value:"http://www.videolan.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Buffer overflow");
@@ -69,7 +67,6 @@ if(description)
   script_mandatory_keys("VLC/Media/Player/MacOSX/Version");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

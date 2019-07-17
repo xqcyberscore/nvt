@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_infinite_loop_dos_vuln.nasl 14300 2019-03-19 07:52:26Z mmartin $
 #
 # Samba 'fd_open_atomic infinite loop' Denial-of-Service Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811083");
-  script_version("$Revision: 14300 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-9461");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:52:26 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-07 17:35:53 +0530 (Wed, 07 Jun 2017)");
   script_name("Samba 'fd_open_atomic infinite loop' Denial-of-Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -65,7 +64,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://www.samba.org");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_lg_63381.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Nagios Looking Glass Local File Include Vulnerability
 #
@@ -31,13 +30,12 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103845");
   script_bugtraq_id(63381);
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_name("Nagios Looking Glass Local File Include Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63381");
-  script_xref(name:"URL", value:"http://www.nagios.org/");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-12-03 10:16:11 +0100 (Tue, 03 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802815");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_bugtraq_id(52405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-03-15 12:56:44 +0530 (Thu, 15 Mar 2012)");
   script_name("XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47388/");
@@ -64,10 +63,8 @@ if(description)
     buffer overflow when browsing folder from an extracted archive file.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.xnview.com/");
   exit(0);
 }
-
 
 include("version_func.inc");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mem_corrup_n_unquoted_search_path_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Adobe Photoshop Memory Corruption and Unquoted Search Path Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811017");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2017-3004", "CVE-2017-3005");
   script_bugtraq_id(97559, 97553);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-03 14:33:41 +0530 (Wed, 03 May 2017)");
   script_name("Adobe Photoshop Memory Corruption and Unquoted Search Path Vulnerabilities (Windows)");
 
@@ -68,10 +67,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_photoshop_detect.nasl");
   script_mandatory_keys("Adobe/Photoshop/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/photoshop.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

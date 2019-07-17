@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntp_37255.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # NTP mode 7 MODE_PRIVATE Packet Remote Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100399");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
   script_bugtraq_id(37255);
   script_cve_id("CVE-2009-3563");
@@ -39,7 +38,6 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37255");
   script_xref(name:"URL", value:"https://support.ntp.org/bugs/show_bug.cgi?id=1331");
-  script_xref(name:"URL", value:"http://www.ntp.org/");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/568372");
 
   script_category(ACT_GATHER_INFO);

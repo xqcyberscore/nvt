@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_heap_bof_vuln_aug17_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # LibreOffice Multiple Heap Buffer Overflow Vulnerabilities Aug17 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811716");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2017-7870", "CVE-2016-10327");
   script_bugtraq_id(97667);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-23 10:56:24 +0530 (Wed, 23 Aug 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("LibreOffice Multiple Heap Buffer Overflow Vulnerabilities Aug17 (Mac OS X)");
@@ -75,7 +74,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_libreoffice_detect_macosx.nasl");
   script_mandatory_keys("LibreOffice/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.libreoffice.org");
   exit(0);
 }
 

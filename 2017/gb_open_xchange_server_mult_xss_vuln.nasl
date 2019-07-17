@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_mult_xss_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Open-Xchange (OX) Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811132");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2015-1588");
   script_bugtraq_id(74350);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-21 15:24:33 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) Server Multiple Cross Site Scripting Vulnerabilities");
@@ -70,7 +69,6 @@ if(description)
   script_dependencies("gb_ox_server_detect.nasl");
   script_mandatory_keys("open_xchange_server/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.open-xchange.com");
   exit(0);
 }
 

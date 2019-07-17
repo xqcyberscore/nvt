@@ -28,7 +28,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813110");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2018-4144", "CVE-2018-4101", "CVE-2018-4114", "CVE-2018-4118",
                 "CVE-2018-4119", "CVE-2018-4120", "CVE-2018-4121", "CVE-2018-4122",
                 "CVE-2018-4125", "CVE-2018-4127", "CVE-2018-4128", "CVE-2018-4129",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2018-4165", "CVE-2018-4113", "CVE-2018-4146", "CVE-2018-4117");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-02 10:32:52 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple iTunes Security Updates(HT208694)-Windows");
 
@@ -71,7 +71,6 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Ver");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

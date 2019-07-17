@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_35780.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Joomla! Remote File Upload Vulnerability And Information Disclosure Weakness
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100333");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-11-03 12:50:27 +0100 (Tue, 03 Nov 2009)");
   script_bugtraq_id(35780);
   script_tag(name:"cvss_base", value:"7.5");
@@ -43,7 +42,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35780");
   script_xref(name:"URL", value:"http://developer.joomla.org/security/news/301-20090722-core-file-upload.html");
   script_xref(name:"URL", value:"http://developer.joomla.org/security/news/302-20090722-core-missing-jexec-check.html");
-  script_xref(name:"URL", value:"http://www.joomla.org/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/505231");
 
   script_tag(name:"qod_type", value:"remote_banner");

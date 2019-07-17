@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810938");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-3008", "CVE-2017-3066");
   script_bugtraq_id(98003, 98002);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-26 12:35:27 +0530 (Wed, 26 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Remote Code Execution And Cross Site Scripting Vulnerabilities");
@@ -71,10 +71,8 @@ if(description)
   script_dependencies("gb_coldfusion_detect.nasl");
   script_mandatory_keys("coldfusion/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

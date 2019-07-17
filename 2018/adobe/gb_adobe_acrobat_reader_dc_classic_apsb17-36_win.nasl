@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812967");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:21:18+0000");
   script_cve_id("CVE-2017-16377", "CVE-2017-16378", "CVE-2017-16360", "CVE-2017-16388",
 		"CVE-2017-16389", "CVE-2017-16390", "CVE-2017-16393", "CVE-2017-16398",
 		"CVE-2017-16381", "CVE-2017-16385", "CVE-2017-16392", "CVE-2017-16395",
@@ -50,9 +50,9 @@ if(description)
                     101830, 101820, 101814, 101817, 101815, 101813);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:21:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-06 12:23:24 +0530 (Tue, 06 Mar 2018)");
-  script_name("Adobe Acrobat Reader DC (Classic Track) Multiple Vulnerabilities-apsb17-36 (Windows)");
+  script_name("Adobe Acrobat Reader DC (Classic Track) Multiple Vulnerabilities (apsb17-36) - Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat Reader
   DC (Classic Track) and is prone to multiple vulnerabilities.");
@@ -129,15 +129,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 
 ##2015.006.30392 == 15.006.30392
-if(version_is_less(version:vers, test_version:"15.006.30392"))
-{
-  report = report_fixed_ver(installed_version:vers, fixed_version:"2015.006.30392", install_path:path);
+if(version_is_less(version:vers, test_version:"15.006.30392")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"15.006.30392 (2015.006.30392)", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

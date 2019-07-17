@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_57497.nasl 10821 2018-08-07 14:52:02Z cfischer $
 #
 # ownCloud Multiple Security Vulnerabilities
 #
@@ -34,9 +33,9 @@ if(description)
   script_cve_id("CVE-2013-0201", "CVE-2013-0202", "CVE-2013-0203", "CVE-2013-0204");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:P");
-  script_version("$Revision: 10821 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_name("ownCloud Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:52:02 +0200 (Tue, 07 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-01-24 11:21:02 +0100 (Thu, 24 Jan 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -46,7 +45,6 @@ if(description)
   script_mandatory_keys("owncloud/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57497");
-  script_xref(name:"URL", value:"http://owncloud.org/");
 
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
   information.");
@@ -75,9 +73,9 @@ include("http_keepalive.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 if(dir == "/") dir = "";
-url = dir + '/core/lostpassword/templates/resetpassword.php?l="><script>alert(/openvas-xss-test/)</script>&_=1';
+url = dir + '/core/lostpassword/templates/resetpassword.php?l="><script>alert(/vt-xss-test/)</script>&_=1';
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE)) {
+if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/vt-xss-test/\)</script>", check_header:TRUE)) {
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

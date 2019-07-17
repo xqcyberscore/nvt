@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_message_filter_mult_vuln.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Symantec Message Filter Multiple Vulnerabilities
 #
@@ -32,12 +31,12 @@ if (description)
   script_cve_id("CVE-2012-0300", "CVE-2012-0301", "CVE-2012-0302", "CVE-2012-0303");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11020 $");
+  script_version("2019-07-05T10:41:31+0000");
 
   script_name("Symantec Message Filter Multiple Vulnerabilities");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-06-27 12:18:39 +0200 (Wed, 27 Jun 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -77,7 +76,6 @@ Other attacks are also possible.
 
 Symantec Message Filter 6.3 is vulnerable.");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54136");
-  script_xref(name:"URL", value:"http://www.symantec.com");
   script_xref(name:"URL", value:"http://www.symantec.com/business/support/index?page=content&id=TECH191487");
   exit(0);
 }

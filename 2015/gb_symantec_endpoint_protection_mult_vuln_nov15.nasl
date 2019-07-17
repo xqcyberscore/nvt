@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_nov15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Nov15
 #
@@ -23,17 +22,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:symantec:endpoint_protection";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806571");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2015-8113", "CVE-2015-6555", "CVE-2015-6554");
   script_bugtraq_id(77494, 77495, 77585);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-11-16 12:41:11 +0530 (Mon, 16 Nov 2015)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Nov15");
 
@@ -69,7 +69,6 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
-  script_xref(name:"URL", value:"http://www.symantec.com/en/in/endpoint-protection");
   exit(0);
 }
 

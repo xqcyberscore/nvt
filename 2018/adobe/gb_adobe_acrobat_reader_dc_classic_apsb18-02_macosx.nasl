@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812933");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:21:18+0000");
   script_cve_id("CVE-2018-4872", "CVE-2018-4890", "CVE-2018-4904", "CVE-2018-4910",
                 "CVE-2018-4917", "CVE-2018-4888", "CVE-2018-4892", "CVE-2018-4902",
                 "CVE-2018-4911", "CVE-2018-4913", "CVE-2018-4879", "CVE-2018-4895",
@@ -42,9 +42,9 @@ if(description)
                 "CVE-2018-4914", "CVE-2018-4997", "CVE-2018-4998", "CVE-2018-4999");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:21:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-15 16:10:40 +0530 (Thu, 15 Feb 2018)");
-  script_name("Adobe Acrobat Reader DC (Classic Track) Multiple Vulnerabilities-apsb18-02 (Mac OS X)");
+  script_name("Adobe Acrobat Reader DC (Classic Track) Multiple Vulnerabilities (apsb18-02) - Mac OS X");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat Reader
   DC (Classic Track) and is prone to multiple vulnerabilities.");
@@ -89,17 +89,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-acroVer = "";
-
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 vers = infos['version'];
 path = infos['location'];
 
 ##2015.006.30413 == 15.006.30416
-if(version_is_less(version:vers, test_version:"15.006.30416"))
-{
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"2015.006.30416", install_path:path);
+if(version_is_less(version:vers, test_version:"15.006.30416")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"15.006.30416 (2015.006.30416)", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

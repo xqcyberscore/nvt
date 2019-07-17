@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Adobe Reader DC (Continuous Track) Security Updates(apsb17-11)-MAC OS X
+# Adobe Reader DC (Continuous Track) Security Updates (apsb17-11)-MAC OS X
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812569");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2017-3011", "CVE-2017-3012", "CVE-2017-3013", "CVE-2017-3014",
                 "CVE-2017-3015", "CVE-2017-3018", "CVE-2017-3019", "CVE-2017-3020",
                 "CVE-2017-3021", "CVE-2017-3022", "CVE-2017-3024", "CVE-2017-3025",
@@ -43,9 +43,9 @@ if(description)
                 "CVE-2017-3041", "CVE-2017-3029", "CVE-2017-3053");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-12 13:58:05 +0530 (Mon, 12 Mar 2018)");
-  script_name("Adobe Reader DC (Continuous Track) Security Updates(apsb17-11)-MAC OS X");
+  script_name("Adobe Reader DC (Continuous Track) Security Updates (apsb17-11) - Mac OS X");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader DC
   (Continuous Track) and is prone to multiple vulnerabilities.");
@@ -81,24 +81,23 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_acrobat_reader_dc_cont_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Acrobat/ReaderDC/Continuous/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
-readerVer = infos['version'];
-InstallPath = infos['location'];
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
+vers = infos['version'];
+path = infos['location'];
 
 # 2017.009.20043 => 17.009.20043
 # 2015.023.20070 => 15.023.20070
-if(version_in_range(version:readerVer, test_version:"17.0", test_version2:"17.009.20043") ||
-   version_in_range(version:readerVer, test_version:"15.0", test_version2:"15.023.20070"))
-{
-  report = report_fixed_ver(installed_version:readerVer, fixed_version:"2017.009.20044", install_path:InstallPath);
+if(version_in_range(version:vers, test_version:"17.0", test_version2:"17.009.20043") ||
+   version_in_range(version:vers, test_version:"15.0", test_version2:"15.023.20070")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"17.009.20044 (2017.009.20044)", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

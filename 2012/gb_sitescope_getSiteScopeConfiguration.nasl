@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_getSiteScopeConfiguration.nasl 13793 2019-02-20 13:34:18Z cfischer $
 #
 # HP SiteScope SOAP Call getSiteScopeConfiguration Remote Code Execution Vulnerability
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103603");
-  script_version("$Revision: 13793 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("HP SiteScope SOAP Call getSiteScopeConfiguration Remote Code Execution Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 14:34:18 +0100 (Wed, 20 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-11-05 18:35:36 +0100 (Mon, 05 Nov 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -44,7 +43,6 @@ if(description)
   script_require_ports("Services/www", 8080);
 
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-12-173/");
-  script_xref(name:"URL", value:"http://www.hp.com/");
 
   script_tag(name:"summary", value:"This vulnerability allows remote attackers to execute arbitrary code on
   vulnerable installations of HP SiteScope. Authentication is not required to exploit this vulnerability.");

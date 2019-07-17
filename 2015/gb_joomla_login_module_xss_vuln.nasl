@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_login_module_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Joomla CMS 'login' Module Cross-Site Scripting Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806600");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2015-6939");
   script_bugtraq_id(76750);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-10-19 15:49:11 +0530 (Mon, 19 Oct 2015)");
 
   script_name("Joomla CMS 'login' Module Cross-Site Scripting Vulnerability");
@@ -70,8 +69,6 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
-
-  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

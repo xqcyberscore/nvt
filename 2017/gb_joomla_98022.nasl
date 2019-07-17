@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_98022.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Joomla! CVE-2017-7988 Security Bypass Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108154");
-  script_version("$Revision: 12021 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-7988");
   script_bugtraq_id(98022);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-08 10:00:00 +0200 (Mon, 08 May 2017)");
   script_name("Joomla! CVE-2017-7988 Security Bypass Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -62,8 +61,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

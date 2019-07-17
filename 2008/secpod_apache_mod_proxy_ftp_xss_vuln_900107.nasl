@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_mod_proxy_ftp_xss_vuln_900107.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # Apache mod_proxy_ftp Wildcard Characters XSS Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900107");
-  script_version("$Revision: 14010 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,7 +43,6 @@ if(description)
   script_mandatory_keys("apache/installed");
   script_require_ports("Services/www", 80);
 
-  script_xref(name:"URL", value:"http://httpd.apache.org/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/495180");
   script_xref(name:"URL", value:"http://httpd.apache.org/docs/2.0/mod/mod_proxy_ftp.html");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=rev&revision=682871");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_cve_2009_0922.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PostgreSQL Conversion Encoding Remote Denial of Service
 # Vulnerability
@@ -30,8 +29,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100157");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T10:04:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
   script_bugtraq_id(34090);
   script_cve_id("CVE-2009-0922");
@@ -46,7 +45,6 @@ if(description)
   script_mandatory_keys("PostgreSQL/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34090");
-  script_xref(name:"URL", value:"http://www.postgresql.org/");
 
   script_tag(name:"summary", value:"PostgreSQL is prone to a remote denial-of-service vulnerability.");
 

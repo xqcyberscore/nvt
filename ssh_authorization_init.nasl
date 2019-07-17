@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_authorization_init.nasl 13981 2019-03-04 14:49:43Z cfischer $
 #
 # This script allows to set SSH credentials for target hosts.
 #
@@ -32,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103591");
-  script_version("$Revision: 13981 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 15:49:43 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-07-08T14:12:44+0000");
+  script_tag(name:"last_modification", value:"2019-07-08 14:12:44 +0000 (Mon, 08 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-10-24 10:55:52 +0100 (Wed, 24 Oct 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -42,16 +41,13 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Credentials");
 
-  # Don't change the preference names, those names are hardcoded within some manager functions...
-  # nb: Same goes for id: parameter, those numbers are hardcoded in the manager as well.
-
   # Preference type to trigger client-side ssh-login selection per target
   script_add_preference(name:"Keys:", type:"sshlogin", value:"-", id:5);
-  script_add_preference(name:"SSH login name:", type:"entry", value:"", id:1);
-  script_add_preference(name:"SSH password (unsafe!):", type:"password", value:"", id:3);
+  script_add_preference(name:"SSH login name:", type:"entry", value:"", id:1); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"SSH password (unsafe!):", type:"password", value:"", id:3); # nb: Don't change this name and id, these are hardcoded / used in GVMd
   script_add_preference(name:"SSH public key:", type:"file", value:"", id:6);
-  script_add_preference(name:"SSH private key:", type:"file", value:"", id:4);
-  script_add_preference(name:"SSH key passphrase:", type:"password", value:"", id:2);
+  script_add_preference(name:"SSH private key:", type:"file", value:"", id:4); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  script_add_preference(name:"SSH key passphrase:", type:"password", value:"", id:2); # nb: Don't change this name and id, these are hardcoded / used in GVMd
 
   script_tag(name:"summary", value:"This script allows users to enter the information
   required to authorize and login via ssh protocol.

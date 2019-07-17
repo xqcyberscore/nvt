@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_36242.nasl 11830 2018-10-11 06:12:56Z cfischer $
 #
 # MySQL 5.x Unspecified Buffer Overflow Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100271");
-  script_version("$Revision: 11830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 08:12:56 +0200 (Thu, 11 Oct 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-09-07 09:47:24 +0200 (Mon, 07 Sep 2009)");
   script_bugtraq_id(36242);
   script_tag(name:"cvss_base", value:"9.3");
@@ -44,7 +43,6 @@ if(description)
   script_mandatory_keys("MySQL/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36242");
-  script_xref(name:"URL", value:"http://www.mysql.com/");
 
   script_tag(name:"summary", value:"MySQL is prone to a buffer-overflow vulnerability because if fails to
   perform adequate boundary checks on user-supplied data.");

@@ -28,12 +28,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813062");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2018-1327");
   script_bugtraq_id(103516);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-02 16:08:37 +0530 (Mon, 02 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## It may lead to FP because older versions can implement custom XML handler based
@@ -67,7 +67,6 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl");
   script_mandatory_keys("ApacheStruts/installed");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 

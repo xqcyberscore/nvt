@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_urlvalidator_dos_vuln_lin_oct17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Struts 'URLValidator' Denial-Of-Service Vulnerability - Oct17 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812000");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2016-8738");
   script_bugtraq_id(94657);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-28 13:02:47 +0530 (Thu, 28 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts 'URLValidator' Denial-Of-Service Vulnerability - Oct17 (Linux)");
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 

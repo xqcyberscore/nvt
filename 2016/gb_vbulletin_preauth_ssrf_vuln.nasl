@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_preauth_ssrf_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # vBulletin Preauth Server Side Request Forgery (SSRF) Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809158");
-  script_version("$Revision: 12455 $");
+  script_version("2019-07-05T10:04:07+0000");
   script_cve_id("CVE-2016-6483");
   script_bugtraq_id(92350);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-08-29 14:43:57 +0530 (Mon, 29 Aug 2016)");
   script_name("vBulletin Preauth Server Side Request Forgery (SSRF) Vulnerability");
 
@@ -68,7 +67,6 @@ if(description)
   script_dependencies("vbulletin_detect.nasl");
   script_mandatory_keys("vBulletin/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.vbulletin.com");
   exit(0);
 }
 

@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813637");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2018-4269");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-10 10:54:12 +0530 (Tue, 10 Jul 2018)");
   script_name("Apple MacOSX Security Updates(HT208937) - 04");
 
@@ -54,7 +54,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208937");
-  script_xref(name:"URL", value:"http://www.apple.com/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

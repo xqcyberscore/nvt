@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_virtual_user_generator_rce_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # HPE LoadRunner Virtual User Generator Remote Code Execution Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810936");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2013-6213");
   script_bugtraq_id(66961);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-21 10:33:34 +0530 (Fri, 21 Apr 2017)");
   script_name("HPE LoadRunner Virtual User Generator Remote Code Execution Vulnerability");
 
@@ -63,7 +62,6 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_loadrunner_detect.nasl");
   script_mandatory_keys("HPE/LoadRunner/Win/Ver");
-  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

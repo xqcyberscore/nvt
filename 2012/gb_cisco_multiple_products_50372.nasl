@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_multiple_products_50372.nasl 13792 2019-02-20 13:15:35Z cfischer $
 #
 # Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability
 #
@@ -32,9 +31,9 @@ if(description)
   script_cve_id("CVE-2011-3315");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 13792 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_name("Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 14:15:35 +0100 (Wed, 20 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-01-26 15:59:27 +0100 (Thu, 26 Jan 2012)");
   script_category(ACT_ATTACK);
   script_family("CISCO");
@@ -44,7 +43,6 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50372");
-  script_xref(name:"URL", value:"http://www.cisco.com");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20111026-cucm");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520414");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20111026-uccx");

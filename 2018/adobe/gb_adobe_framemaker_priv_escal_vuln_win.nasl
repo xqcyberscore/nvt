@@ -28,11 +28,11 @@ CPE = "cpe:/a:adobe:framemaker";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814315");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2018-15974");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-15 12:43:10 +0530 (Mon, 15 Oct 2018)");
   script_name("Adobe FrameMaker Privilege Escalation Vulnerability (Windows)");
 
@@ -57,7 +57,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"https://www.adobe.com/in/products/framemaker.html");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/framemaker/apsb18-37.html");
   script_xref(name:"URL", value:"https://fortiguard.com/zeroday/2219");
   script_category(ACT_GATHER_INFO);
@@ -67,7 +66,6 @@ if(description)
   script_mandatory_keys("AdobeFrameMaker/Win/Ver");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

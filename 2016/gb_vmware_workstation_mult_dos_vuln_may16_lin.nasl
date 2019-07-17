@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_mult_dos_vuln_may16_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # VMware Workstation Multiple Vulnerabilities May16 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806760");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044", "CVE-2015-2341");
   script_bugtraq_id(72338, 72337, 72336, 75094);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Workstation Multiple Vulnerabilities May16 (Linux)");
@@ -72,10 +71,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_lin.nasl");
   script_mandatory_keys("VMware/Linux/Installed");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

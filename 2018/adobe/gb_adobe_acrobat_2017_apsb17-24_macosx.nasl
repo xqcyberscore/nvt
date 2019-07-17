@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812548");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-16T10:51:36+0000");
   script_cve_id("CVE-2017-3016", "CVE-2017-3038", "CVE-2017-3113", "CVE-2017-3115",
                 "CVE-2017-3116", "CVE-2017-3117", "CVE-2017-3118", "CVE-2017-3119",
                 "CVE-2017-3120", "CVE-2017-3121", "CVE-2017-3122", "CVE-2017-3123",
@@ -48,7 +48,7 @@ if(description)
                 "CVE-2017-11269", "CVE-2017-11270", "CVE-2017-11271");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-16 10:51:36 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-09 13:25:15 +0530 (Fri, 09 Mar 2018)");
   script_name("Adobe Acrobat 2017 Security Updates(apsb17-24)-MAC OS X");
 
@@ -89,22 +89,23 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Acrobat/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
-readerVer = infos['version'];
-InstallPath = infos['location'];
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
 
 ##2017.011.30066 == 17.011.30066
-if(version_in_range(version:readerVer, test_version:"17.0", test_version2:"17.011.30065"))
-{
-  report = report_fixed_ver(installed_version:readerVer, fixed_version:"2017.011.30066", install_path:InstallPath);
+if(version_in_range(version:vers, test_version:"17.0", test_version2:"17.011.30065")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"17.011.30066 (2017.011.30066)", install_path:path);
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Adobe Reader DC (Classic Track) Security Updates(apsb17-11)-Windows
+# Adobe Reader DC (Classic Track) Security Updates (apsb17-11)-Windows
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812572");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2017-3011", "CVE-2017-3012", "CVE-2017-3013", "CVE-2017-3014",
                 "CVE-2017-3015", "CVE-2017-3018", "CVE-2017-3019", "CVE-2017-3020",
                 "CVE-2017-3021", "CVE-2017-3022", "CVE-2017-3024", "CVE-2017-3025",
@@ -43,9 +43,9 @@ if(description)
                 "CVE-2017-3041", "CVE-2017-3029", "CVE-2017-3053");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-12 13:58:17 +0530 (Mon, 12 Mar 2018)");
-  script_name("Adobe Reader DC (Classic Track) Security Updates(apsb17-11)-Windows");
+  script_name("Adobe Reader DC (Classic Track) Security Updates (apsb17-11) - Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader DC (Classic Track)
   and is prone to multiple vulnerabilities.");
@@ -80,22 +80,21 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_acrobat_reader_dc_classic_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/ReaderDC/Classic/Win/Ver");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
-readerVer = infos['version'];
-InstallPath = infos['location'];
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
+vers = infos['version'];
+path = infos['location'];
 
 ## 2015.006.30305 -> 15.006.30305
-if(version_in_range(version:readerVer, test_version:"15.0", test_version2:"15.006.30305"))
-{
-  report = report_fixed_ver(installed_version:readerVer, fixed_version:"2015.006.30306", install_path:InstallPath);
+if(version_in_range(version:vers, test_version:"15.0", test_version2:"15.006.30305")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"15.006.30306 (2015.006.30306)", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

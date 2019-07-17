@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_50639.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Apache HTTP Server 'ap_pregsub()' Function Local Denial of Service Vulnerability
 #
@@ -33,9 +32,9 @@ if(description)
   script_cve_id("CVE-2011-4415");
   script_tag(name:"cvss_base", value:"1.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-11-15 12:33:51 +0100 (Tue, 15 Nov 2011)");
-  script_version("$Revision: 11997 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_name("Apache HTTP Server 'ap_pregsub()' Function Local Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -45,7 +44,6 @@ if(description)
   script_mandatory_keys("apache/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50639");
-  script_xref(name:"URL", value:"http://httpd.apache.org/");
   script_xref(name:"URL", value:"http://www.halfdog.net/Security/2011/ApacheModSetEnvIfIntegerOverflow/");
   script_xref(name:"URL", value:"http://www.gossamer-threads.com/lists/apache/dev/403775");
 

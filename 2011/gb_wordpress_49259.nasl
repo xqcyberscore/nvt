@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49259.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # WordPress UnGallery 'source_vuln.php' Local File Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103218");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
   script_bugtraq_id(49259);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +44,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49259");
   script_xref(name:"URL", value:"http://downloads.wordpress.org/plugin/");
-  script_xref(name:"URL", value:"http://wordpress.org/");
 
   script_tag(name:"impact", value:"Exploiting this vulnerability would allow an attacker to obtain
   potentially sensitive information from local files on computers

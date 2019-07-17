@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vBulletin_41875.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # vBulletin 'faq.php' Information Disclosure Vulnerability
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100723");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-05T10:04:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-07-23 13:21:58 +0200 (Fri, 23 Jul 2010)");
   script_bugtraq_id(41875);
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,7 +37,6 @@ if (description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41875");
   script_xref(name:"URL", value:"http://www.vbulletin.com/forum/showthread.php?357818-Security-Patch-Release-3.8.6-PL1");
-  script_xref(name:"URL", value:"http://www.vbulletin.com/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/512575");
 
   script_tag(name:"qod_type", value:"remote_vul");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_stanag_4607_dos_vuln_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810700");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-6014");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 15:26:53 +0530 (Tue, 21 Feb 2017)");
   script_name("Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Mac OS X)");
 
@@ -67,10 +66,8 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.wireshark.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

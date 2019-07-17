@@ -28,12 +28,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813054");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2014-1665");
   script_bugtraq_id(65457);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-23 12:50:26 +0530 (Fri, 23 Mar 2018)");
   script_name("ownCloud XSS and CSRF Protection Bypass Vulnerabilities Mar18 (Linux)");
 
@@ -68,10 +68,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"https://owncloud.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

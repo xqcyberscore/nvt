@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_mult_vuln_dec14.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805203");
-  script_version("$Revision: 11974 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2014-3439", "CVE-2014-3438", "CVE-2014-3437");
   script_bugtraq_id(70843, 70844, 70845);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-12-04 09:43:28 +0530 (Thu, 04 Dec 2014)");
   script_name("Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14");
 
@@ -75,7 +74,6 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8443);
-  script_xref(name:"URL", value:"http://www.symantec.com");
   exit(0);
 }
 

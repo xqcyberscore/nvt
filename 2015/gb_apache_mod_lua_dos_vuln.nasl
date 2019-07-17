@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_lua_dos_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Apache HTTP Server Mod_Lua Denial of service Vulnerability May15
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805637");
-  script_version("$Revision: 11975 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2014-8109");
   script_bugtraq_id(73040);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_lua is enabled
   script_name("Apache HTTP Server Mod_Lua Denial of service Vulnerability May15");
@@ -69,10 +68,8 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl");
   script_mandatory_keys("apache/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.apache.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

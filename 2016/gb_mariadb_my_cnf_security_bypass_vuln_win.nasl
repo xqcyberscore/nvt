@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_my_cnf_security_bypass_vuln_win.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # MariaDB 'my.conf' Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809328");
-  script_version("$Revision: 12096 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2016-6662");
   script_bugtraq_id(92912);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-26 12:24:08 +0530 (Mon, 26 Sep 2016)");
   script_name("MariaDB 'my.conf' Security Bypass Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -68,10 +67,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

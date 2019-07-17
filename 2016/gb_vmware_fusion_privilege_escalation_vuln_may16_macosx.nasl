@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_privilege_escalation_vuln_may16_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # VMware Fusion Privilege Escalation Vulnerability May16 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806755");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2014-8370");
   script_bugtraq_id(72338);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_name("VMware Fusion Privilege Escalation Vulnerability May16 (Mac OS X)");
 
@@ -67,7 +66,6 @@ if(description)
   script_family("General");
   script_dependencies("secpod_vmware_fusion_detect_macosx.nasl");
   script_mandatory_keys("VMware/Fusion/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_mar15_lin.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # MediaWiki Multiple Vulnerabilities - Mar15 (Linux)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108112");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-2931", "CVE-2015-2932", "CVE-2015-2933", "CVE-2015-2934",
                 "CVE-2015-2935", "CVE-2015-2936", "CVE-2015-2937", "CVE-2015-2938",
                 "CVE-2015-2941", "CVE-2015-2942");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-29 07:49:40 +0200 (Wed, 29 Mar 2017)");
   script_name("MediaWiki Multiple Vulnerabilities - Mar15 (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -83,7 +82,6 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to version 1.19.24 or 1.23.9
   or 1.24.2 or later.");
-  script_xref(name:"URL", value:"http://www.mediawiki.org");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -28,11 +28,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813377");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2013-4578");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-23 16:38:47 +0530 (Wed, 23 May 2018)");
   script_name("Oracle Java SE 'jarsigner' Security Bypass Vulnerability (Linux)");
 
@@ -58,7 +58,6 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1031471");
   script_xref(name:"URL", value:"http://hg.openjdk.java.net/jdk7u/jdk7u/jdk/rev/d5f36e1c927e");
-  script_xref(name:"URL", value:"http://www.oracle.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -67,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -75,7 +73,7 @@ if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(
 jreVer = infos['version'];
 path = infos['location'];
 
-if(jreVer =~ "^(1\.7)")
+if(jreVer =~ "^1\.7")
 {
   if(version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.50"))
   {

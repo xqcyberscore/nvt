@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_use_after_free_n_bof_vuln_win.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # ImageMagick Buffer Overflow And Use-after-free Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810270");
-  script_version("$Revision: 14175 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-10046", "CVE-2016-10051");
   script_bugtraq_id(95183, 95187);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-13 15:10:00 +0530 (Fri, 13 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Buffer Overflow And Use-after-free Vulnerabilities (Windows)");
@@ -70,10 +69,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_jul12_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802924");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-16T15:57:25+0000");
   script_cve_id("CVE-2011-3426", "CVE-2011-3016", "CVE-2011-3021", "CVE-2011-3027",
                 "CVE-2011-3032", "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036",
                 "CVE-2011-3037", "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040",
@@ -64,7 +63,7 @@ if(description)
                     54687, 54203, 54693, 54694, 54695, 54700, 54697, 54703);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-16 15:57:25 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-07-30 16:35:41 +0530 (Mon, 30 Jul 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5400");
@@ -77,47 +76,44 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to disclose potentially
-  sensitive information, conduct cross-site scripting and compromise a user's
-  system.");
-  script_tag(name:"affected", value:"Apple Safari versions prior to 6.0");
-  script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference section.");
+  sensitive information, conduct cross-site scripting and compromise a user's system.");
+
+  script_tag(name:"affected", value:"Apple Safari versions prior to 6.0.");
+
+  script_tag(name:"insight", value:"Please see the references for more details about the vulnerabilities.");
+
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.0 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Apple Safari web browser and is prone
   to multiple vulnerabilities.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.apple.com/safari/download/");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
-osName = "";
-osVer = "";
-safVer = "";
-
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+if(!osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
+if(!osVer)
   exit(0);
-}
 
 if("Mac OS X" >< osName)
 {
   if(version_is_equal(version:osVer, test_version:"10.7.4"))
   {
     safVer = get_kb_item("AppleSafari/MacOSX/Version");
-    if(!safVer){
+    if(!safVer)
       exit(0);
-    }
 
-    if(version_is_less(version:safVer, test_version:"6.0")){
+    if(version_is_less(version:safVer, test_version:"6.0")) {
       security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }

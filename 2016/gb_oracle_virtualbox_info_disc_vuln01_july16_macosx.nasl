@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_info_disc_vuln01_july16_macosx.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Oracle Virtualbox Information Disclosure Vulnerability-01 July16 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808261");
-  script_version("$Revision: 11961 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2016-3612");
   script_bugtraq_id(91860);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-07-21 12:24:33 +0530 (Thu, 21 Jul 2016)");
   script_name("Oracle Virtualbox Information Disclosure Vulnerability-01 July16 (Mac OS X)");
 
@@ -66,10 +65,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

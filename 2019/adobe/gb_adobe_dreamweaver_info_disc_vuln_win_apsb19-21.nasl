@@ -23,12 +23,12 @@ CPE = "cpe:/a:adobe:dreamweaver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814964");
-  script_version("2019-05-28T06:39:19+0000");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2019-7097");
   script_bugtraq_id(107825);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-28 06:39:19 +0000 (Tue, 28 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 13:56:56 +0530 (Thu, 11 Apr 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Information Disclosure Vulnerability(APSB19-21)-Windows");
@@ -48,7 +48,6 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Adobe Dreamweaver 19.1 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/dreamweaver/apsb19-21.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
@@ -57,7 +56,6 @@ if(description)
   script_mandatory_keys("Adobe/Dreamweaver/Ver");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49713.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # WordPress Adsense Extreme Plugin 'adsensextreme[lang]' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103264");
-  script_version("$Revision: 13238 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-09-22 13:43:24 +0200 (Thu, 22 Sep 2011)");
   script_bugtraq_id(49713);
   script_tag(name:"cvss_base", value:"7.5");
@@ -45,7 +44,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49713");
   script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/adsense-extreme/");
-  script_xref(name:"URL", value:"http://wordpress.org/");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
 

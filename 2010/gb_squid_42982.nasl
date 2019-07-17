@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_42982.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Squid Proxy String Processing NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100789");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
   script_bugtraq_id(42982);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +44,6 @@ if(description)
   script_mandatory_keys("squid_proxy_server/installed");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42982");
-  script_xref(name:"URL", value:"http://www.squid-cache.org/");
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2010_3.txt");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");

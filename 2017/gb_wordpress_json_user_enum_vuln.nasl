@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_json_user_enum_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # WordPress 'json' User Enumeration Vulnerability
 #
@@ -31,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809892");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-5487");
   script_bugtraq_id(95391);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-03 17:16:53 +0530 (Fri, 03 Mar 2017)");
   script_name("WordPress 'json' User Enumeration Vulnerability");
 
@@ -75,7 +74,6 @@ if(description)
   # This NVT produces to much false positive....
   script_tag(name:"deprecated", value:TRUE);
 
-  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

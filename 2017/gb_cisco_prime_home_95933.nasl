@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_home_95933.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Prime Home Authentication Bypass Vulnerability
 #
@@ -34,12 +33,11 @@ if (description)
   script_cve_id("CVE-2017-3791");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12106 $");
+  script_version("2019-07-05T09:54:18+0000");
 
   script_name("Cisco Prime Home Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95933");
-  script_xref(name:"URL", value:"http://www.cisco.com/");
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-prime-home");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass the authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
@@ -51,7 +49,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-02 16:06:02 +0100 (Thu, 02 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

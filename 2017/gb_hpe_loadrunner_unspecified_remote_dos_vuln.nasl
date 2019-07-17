@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_unspecified_remote_dos_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # HPE LoadRunner Unspecified Remote DoS Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810934");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-4384");
   script_bugtraq_id(93069);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-20 16:22:23 +0530 (Thu, 20 Apr 2017)");
   script_name("HPE LoadRunner Unspecified Remote DoS Vulnerability");
 
@@ -63,10 +62,8 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_loadrunner_detect.nasl");
   script_mandatory_keys("HPE/LoadRunner/Win/Ver");
-  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

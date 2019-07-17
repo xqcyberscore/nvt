@@ -28,14 +28,14 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811956");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2017-13790", "CVE-2017-13789", "CVE-2017-13784", "CVE-2017-13785",
 		"CVE-2017-13783", "CVE-2017-13788", "CVE-2017-13795", "CVE-2017-13802",
 		"CVE-2017-13792", "CVE-2017-13791", "CVE-2017-13798", "CVE-2017-13796",
 		"CVE-2017-13793", "CVE-2017-13794", "CVE-2017-13803");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-11-02 17:19:54 +0530 (Thu, 02 Nov 2017)");
   script_name("Apple Safari Security Updates( HT208223 )");
 
@@ -66,7 +66,6 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version", "ssh/login/osx_name", "ssh/login/osx_version");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

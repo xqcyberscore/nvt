@@ -23,12 +23,12 @@ CPE = "cpe:/a:adobe:indesign_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814965");
-  script_version("2019-05-28T06:39:19+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2019-7107");
   script_bugtraq_id(107821);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-28 06:39:19 +0000 (Tue, 28 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 14:52:03 +0530 (Thu, 11 Apr 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe InDesign Arbitrary Code Execution Vulnerability-APSB19-23 (Windows)");
@@ -50,7 +50,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/indesign/apsb19-23.html");
-  script_xref(name:"URL", value:"https://www.adobe.com/in/products/indesign/free-trial-download.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");

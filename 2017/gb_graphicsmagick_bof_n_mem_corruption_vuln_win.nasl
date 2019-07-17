@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_bof_n_mem_corruption_vuln_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # GraphicsMagick Memory Corruption And Buffer Overflow Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810561");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2016-8682", "CVE-2016-8683", "CVE-2016-8684", "CVE-2016-9830");
   script_bugtraq_id(93779, 93600, 93597, 94625);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 10:39:33 +0530 (Tue, 21 Feb 2017)");
   script_name("GraphicsMagick Memory Corruption And Buffer Overflow Vulnerabilities (Windows)");
 
@@ -80,7 +79,6 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_graphicsmagick_detect_win.nasl");
   script_mandatory_keys("GraphicsMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.graphicsmagick.org");
   exit(0);
 }
 

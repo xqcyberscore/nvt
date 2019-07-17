@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgressql_37334.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PostgreSQL NULL Character CA SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100400");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T10:04:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-12-16 12:39:06 +0100 (Wed, 16 Dec 2009)");
   script_bugtraq_id(37334, 37333);
   script_cve_id("CVE-2009-4034", "CVE-2009-4136");
@@ -46,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37334");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37333");
-  script_xref(name:"URL", value:"http://www.postgresql.org");
   script_xref(name:"URL", value:"http://www.postgresql.org/support/security");
   script_xref(name:"URL", value:"http://www.postgresql.org/about/news.1170");
 

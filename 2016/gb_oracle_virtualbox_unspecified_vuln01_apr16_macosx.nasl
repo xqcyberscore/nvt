@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln01_apr16_macosx.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Oracle Virtualbox Unspecified Vulnerability-01 Apr16 (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807810");
-  script_version("$Revision: 12149 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2016-0678");
   script_tag(name:"cvss_base", value:"4.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-04-25 18:10:27 +0530 (Mon, 25 Apr 2016)");
   script_name("Oracle Virtualbox Unspecified Vulnerability-01 Apr16 (Mac OS X)");
 
@@ -65,10 +64,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

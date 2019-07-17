@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_51713.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba Memory Leak Local Denial Of Service Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103411");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-02-09 10:12:15 +0100 (Thu, 09 Feb 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51713");
   script_xref(name:"URL", value:"http://www.samba.org/samba/security/CVE-2012-0817");
-  script_xref(name:"URL", value:"http://www.samba.org");
 
   script_tag(name:"summary", value:"Samba is prone to a local denial-of-service vulnerability.");
 

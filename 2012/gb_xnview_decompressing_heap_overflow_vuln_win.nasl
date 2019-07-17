@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_decompressing_heap_overflow_vuln_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # XnView Multiple Image Decompression Heap Overflow Vulnerabilities (Windows)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802444");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2012-0276", "CVE-2012-0277", "CVE-2012-0282");
   script_bugtraq_id(54125);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-07-24 15:21:56 +0530 (Tue, 24 Jul 2012)");
   script_name("XnView Multiple Image Decompression Heap Overflow Vulnerabilities (Windows)");
 
@@ -71,10 +70,8 @@ if(description)
   script_xref(name:"URL", value:"http://www.protekresearchlab.com/index.php?option=com_content&view=article&id=48");
   script_xref(name:"URL", value:"http://www.protekresearchlab.com/index.php?option=com_content&view=article&id=49");
   script_xref(name:"URL", value:"http://www.protekresearchlab.com/index.php?option=com_content&view=article&id=50");
-  script_xref(name:"URL", value:"http://www.xnview.com/");
   exit(0);
 }
-
 
 include("version_func.inc");
 

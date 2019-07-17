@@ -1125,16 +1125,16 @@ function policy_win_get_advanced_audit_results(key, default){
 # @brief Returns results variables for multiple reg keys at once
 #
 # @param key Registry key to check
-# @param item_default_array array of items and defaults to check
 # @param type Registry type to check
+# @param item_default_array array of items and defaults to check
 # @param reg_sz If registry value is REG_SZ
 # @param reg_dword If registry value is REG_DWORD
 #
 # @return ret array with value, comment and compliant strings
 #
 function policy_match_multiple_reg_values(key, type, item_default_array, reg_sz, reg_dword){
-  local_var key, item_default_array, type, reg_sz, reg_dword;
-  local_var value, comment, compliant, ret, item, default;
+  local_var key, type, item_default_array, reg_sz, reg_dword;
+  local_var compliant, item, default, value, comment, total_value, ret;
 
   if(!item_default_array || !key || !type){
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_match_multiple_reg_values#-#VALUES");

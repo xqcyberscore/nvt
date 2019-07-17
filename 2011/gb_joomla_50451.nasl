@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_50451.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Joomla! Alameda Component 'storeid' Parameter SQL Injection Vulnerability
 #
@@ -30,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103323");
   script_bugtraq_id(50451);
-  script_version("$Revision: 12010 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -40,9 +39,8 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50451");
   script_xref(name:"URL", value:"http://www.blueflyingfish.com/alameda/");
-  script_xref(name:"URL", value:"http://www.joomla.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);

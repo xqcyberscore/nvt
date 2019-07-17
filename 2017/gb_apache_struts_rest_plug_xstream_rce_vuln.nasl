@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811730");
-  script_version("$Revision: 13994 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-9805");
   script_bugtraq_id(100609);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-07 16:39:09 +0530 (Thu, 07 Sep 2017)");
   script_name("Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability");
   script_category(ACT_ATTACK);
@@ -70,7 +69,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name:"URL", value:"http://struts.apache.org");
 
   exit(0);
 }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_message_script_inject.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # PhpGroupWare Main Screen Message Script Injection Flaw
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:phpgroupware:phpgroupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19754");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14724);
   script_tag(name:"cvss_base", value:"4.3");
@@ -43,7 +42,6 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("phpGroupWare/installed");
 
-  script_xref(name:"URL", value:"http://www.phpgroupware.org/");
 
   script_tag(name:"solution", value:"Update to version 0.9.16.007 or newer.");
   script_tag(name:"summary", value:"The remote host seems to be running PhpGroupWare, is a multi-user groupware

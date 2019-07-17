@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_cve_2003_0132.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache Web Server Linefeed Memory Allocation Denial Of Service
 # Vulnerability
@@ -30,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100171");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,7 +45,6 @@ if(description)
   script_mandatory_keys("apache/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/7254");
-  script_xref(name:"URL", value:"http://httpd.apache.org/");
 
   script_tag(name:"insight", value:"This issue occurs because of the way that Apache handles
   excessive amounts of consecutive linefeed characters.");

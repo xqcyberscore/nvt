@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_info_disclose_nd_rce_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Adobe ColdFusion Remote Code Execution And Information Disclosure Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811696");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-11286", "CVE-2017-11285", "CVE-2017-11283", "CVE-2017-11284");
   script_bugtraq_id(100715, 100711, 100708);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-14 15:04:23 +0530 (Thu, 14 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Remote Code Execution And Information Disclosure Vulnerabilities");
@@ -70,10 +69,8 @@ if(description)
   script_dependencies("gb_coldfusion_detect.nasl");
   script_mandatory_keys("coldfusion/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

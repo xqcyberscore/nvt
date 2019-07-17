@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_url_param_open_redirect_vuln.nasl 13546 2019-02-08 15:41:06Z mmartin $
 #
 # vBulletin 'url' GET Parameter Open Redirect Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812677");
-  script_version("$Revision: 13546 $");
+  script_version("2019-07-05T10:04:07+0000");
   script_cve_id("CVE-2018-6200");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 16:41:06 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-08 12:48:53 +0530 (Thu, 08 Feb 2018)");
   script_name("vBulletin 'url' GET Parameter Open Redirect Vulnerability");
 
@@ -68,7 +67,6 @@ if(description)
   script_mandatory_keys("vBulletin/installed");
   script_require_ports("Services/www", 80);
 
-  script_xref(name:"URL", value:"https://www.vbulletin.com");
   exit(0);
 }
 

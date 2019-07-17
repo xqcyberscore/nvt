@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_premier_dll_loading_local_code_injection_vuln.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Avast Premier DoubleAgent Attack Local Code Injection Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:avast:avast_premier";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810901");
-  script_version("$Revision: 12131 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-5567");
   script_bugtraq_id(97017);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-05 10:13:58 +0530 (Wed, 05 Apr 2017)");
   script_name("Avast Premier DoubleAgent Attack Local Code Injection Vulnerability");
 
@@ -72,7 +71,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_avast_premier_detect.nasl");
   script_mandatory_keys("Avast/Premier/Win/Ver");
-  script_xref(name:"URL", value:"https://www.avast.com");
   exit(0);
 }
 

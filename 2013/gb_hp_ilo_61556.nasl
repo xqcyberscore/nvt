@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_61556.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # HP Integrated Lights-Out Unspecified Authentication Bypass Vulnerability
 #
@@ -32,9 +31,9 @@ if (description)
   script_cve_id("CVE-2013-4805");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_version("$Revision: 12175 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_name("HP Integrated Lights-Out  Unspecified Authentication Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-09-10 14:47:03 +0200 (Tue, 10 Sep 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -44,7 +43,6 @@ if (description)
   script_mandatory_keys("HP_ILO/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61556");
-  script_xref(name:"URL", value:"http://www.hp.com/");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass the authentication mechanism and
 perform unauthorized actions on the affected computer. This may aid in further attacks.");

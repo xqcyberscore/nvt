@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_heartbeat_66690.nasl 13754 2019-02-19 10:35:55Z cfischer $
 #
 # SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability
 #
@@ -28,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103936");
-  script_version("$Revision: 13754 $");
+  script_version("2019-07-05T10:04:07+0000");
   script_bugtraq_id(66690);
   script_cve_id("CVE-2014-0160");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:35:55 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-04-09 09:54:09 +0200 (Wed, 09 Apr 2014)");
   script_name("SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -44,7 +43,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20140407.txt");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66690");
-  script_xref(name:"URL", value:"http://openssl.org/");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to gain access to sensitive
   information that may aid in further attacks.");

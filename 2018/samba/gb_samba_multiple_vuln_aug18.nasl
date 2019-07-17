@@ -28,11 +28,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813783");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2018-10918", "CVE-2018-1139");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-17 13:10:38 +0530 (Fri, 17 Aug 2018)");
   script_name("Samba Multiple Vulnerabilities - Aug18");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.samba.org/samba/security/CVE-2018-1139.html");
   script_xref(name:"URL", value:"https://www.samba.org/samba/history/samba-4.7.9.html");
   script_xref(name:"URL", value:"https://www.samba.org/samba/history/samba-4.8.4.html");
-  script_xref(name:"URL", value:"https://www.samba.org");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_94281_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108062");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2016-9299");
   script_bugtraq_id(94281);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-30 13:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -67,8 +66,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

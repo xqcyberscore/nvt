@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804433");
-  script_version("$Revision: 11867 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2014-2441");
   script_bugtraq_id(66868);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-04-18 12:39:26 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Windows)");
 
@@ -61,10 +60,8 @@ and 4.3.x before 4.3.10 on Windows");
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
   script_mandatory_keys("Oracle/VirtualBox/Win/Ver");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

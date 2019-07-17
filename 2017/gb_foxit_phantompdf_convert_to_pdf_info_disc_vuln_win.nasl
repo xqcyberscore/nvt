@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_convert_to_pdf_info_disc_vuln_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Foxit PhantomPDF 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809874");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2017-5556");
   script_bugtraq_id(95353);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-24 12:33:27 +0530 (Tue, 24 Jan 2017)");
   script_name("Foxit PhantomPDF 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)");
 
@@ -65,10 +64,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
   script_mandatory_keys("foxit/phantompdf/ver");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

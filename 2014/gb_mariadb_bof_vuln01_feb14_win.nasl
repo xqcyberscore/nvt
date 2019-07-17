@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804083");
-  script_version("$Revision: 11974 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2014-0001");
   script_bugtraq_id(65298);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-02-03 18:02:51 +0530 (Mon, 03 Feb 2014)");
   script_name("MariaDB Client Version Handling Remote Buffer Overflow Vulnerability (Windows)");
-
 
   script_tag(name:"summary", value:"This host is installed with MariaDB Client and is prone to remote buffer
 overflow vulnerability.");
@@ -57,7 +56,6 @@ cause a DoS (Denial of Service).");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
 

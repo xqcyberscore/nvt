@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_wcm_64496.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # IBM Web Content Manager 'LIBRARY' Parameter XPath Injection Vulnerability
 #
@@ -32,16 +31,15 @@ if (description)
   script_cve_id("CVE-2013-6735");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11867 $");
+  script_version("2019-07-05T09:54:18+0000");
 
   script_name("IBM Web Content Manager 'LIBRARY' Parameter XPath Injection Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64496");
-  script_xref(name:"URL", value:"http://www.ibm.com/");
   script_xref(name:"URL", value:"http://www-306.ibm.com/software/websphere/portal/");
   script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20131227-0_IBM_WCM_XPath_Injection_v10.txt");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-01-15 16:11:31 +0100 (Wed, 15 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");

@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809027");
-  script_version("$Revision: 11961 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2016-4264");
   script_bugtraq_id(92684);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-01 11:45:09 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion 'XML External Entity' Information Disclosure Vulnerability");
@@ -66,10 +66,8 @@ if(description)
   script_dependencies("gb_coldfusion_detect.nasl");
   script_mandatory_keys("coldfusion/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

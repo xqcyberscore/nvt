@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_problem_report_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Struts 'Problem Report' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812011");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-5169");
   script_bugtraq_id(76625);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-10-06 17:52:42 +0530 (Fri, 06 Oct 2017)");
   ## Apache Struts contains a cross-site scripting vulnerability when devMode is left turned on
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -66,10 +65,8 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl");
   script_mandatory_keys("ApacheStruts/installed");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -83,7 +80,7 @@ if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }
 
-if(appVer =~ "^(2\.)")
+if(appVer =~ "^2\.")
 {
   if(version_in_range(version:appVer, test_version:"2.0", test_version2:"2.3.16.3"))
   {

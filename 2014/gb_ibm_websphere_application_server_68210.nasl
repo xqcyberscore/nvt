@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_68210.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability
 #
@@ -34,9 +33,9 @@ if(description)
   script_cve_id("CVE-2014-0965", "CVE-2014-3022");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 13803 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_name("IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-08-21 11:58:12 +0200 (Thu, 21 Aug 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -46,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/68210");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/68211");
-  script_xref(name:"URL", value:"http://www.ibm.com");
   script_xref(name:"URL", value:"http://www-4.ibm.com/software/webservers/appserv/");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that

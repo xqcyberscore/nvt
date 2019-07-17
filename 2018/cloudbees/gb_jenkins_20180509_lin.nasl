@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180509_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112297");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2018-1000192", "CVE-2018-1000193", "CVE-2018-1000194", "CVE-2018-1000195");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-07 11:35:00 +0200 (Thu, 07 Jun 2018)");
   script_name("Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -69,8 +68,6 @@ Jenkins submit a HTTP GET request to an arbitrary URL and learn whether the resp
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
-  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

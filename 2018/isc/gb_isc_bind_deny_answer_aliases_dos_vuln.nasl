@@ -28,11 +28,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813750");
-  script_version("2019-05-17T11:35:17+0000");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2018-5740");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 11:35:17 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-10 12:14:44 +0530 (Fri, 10 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND 'deny-answer-aliases' Denial of Service Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01644/81/BIND-9.11.4-P1-Release-Notes.html");
   script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01643/81/BIND-9.10.8-P1-Release-Notes.html");
   script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01642/81/BIND-9.9.13-P1-Release-Notes.html");
-  script_xref(name:"URL", value:"https://www.isc.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Denial of Service");

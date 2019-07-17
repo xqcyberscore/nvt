@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_mem_corrup_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # VMware Workstation Memory Corruption Vulnerability-VMSA-2017-0005 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811265");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-4901");
   script_bugtraq_id(96881);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-01 17:03:57 +0530 (Tue, 01 Aug 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation Memory Corruption Vulnerability-VMSA-2017-0005 (Windows)");
@@ -65,10 +64,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
   script_mandatory_keys("VMware/Workstation/Installed");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

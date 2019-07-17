@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln03_nov16.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-03 November-2016
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810222");
-  script_version("$Revision: 14304 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2014-1314", "CVE-2013-5170", "CVE-2014-1296", "CVE-2014-1318",
                 "CVE-2013-4164", "CVE-2014-1295");
   script_bugtraq_id(63873, 63330, 67024, 67029, 67029, 63873, 67025);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-17 22:43:28 -0800 (Thu, 17 Nov 2016)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-03 November-2016");
 
@@ -86,7 +85,6 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.8\.");
-  script_xref(name:"URL", value:"https://www.apple.com");
 
   exit(0);
 }

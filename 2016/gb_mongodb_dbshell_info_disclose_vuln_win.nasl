@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_dbshell_info_disclose_vuln_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # MongoDB Client 'dbshell' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809351");
-  script_version("$Revision: 11811 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2016-6494");
   script_bugtraq_id(92204);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-10-13 15:38:52 +0530 (Thu, 13 Oct 2016)");
   script_name("MongoDB Client 'dbshell' Information Disclosure Vulnerability (Windows)");
 
@@ -67,10 +66,8 @@ if(description)
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/mongodb", 27017);
   script_mandatory_keys("mongodb/installed", "Host/runs_windows");
-  script_xref(name:"URL", value:"http://www.mongodb.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

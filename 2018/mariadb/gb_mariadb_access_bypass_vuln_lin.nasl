@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_access_bypass_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MariaDB Access Bypass Vulnerability (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112198");
-  script_version("$Revision: 12116 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-15365");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-30 09:22:39 +0100 (Tue, 30 Jan 2018)");
   script_name("MariaDB Access Bypass Vulnerability (Linux)");
 
@@ -66,7 +65,6 @@ to perform database modification on certain cluster nodes without having privile
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_mandatory_keys("MariaDB/installed", "Host/runs_unixoide");
   script_require_ports("Services/mysql", 3306);
-  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
 

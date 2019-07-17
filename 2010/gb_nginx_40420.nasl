@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_40420.nasl 13859 2019-02-26 05:27:33Z ckuersteiner $
 #
 # nginx Directory Traversal Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100659");
-  script_version("$Revision: 13859 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 06:27:33 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-05-31 18:31:53 +0200 (Mon, 31 May 2010)");
   script_bugtraq_id(40420);
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +38,6 @@ if(description)
   script_name("nginx Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40420");
-  script_xref(name:"URL", value:"http://nginx.org/");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");

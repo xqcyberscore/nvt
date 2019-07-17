@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_server_rce_n_dos_vuln.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple OS X Server Denial of Service And RCE Vulnerabilities (HT208102)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811791");
-  script_version("$Revision: 12391 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-10978", "CVE-2017-10979");
   script_bugtraq_id(99901, 99893);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-26 13:29:15 +0530 (Tue, 26 Sep 2017)");
   script_name("Apple OS X Server Denial of Service And RCE Vulnerabilities (HT208102)");
 
@@ -63,7 +62,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_macosx_server_detect.nasl");
   script_mandatory_keys("Apple/OSX/Server/Version");
-  script_xref(name:"URL", value:"http://www.apple.com");
   exit(0);
 }
 

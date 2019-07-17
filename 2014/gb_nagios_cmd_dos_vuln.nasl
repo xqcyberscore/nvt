@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_cmd_dos_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Nagios cmd.cgi Denial Of Service Vulnerability
 #
@@ -23,20 +22,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:nagios:nagios";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804248");
-  script_version("$Revision: 11867 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2014-1878");
   script_bugtraq_id(65605);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-03-18 12:05:18 +0530 (Tue, 18 Mar 2014)");
   script_name("Nagios cmd.cgi Denial Of Service Vulnerability");
-
 
   script_tag(name:"summary", value:"This host is running Nagios and is prone to denial of service vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
@@ -57,10 +56,8 @@ or cause denial of service condition.");
   script_dependencies("nagios_detect.nasl");
   script_mandatory_keys("nagios/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.nagios.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

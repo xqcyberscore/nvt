@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_bigfix_web_reports_94155.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # IBM BigFix Platform  Remote Command Injection Vulnerability
 #
@@ -34,12 +33,11 @@ if (description)
   script_cve_id("CVE-2016-0396");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12096 $");
+  script_version("2019-07-05T09:54:18+0000");
 
   script_name("IBM BigFix Platform  Remote Command Injection Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/94155");
-  script_xref(name:"URL", value:"http://www.ibm.com/");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21993206");
 
   script_tag(name:"impact", value:"Remote attackers can exploit this issue to execute arbitrary commands within the context of the application.");
@@ -50,7 +48,7 @@ if (description)
 
   script_tag(name:"qod", value:"50"); # There are Workarounds and Mitigations. Relying on the version would result in FPs...
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-21 10:40:03 +0100 (Mon, 21 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

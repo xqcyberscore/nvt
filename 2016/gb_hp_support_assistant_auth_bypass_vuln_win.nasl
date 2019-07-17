@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_support_assistant_auth_bypass_vuln_win.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # HP Support Assistant Authentication Bypass Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:hp:support_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807805");
-  script_version("$Revision: 11938 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2016-2245");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-04-20 17:05:22 +0530 (Wed, 20 Apr 2016)");
   script_name("HP Support Assistant Authentication Bypass Vulnerability (Windows)");
 
@@ -65,7 +64,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_hp_support_assistant_detect.nasl");
   script_mandatory_keys("HP/Support/Assistant/Win/Ver");
-  script_xref(name:"URL", value:"http://www8.hp.com/in/en/campaigns/hpsupportassistant/hpsupport.html");
   exit(0);
 }
 

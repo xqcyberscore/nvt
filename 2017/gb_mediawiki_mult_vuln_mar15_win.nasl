@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_mar15_win.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # MediaWiki Multiple Vulnerabilities - Mar15 (Windows)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108113");
-  script_version("$Revision: 11935 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-2931", "CVE-2015-2932", "CVE-2015-2933", "CVE-2015-2934",
                 "CVE-2015-2935", "CVE-2015-2936", "CVE-2015-2937", "CVE-2015-2938",
                 "CVE-2015-2941", "CVE-2015-2942");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-29 07:49:40 +0200 (Wed, 29 Mar 2017)");
   script_name("MediaWiki Multiple Vulnerabilities - Mar15 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +45,6 @@ if(description)
   script_mandatory_keys("mediawiki/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://lists.wikimedia.org/pipermail/mediawiki-announce/2015-March/000175.html");
-  script_xref(name:"URL", value:"http://www.mediawiki.org");
 
   script_tag(name:"summary", value:"This host is installed with MediaWiki
   and is prone to multiple vulnerabilities.");

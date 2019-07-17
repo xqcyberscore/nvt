@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sep_multiple_vuln_mar16.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities - Mar16
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806691");
-  script_version("$Revision: 11837 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2015-8154", "CVE-2015-8153", "CVE-2015-8152");
   script_tag(name:"cvss_base", value:"8.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:51 +0530 (Wed, 06 Apr 2016)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities - Mar16");
 
@@ -69,7 +68,6 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
-  script_xref(name:"URL", value:"http://www.symantec.com/en/in/endpoint-protection");
   exit(0);
 }
 

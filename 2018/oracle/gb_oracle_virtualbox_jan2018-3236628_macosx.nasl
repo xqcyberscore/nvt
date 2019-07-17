@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_jan2018-3236628_macosx.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Oracle VirtualBox Security Updates (jan2018-3236628) - MAC OS X
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812643");
-  script_version("$Revision: 12045 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2018-2688", "CVE-2018-2689", "CVE-2018-2676", "CVE-2018-2698",
                 "CVE-2018-2694", "CVE-2018-2693", "CVE-2018-2685", "CVE-2018-2686",
                 "CVE-2018-2687", "CVE-2018-2690", "CVE-2017-5715", "CVE-2017-3735");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-17 13:17:22 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle VirtualBox Security Updates (jan2018-3236628) - MAC OS X");
 
@@ -68,7 +67,6 @@ if(description)
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 
@@ -79,7 +77,7 @@ if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0)
 virtualVer = infos['version'];
 path = infos['location'];
 
-if(virtualVer =~ "^(5\.2)" && (version_is_less(version:virtualVer, test_version:"5.2.6"))){
+if(virtualVer =~ "^5\.2" && (version_is_less(version:virtualVer, test_version:"5.2.6"))){
   fix = "5.2.6";
 }
 

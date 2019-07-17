@@ -28,11 +28,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814522");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2018-12116");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-29 13:55:51 +0530 (Thu, 29 Nov 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Node.js 'HTTP' Splitting Privilege Escalareion Vulnerability-(Mac OS X)");
@@ -59,7 +59,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://nodejs.org/en/blog/vulnerability/november-2018-security-releases");
-  script_xref(name:"URL", value:"https://nodejs.org");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -68,7 +67,6 @@ if(description)
   script_mandatory_keys("Nodejs/MacOSX/Ver");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -28,13 +28,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812631");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-16T15:57:25+0000");
   script_cve_id("CVE-2017-17997");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-16 15:57:25 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-16 13:14:37 +0530 (Tue, 16 Jan 2018)");
-  script_name("Wireshark Security Updates (wnpa-sec-2018-02) MACOSX");
+  script_name("Wireshark Security Updates (wnpa-sec-2018-02) - Mac OS X");
 
   script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to a denial-of-service vulnerability.");
@@ -48,7 +48,7 @@ if(description)
   will allow remote attackers to make Wireshark crash.");
 
   script_tag(name:"affected", value:"Wireshark version 2.2.0 to 2.2.11 on
-  Macosx.");
+  Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.2.12 or
   later.");
@@ -64,20 +64,19 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-wirversion = "";
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
-wirversion = infos['version'];
+vers = infos['version'];
 path = infos['location'];
 
-if(version_in_range(version:wirversion, test_version:"2.2.0", test_version2:"2.2.11"))
-{
-  report = report_fixed_ver(installed_version:wirversion, fixed_version:"2.2.12", install_path:path);
+if(version_in_range(version:vers, test_version:"2.2.0", test_version2:"2.2.11")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"2.2.12", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

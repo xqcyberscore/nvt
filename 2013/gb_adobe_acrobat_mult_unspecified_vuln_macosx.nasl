@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_unspecified_vuln_macosx.nasl 11905 2018-10-15 12:43:50Z cfischer $
 #
 # Adobe Acrobat Multiple Unspecified Vulnerabilities - Mac OS X
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803804");
-  script_version("$Revision: 11905 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2012-4363");
   script_bugtraq_id(55055);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 14:43:50 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-08-24 16:05:37 +0530 (Fri, 24 Aug 2012)");
   script_name("Adobe Acrobat Multiple Unspecified Vulnerabilities - Mac OS X");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50290");
@@ -58,7 +57,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

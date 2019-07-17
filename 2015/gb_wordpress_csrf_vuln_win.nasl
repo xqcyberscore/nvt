@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_vuln_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)
 #
@@ -23,15 +22,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805946");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-08-07 11:29:02 +0530 (Fri, 07 Aug 2015)");
   script_name("WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

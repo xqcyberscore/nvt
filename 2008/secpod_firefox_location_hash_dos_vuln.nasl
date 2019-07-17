@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_location_hash_dos_vuln.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Mozilla Firefox location.hash Remote DoS Vulnerability
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900068");
-  script_version("$Revision: 12623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,18 +53,15 @@ if(description)
   script_tag(name:"affected", value:"Mozilla, Firefox version 3.0 through 3.0.13 and 3.5.x");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox browser and is prone
-  to denial of service vulnerability.
+  to denial of service vulnerability.");
 
-  Vulnerability:
-  The flaw is due to improper way of handling input passed to
+  script_tag(name:"insight", value:"The flaw is due to improper way of handling input passed to
   location.hash.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.mozilla.org/");
   exit(0);
 }
-
 
 include("version_func.inc");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_38562.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL 'bn_wexpend()' Error Handling Unspecified Vulnerability
 #
@@ -30,17 +29,16 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100527");
   script_tag(name:"creation_date", value:"2010-03-15 13:03:19 +0100 (Mon, 15 Mar 2010)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_bugtraq_id(38562);
   script_cve_id("CVE-2009-3245");
-  script_version("$Revision: 13898 $");
+  script_version("2019-07-05T10:04:07+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_name("OpenSSL 'bn_wexpend()' Error Handling Unspecified Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38562");
-  script_xref(name:"URL", value:"http://openssl.org/");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

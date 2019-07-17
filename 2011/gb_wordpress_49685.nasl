@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49685.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # WordPress AllWebMenus Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103287");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-10-06 13:32:57 +0200 (Thu, 06 Oct 2011)");
   script_bugtraq_id(49685);
   script_cve_id("CVE-2011-3981");
@@ -40,7 +39,6 @@ if (description)
   script_name("WordPress AllWebMenus Plugin 'abspath' Parameter Remote File Include Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49685");
-  script_xref(name:"URL", value:"http://wordpress.org/");
 
   script_category(ACT_ATTACK);
   script_family("Web application abuses");

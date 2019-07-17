@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_dos_vuln_may17_lin.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # MongoDB Denial of Service Vulnerability - May17 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811058");
-  script_version("$Revision: 14175 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2016-3104");
   script_bugtraq_id(94929);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-29 14:40:50 +0530 (Mon, 29 May 2017)");
   script_name("MongoDB Denial of Service Vulnerability - May17 (Linux)");
 
@@ -66,10 +65,8 @@ if(description)
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/mongodb", 27017);
   script_mandatory_keys("mongodb/installed", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"http://www.mongodb.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

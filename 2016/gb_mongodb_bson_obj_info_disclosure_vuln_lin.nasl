@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_obj_info_disclosure_vuln_lin.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # MongoDB BSON Object Information Disclosure Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808148");
-  script_version("$Revision: 11938 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2012-6619");
   script_bugtraq_id(64687);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-07 10:46:58 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB BSON Object Information Disclosure Vulnerability (Linux)");
 
@@ -62,10 +61,8 @@ if (description)
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/mongodb", 27017);
   script_mandatory_keys("mongodb/installed", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"http://www.mongodb.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

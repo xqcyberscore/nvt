@@ -28,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813910");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2018-14028");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-13 12:43:12 +0530 (Mon, 13 Aug 2018)");
 
   script_name("Wordpress PHP File Upload Vulnerability August 18 (Windows)");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name:"URL", value:"https://rastating.github.io/unrestricted-file-upload-via-plugin-uploader-in-wordpress");
   script_xref(name:"URL", value:"https://core.trac.wordpress.org/ticket/44710");
   script_xref(name:"URL", value:"https://github.com/rastating/wordpress-exploit-framework/pull/52");
-  script_xref(name:"URL", value:"https://wordpress.org");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

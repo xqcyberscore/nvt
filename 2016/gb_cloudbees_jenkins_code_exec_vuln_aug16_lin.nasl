@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_code_exec_vuln_aug16_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # CloudBees Jenkins Remote Code Execution Vulnerability August16 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808266");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2014-3665");
   script_bugtraq_id(77573);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-08-05 09:47:29 +0530 (Fri, 05 Aug 2016)");
   script_name("CloudBees Jenkins Remote Code Execution Vulnerability August16 (Linux)");
 
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

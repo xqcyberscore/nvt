@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_remote_code_exec_n_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # HPE LoadRunner Multiple Remote Code Execution and Denial of Service Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810935");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-4359", "CVE-2016-4360", "CVE-2016-4361");
   script_bugtraq_id(90975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-20 16:22:23 +0530 (Thu, 20 Apr 2017)");
   script_name("HPE LoadRunner Multiple Remote Code Execution and Denial of Service Vulnerabilities");
 
@@ -77,7 +76,6 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_loadrunner_detect.nasl");
   script_mandatory_keys("HPE/LoadRunner/Win/Ver");
-  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

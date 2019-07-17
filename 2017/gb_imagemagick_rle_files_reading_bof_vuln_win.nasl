@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_rle_files_reading_bof_vuln_win.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # ImageMagick 'coders/rle.c' Remote Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810272");
-  script_version("$Revision: 11962 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-10049");
   script_bugtraq_id(95180);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-13 15:10:00 +0530 (Fri, 13 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 'coders/rle.c' Remote Buffer Overflow Vulnerability (Windows)");
@@ -66,10 +65,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

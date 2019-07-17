@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_55269.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # HP SiteScope Multiple Security Bypass Vulnerabilities
 #
@@ -35,14 +34,13 @@ if(description)
   script_bugtraq_id(55269, 55273);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13659 $");
+  script_version("2019-07-05T10:41:31+0000");
 
   script_name("HP SiteScope Multiple Security Bypass Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55269");
-  script_xref(name:"URL", value:"http://www.hp.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-09-07 17:11:57 +0200 (Fri, 07 Sep 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");

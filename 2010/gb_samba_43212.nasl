@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_43212.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba SID Parsing Remote Buffer Overflow Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100803");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-09-15 16:23:15 +0200 (Wed, 15 Sep 2010)");
   script_bugtraq_id(43212);
   script_tag(name:"cvss_base", value:"7.5");
@@ -45,7 +44,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/43212");
   script_xref(name:"URL", value:"http://us1.samba.org/samba/history/samba-3.5.5.html");
-  script_xref(name:"URL", value:"http://www.samba.org");
   script_xref(name:"URL", value:"http://us1.samba.org/samba/security/CVE-2010-2069.html");
 
   script_tag(name:"summary", value:"Samba is prone to a remote stack-based buffer-overflow vulnerability

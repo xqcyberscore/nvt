@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_mar17_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # ImageMagick Denial of Service Vulnerability Mar17 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810580");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-9559");
   script_bugtraq_id(94489);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-09 12:18:46 +0530 (Thu, 09 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Denial of Service Vulnerability Mar17 (Windows)");
@@ -65,10 +64,8 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln_jan17_macosx.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities Jan17 (Mac OS X)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810502");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-10053", "CVE-2016-10054", "CVE-2016-10055", "CVE-2016-10056",
                 "CVE-2016-10057");
   script_bugtraq_id(95179, 95191, 95193, 95190, 95192);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-17 15:28:04 +0530 (Tue, 17 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick Multiple Denial of Service Vulnerabilities Jan17 (Mac OS X)");
@@ -68,10 +67,8 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_imagemagick_detect_macosx.nasl");
   script_mandatory_keys("ImageMagick/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

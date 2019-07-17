@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_hp_printers.nasl 7158 2017-09-18 06:38:57Z cfischer $
 #
 # Unprotected HP Printer
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103676");
-  script_version("$Revision: 7158 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 08:38:57 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-03-08 11:51:27 +0100 (Fri, 08 Mar 2013)");
   script_name("Unprotected HP Printer");
   script_category(ACT_ATTACK);
@@ -40,8 +39,6 @@ if(description)
   script_dependencies("gb_hp_printer_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("hp_printer/installed");
-
-  script_xref(name:"URL", value:"http://www.hp.com");
 
   script_tag(name:"summary", value:"The remote HP Printer is not protected by a password.");
 

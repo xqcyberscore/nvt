@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_dos_vuln_mar17.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # NTP Multiple Denial-of-Service Vulnerabilities -Mar17
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810678");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-6464", "CVE-2017-6462", "CVE-2017-6463", "CVE-2017-6455",
                 "CVE-2017-6452", "CVE-2017-6459", "CVE-2017-6458", "CVE-2017-6451",
                 "CVE-2017-6460", "CVE-2016-9042");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-23 11:35:22 +0530 (Thu, 23 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP Multiple Denial-of-Service Vulnerabilities -Mar17");
@@ -110,7 +109,6 @@ if(description)
   script_dependencies("ntp_open.nasl");
   script_mandatory_keys("NTP/Running", "NTP/Linux/Ver");
   script_require_udp_ports(123);
-  script_xref(name:"URL", value:"http://www.ntp.org");
   exit(0);
 }
 

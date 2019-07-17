@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_authorization_service_dos_vuln_win.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # VMware Authorization Service Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801027");
-  script_version("$Revision: 12629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-07-05T09:29:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-10-22 15:34:45 +0200 (Thu, 22 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -58,10 +57,8 @@ Upgrade VMware Workstation to 6.5.4 build 246459 or later.");
 to Denial of Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
-
 
 include("version_func.inc");
 

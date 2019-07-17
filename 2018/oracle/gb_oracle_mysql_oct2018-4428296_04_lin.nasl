@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814263");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2018-3144", "CVE-2018-3155", "CVE-2018-3171", "CVE-2018-3173",
                 "CVE-2018-3277", "CVE-2018-3284", "CVE-2018-3283", "CVE-2018-3185",
                 "CVE-2018-3187", "CVE-2018-3200", "CVE-2018-3162", "CVE-2018-3161");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-17 11:13:07 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle Mysql Security Updates-04 (oct2018-4428296) Linux");
 
@@ -70,7 +70,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_xref(name:"URL", value:"https://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html");
-  script_xref(name:"URL", value:"https://www.oracle.com");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

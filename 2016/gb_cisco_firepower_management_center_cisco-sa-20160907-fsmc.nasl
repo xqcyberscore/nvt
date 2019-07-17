@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsmc.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Cisco Firepower Management Center Session Fixation Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6394");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 12363 $");
+  script_version("2019-07-05T09:29:25+0000");
 
   script_name("Cisco Firepower Management Center Session Fixation Vulnerability");
 
@@ -59,14 +58,13 @@ user's browser session.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-08 10:11:15 +0700 (Thu, 08 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_firepower_management_center_version.nasl");
   script_mandatory_keys("cisco_firepower_management_center/version");
-  script_xref(name:"URL", value:"http://www.cisco.com");
   exit(0);
 }
 

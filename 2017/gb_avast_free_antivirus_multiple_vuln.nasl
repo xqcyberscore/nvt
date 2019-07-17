@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_free_antivirus_multiple_vuln.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Avast Free Antivirus Multiple Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:avast:avast_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811020");
-  script_version("$Revision: 11923 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-8308", "CVE-2017-8307");
   script_bugtraq_id(98084, 98086);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-05 12:59:15 +0530 (Fri, 05 May 2017)");
   script_name("Avast Free Antivirus Multiple Vulnerabilities");
 
@@ -66,10 +65,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_avast_av_detect_win.nasl");
   script_mandatory_keys("Avast!/AV/Win/Ver");
-  script_xref(name:"URL", value:"https://www.avast.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

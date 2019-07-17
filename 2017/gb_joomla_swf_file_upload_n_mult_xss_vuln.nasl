@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_swf_file_upload_n_mult_xss_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Joomla! 'swf' File Upload And Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811041");
-  script_version("$Revision: 11816 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-7989", "CVE-2017-7987", "CVE-2017-7984");
   script_bugtraq_id(98029, 98021, 98018);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-15 13:21:09 +0530 (Mon, 15 May 2017)");
   script_name("Joomla! 'swf' File Upload And Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -73,7 +72,6 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

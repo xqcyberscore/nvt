@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_nov14_lin.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804950");
-  script_version("$Revision: 11867 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2014-6540");
   script_bugtraq_id(70493);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-11-03 11:58:04 +0530 (Mon, 03 Nov 2014)");
   script_name("Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Linux)");
 
@@ -66,10 +65,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

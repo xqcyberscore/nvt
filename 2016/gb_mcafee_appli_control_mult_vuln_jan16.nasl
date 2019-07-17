@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_appli_control_mult_vuln_jan16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # McAfee Application Control Multiple Vulnerabilities Jan16 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mcafee:application_control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806980");
-  script_version("$Revision: 11961 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2016-1715");
   script_bugtraq_id(80167);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-20 15:17:03 +0530 (Wed, 20 Jan 2016)");
   script_name("McAfee Application Control Multiple Vulnerabilities Jan16 (Windows)");
 
@@ -71,7 +70,6 @@ if(description)
   script_dependencies("gb_mcafee_application_control_detect.nasl");
   script_mandatory_keys("McAfee/Application/Control/Win/Installed");
 
-  script_xref(name:"URL", value:"http://www.mcafee.com/in/products/application-control.aspx");
   exit(0);
 }
 

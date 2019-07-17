@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_axis2_40976.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache Axis2 Document Type Declaration Processing Security Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100814");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
 
   script_tag(name:"cvss_base", value:"7.5");
@@ -64,7 +63,6 @@ if (description)
   script_xref(name:"URL", value:"http://ws.apache.org/axis2/");
   script_xref(name:"URL", value:"http://geronimo.apache.org/2010/07/21/apache-geronimo-v216-released.html");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg27019456");
-  script_xref(name:"URL", value:"http://www.ibm.com");
   script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/AXIS2-4450");
   script_xref(name:"URL", value:"https://svn.apache.org/repos/asf/axis/axis2/java/core/security/CVE-2010-1632.pdf");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg24027020");

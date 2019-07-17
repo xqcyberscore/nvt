@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_may16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities May16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807575");
-  script_version("$Revision: 11969 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2016-4084", "CVE-2016-4083", "CVE-2016-4077", "CVE-2016-4076");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-03 11:09:01 +0530 (Tue, 03 May 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities May16 (Windows)");
 
@@ -78,7 +77,6 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
-  script_xref(name:"URL", value:"https://www.wireshark.org");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_http2_dos_vuln_lin.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Apache HTTP Server 'mod_http2' Denial-Of-Service Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811239");
-  script_version("$Revision: 14175 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-9789");
   script_bugtraq_id(99568);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-17 18:25:12 +0530 (Mon, 17 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_http2' Denial-Of-Service Vulnerability (Linux)");
@@ -68,10 +67,8 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://httpd.apache.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -28,11 +28,11 @@ CPE = "cpe:/a:adobe:illustrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813497");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2007-2244", "CVE-2007-2365");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 16:25:37 +0530 (Thu, 12 Jul 2018)");
   script_tag(name:"qod", value:"30"); ## Solution is Mitigation
   script_name("Adobe Illustrator Multiple Buffer Overflow Vulnerabilities-Mac OS X (apsb07-16)");
@@ -56,7 +56,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://www.adobe.com/support/security/bulletins/apsb07-16.html");
-  script_xref(name:"URL", value:"https://www.adobe.com");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

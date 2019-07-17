@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squid_dos.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Squid Denial-of-Service Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10768");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3354);
   script_cve_id("CVE-2001-0843");
@@ -45,7 +44,6 @@ if(description)
   script_require_ports("Services/http_proxy", 3128, "Services/www", 8080);
   script_mandatory_keys("squid_proxy_server/installed");
 
-  script_xref(name:"URL", value:"http://www.squid-cache.org");
 
   script_tag(name:"summary", value:"A problem exists in the way the remote Squid proxy server handles a
   special 'mkdir-only' PUT request, and causes denial of service to the proxy server.");

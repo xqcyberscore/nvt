@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_remote_pw_reset.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Pre-Auth Remote Password Reset Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108140");
-  script_version("$Revision: 12818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-18 08:00:00 +0200 (Tue, 18 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -64,8 +63,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
-
-  script_xref(name:"URL", value:"https://mantisbt.org");
   exit(0);
 }
 

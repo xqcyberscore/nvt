@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_jan16_macosx.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Adobe Acrobat Multiple Vulnerabilities - 01 January16 (Mac OS X)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806819");
-  script_version("$Revision: 11811 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2016-0931", "CVE-2016-0932", "CVE-2016-0933", "CVE-2016-0934",
                 "CVE-2016-0935", "CVE-2016-0936", "CVE-2016-0937", "CVE-2016-0938",
                 "CVE-2016-0939", "CVE-2016-0940", "CVE-2016-0941", "CVE-2016-0942",
@@ -37,7 +36,7 @@ if(description)
                 "CVE-2016-0947", "CVE-2016-1111");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-18 13:37:18 +0530 (Mon, 18 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 January16 (Mac OS X)");
@@ -80,10 +79,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Acrobat/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

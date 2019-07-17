@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812889");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2018-4946");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-15 12:03:17 +0530 (Tue, 15 May 2018)");
   script_name("Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Windows)");
 
@@ -59,7 +59,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/photoshop/apsb18-17.html");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/photoshop.html");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

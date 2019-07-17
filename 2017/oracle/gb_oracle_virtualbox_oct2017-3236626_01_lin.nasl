@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_oct2017-3236626_01_lin.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Oracle VirtualBox Security Updates (oct2017-3236626) 01 - Linux
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811981");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-10407", "CVE-2017-3733", "CVE-2017-10428", "CVE-2017-10392",
 		"CVE-2017-10408");
   script_bugtraq_id(101370, 96269, 101362, 101368, 101371);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-10-18 12:48:47 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle VirtualBox Security Updates (oct2017-3236626) 01 - Linux");
 
@@ -63,10 +62,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

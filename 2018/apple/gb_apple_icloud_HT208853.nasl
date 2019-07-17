@@ -22,19 +22,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:apple:icloud";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813514");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2018-4224", "CVE-2018-4225", "CVE-2018-4226", "CVE-2018-4232",
                 "CVE-2018-4192", "CVE-2018-4214", "CVE-2018-4204", "CVE-2018-4246",
                 "CVE-2018-4200", "CVE-2018-4201", "CVE-2018-4218", "CVE-2018-4233",
                 "CVE-2018-4188", "CVE-2018-4190", "CVE-2018-4199", "CVE-2018-4222");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-06 11:24:10 +0530 (Wed, 06 Jun 2018)");
   script_name("Apple iCloud Security Updates(HT208853)");
 
@@ -77,7 +78,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208853");
-  script_xref(name:"URL", value:"http://www.apple.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

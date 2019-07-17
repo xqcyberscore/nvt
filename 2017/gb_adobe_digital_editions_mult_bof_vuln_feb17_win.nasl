@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_bof_vuln_feb17_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Adobe Digital Editions Multiple Buffer Overflow Vulnerabilities Feb17 (Windows)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810600");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-2973", "CVE-2017-2974", "CVE-2017-2975", "CVE-2017-2976",
                 "CVE-2017-2977", "CVE-2017-2978", "CVE-2017-2979", "CVE-2017-2980",
                 "CVE-2017-2981");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-15 09:31:47 +0530 (Wed, 15 Feb 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Digital Editions Multiple Buffer Overflow Vulnerabilities Feb17 (Windows)");
@@ -70,7 +69,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_win.nasl");
   script_mandatory_keys("AdobeDigitalEdition/Win/Ver");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

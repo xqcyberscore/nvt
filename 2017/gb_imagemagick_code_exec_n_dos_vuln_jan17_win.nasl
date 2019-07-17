@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_code_exec_n_dos_vuln_jan17_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # ImageMagick Code Execution And Denial of Service Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810515");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-7101", "CVE-2016-6823");
   script_bugtraq_id(93181, 93158);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-23 18:09:22 +0530 (Mon, 23 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Code Execution And Denial of Service Vulnerabilities (Windows)");
@@ -71,10 +70,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

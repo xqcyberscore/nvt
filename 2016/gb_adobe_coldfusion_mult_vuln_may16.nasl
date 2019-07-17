@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807588");
-  script_version("$Revision: 11938 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2016-1113", "CVE-2016-1114", "CVE-2016-1115");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-16 13:44:30 +0530 (Mon, 16 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities(may-2016)");
@@ -72,10 +72,8 @@ if(description)
   script_dependencies("gb_coldfusion_detect.nasl");
   script_mandatory_keys("coldfusion/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

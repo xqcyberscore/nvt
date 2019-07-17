@@ -27,12 +27,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812804");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-16T15:57:25+0000");
   script_cve_id("CVE-2018-6056");
   script_bugtraq_id(103003);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-16 15:57:25 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-16 17:50:30 +0530 (Fri, 16 Feb 2018)");
   script_name("Google Chrome Unspecified Security Vulnerability Feb18 (Mac OS X)");
 
@@ -63,23 +63,23 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-vers = "";
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE )) exit(0);
 vers = infos['version'];
 path = infos['location'];
 
-if(version_is_less(version:vers, test_version:"64.0.3282.167"))
-{
+if(version_is_less(version:vers, test_version:"64.0.3282.167")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"64.0.3282.167", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_registration_module_xss_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Adobe Connect 'registration module' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809471");
-  script_version("$Revision: 11922 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2016-7851");
   script_bugtraq_id(94152);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-15 13:01:25 +0530 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect 'registration module' Cross-Site Scripting Vulnerability");
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("gb_adobe_connect_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("adobe/connect/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

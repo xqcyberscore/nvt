@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_unspecified_vuln_jan17_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Oracle Virtualbox Multiple Unspecified Vulnerabilities - 01 Jan17 (Windows)
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810509");
-  script_version("$Revision: 11816 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-3316", "CVE-2017-3332", "CVE-2017-3290", "CVE-2016-5545");
   script_bugtraq_id(95579, 95599, 95601, 95590);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-19 10:28:03 +0530 (Thu, 19 Jan 2017)");
   script_name("Oracle Virtualbox Multiple Unspecified Vulnerabilities - 01 Jan17 (Windows)");
 
@@ -68,10 +67,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
   script_mandatory_keys("Oracle/VirtualBox/Win/Ver");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

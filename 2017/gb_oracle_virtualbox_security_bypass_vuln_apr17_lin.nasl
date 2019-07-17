@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_security_bypass_vuln_apr17_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Oracle Virtualbox Security Bypass Vulnerability - 01 Apr17 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811013");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-3538");
   script_bugtraq_id(97698);
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-25 15:31:09 +0530 (Tue, 25 Apr 2017)");
   script_name("Oracle Virtualbox Security Bypass Vulnerability - 01 Apr17 (Linux)");
 
@@ -62,7 +61,6 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

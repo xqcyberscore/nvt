@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_info_disc_n_code_exec_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Apple iCloud Code Execution And Information Disclosure Vulnerabilities (Windows)
 #
@@ -23,16 +22,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:apple:icloud";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810575");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2016-7583", "CVE-2016-4613", "CVE-2016-7578");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-28 10:49:30 +0530 (Tue, 28 Feb 2017)");
   script_name("Apple iCloud Code Execution And Information Disclosure Vulnerabilities (Windows)");
 
@@ -69,10 +69,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_icloud_detect_win.nasl");
   script_mandatory_keys("apple/icloud/Win/Ver");
-  script_xref(name:"URL", value:"http://www.apple.com/in/icloud/setup/pc.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -81,7 +79,6 @@ if(!icVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-##  Check for Apple iCloud vulnerable versions
 if(version_is_less(version:icVer, test_version:"6.0.1"))
 {
   report = report_fixed_ver(installed_version:icVer, fixed_version:"6.0.1");

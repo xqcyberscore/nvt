@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbit_code_dos_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112056");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2017-14694", "CVE-2017-15770", "CVE-2017-15771");
   script_bugtraq_id(101009, 101540, 101549);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-10-26 11:18:43 +0530 (Thu, 26 Oct 2017)");
   script_name("Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)");
 
@@ -64,10 +63,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

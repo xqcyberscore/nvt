@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806529");
-  script_version("$Revision: 12490 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2015-0578");
   script_bugtraq_id(72718);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-11-20 12:27:12 +0530 (Fri, 20 Nov 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability");
@@ -75,7 +74,6 @@ if(description)
   script_dependencies("gb_cisco_asa_version.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_xref(name:"URL", value:"http://www.cisco.com");
 
   exit(0);
 }

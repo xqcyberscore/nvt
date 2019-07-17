@@ -28,11 +28,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813410");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2018-11324", "CVE-2018-11326", "CVE-2018-11325");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-05-23 13:35:14 +0530 (Wed, 23 May 2018)");
 
   script_name("Joomla! Core Multiple Vulnerabilities-02 May18 (20180507/20180505/20180504)");
@@ -70,8 +70,6 @@ if(description)
   script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/732-20180504-core-installer-leaks-plain-text-password-to-local-user.html");
 
   script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/735-20180507-core-session-deletion-race-condition.html");
-
-  script_xref(name:"URL", value:"https://www.joomla.org");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

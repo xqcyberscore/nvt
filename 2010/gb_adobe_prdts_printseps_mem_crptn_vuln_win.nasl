@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_printseps_mem_crptn_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Acrobat and Reader 'printSeps()' Function Heap Corruption Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801545");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-07-05T09:29:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_cve_id("CVE-2010-4091");
   script_bugtraq_id(44638);
@@ -59,7 +58,6 @@ if(description)
   corruption Vulnerability");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_nov15_win.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilities - Nov15 (Windows)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806625");
-  script_version("$Revision: 11975 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-8005", "CVE-2015-8004", "CVE-2015-8003", "CVE-2015-8002",
                 "CVE-2015-8001");
   script_bugtraq_id(77378, 77375, 77374, 77372);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-11-25 16:22:20 +0530 (Wed, 25 Nov 2015)");
   script_name("MediaWiki Multiple Vulnerabilities - Nov15 (Windows)");
 
@@ -75,7 +74,6 @@ if(description)
   script_dependencies("find_service.nasl", "os_detection.nasl", "secpod_mediawiki_detect.nasl");
   script_mandatory_keys("mediawiki/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.mediawiki.org");
   exit(0);
 }
 

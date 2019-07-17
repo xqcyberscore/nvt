@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_server_dos_n_user_enumeration_vuln.nasl 14295 2019-03-18 20:16:46Z cfischer $
 #
 # Apple OS X Server Denial of Service And User Enumeration Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810599");
-  script_version("$Revision: 14295 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2016-0751", "CVE-2007-6750", "CVE-2017-2382");
   script_bugtraq_id(90690, 90689);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 21:16:46 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-03 10:32:56 +0530 (Mon, 03 Apr 2017)");
   script_name("Apple OS X Server Denial of Service And User Enumeration Vulnerabilities");
 
@@ -68,7 +67,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_macosx_server_detect.nasl");
   script_mandatory_keys("Apple/OSX/Server/Version", "ssh/login/osx_version");
-  script_xref(name:"URL", value:"http://www.apple.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_41141.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Bugzilla 'time-tracking' Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mozilla:bugzilla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100699");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
   script_bugtraq_id(41141);
   script_cve_id("CVE-2010-1204");
@@ -38,7 +37,6 @@ if (description)
   script_name("Bugzilla 'time-tracking' Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41141");
-  script_xref(name:"URL", value:"http://www.bugzilla.org");
   script_xref(name:"URL", value:"http://www.bugzilla.org/security/3.2.6/");
 
   script_tag(name:"cvss_base", value:"5.0");

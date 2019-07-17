@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_62851.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Cisco Unified Computing System Multiple Vulnerabilities
 #
@@ -24,6 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:cisco:unified_computing_system_software";
 
 if (description)
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-1182", "CVE-2013-1183", "CVE-2013-1184", "CVE-2013-1185", "CVE-2013-1186");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-05T09:54:18+0000");
 
   script_name("Cisco Unified Computing System Multiple Vulnerabilities");
 
@@ -44,9 +44,8 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59459");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59455");
 
-  script_xref(name:"URL", value:"http://www.cisco.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-10-10 19:10:32 +0200 (Thu, 10 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

@@ -23,7 +23,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815229");
-  script_version("2019-07-04T09:58:18+0000");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2018-17625", "CVE-2018-17626", "CVE-2018-17627", "CVE-2018-17628",
                 "CVE-2018-17629", "CVE-2018-17630", "CVE-2018-17631", "CVE-2018-17632",
                 "CVE-2018-17633", "CVE-2018-17634", "CVE-2018-17635", "CVE-2018-17636",
@@ -44,7 +44,7 @@ if(description)
                 "CVE-2018-17705");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-04 09:58:18 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-28 14:55:15 +0530 (Fri, 28 Jun 2019)");
   script_name("Foxit Reader Multiple Vulnerabilities June 2019 (Windows)-02");
 
@@ -77,7 +77,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");

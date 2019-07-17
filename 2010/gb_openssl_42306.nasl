@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_42306.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL 'ssl3_get_key_exchange()' Use-After-Free Memory Corruption Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100751");
-  script_version("$Revision: 13898 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_version("2019-07-05T09:29:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-08-10 14:55:08 +0200 (Tue, 10 Aug 2010)");
   script_bugtraq_id(42306);
   script_cve_id("CVE-2010-2939");
@@ -40,7 +39,6 @@ if(description)
   script_name("OpenSSL 'ssl3_get_key_exchange()' Use-After-Free Memory Corruption Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42306");
-  script_xref(name:"URL", value:"http://www.openssl.org");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2010/Aug/84");
 
   script_tag(name:"solution_type", value:"VendorFix");

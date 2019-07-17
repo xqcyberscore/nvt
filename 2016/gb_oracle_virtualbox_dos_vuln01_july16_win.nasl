@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_dos_vuln01_july16_win.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Oracle Virtualbox Denial of Service Vulnerability-01 July16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808258");
-  script_version("$Revision: 12455 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2016-3597");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-07-21 12:24:33 +0530 (Thu, 21 Jul 2016)");
   script_name("Oracle Virtualbox Denial of Service Vulnerability-01 July16 (Windows)");
 
@@ -65,10 +64,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
   script_mandatory_keys("Oracle/VirtualBox/Win/Ver");
-  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

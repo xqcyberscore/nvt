@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wowza_streaming_engine_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Wowza Streaming Engine Detection
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106224");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-07-16T12:33:17+0000");
+  script_tag(name:"last_modification", value:"2019-07-16 12:33:17 +0000 (Tue, 16 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,6 +47,7 @@ The script attempts to identify Wowza Streaming Engine via RSTP banner to extrac
   script_family("Product detection");
   script_dependencies("rtsp_detect.nasl");
   script_require_ports("Services/rtsp", 554);
+  script_mandatory_keys("RTSP/server_banner/available");
 
   script_xref(name:"URL", value:"https://www.wowza.com/products/streaming-engine");
 
@@ -56,11 +56,11 @@ The script attempts to identify Wowza Streaming Engine via RSTP banner to extrac
 
 include("cpe.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-if (!port = get_kb_item("Services/rtsp"))
-  port = 554;
+port = get_port_for_service(default: 554, proto: "rtsp");
 
-if (!banner = get_kb_item(string("RTSP/", port, "/Server")))
+if (!banner = get_kb_item("RTSP/" + port + "/server_banner"))
   exit(0);
 
 if ("Server: Wowza Streaming Engine" >< banner) {

@@ -1,6 +1,5 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_classic_detect_win.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Adobe Acrobat DC (Classic Track) Detect (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812923");
-  script_version("$Revision: 11420 $");
+  script_version("2019-07-05T08:07:19+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:07:19 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-15 12:59:46 +0530 (Thu, 15 Feb 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat DC (Classic Track) Detect (Windows)");
@@ -47,6 +46,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
+  script_xref(name:"URL", value:"https://acrobat.adobe.com/us/en/acrobat.html");
+
   exit(0);
 }
 

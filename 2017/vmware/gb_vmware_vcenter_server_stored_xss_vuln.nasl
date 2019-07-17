@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vcenter_server_stored_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # VMware vCenter Server H5 Client Stored XSS Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811838");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-4926");
   script_bugtraq_id(100844);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-22 12:05:44 +0530 (Fri, 22 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("VMware vCenter Server H5 Client Stored XSS Vulnerability");
@@ -61,7 +60,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_vcenter_detect.nasl");
   script_mandatory_keys("VMware_vCenter/version", "VMware_vCenter/build");
-  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
 

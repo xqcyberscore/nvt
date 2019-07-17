@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_42102.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache 'mod_proxy_http' 2.2.9 for Unix Timeout Handling Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100858");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
   script_bugtraq_id(42102);
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42102");
   script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_22.html");
-  script_xref(name:"URL", value:"http://httpd.apache.org/");
   script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/3243");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=699841");
   script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100109771"); # nb: According to the vendor advisory: "An information disclosure flaw was found in mod_proxy_http in version 2.2.9 only,"

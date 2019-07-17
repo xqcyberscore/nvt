@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_mar16_win.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities March16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807469");
-  script_version("$Revision: 12455 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2016-1007", "CVE-2016-1008", "CVE-2016-1009");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-03-10 11:12:19 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Multiple Vulnerabilities March16 (Windows)");
@@ -66,7 +65,6 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/Win/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com/");
   exit(0);
 }
 

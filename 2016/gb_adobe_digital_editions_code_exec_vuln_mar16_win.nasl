@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_code_exec_vuln_mar16_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Adobe Digital Editions Code Execution Vulnerability March16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807473");
-  script_version("$Revision: 12149 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2016-0954");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-03-10 11:12:19 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Digital Editions Code Execution Vulnerability March16 (Windows)");
@@ -62,7 +61,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_win.nasl");
   script_mandatory_keys("AdobeDigitalEdition/Win/Ver");
-  script_xref(name:"URL", value:"http://www.adobe.com/");
   exit(0);
 }
 

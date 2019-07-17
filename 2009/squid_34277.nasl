@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squid_34277.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Squid Proxy Cache ICAP Adaptation Denial of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100084");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-03-28 19:13:00 +0100 (Sat, 28 Mar 2009)");
   script_bugtraq_id(34277);
   script_tag(name:"cvss_base", value:"2.6");
@@ -44,7 +43,6 @@ if(description)
   script_mandatory_keys("squid_proxy_server/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34277");
-  script_xref(name:"URL", value:"http://www.squid-cache.org/");
 
   script_tag(name:"summary", value:"According to its version number, the remote version of Squid
   is prone to a to a remote denial-of-service vulnerability because the proxy server fails to

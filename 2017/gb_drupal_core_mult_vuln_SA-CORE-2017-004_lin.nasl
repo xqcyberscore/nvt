@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-004_lin.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2017-004) (Linux)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811705");
-  script_version("$Revision: 14175 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-6923", "CVE-2017-6924", "CVE-2017-6925");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-17 10:13:39 +0530 (Thu, 17 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2017-004) (Linux)");
@@ -72,10 +71,8 @@ if(description)
   script_dependencies("drupal_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("drupal/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.drupal.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

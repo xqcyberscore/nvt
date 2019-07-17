@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_37640.nasl 11830 2018-10-11 06:12:56Z cfischer $
 #
 # MySQL 5.0.51a Unspecified Remote Code Execution Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100436");
-  script_version("$Revision: 11830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 08:12:56 +0200 (Thu, 11 Oct 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-01-11 11:18:50 +0100 (Mon, 11 Jan 2010)");
   script_cve_id("CVE-2009-4484");
   script_bugtraq_id(37640);
@@ -46,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37640");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/dailydave/2010-q1/0002.html");
-  script_xref(name:"URL", value:"http://www.mysql.com/");
   script_xref(name:"URL", value:"http://intevydis.com/mysql_demo.html");
 
   script_tag(name:"summary", value:"MySQL 5.0.51a is prone to an unspecified remote code-execution

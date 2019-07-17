@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_nmbd_rce_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Samba 'nmbd' NetBIOS Name Services Daemon Remote Code Execution Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811220");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2014-3560");
   script_bugtraq_id(69021);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-22 12:47:01 +0530 (Thu, 22 Jun 2017)");
   script_name("Samba 'nmbd' NetBIOS Name Services Daemon Remote Code Execution Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -66,7 +65,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://www.samba.org");
   exit(0);
 }
 

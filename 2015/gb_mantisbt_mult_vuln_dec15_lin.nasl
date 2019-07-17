@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_dec15_lin.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Multiple Vulnerabilities December15 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806641");
-  script_version("$Revision: 12818 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2014-9270", "CVE-2014-9279", "CVE-2014-9269");
   script_bugtraq_id(71372, 71359, 71368);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-12-03 16:05:34 +0530 (Thu, 03 Dec 2015)");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -79,7 +78,6 @@ if(description)
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("mantisbt/detected", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.mantisbt.org");
 
   exit(0);
 }

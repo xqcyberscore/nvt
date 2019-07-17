@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_auth_bypass_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Vbulletin Authentication Bypass Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = 'cpe:/a:vbulletin:vbulletin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804144");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-05T10:04:07+0000");
   script_cve_id("CVE-2013-6129");
   script_bugtraq_id(62909);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-11-15 12:55:00 +0530 (Fri, 15 Nov 2013)");
   script_name("Vbulletin Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -62,7 +61,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_xref(name:"URL", value:"http://www.vbulletin.com");
   exit(0);
 }
 

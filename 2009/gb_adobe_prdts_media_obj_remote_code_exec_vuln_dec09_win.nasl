@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_media_obj_remote_code_exec_vuln_dec09_win.nasl 12632 2018-12-03 17:55:22Z cfischer $
 #
 # Adobe Reader/Acrobat Multimedia Doc.media.newPlayer Code Execution Vulnerability (Windows)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901096");
-  script_version("$Revision: 12632 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2009-4324");
   script_bugtraq_id(37331);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 18:55:22 +0100 (Mon, 03 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_name("Adobe Reader/Acrobat Multimedia Doc.media.newPlayer Code Execution Vulnerability (Windows)");
 
@@ -70,7 +69,6 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com");
 
   exit(0);
 }

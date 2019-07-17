@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813871");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2018-12810", "CVE-2018-12811");
   script_bugtraq_id(105123);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-23 11:02:24 +0530 (Thu, 23 Aug 2018)");
   script_name("Adobe Photoshop CC Multiple Memory Corruption Vulnerabilities - APSB18-28 (Mac OS X)");
 
@@ -61,7 +61,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/photoshop/apsb18-28.html");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/photoshop.html");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

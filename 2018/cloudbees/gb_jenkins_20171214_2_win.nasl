@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171214_2_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins CSRF Protection Delay Vulnerability (Windows)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112197");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-05T09:54:18+0000");
 
   script_cve_id("CVE-2017-1000504");
 
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-29 10:05:00 +0100 (Mon, 29 Jan 2018)");
   script_name("Jenkins CSRF Protection Delay Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -63,8 +62,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: samba_32494.nasl 10398 2018-07-04 12:11:48Z cfischer $
 #
 # Samba Arbitrary Memory Contents Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:samba:samba";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100337");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-11-04 20:13:20 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:P");
@@ -44,7 +43,6 @@ if (description)
   script_mandatory_keys("samba/smb_or_ssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/32494");
-  script_xref(name:"URL", value:"http://www.samba.org");
   script_xref(name:"URL", value:"http://support.avaya.com/elmodocs2/security/ASA-2009-014.htm");
   script_xref(name:"URL", value:"http://sourceforge.net/project/shownotes.php?group_id=151951&release_id=503763");
   script_xref(name:"URL", value:"http://support.nortel.com/go/main.jsp?cscat=BLTNDETAIL&id=838290");

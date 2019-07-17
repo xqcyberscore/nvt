@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_data_uri_xss_vuln_sep09_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Mozilla Firefox 'data:' URI XSS Vulnerability - Sep09 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800890");
-  script_version("$Revision: 12629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,10 +52,8 @@ if(description)
   Cross-Site Scripting vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.mozilla.org/");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");

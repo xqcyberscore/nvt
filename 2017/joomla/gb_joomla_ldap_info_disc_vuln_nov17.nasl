@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_ldap_info_disc_vuln_nov17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Joomla! Core LDAP Information Disclosure Vulnerability Nov17
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811896");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2017-14596");
   script_bugtraq_id(100898);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-11-08 10:36:51 +0530 (Wed, 08 Nov 2017)");
   script_name("Joomla! Core LDAP Information Disclosure Vulnerability Nov17");
 
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_8bim_profile_oboc_vuln_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # ImageMagick 8BIM Profile Parsing Off-By-One Count Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810507");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2014-9915");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-18 10:56:57 +0530 (Wed, 18 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 8BIM Profile Parsing Off-By-One Count Vulnerability (Windows)");
@@ -64,10 +63,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

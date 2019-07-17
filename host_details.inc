@@ -165,6 +165,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.140184", # gb_dahua_devices_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108590", # gb_ntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
@@ -282,6 +283,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.140184", # gb_dahua_devices_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108590", # gb_ntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl

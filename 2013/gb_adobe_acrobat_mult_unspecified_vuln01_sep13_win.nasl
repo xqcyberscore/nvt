@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803895");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2013-3351", "CVE-2013-3352", "CVE-2013-3353", "CVE-2013-3354",
                 "CVE-2013-3355", "CVE-2013-3356", "CVE-2013-3357", "CVE-2013-3358");
   script_bugtraq_id(62429, 62431, 62428, 62432, 62435, 62436, 62433, 62430);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-09-17 16:32:16 +0530 (Tue, 17 Sep 2013)");
   script_name("Adobe Acrobat Multiple Unspecified Vulnerabilities-01 Sep13 (Windows)");
 
@@ -64,10 +64,8 @@ of the affected system.");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/Win/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

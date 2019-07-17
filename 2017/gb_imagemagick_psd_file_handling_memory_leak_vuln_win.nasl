@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_psd_file_handling_memory_leak_vuln_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ImageMagick 'psd' File Handling Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810276");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-10058");
   script_bugtraq_id(95212);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-13 15:10:00 +0530 (Fri, 13 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 'psd' File Handling Information Disclosure Vulnerability (Windows)");
@@ -66,10 +65,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

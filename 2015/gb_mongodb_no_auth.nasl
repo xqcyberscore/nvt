@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_no_auth.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Unprotected MongoDB Service
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105235");
-  script_version("2019-03-26T10:55:07+0000");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-03-26 10:55:07 +0000 (Tue, 26 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
   script_name("Unprotected MongoDB Service");
   script_category(ACT_ATTACK);
@@ -40,8 +39,6 @@ if(description)
   script_dependencies("gb_mongodb_detect.nasl");
   script_require_ports("Services/mongodb", 27017);
   script_mandatory_keys("mongodb/installed");
-
-  script_xref(name:"URL", value:"http://mongodb.org");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
   may lead to further attacks.");

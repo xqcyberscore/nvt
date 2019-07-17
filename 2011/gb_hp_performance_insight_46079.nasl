@@ -26,12 +26,11 @@
 if (description)
 {
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46079");
-  script_xref(name:"URL", value:"http://www.hp.com/");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-034/");
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02695453");
   script_oid("1.3.6.1.4.1.25623.1.0.103060");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-02-03 16:40:04 +0100 (Thu, 03 Feb 2011)");
   script_bugtraq_id(46079);
   script_tag(name:"cvss_base", value:"10.0");

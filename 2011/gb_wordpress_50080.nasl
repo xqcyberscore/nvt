@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_50080.nasl 10235 2018-06-18 13:14:33Z cfischer $
 #
 # WordPress Light Post Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103300");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-10-14 12:50:33 +0200 (Fri, 14 Oct 2011)");
   script_bugtraq_id(50080);
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,7 +45,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50080");
   script_xref(name:"URL", value:"http://plugins.trac.wordpress.org/changeset/437217/light-post/trunk/wp-light-post.php?old=416259&old_path=light-post%2Ftrunk%2Fwp-light-post.php");
   script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/light-post/changelog/");
-  script_xref(name:"URL", value:"http://www.wordpress.org");
 
   script_tag(name:"summary", value:"The Light Post WordPress Plugin is prone to a remote file-include
   vulnerability because it fails to sufficiently sanitize user-supplied input.");

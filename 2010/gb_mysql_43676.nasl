@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_43676.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Oracle MySQL Prior to 5.1.51 Multiple Denial Of Service Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mysql:mysql";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100900");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-11-10 13:18:12 +0100 (Wed, 10 Nov 2010)");
   script_bugtraq_id(43676);
   script_cve_id("CVE-2010-3833", "CVE-2010-3834", "CVE-2010-3835", "CVE-2010-3836", "CVE-2010-3837",
@@ -41,7 +40,6 @@ if (description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/43676");
   script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-51.html");
-  script_xref(name:"URL", value:"http://www.mysql.com/");
 
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

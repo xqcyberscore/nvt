@@ -28,11 +28,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813739");
-  script_version("2019-05-03T13:51:56+0000");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2018-14773");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-03 12:05:43 +0530 (Fri, 03 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Core Multiple Security Vulnerabilities (SA-CORE-2018-005) (Linux)");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.drupal.org/SA-CORE-2018-005");
   script_xref(name:"URL", value:"https://symfony.com/blog/cve-2018-14773-remove-support-for-legacy-and-risky-http-headers");
   script_xref(name:"URL", value:"https://framework.zend.com/security/advisory/ZF2018-01");
-  script_xref(name:"URL", value:"https://www.drupal.org");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

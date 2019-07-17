@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_mult_vuln_HT207921.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Apple iCloud Multiple Vulnerabilities-HT207921 (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811252");
-  script_version("$Revision: 11874 $");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2017-7010", "CVE-2017-7013", "CVE-2017-7018", "CVE-2017-7020",
                 "CVE-2017-7030", "CVE-2017-7034", "CVE-2017-7037", "CVE-2017-7039",
                 "CVE-2017-7040", "CVE-2017-7041", "CVE-2017-7042", "CVE-2017-7043",
@@ -39,7 +38,7 @@ if(description)
   script_bugtraq_id(99889, 99879, 99885, 99890);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-20 12:15:28 +0530 (Thu, 20 Jul 2017)");
   script_name("Apple iCloud Multiple Vulnerabilities-HT207921 (Windows)");
 
@@ -74,10 +73,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_icloud_detect_win.nasl");
   script_mandatory_keys("apple/icloud/Win/Ver");
-  script_xref(name:"URL", value:"http://www.apple.com/in/icloud/setup/pc.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_40106.nasl 11830 2018-10-11 06:12:56Z cfischer $
 #
 # Oracle MySQL 'COM_FIELD_LIST' Command Buffer Overflow Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100646");
-  script_version("$Revision: 11830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 08:12:56 +0200 (Thu, 11 Oct 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-05-19 12:58:40 +0200 (Wed, 19 May 2010)");
   script_bugtraq_id(40106);
   script_tag(name:"cvss_base", value:"6.0");
@@ -47,7 +46,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40106");
   script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-47.html");
   script_xref(name:"URL", value:"http://bugs.mysql.com/bug.php?id=53237");
-  script_xref(name:"URL", value:"http://www.mysql.com/");
 
   script_tag(name:"summary", value:"MySQL is prone to a buffer-overflow vulnerability because it fails to
   perform adequate boundary checks on user-supplied data.");

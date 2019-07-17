@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_vuln_aug17_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Adobe Digital Editions Multiple Vulnerabilities Aug17 (Mac OS X)
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811621");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-11274", "CVE-2017-3091", "CVE-2017-11275", "CVE-2017-11276",
                 "CVE-2017-11277", "CVE-2017-11278", "CVE-2017-11279", "CVE-2017-11280",
                 "CVE-2017-11272");
   script_bugtraq_id(100194, 100193);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-10 16:13:44 +0530 (Thu, 10 Aug 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Editions Multiple Vulnerabilities Aug17 (Mac OS X)");
@@ -71,7 +70,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_macosx.nasl");
   script_mandatory_keys("AdobeDigitalEdition/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

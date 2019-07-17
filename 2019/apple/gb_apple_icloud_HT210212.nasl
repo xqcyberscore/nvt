@@ -23,7 +23,7 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815218");
-  script_version("2019-06-17T04:49:23+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2019-8577", "CVE-2019-8600", "CVE-2019-8598", "CVE-2019-8602",
                 "CVE-2019-8607", "CVE-2019-6237", "CVE-2019-8571", "CVE-2019-8583",
                 "CVE-2019-8584", "CVE-2019-8586", "CVE-2019-8587", "CVE-2019-8594",
@@ -33,7 +33,7 @@ if(description)
                 "CVE-2019-8628");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-17 04:49:23 +0000 (Mon, 17 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-14 10:13:10 +0530 (Fri, 14 Jun 2019)");
   script_name("Apple iCloud Security Updates (HT210212)");
 
@@ -62,8 +62,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"https://support.apple.com/en-bn/HT210212");
-  script_xref(name:"URL", value:"http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT210212");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");
@@ -71,7 +70,6 @@ if(description)
   script_mandatory_keys("apple/icloud/Win/Ver");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

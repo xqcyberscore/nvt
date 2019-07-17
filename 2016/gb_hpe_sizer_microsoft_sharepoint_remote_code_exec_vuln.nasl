@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_microsoft_sharepoint_remote_code_exec_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # HPE Sizer for Microsoft SharePoint Remote Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:hp:sizer_for_microsoft_sharepoint_2010";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809456");
-  script_version("$Revision: 11961 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-10-18 12:24:03 +0530 (Tue, 18 Oct 2016)");
   script_name("HPE Sizer for Microsoft SharePoint Remote Arbitrary Code Execution Vulnerability");
 
@@ -63,7 +62,6 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_sizer_microsoft_sharepoint_detect.nasl");
   script_mandatory_keys("HPE/sizer/microsoft/sharepoint/Win/Ver");
-  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:dreamweaver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813039");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2018-4924");
   script_bugtraq_id(103395);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-15 11:20:29 +0530 (Thu, 15 Mar 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Command Injection Vulnerability Mar18 (Windows)");
@@ -62,7 +62,6 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_dreamweaver_detect.nasl");
   script_mandatory_keys("Adobe/Dreamweaver/Ver");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

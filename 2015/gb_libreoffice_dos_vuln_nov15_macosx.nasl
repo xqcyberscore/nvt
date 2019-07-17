@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_dos_vuln_nov15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # LibreOffice DOC Bookmarks Denial of Service Vulnerability Nov15 (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806700");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2015-5214");
   script_bugtraq_id(77486);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-11-16 18:04:19 +0530 (Mon, 16 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("LibreOffice DOC Bookmarks Denial of Service Vulnerability Nov15 (Mac OS X)");
@@ -65,10 +64,8 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_libreoffice_detect_macosx.nasl");
   script_mandatory_keys("LibreOffice/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.libreoffice.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

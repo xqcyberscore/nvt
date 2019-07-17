@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49689.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # WordPress Annonces Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -23,13 +22,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:wordpress:wordpress";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103262");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-09-20 13:31:33 +0200 (Tue, 20 Sep 2011)");
   script_bugtraq_id(49689);
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,7 +38,6 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49689");
   script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/annonces/");
-  script_xref(name:"URL", value:"http://wordpress.org/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);

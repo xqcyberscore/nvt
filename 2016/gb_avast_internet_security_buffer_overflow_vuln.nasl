@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_internet_security_buffer_overflow_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Avast Internet Security Heap-Based Buffer Overflow Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:avast:avast_internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808055");
-  script_version("$Revision: 11903 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-8620");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-03 18:38:06 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Internet Security Heap-Based Buffer Overflow Vulnerability");
 
@@ -65,7 +64,6 @@ if(description)
   script_family("General");
   script_dependencies("gb_avast_internet_security_detect.nasl");
   script_mandatory_keys("Avast/Internet-Security/Win/Ver");
-  script_xref(name:"URL", value:"https://www.avast.com");
   exit(0);
 }
 

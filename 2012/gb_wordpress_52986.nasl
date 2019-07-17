@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_52986.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # WordPress All-in-One Event Calendar Plugin Multiple Cross Site Scripting Vulnerabilities
 #
@@ -32,7 +31,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103463");
   script_bugtraq_id(52986);
   script_cve_id("CVE-2012-1835");
-  script_version("$Revision: 11435 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("WordPress All-in-One Event Calendar Plugin Multiple Cross Site Scripting Vulnerabilities");
@@ -40,10 +39,9 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52986");
   script_xref(name:"URL", value:"http://theseednetwork.com/services/websites-and-software/software/all-in-one-event-calendar-wordpress/");
   script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23082");
-  script_xref(name:"URL", value:"http://www.wordpress.org/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522292");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-04-12 10:32:26 +0200 (Thu, 12 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

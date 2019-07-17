@@ -23,8 +23,8 @@ CPE = "cpe:/a:adobe:coldfusion";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112084");
-  script_version("2019-06-17T12:10:54+0000");
-  script_tag(name:"last_modification", value:"2019-06-17 12:10:54 +0000 (Mon, 17 Jun 2019)");
+  script_version("2019-07-05T08:56:43+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-12 12:22:43 +0200 (Wed, 12 Jun 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if (description)
   script_tag(name:"solution", value:"Update to version 11 Update 19, version 2016 Update 11 or version 2018 Update 4 respectively.");
 
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/coldfusion/apsb19-27.html");
-  script_xref(name:"URL", value:"https://helpx.adobe.com/in/coldfusion/kb/coldfusion-11-update-19.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/coldfusion/kb/coldfusion-11-update-19.html");
   script_xref(name:"URL", value:"https://helpx.adobe.com/coldfusion/kb/coldfusion-2016-update-11.html");
   script_xref(name:"URL", value:"https://helpx.adobe.com/coldfusion/kb/coldfusion-2018-update-4.html");
 

@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:photoshop_cc2018";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814874");
-  script_version("2019-06-03T07:01:53+0000");
+  script_version("2019-07-05T08:56:43+0000");
   script_cve_id("CVE-2019-7094");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-03-18 16:32:37 +0530 (Mon, 18 Mar 2019)");
   script_name("Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Windows)");
 
@@ -53,7 +53,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/photoshop/apsb19-15.html");
-  script_xref(name:"URL", value:"https://www.adobe.com/in/products/photoshop.html");
 
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -75,7 +74,7 @@ if(!infos = get_app_version_and_location( cpe:CPE ))
 pver = infos['version'];
 ppath = infos['location'];
 
-if (pver =~ "^19\..*")
+if (pver =~ "^19\.")
 {
   if(version_is_less_equal(version:pver, test_version:"19.1.8"))
   {
@@ -84,7 +83,7 @@ if (pver =~ "^19\..*")
   }
 }
 
-else if (pver =~ "^20\..*")
+else if (pver =~ "^20\.")
 {
   if(version_is_less_equal(version:pver, test_version:"20.0.4"))
   {

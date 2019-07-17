@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_aug18_01_win.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # Node.js < 10.9.0, 8.11.4, 6.14.4 OOB Write Vulnerability (Windows)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112361");
-  script_version("$Revision: 12236 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2018-12115");
   script_bugtraq_id(105127);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-27 14:13:00 +0200 (Mon, 27 Aug 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js < 10.9.0, < 8.11.4, < 6.14.4 OOB Write Vulnerability (Windows)");
@@ -55,7 +54,6 @@ to write outside of the bounds of a single Buffer. Writes that start from the se
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://nodejs.org/en/blog/vulnerability/august-2018-security-releases");
-  script_xref(name:"URL", value:"https://nodejs.org");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

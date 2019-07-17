@@ -28,11 +28,11 @@ CPE = "cpe:/a:oracle:business_intelligence_publisher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813583");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2018-2958", "CVE-2018-2925");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-18 14:53:36 +0530 (Wed, 18 Jul 2018)");
   ## Not sure about version upgradation after patch applied
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -58,7 +58,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html#AppendixFMW");
-  script_xref(name:"URL", value:"http://www.oracle.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -67,7 +66,6 @@ if(description)
   script_require_ports("Services/www", 9704);
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

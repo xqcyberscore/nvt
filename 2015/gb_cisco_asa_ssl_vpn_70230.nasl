@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_ssl_vpn_70230.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco ASA Software Information Disclosure Vulnerability
 #
@@ -34,12 +33,11 @@ if (description)
   script_cve_id("CVE-2014-3398");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-05T09:54:18+0000");
 
   script_name("Cisco ASA Software Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70230");
-  script_xref(name:"URL", value:"http://www.cisco.com/");
 
   script_tag(name:"impact", value:"An attacker can leverage this issue to obtain sensitive information
 that may aid in further attacks.");
@@ -51,7 +49,7 @@ vulnerability.");
   script_tag(name:"insight", value:"This issue is being tracked by Cisco bug ID CSCuq65542.");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-02-03 11:59:05 +0100 (Tue, 03 Feb 2015)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

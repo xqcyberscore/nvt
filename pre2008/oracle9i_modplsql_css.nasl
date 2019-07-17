@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_modplsql_css.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Oracle 9iAS mod_plsql cross site scripting
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10853");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4298);
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,7 +35,6 @@ if(description)
   script_cve_id("CVE-2002-0569");
   script_name("Oracle 9iAS mod_plsql cross site scripting");
   script_xref(name:"URL", value:"http://www.nextgenss.com/papers/hpoas.pdf");
-  script_xref(name:"URL", value:"http://www.oracle.com/");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2002 Matt Moore");

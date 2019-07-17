@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_expand_parameter_xss_vuln.nasl 12962 2019-01-08 07:46:53Z ckuersteiner $
 #
 # Nagios 'expand' Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801894");
-  script_version("$Revision: 12962 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:46:53 +0100 (Tue, 08 Jan 2019) $");
+  script_version("2019-07-05T10:41:31+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-2179");
   script_tag(name:"cvss_base", value:"4.3");
@@ -68,7 +67,6 @@ vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.nagios.org/");
 
   exit(0);
 }

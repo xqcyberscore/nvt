@@ -28,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810563");
-  script_version("2019-05-10T14:24:23+0000");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2016-8862", "CVE-2016-8866");
   script_bugtraq_id(93794);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 13:23:30 +0530 (Tue, 21 Feb 2017)");
   script_name("ImageMagick Multiple Memory Corruption Vulnerabilities (Mac OS X)");
 
@@ -68,7 +68,6 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_imagemagick_detect_macosx.nasl");
   script_mandatory_keys("ImageMagick/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.graphicsmagick.org");
   exit(0);
 }
 

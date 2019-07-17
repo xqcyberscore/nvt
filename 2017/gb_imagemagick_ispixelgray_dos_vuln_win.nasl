@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_ispixelgray_dos_vuln_win.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # ImageMagick 'IsPixelGray' Function Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810556");
-  script_version("$Revision: 14175 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-9773");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-20 15:05:25 +0530 (Mon, 20 Feb 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 'IsPixelGray' Function Denial of Service Vulnerability (Windows)");
@@ -62,10 +61,8 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

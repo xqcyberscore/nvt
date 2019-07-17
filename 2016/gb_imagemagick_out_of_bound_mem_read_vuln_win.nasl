@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_out_of_bound_mem_read_vuln_win.nasl 12216 2018-11-05 15:10:03Z mmartin $
 #
 # ImageMagick Out Of Bounds Memory Read Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810246");
-  script_version("$Revision: 12216 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2016-5687");
   script_bugtraq_id(91283);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-05 16:10:03 +0100 (Mon, 05 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Out Of Bounds Memory Read Vulnerability (Windows)");
@@ -66,10 +65,8 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

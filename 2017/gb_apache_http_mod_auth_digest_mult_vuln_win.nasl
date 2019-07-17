@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_mod_auth_digest_mult_vuln_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811236");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2017-9788");
   script_bugtraq_id(99569);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-17 16:02:23 +0530 (Mon, 17 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities (Windows)");
@@ -70,10 +69,8 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://httpd.apache.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

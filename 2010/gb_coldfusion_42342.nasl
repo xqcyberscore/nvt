@@ -26,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100772");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-07-05T09:29:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_bugtraq_id(42342);
   script_cve_id("CVE-2010-2861");
@@ -36,7 +36,6 @@ if (description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42342");
   script_xref(name:"URL", value:"http://www.adobe.com/products/coldfusion/");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   script_xref(name:"URL", value:"http://www.gnucitizen.org/blog/coldfusion-directory-traversal-faq-cve-2010-2861/");
   script_xref(name:"URL", value:"http://www.procheckup.com/");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb10-18.html");

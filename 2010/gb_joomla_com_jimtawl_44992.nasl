@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_jimtawl_44992.nasl 11101 2018-08-24 09:42:11Z ckuersteiner $
 #
 # Joomla Component 'com_jimtawl' Local File Include Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100919");
-  script_version("$Revision: 11101 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 11:42:11 +0200 (Fri, 24 Aug 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-11-29 13:18:51 +0100 (Mon, 29 Nov 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,7 +42,6 @@ if (description)
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44992");
   script_xref(name:"URL", value:"http://extensions.joomla.org/extensions/multimedia/streaming-a-broadcasting/audio-broadcasting/4344");
-  script_xref(name:"URL", value:"http://www.joomla.org/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);

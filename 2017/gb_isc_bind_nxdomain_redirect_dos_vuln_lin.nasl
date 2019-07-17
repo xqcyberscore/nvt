@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_nxdomain_redirect_dos_vuln_lin.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # ISC BIND 'nxdomain-redirect' Feature Response DoS Vulnerability (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810285");
-  script_version("$Revision: 13654 $");
+  script_version("2019-07-05T09:54:18+0000");
   script_cve_id("CVE-2016-9778");
   script_bugtraq_id(95388);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-16 16:59:09 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND 'nxdomain-redirect' Feature Response DoS Vulnerability (Linux)");
@@ -66,7 +65,6 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl", "os_detection.nasl");
   script_mandatory_keys("ISC BIND/installed", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 

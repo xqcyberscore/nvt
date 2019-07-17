@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_XSQLServlet_XSQLConfig.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Oracle XSQLServlet XSQLConfig.xml File
 #
 # Authors:
@@ -25,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10855");
-  script_version("$Revision: 14336 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4290);
   script_cve_id("CVE-2002-0568");
@@ -35,7 +34,6 @@ if(description)
   script_name("Oracle XSQLServlet XSQLConfig.xml File");
 
   script_xref(name:"URL", value:"http://www.nextgenss.com/papers/hpoas.pdf");
-  script_xref(name:"URL", value:"http://www.oracle.com/");
 
 
 

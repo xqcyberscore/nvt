@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_july_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Wireshark 'profinet/packet-dcerpc-pn-io.c' DoS Vulnerability (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810974");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T09:12:25+0000");
   script_cve_id("CVE-2017-9766");
   script_bugtraq_id(99187);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-05 18:10:56 +0530 (Wed, 05 Jul 2017)");
   script_name("Wireshark 'profinet/packet-dcerpc-pn-io.c' DoS (Windows)");
 
@@ -65,10 +64,8 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
-  script_xref(name:"URL", value:"https://www.wireshark.org");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

@@ -23,11 +23,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815225");
-  script_version("2019-07-04T09:58:18+0000");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2019-8342");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-04 09:58:18 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-28 13:10:03 +0530 (Fri, 28 Jun 2019)");
   script_name("Foxit Reader Privilege Escalation Vulnerability (Mac OS X)");
 
@@ -49,7 +49,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");

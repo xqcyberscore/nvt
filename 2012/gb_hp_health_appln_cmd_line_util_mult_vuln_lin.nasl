@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_health_appln_cmd_line_util_mult_vuln_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # HP System Health Application and Command Line Utilities Multiple Vulnerabilities
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802776");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2012-2000");
   script_bugtraq_id(53336);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-05-11 10:46:35 +0530 (Fri, 11 May 2012)");
   script_name("HP System Health Application and Command Line Utilities Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49051/");
@@ -55,10 +54,8 @@ if(description)
   NOTE: Further information is not available.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.hp.com/");
   exit(0);
 }
-
 
 include("version_func.inc");
 

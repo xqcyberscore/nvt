@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wms_browser_extension_rce_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Cisco WebEx Meetings Server Browser Extension Remote Code Execution Vulnerability
 #
@@ -30,12 +29,12 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811240");
-  script_version("$Revision: 11962 $");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2017-6753");
   script_bugtraq_id(99614);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-18 12:06:48 +0530 (Tue, 18 Jul 2017)");
   script_name("Cisco WebEx Meetings Server Browser Extension Remote Code Execution Vulnerability");
 
@@ -72,7 +71,6 @@ if (description)
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
 
-  script_xref(name:"URL", value:"http://www.cisco.com");
   exit(0);
 }
 

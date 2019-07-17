@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_8bim_profile_oboc_vuln_macosx.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # ImageMagick 8BIM Profile Parsing Off-By-One Count Vulnerability (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810508");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T10:16:38+0000");
   script_cve_id("CVE-2014-9915");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-18 11:29:40 +0530 (Wed, 18 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick 8BIM Profile Parsing Off-By-One Count Vulnerability (Mac OS X)");
@@ -64,10 +63,8 @@ if(description)
   script_family("General");
   script_dependencies("gb_imagemagick_detect_macosx.nasl");
   script_mandatory_keys("ImageMagick/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

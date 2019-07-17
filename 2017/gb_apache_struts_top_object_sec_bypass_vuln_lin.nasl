@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811316");
-  script_version("$Revision: 11982 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_cve_id("CVE-2015-5209");
   script_bugtraq_id(82550);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-31 13:48:08 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts 'top' Object Access Security Bypass Vulnerability (Linux)");
@@ -66,7 +66,6 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 
@@ -81,7 +80,7 @@ if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }
 
-if(appVer =~ "^(2\.)")
+if(appVer =~ "^2\.")
 {
   if(version_in_range(version:appVer, test_version:"2.0.0", test_version2:"2.3.24"))
   {

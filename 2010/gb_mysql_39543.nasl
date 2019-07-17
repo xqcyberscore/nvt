@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_39543.nasl 11830 2018-10-11 06:12:56Z cfischer $
 #
 # MySQL UNINSTALL PLUGIN Security Bypass Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100586");
-  script_version("$Revision: 11830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 08:12:56 +0200 (Thu, 11 Oct 2018) $");
+  script_version("2019-07-05T09:54:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-04-20 13:41:39 +0200 (Tue, 20 Apr 2010)");
   script_bugtraq_id(39543);
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +46,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39543");
   script_xref(name:"URL", value:"http://lists.mysql.com/commits/103144");
   script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-46.html");
-  script_xref(name:"URL", value:"http://www.mysql.com/");
 
   script_tag(name:"summary", value:"MySQL is prone to a security-bypass vulnerability.");
 

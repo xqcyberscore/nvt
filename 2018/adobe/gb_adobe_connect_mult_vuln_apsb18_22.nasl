@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813659");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-05T09:29:25+0000");
   script_cve_id("CVE-2018-4994", "CVE-2018-12804", "CVE-2018-12805");
   script_bugtraq_id(104102, 104697, 104696);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 10:36:00 +0530 (Thu, 12 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Multiple Vulnerabilities (APSB18-22)");
@@ -60,7 +60,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/connect/apsb18-22.html");
-  script_xref(name:"URL", value:"http://www.adobe.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");

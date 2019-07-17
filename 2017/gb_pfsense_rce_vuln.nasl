@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_rce_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # pfSense Remote Code Execution & Cross-Site Request Forgery Vulnerability
 #
@@ -30,10 +29,10 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112135");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-05T10:41:31+0000");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-11-23 08:35:21 +0100 (Thu, 23 Nov 2017)");
   script_name("pfSense Remote Code Execution & Cross-Site Request Forgery Vulnerability");
 
@@ -69,7 +68,6 @@ to execute arbitrary code in the WebGUI.");
   script_dependencies("gb_pfsense_detect.nasl");
   script_mandatory_keys("pfsense/installed");
 
-  script_xref(name:"URL", value:"https://www.pfsense.org");
   exit(0);
 }
 
