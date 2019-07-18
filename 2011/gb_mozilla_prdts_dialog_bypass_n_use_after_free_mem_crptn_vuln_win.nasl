@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_dialog_bypass_n_use_after_free_mem_crptn_vuln_win.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Mozilla Products Enter Key Dialog Bypass and Use-After-Free Memory Corruption Vulnerabilities (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802174");
-  script_version("$Revision: 12010 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-17T11:14:11+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_cve_id("CVE-2011-3001", "CVE-2011-3005");
   script_bugtraq_id(49837, 49808);
@@ -63,7 +62,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 7.0 or later, Upgrade to SeaMonkey version to 2.4 or later,
   Upgrade to Thunderbird version to 7.0 or later.");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_tag(name:"qod_type", value:"registry");

@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802866");
-  script_version("2019-06-25T08:25:15+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-1937", "CVE-2012-1940", "CVE-2012-1944", "CVE-2012-1945",
                 "CVE-2012-1946", "CVE-2012-1947", "CVE-2012-3105", "CVE-2012-1941",
                 "CVE-2012-0441", "CVE-2012-1938");
@@ -34,7 +34,7 @@ if(description)
                     53229, 53227, 53224, 53798, 53796);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-06-19 11:31:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - June12 (Mac OS X)");
 
@@ -89,7 +89,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
   exit(0);

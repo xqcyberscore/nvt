@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_be_mult_unspecified_vuln_win_mar11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mozilla Products Browser Engine Multiple Unspecified Vulnerabilities March-11 (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801905");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-07-17T11:14:11+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-0062");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,7 +36,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0531");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-09.html");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozillamessaging.com/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);

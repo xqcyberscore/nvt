@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113409");
-  script_version("2019-06-17T08:22:17+0000");
-  script_tag(name:"last_modification", value:"2019-06-17 08:22:17 +0000 (Mon, 17 Jun 2019)");
+  script_version("2019-07-18T06:56:02+0000");
+  script_tag(name:"last_modification", value:"2019-07-18 06:56:02 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-17 10:11:59 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation would allow an authorized attacker to gain
   control over the target system.");
   script_tag(name:"affected", value:"Webmin through version 1.910.");
-  script_tag(name:"solution", value:"No known solution is available as of 17th June, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 18th July, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://pentest.com.tr/exploits/Webmin-1910-Package-Updates-Remote-Command-Execution.html");

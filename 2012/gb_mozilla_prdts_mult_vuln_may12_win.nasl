@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_may12_win.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - May12 (Windows)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802840");
-  script_version("$Revision: 11861 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-0467", "CVE-2012-0469", "CVE-2012-0468", "CVE-2012-0470",
                 "CVE-2012-0471", "CVE-2012-0472", "CVE-2012-0474", "CVE-2012-0477",
                 "CVE-2012-0478", "CVE-2012-0479");
@@ -35,7 +34,7 @@ if(description)
                     53229, 53227, 53224);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:29:59 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-05-02 10:29:17 +0530 (Wed, 02 May 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - May12 (Windows)");
 
@@ -94,7 +93,7 @@ if(description)
   upgrade to Thunderbird version to 12.0 or ESR 10.0.4 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
   exit(0);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_apr15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Apr15 (Linux)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805468");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2015-3335", "CVE-2015-3334", "CVE-2015-3333", "CVE-2015-1249",
                 "CVE-2015-1247", "CVE-2015-1246", "CVE-2015-1244", "CVE-2015-1242",
                 "CVE-2015-1241", "CVE-2015-1240", "CVE-2015-1238", "CVE-2015-1237",
@@ -37,7 +36,7 @@ if(description)
   script_bugtraq_id(72715, 74227, 74225, 74221);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-04-21 18:46:52 +0530 (Tue, 21 Apr 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Apr15 (Linux)");
 
@@ -109,7 +108,7 @@ if(description)
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
 
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

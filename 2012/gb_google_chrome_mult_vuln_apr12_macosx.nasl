@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_apr12_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - April 12 (MAC OS X)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802734");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2011-3058", "CVE-2011-3065", "CVE-2011-3064", "CVE-2011-3063",
                 "CVE-2011-3062", "CVE-2011-3061", "CVE-2011-3060", "CVE-2011-3059");
   script_bugtraq_id(52762);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-04-05 15:48:59 +0530 (Thu, 05 Apr 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - April 12 (MAC OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48618/");
@@ -75,7 +74,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

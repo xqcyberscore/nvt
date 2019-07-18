@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_sec_bypass_vuln_oct12_macosx.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Firefox ESR Security Bypass Vulnerabilities - Oct 12 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803671");
-  script_version("$Revision: 12072 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-07-12 13:01:48 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Firefox ESR Security Bypass Vulnerabilities - Oct 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -53,7 +52,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813204");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2018-4932", "CVE-2018-4933", "CVE-2018-4934", "CVE-2018-4935",
                 "CVE-2018-4936", "CVE-2018-4937");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-11 10:51:14 +0530 (Wed, 11 Apr 2018)");
   script_name("Adobe Flash Player Security Updates(apsb18-08)-Windows");
 
@@ -67,7 +67,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb18-08.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

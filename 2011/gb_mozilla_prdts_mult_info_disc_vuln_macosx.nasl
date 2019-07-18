@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802546");
-  script_version("2019-06-25T08:25:15+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2010-5074", "CVE-2002-2437", "CVE-2002-2436");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-12-09 16:19:54 +0530 (Fri, 09 Dec 2011)");
   script_name("Mozilla Products Multiple Information Disclosure Vulnerabilities - MAC OS X");
 
@@ -65,7 +65,7 @@ if(description)
   Upgrade to Thunderbird version 3.3 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozillamessaging.com/en-US/thunderbird/");
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   exit(0);

@@ -28,11 +28,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813516");
-  script_version("2019-07-05T07:30:39+0000");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2018-6148");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 07:30:39 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-07 11:05:17 +0530 (Thu, 07 Jun 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-06)-Linux");
 
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/06/stable-channel-update-for-desktop.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813576");
-  script_version("2019-05-20T07:06:11+0000");
+  script_version("2019-07-18T06:56:02+0000");
   script_cve_id("CVE-2018-14324");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-20 07:06:11 +0000 (Mon, 20 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-18 06:56:02 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-17 12:45:41 +0530 (Tue, 17 Jul 2018)");
 
   script_name("Oracle GlassFish Open Source Default Credentials Vulnerability");
@@ -53,10 +53,11 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 5.0.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 20th May, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"https://www.securitytracker.com/id/1041292");

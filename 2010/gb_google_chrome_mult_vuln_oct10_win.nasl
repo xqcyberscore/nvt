@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_oct10_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Google Chrome multiple vulnerabilities - October 10(Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801473");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-4033", "CVE-2010-4035", "CVE-2010-4034", "CVE-2010-4036",
                 "CVE-2010-4037", "CVE-2010-4038", "CVE-2010-4040", "CVE-2010-4042");
@@ -74,7 +73,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

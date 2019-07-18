@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_security_bypass_vuln_feb16_lin.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Google Chrome Security Bypass Vulnerability Feb16 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807083");
-  script_version("$Revision: 12149 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2016-1629");
   script_bugtraq_id(83302);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-15 12:12:26 +0530 (Mon, 15 Feb 2016)");
   script_name("Google Chrome Security Bypass Vulnerability Feb16 (Linux)");
 
@@ -68,7 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

@@ -28,7 +28,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813803");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2018-6153", "CVE-2018-6154", "CVE-2018-6155", "CVE-2018-6156",
                 "CVE-2018-6157", "CVE-2018-6158", "CVE-2018-6159", "CVE-2018-6160",
                 "CVE-2018-6161", "CVE-2018-6162", "CVE-2018-6163", "CVE-2018-6164",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2018-4117", "CVE-2018-6150", "CVE-2018-6151", "CVE-2018-6152");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-25 10:11:37 +0530 (Wed, 25 Jul 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-07)-MAC OS X");
 
@@ -78,7 +78,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/07/stable-channel-update-for-desktop.html");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803012");
-  script_version("2019-06-25T08:25:15+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-3959", "CVE-2012-3958", "CVE-2012-3957", "CVE-2012-3972",
                 "CVE-2012-3956", "CVE-2012-3971", "CVE-2012-1976", "CVE-2012-3970",
                 "CVE-2012-1975", "CVE-2012-3969", "CVE-2012-1974", "CVE-2012-3968",
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-08-30 12:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - August12 (Mac OS X)");
 
@@ -85,7 +85,7 @@ if(description)
   Upgrade to Thunderbird version to 15.0 or ESR 10.0.7 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
 

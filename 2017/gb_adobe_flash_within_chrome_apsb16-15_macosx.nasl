@@ -1,6 +1,5 @@
 ############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_within_chrome_apsb16-15_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Adobe Flash Player Within Google Chrome Security Update (apsb16-15) - Mac OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810656");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099",
                 "CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103",
                 "CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107",
@@ -41,7 +40,7 @@ if(description)
   script_bugtraq_id(90620, 90621, 90505, 90619, 90618, 90617, 90616);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-18 15:02:10 +0530 (Sat, 18 Mar 2017)");
   script_name("Adobe Flash Player Within Google Chrome Security Update (apsb16-15) - Mac OS X");
 
@@ -84,7 +83,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_flash_player_within_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Chrome/MacOSX/Ver");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

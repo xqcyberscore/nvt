@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_cmd_exec_vuln.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Google Chrome Argument Injection Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900419");
-  script_version("$Revision: 12623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,7 +55,7 @@ if(description)
   script_tag(name:"summary", value:"This host has installed Google Chrome and is prone to argument
   injection vulnerability.");
 
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

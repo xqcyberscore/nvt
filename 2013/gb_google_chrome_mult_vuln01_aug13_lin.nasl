@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_aug13_lin.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 August13 (Linux)
 #
@@ -27,13 +26,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803878");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2013-2887", "CVE-2013-2900", "CVE-2013-2901", "CVE-2013-2902",
                 "CVE-2013-2903", "CVE-2013-2904", "CVE-2013-2905");
   script_bugtraq_id(61885, 61887, 61891, 61886, 61888, 61889, 61890);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-08-26 13:01:25 +0530 (Mon, 26 Aug 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 August13 (Linux)");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
@@ -64,7 +63,7 @@ information, compromise a user's system and other attacks may also be possible."
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

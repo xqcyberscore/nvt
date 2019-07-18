@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_aug10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Google Chrome multiple vulnerabilities - (Aug10)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902096");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-08-26 15:28:03 +0200 (Thu, 26 Aug 2010)");
   script_cve_id("CVE-2010-3120", "CVE-2010-3119", "CVE-2010-3118", "CVE-2010-3117",
                 "CVE-2010-3116", "CVE-2010-3115", "CVE-2010-3114", "CVE-2010-3113",
@@ -77,7 +76,7 @@ if(description)
   script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/");
   script_xref(name:"URL", value:"http://www.us-cert.gov/current/#google_releases_chrome_5_06");
   script_xref(name:"URL", value:"http://www.nessus.org/plugins/index.php?view=single&id=48383");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

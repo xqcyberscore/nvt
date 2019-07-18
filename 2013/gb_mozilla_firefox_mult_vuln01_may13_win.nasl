@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may13_win.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities -01 May13 (Windows)
 #
@@ -27,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803605");
-  script_version("$Revision: 12387 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1673", "CVE-2013-1672", "CVE-2013-1671", "CVE-2013-1670",
@@ -36,7 +35,7 @@ if(description)
                     59872, 59869, 59865, 59870, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-05-27 12:15:55 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities -01 May13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53400");
@@ -81,7 +80,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
 
   exit(0);
 }

@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb17-23_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Adobe Flash Player Security Updates( apsb17-23 )-Windows
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811607");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2017-3085", "CVE-2017-3106");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-09 10:41:50 +0530 (Wed, 09 Aug 2017)");
   script_name("Adobe Flash Player Security Updates( apsb17-23 )-Windows");
 
@@ -66,7 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

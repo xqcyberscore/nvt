@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-15_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Adobe Flash Player Security Updates( apsb16-15 )-Linux
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808104");
-  script_version("$Revision: 11969 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099",
 		"CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103",
 		"CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107",
@@ -40,7 +39,7 @@ if(description)
         "CVE-2016-4161", "CVE-2016-4162", "CVE-2016-4163");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-13 10:56:22 +0530 (Fri, 13 May 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-15 )-Linux");
 
@@ -83,7 +82,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

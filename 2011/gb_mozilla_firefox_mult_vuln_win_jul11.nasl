@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_win_jul11.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities July-11 (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802212");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-17T11:14:11+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2598", "CVE-2011-2367", "CVE-2011-2368", "CVE-2011-2369");
   script_bugtraq_id(48319, 48371, 48375, 48379);
@@ -63,7 +62,7 @@ if(description)
     being displayed inside SVG elements, which allows remote attackers to
     inject arbitrary web script or HTML.");
   script_tag(name:"solution", value:"Upgrade to Firefox version 5.0 or later.");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
 

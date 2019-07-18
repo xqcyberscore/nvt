@@ -28,7 +28,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812236");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2017-15407", "CVE-2017-15408", "CVE-2017-15409", "CVE-2017-15410",
                 "CVE-2017-15411", "CVE-2017-15412", "CVE-2017-15413", "CVE-2017-15415",
                 "CVE-2017-15416", "CVE-2017-15417", "CVE-2017-15418", "CVE-2017-15419",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2017-15425", "CVE-2017-15426", "CVE-2017-15427", "CVE-2017-15430");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-12-07 10:28:49 +0530 (Thu, 07 Dec 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-12)-Linux");
 
@@ -92,7 +92,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2017/12/stable-channel-update-for-desktop.html");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");

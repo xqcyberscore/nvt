@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_csrf_vuln_feb14_lin.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Linux)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804318");
-  script_version("$Revision: 11867 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2013-6166");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-02-17 17:31:40 +0530 (Mon, 17 Feb 2014)");
   script_name("Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Linux)");
 
@@ -58,7 +57,7 @@ equivalent of a persistent Logout cross-site request forgery (CSRF) attack.");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

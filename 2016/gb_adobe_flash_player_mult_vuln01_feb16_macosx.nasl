@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_feb16_macosx.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 Feb16 (Mac OS X)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806866");
-  script_version("$Revision: 12149 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-0964", "CVE-2016-0965", "CVE-2016-0966", "CVE-2016-0967",
                 "CVE-2016-0968", "CVE-2016-0969", "CVE-2016-0970", "CVE-2016-0971",
                 "CVE-2016-0972", "CVE-2016-0973", "CVE-2016-0974", "CVE-2016-0975",
@@ -38,7 +37,7 @@ if(description)
                 "CVE-2016-0984", "CVE-2016-0985");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-10 13:23:06 +0530 (Wed, 10 Feb 2016)");
   script_name("Adobe Flash Player Multiple Vulnerabilities -01 Feb16 (Mac OS X)");
 
@@ -78,7 +77,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

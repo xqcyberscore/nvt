@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-49_2016-61_win.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-49_2016-61 )-Windows
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808155");
-  script_version("$Revision: 12363 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-2834", "CVE-2016-2833", "CVE-2016-2832", "CVE-2016-2831",
 		"CVE-2016-2829", "CVE-2016-2828", "CVE-2016-2826", "CVE-2016-2825",
 		"CVE-2016-2824", "CVE-2016-2822", "CVE-2016-2821", "CVE-2016-2819",
 		"CVE-2016-2818", "CVE-2016-2815");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-08 11:08:56 +0530 (Wed, 08 Jun 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-49_2016-61 )-Windows");
 
@@ -83,7 +82,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

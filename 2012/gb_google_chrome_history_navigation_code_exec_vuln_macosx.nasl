@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_history_navigation_code_exec_vuln_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Google Chrome 'History navigation' Arbitrary Code Execution Vulnerability (MAC OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802719");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2011-3046");
   script_bugtraq_id(52369);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-03-20 11:56:00 +0530 (Tue, 20 Mar 2012)");
   script_name("Google Chrome 'History navigation' Arbitrary Code Execution Vulnerability (MAC OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48321/");
@@ -54,7 +53,7 @@ if(description)
   code execution vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

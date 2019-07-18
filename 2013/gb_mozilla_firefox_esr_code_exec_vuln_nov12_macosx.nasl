@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_code_exec_vuln_nov12_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Mozilla Firefox ESR Code Execution Vulnerabilities - November12 (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803348");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-4210");
   script_bugtraq_id(56646);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-04-01 17:03:21 +0530 (Mon, 01 Apr 2013)");
   script_name("Mozilla Firefox ESR Code Execution Vulnerabilities - November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -55,7 +54,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox ESR and is prone to multiple
   code execution vulnerabilities.");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

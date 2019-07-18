@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_win_dec11.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Mozilla Products Multiple Vulnerabilities - Dec 11 (Windows)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902775");
-  script_version("$Revision: 12010 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3663", "CVE-2011-3665");
   script_bugtraq_id(51133, 51135, 51136, 51134);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-22 12:14:45 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_name("Mozilla Products Multiple Vulnerabilities - Dec 11 (Windows)");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47302/");
@@ -74,7 +73,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   exit(0);

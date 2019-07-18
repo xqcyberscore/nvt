@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jul10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Google Chrome multiple vulnerabilities - July 10
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800800");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-07-12 09:42:32 +0200 (Mon, 12 Jul 2010)");
   script_cve_id("CVE-2010-2645", "CVE-2010-2646", "CVE-2010-2648",
                 "CVE-2010-2647", "CVE-2010-2649", "CVE-2010-2651",
@@ -70,7 +69,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_jsinfer_dos_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Windows)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802869");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-1939");
   script_bugtraq_id(53797);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-06-19 15:21:15 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Windows)");
 
@@ -58,7 +57,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
 
   exit(0);

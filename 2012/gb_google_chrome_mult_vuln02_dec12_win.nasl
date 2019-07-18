@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_dec12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Dec2012 (Windows)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803121");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2012-5138", "CVE-2012-5137");
   script_bugtraq_id(56741);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-12-04 12:37:33 +0530 (Tue, 04 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Dec2012 (Windows)");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56741");
@@ -55,7 +54,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

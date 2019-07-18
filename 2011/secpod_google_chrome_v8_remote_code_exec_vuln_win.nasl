@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_v8_remote_code_exec_vuln_win.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Google Chrome V8 Remote Code Execution Vulnerability (Windows)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902635");
-  script_version("$Revision: 12014 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2011-3900");
   script_bugtraq_id(50701);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-11-21 17:15:15 +0530 (Mon, 21 Nov 2011)");
   script_name("Google Chrome V8 Remote Code Execution Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46889/");
@@ -53,7 +52,7 @@ if(description)
   code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

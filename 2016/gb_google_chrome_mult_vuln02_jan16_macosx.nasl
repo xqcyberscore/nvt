@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_jan16_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-02 Jan16 (Mac OS X)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806667");
-  script_version("$Revision: 11969 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2016-1612", "CVE-2016-1613", "CVE-2016-1614", "CVE-2016-1615",
                 "CVE-2016-1616", "CVE-2016-1617", "CVE-2016-1618", "CVE-2016-1619",
                 "CVE-2016-1620", "CVE-2016-2051", "CVE-2016-2052");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-22 14:58:05 +0530 (Fri, 22 Jan 2016)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Jan16 (Mac OS X)");
 
@@ -88,7 +87,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

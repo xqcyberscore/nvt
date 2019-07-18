@@ -28,12 +28,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812751");
-  script_version("2019-05-01T16:02:02+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2018-5124");
   script_bugtraq_id(102843);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-01 16:02:02 +0000 (Wed, 01 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-31 11:32:23 +0530 (Wed, 31 Jan 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-05_2018-05 )-MAC OS X");
 
@@ -64,7 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804015");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2013-1729");
   script_bugtraq_id(62474);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-09-24 16:13:31 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Firefox Information Disclosure Vulnerability (Mac OS X)");
 
@@ -58,7 +58,7 @@ data by reading from a CANVAS element.");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl", "gather-package-list.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

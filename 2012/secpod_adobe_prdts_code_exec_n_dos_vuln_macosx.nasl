@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_code_exec_n_dos_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Adobe Flash Player Code Execution and DoS Vulnerabilities (MAC OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903016");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-03-30 11:21:49 +0530 (Fri, 30 Mar 2012)");
   script_name("Adobe Flash Player Code Execution and DoS Vulnerabilities (MAC OS X)");
 
@@ -61,7 +60,7 @@ code or cause a denial of service (memory corruption) via unknown vectors.");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

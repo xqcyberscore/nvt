@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814681");
-  script_version("2019-06-03T07:01:53+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2019-7090");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 11:38:20 +0530 (Wed, 13 Feb 2019)");
   script_name("Adobe Flash Player Security Update(apsb19-06)-MAC OS X");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb19-06.html");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_jan16_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Jan16 (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807053");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-1935", "CVE-2016-1930");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-29 11:03:21 +0530 (Fri, 29 Jan 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Jan16 (Mac OS X)");
 
@@ -70,7 +69,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox-ESR/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win02_may11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mozilla Products Multiple Vulnerabilities May-11 (Windows) - 02
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801885");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-07-17T11:14:11+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_cve_id("CVE-2011-0071", "CVE-2011-0072", "CVE-2011-0074",
                 "CVE-2011-0075", "CVE-2011-0077", "CVE-2011-0078",
@@ -65,7 +64,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Firefox version 3.5.19, 3.6.17, 4.0.1 or later,
   Upgrade to Seamonkey version 2.0.14 or later,
   Upgrade to Thunderbird version 3.1.10 or later.");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_tag(name:"solution_type", value:"VendorFix");

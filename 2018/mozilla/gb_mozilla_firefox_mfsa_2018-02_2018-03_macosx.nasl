@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-02_2018-03_macosx.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Firefox Security Updates( mfsa_2018-02_2018-03 )-MAC OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812669");
-  script_version("$Revision: 12068 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2018-5091", "CVE-2018-5092", "CVE-2018-5093", "CVE-2018-5094",
                 "CVE-2018-5095", "CVE-2018-5097", "CVE-2018-5098", "CVE-2018-5099",
                 "CVE-2018-5100", "CVE-2018-5101", "CVE-2018-5102", "CVE-2018-5103",
@@ -40,7 +39,7 @@ if(description)
                 "CVE-2018-5121", "CVE-2018-5122", "CVE-2018-5090", "CVE-2018-5089");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-24 12:35:29 +0530 (Wed, 24 Jan 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-02_2018-03 )-MAC OS X");
 
@@ -107,7 +106,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

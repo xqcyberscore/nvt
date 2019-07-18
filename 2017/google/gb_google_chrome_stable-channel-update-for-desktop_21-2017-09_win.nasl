@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_21-2017-09)-Windows
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811842");
-  script_version("$Revision: 11983 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2017-5121", "CVE-2017-5122");
   script_bugtraq_id(100947);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-25 12:15:01 +0530 (Mon, 25 Sep 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_21-2017-09)-Windows");
 
@@ -70,7 +69,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

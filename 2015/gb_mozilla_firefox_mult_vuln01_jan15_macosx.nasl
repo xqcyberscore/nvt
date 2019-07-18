@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_jan15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Mac OS X)
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805249");
-  script_version("$Revision: 11872 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2014-8642", "CVE-2014-8641", "CVE-2014-8640", "CVE-2014-8639",
                 "CVE-2014-8638", "CVE-2014-8637", "CVE-2014-8636", "CVE-2014-8635",
                 "CVE-2014-8634");
   script_bugtraq_id(72042, 72044, 72045, 72046, 72047, 72048, 72041, 72050, 72049);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-01-20 13:12:05 +0530 (Tue, 20 Jan 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Mac OS X)");
 
@@ -97,7 +96,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

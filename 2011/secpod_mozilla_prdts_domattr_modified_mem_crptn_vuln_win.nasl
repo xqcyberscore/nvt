@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_domattr_modified_mem_crptn_vuln_win.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Mozilla Products DOMAttrModified Memory Corruption Vulnerability (Windows)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902774");
-  script_version("$Revision: 12010 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2011-3658");
   script_bugtraq_id(51138);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"creation_date", value:"2011-12-22 11:48:05 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_name("Mozilla Products DOMAttrModified Memory Corruption Vulnerability (Windows)");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51138/info");
@@ -59,7 +58,7 @@ if(description)
   prone to out of bounds memory corruption vulnerability.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 9.0 or later, Upgrade to SeaMonkey version to 2.6 or later,
   Upgrade to Thunderbird version to 9.0 or later.");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_tag(name:"qod_type", value:"registry");

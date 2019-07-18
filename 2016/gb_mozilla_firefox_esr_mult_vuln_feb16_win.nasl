@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_feb16_win.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Feb16 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807070");
-  script_version("$Revision: 12363 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-1521", "CVE-2016-1522", "CVE-2016-1523", "CVE-2016-1526");
   script_bugtraq_id(82991);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-15 12:34:52 +0530 (Mon, 15 Feb 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Feb16 (Windows)");
 
@@ -78,7 +77,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

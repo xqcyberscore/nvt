@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-91_2016-91_macosx.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-MAC OS X
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809824");
-  script_version("$Revision: 11961 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-9078");
   script_bugtraq_id(94569);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-12-01 12:05:00 +0530 (Thu, 01 Dec 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-MAC OS X");
 
@@ -64,7 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

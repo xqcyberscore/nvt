@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_sep11_macosx.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Google Chrome multiple vulnerabilities - September11 (Mac OS X)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802328");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2011-2823", "CVE-2011-2824", "CVE-2011-2825", "CVE-2011-2821",
                 "CVE-2011-2826", "CVE-2011-2826", "CVE-2011-2827", "CVE-2011-2828",
@@ -65,7 +64,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

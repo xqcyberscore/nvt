@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_dec13_lin.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 Dec13 (Linux)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804169");
-  script_version("$Revision: 12832 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2013-5331", "CVE-2013-5332");
   script_bugtraq_id(64199, 64201);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-12-18 16:01:12 +0530 (Wed, 18 Dec 2013)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 Dec13 (Linux)");
 
@@ -57,7 +56,7 @@ memory corruption(denial of service) and compromise a user's system.");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

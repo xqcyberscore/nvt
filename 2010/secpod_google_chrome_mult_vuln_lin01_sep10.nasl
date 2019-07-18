@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_lin01_sep10.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Google Chrome 'WebKit' Multiple Vulnerabilities (Linux) - Sep 10
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901160");
-  script_version("$Revision: 12670 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-10-01 08:36:34 +0200 (Fri, 01 Oct 2010)");
   script_cve_id("CVE-2010-1773", "CVE-2010-1772", "CVE-2010-2301", "CVE-2010-2302",
                 "CVE-2010-2300", "CVE-2010-2299", "CVE-2010-2298", "CVE-2010-2297",
@@ -84,7 +83,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

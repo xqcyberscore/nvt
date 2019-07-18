@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_sep14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Sep14 (Windows)
 #
@@ -29,14 +28,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804763");
-  script_version("$Revision: 11867 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2014-3177", "CVE-2014-3176", "CVE-2014-3175", "CVE-2014-3174",
                 "CVE-2014-3173", "CVE-2014-3172", "CVE-2014-3171", "CVE-2014-3170",
                 "CVE-2014-3169", "CVE-2014-3168");
   script_bugtraq_id(69404, 69402, 69407, 69403, 69401, 69406, 69400, 69405, 69398);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-09-11 11:23:16 +0530 (Thu, 11 Sep 2014)");
 
   script_name("Google Chrome Multiple Vulnerabilities - 01 Sep14 (Windows)");
@@ -87,7 +86,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

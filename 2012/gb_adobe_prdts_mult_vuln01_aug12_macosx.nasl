@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln01_aug12_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 August 12 (Mac OS X)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802953");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2012-4163", "CVE-2012-4164", "CVE-2012-4165", "CVE-2012-4166",
                 "CVE-2012-4167", "CVE-2012-4168", "CVE-2012-4171", "CVE-2012-5054");
   script_bugtraq_id(55136, 55365);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-08-24 11:31:28 +0530 (Fri, 24 Aug 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities -01 August 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50354");
@@ -54,7 +53,7 @@ if(description)
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

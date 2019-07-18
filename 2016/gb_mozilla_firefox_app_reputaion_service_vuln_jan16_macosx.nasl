@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_app_reputaion_service_vuln_jan16_macosx.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Mac OS X)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807049");
-  script_version("$Revision: 11961 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-1947");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-29 10:26:04 +0530 (Fri, 29 Jan 2016)");
   script_name("Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Mac OS X");
 
@@ -68,7 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

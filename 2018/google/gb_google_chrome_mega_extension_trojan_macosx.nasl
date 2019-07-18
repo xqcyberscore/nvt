@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813791");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-07-17T08:50:51+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 08:50:51 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-10 12:21:10 +0530 (Mon, 10 Sep 2018)");
   script_name("Google Chrome MEGA Extension Trojan-Mac OS X");
 
@@ -60,7 +60,6 @@ if(description)
   script_tag(name:"qod", value:"75");
 
   script_xref(name:"URL", value:"https://thehackernews.com/2018/09/mega-file-upload-chrome-extension.html");
-  script_xref(name:"URL", value:"https://mega.nz");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -75,35 +74,30 @@ include("version_func.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock) {
+if(!sock)
   exit(0);
-}
 
-filePath = find_file(file_name:"Mega.html", file_path:"/", useregex:TRUE,
-                  regexpar:"$", sock:sock);
-if((!filePath) || ("does not exist" >< filePath))
-{
+filePath = find_file(file_name:"Mega.html", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
+if(!filePath || "does not exist" >< filePath) {
   filePath = chomp(ssh_cmd(socket:sock, cmd:"mdfind Mega.html"));
-  if((!filePath) || ("does not exist" >< filePath)){
+  if(!filePath || "does not exist" >< filePath) {
     exit(0);
   }
 }
 
-log_message(data: "filePath:: " + filePath);
-foreach file(split(filePath))
-{
-  ver = eregmatch(pattern:"(.*(g|G)oogle.(c|C)hrome.*(e|E)xtensions.*[A-za-z]+/([0-9._]+).*)(M|m)ega/html/mega.html", string:file );
-  if(!ver[5]){
+foreach file(split(filePath)) {
+  ver = eregmatch(pattern:"(.*(g|G)oogle.(c|C)hrome.*(e|E)xtensions.*[A-za-z]+/([0-9._]+).*)(M|m)ega/html/mega.html", string:file);
+  if(!ver[5])
     continue;
-  }
+
   version = ver[5];
   filePath = ver[0];
 
-  if(version_is_equal(version:version, test_version:"3.39.4"))
-  {
+  if(version_is_equal(version:version, test_version:"3.39.4")) {
     report = report_fixed_ver(installed_version:version, fixed_version:"3.39.5", install_path:filePath);
     security_message(data:report);
     exit(0);
   }
 }
-exit(0);
+
+exit(99);

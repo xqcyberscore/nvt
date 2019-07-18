@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-10_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2016-10)-Linux
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809073");
-  script_version("$Revision: 11969 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2016-5181", "CVE-2016-5182", "CVE-2016-5183", "CVE-2016-5184",
                 "CVE-2016-5185", "CVE-2016-5188", "CVE-2016-5189", "CVE-2016-5186",
                 "CVE-2016-5191", "CVE-2016-5190", "CVE-2016-5194");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-10-21 12:32:32 +0530 (Fri, 21 Oct 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2016-10)-Linux");
 
@@ -89,7 +88,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

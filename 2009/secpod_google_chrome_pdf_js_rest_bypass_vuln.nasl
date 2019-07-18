@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_pdf_js_rest_bypass_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Google Chrome PDF Javascript Security Bypass Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900707");
-  script_version("$Revision: 12629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-18 09:37:31 +0200 (Mon, 18 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will let attacker to execute arbitrary code result in
   spoof URLs, bypass the security restriction, XSS, Memory corruption, phishing
   attacks and steal generic information from website.");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

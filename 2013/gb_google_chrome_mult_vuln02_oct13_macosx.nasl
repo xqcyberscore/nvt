@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_oct13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Oct2013 (Mac OS X)
 #
@@ -28,12 +27,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804115");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2013-2928", "CVE-2013-2925", "CVE-2013-2926", "CVE-2013-2927");
   script_bugtraq_id(63024, 63026, 63028, 63025);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-10-23 15:30:38 +0530 (Wed, 23 Oct 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Oct2013 (Mac OS X)");
 
@@ -70,7 +69,7 @@ vectors.");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_webkit_remote_code_exec_vuln_lin.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Google Chrome Webkit Remote Code Execution Vulnerability (Linux)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803624");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2013-0912");
   script_bugtraq_id(58388);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-05-28 17:26:01 +0530 (Tue, 28 May 2013)");
   script_name("Google Chrome Webkit Remote Code Execution Vulnerability (Linux)");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52534");
@@ -52,7 +51,7 @@ if(description)
   code execution vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

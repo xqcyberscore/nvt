@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2017-10_2017-11_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-10_2017-11)-Windows
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810760");
-  script_version("$Revision: 11977 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2017-5429", "CVE-2017-5432", "CVE-2017-5433", "CVE-2017-5434",
                 "CVE-2017-5435", "CVE-2017-5436", "CVE-2017-5437", "CVE-2017-5438",
                 "CVE-2017-5439", "CVE-2017-5440", "CVE-2017-5441", "CVE-2017-5442",
@@ -39,7 +38,7 @@ if(description)
                 "CVE-2017-5469");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-20 13:41:00 +0530 (Thu, 20 Apr 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-10_2017-11)-Windows");
 
@@ -118,7 +117,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

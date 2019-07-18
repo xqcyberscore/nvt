@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_900214.nasl 12623 2018-12-03 13:11:38Z cfischer $
 # Description: Google Chrome multiple vulnerabilities
 #
 # Authors:
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900214");
-  script_version("$Revision: 12623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-07-17T08:15:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,7 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"impact", value:"A remote user could cause Denial of Service conditions or can execute arbitrary
   code by convincing the users to visit a malicious website.");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

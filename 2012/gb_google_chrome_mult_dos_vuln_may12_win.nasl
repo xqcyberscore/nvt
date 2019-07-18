@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_may12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Windows)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802848");
-  script_version("$Revision: 11855 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2011-3078", "CVE-2011-3079", "CVE-2011-3080", "CVE-2011-3081",
                 "CVE-2012-1521");
   script_bugtraq_id(53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-05-07 15:15:45 +0530 (Mon, 07 May 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48992/");
@@ -62,7 +61,7 @@ if(description)
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

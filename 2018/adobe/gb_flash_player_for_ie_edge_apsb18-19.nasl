@@ -28,11 +28,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813602");
-  script_version("2019-04-26T09:28:56+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2018-5002", "CVE-2018-4945", "CVE-2018-5000", "CVE-2018-5001");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-26 09:28:56 +0000 (Fri, 26 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-06-08 12:38:35 +0530 (Fri, 08 Jun 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (apsb18-19)");
   script_category(ACT_GATHER_INFO);
@@ -41,7 +41,7 @@ if(description)
   script_dependencies("gb_flash_player_within_ie_edge_detect.nasl");
   script_mandatory_keys("AdobeFlash/IE_or_EDGE/Installed");
 
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb18-19.html");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player

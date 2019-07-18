@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mozilla Firefox Memory Corruption and Integer Underflow Vulnerabilities (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802170");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-07-17T11:14:11+0000");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_cve_id("CVE-2011-2996", "CVE-2011-2998");
   script_bugtraq_id(49845, 49809);
@@ -36,7 +35,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Mozilla Firefox Memory Corruption and Integer Underflow Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-36.html");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");

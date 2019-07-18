@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_pdf_viewer_mult_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome PDF Viewer Multiple Vulnerabilities (Mac OS X)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802933");
-  script_version("$Revision: 11857 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2012-2862", "CVE-2012-2863");
   script_bugtraq_id(54897);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-08-14 17:07:50 +0530 (Tue, 14 Aug 2012)");
   script_name("Google Chrome PDF Viewer Multiple Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50222/");
@@ -52,7 +51,7 @@ if(description)
   free and denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

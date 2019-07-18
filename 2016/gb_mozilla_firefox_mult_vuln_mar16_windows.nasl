@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_mar16_windows.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807520");
-  script_version("$Revision: 12363 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-1954", "CVE-2016-1955", "CVE-2016-1957", "CVE-2016-1958",
                 "CVE-2016-1959", "CVE-2016-1960", "CVE-2016-1950", "CVE-2016-1952",
                 "CVE-2016-1953", "CVE-2016-1961", "CVE-2016-1962", "CVE-2016-1963",
@@ -42,7 +41,7 @@ if(description)
                 "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-03-14 16:41:40 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)");
 
@@ -111,7 +110,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

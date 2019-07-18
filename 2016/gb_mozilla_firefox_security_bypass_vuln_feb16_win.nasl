@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_security_bypass_vuln_feb16_win.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Mozilla Firefox Security Bypass Vulnerability - Feb16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807068");
-  script_version("$Revision: 12431 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2016-1949");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-15 12:34:52 +0530 (Mon, 15 Feb 2016)");
   script_name("Mozilla Firefox Security Bypass Vulnerability - Feb16 (Windows)");
 
@@ -66,7 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

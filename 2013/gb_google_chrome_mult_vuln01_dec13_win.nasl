@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec2013 (Windows)
 #
@@ -28,13 +27,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804162");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T08:15:16+0000");
   script_cve_id("CVE-2013-6635", "CVE-2013-6634", "CVE-2013-6640", "CVE-2013-6636",
                 "CVE-2013-6639", "CVE-2013-6638", "CVE-2013-6637");
   script_bugtraq_id(64078);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-12-10 11:07:29 +0530 (Tue, 10 Dec 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec2013 (Windows)");
 
@@ -75,7 +74,7 @@ other attacks may also be possible.");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
 

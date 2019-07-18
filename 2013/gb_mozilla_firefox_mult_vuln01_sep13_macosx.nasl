@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804006");
-  script_version("$Revision: 11865 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2013-1718", "CVE-2013-1719", "CVE-2013-1720", "CVE-2013-1721",
                 "CVE-2013-1722", "CVE-2013-1723", "CVE-2013-1724", "CVE-2013-1725",
                 "CVE-2013-1726", "CVE-2013-1728", "CVE-2013-1730", "CVE-2013-1732",
@@ -38,7 +38,7 @@ if(description)
                     62482, 62468, 62473, 62469, 62479, 62478, 62475, 62466);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-09-24 13:40:22 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Sep13 (Mac OS X)");
 
@@ -62,7 +62,7 @@ restrictions, and compromise a user's system.");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

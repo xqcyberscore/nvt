@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2017-01_2017-02_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-01_2017-02)-MAC OS X
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809878");
-  script_version("$Revision: 11888 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5378", "CVE-2017-5380",
 		"CVE-2017-5390", "CVE-2017-5396", "CVE-2017-5383", "CVE-2017-5386",
 		"CVE-2017-5373");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-27 12:11:29 +0530 (Fri, 27 Jan 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-01_2017-02)-MAC OS X");
 
@@ -81,7 +80,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox-ESR/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
 

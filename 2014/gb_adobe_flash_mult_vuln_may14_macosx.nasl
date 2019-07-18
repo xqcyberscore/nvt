@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln_may14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - May14 (Mac OS X)
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804590");
-  script_version("$Revision: 11867 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2014-0516", "CVE-2014-0517", "CVE-2014-0518", "CVE-2014-0519",
                 "CVE-2014-0520");
   script_bugtraq_id(67361, 67364, 67371, 67373, 67372);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-05-22 12:59:42 +0530 (Thu, 22 May 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - May14 (Mac OS X)");
 
@@ -59,7 +58,7 @@ restrictions and compromise a user's system.");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
 
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

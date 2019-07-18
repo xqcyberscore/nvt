@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803661");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2013-3343");
   script_bugtraq_id(60478);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-06-18 13:23:17 +0530 (Tue, 18 Jun 2013)");
   script_name("Adobe Flash Player Remote Code Execution Vulnerability -June13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53751");
@@ -54,7 +54,7 @@ if(description)
   remote code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

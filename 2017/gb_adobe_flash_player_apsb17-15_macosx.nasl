@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb17-15_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Adobe Flash Player Security Updates(apsb17-15)-MAC OS X
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811103");
-  script_version("$Revision: 11863 $");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2017-3068", "CVE-2017-3069", "CVE-2017-3070", "CVE-2017-3071",
 		"CVE-2017-3072", "CVE-2017-3073", "CVE-2017-3074");
   script_bugtraq_id(98349, 98347);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-10 08:04:31 +0530 (Wed, 10 May 2017)");
   script_name("Adobe Flash Player Security Updates(apsb17-15)-MAC OS X");
 
@@ -67,7 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
-  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+
   exit(0);
 }
 

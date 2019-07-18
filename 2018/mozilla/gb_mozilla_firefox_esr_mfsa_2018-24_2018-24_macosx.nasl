@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814064");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-17T11:14:11+0000");
   script_cve_id("CVE-2018-12386", "CVE-2018-12387");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:05 +0530 (Wed, 03 Oct 2018)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-24_2018-24)-MAC OS X");
 
@@ -61,7 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2018-24");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
