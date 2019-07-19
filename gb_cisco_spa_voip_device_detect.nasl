@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_spa_voip_device_detect.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # Cisco Small Business VoIP Device Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106216");
-  script_version("$Revision: 13734 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
+  script_version("2019-07-18T03:42:00+0000");
+  script_tag(name:"last_modification", value:"2019-07-18 03:42:00 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-01 10:53:52 +0700 (Thu, 01 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +70,7 @@ if (banner && "Cisco/SPA" >< banner) {
   if (!isnull(mo[1])) {
     model = mo[1];
 
-    ver = eregmatch(pattern: model + "-(.*).", string: banner);
+    ver = eregmatch(pattern: model + "-([0-9A-Za-z_.]+)", string: banner);
     if (!isnull(ver[1]))
       version = ereg_replace(string:ver[1], pattern: "\(([0-9A-Za-z_]+)\)", replace: ".\1");
 
@@ -82,7 +81,7 @@ if (banner && "Cisco/SPA" >< banner) {
     model = "unknown_model";
   }
 
-  cpe = build_cpe(value: version, exp: "^([0-9A-Za-z_.]+)", base: "cpe:/o:cisco:" + tolower(model) + ":");
+  cpe = build_cpe(value: tolower(version), exp: "^([0-9a-z_.]+)", base: "cpe:/o:cisco:" + tolower(model) + ":");
   if (!cpe)
     cpe = "cpe:/o:cisco:" + tolower(model);
 

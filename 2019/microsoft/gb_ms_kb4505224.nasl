@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815507");
-  script_version("2019-07-10T14:00:44+0000");
+  script_version("2019-07-19T06:52:55+0000");
   script_cve_id("CVE-2019-1068");
   script_bugtraq_id(108954);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-10 14:00:44 +0000 (Wed, 10 Jul 2019)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-19 06:52:55 +0000 (Fri, 19 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-10 12:42:11 +0530 (Wed, 10 Jul 2019)");
   script_name("Microsoft SQL Server Remote Code Execution Vulnerability (KB4505224)");
 

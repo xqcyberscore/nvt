@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_detect_lin.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Wireshark Version Detection (Linux)
 #
@@ -31,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800039");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("2019-07-18T11:38:28+0000");
+  script_tag(name:"last_modification", value:"2019-07-18 11:38:28 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -67,7 +66,7 @@ foreach executableFile (wiresharkName)
 {
   executableFile = chomp(executableFile);
   sharkVer = get_bin_version(full_prog_name:executableFile, version_argv:"-v",
-                             ver_pattern:"wireshark ([0-9.]+)", sock:sock);
+                             ver_pattern:"[Ww]ireshark ([0-9.]+)", sock:sock);
   if(sharkVer)
   {
     set_kb_item(name:"Wireshark/Linux/Ver", value:sharkVer[1]);
@@ -84,3 +83,5 @@ foreach executableFile (wiresharkName)
 }
 
 ssh_close_connection();
+
+exit( 0 );

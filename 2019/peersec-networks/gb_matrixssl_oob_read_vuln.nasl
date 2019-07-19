@@ -21,11 +21,11 @@ CPE = "cpe:/a:peersec_networks:matrixssl";
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112605");
-  script_version("2019-07-11T13:03:44+0000");
-  script_tag(name:"last_modification", value:"2019-07-11 13:03:44 +0000 (Thu, 11 Jul 2019)");
+  script_version("2019-07-19T06:52:55+0000");
+  script_tag(name:"last_modification", value:"2019-07-19 06:52:55 +0000 (Fri, 19 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-11 14:57:00 +0200 (Thu, 11 Jul 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-13470");
 

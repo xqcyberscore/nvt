@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: drupal_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Drupal Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100169");
-  script_version("$Revision: 10891 $");
+  script_version("2019-07-18T13:59:23+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-18 13:59:23 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_name("Drupal Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -61,7 +60,9 @@ if( ! can_host_php( port:port ) ) exit(0);
 brokenDr = 0;
 rootInstalled = FALSE;
 
-foreach dir( make_list_unique( "/", "/drupal", "/drupal7", "/cms", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/drupal", "/drupal6", "/drupal7", "/cms", cgi_dirs( port:port ) ) ) {
+
+  updaterMatches = 0;
 
   if( rootInstalled ) break;
 
@@ -71,9 +72,48 @@ foreach dir( make_list_unique( "/", "/drupal", "/drupal7", "/cms", cgi_dirs( por
   res  = http_get_cache( item:dir + "/update.php", port:port );
   res2 = http_get_cache( item:dir + "/", port:port );
 
-  if( egrep( pattern:"Location: .*update\.php\?op=info", string:res, icase:TRUE ) ||
-      ( egrep( pattern:"Access denied", string:res, icase:TRUE ) &&
-        egrep( pattern:"drupal", string:res, icase:TRUE ) ) ||
+  # For the update.php page we might get a redirect depending on the Drupal version (6 vs. 7)
+  if( res =~ "^HTTP/1\.[01] 30[12]" && egrep( pattern:"ocation: .*update\.php\?op=info", string:res, icase:FALSE ) ) {
+    path = eregmatch( string:res, pattern:'Location:[ ]*http[s]?://[^/]+([^ \r\n]+)', icase:TRUE );
+    if( path[1] ) {
+      res = http_get_cache( item:path[1], port:port );
+    }
+  }
+
+  # As the update.php page doesn't contain that much info (e.g. Drupal6 doesn't have the Generator tag) and might even be
+  # translated we're using various pattern for the later check and count them to a specific number where we're sure that
+  # this is the update page of Drupal.
+  #
+  # nb: This is used in such a way because some live Drupal pages where heavily modified and it wasn't possible to reliable
+  # detect the Drupal installation on the root dir where it was indeed possible via the exposed update.php.
+  if( "<title>Access denied | " >< res )
+    updaterMatches++;
+
+  if( '<meta name="Generator" content="Drupal' >< res )
+    updaterMatches++;
+
+  if( '<meta name="generator" content="Drupal' >< res )
+    updaterMatches++;
+
+  if( "$update_free_access = TRUE;" >< res )
+    updaterMatches++;
+
+  if( "$update_free_access = FALSE;" >< res )
+    updaterMatches++;
+
+  if( "/modules/system/system.css" >< res )
+    updaterMatches++;
+
+  if( "From the main Drupal directory that you installed all the files into" >< res )
+    updaterMatches++;
+
+  if( "/sites/default/files/logo.png" >< res )
+    updaterMatches++;
+
+  if( "/misc/drupal.js?" >< res )
+    updaterMatches++;
+
+  if( updaterMatches > 3 ||
       '<meta name="Generator" content="Drupal' >< res2 ||
       '<meta name="generator" content="Drupal' >< res2 ||
       "/misc/drupal.js?" >< res2 ||
@@ -157,7 +197,7 @@ foreach dir( make_list_unique( "/", "/drupal", "/drupal7", "/cms", cgi_dirs( por
     if( ! cpe )
       cpe = "cpe:/a:drupal:drupal";
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
 
     log_message( data:build_detection_report( app:"Drupal",
                                               version:version,

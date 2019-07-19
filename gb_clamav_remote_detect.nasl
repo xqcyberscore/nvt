@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_remote_detect.nasl 11033 2018-08-17 09:55:36Z cfischer $
 #
 # ClamAV Version Detection
 #
@@ -27,13 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100651");
-  script_version("$Revision: 11033 $");
+  script_version("2019-07-18T06:42:05+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:55:36 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-18 06:42:05 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-06-17 14:03:59 +0530 (Wed, 17 Jun 2015)");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Version Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Service detection");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/clamd", 3310);
 
   script_tag(name:"summary", value:"Detects the installed version of
   ClamAV Anti Virus.
@@ -41,11 +44,7 @@ if(description)
   This script sends a connection request to the server and try
   to get the version from the response, and sets the result in KB.");
 
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("find_service2.nasl");
-  script_require_ports("Services/clamd", 3310);
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -54,43 +53,42 @@ include("host_details.inc");
 include("cpe.inc");
 include("misc_func.inc");
 
-clamPort = get_kb_item("Services/clamd");
-if(!clamPort) clamPort = 3310;
-if(!get_port_state(clamPort))exit(0);
+port = get_port_for_service(default:3310, proto:"clamd");
 
-soc = open_sock_tcp(clamPort);
-if(!soc)exit(0);
+soc = open_sock_tcp(port);
+if(!soc)
+  exit(0);
 
 req = string("VERSION\r\n");
 send(socket:soc, data:req);
 buf = recv(socket:soc, length:256);
 close(soc);
 
-if(buf == NULL || "clamav" >!< tolower(buf))exit(0);
-version = eregmatch(pattern:"clamav ([0-9.]+)", string:tolower(buf));
+if(!buf || "clamav" >!< tolower(buf))
+  exit(0);
 
-if(!version){
-  version = "Unknown";
-} else{
-  version = version[1];
-}
+install = port + "/tcp";
+version = "unknown";
+
+# ClamAV 0.97.5
+# ClamAV 0.100.3/25513/Wed Jul 17 08:15:42 2019
+vers = eregmatch(pattern:"clamav ([0-9.]+)", string:tolower(buf));
+if(vers[1])
+  version = vers[1];
 
 set_kb_item(name:"ClamAV/installed", value:TRUE);
-set_kb_item(name:"ClamAV/remote/Ver", value: version);
+set_kb_item(name:"ClamAV/remote/Ver", value:version);
 
-cpe = build_cpe(value: version, exp:"([0-9.]+)", base:"cpe:/a:clamav:clamav:");
-if(isnull(cpe))
+cpe = build_cpe(value:version, exp:"([0-9.]+)", base:"cpe:/a:clamav:clamav:");
+if(!cpe)
   cpe = "cpe:/a:clamav:clamav";
 
 register_service(port:port, proto:"clamd");
-register_product(cpe:cpe, location:clamPort, port:clamPort);
-log_message(data: build_detection_report(app: "ClamAV",
+register_product(cpe:cpe, location:install, port:port, service:"clamd");
+log_message(data: build_detection_report(app:"ClamAV",
                                          version:version,
-                                         install:clamPort,
+                                         install:install,
                                          cpe:cpe,
-                                         concluded:version),
-                                         port:clamPort);
-
-info = string("ClamAV Version (" + version + ") was detected on the remote host.\n");
-security_message(port:clamPort,data:info);
+                                         concluded:vers[0]),
+                                         port:port);
 exit(0);
