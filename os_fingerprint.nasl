@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("2019-07-16T12:33:17+0000");
-  script_tag(name:"last_modification", value:"2019-07-16 12:33:17 +0000 (Tue, 16 Jul 2019)");
+  script_version("2019-07-22T05:49:21+0000");
+  script_tag(name:"last_modification", value:"2019-07-22 05:49:21 +0000 (Mon, 22 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -98,7 +98,10 @@ if(description)
                       "gb_dropbear_ssh_detect.nasl", "gb_rtsp_os_detection.nasl",
                       "gb_nntp_os_detection.nasl", "gb_android_adb_detect.nasl",
                       "netbios_name_get.nasl", "global_settings.nasl");
-  if(FEED_NAME == "GSF" || FEED_NAME == "SCM")  script_dependencies("gsf/gb_synetica_datastream_devices_detect_telnet.nasl");
+  if(FEED_NAME == "GSF" || FEED_NAME == "SCM")
+    script_dependencies("gsf/gb_synetica_datastream_devices_detect_telnet.nasl",
+                        "gsf/gb_paloalto_globalprotect_portal_detect.nasl",
+                        "gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl");
   script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.phrack.org/issues.html?issue=57&id=7#article");

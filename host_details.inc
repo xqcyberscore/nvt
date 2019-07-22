@@ -91,6 +91,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105532", # gb_cisco_ios_xr_version.nasl
     "1.3.6.1.4.1.25623.1.0.96200",  # gb_ssh_junos_get_version.nasl
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
+    "1.3.6.1.4.1.25623.1.0.142605", # gsf/gb_paloalto_globalprotect_portal_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108566", # gb_tippingpoint_sms_consolidation.nasl
@@ -153,6 +154,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.114106", # gsf/gb_synetica_datastream_devices_detect_telnet.nasl
+    "1.3.6.1.4.1.25623.1.0.142620", # gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103809", # gb_junos_snmp_version.nasl
     "1.3.6.1.4.1.25623.1.0.105271", # gb_citrix_netscaler_version.nasl
     "1.3.6.1.4.1.25623.1.0.103429", # gb_snmp_os_detection.nasl
@@ -209,6 +211,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105532", # gb_cisco_ios_xr_version.nasl
     "1.3.6.1.4.1.25623.1.0.96200",  # gb_ssh_junos_get_version.nasl
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
+    "1.3.6.1.4.1.25623.1.0.142605", # gsf/gb_paloalto_globalprotect_portal_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108566", # gb_tippingpoint_sms_consolidation.nasl
@@ -272,6 +275,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.105271", # gb_citrix_netscaler_version.nasl
     "1.3.6.1.4.1.25623.1.0.114106", # gsf/gb_synetica_datastream_devices_detect_telnet.nasl
+    "1.3.6.1.4.1.25623.1.0.142620", # gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103809", # gb_junos_snmp_version.nasl
     "1.3.6.1.4.1.25623.1.0.103429", # gb_snmp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108014", # gb_dns_os_detection.nasl

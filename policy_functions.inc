@@ -232,78 +232,72 @@ function policy_reporting(result, default, compliant, fixtext, type, test, info)
   policy_logging(text:report);
 }
 
-# @brief query wmi db RSOP_SecuritySettingBoolean for key
+# @brief Runs a passed WMI db query against 'root\rsop\computer' and compare the result to a default value
 #
-# @param select what to show from db
-# @param keyname which key to search for
-#
-# @note rsop only delivers results for domain admins
-#
-# @return wmi query result
-#
-function rsop_securitysettingsboolean(select, keyname) {
-
-  local_var select, keyname;
-  local_var infos, handle, query, res, splitRes, returnValue;
-
-  infos = kb_smb_wmi_connectinfo();
-  if(!infos)
-    exit(0);
-
-  handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
-  if(!handle) {
-    policy_logging(text:"WMI Connect to host failed.");
-    policy_set_kb(val:"error");
-    exit(0);
-  }
-
-  query = "SELECT " + select + " FROM RSOP_SecuritySettingBoolean WHERE KeyName = '" + keyname + "' AND precedence = '1'";
-  res = wmi_query_rsop(wmi_handle:handle, query:query);
-  wmi_close(wmi_handle:handle);
-
-  splitRes = split(res, sep:"|", keep:FALSE);
-  if(max_index(splitRes) < 4)
-    return('');
-
-  returnValue = splitRes[4];
-  return(string(returnValue));
-}
-
-# @brief query wmi db RSOP_SecuritySettingNumeric for key
-#
-# @param select what to show from db
-# @param keyname which key to search for
+# @param query Query for WMI db
+# @param default value to compare compliance to
+# @param min if default should be the minimum
+# @param max if default should be the maximum
 #
 # @note rsop only delivers results for domain admins
 #
-# @return wmi query result
+# @return ret array with value, comment and compliant strings
 #
-function rsop_securitysettingsnumeric(select, keyname) {
+function policy_rsop_query(query, default, min, max) {
 
-  local_var select, keyname;
-  local_var infos, handle, query, res, splitRes, returnValue;
+  local_var query, default, min, max;
+  local_var infos, ret, handle, res, splitRes;
 
   infos = kb_smb_wmi_connectinfo();
-  if(!infos)
-    exit(0);
+  if(!infos){
+    ret["value"] = "Error";
+    ret["compliant"] = "incomplete";
+    ret["comment"] = "No authentication possible.";
+
+    return(ret);
+  }
 
   handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
   if(!handle) {
-    policy_logging(text:"WMI Connect to host failed.");
-    policy_set_kb(val:"error");
-    exit(0);
+    ret["value"] = "Error";
+    ret["compliant"] = "incomplete";
+    ret["comment"] = "No WMI connection possible.";
+
+    return(ret);
   }
 
-  query = "SELECT " + select + " FROM RSOP_SecuritySettingNumeric WHERE KeyName = '" + keyname + "' AND precedence = '1'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
   wmi_close(wmi_handle:handle);
+  if(!res){
+    if(tolower(default) == "none")
+      ret["compliant"] = "yes";
+    else
+      ret["compliant"] = "no";
+
+    ret["value"] = "None";
+    ret["comment"] = "No setting found for this query.";
+
+    return(ret);
+  }
 
   splitRes = split(res, sep:"|", keep:FALSE);
-  if(max_index(splitRes) < 4)
-    return('');
 
-  returnValue = splitRes[4];
-  return(string(returnValue));
+  # Setting is on 4th position
+  if(max_index(splitRes) < 4)
+    ret["value"] = "None";
+  else
+    ret["value"] = chomp(splitRes[4]);
+
+  if(default == ret["value"])
+    ret["compliant"] = "yes";
+  else if(min && int(ret["value"]) >= int(default))
+    ret["compliant"] = "yes";
+  else if(max && int(ret["value"]) <= int(default))
+    ret["compliant"] = "yes";
+  else
+    ret["compliant"] = "no";
+
+  return(ret);
 }
 
 # @brief query wmi db RSOP_UserPrivilegeRight for specific right
@@ -1051,6 +1045,9 @@ function policy_powershell_cmd(cmd){
 
     cmd = 'powershell -Command " & {' + cmd + '}"';
     result = win_cmd_exec(cmd:cmd, password:password, username:username);
+    if(result =~ "fullyqualifiederrorid\s*:\s*commandnotfoundexception")
+      return;
+
     if(result){
       # Get rid of wmiexec.py prefix and any trailing / leading whitespaces
       result = ereg_replace(string:result, pattern:"(Impacket .+ dialect used)", replace:"");

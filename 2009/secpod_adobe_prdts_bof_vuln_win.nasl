@@ -83,6 +83,7 @@ if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 CPE = "cpe:/a:adobe:acrobat";
 if(acrobatVer = get_app_version(cpe:CPE))
 {
+if(readerVer =~ "^(7|8|9)") {
   if(version_in_range(version:acrobatVer, test_version:"7.0", test_version2:"7.1.0")||
      version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.1.3")||
      acrobatVer =~ "9.0")
@@ -90,4 +91,5 @@ if(acrobatVer = get_app_version(cpe:CPE))
     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
+ }
 }

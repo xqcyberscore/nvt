@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoom_client_detect_macosx.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Zoom Client Version Detection (Mac OS X)
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814355");
-  script_version("$Revision: 13650 $");
+  script_version("2019-07-19T09:05:16+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-19 09:05:16 +0000 (Fri, 19 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-12-06 18:04:33 +0530 (Thu, 06 Dec 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Zoom Client Version Detection (Mac OS X)");
@@ -57,34 +56,28 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
-zoomVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
-                      "zoom.us.app/Contents/Info CFBundleShortVersionString"));
-
+zoomVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/zoom.us.app/Contents/Info CFBundleShortVersionString"));
 close(sock);
-if(isnull(zoomVer) || "does not exist" >< zoomVer){
+if(isnull(zoomVer) || "does not exist" >< zoomVer)
   exit(0);
-}
 
 set_kb_item(name:"Zoom/Macosx/Ver", value:zoomVer);
 
-#created cpe for this product
-cpe = build_cpe(value:zoomVer, exp:"^([0-9.]+)", base:"cpe:/a:zoom:client:");
-if(isnull(cpe))
-  cpe = "cpe:/a:zoom:client";
+cpe = build_cpe(value:zoomVer, exp:"^([0-9.]+)", base:"cpe:/a:zoom:zoom:");
+if(!cpe)
+  cpe = "cpe:/a:zoom:zoom";
 
-register_product(cpe: cpe, location:'/Applications/zoom.us.app', service:"ssh-login", port:0);
+register_product(cpe:cpe, location:'/Applications/zoom.us.app', service:"ssh-login", port:0);
 
-report =  build_detection_report(app: "Zoom Client",
-                                 version: zoomVer,
-                                 install: "/Applications/zoom.us.app",
-                                 cpe: cpe,
-                                 concluded: zoomVer);
-if(report){
-  log_message( port:0, data:report );
-}
+report =  build_detection_report(app:"Zoom Client",
+                                 version:zoomVer,
+                                 install:"/Applications/zoom.us.app",
+                                 cpe:cpe,
+                                 concluded:zoomVer);
+
+log_message(port:0, data:report);
 
 exit(0);
