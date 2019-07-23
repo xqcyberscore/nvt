@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_hudson_groovy_console.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Hudson CI Groovy Console accessible
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:oracle:hudson";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111003");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("2019-07-18T06:43:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-18 06:43:16 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-03-02 12:00:00 +0100 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,8 +39,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
-  script_dependencies("sw_hudson_detect.nasl");
-  script_require_keys("hudson/installed");
+  script_dependencies("gb_hudson_consolidation.nasl");
+  script_require_keys("hudson/detected");
 
   script_tag(name:"summary", value:"The script sends a HTTP request to the
   server and checks if the Groovy Console is unprotected.");
@@ -62,7 +61,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service: "www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";

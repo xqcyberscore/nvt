@@ -23,12 +23,12 @@ CPE = "cpe:/a:microsoft:asp.net_core" ;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815172");
-  script_version("2019-07-12T06:29:03+0000");
+  script_version("2019-07-23T06:55:12+0000");
   script_cve_id("CVE-2019-1075");
   script_bugtraq_id(108984);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-12 06:29:03 +0000 (Fri, 12 Jul 2019)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-07-23 06:55:12 +0000 (Tue, 23 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-11 09:58:50 +0530 (Thu, 11 Jul 2019)");
   script_name(".NET Core Spoofing Vulnerability (July 2019)");
 

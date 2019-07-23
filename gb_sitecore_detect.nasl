@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecore_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Sitecore CMS Detection
 #
@@ -32,8 +31,8 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:N");
 
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-07-22T09:48:00+0000");
+  script_tag(name:"last_modification", value:"2019-07-22 09:48:00 +0000 (Mon, 22 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-10-16 15:54:00 +0200 (Mon, 16 Oct 2017)");
 
   script_name("Sitecore CMS Detection");
@@ -89,7 +88,10 @@ foreach dir( make_list_unique( "/", "/sitecore", cgi_dirs( port:port ) ) ) {
       version = ver[1];
       concUrl = report_vuln_url(  port:port, url:dir + "/login/", url_only:TRUE );
     }
-    if( ! isnull( ver[2] ) ) extra += 'Revision: ' + ver[2];
+    if( ! isnull( ver[2] ) ) {
+      extra += 'Revision: ' + ver[2];
+      set_kb_item( name:"sitecore/cms/" + port + "/revision", value:ver[2] );
+    }
     if( ! isnull( ver[3] ) ) extra += '\nHotfix: ' + ver[3];
 
     if( found ){

@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113380");
-  script_version("2019-06-17T12:27:56+0000");
-  script_tag(name:"last_modification", value:"2019-06-17 12:27:56 +0000 (Mon, 17 Jun 2019)");
+  script_version("2019-07-22T10:59:20+0000");
+  script_tag(name:"last_modification", value:"2019-07-22 10:59:20 +0000 (Mon, 22 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-29 12:27:28 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -29,7 +29,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_cve_id("CVE-2019-11513", "CVE-2019-11226", "CVE-2019-10105", "CVE-2019-10106", "CVE-2019-10107");
+  script_cve_id("CVE-2019-11513", "CVE-2019-11226", "CVE-2019-10105", "CVE-2019-10106",
+  "CVE-2019-10107", "CVE-2019-10017");
 
   script_name("CMS Made Simple <= 2.2.10 Reflected Multiple Cross-Site Scripting (XSS) Vulnerabilities");
 
@@ -57,7 +58,10 @@ if(description)
   'Add Category' action to the 'Site Admin Settings - News module' section.
 
   - XSS Vulnerability via the myaccount.php 'Email Address' field, which is reachable via the
-  'My Preferences - My Account' section.");
+  'My Preferences - My Account' section.
+
+  - XSS Vulnerability via the moduleinterface.php Name field, which is reachable via an
+  'Add a new Profile' action to the File Picker.");
 
   script_tag(name:"impact", value:"Successful exploitation would allow an authenticated attacker to inject arbitrary
   JavaScript and HTML into the site.");
@@ -68,7 +72,9 @@ if(description)
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://dev.cmsmadesimple.org/bug/view/12022");
+  script_xref(name:"URL", value:"http://dev.cmsmadesimple.org/bug/view/12001");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/153071/CMS-Made-Simple-2.2.10-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"https://ctrsec.io/index.php/2019/03/24/cmsmadesimple-xss-filepicker/");
 
   exit(0);
 }

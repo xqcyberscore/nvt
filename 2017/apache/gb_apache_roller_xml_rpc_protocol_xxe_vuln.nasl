@@ -28,12 +28,12 @@ CPE = "cpe:/a:apache:roller";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812233");
-  script_version("2019-05-17T13:14:58+0000");
+  script_version("2019-07-23T10:31:33+0000");
   script_cve_id("CVE-2014-0030");
   script_bugtraq_id(101230);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-23 10:31:33 +0000 (Tue, 23 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-12-01 11:21:50 +0530 (Fri, 01 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Roller 'XML-RPC' Protocol XXE Vulnerability");
@@ -63,24 +63,25 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_roller_detect.nasl");
-  script_mandatory_keys("ApacheRoller/Installed");
+  script_mandatory_keys("ApacheRoller/detected");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE)) exit(0);
-rollerVer = infos['version'];
-rollerpath = infos['location'];
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-foreach version (make_list('5.0.2', '5.0.1', '5.0', '4.0.1', '4.0.0', '3.1'))
-{
-  if( rollerVer == version)
-  {
-    report = report_fixed_ver(installed_version:rollerVer, fixed_version:"5.0.3", install_path:rollerpath);
+vers = infos['version'];
+path = infos['location'];
+
+foreach version(make_list('5.0.2', '5.0.1', '5.0', '4.0.1', '4.0.0', '3.1')) {
+  if(vers == version) {
+    report = report_fixed_ver(installed_version:vers, fixed_version:"5.0.3", install_path:path);
     security_message(data:report);
     exit(0);
   }
 }
-exit(0);
+
+exit(99);

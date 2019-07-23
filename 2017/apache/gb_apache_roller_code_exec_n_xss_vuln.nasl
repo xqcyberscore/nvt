@@ -28,12 +28,12 @@ CPE = "cpe:/a:apache:roller";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812226");
-  script_version("2019-05-17T13:14:58+0000");
+  script_version("2019-07-23T10:31:33+0000");
   script_cve_id("CVE-2013-4171", "CVE-2013-4212");
   script_bugtraq_id(63963, 63928);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 13:14:58 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-23 10:31:33 +0000 (Tue, 23 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-11-27 14:43:15 +0530 (Mon, 27 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Roller Cross Site Scripting And Code Execution Vulnerabilities");
@@ -46,16 +46,16 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An input validation errors via some parameters in certain 'getText' methods
-    in the 'ActionSupport' controller in Apache Roller.
+  in the 'ActionSupport' controller in Apache Roller.
 
   - Multiple input validation errors of vectors related to the search results in
-    the 'RSS' and 'Atom' feed templates.");
+  the 'RSS' and 'Atom' feed templates.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to inject arbitrary web script or HTML and also to execute arbitrary
   commands.");
 
-  script_tag(name:"affected", value:"Apache Roller before 5.0.2");
+  script_tag(name:"affected", value:"Apache Roller before 5.0.2.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Roller 5.0.2 or later.");
 
@@ -69,7 +69,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_roller_detect.nasl");
-  script_mandatory_keys("ApacheRoller/Installed");
+  script_mandatory_keys("ApacheRoller/detected");
 
   exit(0);
 }
@@ -77,14 +77,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE)) exit(0);
-rollerVer = infos['version'];
-rollerpath = infos['location'];
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if(version_is_less(version:rollerVer, test_version:"5.0.2"))
-{
-  report = report_fixed_ver(installed_version:rollerVer, fixed_version:"5.0.2", install_path:rollerpath);
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_less(version:vers, test_version:"5.0.2")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"5.0.2", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

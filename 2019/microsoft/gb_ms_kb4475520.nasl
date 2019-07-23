@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815501");
-  script_version("2019-07-10T14:00:44+0000");
+  script_version("2019-07-23T06:55:12+0000");
   script_cve_id("CVE-2019-1134", "CVE-2019-1006");
   script_bugtraq_id(109028, 108978);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-10 14:00:44 +0000 (Wed, 10 Jul 2019)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-07-23 06:55:12 +0000 (Tue, 23 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-10 13:27:24 +0530 (Wed, 10 Jul 2019)");
   script_name("Microsoft SharePoint Enterprise Server 2016 Multiple Vulnerabilities (KB4475520)");
 

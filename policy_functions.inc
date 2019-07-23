@@ -248,6 +248,19 @@ function policy_rsop_query(query, default, min, max) {
   local_var query, default, min, max;
   local_var infos, ret, handle, res, splitRes;
 
+  if(query =~ "SecuritySettingBoolean") {
+    if(min)
+      set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_rsop_query: 'query' contains SecuritySettingBoolean and 'min' is set to TRUE which is not compatible.");
+    if(max)
+      set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_rsop_query: 'query' contains SecuritySettingBoolean and 'max' is set to TRUE which is not compatible.");
+  }
+
+  if(!query)
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_rsop_query#-#query");
+
+  if(isnull(default))
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_rsop_query#-#default");
+
   infos = kb_smb_wmi_connectinfo();
   if(!infos){
     ret["value"] = "Error";
@@ -441,7 +454,7 @@ function get_package_version(package) {
   local_var packages_string, packages_list, pak, packages_split, name, version, line, line_split;
 
   if(!package) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package" );
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package");
     return;
   }
 
@@ -639,7 +652,7 @@ function policy_verify_win_ver(min_ver){
   local_var min_ver, cur_ver;
 
   if(min_ver && min_ver !~ "^[0-9.]+$") {
-    set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_verify_win_ver: wrong syntax in 'min_ver', passed: " + min_ver + ", expected e.g. 6{.2}" );
+    set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_verify_win_ver: wrong syntax in 'min_ver', passed: " + min_ver + ", expected e.g. 6{.2}");
     return NULL; # To differ between "FALSE" (its not a windows) and "NULL" (we don't know because syntax is wrong)
   }
 
@@ -649,7 +662,7 @@ function policy_verify_win_ver(min_ver){
     return FALSE;
 
   if(cur_ver && cur_ver !~ "^[0-9.]+$") {
-    set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_verify_win_ver: wrong syntax in 'cur_ver', extracted: " + cur_ver + ", expected e.g. 6{.2}" );
+    set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_verify_win_ver: wrong syntax in 'cur_ver', extracted: " + cur_ver + ", expected e.g. 6{.2}");
     return NULL; # To differ between "FALSE" (its not a windows) and "NULL" (we don't know because syntax is wrong)
   }
 
@@ -1034,27 +1047,29 @@ function policy_wmi_query(query){
 # @return string with the command result from windows, FALSE if no result was returned
 #
 function policy_powershell_cmd(cmd){
-  local_var cmd, ret, parameter, result;
-  local_var username, password, domain, param;
+  local_var cmd;
+  local_var infos, result;
 
   if(defined_func("win_cmd_exec")){
-    username = kb_smb_login();
-    password = kb_smb_password();
-    domain = kb_smb_domain();
-    if( domain ) username = domain + "/" + username;
 
-    cmd = 'powershell -Command " & {' + cmd + '}"';
-    result = win_cmd_exec(cmd:cmd, password:password, username:username);
-    if(result =~ "fullyqualifiederrorid\s*:\s*commandnotfoundexception")
+    infos = kb_smb_wmi_connectinfo();
+    if(!infos)
       return;
 
+    cmd = 'powershell -Command " & {' + cmd + '}"';
+    result = win_cmd_exec(cmd:cmd, password:infos["password"], username:infos["username_wincmd"]);
+    result = chomp(result);
+    if(!result)
+      return;
+
+    if(result =~ "fullyqualifiederrorid\s*:\s*[a-zA-Z]+" || result =~ "categoryinfo\s*:\s*[a-zA-Z]+")
+      return;
+
+    # Get rid of wmiexec.py prefix and any trailing / leading whitespaces
+    result = ereg_replace(string:result, pattern:"(Impacket .+ dialect used)", replace:"");
+    result = ereg_replace(string:chomp(result), pattern:'^\\s+', replace:"");
     if(result){
-      # Get rid of wmiexec.py prefix and any trailing / leading whitespaces
-      result = ereg_replace(string:result, pattern:"(Impacket .+ dialect used)", replace:"");
-      result = ereg_replace(string:chomp(result), pattern:'^\\s+', replace:"");
-      if(result){
-        return(result);
-      }
+      return(result);
     }
   }
   return;
