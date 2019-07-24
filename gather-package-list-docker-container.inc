@@ -1100,7 +1100,7 @@ function get_container_os(container_id, soc) {
 
   # nb: At least Ubuntu 18.10 has "buster/sid" in debian_version so keep this in mind
   # if Ubuntu is wrongly detected and keep the Ubuntu pattern above the Debian ones.
-  if(rls =~ "^[0-9]+[0-9.]+" || "buster/sid" >< rls) {
+  if(rls =~ "^[0-9]+[0-9.]+" || "buster/sid" >< rls || "bullseye/sid" >< rls) {
 
     rls   = chomp(rls);
     cpe   = "cpe:/o:debian:debian_linux";
@@ -1122,9 +1122,14 @@ function get_container_os(container_id, soc) {
         oskey += "." + vers[2]; # nb: but the older releases needs the second digit as well...
     }
 
-    if(!vers && "buster/sid" >< rls) {
-      cpe   += ":10.0";
-      oskey += "10";
+    if(!vers) {
+      if("buster/sid" >< rls) {
+        cpe   += ":10.0";
+        oskey += "10";
+      } else if("bullseye/sid" >< rls) {
+        cpe   += ":11.0";
+        oskey += "11";
+      }
     }
 
     ret = register_detected_docker_os(container_id:container_id, os:"Debian " + rls, oskey:oskey, oscpe:cpe);

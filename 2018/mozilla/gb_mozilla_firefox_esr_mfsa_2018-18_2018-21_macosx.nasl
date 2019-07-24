@@ -28,14 +28,14 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813890");
-  script_version("2019-07-17T11:14:11+0000");
-  script_cve_id("CVE-2018-12377", "CVE-2018-12378", "CVE-2018-12379", "CVE-2017-16541",
+  script_version("2019-07-23T09:16:09+0000");
+  script_cve_id("CVE-2018-12377", "CVE-2018-12378", "CVE-2018-18499", "CVE-2018-12379", "CVE-2017-16541",
                 "CVE-2018-12376");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-23 09:16:09 +0000 (Tue, 23 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-06 13:21:06 +0530 (Thu, 06 Sep 2018)");
-  script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-18_2018-21)-MAC OS X");
+  script_name("Mozilla Firefox ESR Security Updates (mfsa_2018-18_2018-21) - MAC OS X");
 
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox ESR
   and is prone to multiple vulnerabilities.");
@@ -45,14 +45,15 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
-  - Browser proxy settings can be bypassed by using the automount feature with
-    autofs to create a mount point on the local file system.
-
-  - An out-of-bounds write error with malicious MAR file.
+  - An use-after-free error in refresh driver timers.
 
   - An use-after-free error in IndexedDB.
 
-  - An use-after-free error in refresh driver timers.
+  - A same-origin policy violation using meta refresh and performance.getEntries to steal cross-origin URLs.
+
+  - An out-of-bounds write error with malicious MAR file.
+
+  - A proxy bypass using automount and autofs.
 
   - Memory safety bugs.");
 
@@ -76,18 +77,19 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
-ffVer = infos['version'];
-ffPath = infos['location'];
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if(version_is_less(version:ffVer, test_version:"60.2"))
-{
-  report = report_fixed_ver(installed_version:ffVer, fixed_version:"60.2", install_path:ffPath);
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_less(version:vers, test_version:"60.2")) { 
+  report = report_fixed_ver(installed_version:vers, fixed_version:"60.2", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

@@ -1149,6 +1149,25 @@ function rdp_create_client_random() {
   return client_rand;
 }
 
+# @brief Creates a user initiated / client-side MCS Disconnect Provider Ultimatum PDU request.
+# https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-rdpbcgr/27915739-8f77-487e-9927-55008af7fd68
+# https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-rdpbcgr/53a2d2de-57a5-4bc9-9673-35d68d23d902
+# https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-rdpbcgr/19a238a5-0455-46f0-a96b-31320d9a70a1
+#
+# @return The created disconnection request as a raw string
+#
+function rdp_create_disconnect_req() {
+
+  local_var req;
+
+  req = raw_string( 0x21 ) + # CHOICE: From DomainMCSPDU select disconnectProviderUltimatum (8) of type DisconnectProviderUltimatum
+        raw_string( 0x80 );  # DisconnectProviderUltimatum::reason = rn-user-requested (3)
+
+  req = rdp_build_data_tpdu( data:req ) + req;
+
+  return req;
+}
+
 # @brief Sends data
 #        This adds mainly some debug messages to the plain send() function
 #

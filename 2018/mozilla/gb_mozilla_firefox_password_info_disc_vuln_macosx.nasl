@@ -28,13 +28,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813893");
-  script_version("2019-07-17T11:14:11+0000");
-  script_cve_id("CVE-2018-12383");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_version("2019-07-23T09:16:09+0000");
+  script_cve_id("CVE-2018-12377", "CVE-2018-12378", "CVE-2018-18499", "CVE-2018-12379", "CVE-2017-16541",
+                "CVE-2018-12383", "CVE-2018-12375", "CVE-2018-12376");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-23 09:16:09 +0000 (Tue, 23 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-06 13:22:59 +0530 (Thu, 06 Sep 2018)");
-  script_name("Mozilla Firefox 'Password' Information Disclosure Vulnerability (MAC OS X)");
+  script_name("Mozilla Firefox Security Updates (mfsa_2018-20) - MAC OS X");
 
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
@@ -42,11 +43,25 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to setting a master password
-  post-Firefox 58 does not delete unencrypted previously stored passwords.");
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
-  script_tag(name:"impact", value:"Successful exploitation will allow the
-  exposure of stored password data outside of user expectations.");
+  - An use-after-free error in refresh driver timers.
+
+  - An use-after-free error in IndexedDB.
+
+  - A same-origin policy violation using meta refresh and performance.getEntries to steal cross-origin URLs.
+
+  - An out-of-bounds write error with malicious MAR file.
+
+  - A proxy bypass using automount and autofs.
+
+  - An error related to setting of a master password.
+
+  - Memory safety bugs.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to disclose sensitive information, cause denial of service, run arbitrary code
+  and bypass security restrictions.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version 58 through 61.0.2 on MAC OS X.");
 
@@ -64,18 +79,19 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
-ffVer = infos['version'];
-ffPath = infos['location'];
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ))
+  exit(0);
 
-if(version_in_range(version:ffVer, test_version:"58.0", test_version2:"61.0.2"))
-{
-  report = report_fixed_ver(installed_version:ffVer, fixed_version:"62", install_path:ffPath);
+vers = infos['version'];
+path = infos['location'];
+
+if(version_in_range(version:vers, test_version:"58.0", test_version2:"61.0.2")) { 
+  report = report_fixed_ver(installed_version:vers, fixed_version:"62", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);
