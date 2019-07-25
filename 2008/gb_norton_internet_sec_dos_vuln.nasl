@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_norton_internet_sec_dos_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Norton Internet Security Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800321");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -56,7 +55,7 @@ if(description)
   script_tag(name:"summary", value:"This host has Norton AntiVius in Norton Internet Security installed
   and is prone to Denial of Service Vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name:"URL", value:"http://www.symantec.com/norton/index.jsp");
+
   exit(0);
 }
 
@@ -86,7 +85,7 @@ foreach item (registry_enum_keys(key:key))
       exit(0);
     }
 
-    if(navVer =~ "15\.5\.0\.23"){
+    if(navVer =~ "^15\.5\.0\.23"){
       security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
     exit(0);

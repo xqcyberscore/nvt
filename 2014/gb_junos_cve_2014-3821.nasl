@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3821.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos Web Authentication XSS Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105919");
-  script_version("$Revision: 12095 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-07-31 13:16:56 +0200 (Thu, 31 Jul 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -92,7 +91,7 @@ if (revcomp(a:version, b:"11.4R11") < 0) {
   exit(0);
 }
 
-if (version =~ "^12.1X") {
+if (version =~ "^12\.1X") {
   if (revcomp(a:version, b:"12.1X44-D34") < 0) {
     security_message(port:0, data:version);
     exit(0);

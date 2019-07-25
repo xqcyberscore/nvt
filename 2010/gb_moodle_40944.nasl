@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_40944.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100686");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-06-21 20:36:15 +0200 (Mon, 21 Jun 2010)");
   script_bugtraq_id(40944);
   script_cve_id("CVE-2010-2228", "CVE-2010-2229", "CVE-2010-2230", "CVE-2010-2231");
@@ -37,7 +36,6 @@ if (description)
   script_name("Moodle Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40944");
-  script_xref(name:"URL", value:"http://www.moodle.org");
   script_xref(name:"URL", value:"http://moodle.org/security/");
   script_xref(name:"URL", value:"http://moodle.org/mod/forum/discuss.php?d=152366");
   script_xref(name:"URL", value:"http://moodle.org/mod/forum/discuss.php?d=152367");
@@ -79,20 +77,19 @@ port = get_http_port(default:80);
 
 if(vers = get_version_from_kb(port:port,app:"moodle")) {
 
-  if(vers =~ "1\.8") {
+  if(vers =~ "^1\.8") {
     if(version_is_less(version: vers, test_version: "1.8.13")) {
        security_message(port:port);
        exit(0);
-   }
- }
+    }
+  }
 
-  else if(vers =~ "1\.9") {
+  else if(vers =~ "^1\.9") {
     if(version_is_less(version: vers, test_version: "1.9.9")) {
       security_message(port:port);
       exit(0);
     }
- }
-
+  }
 }
 
 exit(0);

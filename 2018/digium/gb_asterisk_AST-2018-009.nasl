@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2018-009.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Asterisk DoS Vulnerability (AST-2018-009)
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141496");
-  script_version("$Revision: 12889 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-21 11:47:14 +0700 (Fri, 21 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -80,7 +79,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version =~ "^13\.") {
-  if (version =~ "13\.21cert") {
+  if (version =~ "^13\.21cert") {
     if (revcomp(a: version, b: "13.21cert3") < 0) {
       report = report_fixed_ver(installed_version: version, fixed_version: "13.21-cert3");
       security_message(port: port, data: report, proto: "udp");

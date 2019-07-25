@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815115");
-  script_version("2019-05-23T07:06:55+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2019-0864", "CVE-2019-0820", "CVE-2019-0980", "CVE-2019-0981");
   script_bugtraq_id(108241, 108245, 108232, 108207);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-23 07:06:55 +0000 (Thu, 23 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 12:57:50 +0530 (Wed, 15 May 2019)");
   script_name("Microsoft .NET Framework Multiple DoS Vulnerabilities (KB4495616)");
 
@@ -83,7 +83,7 @@ if(!edgeVer){
   exit(0);
 }
 
-if(edgeVer =~ "11\.0\.17134")
+if(edgeVer =~ "^11\.0\.17134")
 {
   if(!registry_key_exists(key:"SOFTWARE\Microsoft\.NETFramework")){
     if(!registry_key_exists(key:"SOFTWARE\Microsoft\ASP.NET")){

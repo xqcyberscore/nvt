@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln_june16_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities June16 (Windows)
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808068");
-  script_version("$Revision: 12149 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2016-4564", "CVE-2016-4562", "CVE-2016-4563");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Multiple Denial of Service Vulnerabilities June16 (Windows)");
@@ -90,7 +89,7 @@ if(version_is_less(version:imVer, test_version:"6.9.4.0"))
   VULN = TRUE;
 }
 
-else if(imVer =~ "7\.")
+else if(imVer =~ "^7\.")
 {
   if(version_is_less(version:imVer, test_version:"7.0.1.2"))
   {

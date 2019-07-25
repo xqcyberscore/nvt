@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bind_37865.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # ISC BIND 9 DNSSEC Bogus NXDOMAIN Response Remote Cache Poisoning Vulnerability
 #
@@ -32,8 +31,8 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100458");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-01-20 19:30:24 +0100 (Wed, 20 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -47,7 +46,6 @@ if(description)
   script_mandatory_keys("ISC BIND/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37865");
-  script_xref(name:"URL", value:"http://www.isc.org/products/BIND/");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/360341");
   script_xref(name:"URL", value:"https://www.isc.org/advisories/CVE-2010-0097");
 
@@ -77,21 +75,21 @@ proto = infos["proto"];
 
 version = str_replace(find:"-", string: version, replace:".");
 
-if( version =~ "9\.[0-4]+" ) {
+if( version =~ "^9\.[0-4]+" ) {
   if( version_is_less( version:version, test_version: "9.4.3.P5" ) ) {
     fix = "9.4.3-P5";
     VULN = TRUE;
   }
 }
 
-else if( version =~ "9\.5" ) {
+else if( version =~ "^9\.5" ) {
   if( version_is_less( version:version, test_version:"9.5.2.P2" ) ) {
     fix = "9.5.3-P2";
     VULN = TRUE;
   }
 }
 
-else if( version =~ "9\.6" ) {
+else if( version =~ "^9\.6" ) {
   if( version_is_less( version:version, test_version:"9.6.1.P3" ) ) {
     fix = "9.6.1-P3";
     VULN = TRUE;

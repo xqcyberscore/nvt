@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_out_of_bound_mem_read_vuln_macosx.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # ImageMagick Out Of Bounds Memory Read Vulnerability (Mac OS X)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810256");
-  script_version("$Revision: 14181 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2016-5687");
   script_bugtraq_id(91283);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick Out Of Bounds Memory Read Vulnerability (Mac OS X)");
@@ -83,7 +82,7 @@ if(version_is_less(version:imVer, test_version:"6.9.4.3"))
   VULN = TRUE;
 }
 
-else if(imVer =~ "7\.")
+else if(imVer =~ "^7\.")
 {
   if(version_is_less(version:imVer, test_version:"7.0.1.4"))
   {

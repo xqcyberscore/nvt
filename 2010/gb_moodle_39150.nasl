@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_39150.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Moodle Prior to 1.9.8/1.8.12 Multiple Vulnerabilities
 #
@@ -27,10 +26,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100569");
-  script_version("$Revision: 14323 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
   script_bugtraq_id(39150);
+  script_cve_id("CVE-2010-1619", "CVE-2010-1618", "CVE-2010-1617", "CVE-2010-1616", "CVE-2010-1615",
+                "CVE-2010-1614", "CVE-2010-1613");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
@@ -38,7 +39,6 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39150");
   script_xref(name:"URL", value:"http://docs.moodle.org/en/Moodle_1.9.8_release_notes");
-  script_xref(name:"URL", value:"http://www.moodle.org");
   script_xref(name:"URL", value:"http://moodle.org/security/");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -81,15 +81,12 @@ include("version_func.inc");
 port = get_http_port(default:80);
 if(vers = get_version_from_kb(port:port,app:"moodle")) {
 
-  if(vers =~ "1\.8") {
-
+  if(vers =~ "^1\.8") {
     if(version_is_less(version: vers, test_version: "1.8.9")) {
       security_message(port:port);
       exit(0);
     }
-
-  } else if(vers =~ "1\.9") {
-
+  } else if(vers =~ "^1\.9") {
     if(version_is_less(version: vers, test_version: "1.9.8")) {
       security_message(port:port);
       exit(0);

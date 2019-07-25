@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_notes_code_exec_vuln_win.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # IBM Lotus Notes 'cai' URI and iCal Remote Code Execution Vulnerabilities (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902298");
-  script_version("$Revision: 12006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-0912");
   script_tag(name:"cvss_base", value:"9.3");
@@ -71,7 +70,7 @@ if(!lotusVer){
   exit(0);
 }
 
-if(lotusVer =~ "8.0")
+if(lotusVer =~ "^8\.0")
 {
   if(version_is_less(version:lotusVer, test_version:"8.0.2.6"))
   {
@@ -80,7 +79,7 @@ if(lotusVer =~ "8.0")
   }
 }
 
-if(lotusVer =~ "8.5")
+if(lotusVer =~ "^8\.5")
 {
   if(version_is_less(version:lotusVer, test_version:"8.5.1.5")){
     security_message( port: 0, data: "The target host was found to be vulnerable" );

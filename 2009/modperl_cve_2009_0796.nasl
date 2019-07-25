@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100130");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-07-24T11:36:46+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-04-13 18:06:40 +0200 (Mon, 13 Apr 2009)");
   script_bugtraq_id(34383);
   script_cve_id("CVE-2009-0796");
@@ -67,20 +67,24 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!version = get_kb_item(string("www/", port, "/mod_perl")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^([0-9.]+)$"))exit(0);
+if(!version = get_kb_item(string("www/", port, "/mod_perl")))
+  exit(0);
+
+if(!matches = eregmatch(string:version, pattern:"^([0-9.]+)$"))
+  exit(0);
 
 vers = matches[1];
 
 if(!isnull(vers)) {
   if(
-     version_is_equal(version: vers, test_version: "1.99") ||
-     version_is_equal(version: vers, test_version: "1.3")  ||
-     version_is_equal(version: vers, test_version: "1.27") ||
-     version_is_equal(version: vers, test_version: "1.29") ||
-     version_in_range(version: vers, test_version: "2.0", test_version2:"2.0.4 "))
+     version_is_equal(version:vers, test_version:"1.99") ||
+     version_is_equal(version:vers, test_version:"1.3")  ||
+     version_is_equal(version:vers, test_version:"1.27") ||
+     version_is_equal(version:vers, test_version:"1.29") ||
+     version_in_range(version:vers, test_version:"2.0", test_version2:"2.0.4"))
   {
-    security_message(port:port, data:"The target host was found to be vulnerable.");
+    report = report_fixed_ver(installed_version:vers, fixed_version:"See references");
+    security_message(port:port, data:report);
     exit(0);
   }
 }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_web_login_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # JunOS Web Login Cross Site Scripting Vulnerability
 #
@@ -27,14 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803775");
-  script_version("$Revision: 11401 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_bugtraq_id(63656);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-11-18 13:23:22 +0530 (Mon, 18 Nov 2013)");
   script_name("JunOS Web Login Cross Site Scripting Vulnerability");
-
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 HTML and script code in a user's browser session in the context of an affected
@@ -74,7 +72,7 @@ if("Server: Mbedthis-Appweb/" >!< banner){
 
 res = http_get_cache(item:"/index.php", port:port);
 
-if(res =~ "HTTP/1\.. 200" && "Juniper Networks, Inc" >< res && ">Log In" >< res)
+if(res =~ "^HTTP/1\.[01] 200" && "Juniper Networks, Inc" >< res && ">Log In" >< res)
 {
   url = '/index.php?name=Your_Account&error=1"><script>' +
         'alert(document.cookie)<%2Fscript>&uname=bGF';

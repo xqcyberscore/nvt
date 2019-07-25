@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_exec_vuln_lin.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Adobe Reader/Acrobat JavaScript Method Handling Vulnerability (Linux)
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800107");
-  script_version("$Revision: 12623 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2008-2641");
   script_bugtraq_id(29908);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-10-04 09:54:24 +0200 (Sat, 04 Oct 2008)");
   script_xref(name:"CB-A", value:"08-0105");
   script_name("Adobe Reader/Acrobat JavaScript Method Handling Vulnerability (Linux)");
@@ -75,8 +74,8 @@ if(!adobeVer = get_app_version(cpe:CPE)){
 }
 
 # Security Update 1 (SU1) is applied
-if(adobeVer =~ "8.1.2_SU[0-9]+"){
-  exit(0);
+if(adobeVer =~ "^8.1.2_SU[0-9]+"){
+  exit(99);
 }
 
 if(version_is_less_equal(version:adobeVer, test_version:"7.0.9")||

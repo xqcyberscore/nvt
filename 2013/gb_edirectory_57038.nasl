@@ -29,9 +29,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103630");
   script_bugtraq_id(57038);
   script_cve_id("CVE-2012-0428", "CVE-2012-0429", "CVE-2012-0430", "CVE-2012-0432");
-  script_version("2019-05-10T14:24:23+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_name("Novell eDirectory Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-01-02 11:38:11 +0100 (Wed, 02 Jan 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,8 +52,11 @@ if(description)
   vulnerabilities:
 
   1. A cross-site scripting vulnerability
+
   2. A denial-of-service vulnerability
+
   3. An information-disclosure vulnerability
+
   4. A stack-based buffer-overflow vulnerability");
   script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to execute arbitrary
   script code in the browser of an unsuspecting user in the context of
@@ -88,7 +91,7 @@ instvers = major;
 if( sp > 0 )
   instvers += ' SP' + sp;
 
-if( major =~ "8\.8" )
+if( major =~ "^8\.8" )
 {
   if( ! sp || sp < 6 ) hole = TRUE;
   if( sp == 6 && ( ! revision || revision < 20608 ) ) hole = TRUE;

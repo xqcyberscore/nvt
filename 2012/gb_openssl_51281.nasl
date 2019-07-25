@@ -35,14 +35,14 @@ if (description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_version("2019-07-05T09:29:25+0000");
+  script_version("2019-07-24T08:39:52+0000");
 
   script_name("OpenSSL Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51281");
   script_xref(name:"URL", value:"http://www.openssl.org/news/secadv_20120104.txt");
 
-  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-01-20 11:28:16 +0100 (Fri, 20 Jan 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -72,13 +72,13 @@ if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRU
 vers = infos['version'];
 path = infos['location'];
 
-if(vers =~ "1\.0\." && version_is_less(version:vers, test_version:"1.0.0f")) {
+if(vers =~ "^1\.0\." && version_is_less(version:vers, test_version:"1.0.0f")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"1.0.0f", install_path:path);
   security_message(port:port, data:report);
   exit(0);
 }
 
-if(vers =~ "0\.9\." && version_is_less(version:vers, test_version:"0.9.8s")) {
+if(vers =~ "^0\.9\." && version_is_less(version:vers, test_version:"0.9.8s")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"0.9.8s", install_path:path);
   security_message(port:port, data:report);
   exit(0);

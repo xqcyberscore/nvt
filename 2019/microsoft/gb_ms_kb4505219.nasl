@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815504");
-  script_version("2019-07-19T06:52:55+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2019-1068");
   script_bugtraq_id(108954);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-19 06:52:55 +0000 (Fri, 19 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-10 12:14:45 +0530 (Wed, 10 Jul 2019)");
   script_name("Microsoft SQL Server 2016 SP1 GDR Remote Code Execution Vulnerability (KB4505219)");
 
@@ -102,7 +102,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
   {
     sql_ver_path = "";
 
-    if(sql_ver =~ "13\.0"){
+    if(sql_ver =~ "^13\.0"){
       sql_ver_path = "SQLServer2016";
     }
     else{
@@ -114,7 +114,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
     sysVer = fetch_file_version(sysPath:sql_path,
              file_name:"Microsoft.sqlserver.chainer.infrastructure.dll");
 
-    if(sysVer && (sysVer =~ "^13\.0"))
+    if(sysVer && sysVer =~ "^13\.0")
     {
       if(version_in_range(version:sysVer, test_version:"13.0.4411.0", test_version2:"13.0.4258.0"))
       {

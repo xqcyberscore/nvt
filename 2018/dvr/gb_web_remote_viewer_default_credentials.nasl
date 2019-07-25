@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_web_remote_viewer_default_credentials.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Web Remote Viewer Default Credentials
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113240");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-01 12:07:22 +0200 (Wed, 01 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,13 +63,15 @@ include( "http_func.inc" );
 include( "http_keepalive.inc" );
 include( "misc_func.inc" );
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! location = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
+if( ! port = get_app_port( cpe: CPE ) )
+  exit( 0 );
 
-url = location;
-if ( location == "/" )
-  url = "";
-url = url + "/html/live.htm";
+if( ! path = get_app_location( cpe: CPE, port: port ) )
+  exit( 0 );
+
+if( path == "/" )
+  path = "";
+url = path + "/html/live.htm";
 
 username = "ADMIN";
 password = "1234";
@@ -79,7 +80,7 @@ auth_header = make_array( "Authorization", "Basic " + base64( str: username + ":
 req = http_get_req( port: port, url: url, add_headers: auth_header );
 buf = http_keepalive_send_recv( port: port, data: req );
 
-if( buf =~ "200 OK" && buf =~ '<div id="lang_[Cc]hannel[Nn]o">[Cc]hannel [Nn]o[.]</div>' ) {
+if( buf =~ "^HTTP/1\.[01] 200" && buf =~ '<div id="lang_[Cc]hannel[Nn]o">[Cc]hannel [Nn]o[.]</div>' ) {
   report = "It was possible to login using the username '" + username + "' and the password '" + password + "'.";
   security_message( data: report, port: port );
   exit( 0 );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln01_may16.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities-01 May16
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807824");
-  script_version("$Revision: 14181 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-20 16:46:03 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Multiple Vulnerabilities-01 May16");
 
@@ -63,9 +62,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2015-016");
-  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-003");
-  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-004");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-core-sa-2015-016/");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-core-sa-2016-003/");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-core-sa-2016-004/");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -90,7 +89,7 @@ if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
 
 if(typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+") exit(0); # Version is not exact enough
 
-if(typoVer =~ "6\.2")
+if(typoVer =~ "^6\.2")
 {
   if(version_in_range(version:typoVer, test_version:"6.2.0", test_version2:"6.2.17"))
   {

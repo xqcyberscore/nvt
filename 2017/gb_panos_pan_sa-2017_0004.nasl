@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0004.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS Cross-Site Scripting in the Management Web Interface
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-5584");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 12106 $");
+  script_version("2019-07-24T08:39:52+0000");
 
   script_name("Palo Alto PAN-OS Cross-Site Scripting in the Management Web Interface");
 
@@ -49,7 +48,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-22 16:10:55 +0100 (Wed, 22 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");
@@ -67,15 +66,15 @@ if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 
-if( version =~ "5\.1" )
+if( version =~ "^5\.1" )
   fix = '6.1.16';
-else if( version =~ "6\.0" )
+else if( version =~ "^6\.0" )
   fix = '6.1.16';
-else if( version =~ "6\.1" )
+else if( version =~ "^6\.1" )
   fix = '6.1.16';
-else if( version =~ "7\.0" )
+else if( version =~ "^7\.0" )
   fix = '7.0.13';
-else if( version =~ "7\.1" )
+else if( version =~ "^7\.1" )
   fix = '7.1.8';
 
 if( ! fix ) exit( 0 );

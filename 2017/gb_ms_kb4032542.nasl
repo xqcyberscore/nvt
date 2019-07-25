@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811285");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-09 15:23:11 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server 2014 Information Disclosure Vulnerability (KB4032542)");
 
@@ -71,7 +71,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
@@ -106,7 +105,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
     ## Reset the string
     sql_ver_path = "";
 
-    if(sql_ver =~ "12\.0"){
+    if(sql_ver =~ "^12\.0"){
       sql_ver_path = "SQLServer2014";
     }
     else{
@@ -122,7 +121,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
              file_name:"Microsoft.sqlserver.chainer.infrastructure.dll");
 
     ## security update for SQL Server 2014 Service Pack 1 CU
-    if(sysVer =~ "^(12\.0)")
+    if(sysVer =~ "^12\.0")
     {
       if(version_in_range(version:sysVer, test_version:"12.0.4300.0", test_version2:"12.0.4521.0"))
       {

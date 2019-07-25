@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_bof_vuln_win.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Buffer Overflow Vulnerability in Adobe Acrobat and Reader (Windows)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900320");
-  script_version("$Revision: 12629 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2009-0658", "CVE-2009-0927", "CVE-2009-0193", "CVE-2009-0928",
                 "CVE-2009-1061", "CVE-2009-1062");
   script_bugtraq_id(33751, 34169, 34229);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_name("Buffer Overflow Vulnerability in Adobe Acrobat and Reader (Windows)");
 
@@ -60,7 +59,7 @@ in context of the affected application.");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
-  script_xref(name:"URL", value:"http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Windows");
+
   exit(0);
 }
 
@@ -70,11 +69,11 @@ include("version_func.inc");
 CPE = "cpe:/a:adobe:acrobat_reader";
 if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
-  if(readerVer =~ "^(7|8|9)")
+  if(readerVer =~ "^[7-9]\.")
   {
     if(version_in_range(version:readerVer, test_version:"7.0", test_version2:"7.1.0")||
        version_in_range(version:readerVer, test_version:"8.0", test_version2:"8.1.3")||
-       readerVer =~ "9.0"){
+       readerVer =~ "^9\.0"){
       security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
@@ -86,7 +85,7 @@ if(acrobatVer = get_app_version(cpe:CPE))
 if(readerVer =~ "^(7|8|9)") {
   if(version_in_range(version:acrobatVer, test_version:"7.0", test_version2:"7.1.0")||
      version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.1.3")||
-     acrobatVer =~ "9.0")
+     acrobatVer =~ "^9\.0")
   {
     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);

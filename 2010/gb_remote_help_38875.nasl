@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_remote_help_38875.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Remote Help HTTP GET Request Format String Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100548");
-  script_version("$Revision: 14326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-24T11:36:46+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-03-23 13:24:50 +0100 (Tue, 23 Mar 2010)");
   script_bugtraq_id(38875);
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,9 +45,11 @@ if(description)
   script_xref(name:"URL", value:"http://www.softpedia.com/get/Internet/Servers/WEB-Servers/Remote-Help.shtml");
 
   script_tag(name:"summary", value:"Remote Help is prone to a denial-of-service vulnerability.");
+
   script_tag(name:"impact", value:"Remote attackers can exploit this issue to cause the application to
   crash, denying service to legitimate users. Due to the nature of this
   issue arbitrary code-execution may be possible, however this has not been confirmed.");
+
   script_tag(name:"affected", value:"Remote Help 0.0.7 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -78,8 +79,9 @@ if( safe_checks() ) {
 
   if( isnull( version[1] ) ) exit( 0 );
 
-  if( version_is_equal( version:version[1], test_version:"0.0.7 " ) ) {
-    security_message( port:port );
+  if( version_is_equal( version:version[1], test_version:"0.0.7" ) ) {
+    report = report_fixed_ver( installed_version:version[1], fixed_version:"None" );
+    security_message( port:port, data:report );
     exit( 0 );
   }
 

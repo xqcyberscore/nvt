@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_tsig_auth_vuln.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # ISC BIND Security Bypass Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106937");
-  script_version("$Revision: 13654 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-11 11:31:58 +0700 (Tue, 11 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -80,7 +79,7 @@ if (!info = get_app_version_and_proto(cpe: CPE, port: port))
 version = info["version"];
 proto = info["proto"];
 
-if (version =~ "9\.(9|10)\.[0-9]+\.S[0-9]") {
+if (version =~ "^9\.(9|10)\.[0-9]+\.S[0-9]") {
   if (version_is_less(version: version, test_version: "9.9.10.S3")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "9.9.10-S3");
     security_message(port: port, data: report, proto: proto);

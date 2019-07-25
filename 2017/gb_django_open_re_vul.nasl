@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_open_re_vul.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Django Open Redirection Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:django_project:django";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107142");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-07 16:31:00 +0200 (Fri, 07 Apr 2017)");
   script_cve_id("CVE-2017-7234");
   script_bugtraq_id(97401);
@@ -93,7 +92,7 @@ if (Ver =~ "^1\.9\.")
   }
 }
 
-if (Ver =~ "1\.8\.")
+if (Ver =~ "^1\.8\.")
 {
   if(version_is_less(version: Ver, test_version:"1.8.18"))
   {

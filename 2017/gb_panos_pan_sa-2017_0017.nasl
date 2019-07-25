@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0017.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS OpenSSL Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106849");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-07 09:16:47 +0700 (Wed, 07 Jun 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -85,7 +84,7 @@ if (version_is_less(version: version, test_version: "6.1.18")) {
   exit(0);
 }
 
-if (version =~ "7\.0\.") {
+if (version =~ "^7\.0\.") {
   if (version_is_less(version: version, test_version: "7.0.16")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "7.0.16");
     if (model)

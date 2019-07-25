@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0080.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7216 Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107162");
-  script_version("$Revision: 14175 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-02 11:40:28 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2017-7126");
   script_bugtraq_id(97590);
@@ -75,16 +74,16 @@ if(!Ver = get_app_version(cpe:CPE, nofork:TRUE)){
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 
-if (Ver =~ "7\.1" )
+if(Ver =~ "^7\.1" )
 {
-    if(version_is_less(version: Ver, test_version:"7.1.9"))
-    {
-      report =  report_fixed_ver(installed_version:Ver, fixed_version:"7.1.9");
-      if ( model )
-           report += '\nModel:              ' + model;
+  if(version_is_less(version: Ver, test_version:"7.1.9"))
+  {
+    report =  report_fixed_ver(installed_version:Ver, fixed_version:"7.1.9");
+    if ( model )
+      report += '\nModel:              ' + model;
 
-      security_message(data:report);
-      exit( 0 );
-    }
+    security_message(data:report);
+    exit( 0 );
+  }
 }
 exit ( 99 );

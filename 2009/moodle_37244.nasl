@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: moodle_37244.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100384");
-  script_version("$Revision: 14332 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-12-09 12:14:51 +0100 (Wed, 09 Dec 2009)");
   script_cve_id("CVE-2009-4297");
   script_bugtraq_id(37244);
@@ -38,7 +37,6 @@ if (description)
   script_name("Moodle Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37244");
-  script_xref(name:"URL", value:"http://www.moodle.org");
   script_xref(name:"URL", value:"http://moodle.org/security/");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -75,17 +73,17 @@ if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
 vers = matches[1];
 
 if(!isnull(vers) && vers >!< "unknown") {
- if(vers =~ "1\.8") {
-   if(version_is_less(version: vers, test_version: "1.8.11")) {
-       security_message(port:port);
-       exit(0);
-   }
- } else if(vers =~ "1\.9") {
+  if(vers =~ "^1\.8") {
+    if(version_is_less(version: vers, test_version: "1.8.11")) {
+      security_message(port:port);
+      exit(0);
+    }
+  } else if(vers =~ "^1\.9") {
     if(version_is_less(version: vers, test_version: "1.9.7")) {
       security_message(port:port);
       exit(0);
     }
- }
+  }
 }
 
 exit(0);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln10_jan16.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM Websphere Application Server Multiple Vulnerabilities -10 Jan16
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806838");
-  script_version("$Revision: 13803 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2013-2976", "CVE-2013-2967");
   script_bugtraq_id(61941, 61940);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-20 12:31:42 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Multiple Vulnerabilities -10 Jan16");
@@ -100,7 +99,7 @@ else if(version_in_range(version:wasVer, test_version:"8.0", test_version2:"8.0.
   VULN = TRUE;
 }
 
-else if(wasVer =~ "8\.5")
+else if(wasVer =~ "^8\.5")
 {
   if(version_is_less(version:wasVer, test_version:"8.5.5.0"))
   {

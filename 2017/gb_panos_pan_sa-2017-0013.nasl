@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0013.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7644 Information Disclosure Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107175");
-  script_version("$Revision: 14175 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-07-24T09:28:22+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 09:28:22 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-19 12:42:40 +0200 (Fri, 19 May 2017)");
 
   script_cve_id("CVE-2017-7644");
@@ -67,44 +66,44 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Ver = get_app_version(cpe:CPE, nofork:TRUE)){
+if(!ver = get_app_version(cpe:CPE, nofork:TRUE))
+  exit(0);
+
+if(ver =~ "^7\.0")
+{
+  if(version_is_less(version:ver, test_version:"7.0.15"))
+  {
+    vuln = TRUE;
+    fix = "7.0.15";
+  }
+}
+else if(ver =~ "^7\.1")
+{
+  if(version_is_less(version:ver, test_version:"7.1.9"))
+  {
+    vuln = TRUE;
+    fix = "7.1.9";
+  }
+}
+else if(ver =~ "^6\.1")
+{
+  if(version_is_less(version:ver, test_version:"6.1.17"))
+  {
+    vuln = TRUE;
+    fix = "6.1.17";
+  }
+}
+
+if(vuln)
+{
+  report = report_fixed_ver(installed_version:ver, fixed_version:fix);
+
+  model = get_kb_item("palo_alto_pan_os/model");
+  if(model)
+    report += '\nModel:              ' + model;
+
+  security_message(port:0, data:report);
   exit(0);
 }
 
-model = get_kb_item( "palo_alto_pan_os/model" );
-
-if ( Ver =~"7\.0")
-{
-    if(version_is_less(version: Ver, test_version:"7.0.15"))
-    {
-      Vuln = TRUE;
-      fix = "7.0.15";
-    }
-}
-else if (Ver =~"7\.1")
-{
-    if(version_is_less(version: Ver, test_version:"7.1.9"))
-    {
-       Vuln = TRUE;
-       fix = "7.1.9";
-    }
-}
-else if (Ver =~"6\.1")
-{
-    if(version_is_less(version: Ver, test_version:"6.1.17"))
-    {
-       Vuln = TRUE;
-       fix = "6.1.17";
-    }
-}
-if (Vuln)
-{
-    report =  report_fixed_ver(installed_version:Ver, fixed_version:fix);
-    if ( model )
-       report += '\nModel:              ' + model;
-
-    security_message(port: 0, data:report);
-    exit( 0 );
-}
-
-exit ( 99 );
+exit(99);

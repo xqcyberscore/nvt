@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0036.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Palo Alto PAN-OS OpenSSH Vulnerability (PAN-SA-2016-0036)
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-9149");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 12338 $");
+  script_version("2019-07-24T08:39:52+0000");
 
   script_name("Palo Alto PAN-OS OpenSSH Vulnerability (PAN-SA-2016-0036)");
 
@@ -49,7 +48,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-21 11:15:25 +0100 (Mon, 21 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");
@@ -67,17 +66,17 @@ if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 
-if( version =~ "5\.0" )
+if( version =~ "^5\.0" )
   fix = '6.0.15';
-else if( version =~ "5\.1" )
+else if( version =~ "^5\.1" )
   fix = '6.0.15';
-else if( version =~ "6\.0" )
+else if( version =~ "^6\.0" )
   fix = '6.0.15';
-else if( version =~ "6\.1" )
+else if( version =~ "^6\.1" )
   fix = '6.1.15';
-else if( version =~ "7\.0" )
+else if( version =~ "^7\.0" )
   fix = '7.0.11';
-else if( version =~ "7\.1" )
+else if( version =~ "^7\.1" )
   fix = '7.1.6';
 
 if( ! fix ) exit( 0 );

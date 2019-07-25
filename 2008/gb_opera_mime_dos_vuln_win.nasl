@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mime_dos_vuln_win.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Opera Web Browser DoS attacks on MIME via malformed MIME emails (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800081");
-  script_version("$Revision: 12623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-07-25T06:05:02+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 06:05:02 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -62,7 +61,7 @@ if(description)
 
 if( ! version = get_kb_item( "Opera/Win/Version" ) ) exit( 0 );
 
-if( version =~ "9.51" ) {
+if( version =~ "^9\.51" ) {
   security_message( port:0 );
   exit( 0 );
 }

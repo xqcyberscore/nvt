@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_prdts_dos_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # JustSystems Ichitaro Products Denial Of Service Vulnerability.
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800544");
-  script_version("$Revision: 14335 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,18 +55,10 @@ if(description)
   documents using Web PURAGUINBYUA.");
   script_tag(name:"summary", value:"This host has JustSystems Ichitaro products installed and
   is prone to a denial of service vulnerability.");
-  script_tag(name:"solution", value:"Apply the referenced security patches.
-
-
-  *****
-
-  NOTE: Ignore this warning, if patch is applied already.
-
-  *****");
+  script_tag(name:"solution", value:"Apply the referenced security patches.");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -76,7 +67,7 @@ if(ichitaroVer)
 {
   if(version_in_range(version:ichitaroVer, test_version:"2004",
                                            test_version2:"2008")||
-     ichitaroVer =~ "13")
+     ichitaroVer =~ "^13")
   {
     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);

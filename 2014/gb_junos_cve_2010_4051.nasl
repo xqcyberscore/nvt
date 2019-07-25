@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2010_4051.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos Stack Exhaustion Denial of Service Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103966");
-  script_version("$Revision: 12095 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-01-09 22:21:03 +0700 (Thu, 09 Jan 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,7 +43,6 @@ if (description)
   script_bugtraq_id(45233);
 
   script_name("Junos Stack Exhaustion Denial of Service Vulnerability");
-
 
   script_category(ACT_GATHER_INFO);
 
@@ -100,7 +98,7 @@ if (revcomp(a:version, b:"10.4R16") < 0) {
   exit(0);
 }
 
-if (version =~ "10.4S") {
+if (version =~ "^10\.4S") {
   if (revcomp(a:version, b:"10.4S15") < 0) {
     security_message(port:0, data:desc);
     exit(0);

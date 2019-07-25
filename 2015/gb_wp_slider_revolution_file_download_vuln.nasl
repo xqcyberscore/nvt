@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_slider_revolution_file_download_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Wordpress Slider Revolution Arbitrary File Download Vulnerability
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805518");
-  script_version("$Revision: 13659 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-03-31 12:15:41 +0530 (Tue, 31 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_cve_id("CVE-2015-1579", "CVE-2014-9734");
@@ -103,7 +102,7 @@ wpReq = construct_get_req(url:url, host:host, useragent:useragent);
 
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq);
 
-if(wpRes && wpRes =~ "301 Moved Permanently")
+if(wpRes && wpRes =~ "^HTTP/1\.[01] 301")
 {
   url1 = egrep( pattern:"Location: http://.*wp-config.php", string:wpRes);
   hostname = split(url1, sep:"/", keep:FALSE);

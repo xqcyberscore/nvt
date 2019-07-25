@@ -23,8 +23,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142585");
-  script_version("2019-07-12T02:28:28+0000");
-  script_tag(name:"last_modification", value:"2019-07-12 02:28:28 +0000 (Fri, 12 Jul 2019)");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-12 02:13:53 +0000 (Fri, 12 Jul 2019)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -75,7 +75,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version =~ "^13\.") {
-  if (version =~ "13\.21cert") {
+  if (version =~ "^13\.21cert") {
     if (revcomp(a: version, b: "13.21cert4") < 0) {
       report = report_fixed_ver(installed_version: version, fixed_version: "13.21-cert4");
       security_message(port: port, data: report, proto: "udp");

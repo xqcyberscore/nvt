@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900806");
-  script_version("2019-05-24T11:20:30+0000");
+  script_version("2019-07-25T06:05:02+0000");
   script_cve_id("CVE-2009-1862");
   script_bugtraq_id(35759);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-24 11:20:30 +0000 (Fri, 24 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-25 06:05:02 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_name("Adobe Products '.pdf' and '.swf' Code Execution Vulnerability - July09 (Windows)");
 
@@ -102,7 +102,7 @@ if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
                        string:authplayDll + "\Reader\authplay.dll");
   fileVer = GetVer(file:file, share:share);
 
-  if(fileVer =~ "9.0")
+  if(fileVer =~ "^9\.0")
   {
     if(version_in_range(version:readerVer, test_version:"9.0",
                                            test_version2:"9.1.2")){
@@ -125,7 +125,7 @@ if(acrobatVer = get_app_version(cpe:CPE))
                        string:authplayDll + "\Acrobat\authplay.dll");
 
   fileVer = GetVer(file:file, share:share);
-  if(fileVer =~ "9.0")
+  if(fileVer =~ "^9\.0")
   {
     if(version_in_range(version:acrobatVer, test_version:"9.0",
                                             test_version2:"9.1.2"))

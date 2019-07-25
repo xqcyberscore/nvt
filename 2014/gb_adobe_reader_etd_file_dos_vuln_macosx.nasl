@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_etd_file_dos_vuln_macosx.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe Reader '.ETD File' Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,15 +28,14 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804385");
-  script_version("$Revision: 11878 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2004-1153");
   script_bugtraq_id(11934);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-04-10 14:59:53 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader '.ETD File' Denial of Service Vulnerability (Mac OS X)");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to denial of service
 vulnerability.");
@@ -57,7 +55,7 @@ the system and gain sensitive information.");
   script_family("Denial of Service");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Reader/MacOSX/Version");
-  script_xref(name:"URL", value:"http://get.adobe.com/reader");
+
   exit(0);
 }
 
@@ -69,7 +67,7 @@ if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-if(readerVer && readerVer =~ "6")
+if(readerVer && readerVer =~ "^6")
 {
   if(version_in_range(version:readerVer, test_version:"6.0.0", test_version2:"6.0.2"))
   {

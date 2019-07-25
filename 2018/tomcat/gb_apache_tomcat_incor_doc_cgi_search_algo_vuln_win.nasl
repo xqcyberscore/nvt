@@ -28,11 +28,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812694");
-  script_version("2019-05-10T11:41:35+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2017-15706");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-10 11:41:35 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-06 11:43:37 +0530 (Tue, 06 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Incorrectly documented CGI search algorithm Vulnerability (Windows)");
@@ -86,22 +86,22 @@ if(!infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:
 appVer = infos['version'];
 path = infos['location'];
 
-if(appVer =~ "8\.5")
+if(appVer =~ "^8\.5")
 {
   if(version_in_range(version:appVer, test_version: "8.5.16", test_version2: "8.5.23")){
     fix = "8.5.24";
   }
-} else if(appVer =~ "7\.0")
+} else if(appVer =~ "^7\.0")
 {
   if(version_in_range(version:appVer, test_version: "7.0.79", test_version2: "7.0.82")){
     fix = "7.0.84";
   }
-} else if(appVer =~ "8\.0")
+} else if(appVer =~ "^8\.0")
 {
   if(version_in_range(version:appVer, test_version: "8.0.45", test_version2: "8.0.47")){
     fix = "8.0.48";
   }
-} else if(appVer =~ "9\.0")
+} else if(appVer =~ "^9\.0")
 {
   if((revcomp(a:appVer, b: "9.0.0.M22") >= 0) && (revcomp(a:appVer, b: "9.0.2") < 0)){
     fix = "9.0.2";

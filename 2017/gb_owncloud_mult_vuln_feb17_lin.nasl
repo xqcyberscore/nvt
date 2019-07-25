@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_feb17_lin.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities Feb17 (Linux)
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106579");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-08 16:01:56 +0700 (Wed, 08 Feb 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -87,7 +86,7 @@ if (version_is_less(version: version, test_version: "8.1.11")) {
   exit(0);
 }
 
-if (version =~ "8\.2") {
+if (version =~ "^8\.2") {
   if (version_is_less(version: version, test_version: "8.2.9")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "8.2.9");
     security_message(port: port, data: report);
@@ -95,7 +94,7 @@ if (version =~ "8\.2") {
   }
 }
 
-if (version =~ "9\.0") {
+if (version =~ "^9\.0") {
   if (version_is_less(version: version, test_version: "9.0.7")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "9.0.7");
     security_message(port: port, data: report);
@@ -103,7 +102,7 @@ if (version =~ "9\.0") {
   }
 }
 
-if (version =~ "9\.1") {
+if (version =~ "^9\.1") {
   if (version_is_less(version: version, test_version: "9.1.3")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "9.1.3");
     security_message(port: port, data: report);

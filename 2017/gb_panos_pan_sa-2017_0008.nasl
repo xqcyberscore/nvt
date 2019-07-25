@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0008.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Palo Alto PAN-OS Tampering of temporary export files in the Management Web Interface
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-7217");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 14175 $");
+  script_version("2019-07-24T08:39:52+0000");
 
   script_name("Palo Alto PAN-OS Tampering of temporary export files in the Management Web Interface");
 
@@ -52,7 +51,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-12 16:25:31 +0200 (Wed, 12 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");
@@ -70,9 +69,9 @@ if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 
-if( version =~ "7\.0\." )
+if( version =~ "^7\.0\." )
   fix = '7.0.14';
-else if( version =~ "7\.1\." )
+else if( version =~ "^7\.1\." )
   fix = '7.1.9';
 
 if( ! fix ) exit( 0 );

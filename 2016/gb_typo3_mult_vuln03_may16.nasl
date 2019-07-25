@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln03_may16.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities-03 May16
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807826");
-  script_version("$Revision: 12455 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-20 17:17:16 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Multiple Vulnerabilities-03 May16");
 
@@ -65,9 +64,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-012");
-  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-011");
-  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-009");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-core-sa-2016-012/");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-core-sa-2016-011/");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-core-sa-2016-009/");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -75,10 +74,9 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -93,7 +91,7 @@ if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
 
 if(typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+") exit(0); # Version is not exact enough
 
-if(typoVer =~ "6\.2")
+if(typoVer =~ "^6\.2")
 {
   if(version_in_range(version:typoVer, test_version:"6.2.0", test_version2:"6.2.19"))
   {
@@ -102,7 +100,7 @@ if(typoVer =~ "6\.2")
   }
 }
 
-else if(typoVer =~ "7\.6")
+else if(typoVer =~ "^7\.6")
 {
   if(version_in_range(version:typoVer, test_version:"7.6.0", test_version2:"7.6.4"))
   {

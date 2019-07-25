@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_unrealircd_bof_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # UnrealIRCd Buffer Overflow Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901126");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-06-22 14:43:46 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2009-4893");
   script_tag(name:"cvss_base", value:"6.8");
@@ -66,7 +65,6 @@ if(description)
   script_dependencies("gb_unrealircd_detect.nasl");
   script_mandatory_keys("UnrealIRCD/Detected");
 
-  script_xref(name:"URL", value:"http://www.unrealircd.com/downloads.php");
   exit(0);
 }
 
@@ -81,7 +79,7 @@ if(!UnVer = get_app_version(cpe:CPE, port:UnPort)){
   exit(0);
 }
 
-if(UnVer =~ "3\.2")
+if(UnVer =~ "^3\.2")
 {
   if(version_in_range(version:UnVer, test_version:"3.2", test_version2:"3.2.8"))
   {

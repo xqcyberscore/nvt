@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bind_37118.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # ISC BIND 9 DNSSEC Query Response Additional Section Remote Cache Poisoning Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100362");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-11-25 11:49:08 +0100 (Wed, 25 Nov 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -45,7 +44,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37118");
   script_xref(name:"URL", value:"https://www.isc.org/node/504");
-  script_xref(name:"URL", value:"http://www.isc.org/products/BIND/");
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to manipulate cache data,
   potentially facilitating man-in-the-middle, site-impersonation, or denial-of-service attacks.");
@@ -75,21 +73,21 @@ proto = infos["proto"];
 
 version = str_replace( find:"-", string:version, replace:"." );
 
-if( version =~ "9\.[0-4]+" ) {
+if( version =~ "^9\.[0-4]+" ) {
   if( version_is_less( version:version, test_version:"9.4.3.P4" ) ) {
     fix = "9.4.3-P4";
     VULN = TRUE;
   }
 }
 
-else if( version =~ "9\.5" ) {
+else if( version =~ "^9\.5" ) {
   if( version_is_less( version:version, test_version:"9.5.2.P1" ) ) {
     fix = "9.5.2-P1";
     VULN = TRUE;
   }
 }
 
-else if( version =~ "9\.6" ) {
+else if( version =~ "^9\.6" ) {
   if( version_is_less( version:version, test_version:"9.6.1.P2" ) ) {
     fix = "9.6.1-P2";
     VULN = TRUE;

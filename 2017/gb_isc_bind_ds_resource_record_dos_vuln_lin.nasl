@@ -28,12 +28,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810284");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2016-9444");
   script_bugtraq_id(95393);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-16 16:59:09 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Unusual DS Record Response Denial of Service Vulnerability (Linux)");
@@ -80,7 +80,7 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-if(bindVer =~ "^(9\.)")
+if(bindVer =~ "^9\.")
 {
   if(version_in_range(version:bindVer, test_version:"9.8.5", test_version2:"9.8.8"))
   {
@@ -88,7 +88,7 @@ if(bindVer =~ "^(9\.)")
     VULN = TRUE;
   }
 
-  else if(bindVer =~ "^(9\.6\.ESV)")
+  else if(bindVer =~ "^9\.6\.ESV")
   {
     if ((revcomp(a: bindVer, b: "9.6.ESV.R9") >= 0) && (revcomp(a: bindVer, b: "9.6.ESV.R11.W2") < 0))
     {
@@ -97,7 +97,7 @@ if(bindVer =~ "^(9\.)")
     }
   }
 
-  if (bindVer =~ "9\.9\.[3-9]")
+  if (bindVer =~ "^9\.9\.[3-9]")
   {
     if(revcomp(a: bindVer, b: "9.9.9.P5")< 0)
     {
@@ -105,13 +105,13 @@ if(bindVer =~ "^(9\.)")
       VULN = TRUE;
     }
   }
-  else if(bindVer =~ "^(9\.9\.9\.S[1-6])")
+  else if(bindVer =~ "^9\.9\.9\.S[1-6]")
   {
     fix = "9.9.9-S7";
     VULN = TRUE;
   }
 
-  else if(bindVer =~ "^(9\.10\.)")
+  else if(bindVer =~ "^9\.10\.")
   {
     if(revcomp(a: bindVer, b: "9.10.4.P5") < 0)
     {
@@ -119,7 +119,7 @@ if(bindVer =~ "^(9\.)")
       VULN = TRUE;
     }
   }
-  else if(bindVer =~ "^(9\.11\.0)")
+  else if(bindVer =~ "^9\.11\.0")
   {
     if(revcomp(a: bindVer, b: "9.11.0.P2") < 0)
     {

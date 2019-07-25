@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0027.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto Networks web management server denial-of-service attack. (PAN-SA-2016-0027)
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2014-9708");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("2019-07-24T08:39:52+0000");
 
   script_name("Palo Alto Networks web management server denial-of-service attack. (PAN-SA-2016-0027)");
 
@@ -49,7 +48,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-01-06 09:37:03 +0100 (Fri, 06 Jan 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");
@@ -67,17 +66,17 @@ if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 
-if( version =~ "5\.0" )
+if( version =~ "^5\.0" )
   fix = '5.0.20';
-else if( version =~ "5\.1" )
+else if( version =~ "^5\.1" )
   fix = '5.1.13';
-else if( version =~ "6\.0" )
+else if( version =~ "^6\.0" )
   fix = '6.0.15';
-else if( version =~ "6\.1" )
+else if( version =~ "^6\.1" )
   fix = '6.1.15';
-else if( version =~ "7\.0" )
+else if( version =~ "^7\.0" )
   fix = '7.0.11';
-else if( version =~ "7\.1" )
+else if( version =~ "^7\.1" )
   fix = '7.1.6';
 
 if( ! fix ) exit( 0 );

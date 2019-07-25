@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-07-23T12:43:26+0000");
-  script_tag(name:"last_modification", value:"2019-07-23 12:43:26 +0000 (Tue, 23 Jul 2019)");
+  script_version("2019-07-25T06:05:02+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 06:05:02 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -2582,7 +2582,7 @@ if( rls =~ "^[0-9]+[0-9.]+" || "buster/sid" >< rls || "bullseye/sid" >< rls ) {
       oskey += "." + vers[2]; # nb: but the older releases needs the second digit as well...
   }
 
-  if( ! vers ) { 
+  if( ! vers ) {
     if( "buster/sid" >< rls ) {
       cpe   += ":10.0";
       oskey += "10";

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lg_smart_ip_default_credentials.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # LG Smart IP Device Default Credentials
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113271");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-09-18 13:12:13 +0200 (Tue, 18 Sep 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,8 +64,11 @@ include( "http_func.inc" );
 include( "http_keepalive.inc" );
 include( "misc_func.inc" );
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! location = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
+if( ! port = get_app_port( cpe: CPE ) )
+  exit( 0 );
+
+if( ! location = get_app_location( cpe: CPE, port: port ) )
+  exit( 0 );
 
 if( location == "/" )
   location = "";
@@ -77,7 +79,7 @@ auth_header = make_array("Authorization", "Basic " + base64( str: "admin:admin" 
 req = http_get_req( port: port, url: url, add_headers: auth_header, accept_header: "*/*" );
 res = http_keepalive_send_recv( data: req, port: port );
 
-if( res =~ "200 OK" && res !~ 'Error' && res =~ 'UserLevel[ ]*:[ ]*USER_ADMIN' ) {
+if( res =~ "^HTTP/1\.[01] 200" && res !~ 'Error' && res =~ 'UserLevel[ ]*:[ ]*USER_ADMIN' ) {
   report = "It was possible to login using the username 'admin' and the password 'admin'.";
   security_message( data: report, port: port );
   url = location + '/httpapi?GetVersion';

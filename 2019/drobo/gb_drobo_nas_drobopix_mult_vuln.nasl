@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142109");
-  script_version("2019-04-08T08:02:40+0000");
-  script_tag(name:"last_modification", value:"2019-04-08 08:02:40 +0000 (Mon, 08 Apr 2019)");
+  script_version("2019-07-24T14:33:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 14:33:07 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-03-08 14:41:22 +0700 (Fri, 08 Mar 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -78,7 +78,7 @@ data = '{"enabled":"false' + "';/usr/bin/id > /mnt/DroboFS/Shares/DroboApps/Drob
 req = http_post(port: port, item: url, data: data);
 res = http_keepalive_send_recv(port: port, data: req);
 
-if (res !~ "^^HTTP/1\.[01] 200")
+if (res !~ "^HTTP/1\.[01] 200")
   exit(0);
 
 test_url = "/DroboPix/" + file;

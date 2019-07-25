@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremexos_vn-2016-001-openssh.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Extreme ExtremeXOS OpenSSH Vulnerabilities
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:extreme:extremexos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106425");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -86,7 +85,7 @@ if (version_is_less(version: version, test_version: "15.7.3")) {
   exit(0);
 }
 
-if (version =~ "15\.7\.3") {
+if (version =~ "^15\.7\.3") {
   patch = get_kb_item("extremexos/patch");
   if (!patch || version_is_less(version: patch, test_version: "1.8")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "15.7.3 Patch 1-8");

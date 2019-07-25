@@ -751,7 +751,7 @@ function policy_match_reg_sz(key, item, type, default, partial, multi_sz){
   }
 
   value = chomp(value);
-  if(!value) value = "None";
+  if(!value || isnull(value)) value = "None";
 
   lower_value = tolower(value);
   lower_default = tolower(default);

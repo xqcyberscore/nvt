@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln09.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ISC BIND lwresd Denial of Service Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106292");
-  script_version("$Revision: 12149 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-28 09:42:23 +0700 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -82,7 +81,7 @@ proto = infos["proto"];
 if (version !~ "^9\.")
   exit(99);
 
-if (version =~ "9\.9\.[3-9]\.S[0-9]") {
+if (version =~ "^9\.9\.[3-9]\.S[0-9]") {
   if (version_is_less(version: version, test_version: "9.9.9.S3")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "9.9.9-S3");
     security_message(port: port, data: report, proto: proto);

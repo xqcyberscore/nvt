@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_automation_VMSA-2016-0021.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # VMSA-2016-0021: VMware vRealize Automation Partial Information Disclosure Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-5334");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 12363 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_name("VMSA-2016-0021: VMware vRealize Automation Partial Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0021.html");
@@ -47,7 +46,7 @@ if (description)
 
   script_tag(name:"affected", value:"vRealize Automation 7.x < 7.2.0 (vRealize Automation 7.x ships with an RPM-based version of VMware Identity Manager)");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-23 10:02:04 +0100 (Wed, 23 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -70,7 +69,7 @@ if( version =~ "^7\." )
 {
   if( version_is_less( version:version, test_version:"7.2.0" ) ) fix = '7.2.0';
 
-  if( version =~ "7\.2\.0" )
+  if( version =~ "^7\.2\.0" )
   {
     if( build = get_kb_item( "vmware/vrealize/automation/build" ) )
       if( build && int( build ) < 4660246 ) fix = '7.2.0.381 Build 4270058';

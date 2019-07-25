@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815135");
-  script_version("2019-05-16T13:15:53+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 11:38:35 +0530 (Thu, 16 May 2019)");
   script_name("Microsoft Windows Latest Servicing Stack Updates-Defense in Depth (KB4500641)");
 
@@ -78,7 +78,7 @@ edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer)
   exit(0);
 
-if(edgeVer =~ "11\.0\.16299")
+if(edgeVer =~ "^11\.0\.16299")
 {
   infos = kb_smb_wmi_connectinfo();
   if(!infos)

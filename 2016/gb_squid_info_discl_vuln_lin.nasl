@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_info_discl_vuln_lin.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Squid Information Disclosure Vulnerability (Linux)
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106479");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-12-19 14:15:02 +0700 (Mon, 19 Dec 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -80,7 +79,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version =~ "3\.1") {
+if (version =~ "^3\.1") {
   if (version_is_greater_equal(version: version, test_version: "3.1.10")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "3.5.23");
     security_message(port: port, data: report);

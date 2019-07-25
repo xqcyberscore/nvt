@@ -23,8 +23,8 @@ CPE = 'cpe:/a:isc:bind';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141281");
-  script_version("2019-06-21T02:23:48+0000");
-  script_tag(name:"last_modification", value:"2019-06-21 02:23:48 +0000 (Fri, 21 Jun 2019)");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-21 02:23:08 +0000 (Fri, 21 Jun 2019)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
@@ -80,7 +80,7 @@ proto = infos["proto"];
 if (version !~ "^9\.")
   exit(0);
 
-if (version =~ "9\.11\.[0-9]\.S[0-9]") {
+if (version =~ "^9\.11\.[0-9]\.S[0-9]") {
   if (version_in_range(version: version, test_version: "9.11.3.S1", test_version2: "9.11.7.S1")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "9.11.8-S1");
     security_message(port: port, data: report, proto: proto);

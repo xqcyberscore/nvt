@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_weak_policy_vuln_win.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Weak Content Security Policy Vulnerability (Windows)
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106615");
-  script_version("$Revision: 12818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-20 13:33:44 +0700 (Mon, 20 Feb 2017)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -82,7 +81,7 @@ if (version_is_less(version: version, test_version: "1.3.1")) {
   exit(0);
 }
 
-if (version =~ "2\.0\.0") {
+if (version =~ "^2\.0\.0") {
   if (version_is_less(version: version, test_version: "2.0.0-beta2")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "2.0.0-beta2");
     security_message(port: port, data: report);

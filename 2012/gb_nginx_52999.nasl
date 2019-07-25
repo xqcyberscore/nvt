@@ -34,14 +34,14 @@ if (description)
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_version("2019-07-05T10:41:31+0000");
+  script_version("2019-07-24T08:39:52+0000");
 
   script_name("nginx 'ngx_http_mp4_module.c' Buffer Overflow Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52999");
   script_xref(name:"URL", value:"http://nginx.org/en/security_advisories.html");
 
-  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-04-17 10:16:44 +0200 (Tue, 17 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -75,7 +75,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version =~ "1\.1") {
+if (version =~ "^1\.1") {
   if (version_is_less(version:version, test_version:"1.1.19")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "1.1.19");
     security_message(port: port, data: report);
@@ -83,7 +83,7 @@ if (version =~ "1\.1") {
   }
 }
 
-if (version =~ "1\.0") {
+if (version =~ "^1\.0") {
   if (version_is_less(version:version, test_version:"1.0.15")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "1.0.15");
     security_message(port: port, data: report);

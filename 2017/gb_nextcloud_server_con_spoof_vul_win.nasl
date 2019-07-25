@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_con_spoof_vul_win.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Nextcloud Server Multiple Vulnerabilities (Windows)
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107146");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-04-10 09:39:06 +0200 (Mon, 10 Apr 2017)");
   script_cve_id("CVE-2017-0883", "CVE-2017-0884", "CVE-2017-0885", "CVE-2017-0886",
                 "CVE-2017-0887", "CVE-2017-0888");
@@ -99,13 +98,13 @@ if(!Ver = get_app_version(cpe:CPE, port:Port)){
   exit(0);
 }
 
-if(Ver =~"9\.0\."){
+if(Ver =~ "^9\.0\."){
   if(version_is_less(version:Ver, test_version:"9.0.55")){
     Vuln = TRUE;
     fix = "9.0.55";
   }
 }
-else if(Ver =~ "10\.0\."){
+else if(Ver =~ "^10\.0\."){
   if(version_is_less(version:Ver, test_version:"10.0.2")){
     Vuln = TRUE;
     fix = "10.0.2";

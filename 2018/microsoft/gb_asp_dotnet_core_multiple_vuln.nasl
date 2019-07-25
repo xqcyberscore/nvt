@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812950");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2018-0785", "CVE-2018-0784");
   script_bugtraq_id(102379, 102377);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-27 12:03:33 +0530 (Tue, 27 Feb 2018)");
   script_name("ASP.NET Core Multiple Vulnerabilities (Windows)");
 
@@ -78,11 +78,13 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
+
 coreVers = infos['version'];
 path = infos['location'];
 
-if(coreVers =~ "2.0")
+if(coreVers =~ "^2\.0")
 {
   sdkVer = get_kb_item(".NET/Core/SDK/Ver");
   affected = make_list("2.0.0", "2.0.2", "2.0.3", "2.1.2", "2.1.3");

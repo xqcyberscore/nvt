@@ -28,8 +28,8 @@ CPE = "cpe:/a:mozilla:bugzilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100358");
-  script_version("2019-07-05T10:41:31+0000");
-  script_tag(name:"last_modification", value:"2019-07-05 10:41:31 +0000 (Fri, 05 Jul 2019)");
+  script_version("2019-07-24T11:36:46+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-11-20 12:35:38 +0100 (Fri, 20 Nov 2009)");
   script_cve_id("CVE-2009-3386");
   script_bugtraq_id(37062);
@@ -71,17 +71,17 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version =~ "3\.5") {
-  if (version_is_less(version: version, test_version: "3.5.2 ")) {
-    report = report_fixed_ver(installed_version:version, fixed_version:"3.5.2");
-    security_message(port:port, data:report);
+if (version =~ "^3\.5") {
+  if (version_is_less(version: version, test_version: "3.5.2")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "3.5.2");
+    security_message(port: port, data: report);
     exit(0);
   }
 }
-else if (version =~ "3\.[34]") {
+else if (version =~ "^3\.[34]") {
   if (version_in_range(version: version, test_version: "3.3.2", test_version2: "3.4.3")) {
-    report = report_fixed_ver(installed_version:version, fixed_version:"3.4.4");
-    security_message(port:port, data:report);
+    report = report_fixed_ver(installed_version: version, fixed_version: "3.4.4");
+    security_message(port: port, data: report);
     exit(0);
   }
 }

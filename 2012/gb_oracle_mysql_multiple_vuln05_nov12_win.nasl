@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln05_nov12_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Oracle MySQL Server Multiple Vulnerability-05 Nov12 (Windows)
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803115");
-  script_version("$Revision: 14117 $");
+  script_version("2019-07-24T11:36:46+0000");
   script_cve_id("CVE-2012-3156");
   script_bugtraq_id(56013);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-11-26 18:06:53 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerability-05 Nov12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51008/");
@@ -52,9 +51,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to disclose potentially
   sensitive information and manipulate certain data.");
-  script_tag(name:"affected", value:"Oracle MySQL version 5.5.x to 5.5.25 on windows");
+
+  script_tag(name:"affected", value:"Oracle MySQL version 5.5.x to 5.5.25 on Windows.");
+
   script_tag(name:"insight", value:"The flaw is due to unspecified error in MySQL server component vectors
   server.");
+
   script_tag(name:"solution", value:"Apply the patch from the linked references or upgrade to latest version.");
 
   script_tag(name:"summary", value:"The host is running Oracle MySQL server and is prone to unspecified
@@ -69,21 +71,21 @@ include("misc_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-sqlPort = get_app_port(cpe:CPE);
-if(!sqlPort){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-mysqlVer = get_app_version(cpe:CPE, port:sqlPort);
-if(isnull(mysqlVer)){
+if(!vers = get_app_version(cpe:CPE, port:port))
   exit(0);
-}
 
-mysqlVer = eregmatch(pattern:"([0-9.a-z]+)", string:mysqlVer);
-if(mysqlVer[1])
+vers = eregmatch(pattern:"([0-9.a-z]+)", string:vers);
+if(vers[1])
 {
-  ## Oracle MySQL version 5.5.x to 5.5.25
-  if(version_in_range(version:mysqlVer[1], test_version:"5.5.0 ", test_version2:"5.5.25")){
-    security_message(port:sqlPort);
+  if(version_in_range(version:vers[1], test_version:"5.5.0", test_version2:"5.5.25")){
+    report = report_fixed_ver(installed_version:vers[1], fixed_version:"Apply the patch");
+    security_message(data:report, port:port);
+    exit(0);
   }
+  exit(99);
 }
+
+exit(0);

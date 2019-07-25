@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814730");
-  script_version("2019-06-07T12:54:14+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2019-0545");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-07 12:54:14 +0000 (Fri, 07 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-09 16:36:42 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (KB4480056)");
 
@@ -81,7 +81,7 @@ if(!edgeVer){
   exit(0);
 }
 
-if(edgeVer =~ "11\.0\.17763")
+if(edgeVer =~ "^11\.0\.17763")
 {
   if(!registry_key_exists(key:"SOFTWARE\Microsoft\.NETFramework")){
     if(!registry_key_exists(key:"SOFTWARE\Microsoft\ASP.NET")){

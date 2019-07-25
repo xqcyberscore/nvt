@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812902");
-  script_version("2019-05-20T11:12:48+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2018-0853");
   script_bugtraq_id(102868);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-20 11:12:48 +0000 (Mon, 20 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-02-14 09:14:46 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Office 2013 Service Pack 1 Information Disclosure Vulnerability (KB3172459)");
 
@@ -75,18 +75,18 @@ if(!offVer || offVer !~ "^15\."){
 }
 
 msPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+                         item:"CommonFilesDir");
 if(msPath)
 {
   offPath = msPath + "\Microsoft Shared\Office15";
   msdllVer = fetch_file_version(sysPath:offPath, file_name:"acecore.dll");
 
-  if(msdllVer && msdllVer =~ "15\.")
+  if(msdllVer && msdllVer =~ "^15\.")
   {
     if(version_is_less(version:msdllVer, test_version:"15.0.5007.1000"))
     {
-      report = report_fixed_ver( file_checked:offPath + "\acecore.dll",
-                                 file_version:msdllVer, vulnerable_range:"15.0 - 15.0.5007.0999");
+      report = report_fixed_ver(file_checked:offPath + "\acecore.dll",
+                                file_version:msdllVer, vulnerable_range:"15.0 - 15.0.5007.0999");
       security_message(data:report);
       exit(0);
     }

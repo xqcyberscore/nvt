@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_multiple_vuln01_jan16.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # TYPO3 Multiple Vulnerabilities-01 Jan16
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806664");
-  script_version("$Revision: 11811 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2015-8760", "CVE-2015-8756");
   script_bugtraq_id(79210);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-01-19 11:49:38 +0530 (Tue, 19 Jan 2016)");
   script_name("TYPO3 Multiple Vulnerabilities-01 Jan16");
 
@@ -72,10 +71,9 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -90,7 +88,7 @@ if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
 
 if(typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+") exit(0); # Version is not exact enough
 
-if(typoVer =~ "6\.2")
+if(typoVer =~ "^6\.2")
 {
   if(version_in_range(version:typoVer, test_version:"6.2.0", test_version2:"6.2.15"))
   {

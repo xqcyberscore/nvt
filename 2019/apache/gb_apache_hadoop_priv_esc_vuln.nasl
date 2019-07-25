@@ -23,8 +23,8 @@ CPE = "cpe:/a:apache:hadoop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142482");
-  script_version("2019-06-03T03:48:39+0000");
-  script_tag(name:"last_modification", value:"2019-06-03 03:48:39 +0000 (Mon, 03 Jun 2019)");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-03 03:35:42 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -85,7 +85,7 @@ if (version_in_range(version: version, test_version: "2.9.0", test_version2: "2.
   exit(0);
 }
 
-if (version =~ "3\." && version_is_less(version: version, test_version: "3.1.1")) {
+if (version =~ "^3\." && version_is_less(version: version, test_version: "3.1.1")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "3.1.1", install_path: path);
   security_message(port: port, data: report);
   exit(0);

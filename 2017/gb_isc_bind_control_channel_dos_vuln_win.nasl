@@ -28,12 +28,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810978");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2017-3138");
   script_bugtraq_id(97657);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-23 11:40:43 +0530 (Tue, 23 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ISC BIND Control Channel Denial of Service Vulnerability (Windows)");
@@ -83,9 +83,9 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-if(bindVer =~ "^(9\.9)")
+if(bindVer =~ "^9\.9")
 {
-  if (bindVer =~ "9\.9\.9" && revcomp(a: bindVer, b: "9.9.9.P8") < 0){
+  if (bindVer =~ "^9\.9\.9" && revcomp(a: bindVer, b: "9.9.9.P8") < 0){
       fix = "9.9.9-P8";
     }
 

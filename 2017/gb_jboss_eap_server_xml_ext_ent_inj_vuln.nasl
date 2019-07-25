@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107199");
-  script_version("$Revision: 14175 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-22 17:05:17 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-7464");
   script_bugtraq_id(98450);
@@ -81,11 +80,11 @@ if( ! Ver = get_app_version( cpe:CPE, port:Port ) ) {
   exit( 0 );
 }
 
-if ( Ver =~ "7\.0" ) {
+if ( Ver =~ "^7\.0" ) {
   if ( version_is_less( version: Ver, test_version:"7.0.5" ) ) {
     Vuln = TRUE;
   }
-} else if ( Ver =~ "7\.1" ) {
+} else if ( Ver =~ "^7\.1" ) {
   if ( version_is_less( version: Ver, test_version:"7.1.0" ) ) {
     Vuln = TRUE;
   }

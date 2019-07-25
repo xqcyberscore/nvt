@@ -67,6 +67,12 @@ function revcomp( a, b ) {
   if( ! b )
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#b#-#revcomp" );
 
+  if( a =~ "^\s+" || a =~ "\s+$" )
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#revcomp: Trailing / leading space passed to 'a' parameter which might show an unexpected behavior." );
+
+  if( b =~ "^\s+" || b =~ "\s+$" )
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#revcomp: Trailing / leading space passed to 'b' parameter which might show an unexpected behavior." );
+
   if( a == b )
     return( 0 );
 

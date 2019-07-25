@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_xss_vuln01_july16.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808273");
-  script_version("$Revision: 11938 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16");
 
@@ -56,7 +55,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-020");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-core-sa-2016-020/");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -64,10 +63,9 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -82,7 +80,7 @@ if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
 
 if(typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+") exit(0); # Version is not exact enough
 
-if(typoVer =~ "7\.6")
+if(typoVer =~ "^7\.6")
 {
   if(version_in_range(version:typoVer, test_version:"7.6.0", test_version2:"7.6.9"))
   {

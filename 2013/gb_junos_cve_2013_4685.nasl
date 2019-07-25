@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4685.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos Buffer Overflow when Processing HTTP Messages
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103961");
-  script_version("$Revision: 12095 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-12-09 22:07:11 +0700 (Mon, 09 Dec 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -96,7 +95,7 @@ if (revcomp(a:version, b:"10.4R15") < 0) {
   exit(0);
 }
 
-if (version =~ "10.4S") {
+if (version =~ "^10\.4S") {
   if (revcomp(a:version, b:"10.4S14") < 0) {
     security_message(port:0, data:desc);
     exit(0);

@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814749");
-  script_version("2019-05-16T13:15:53+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2019-0657", "CVE-2019-0613");
   script_bugtraq_id(106890, 106872);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-16 13:15:53 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 12:18:46 +0530 (Wed, 13 Feb 2019)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4483452)");
 
@@ -82,7 +82,7 @@ if(!edgeVer){
   exit(0);
 }
 
-if(edgeVer =~ "11\.0\.17763")
+if(edgeVer =~ "^11\.0\.17763")
 {
   if(!registry_key_exists(key:"SOFTWARE\Microsoft\.NETFramework")){
     if(!registry_key_exists(key:"SOFTWARE\Microsoft\ASP.NET")){

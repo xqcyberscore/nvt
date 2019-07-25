@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160831-wlc-2.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco Wireless LAN Controller wIPS Denial of Service Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/o:cisco:wireless_lan_controller_software';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106219");
-  script_version("$Revision: 12338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-01 14:58:40 +0700 (Thu, 01 Sep 2016)");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
@@ -87,7 +86,7 @@ if (version_is_less(version: version, test_version: "8.0.140")) {
   exit(0);
 }
 
-if (version =~ "8\.(1|2)") {
+if (version =~ "^8\.[12]") {
   if (version_is_less(version: version, test_version: "8.2.121.0")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "8.2.121.0");
     security_message(port: 0, data: report);
@@ -95,7 +94,7 @@ if (version =~ "8\.(1|2)") {
   }
 }
 
-if (version =~ "8\.3") {
+if (version =~ "^8\.3") {
   if (version_is_less(version: version, test_version: "8.3.102.0")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "8.3.102.0");
     security_message(port: 0, data: report);

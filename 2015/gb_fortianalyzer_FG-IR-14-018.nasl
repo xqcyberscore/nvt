@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_FG-IR-14-018.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # FortiOS: Multiple Vulnerabilities in OpenSSL
 #
@@ -33,7 +32,7 @@ if(description)
   script_cve_id("CVE-2014-0224", "CVE-2014-0221", "CVE-2014-0195");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 14184 $");
+  script_version("2019-07-24T08:39:52+0000");
 
   script_name("FortiOS: Multiple Vulnerabilities in OpenSSL");
 
@@ -65,7 +64,7 @@ to Fortinet products.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -85,10 +84,10 @@ if( ! version )
 
 if( ! version ) exit( 0 );
 
-if( version =~ "5\.2" )
+if( version =~ "^5\.2" )
   fix = "5.2.0";
 
-else if( version =~ "5\.0" )
+else if( version =~ "^5\.0" )
 {
   fix = '5.0.7';
   build = get_kb_item("fortianalyzer/build");

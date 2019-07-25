@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_automation_VMSA-2016-0022.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # VMSA-2016-0022: VMware vRealize Automation XML External Entity (XXE) Vulnerability.
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-7458", "CVE-2016-7459", "CVE-2016-7460");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_version("$Revision: 12338 $");
+  script_version("2019-07-24T08:39:52+0000");
   script_name("VMSA-2016-0022: VMware vRealize Automation XML External Entity (XXE) Vulnerability");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0022.html");
@@ -47,7 +46,7 @@ if (description)
 
   script_tag(name:"affected", value:"vRealize Automation 6.x");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-11-23 10:12:04 +0100 (Wed, 23 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -70,7 +69,7 @@ if( version =~ "^6\." )
 {
   if( version_is_less( version:version, test_version:"6.2.5" ) ) fix = '6.2.5';
 
-  if( version =~ "6\.2\.5" )
+  if( version =~ "^6\.2\.5" )
   {
     if( build = get_kb_item( "vmware/vrealize/automation/build" ) )
       if( build && int( build ) < 4619074 ) fix = '6.2.5 Build 4619074';

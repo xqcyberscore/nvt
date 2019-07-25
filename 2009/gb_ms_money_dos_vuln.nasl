@@ -28,8 +28,8 @@ CPE = "cpe:/a:microsoft:money";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800218");
-  script_version("2019-05-17T10:45:27+0000");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_version("2019-07-24T08:39:52+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -58,7 +58,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL", value:"http://www.microsoft.com/MONEY/default.mspx");
   exit(0);
 }
 
@@ -69,7 +68,7 @@ if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(
 vers = infos['version'];
 path = infos['location'];
 
-if( vers =~ "2006" ) {
+if( vers =~ "^2006" ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
   security_message( port:0, data:report );
   exit( 0 );

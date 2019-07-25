@@ -26,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100214");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-07-24T11:36:46+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-06-01 13:46:24 +0200 (Mon, 01 Jun 2009)");
   script_bugtraq_id(35134);
   script_tag(name:"cvss_base", value:"4.3");
@@ -63,14 +63,19 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!version = get_kb_item(string("www/", port, "/phorum")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+
+if(!version = get_kb_item(string("www/", port, "/phorum")))
+  exit(0);
+
+if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))
+  exit(0);
 
 vers = matches[1];
 
 if(!isnull(vers) && vers >!< "unknown") {
-  if(version_is_less(version: vers, test_version: "5.2.11 ")) {
-    security_message(port:port, data:"The target host was found to be vulnerable.");
+  if(version_is_less(version:vers, test_version:"5.2.11")) {
+    report = report_fixed_ver(installed_version:vers, fixed_version:"5.2.11");
+    security_message(port:port, data:report);
     exit(0);
   }
 }

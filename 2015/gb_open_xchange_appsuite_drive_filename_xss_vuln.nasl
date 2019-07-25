@@ -28,11 +28,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806074");
-  script_version("2019-07-05T10:16:38+0000");
+  script_version("2019-07-24T11:36:46+0000");
   script_cve_id("CVE-2014-2393");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-10-06 12:24:33 +0530 (Tue, 06 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Drive File Cross Site Scripting Vulnerability");
@@ -72,23 +72,23 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!oxPort = get_app_port(cpe:CPE)){
+if(!oxPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-oxVer = get_app_version(cpe:CPE, port:oxPort);
-if(!oxVer || "unknown" >< oxVer){
+if(!oxVer = get_app_version(cpe:CPE, port:oxPort));
   exit(0);
-}
+
+if(oxVer !~ "^7\.4\.2")
+  exit(99);
 
 oxRev = get_kb_item("open_xchange_appsuite/" + oxPort + "/revision");
 
-if(oxRev){
+if(oxRev)
+{
 
-  ## Updating version with revision number
   oxVer = oxVer + "." + oxRev;
 
-  if(version_in_range(version:oxVer, test_version:"7.4.2", test_version2:" 7.4.2.12"))
+  if(version_in_range(version:oxVer, test_version:"7.4.2", test_version2:"7.4.2.12"))
   {
     fix = "7.4.2.13";
     VULN = TRUE;
@@ -102,7 +102,7 @@ if(oxRev){
 
   if(VULN)
   {
-    report = 'Installed Version: ' + oxVer + '\nFixed Version:     ' + fix + '\n';
+    report = report_fixed_ver(installed_version:oxVer, fixed_version:fix);
     security_message(port:oxPort, data:report);
     exit(0);
   }

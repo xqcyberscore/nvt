@@ -26,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100533");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-07-24T11:36:46+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
   script_cve_id("CVE-2010-0736");
   script_bugtraq_id(38650);
@@ -77,9 +77,10 @@ if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))
 vers = matches[1];
 
 if(!isnull(vers) && vers >!< "unknown") {
-  if(version_in_range(version: vers, test_version: "1.1", test_version2: "1.1.3 ") ||
-     version_in_range(version: vers, test_version: "1.0", test_version2: "1.0.9 ")) {
-    security_message(port:port);
+  if(version_in_range(version: vers, test_version: "1.1", test_version2: "1.1.3") ||
+     version_in_range(version: vers, test_version: "1.0", test_version2: "1.0.9")) {
+    report = report_fixed_ver(installed_version:vers, fixed_version:"1.1.4/1.0.10");
+    security_message(port:port, data:report);
     exit(0);
   }
 }

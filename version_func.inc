@@ -52,6 +52,9 @@ function version_is_less( version, test_version, icase, debug ) {
 
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_less" );
   if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_less" );
+  if( version =~ "^\s+" || version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_less: Trailing / leading space passed to 'version' parameter which might show an unexpected behavior." );
+  if( test_version =~ "^\s+" || test_version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_less: Trailing / leading space passed to 'test_version' parameter which might show an unexpected behavior." );
+
   return( version_test( version:version, test_version:test_version, less:TRUE, icase:icase, debug:debug ) );
 }
 
@@ -61,6 +64,8 @@ function version_is_equal( version, test_version, icase, debug ) {
 
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_equal" );
   if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_equal" );
+  if( version =~ "^\s+" || version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_equal: Trailing / leading space passed to 'version' parameter which might show an unexpected behavior." );
+  if( test_version =~ "^\s+" || test_version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_equal: Trailing / leading space passed to 'test_version' parameter which might show an unexpected behavior." );
   return( version_test( version:version, test_version:test_version, less:FALSE, icase:icase, debug:debug ) );
 }
 
@@ -178,6 +183,8 @@ function version_is_less_equal( version, test_version, icase, debug ) {
 
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_less_equal" );
   if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_less_equal" );
+  if( version =~ "^\s+" || version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_less_equal: Trailing / leading space passed to 'version' parameter which might show an unexpected behavior." );
+  if( test_version =~ "^\s+" || test_version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_less_equal: Trailing / leading space passed to 'test_version' parameter which might show an unexpected behavior." );
   if( version_is_equal( version:version, test_version:test_version, icase:icase, debug:debug ) ) return TRUE;
   if( version_is_less( version:version, test_version:test_version, icase:icase, debug:debug ) ) return TRUE;
   return FALSE;
@@ -189,6 +196,8 @@ function version_is_greater_equal( version, test_version, icase, debug ) {
 
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_greater_equal" );
   if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_greater_equal" );
+  if( version =~ "^\s+" || version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_greater_equal: Trailing / leading space passed to 'version' parameter which might show an unexpected behavior." );
+  if( test_version =~ "^\s+" || test_version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_greater_equal: Trailing / leading space passed to 'test_version' parameter which might show an unexpected behavior." );
   if( version_is_equal( version:version, test_version:test_version, icase:icase, debug:debug ) ) return TRUE;
   if( version_is_less( version:test_version, test_version:version, icase:icase, debug:debug ) ) return TRUE;
   return FALSE;
@@ -200,6 +209,8 @@ function version_is_greater( version, test_version, icase, debug ) {
 
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_greater" );
   if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_greater" );
+  if( version =~ "^\s+" || version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_greater: Trailing / leading space passed to 'version' parameter which might show an unexpected behavior." );
+  if( test_version =~ "^\s+" || test_version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_is_greater: Trailing / leading space passed to 'test_version' parameter which might show an unexpected behavior." );
   if( version_is_less( version:test_version, test_version:version, icase:icase, debug:debug ) ) return TRUE;
   return FALSE;
 }
@@ -211,6 +222,9 @@ function version_in_range( version, test_version, test_version2, icase, debug ) 
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_in_range" );
   if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_in_range" );
   if( ! test_version2 ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version2#-#version_in_range" );
+  if( version =~ "^\s+" || version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_in_range: Trailing / leading space passed to 'version' parameter which might show an unexpected behavior." );
+  if( test_version =~ "^\s+" || test_version =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_in_range: Trailing / leading space passed to 'test_version' parameter which might show an unexpected behavior." );
+  if( test_version2 =~ "^\s+" || test_version2 =~ "\s+$" ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#version_in_range: Trailing / leading space passed to 'test_version2' parameter which might show an unexpected behavior." );
   if( version_is_greater_equal( version:version, test_version:test_version, icase:icase, debug:debug ) ) {
     if( version_is_less_equal( version:version, test_version:test_version2, icase:icase, debug:debug ) ) return TRUE;
   }

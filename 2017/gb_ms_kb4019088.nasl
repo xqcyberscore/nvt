@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811616");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-08-09 15:26:44 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server 2016 Information Disclosure Vulnerability (KB4019088)");
 
@@ -103,7 +103,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
     ## Reset the string
     sql_ver_path = "";
 
-    if(sql_ver =~ "13\.0"){
+    if(sql_ver =~ "^13\.0"){
       sql_ver_path = "SQLServer2016";
     }
     else{
@@ -120,7 +120,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
              file_name:"Microsoft.sqlserver.chainer.infrastructure.dll");
 
     ## update for SQL Server 2016
-    if(sysVer =~ "^(13\.0)")
+    if(sysVer =~ "^13\.0")
     {
       if(version_in_range(version:sysVer, test_version:"13.0.1000.0", test_version2:"13.0.1741.0"))
       {

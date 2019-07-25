@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815507");
-  script_version("2019-07-19T06:52:55+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2019-1068");
   script_bugtraq_id(108954);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-19 06:52:55 +0000 (Fri, 19 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-10 12:42:11 +0530 (Wed, 10 Jul 2019)");
   script_name("Microsoft SQL Server Remote Code Execution Vulnerability (KB4505224)");
 
@@ -96,7 +96,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
   {
     sql_ver_path = "";
 
-    if(sql_ver =~ "14\.0"){
+    if(sql_ver =~ "^14\.0"){
       sql_ver_path = "SQL2017";
     }
     else{
@@ -106,7 +106,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
     sql_path = sql_path - "Tools" + "Setup Bootstrap\" + sql_ver_path + "\" + os_arch;
 
     sysVer = fetch_file_version(sysPath:sql_path, file_name:"Microsoft.sqlserver.chainer.infrastructure.dll");
-    if(sysVer && (sysVer =~ "^14\.0"))
+    if(sysVer && sysVer =~ "^14\.0")
     {
       if(version_in_range(version:sysVer, test_version:"14.0.1000.169", test_version2:"14.0.2027.1"))
       {

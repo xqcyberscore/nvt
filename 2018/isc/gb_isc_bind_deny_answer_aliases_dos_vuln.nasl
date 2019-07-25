@@ -28,11 +28,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813750");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-24T08:39:52+0000");
   script_cve_id("CVE-2018-5740");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-10 12:14:44 +0530 (Fri, 10 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND 'deny-answer-aliases' Denial of Service Vulnerability");
@@ -85,7 +85,7 @@ if(version !~ "^9\.") {
   exit(0);
 }
 
-if(version =~ "9\.11\.[0-9]\.S[0-9]") {
+if(version =~ "^9\.11\.[0-9]\.S[0-9]") {
   if (version_in_range(version: version, test_version: "9.11.0.S0", test_version2: "9.11.3.S2")) {
     fix = "9.11.3-S3";
   }

