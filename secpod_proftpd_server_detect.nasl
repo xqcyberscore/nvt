@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_proftpd_server_detect.nasl 12723 2018-12-09 16:32:25Z cfischer $
 #
 # ProFTPD Server Version Detection (Local)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900506");
-  script_version("$Revision: 12723 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-09 17:32:25 +0100 (Sun, 09 Dec 2018) $");
+  script_version("2019-07-25T12:21:33+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,7 +50,6 @@ if(description)
 include("cpe.inc");
 include("host_details.inc");
 include("ssh_func.inc");
-include("version_func.inc");
 
 sock = ssh_login_or_reuse_connection();
 if( ! sock ) exit( 0 );

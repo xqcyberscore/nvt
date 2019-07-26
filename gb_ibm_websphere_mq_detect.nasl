@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_detect.nasl 12552 2018-11-28 04:39:18Z ckuersteiner $
 #
 # IBM WebSphere MQ Version Detection (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805546");
-  script_version("$Revision: 12552 $");
+  script_version("2019-07-25T12:21:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 05:39:18 +0100 (Wed, 28 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-05-06 11:01:01 +0530 (Wed, 06 May 2015)");
 
   script_name("IBM WebSphere MQ Version Detection (Windows)");
@@ -52,7 +51,6 @@ The script logs in via smb, searches for 'IBM WebSphere MQ' in the registry and 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch)

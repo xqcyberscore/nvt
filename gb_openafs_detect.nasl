@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # OpenAFS Version Detection (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808072");
-  script_version("$Revision: 11015 $");
+  script_version("2019-07-25T12:21:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-06-08 12:16:58 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Version Detection (Windows)");
 
@@ -55,7 +54,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){

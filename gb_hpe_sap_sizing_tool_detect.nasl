@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sap_sizing_tool_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # HPE SAP Sizing Tool Version Detection (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809196");
-  script_version("$Revision: 10906 $");
+  script_version("2019-07-25T12:21:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-09-12 16:06:59 +0530 (Mon, 12 Sep 2016)");
   script_name("HPE SAP Sizing Tool Version Detection (Windows)");
 
@@ -55,7 +54,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 if(!registry_key_exists(key:"SOFTWARE\Hewlett Packard Enterprise\Sizers\SAP Sizing Tool") &&
    !registry_key_exists(key:"SOFTWARE\Wow6432Node\Hewlett Packard Enterprise\Sizers\SAP Sizing Tool")){

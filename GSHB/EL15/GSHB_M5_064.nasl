@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_064.nasl 13570 2019-02-11 10:39:55Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.064
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95065");
-  script_version("$Revision: 13570 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:39:55 +0100 (Mon, 11 Feb 2019) $");
+  script_version("2019-07-25T06:59:55+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 06:59:55 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +51,7 @@ include("ssh_func.inc");
 include("version_func.inc");
 
 name = 'IT-Grundschutz M5.064: Secure Shell\n';
-gshbm =  "IT-Grundschutz M5.064: ";
+gshbm = "IT-Grundschutz M5.064: ";
 
 port = kb_ssh_transport();
 
@@ -69,14 +68,14 @@ telnet = get_kb_item("Services/telnet");
 sshbanner = get_ssh_server_banner(port:port);
 if (sshbanner){
   sshbanner = tolower(sshbanner);
-  version = eregmatch(pattern:"ssh-.*openssh[_-]{1}([0-9.]+[p0-9]*)", string: sshbanner);
+  version = eregmatch(pattern:"ssh-.*openssh[_-]{1}([0-9.]+[p0-9]*)", string:sshbanner);
 }
 else sshbanner = "none";
 
-if(sshbanner == "none" && sshsock = "no"){
+if(sshbanner == "none" && sshsock == "no"){
   result = string("nicht zutreffend");
   desc = string("Es wurde kein SSH-Server gefunden");
-}else if(sshbanner == "none" && sshsock = "yes"){
+}else if(sshbanner == "none" && sshsock == "yes"){
   result = string("unvollständig");
   desc = string("Es wurde ein SSH-Server gefunden. Allerdings konnte weder der\nTyp noch die Version erkannt werden.");
 }else if("openssh" >< sshbanner){
@@ -107,6 +106,6 @@ set_kb_item(name:"GSHB/M5_064/desc", value:desc);
 set_kb_item(name:"GSHB/M5_064/name", value:name);
 
 silence = get_kb_item("GSHB/silence");
-if (!silence) itg_send_details (itg_id: 'GSHB/M5_064');
+if (!silence) itg_send_details(itg_id:'GSHB/M5_064');
 
 exit(0);

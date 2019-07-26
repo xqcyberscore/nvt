@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_electric_modicon_m340_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Schneider Electric Modicon M340 DoS Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106630");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-07-25T06:59:55+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 06:59:55 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-03 14:24:24 +0700 (Fri, 03 Mar 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -50,20 +49,20 @@ if (description)
   script_mandatory_keys("schneider_electric/detected", "schneider_electric/product", "schneider_electric/version");
 
   script_tag(name:"summary", value:"Schneider Electric Modicon M340 devices are prone to a denial of service
-vulnerability.");
+  vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"During communication between the operator and PLC using function code 0x5A
-of Modbus, it is possible to send a specially crafted set of packets to the PLC and cause it to freeze, requiring
-the operator to physically press the reset button of the PLC in order to recover.");
+  of Modbus, it is possible to send a specially crafted set of packets to the PLC and cause it to freeze, requiring
+  the operator to physically press the reset button of the PLC in order to recover.");
 
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability may render the device
-unresponsive requiring a physical reset of the PLC.");
+  unresponsive requiring a physical reset of the PLC.");
 
   script_tag(name:"affected", value:"Schneider Electric BMXNOC0401, BMXNOE0100, BMXNOE0110, BMXNOE0110H,
-BMXNOR0200H, BMXP341000, BMXP342000, BMXP3420102, BMXP3420102CL, BMXP342020, BMXP342020H, BMXP342030,
-BMXP3420302, BMXP3420302H and BMXP342030H prior to firmware version 2.9.");
+  BMXNOR0200H, BMXP341000, BMXP342000, BMXP3420102, BMXP3420102CL, BMXP342020, BMXP342020H, BMXP342030,
+  BMXP3420302, BMXP3420302H and BMXP342030H prior to firmware version 2.9.");
 
   script_tag(name:"solution", value:"Upgrade to firmware version 2.9 or later.");
 
@@ -79,11 +78,11 @@ prod = get_kb_item("schneider_electric/product");
 if (!prod || prod !~ "^BMX")
   exit(0);
 
-version =  get_kb_item("schneider_electric/version");
+version = get_kb_item("schneider_electric/version");
 if (!version)
   exit(0);
 
-if (prod == "BMX NOC 0401" || prod == "BMX NOE 0100" || prod = "BMX NOE 0110" || prod == "BMX NOE 0110H" ||
+if (prod == "BMX NOC 0401" || prod == "BMX NOE 0100" || prod == "BMX NOE 0110" || prod == "BMX NOE 0110H" ||
     prod == "BMX NOR 0200H" || prod == "BMX P34 1000" || prod == "BMX P34 2000" || prod == "BMX P34 20102" ||
     prod == "BMX P34 20102CL" || prod == "BMX P34 2020" || prod == "BMX P34 2020H" || prod == "BMX P34 2030" ||
     prod == "BMX P34 20302" || prod == "BMX P34 20302H" || prod == "BMX P34 2030H") {

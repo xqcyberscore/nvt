@@ -21,21 +21,22 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113327");
-  script_version("2019-04-03T09:59:09+0000");
-  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
+  script_version("2019-07-26T07:13:17+0000");
+  script_tag(name:"last_modification", value:"2019-07-26 07:13:17 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-22 15:55:07 +0200 (Tue, 22 Jan 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_cve_id("CVE-2018-19136", "CVE-2018-19137", "CVE-2018-19749", "CVE-2018-19750",
+  script_cve_id("CVE-2018-11558", "CVE-2018-11559", "CVE-2018-19136", "CVE-2018-19137", "CVE-2018-19749", "CVE-2018-19750",
   "CVE-2018-19751", "CVE-2018-19752", "CVE-2018-19892", "CVE-2018-19913", "CVE-2018-19914",
-  "CVE-2018-19915", "CVE-2018-20009", "CVE-2018-20010", "CVE-2018-20011");
+  "CVE-2018-19915", "CVE-2018-20009", "CVE-2018-20010", "CVE-2018-20011", "CVE-2019-1010094",
+  "CVE-2019-1010095", "CVE-2019-1010096");
 
-  script_name("DomainMOD < 4.12.0 Multiple XSS Vulnerabilities");
+  script_name("DomainMOD < 4.12.0 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -44,9 +45,13 @@ if( description )
   script_dependencies("gb_domainmod_http_detect.nasl");
   script_mandatory_keys("domainmod/detected");
 
-  script_tag(name:"summary", value:"DomainMOD is prone to multiple XSS vulnerabilities.");
+  script_tag(name:"summary", value:"DomainMOD is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilities exist:
+
+  - Stored XSS in the '/settings/profile/index.php' new_first_name parameter
+
+  - Stored XSS in the '/settings/profile/index.php' new_last_name parameter
 
   - XSS via the admin/dw/add-server.php DisplayName, HostName, or UserName field
 
@@ -70,12 +75,20 @@ if( description )
 
   - XSS via the assets/add/dns.php Profile Name or notes field
 
-  - XSS via the assets/edit/host.php Web Host Name or Web Host URL field");
+  - XSS via the assets/edit/host.php Web Host Name or Web Host URL field
+
+  - CSRF in /settings/password that allows an attacker to change the admin password
+
+  - CSRF in /admin/users/add.php allows an attacker to add an administrator account
+
+  - CSRF in /admin/users/edit.php?uid=2 allows an attacker to change the read-only user to admin");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to craft a malicious
-  link containing arbitrary JavaScript or HTML.");
+  link containing arbitrary JavaScript or HTML or perform actions in the context of another user.");
   script_tag(name:"affected", value:"DomainMOD prior to version 4.12.0.");
   script_tag(name:"solution", value:"Update to DomainMOD version 4.12.0 or later.");
 
+  script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/65");
+  script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/66");
   script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/79");
   script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/81");
   script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/82");

@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:bridge_cc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815242");
-  script_version("2019-07-12T06:29:03+0000");
+  script_version("2019-07-25T13:18:08+0000");
   script_cve_id("CVE-2019-7963");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-12 06:29:03 +0000 (Fri, 12 Jul 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-07-25 13:18:08 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-11 11:03:17 +0530 (Thu, 11 Jul 2019)");
   script_name("Adobe Bridge CC Security Updates (apsb19-37)-Windows");
 

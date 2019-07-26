@@ -26,20 +26,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805444");
-  script_version("2019-07-17T11:38:31+0000");
+  script_version("2019-07-22T13:03:34+0000");
   script_cve_id("CVE-2014-10036", "CVE-2014-10002");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-17 11:38:31 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-22 13:03:34 +0000 (Mon, 22 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-04-07 10:25:40 +0530 (Tue, 07 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("JetBrains Teamcity Multiple Vulnerabilities");
+  script_name("JetBrains TeamCity < 8.1 Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with JetBrains
   Teamcity and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted request via HTTP GET and
-  checks whether it is installed with the vulnerable version or not.");
+  checks whether the software is installed with the vulnerable version or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 

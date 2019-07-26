@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800470");
-  script_version("2019-06-03T11:22:42+0000");
-  script_tag(name:"last_modification", value:"2019-06-03 11:22:42 +0000 (Mon, 03 Jun 2019)");
+  script_version("2019-07-25T12:21:33+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,6 @@ if(description)
 }
 
 include("ssh_func.inc");
-include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

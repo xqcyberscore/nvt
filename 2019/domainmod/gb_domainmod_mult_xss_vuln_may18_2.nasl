@@ -21,8 +21,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113329");
-  script_version("2019-04-04T14:50:45+0000");
-  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
+  script_version("2019-07-25T09:05:18+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 09:05:18 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 14:38:54 +0200 (Wed, 23 Jan 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -57,21 +57,10 @@ if( description )
   script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/66");
   script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/66#issuecomment-460099901");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 
-CPE = "cpe:/a:domainmod:domainmod";
-
-include( "host_details.inc" );
-include( "version_func.inc" );
-
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
-
-if( version_is_less( version: version, test_version: "4.12.0" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "4.12.0" );
-  security_message( data: report, port: port );
-  exit( 0 );
-}
-
-exit( 99 );
+#nb: Consolidated in scripts/2019/domainmod/gb_domainmod_mult_vuln_jan19.nasl
+exit(66);

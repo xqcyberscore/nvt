@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_v4pa_desktop_agent_detect.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Vmware vRealize Operations Published Applications (V4PA) Desktop Agent Detection (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812788");
-  script_version("$Revision: 11420 $");
+  script_version("2019-07-25T12:21:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-03-06 11:00:32 +0530 (Tue, 06 Mar 2018)");
   script_name("Vmware vRealize Operations Published Applications (V4PA) Desktop Agent Detection (Windows)");
 
@@ -54,10 +53,8 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){

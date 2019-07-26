@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_IIS_metabase.nasl 10949 2018-08-14 09:36:21Z emoss $
 #
 # Check the IIS Metabase for AspEnableParentPaths (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96009");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("2019-07-25T06:59:55+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 06:59:55 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,9 +57,9 @@ if(!windirpath || windirpath >< "error" || windirpath >< "none"){
   exit(0);
 }
 
-val01 = split(windirpath, sep:":", keep:0);
-win_dir =  val01[1];
-win_dir =  ereg_replace(pattern:'\\\\',replace:'', string:win_dir);
+val01 = split(windirpath, sep:":", keep:FALSE);
+win_dir = val01[1];
+win_dir = ereg_replace(pattern:'\\\\', replace:'', string:win_dir);
 share = val01[0] + "$";
 
 file = "\" + win_dir + "\system32\inetsrv\metabase.xml";
@@ -70,26 +69,25 @@ domain = kb_smb_domain();
 login = kb_smb_login();
 pass = kb_smb_password();
 port = kb_smb_transport();
+
 size = get_file_size(share:share, file:file);
-
-soc = open_sock_tcp(port);
-
 if (!size){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"off");
-  log_message(port:0, proto: "IT-Grundschutz", data:"IIS Metabase file not found.");
+  log_message(port:0, proto:"IT-Grundschutz", data:"IIS Metabase file not found.");
   exit(0);
 }
 
+soc = open_sock_tcp(port);
 if(!soc){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Can't open socket to Host");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Can't open socket to Host");
   exit(0);
 }
 
 r = smb_session_request(soc:soc, remote:name);
 if(!r){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Cannot pre-establish an SMB Session with the remote Host.");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Cannot pre-establish an SMB Session with the remote Host.");
   close(soc);
   exit(0);
 }
@@ -97,16 +95,16 @@ if(!r){
 prot = smb_neg_prot(soc:soc);
 if(!prot){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Cannot negotiate the protocol");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Cannot negotiate the protocol");
   close(soc);
   exit(0);
 }
 
 r = smb_session_setup(soc:soc, login:login, password:pass,
-                       domain:domain, prot:prot);
+                      domain:domain, prot:prot);
 if(!r){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Cannot setup a SMB session to the remote Host");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Cannot setup a SMB session to the remote Host");
   close(soc);
   exit(0);
 }
@@ -114,7 +112,7 @@ if(!r){
 uid = session_extract_uid(reply:r);
 if(!uid){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Cannot extract UID from response");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Cannot extract UID from response");
   close(soc);
   exit(0);
 }
@@ -122,7 +120,7 @@ if(!uid){
 r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
 if(!r){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Cannot extract data from response");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Cannot extract data from response");
   close(soc);
   exit(0);
 }
@@ -130,7 +128,7 @@ if(!r){
 tid = tconx_extract_tid(reply:r);
 if(!tid){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Can't find Tree ID(tid)");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Can't find Tree ID(tid)");
   close(soc);
   exit(0);
 }
@@ -138,13 +136,13 @@ if(!tid){
 fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
 if(!fid){
   set_kb_item(name:"GSHB/AspEnableParentPaths", value:"error");
-  log_message(port:0, proto: "IT-Grundschutz", data:"Can't find File ID (fid)");
+  log_message(port:0, proto:"IT-Grundschutz", data:"Can't find File ID (fid)");
   close(soc);
   exit(0);
 }
 
 metabase = ReadAndX(socket:soc, uid:uid, tid:tid, fid:fid,
-                           count:size, off:0);
+                    count:size, off:0);
 if (!metabase){
   AspEnableParentPaths = "error";
   log_message(port:port, data:"Cannot access/open the IIS Metabase file.");
@@ -153,7 +151,8 @@ if (!metabase){
 } else {
   AspEnableParentPaths = "off";
 }
-if (!AspEnableParentPaths || AspEnableParentPaths = "") AspEnableParentPaths = "none";
+if (!AspEnableParentPaths || AspEnableParentPaths == "")
+  AspEnableParentPaths = "none";
 
 set_kb_item(name:"GSHB/AspEnableParentPaths", value:AspEnableParentPaths);
 close(soc);

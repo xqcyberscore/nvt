@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Ruby On Rails Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800911");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-07-25T12:21:33+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-07-17 12:47:28 +0200 (Fri, 17 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ruby On Rails Version Detection");
@@ -51,7 +50,6 @@ if(description)
 include("cpe.inc");
 include("host_details.inc");
 include("ssh_func.inc");
-include("version_func.inc");
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){

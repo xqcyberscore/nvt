@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_ssh_detect.nasl 10451 2018-07-07 09:59:25Z cfischer $
 #
 # IkiWiki Detection (SSH)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800688");
-  script_version("$Revision: 10451 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-07 11:59:25 +0200 (Sat, 07 Jul 2018) $");
+  script_version("2019-07-25T12:21:33+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-09-03 16:18:01 +0200 (Thu, 03 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +48,6 @@ if(description)
 }
 
 include("ssh_func.inc");
-include("version_func.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();

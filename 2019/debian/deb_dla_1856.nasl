@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891856");
-  script_version("2019-07-20T02:00:07+0000");
+  script_version("2019-07-26T07:13:17+0000");
   script_cve_id("CVE-2019-13636");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-20 02:00:07 +0000 (Sat, 20 Jul 2019)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-26 07:13:17 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-20 02:00:07 +0000 (Sat, 20 Jul 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1856-1] patch security update)");
   script_category(ACT_GATHER_INFO);

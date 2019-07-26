@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pango_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Pango Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900643");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("2019-07-25T12:21:33+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -49,7 +48,6 @@ queries the found executables via command line option '--version'.");
 }
 
 include("ssh_func.inc");
-include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cfengine_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # cfengine detection and local identification
 #
@@ -10,7 +9,7 @@
 # Updated by: Rinu Kuriakose <krinu@secpod.com
 #
 # Copyright:
-# Copyright (C) 2004 David Maciejak
+# Copyright (C) 2005 David Maciejak
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -29,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14315");
-  script_version("$Revision: 10906 $");
+  script_version("2019-07-25T12:21:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("cfengine detection and local identification");
@@ -42,7 +41,7 @@ if(description)
   queries the found executables via command line option '--version'");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
@@ -52,7 +51,6 @@ if(description)
 }
 
 include("ssh_func.inc");
-include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cyrus_sasllib_detect.nasl 14002 2019-03-05 15:54:26Z cfischer $
 #
 # Cyrus SASL Library Version Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900659");
-  script_version("$Revision: 14002 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 16:54:26 +0100 (Tue, 05 Mar 2019) $");
+  script_version("2019-07-25T12:21:33+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-05-28 07:14:08 +0200 (Thu, 28 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +48,6 @@ if(description)
 }
 
 include("ssh_func.inc");
-include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
