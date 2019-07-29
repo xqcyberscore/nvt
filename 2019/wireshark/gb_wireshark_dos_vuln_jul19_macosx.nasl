@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113445");
-  script_version("2019-07-23T06:55:12+0000");
-  script_tag(name:"last_modification", value:"2019-07-23 06:55:12 +0000 (Tue, 23 Jul 2019)");
+  script_version("2019-07-26T05:36:01+0000");
+  script_tag(name:"last_modification", value:"2019-07-26 05:36:01 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-18 13:03:54 +0000 (Thu, 18 Jul 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_mandatory_keys("Wireshark/MacOSX/Ver");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
 
   script_tag(name:"summary", value:"Wireshark is prone to a denial of service (DoS) vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");

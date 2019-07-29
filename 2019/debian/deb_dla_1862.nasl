@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891862");
-  script_version("2019-07-24T02:00:09+0000");
+  script_version("2019-07-29T07:07:08+0000");
   script_cve_id("CVE-2019-10639", "CVE-2019-13272", "CVE-2019-2101");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-24 02:00:09 +0000 (Wed, 24 Jul 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-07-29 07:07:08 +0000 (Mon, 29 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-24 02:00:09 +0000 (Wed, 24 Jul 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1862-1] linux security update)");
   script_category(ACT_GATHER_INFO);

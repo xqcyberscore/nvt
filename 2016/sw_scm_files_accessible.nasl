@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_scm_files_accessible.nasl 9727 2018-05-04 09:12:47Z cfischer $
 #
 # Source Control Management (SCM) Files Accessible
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111084");
-  script_version("$Revision: 9727 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
+  script_version("2019-07-29T06:18:25+0000");
+  script_tag(name:"last_modification", value:"2019-07-29 06:18:25 +0000 (Mon, 29 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-04 09:00:00 +0100 (Thu, 04 Feb 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -91,13 +90,14 @@ files = make_array( "/.git/HEAD", "ref: refs",
                     # [:method:][[[user][:password]@]hostname[:[port]]]/path
                     # http://commons.oreilly.com/wiki/index.php/Essential_CVS/CVS_Administration/Remote_Repositories
                     "/CVS/Root", "^:(local|ext|fork|server|gserver|kserver|pserver):[^\r\n]+/",
+                    "/RCS/", '<a href="[^"]+,v"> ?[^,]+,v</a>',
                     "/.bzr/README", "This is a Bazaar control directory.",
                     "/.bzr/branch-format", "Bazaar-NG meta directory",
                     "/.svn/dir-prop-base", "svn:ignore",
                     "/.svn/all-wcprops", "svn:wc:",
                     "/.svn/wc.db", "SQLite format" );
 
-report = 'The following SCM files were identified:\n';
+report = 'The following SCM files/folders were identified:\n';
 
 port = get_http_port( default:80 );
 

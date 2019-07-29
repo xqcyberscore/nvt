@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_IIS_Protect_SynAttack.nasl 10949 2018-08-14 09:36:21Z emoss $
 #
 # Tests if all Registry entries set to prevent SYN-Attacks at an IIS Server (win)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96027");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("2019-07-26T13:41:14+0000");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -96,7 +95,7 @@ IISVER = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Ine
 if(!IISVER){
     IISSynAttackval ="None";
     set_kb_item(name:"WMI/IISSynAttack", value:IISSynAttackval);
-    set_kb_item(name:"WMI/IISSynAttack/log", value:"IT-Grundschutz: IIS ist not installed.");
+    set_kb_item(name:"WMI/IISSynAttack/log", value:"IT-Grundschutz: IIS is not installed.");
 #    set_kb_item(name:"WMI/TcpMaxConnectResponseRetransmissions", value:val);
 #    set_kb_item(name:"WMI/BacklogIncrement", value:val);
 #    set_kb_item(name:"WMI/MaxConnBackLog", value:val);

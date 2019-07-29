@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814936");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-07-26T13:41:14+0000");
   script_cve_id("CVE-2019-0601", "CVE-2019-0603", "CVE-2019-0609", "CVE-2019-0614",
                 "CVE-2019-0617", "CVE-2019-0665", "CVE-2019-0666", "CVE-2019-0667",
                 "CVE-2019-0680", "CVE-2019-0683", "CVE-2019-0690", "CVE-2019-0702",
@@ -34,7 +34,7 @@ if(description)
   script_bugtraq_id(107285);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-03-13 10:15:27 +0530 (Wed, 13 Mar 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4489878)");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to execute arbitrary code on a victim system, obtain information to
   further compromise the user's system, gain elevated privileges, bypass security
-  features and cause denial od service.");
+  features and cause denial of service.");
 
   script_tag(name:"affected", value:"Windows 7 for 32-bit/x64 Systems Service Pack 1
 

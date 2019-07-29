@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2015-0283.nasl 11692 2018-09-28 16:55:19Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -27,11 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.130095");
-  script_version("$Revision: 11692 $");
+  script_version("2019-07-26T13:41:14+0000");
   script_tag(name:"creation_date", value:"2015-10-15 10:42:38 +0300 (Thu, 15 Oct 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_name("Mageia Linux Local Check: mgasa-2015-0283");
-  script_tag(name:"insight", value:"Toom Lhmus discovered that the Lua API and preprocessor in the Battle for Wesnoth game up to version 1.12.2 included could lead to client-side authentication information disclosure using maliciously crafted files with the .pdb extension (CVE-2015-5069, CVE-2015-5070). This issue has been fixed in version 1.12.4, which also provides a number of engine and gameplay-related bug fixes. See the referenced code and player changelogs for a detailed listing.");
+  script_tag(name:"insight", value:"Toom Lhmus discovered that the Lua API and preprocessor in the Battle
+  for Wesnoth game up to version 1.12.2 included could lead to client-side authentication information disclosure
+  using maliciously crafted files with the .pdb extension (CVE-2015-5069, CVE-2015-5070).
+  This issue has been fixed in version 1.12.4, which also provides a number of engine and gameplay-related bug fixes.
+  See the referenced code and player changelogs for a detailed listing.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://advisories.mageia.org/MGASA-2015-0283.html");

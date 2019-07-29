@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Joomla Simple File Upload Module Remote Code Execution Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802560");
-  script_version("$Revision: 13659 $");
+  script_version("2019-07-26T13:41:14+0000");
   script_bugtraq_id(51214);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-01-06 20:03:12 +0530 (Fri, 06 Jan 2012)");
   script_name("Joomla Simple File Upload Module Remote Code Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -115,7 +114,7 @@ rcvRes = http_keepalive_send_recv(port:joomlaPort, data:sndReq);
 
 if(!isnull(rcvRes))
 {
-  if("HTTP/1.1 200" >< rcvRes && eregmatch(pattern:"IST [0-9]+", string:rcvRes)){
+  if("^HTTP/1\.[01] 200" >< rcvRes && eregmatch(pattern:"IST [0-9]+", string:rcvRes)){
      security_message(port:joomlaPort);
   }
 }

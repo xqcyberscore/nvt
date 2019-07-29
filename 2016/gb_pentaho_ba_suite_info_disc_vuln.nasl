@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pentaho_ba_suite_info_disc_vuln.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Pentaho Business Analytics (BA) Suite Information Disclosure Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:pentaho:business_analytics";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808208");
-  script_version("$Revision: 11989 $");
+  script_version("2019-07-26T13:41:14+0000");
   script_cve_id("CVE-2015-6940");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-24 10:37:42 +0530 (Tue, 24 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Pentaho Business Analytics Suite Information Disclosure Vulnerability");
@@ -54,11 +53,7 @@ if(description)
   unauthenticated access to properties files in the system solution
   which include properties files containing passwords.");
 
-  script_tag(name:"affected", value:"4.5.x GA BA Suite
-  4.8.x GA BA Suite
-  5.0.x GA BA Suite
-  5.1.x GA BA Suite
-  5.2.x GA BA Suite.");
+  script_tag(name:"affected", value:"Versions 4.5.x, 4.8.x, 5.0.x, 5.1.x and 5.2.x.");
 
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
@@ -73,7 +68,7 @@ if(description)
   script_mandatory_keys("Pentaho/BA/Suite/Installed");
   script_require_ports("Services/www", 8080);
   script_xref(name:"URL", value:"https://support.pentaho.com/hc/en-us/articles/205782329-Security-Vulnerability-Announcement-Feb-2015");
-  script_xref(name:"URL", value:"http://www.pentaho.com");
+
   exit(0);
 }
 

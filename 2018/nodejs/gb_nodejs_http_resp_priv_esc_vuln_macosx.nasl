@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Node.js 'HTTP' Splitting Privilege Escalareion Vulnerability-(Mac OS X)
+# Node.js 'HTTP Splitting' Privilege Escalation Vulnerability (Mac OS X)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -28,21 +28,21 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814522");
-  script_version("2019-07-05T10:16:38+0000");
+  script_version("2019-07-26T13:41:14+0000");
   script_cve_id("CVE-2018-12116");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-29 13:55:51 +0530 (Thu, 29 Nov 2018)");
   script_tag(name:"qod_type", value:"executable_version");
-  script_name("Node.js 'HTTP' Splitting Privilege Escalareion Vulnerability-(Mac OS X)");
+  script_name("Node.js 'HTTP Splitting' Privilege Escalation Vulnerability (Mac OS X)");
 
   script_tag(name:"summary", value:"The host is installed with Node.js and is
   prone to privilege escalation vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists in due to an error in  HTTP,
+  script_tag(name:"insight", value:"The flaw exists in due to an error in HTTP
   request splitting. If Node.js can be convinced to use unsanitized user-provided
   Unicode data for the `path` option of an HTTP request, then data can be
   provided which will trigger a second, unexpected, and user-defined HTTP

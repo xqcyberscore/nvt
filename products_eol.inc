@@ -98,11 +98,11 @@ eol_cpes[ 'cpe:/a:greenbone:greenbone_security_assistant' ] = make_array(
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
-# '6.0:2018-08-27' temporary removed as GOS 3.1 is still supported
-# and we would report a false positive on slaves if they are only
-# reachable via OMP/GMP.
+# nb: 6.0 was basically EOL since 2018-08-27 (see link above) but GOS 3.1 (using that version) was supported until 2019-07-31.
+# Unfortunately we are not able to differ between both installations on slaves if they are only reachable via OMP/GMP and would report
+# a false positive in this case if the earlier date is used.
 eol_cpes[ 'cpe:/a:openvas:openvas_manager' ] = make_array(
-  'versions',      '5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
+  'versions',      '6.0:2019-07-31;5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 

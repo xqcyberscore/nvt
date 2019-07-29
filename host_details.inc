@@ -1392,8 +1392,8 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
     app_details = get_kb_item( "get_app/" + base_cpe ); # this could fork
   }
 
-  # nb: This is kept here as we don't get anny "app_details" from above if
-  # no app was detected priviously and the "default" is used.
+  # nb: This is kept here as we don't get any "app_details" from above if
+  # no app was detected previously and the "default" is used.
   if( ! app_details && optimize_test_enabled && "no" >< optimize_test_enabled ) {
 
     if( type == "location" && default ) {

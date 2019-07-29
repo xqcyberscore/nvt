@@ -28,11 +28,11 @@ CPE = "cpe:/a:opmantek:open-audit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813807");
-  script_version("2019-06-11T10:18:21+0000");
+  script_version("2019-07-29T08:30:30+0000");
   script_cve_id("CVE-2018-14493");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-06-11 10:18:21 +0000 (Tue, 11 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-29 08:30:30 +0000 (Mon, 29 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-27 11:05:07 +0530 (Fri, 27 Jul 2018)");
   ##Not able to distinguish community editions
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -52,13 +52,12 @@ if(description)
 
   script_tag(name:"affected", value:"Open-AudIT Community version 2.2.6.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th June, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to the latest version.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://docs.google.com/document/d/1K3G6a8P_LhYdk5Ddn57Z2aDUpaGAS7I_F8lESVfSFfY/edit");
-  script_xref(name:"URL", value:"https://opmantek.com");
+  script_xref(name:"URL", value:"https://community.opmantek.com/display/OA/Release+Notes");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -80,7 +79,7 @@ if(!version = get_app_version(cpe:CPE, port:port))
   exit(0);
 
 if(version_is_less_equal(version:version, test_version:"2.2.6")) {
-  report = report_fixed_ver(installed_version:version, fixed_version:"None");
+  report = report_fixed_ver(installed_version:version, fixed_version:"Update to the latest version.");
   security_message(data:report, port:port);
   exit(0);
 }

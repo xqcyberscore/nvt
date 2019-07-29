@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_IIS_OpenPorts.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # Test over WMI, if Microsoft IIS installed an list open Ports (win)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96029");
-  script_version("$Revision: 10628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
+  script_version("2019-07-26T13:41:14+0000");
+  script_tag(name:"last_modification", value:"2019-07-26 13:41:14 +0000 (Fri, 26 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +80,7 @@ IISVER = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\\Microsoft\\I
 
 if(!IISVER){
     set_kb_item(name:"WMI/IISandPorts", value:"None");
-    set_kb_item(name:"WMI/IISandPorts/log", value:"IT-Grundschutz: IIS ist not installed");
+    set_kb_item(name:"WMI/IISandPorts/log", value:"IT-Grundschutz: IIS is not installed");
     wmi_close(wmi_handle:handle);
     wmi_close(wmi_handle:handlereg);
     exit(0);
