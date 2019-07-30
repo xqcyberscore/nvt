@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-07-25T06:05:02+0000");
-  script_tag(name:"last_modification", value:"2019-07-25 06:05:02 +0000 (Thu, 25 Jul 2019)");
+  script_version("2019-07-29T09:02:04+0000");
+  script_tag(name:"last_modification", value:"2019-07-29 09:02:04 +0000 (Mon, 29 Jul 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1186,33 +1186,36 @@ if( "Unknown action 0" >< uname ) {
   }
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /opt/vmware/etc/appliance-manifest.xml", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/opt/vmware/etc/appliance-manifest.xml: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/opt/vmware/etc/appliance-manifest.xml: ' + rls + '\n\n';
+}
 
 if( rls =~ "<product>vSphere Data Protection [^<]+</product>" ) {
   set_kb_item( name:"vmware/vSphere_Data_Protection/rls", value:rls );
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/Novell-VA-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/Novell-VA-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/Novell-VA-release: ' + rls + '\n\n';
+}
 
 if( "singleWordProductName=Filr" >< rls ) {
   set_kb_item( name:'filr/ssh/rls', value:rls );
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/vmware/text_top", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/vmware/text_top: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/vmware/text_top: ' + rls + '\n\n';
+}
 
 if( "VMware vRealize Log Insight" >< rls ) {
   set_kb_item( name:"vmware/vrealize_log_insight/rls", value:rls );
@@ -1235,22 +1238,24 @@ if( "linux" >< tolower( uname ) ) {
   }
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/github/enterprise-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/github/enterprise-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/github/enterprise-release: ' + rls + '\n\n';
+}
 
 if( "RELEASE_VERSION" >< rls && "RELEASE_BUILD_ID" >< rls ) {
   set_kb_item( name:"github/enterprise/rls", value:rls );
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/cisco-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/cisco-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/cisco-release: ' + rls + '\n\n';
+}
 
 if( "Cisco IPICS Enterprise Linux Server" >< rls ) { # Cisco IPICS Enterprise Linux Server release 4.5(1) Build 10p12
   set_kb_item( name:"cisco/ipics/detected", value:TRUE );
@@ -1259,11 +1264,12 @@ if( "Cisco IPICS Enterprise Linux Server" >< rls ) { # Cisco IPICS Enterprise Li
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/.qradar_install_version", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/.qradar_install_version: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/.qradar_install_version: ' + rls + '\n\n';
+}
 
 if( rls =~ '^[0-9]\\.[0-9]\\.[0-9]\\.20(1|2)[0-9]+' ) {
   rls = chomp( rls );
@@ -1273,11 +1279,12 @@ if( rls =~ '^[0-9]\\.[0-9]\\.[0-9]\\.20(1|2)[0-9]+' ) {
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/nitrosecurity-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/nitrosecurity-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/nitrosecurity-release: ' + rls + '\n\n';
+}
 
 if( "McAfee ETM " >< rls ) {
   buildinfo = ssh_cmd( socket:sock, cmd:"cat /etc/NitroGuard/.buildinfo", return_errors:FALSE );
@@ -1287,11 +1294,12 @@ if( "McAfee ETM " >< rls ) {
   }
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/system-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/system-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/system-release: ' + rls + '\n\n';
+}
 
 if( "IPFire" >< rls ) { # IPFire 2.17 (i586) - core91
   set_kb_item( name:"ipfire/system-release", value:rls );
@@ -1339,11 +1347,12 @@ if( "EyesOfNetwork release" >< rls ) {
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/pgp-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/pgp-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/pgp-release: ' + rls + '\n\n';
+}
 
 if( "Symantec Encryption Server" >< rls ) {
   set_kb_item( name:"symantec_encryption_server/installed", value:TRUE );
@@ -1360,11 +1369,12 @@ if( "Symantec Encryption Server" >< rls ) {
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /VERSION", return_errors:TRUE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/VERSION: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/VERSION: ' + rls + '\n\n';
+}
 
 if( "Syntax Error: unexpected argument" >< rls ) {
   rls = ssh_cmd( socket:sock, cmd:'run util bash -c "cat /VERSION"', nosh:TRUE );
@@ -1392,33 +1402,36 @@ if( "Product: EM" >< rls && "BaseBuild" >< rls ) {
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/meg-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/meg-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/meg-release: ' + rls + '\n\n';
+}
 
 if( rls =~ "^McAfee" ) {
   set_kb_item( name:"mcafee/OS", value:TRUE ); # gb_mcafee_*_version.nasl
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/esrs-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/esrs-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/esrs-release: ' + rls + '\n\n';
+}
 
 if( chomp( rls ) =~ "^[0-9]+\.[0-9]+\.[0-9]$" ) {
   set_kb_item( name:"ems/esrs/rls", value:rls );
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/NAS_CFG/config.xml", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/NAS_CFG/config.xml (truncated): ' + substr( rls, 0, 300 ) + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/NAS_CFG/config.xml (truncated): ' + substr( rls, 0, 300 ) + '\n\n';
+}
 
 # <config>
 #       *snip*
@@ -1437,10 +1450,10 @@ if( rls =~ "<hw_ver>(WD)?MyCloud.*</hw_ver>" ) {
 if( ! is_pfsense ) {
   # oraclelinux is almost like rhel .. but ..
   rls = ssh_cmd( socket:sock, cmd:"rpm -qf /etc/redhat-release", return_errors:TRUE );
-}
 
-if( "rpm: not found" >!< rls && strlen( rls ) )
-  _unknown_os_info += 'rpm -qf /etc/redhat-release: ' + rls + '\n\n';
+  if( "rpm: not found" >!< rls && strlen( rls ) )
+    _unknown_os_info += 'rpm -qf /etc/redhat-release: ' + rls + '\n\n';
+}
 
 if( "oraclelinux-release-4" >< rls ) {
   set_kb_item( name:"ssh/login/oracle_linux", value:TRUE );
@@ -1505,10 +1518,10 @@ if( "oraclelinux-release-7" >< rls ) {
 if( ! is_pfsense ) {
   # Ok...let's first check if this is a RedHat/Fedora Core/Mandrake release
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/redhat-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/redhat-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/redhat-release: ' + rls + '\n\n';
+}
 
 if( "Space release " >< rls ) {
   set_kb_item( name:"junos/space", value:rls );
@@ -2163,10 +2176,10 @@ if( "CentOS release 2" >< rls ) {
 if( ! is_pfsense ) {
   # nb: Keep above the Ubuntu check below so that we're not exiting early without setting the OpenVPN AS infos.
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/issue", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/issue: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/issue: ' + rls + '\n\n';
+}
 
 match = eregmatch( pattern:"^Univention (Managed Client|Mobile Client|DC Master|DC Backup|DC Slave|Memberserver|Corporate Server) ([2][.][0-4])-[0-9]+-[0-9]+", string:rls );
 if( ! isnull( match ) ) {
@@ -2187,10 +2200,10 @@ if( "OpenVPN Access Server Appliance" >< rls ) {
 if( ! is_pfsense ) {
   # Hmmm...is it Ubuntu?
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/lsb-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/lsb-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/lsb-release: ' + rls + '\n\n';
+}
 
 if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=4.10" >< rls ) {
   set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
@@ -2457,10 +2470,10 @@ if( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?' ) {
 if( ! is_pfsense ) {
   # How about Conectiva Linux?
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/conectiva-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/conectiva-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/conectiva-release: ' + rls + '\n\n';
+}
 
 if( "Conectiva Linux 9" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
@@ -2494,11 +2507,12 @@ if( "Conectiva Linux 10" >< rls ) {
 #- Turbolinux Home
 #- Turbolinux 10 F...
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/turbolinux-release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/turbolinux-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/turbolinux-release: ' + rls + '\n\n';
+}
 
 if( "Turbolinux Server 7.0" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
@@ -2550,10 +2564,10 @@ if( "Turbolinux" >< rls ) {
 if( ! is_pfsense ) {
   # Hmmm...is it Debian?
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/debian_version", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/debian_version: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/debian_version: ' + rls + '\n\n';
+}
 
 # nb: At least Ubuntu 18.10 has "buster/sid" in debian_version so keep this in mind
 # if Ubuntu is wrongly detected and keep the Ubuntu pattern above the Debian ones.
@@ -2601,10 +2615,10 @@ if( rls =~ "^[0-9]+[0-9.]+" || "buster/sid" >< rls || "bullseye/sid" >< rls ) {
 if( ! is_pfsense ) {
   # How about Slackware?
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/slackware-version", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/slackware-version: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/slackware-version: ' + rls + '\n\n';
+}
 
 if( "Slackware 14.2" >< rls ) {
   set_kb_item( name:"ssh/login/slackware_linux", value:TRUE );
@@ -2882,11 +2896,22 @@ if( "Slackware 1.00" >< rls ) {
 if( ! is_pfsense ) {
   # How about SuSe? and openSUSE?
   # https://en.wikipedia.org/wiki/SUSE_Linux_distributions
+  #
+  # https://www.freedesktop.org/software/systemd/man/os-release.html
+  # nb: /etc/os-release is in most cases a symlink to /usr/lib/os-release as described
+  # in the specs but we're still trying both to be sure to catch all possible cases.
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/os-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/os-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/os-release: ' + rls + '\n\n';
+
+  if( ! rls || "No such file or directory" >< rls ) {
+    rls = ssh_cmd( socket:sock, cmd:"cat /usr/lib/os-release", return_errors:FALSE );
+
+    if( "No such file or directory" >!< rls && strlen( rls ) )
+      _unknown_os_info += '/usr/lib/os-release: ' + rls + '\n\n';
+  }
+}
 
 if( "openSUSE Leap 15.0" >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
@@ -2955,10 +2980,10 @@ if( "NAME=NixOS" >< rls || "ID=nixos" >< rls ) {
 if( ! is_pfsense ) {
   # nb: In SLES12+ /etc/SuSE-release is deprecated in favor of /etc/os-release
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/SuSE-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/SuSE-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/SuSE-release: ' + rls + '\n\n';
+}
 
 if( match = eregmatch( pattern:"SUSE Linux Enterprise Desktop ([0-9]+)", string:rls ) ) {
 
@@ -3195,11 +3220,12 @@ if( "SuSE Linux 7.3 " >< rls ) {
   exit( 0 );
 }
 
-if( ! is_pfsense )
+if( ! is_pfsense ) {
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/release", return_errors:FALSE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/release: ' + rls + '\n\n';
+}
 
 if( "Endian Firewall " >< rls ) {
   set_kb_item( name:"endian_firewall/release", value:rls );
@@ -3209,10 +3235,10 @@ if( "Endian Firewall " >< rls ) {
 if( ! is_pfsense ) {
   # How about Trustix?
   rls2 = ssh_cmd( socket:sock, cmd:"cat /etc/trustix-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls2 && strlen( rls2 ) )
-  _unknown_os_info += '/etc/trustix-release: ' + rls2 + '\n\n';
+  if( "No such file or directory" >!< rls2 && strlen( rls2 ) )
+    _unknown_os_info += '/etc/trustix-release: ' + rls2 + '\n\n';
+}
 
 if( "Trustix Secure Linux release 3.0.5" >< rls ||
     "Trustix Secure Linux release 3.0.5" >< rls2 ) {
@@ -3284,10 +3310,10 @@ if( ! is_pfsense ) {
   # How about Gentoo? Note, just check that its ANY gentoo release, since the build
   # doesn't matter for purposes of checking package version numbers.
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/gentoo-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/gentoo-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/gentoo-release: ' + rls + '\n\n';
+}
 
 if( "Gentoo" >< rls ) {
   set_kb_item( name:"ssh/login/gentoo", value:TRUE );
@@ -3312,10 +3338,10 @@ if( ! is_pfsense ) {
   # cat /etc/euleros-release: EulerOS release 2.0
   #
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/euleros-release", return_errors:FALSE );
-}
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/euleros-release: ' + rls + '\n\n';
+  if( "No such file or directory" >!< rls && strlen( rls ) )
+    _unknown_os_info += '/etc/euleros-release: ' + rls + '\n\n';
+}
 
 # EulerOS release 2.0
 # EulerOS release 2.0 (SP2)

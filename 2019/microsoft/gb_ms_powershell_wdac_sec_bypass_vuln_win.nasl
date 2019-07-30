@@ -23,11 +23,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815419");
-  script_version("2019-07-18T05:45:58+0000");
+  script_version("2019-07-30T07:04:43+0000");
   script_cve_id("CVE-2019-1167");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-18 05:45:58 +0000 (Thu, 18 Jul 2019)");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-07-30 07:04:43 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-17 12:25:47 +0530 (Wed, 17 Jul 2019)");
   script_name("PowerShell Windows Defender Application Control Security Feature Bypass Vulnerability (Windows)");
 

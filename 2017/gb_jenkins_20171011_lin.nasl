@@ -28,22 +28,23 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112106");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-30T03:00:13+0000");
 
   script_cve_id("CVE-2017-1000393", "CVE-2017-1000394", "CVE-2017-1000395", "CVE-2017-1000396",
 "CVE-2017-1000398", "CVE-2017-1000399", "CVE-2017-1000400", "CVE-2017-1000401", "CVE-2012-6153");
 
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-11-07 10:05:00 +0100 (Tue, 07 Nov 2017)");
+
   script_name("Jenkins Multiple Vulnerabilities Oct 17 (Linux)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-10-11/");
 
@@ -78,22 +79,31 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( !port = get_app_port( cpe:CPE ) )
+  exit(0);
 
-if( version_is_less( version:vers, test_version:"2.73.2" ) ) {
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
+
+if( version_is_less( version:version, test_version:"2.73.2" ) ) {
   vuln = TRUE;
   fix = "2.73.2";
 }
 
-if( version_in_range( version:vers, test_version:"2.74", test_version2:"2.83" ) ) {
+if( version_in_range( version:version, test_version:"2.74", test_version2:"2.83" ) ) {
   vuln = TRUE;
   fix = "2.84";
 }
 
 if( vuln ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
-  security_message( port:port, data:report );
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
   exit( 0 );
 }
 

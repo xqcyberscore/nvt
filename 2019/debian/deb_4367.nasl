@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704367");
-  script_version("2019-07-04T09:25:28+0000");
+  script_version("2019-07-29T14:16:31+0000");
   script_cve_id("CVE-2018-16864", "CVE-2018-16865", "CVE-2018-16866");
   script_name("Debian Security Advisory DSA 4367-1 (systemd - security update)");
-  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-29 14:16:31 +0000 (Mon, 29 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-13 00:00:00 +0100 (Sun, 13 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -76,9 +76,6 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if(!isnull(res = isdpkgvuln(pkg:"tmpreaper", ver:"232-25+deb9u7", rls:"DEB9"))) {
-  report += res;
-}
 if(!isnull(res = isdpkgvuln(pkg:"libnss-myhostname", ver:"232-25+deb9u7", rls:"DEB9"))) {
   report += res;
 }

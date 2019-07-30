@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171203_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins 2.93 XSS Vulnerability (Linux)
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113063");
-  script_version("$Revision: 12761 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_version("2019-07-30T03:00:13+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-12-07 12:28:29 +0100 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -46,9 +45,8 @@ if( description )
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 8080);
-  script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_unixoide");
 
   script_tag(name:"summary", value:"Jenkins through 2.93 is prone to an XSS vulnerability.");
   script_tag(name:"vuldetect", value:"The script checks if the vulnerable version is present on the target host.");
@@ -67,12 +65,21 @@ CPE = "cpe:/a:jenkins:jenkins";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( !port = get_app_port( cpe:CPE ) )
+  exit(0);
+
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
 
 if( version_is_less_equal( version: version, test_version: "2.93" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "Workaround" );
-  security_message( data: report, port: port );
+  report = report_fixed_ver( installed_version: version, fixed_version: "Workaround", install_path:location );
+  security_message( data: report, port: port, proto:proto );
   exit( 0 );
 }
 

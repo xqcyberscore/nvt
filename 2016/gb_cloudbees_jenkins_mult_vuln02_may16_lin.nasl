@@ -28,13 +28,14 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807332");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-30T03:00:13+0000");
   script_cve_id("CVE-2016-0788", "CVE-2016-0789", "CVE-2016-0790", "CVE-2016-0791",
                 "CVE-2016-0792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-05-20 16:08:55 +0530 (Fri, 20 May 2016)");
+
   script_name("CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with CloudBees
@@ -70,10 +71,9 @@ if(description)
   gain elevated privileges, bypass intended access restrictions and execute
   arbitrary code.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.642.2 on Linux");
+  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.642.2 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.642.2 or
-  later.");
+  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.642.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -85,26 +85,30 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_unixoide");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jenkinPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
+if(!infos = get_app_full(cpe:CPE, port:port))
   exit(0);
-}
 
-if(version_is_less(version:jenkinVer, test_version:"1.642.2")){
-  report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"1.642.2");
-  security_message(data:report, port:jenkinPort);
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
+
+if(version_is_less(version:version, test_version:"1.642.2")) {
+  report = report_fixed_ver(installed_version:version, fixed_version:"1.642.2", install_path: location);
+  security_message(data:report, port:port, proto:proto);
   exit(0);
 }
 

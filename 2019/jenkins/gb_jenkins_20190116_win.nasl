@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20190116_win.nasl 13867 2019-02-26 09:05:01Z asteins $
 #
 # Jenkins < 2.160 and < 2.150.2 LTS Multiple Vulnerabilities (Windows)
 #
@@ -27,19 +26,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112495");
-  script_version("$Revision: 13867 $");
+  script_version("2019-07-30T03:00:13+0000");
   script_cve_id("CVE-2019-1003003", "CVE-2019-1003004");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 10:08:11 +0100 (Wed, 23 Jan 2019)");
+
   script_name("Jenkins < 2.160 and < 2.150.2 LTS Multiple Vulnerabilities (Windows)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_windows");
 
   script_tag(name:"summary", value:"Jenkins and is prone to multiple vulnerabilities.");
 
@@ -69,28 +69,31 @@ include("version_func.inc");
 
 CPE = "cpe:/a:jenkins:jenkins";
 
-if( ! port = get_app_port( cpe:CPE ) )
-  exit( 0 );
+if( !port = get_app_port( cpe:CPE ) )
+  exit(0);
 
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
-  exit( 0 );
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
 
-vers = infos["version"];
-path = infos["location"];
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
 
 if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
-  if ( version_is_less( version:vers, test_version:"2.150.2" ) ) {
+  if ( version_is_less( version:version, test_version:"2.150.2" ) ) {
     fix = "2.150.2";
   }
 } else {
-  if( version_is_less( version:vers, test_version:"2.160" ) ) {
+  if( version_is_less( version:version, test_version:"2.160" ) ) {
     fix = "2.160";
   }
 }
 
 if( fix ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:fix, install_path:path );
-  security_message( port:port, data:report );
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
   exit( 0 );
 }
 

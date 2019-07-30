@@ -26,20 +26,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112360");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-30T03:00:13+0000");
   script_cve_id("CVE-2018-1999042", "CVE-2018-1999043", "CVE-2018-1999044", "CVE-2018-1999045",
   "CVE-2018-1999046", "CVE-2018-1999047");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-08-27 10:30:00 +0200 (Mon, 27 Aug 2018)");
+
   script_name("Jenkins < 2.138 and < 2.121.3 LTS Multiple Vulnerabilities (Windows)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2018-08-15/");
 
@@ -76,26 +77,33 @@ include("version_func.inc");
 
 CPE = "cpe:/a:jenkins:jenkins";
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
-vers = infos["version"];
-path = infos["location"];
+if( !port = get_app_port( cpe:CPE ) )
+  exit(0);
+
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
 
 if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
-  if ( version_is_less( version:vers, test_version:"2.121.3" ) ) {
+  if ( version_is_less( version:version, test_version:"2.121.3" ) ) {
     vuln = TRUE;
     fix = "2.121.3";
   }
 } else {
-  if( version_is_less( version:vers, test_version:"2.138" ) ) {
+  if( version_is_less( version:version, test_version:"2.138" ) ) {
     vuln = TRUE;
     fix = "2.138";
   }
 }
 
 if( vuln ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:fix, install_path:path );
-  security_message( port:port, data:report );
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
   exit( 0 );
 }
 

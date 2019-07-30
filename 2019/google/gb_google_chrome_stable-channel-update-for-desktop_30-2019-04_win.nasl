@@ -23,11 +23,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815042");
-  script_version("2019-05-02T13:44:33+0000");
-  script_cve_id("CVE-2019-5824", "CVE-2019-5825", "CVE-2019-5826");
+  script_version("2019-07-30T06:12:43+0000");
+  script_cve_id("CVE-2019-5824", "CVE-2019-5825", "CVE-2019-5826", "CVE-2019-5827");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-02 13:44:33 +0000 (Thu, 02 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 06:12:43 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-05-02 10:48:59 +0530 (Thu, 02 May 2019)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_30-2019-04)-Windows");
 
@@ -45,7 +45,9 @@ if(description)
 
   - An use-after-free error in IndexedDB.
 
-  - An out-of-bounds access error in SQLite.");
+  - An out-of-bounds access error in SQLite.
+
+  - An integer overflow in SQLite via WebSQL in Google Chrome.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attackers to execute arbitrary code in the context of the browser, Failed

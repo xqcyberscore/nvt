@@ -21,11 +21,11 @@ CPE = "cpe:/a:oracle:mysql";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142659");
-  script_version("2019-07-24T02:19:13+0000");
-  script_tag(name:"last_modification", value:"2019-07-24 02:19:13 +0000 (Wed, 24 Jul 2019)");
+  script_version("2019-07-30T07:04:43+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 07:04:43 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-24 02:18:35 +0000 (Wed, 24 Jul 2019)");
-  script_tag(name:"cvss_base", value:"7.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
 
   script_cve_id("CVE-2019-2822", "CVE-2019-2800", "CVE-2019-2795", "CVE-2019-2812", "CVE-2019-2834",
                 "CVE-2019-2785", "CVE-2019-2879", "CVE-2019-2780", "CVE-2019-2784", "CVE-2019-2801",

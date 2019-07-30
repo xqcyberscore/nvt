@@ -28,7 +28,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813801");
-  script_version("2019-07-17T08:15:16+0000");
+  script_version("2019-07-30T06:12:43+0000");
   script_cve_id("CVE-2018-6153", "CVE-2018-6154", "CVE-2018-6155", "CVE-2018-6156",
                 "CVE-2018-6157", "CVE-2018-6158", "CVE-2018-6159", "CVE-2018-6160",
                 "CVE-2018-6161", "CVE-2018-6162", "CVE-2018-6163", "CVE-2018-6164",
@@ -36,10 +36,11 @@ if(description)
                 "CVE-2018-6169", "CVE-2018-6170", "CVE-2018-6171", "CVE-2018-6172",
                 "CVE-2018-6173", "CVE-2018-6174", "CVE-2018-6175", "CVE-2018-6176",
                 "CVE-2018-6177", "CVE-2018-6178", "CVE-2018-6179", "CVE-2018-6044",
-                "CVE-2018-4117", "CVE-2018-6150", "CVE-2018-6151", "CVE-2018-6152");
+                "CVE-2018-4117", "CVE-2018-6150", "CVE-2018-6151", "CVE-2018-6152",
+                "CVE-2018-17460", "CVE-2018-16064");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 06:12:43 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-25 10:11:37 +0530 (Wed, 25 Jul 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-07)-Windows");
 
@@ -64,7 +65,10 @@ if(description)
 
   - An improper serialization of data in DevTools.
 
-  - Multiple security bypass errors.");
+  - Multiple security bypass errors.
+
+  - An insufficient data validation in Extensions API and filesystem URIs in
+    Google Chrome.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass secuirty restrictions, conduct spoofing attacks, disclose

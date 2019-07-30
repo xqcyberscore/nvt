@@ -28,15 +28,16 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807012");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-30T03:00:13+0000");
   script_cve_id("CVE-2014-2068", "CVE-2014-2066", "CVE-2014-2065", "CVE-2014-2064",
                 "CVE-2014-2063", "CVE-2014-2062", "CVE-2014-2061", "CVE-2014-2060",
                 "CVE-2014-2058");
   script_bugtraq_id(65694, 65720);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-12-21 15:34:06 +0530 (Mon, 21 Dec 2015)");
+
   script_name("CloudBees Jenkins Multiple Vulnerabilities -01 December15");
 
   script_tag(name:"summary", value:"This host is installed with CloudBees
@@ -73,11 +74,9 @@ if(description)
   protection mechanism, gain elevated privileges, bypass intended access
   restrictions and execute arbitrary code.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.532.2 on
-  Windows");
+  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.532.2 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.532.2
-  or later.");
+  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.532.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -89,26 +88,31 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_windows");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jenkinPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
+
+if(version_is_less(version:version, test_version:"1.532.2")) {
+  report = report_fixed_ver(installed_version:version, fixed_version:"1.532.2", install_path: location);
+  security_message(data:report, port:port, proto:proto);
   exit(0);
 }
 
-if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
-  exit(0);
-}
-
-if(version_is_less(version:jenkinVer, test_version:"1.532.2"))
-{
-  report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"1.532.2");
-  security_message(data:report, port:jenkinPort);
-  exit(0);
-}
+exit(99);

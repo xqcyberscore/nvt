@@ -28,21 +28,22 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112194");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-30T03:00:13+0000");
 
   script_cve_id("CVE-2017-1000503");
 
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-01-29 10:05:00 +0100 (Mon, 29 Jan 2018)");
+
   script_name("Jenkins Random Startup Failure Vulnerability (Linux)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-12-14/");
 
@@ -82,24 +83,33 @@ Affected instances need to be configured to restrict access.");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( !port = get_app_port( cpe:CPE ) )
+  exit(0);
+
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
 
 if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
-  if ( version_is_equal( version:vers, test_version:"2.89.1" ) ) {
+  if ( version_is_equal( version:version, test_version:"2.89.1" ) ) {
     vuln = TRUE;
     fix = "2.89.2";
   }
 } else {
-  if( version_in_range( version:vers, test_version:"2.81", test_version2:"2.94" ) ) {
+  if( version_in_range( version:version, test_version:"2.81", test_version2:"2.94" ) ) {
     vuln = TRUE;
     fix = "2.95";
   }
 }
 
 if( vuln ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
-  security_message( port:port, data:report );
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
   exit( 0 );
 }
 

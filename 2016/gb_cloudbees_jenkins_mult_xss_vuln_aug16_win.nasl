@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_xss_vuln_aug16_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins Multiple Cross Site Scripting Vulnerabilities August16 (Windows)
 #
@@ -29,13 +28,14 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808275");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-30T03:00:13+0000");
   script_cve_id("CVE-2012-0324", "CVE-2012-0325");
   script_bugtraq_id(52384);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-08-04 13:00:05 +0530 (Thu, 04 Aug 2016)");
+
   script_name("Jenkins Multiple Cross Site Scripting Vulnerabilities August16 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with CloudBees
@@ -43,17 +43,15 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws are due to multiple
-  input validation errors.");
+  script_tag(name:"insight", value:"The multiple flaws are due to multiple input validation errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject malicious HTMLs to pages served by Jenkins. This allows
   an attacker to escalate his privileges by hijacking sessions of other users.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.424.5 on Windows");
+  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.424.5 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.424.5 or
-  later.");
+  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.424.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -64,27 +62,31 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_windows");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jenkinPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
+
+if(version_is_less_equal(version:version, test_version:"1.424.3")) {
+  report = report_fixed_ver(installed_version:version, fixed_version:"1.424.5", install_path: location);
+  security_message(data:report, port:port, proto:proto);
   exit(0);
 }
 
-if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
-  exit(0);
-}
-
-if(version_is_less_equal(version:jenkinVer, test_version:"1.424.3"))
-{
-  report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"1.424.5");
-  security_message(data:report, port:jenkinPort);
-  exit(0);
-}
+exit(99);

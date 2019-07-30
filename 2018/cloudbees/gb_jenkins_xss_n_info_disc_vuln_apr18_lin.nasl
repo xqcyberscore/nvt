@@ -28,13 +28,15 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813316");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-07-30T03:00:13+0000");
   script_cve_id("CVE-2018-1000169", "CVE-2018-1000170");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-04-23 16:40:26 +0530 (Mon, 23 Apr 2018)");
+
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   script_name("Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Linux)");
 
   script_tag(name:"summary", value:"This host is running Jenkins and is prone
@@ -55,49 +57,56 @@ if(description)
   attackers to execute a script on victim's Web browser within the security
   context of the hosting Web site and also disclose sensitive information.");
 
-  script_tag(name:"affected", value:"Jenkins 2.115 and older, LTS 2.107.1 and
-  older.");
+  script_tag(name:"affected", value:"Jenkins 2.115 and older, LTS 2.107.1 and older.");
 
   script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.116 or
   later, Jenkins LTS to 2.107.2 or later. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2018-04-11/#SECURITY-759");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_unixoide");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jport = get_app_port(cpe:CPE)) exit(0);
-if(!infos = get_app_version_and_location(cpe:CPE, port:jport, exit_no_version:TRUE)) exit(0);
+if( !port = get_app_port( cpe:CPE ) )
+  exit(0);
 
-jenVer = infos['version'];
-path = infos['location'];
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
 
-if(get_kb_item("jenkins/" + jport + "/is_lts"))
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
+
+if(get_kb_item("jenkins/" + port + "/is_lts"))
 {
-  if(version_is_less(version:jenVer, test_version:"2.107.2")){
+  if(version_is_less(version:version, test_version:"2.107.2")){
     fix = "2.107.2";
   }
 }
 else
 {
-  if(version_is_less(version:jenVer, test_version:"2.116")){
+  if(version_is_less(version:version, test_version:"2.116")){
     fix = "2.116";
   }
 }
 
-if(fix)
-{
-  report = report_fixed_ver(installed_version:jenVer, fixed_version:fix, install_path:path);
-  security_message(port:jport, data:report);
+if(fix) {
+  report = report_fixed_ver(installed_version:version, fixed_version:fix, install_path:location);
+  security_message(port:port, data:report, proto:proto);
   exit( 0 );
 }
-exit(0);
+
+exit(99);

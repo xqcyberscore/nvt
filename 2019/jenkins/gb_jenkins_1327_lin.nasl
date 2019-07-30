@@ -21,8 +21,8 @@ CPE = 'cpe:/a:jenkins:jenkins';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142269");
-  script_version("2019-04-17T09:17:28+0000");
-  script_tag(name:"last_modification", value:"2019-04-17 09:17:28 +0000 (Wed, 17 Apr 2019)");
+  script_version("2019-07-30T03:00:13+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-17 07:53:07 +0000 (Wed, 17 Apr 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -39,8 +39,8 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_unixoide");
 
   script_tag(name:"summary", value:"Jenkins is prone to multiple vulnerabilities.");
 
@@ -67,24 +67,27 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if( !port = get_app_port( cpe:CPE ) )
   exit(0);
 
-if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
+if(!infos = get_app_full(cpe:CPE, port:port))
   exit(0);
 
-version = infos['version'];
-path = infos['location'];
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
 
 if (get_kb_item("jenkins/" + port + "/is_lts")) {
   if (version_is_less(version: version, test_version: "2.164.2")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "2.164.2", install_path: path);
-    security_message(port: port, data: report);
+    report = report_fixed_ver(installed_version: version, fixed_version: "2.164.2", install_path: location);
+    security_message(port: port, data: report, proto: proto);
     exit(0);
   }
 } else if (version_is_less(version: version, test_version: "2.172")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "2.172", install_path: path);
-  security_message(port: port, data: report);
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.172", install_path: location);
+  security_message(port: port, data: report, proto: proto);
   exit(0);
 }
 

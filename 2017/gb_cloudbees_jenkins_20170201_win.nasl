@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_20170201_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Windows)
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108096");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-30T03:00:13+0000");
   script_cve_id("CVE-2011-4969", "CVE-2015-0886", "CVE-2017-2598", "CVE-2017-2599",
                 "CVE-2017-2600", "CVE-2017-2601", "CVE-2017-2602", "CVE-2017-2603",
                 "CVE-2017-2604", "CVE-2017-2605", "CVE-2017-2606", "CVE-2017-2607",
@@ -37,15 +36,16 @@ if(description)
                 "CVE-2017-2612", "CVE-2017-2613", "CVE-2017-1000362");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-03-13 11:00:00 +0100 (Mon, 13 Mar 2017)");
+
   script_name("CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Windows)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("jenkins/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-02-01/");
   script_xref(name:"URL", value:"https://www.cloudbees.com/cloudbees-security-advisory-2017-02-01");
@@ -84,22 +84,31 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( !port = get_app_port( cpe:CPE ) )
+  exit(0);
 
-if( version_is_less( version:vers, test_version:"2.32.2" ) ) {
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
+
+if( version_is_less( version:version, test_version:"2.32.2" ) ) {
   vuln = TRUE;
   fix = "2.32.2";
 }
 
-if( version_in_range( version:vers, test_version:"2.33", test_version2:"2.43" ) ) {
+if( version_in_range( version:version, test_version:"2.33", test_version2:"2.43" ) ) {
   vuln = TRUE;
   fix = "2.44";
 }
 
 if( vuln ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
-  security_message( port:port, data:report );
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
   exit( 0 );
 }
 

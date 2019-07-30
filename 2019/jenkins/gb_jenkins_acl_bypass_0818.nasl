@@ -21,18 +21,20 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108591");
-  script_version("2019-06-03T14:03:05+0000");
-  script_tag(name:"last_modification", value:"2019-06-03 14:03:05 +0000 (Mon, 03 Jun 2019)");
+  script_version("2019-07-25T04:02:38+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 04:02:38 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-03 12:16:09 +0000 (Mon, 03 Jun 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
   script_name("Jenkins < 2.121.3 / < 2.138 ACL Bypass Vulnerability");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl");
+  script_dependencies("gb_jenkins_consolidation.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("jenkins/installed");
+  script_mandatory_keys("jenkins/detected");
 
   script_tag(name:"summary", value:"Jenkins is prone to an ACL bypass vulnerability.");
 

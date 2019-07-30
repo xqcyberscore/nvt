@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844107");
-  script_version("2019-07-25T11:54:35+0000");
+  script_version("2019-07-30T07:04:43+0000");
   script_cve_id("CVE-2019-2737", "CVE-2019-2738", "CVE-2019-2739", "CVE-2019-2740", "CVE-2019-2741", "CVE-2019-2757", "CVE-2019-2758", "CVE-2019-2774", "CVE-2019-2778", "CVE-2019-2791", "CVE-2019-2797", "CVE-2019-2805", "CVE-2019-2819");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-25 11:54:35 +0000 (Thu, 25 Jul 2019)");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-07-30 07:04:43 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-25 02:01:40 +0000 (Thu, 25 Jul 2019)");
   script_name("Ubuntu Update for mysql-5.7 USN-4070-1");
   script_category(ACT_GATHER_INFO);

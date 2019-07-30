@@ -1380,7 +1380,13 @@ function get_container_os(container_id, soc) {
 
   # How about SuSe? and openSUSE?
   # https://en.wikipedia.org/wiki/SUSE_Linux_distributions
+  #
+  # https://www.freedesktop.org/software/systemd/man/os-release.html
+  # nb: /etc/os-release is in most cases a symlink to /usr/lib/os-release as described
+  # in the specs but we're still trying both to be sure to catch all possible cases.
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/os-release");
+  if(!rls)
+    rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /usr/lib/os-release");
 
   if("openSUSE Leap 15.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");

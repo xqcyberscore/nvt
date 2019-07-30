@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("2019-06-28T06:52:39+0000");
-  script_tag(name:"last_modification", value:"2019-06-28 06:52:39 +0000 (Fri, 28 Jun 2019)");
+  script_version("2019-07-29T12:50:53+0000");
+  script_tag(name:"last_modification", value:"2019-07-29 12:50:53 +0000 (Mon, 29 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -367,7 +367,7 @@ set_mandatory_key( key:"Kannel", regex: "Server: Kannel", banner:banner );
 set_mandatory_key( key:"akka", regex: "Server: akka-http", banner:banner );
 set_mandatory_key( key:"voipnow", regex: "Server: voipnow", banner:banner );
 set_mandatory_key( key:"D-LinkDNS", regex: "Server: (lighttpd/|GoAhead-Webs)", banner:banner );
-set_mandatory_key( key:"D-LinkDIR", regex: "Server: (Linux, ((HTTP/1\.1)|(WEBACCESS/1\.0)), DIR|Mathopd|WebServer)", banner:banner );
+set_mandatory_key( key:"D-LinkDIR", regex: "Server: (Linux, ((HTTP/1\.1)|(WEBACCESS/1\.0)), DIR|Mathopd|WebServer|lighttpd)", banner:banner );
 set_mandatory_key( key:"D-LinkDSL", regex:"Server: (Boa|micro_httpd|Linux|RomPager)", banner:banner ); # For gb_dlink_dsl_detect.nasl
 set_mandatory_key( key:"D-LinkDWR", regex:"Server: (GoAhead-Webs|server|Alpha_webserv|WebServer)", banner:banner ); # For gb_dlink_dwr_detect.nasl
 set_mandatory_key( key:"Cohu", regex: "Server: Cohu Camera", banner:banner );

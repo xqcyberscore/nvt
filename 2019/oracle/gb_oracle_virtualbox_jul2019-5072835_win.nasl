@@ -23,14 +23,14 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815420");
-  script_version("2019-07-18T05:45:58+0000");
+  script_version("2019-07-30T07:04:43+0000");
   script_cve_id("CVE-2019-2863", "CVE-2019-1543", "CVE-2019-2867", "CVE-2019-2866",
                 "CVE-2019-2865", "CVE-2019-2864", "CVE-2019-2848", "CVE-2019-2859",
                 "CVE-2019-2850", "CVE-2019-2874", "CVE-2019-2875", "CVE-2019-2876",
                 "CVE-2019-2877", "CVE-2019-2873");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-18 05:45:58 +0000 (Thu, 18 Jul 2019)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-07-30 07:04:43 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-17 12:52:56 +0530 (Wed, 17 Jul 2019)");
   script_name("Oracle VirtualBox Security Updates (jul2019-5072835) - Windows");
 

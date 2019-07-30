@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_csrf_nd_rce_vuln.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins CSRF And Code Execution Vulnerabilities Aug16
 #
@@ -29,16 +28,16 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809025");
-  script_version("$Revision: 12761 $");
+  script_version("2019-07-30T03:00:13+0000");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-08-31 12:50:25 +0530 (Wed, 31 Aug 2016)");
+
   script_name("Jenkins CSRF And Code Execution Vulnerabilities Aug16");
 
   script_tag(name:"summary", value:"This host is installed with CloudBees
-  Jenkins and is prone to cross-site request forgery and code execution
-  vulnerabilities.");
+  Jenkins and is prone to cross-site request forgery and code execution vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -62,9 +61,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_jenkins_detect.nasl");
-  script_mandatory_keys("jenkins/installed");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("gb_jenkins_consolidation.nasl");
+  script_mandatory_keys("jenkins/detected");
+
   script_xref(name:"URL", value:"https://www.cloudbees.com/cloudbees-security-advisory-2017-02-01");
 
   exit(0);
@@ -73,17 +72,22 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jenkinPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!infos = get_app_full(cpe:CPE, port:port))
+  exit(0);
+
+if (!version = infos["version"])
+  exit(0);
+
+location = infos["location"];
+proto = infos["proto"];
+
+if (version_is_equal(version:version, test_version:"1.626")) {
+  report = report_fixed_ver(installed_version:version, fixed_version:"See advisory", install_path: location);
+  security_message(data:report, port:port, proto:proto);
   exit(0);
 }
 
-if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
-  exit(0);
-}
-
-if(version_is_equal(version:jenkinVer, test_version:"1.626"))
-{
-  report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"See Vendor");
-  security_message(data:report, port:jenkinPort);
-  exit(0);
-}
+exit(99);

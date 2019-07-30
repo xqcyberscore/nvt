@@ -76,7 +76,7 @@ foreach source( make_list( "ssh", "http", "snmp" ) ) {
 
 if( detected_type != "unknown" ) {
   # nb: Those are "virtual" appliances so don't register a hardware CPE for these.
-  if( egrep( string:detected_type, pattern:"(ONE|MAVEN|150V|EXPO|25V|CE)", icase:TRUE ) )
+  if( egrep( string:detected_type, pattern:"(ONE|MAVEN|150V|EXPO|25V|CE|CENO|DECA|TERA|PETA|EXA)", icase:TRUE ) )
     hw_app_cpe = "cpe:/a:greenbone:gsm_" + tolower( detected_type );
   else
     hw_app_cpe = "cpe:/h:greenbone:gsm_" + tolower( detected_type );

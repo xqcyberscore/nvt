@@ -23,24 +23,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:pqi:air:pen:express";
+CPE = "cpe:/a:pqi:air_pen_express";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807536");
-  script_version("2019-05-10T14:24:23+0000");
+  script_version("2019-07-29T12:25:48+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"last_modification", value:"2019-07-29 12:25:48 +0000 (Mon, 29 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-04-07 11:07:14 +0530 (Thu, 07 Apr 2016)");
-  script_tag(name:"qod_type", value:"exploit");
   script_name("PQI Air Pen Express Wireless Router Multiple Vulnerabilities");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_pqi_air_pen_express_remote_detect.nasl");
+  script_mandatory_keys("pqi/air_pen_express/detected");
+  script_require_ports("Services/www", 80);
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39659");
 
   script_tag(name:"summary", value:"This host has PQI Air Pen Express
   Wireless Router and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and
-  check whether it is able read the sensitive information");
+  check whether it is able read the sensitive information.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
@@ -56,7 +63,7 @@ if(description)
   - An insecure default permission setting.
 
   - Any action, whether sensitive or not is transmitted in plain text because
-    HTTPS is not used");
+  HTTPS is not used.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information and to execute
@@ -68,34 +75,30 @@ if(description)
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39659");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_pqi_air_pen_express_remote_detect.nasl");
-  script_mandatory_keys("PQI/Air/Pen/Express/Installed");
-  script_require_ports("Services/www", 80);
+  script_tag(name:"qod_type", value:"exploit");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if(!pqiPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE, service:"www"))
   exit(0);
-}
+
+if(!get_app_location(port:port, cpe:CPE))
+  exit(0);
 
 url = "/cgi-bin/ExportSettings.sh";
 
-if(http_vuln_check(port:pqiPort, url:url, check_header:TRUE,
-   pattern:"staWirelessMode",
-   extra_check:make_list("wanConnectionMode", "HostName", "lan_ipaddr", "WAN_MAC_ADDR")))
-{
-  report = report_vuln_url( port:pqiPort, url:url );
-  security_message(port:pqiPort, data:report);
+if(http_vuln_check(port:port, url:url, check_header:TRUE, pattern:"staWirelessMode",
+                   extra_check:make_list("wanConnectionMode", "HostName", "lan_ipaddr", "WAN_MAC_ADDR"))) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
 }
+
+exit(99);

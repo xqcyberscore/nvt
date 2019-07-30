@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111001");
-  script_version("2019-06-03T14:03:05+0000");
-  script_tag(name:"last_modification", value:"2019-06-03 14:03:05 +0000 (Mon, 03 Jun 2019)");
+  script_version("2019-07-25T04:02:38+0000");
+  script_tag(name:"last_modification", value:"2019-07-25 04:02:38 +0000 (Thu, 25 Jul 2019)");
   script_tag(name:"creation_date", value:"2015-03-02 12:00:00 +0100 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-include("cpe.inc");
 include("misc_func.inc");
 
 port = get_http_port( default:8080 );
@@ -94,12 +93,14 @@ foreach dir( make_list_unique( "/", "/jenkins", cgi_dirs( port:port ) ) ) {
       }
     }
 
-    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:jenkins:jenkins:" );
-    if( isnull( cpe ) )
-      cpe = "cpe:/a:jenkins:jenkins";
+    set_kb_item( name:"jenkins/detected", value:TRUE );
+    set_kb_item( name:"jenkins/http/port", value:port );
+    set_kb_item( name:"jenkins/http/" + port + "/location", value:install );
 
-    set_kb_item( name:"www/" + port + "/jenkins", value:version );
-    set_kb_item( name:"jenkins/installed", value:TRUE );
+    if( version != "unknown" ) {
+      set_kb_item( name:"jenkins/http/" + port + "/version", value:version );
+      set_kb_item( name:"jenkins/http/" + port + "/concluded", value:ver[0] );
+    }
 
     cli_port = eregmatch( pattern:'X-Jenkins-CLI-Port: ([^\r\n]+)', string:buf );
     if( ! isnull( cli_port[1] ) ) {
@@ -113,14 +114,6 @@ foreach dir( make_list_unique( "/", "/jenkins", cgi_dirs( port:port ) ) ) {
       register_service( port:cli_port2[1], proto:"jenkins_cli" );
     }
 
-    register_product( cpe:cpe, location:install, port:port, service:"www" );
-
-    log_message( data:build_detection_report( app:"Jenkins CI",
-                                              version:version,
-                                              install:install,
-                                              cpe:cpe,
-                                              concluded:ver[0] ),
-                                              port:port );
 
     # This can be used if a specific VT requires a valid user. Note that this
     # could be protected via a login.

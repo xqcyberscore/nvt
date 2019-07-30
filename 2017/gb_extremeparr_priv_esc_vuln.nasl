@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremeparr_priv_esc_vuln.nasl 12504 2018-11-23 10:41:54Z cfischer $
 #
 # SUN Solaris Privilege Escalation Vulnerability (Extremeparr)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811259");
-  script_version("$Revision: 12504 $");
+  script_version("2019-07-30T05:54:16+0000");
   script_cve_id("CVE-2017-3622");
   script_bugtraq_id(97774);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 11:41:54 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-30 05:54:16 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-07-28 19:15:41 +0530 (Fri, 28 Jul 2017)");
   script_name("SUN Solaris Privilege Escalation Vulnerability (Extremeparr)");
 
@@ -73,7 +72,7 @@ if(description)
 }
 
 # nb: Version check is broken as it doesn't handle the affected package.
-# Furthermore get_ssh_solosversion is returning a version like "5.10" and "10" like assumed.
+# Furthermore get_ssh_solosversion is returning a version like "5.10" and not "10" like assumed.
 exit(66);
 
 include("version_func.inc");
