@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891836");
-  script_version("2019-06-26T02:00:30+0000");
+  script_version("2019-07-31T07:17:14+0000");
   script_cve_id("CVE-2019-11707", "CVE-2019-11708");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-26 02:00:30 +0000 (Wed, 26 Jun 2019)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-07-31 07:17:14 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-06-26 02:00:30 +0000 (Wed, 26 Jun 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1836-1] thunderbird security update)");
   script_category(ACT_GATHER_INFO);

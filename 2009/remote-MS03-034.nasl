@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS03-034.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # Microsoft Security Bulletin MS03-034 Flaw in NetBIOS Could Lead to Information Disclosure
 #
@@ -39,8 +38,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101015");
-  script_version("$Revision: 14325 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-07-30T10:49:59+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 10:49:59 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-03-16 23:15:41 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -67,8 +66,9 @@ if(description)
   script_tag(name:"summary", value:"Under certain conditions, the response to a NetBT Name Service query may, in addition to the typical reply,
   contain random data from the target system's memory. This data could, for example, be a segment of HTML
   if the user on the target system was using an Internet browser, or it could contain other types of data
-  that exist in memory at the time that the target system responds to the NetBT Name Service query.
-  An attacker could seek to exploit this vulnerability by sending a NetBT Name Service query to the target system
+  that exist in memory at the time that the target system responds to the NetBT Name Service query.");
+
+  script_tag(name:"impact", value:"An attacker could seek to exploit this vulnerability by sending a NetBT Name Service query to the target system
   and then examine the response to see if it included any random data from that system's memory.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -106,7 +106,6 @@ for( i = 0; i < 50; i++ ) {
     matrix[max_index(matrix)] = element;
   }
 
-  # the length of the aray
   dim = max_index( matrix ) - 1;
   if( dim > 1 ) {
     for( j = 0; j < i; j++ ) {

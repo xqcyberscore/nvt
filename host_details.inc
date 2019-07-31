@@ -123,6 +123,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108347", # gb_hyperip_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.103910", # gb_avm_fritz_box_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142677", # gb_avm_fritz_wlanrepeater_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.810234", # gb_dlink_dap_detect.nasl
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
@@ -243,6 +244,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108347", # gb_hyperip_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.103910", # gb_avm_fritz_box_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142677", # gb_avm_fritz_wlanrepeater_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.810234", # gb_dlink_dap_detect.nasl
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl

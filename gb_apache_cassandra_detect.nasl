@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_cassandra_detect.nasl 10878 2018-08-10 08:52:28Z cfischer $
 #
 # Apache Cassandra Detection
 #
@@ -28,16 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105065");
-  script_version("$Revision: 10878 $");
+  script_version("2019-07-30T13:23:56+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:52:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-30 13:23:56 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2014-07-18 18:29:45 +0200 (Fri, 18 Jul 2014)");
   script_name("Apache Cassandra Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", # None of the current find_service* is detecting this service so run it early
+  # None of the current find_service* is detecting this service so run it early by adding a dep to find_service.nasl
+  script_dependencies("find_service.nasl",
                       "nessus_detect.nasl"); # See below...
   script_require_ports("Services/unknown", 9160);
 

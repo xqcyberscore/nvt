@@ -23,10 +23,10 @@ CPE = "cpe:/a:finalwire:aida64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107635");
-  script_version("2019-04-06T07:21:05+0000");
+  script_version("2019-07-31T08:50:55+0000");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-06 07:21:05 +0000 (Sat, 06 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-07-31 08:50:55 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-05 15:15:05 +0200 (Fri, 05 Apr 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("AIDA64 <= 5.99.4900 SEH Buffer Overflow Vulnerability");
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th April, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 31th July, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/46636");
@@ -55,7 +55,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_finalwire_aida64_detect_win.nasl");
-  script_mandatory_keys("finalwire/aida64/win/detected");
+  script_mandatory_keys("finalwire/aida64/detected");
   exit(0);
 }
 
@@ -68,10 +68,10 @@ if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
 vers = infos['version'];
 path = infos['location'];
 
-if( version_is_less_equal( version:vers, test_version:"5.99.4900" ) )
-{
+if( version_is_less_equal( version:vers, test_version:"5.99.4900" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
   security_message( data:report, port:0 );
   exit( 0 );
 }
+
 exit( 99 );

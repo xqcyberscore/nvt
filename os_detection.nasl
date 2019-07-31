@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-07-22T05:49:21+0000");
-  script_tag(name:"last_modification", value:"2019-07-22 05:49:21 +0000 (Mon, 22 Jul 2019)");
+  script_version("2019-07-30T10:17:20+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 10:17:20 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,6 +67,7 @@ if(description)
                       "gb_siemens_ruggedcom_consolidation.nasl", "ilo_detect.nasl",
                       "gb_watchguard_fireware_detect.nasl", "gb_vibnode_consolidation.nasl",
                       "gb_hyperip_consolidation.nasl", "gb_avm_fritz_box_detect.nasl",
+                      "gb_avm_fritz_wlanrepeater_consolidation.nasl",
                       "gb_dlink_dap_detect.nasl", "gb_dlink_dsl_detect.nasl",
                       "gb_dlink_dns_detect.nasl", "gb_dlink_dir_detect.nasl",
                       "gb_dlink_dwr_detect.nasl", "gb_wd_mycloud_consolidation.nasl",

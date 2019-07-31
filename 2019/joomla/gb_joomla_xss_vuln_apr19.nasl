@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112586");
-  script_version("2019-05-22T12:57:21+0000");
-  script_tag(name:"last_modification", value:"2019-05-22 12:57:21 +0000 (Wed, 22 May 2019)");
+  script_version("2019-07-30T11:48:38+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 11:48:38 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-05-22 13:23:11 +0200 (Wed, 22 May 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -31,7 +31,7 @@ if(description)
 
   script_cve_id("CVE-2019-11809");
 
-  script_name("Joomla 1.7.0 <= 3.9.5 XSS Vulnerability");
+  script_name("Joomla! 1.7.0 <= 3.9.5 XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to inject
   malicious content into the affected site.");
   script_tag(name:"affected", value:"Joomla! versions 1.7.0 through 3.9.5.");
-  script_tag(name:"solution", value:"Update to version 3.9.6.");
+  script_tag(name:"solution", value:"Update to version 3.9.6 or later.");
 
   script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/780-20190501-core-xss-in-com-users-acl-debug-view");
 

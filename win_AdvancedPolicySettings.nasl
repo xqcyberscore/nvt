@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109001");
-  script_version("2019-07-02T13:52:21+0000");
-  script_tag(name:"last_modification", value:"2019-07-02 13:52:21 +0000 (Tue, 02 Jul 2019)");
+  script_version("2019-07-30T11:23:02+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 11:23:02 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-06-23 12:03:14 +0200 (Fri, 23 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -28,8 +28,7 @@ if(description)
   script_family("Policy");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
-  script_require_ports(139, 445);
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
 
   script_tag(name:"summary", value:"Read all Windows Advanced Policy Security Settings (Windows)");

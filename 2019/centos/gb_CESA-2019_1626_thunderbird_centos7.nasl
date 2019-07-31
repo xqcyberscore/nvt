@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883076");
-  script_version("2019-07-11T11:32:19+0000");
+  script_version("2019-07-31T07:17:14+0000");
   script_cve_id("CVE-2019-11703", "CVE-2019-11704", "CVE-2019-11705", "CVE-2019-11706", "CVE-2019-11707", "CVE-2019-11708");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-11 11:32:19 +0000 (Thu, 11 Jul 2019)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-07-31 07:17:14 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-02 02:00:39 +0000 (Tue, 02 Jul 2019)");
   script_name("CentOS Update for thunderbird CESA-2019:1626 centos7 ");
   script_category(ACT_GATHER_INFO);

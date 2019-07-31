@@ -21,12 +21,16 @@ CPE = "cpe:/a:discourse:discourse";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108612");
-  script_version("2019-07-17T14:30:13+0000");
-  script_tag(name:"last_modification", value:"2019-07-17 14:30:13 +0000 (Wed, 17 Jul 2019)");
+  script_version("2019-07-31T04:47:45+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 04:47:45 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-17 11:26:10 +0000 (Wed, 17 Jul 2019)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+
+  script_cve_id("CVE-2019-1020017", "CVE-2019-1020018");
+
   script_name("Discourse < 2.4.0.beta2 Multiple Vulnerabilities");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -50,7 +54,11 @@ if(description)
 
   - XSS in routes
 
-  - Escape email text for posts containing [details].");
+  - Escape email text for posts containing [details].
+
+  - lacks a confirmation screen when logging in via an email link (CVE-2019-1020018).
+
+  - lacks a confirmation screen when logging in via a user-api OTP (CVE-2019-1020017).");
 
   script_tag(name:"affected", value:"Discourse before version 2.4.0.beta2.");
 

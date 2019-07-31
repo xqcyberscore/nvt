@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: owa-anonymous.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Outlook Web anonymous access
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10781");
-  script_version("2019-04-11T14:06:24+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-07-30T10:49:59+0000");
+  script_tag(name:"last_modification", value:"2019-07-30 10:49:59 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3301);
   script_cve_id("CVE-2001-0660");
@@ -50,7 +49,7 @@ if(description)
 
   2. Choose Protocols, and then double-click HTTP (Web) Site Settings
 
-  3. Unselect the 'Allow anonymous users to access the anonymous public folders' check box.
+  3. Deselect the 'Allow anonymous users to access the anonymous public folders' check box.
 
   4. Select the Folder Shortcuts tab.
 

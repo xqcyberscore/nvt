@@ -23,13 +23,14 @@ CPE = "cpe:/o:mikrotik:routeros";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142599");
-  script_version("2019-07-15T08:31:04+0000");
-  script_tag(name:"last_modification", value:"2019-07-15 08:31:04 +0000 (Mon, 15 Jul 2019)");
+  script_version("2019-07-31T04:12:14+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 04:12:14 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-07-15 08:15:04 +0000 (Mon, 15 Jul 2019)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_cve_id("CVE-2018-1157", "CVE-2018-1158", "CVE-2019-11477", "CVE-2019-11478", "CVE-2019-11479");
+  script_cve_id("CVE-2018-1157", "CVE-2018-1158", "CVE-2019-11477", "CVE-2019-11478", "CVE-2019-11479",
+                "CVE-2019-13954", "CVE-2019-13955");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
