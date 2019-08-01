@@ -988,3 +988,136 @@ function GetVersionFromFile( file, verstr, offset ) {
   close( soc );
   return ver;
 }
+
+# @brief Helper function for GetVersion() that gathers information based on a DLL or executable path.
+#
+# @param dllPath The path of the DLL or executable which upon share and file details are extracted from. Mandatory.
+# @param string  This can be modified whether a file or product version is required. By default the file version is read.
+# @param offset  Position from which to start reading the file.
+#
+# @return The version of a file or product, FALSE if not all mandatory parameters where passed or no version was found.
+#
+function get_version( dllPath, string, offs ) {
+
+  local_var dllPath, string, offs;
+  local_var name, login, pass, domain, port, share, file, soc, r, prot, uid, tid, fid, prVersion;
+
+  if(!dllPath) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dllPath#-#get_version");
+    return FALSE;
+  }
+
+  name   = kb_smb_name();
+  login  = kb_smb_login();
+  pass   = kb_smb_password();
+  domain = kb_smb_domain();
+  port   = kb_smb_transport();
+
+  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
+  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
+
+  soc = open_sock_tcp(port);
+  if(!soc) {
+    exit(0);
+  }
+
+  r = smb_session_request(soc:soc, remote:name);
+  if(!r) {
+    close(soc);
+    exit(0);
+  }
+
+  prot = smb_neg_prot(soc:soc);
+  if(!prot) {
+    close(soc);
+    exit(0);
+  }
+
+  r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
+  if(!r) {
+    close(soc);
+    exit(0);
+  }
+
+  uid = session_extract_uid(reply:r);
+  if(!uid) {
+    close(soc);
+    exit(0);
+  }
+
+  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
+  if(!r) {
+    close(soc);
+    exit(0);
+  }
+
+  tid = tconx_extract_tid(reply:r);
+  if(!tid) {
+    close(soc);
+    exit(0);
+  }
+
+  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
+  if(!fid) {
+    close(soc);
+    exit(0);
+  }
+
+  prVersion = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:string, offset:offs);
+  if(!prVersion || isnull(prVersion) || prVersion == "" || prVersion == 0 || prVersion == '0') {
+    close(soc);
+    return FALSE;
+  }
+
+  close(soc);
+  return prVersion;
+}
+
+# @brief This function will get the version details of a given file.
+#
+# @param sysPath   The path to the file. Mandatory.
+# @param file_name The name of the file. Mandatory.
+#
+# @return The version of the file, FALSE if not all mandatory parameters where passed or no version was found.
+#
+function fetch_file_version( sysPath, file_name ) {
+
+  local_var sysPath, file_name;
+  local_var kb_proxy_file, kb_proxy, share, file, sysVer;
+
+  if( ! sysPath ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sysPath#-#fetch_file_version" );
+    return FALSE;
+  }
+
+  if( ! file_name ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#fetch_file_version" );
+    return FALSE;
+  }
+
+  file_name = tolower( file_name );
+  sysPath = tolower( sysPath );
+
+  kb_proxy_file = "SMB//fetch_file_version//" + sysPath + "//" + file_name;
+
+  kb_proxy = get_kb_item( kb_proxy_file );
+  if( ! isnull( kb_proxy ) || kb_proxy ) {
+    if( kb_proxy == "unknown" )
+      return FALSE;
+    else
+      return kb_proxy;
+  }
+
+  share = ereg_replace( pattern:"([A-Za-z]):.*", replace:"\1$", string:sysPath );
+  file  = ereg_replace( pattern:"[A-Za-z]:(.*)", replace:"\1", string:sysPath + "\" + file_name );
+
+  sysVer = GetVer( file:file, share:share );
+  if( ! sysVer || isnull( sysVer ) || sysVer == "" || sysVer == 0 || sysVer == '0' ) {
+    set_kb_item( name:kb_proxy_file, value:"unknown" ); # nb: unknown is set to avoid that we're querying the version again if we already know that the file doesn't exist
+    return FALSE;
+  }
+
+  set_kb_item( name:kb_proxy_file, value:sysVer );
+
+  return sysVer;
+}

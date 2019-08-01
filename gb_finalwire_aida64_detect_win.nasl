@@ -44,7 +44,6 @@ include( "smb_nt.inc" );
 include( "cpe.inc" );
 include( "host_details.inc" );
 include( "secpod_smb_func.inc" );
-include( "version_func.inc" );
 
 os_arch = get_kb_item( "SMB/Windows/Arch" );
 if( ! os_arch )

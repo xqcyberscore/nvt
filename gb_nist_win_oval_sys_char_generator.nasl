@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nist_win_oval_sys_char_generator.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Create System Characteristics for NIST Windows OVAL Definitions
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802042");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-07-31T09:47:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2012-07-05 12:24:54 +0530 (Thu, 05 Jul 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +53,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("version_func.inc");
 include("secpod_smb_func.inc");
 include("plugin_feed_info.inc");
 include("host_details.inc");

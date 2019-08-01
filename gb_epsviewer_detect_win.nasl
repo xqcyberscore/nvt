@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_epsviewer_detect_win.nasl 11852 2018-10-12 06:12:07Z cfischer $
 #
 # EPS Viewer Detection (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112390");
-  script_version("$Revision: 11852 $");
+  script_version("2019-07-31T09:47:07+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 08:12:07 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-10-11 21:32:11 +0200 (Thu, 11 Oct 2018)");
   script_name("EPS Viewer Detection (Windows)");
 
@@ -53,7 +52,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if (!os_arch)

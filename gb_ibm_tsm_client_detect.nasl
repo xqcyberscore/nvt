@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_client_detect.nasl 10917 2018-08-10 16:48:12Z cfischer $
 #
 # IBM Tivoli Storage Manager Client Version Detection (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811126");
-  script_version("$Revision: 10917 $");
+  script_version("2019-07-31T09:47:07+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:48:12 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2017-05-29 16:58:07 +0530 (Mon, 29 May 2017)");
   script_name("IBM Tivoli Storage Manager Client Version Detection (Windows)");
 
@@ -56,7 +55,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 ## Key is same for 32 bit and 64 bit platform
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";

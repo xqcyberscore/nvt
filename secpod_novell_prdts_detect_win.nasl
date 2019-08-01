@@ -1,6 +1,5 @@
 ####################################G###########################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_prdts_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Novell Multiple Products Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900340");
-  script_version("$Revision: 11279 $");
+  script_version("2019-07-31T09:47:07+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Novell Multiple Products Version Detection");
@@ -51,7 +50,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 if(!registry_key_exists(key:"SOFTWARE\Novell"))
 {

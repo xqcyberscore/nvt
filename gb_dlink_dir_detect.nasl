@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103689");
-  script_version("2019-07-29T09:41:58+0000");
-  script_tag(name:"last_modification", value:"2019-07-29 09:41:58 +0000 (Mon, 29 Jul 2019)");
+  script_version("2019-07-31T11:53:32+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 11:53:32 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,6 +56,7 @@ include("host_details.inc");
 
 port = get_http_port( default:8080 );
 banner = get_http_banner( port:port );
+
 if( ! banner )
   exit( 0 );
 
@@ -235,7 +236,8 @@ if( "Server: WebServer" >< banner  || "Server: lighttpd" >< banner ) {
 
   if( "<title>D-LINK" >< buf && ( buf =~ "Model Name.+DIR-" ||
       ( buf =~ "Product Page.+DIR-" && "Firmware Version" >< buf && "Hardware Version" >< buf ) ||
-      ( buf =~ "show_words[(]TA2[)].+DIR-" && buf =~ "show_words[(]TA3[)]" && buf =~ "show_words[(]sd_FWV[)]" ) ) ) {
+      ( buf =~ "show_words[(]TA2[)].+DIR-" && buf =~ "show_words[(]TA3[)]" && buf =~ "show_words[(]sd_FWV[)]" ) ||
+      ( buf =~ 'class="product".+DIR-' && buf =~ 'class="hwversion"' && buf =~ 'class="version"' ) ) ) {
 
     detected = TRUE;
 
@@ -250,6 +252,11 @@ if( "Server: WebServer" >< banner  || "Server: lighttpd" >< banner ) {
     # DIR-816L:
     # <div class="fwv">Firmware Version : 2.05<span id="fw_ver" align="left"></span></div>
     # <div class="hwv">Hardware Version : B1<span id="hw_ver" align="left"></span></div>
+    #
+    # DIR-818LW:
+    # <span class="version"> : 1.02</span>
+    # <span class="hwversion"> : <span class="value" style="text-transform:uppercase;">A1</span>
+
 
     mo = eregmatch( pattern:'class=(l_tb|"modelname")>DIR-([0-9A-Z]+)<', string:buf );
     if( mo[2] ) {
@@ -274,6 +281,12 @@ if( "Server: WebServer" >< banner  || "Server: lighttpd" >< banner ) {
         model = mo[1];
     }
 
+    if( model == "unknown" ) {
+      mo = eregmatch( pattern:'class="product".+DIR-([0-9A-Z]+)', string:buf );
+      if( mo[1] )
+        model = mo[1];
+    }
+
     if( model != "unknown" ) {
       fw_concluded = mo[0];
       os_app += "-" + model + " Firmware";
@@ -291,15 +304,24 @@ if( "Server: WebServer" >< banner  || "Server: lighttpd" >< banner ) {
     fw_ver = eregmatch(pattern:"Firmware Version : ([0-9A-Z.]+)<", string:buf);
     if( fw_ver[1] ) {
       fw_version = fw_ver[1];
-    } else {
+    }
+
+    if( fw_version == "unknown" ) {
       fw_ver = eregmatch( pattern:'"Firmware Version"\\);</script> : ([0-9A-Z.]+)</td>', string:buf );
-      if( fw_ver[1] ) {
+      if( fw_ver[1] )
         fw_version = fw_ver[1];
-      } else {
-        fw_ver = eregmatch( pattern:'show_words[(]sd_FWV[)]</script>[A-Za-z ]*: ([0-9A-Z.]+)', string:buf );
-        if( fw_ver[1] )
+    }
+
+    if( fw_version == "unknown" ) {
+      fw_ver = eregmatch( pattern:'show_words\\(sd_FWV\\)</script>[A-Za-z ]*: ([0-9A-Z.]+)', string:buf );
+      if( fw_ver[1] )
           fw_version = fw_ver[1];
-      }
+    }
+
+    if( fw_version == "unknown" ) {
+      fw_ver = eregmatch( pattern:'<span class="version">[^:]+:[^0-9A-Z]*([0-9A-Z.]+)<\\/span', string:buf );
+      if( fw_ver[1] )
+        fw_version = fw_ver[1];
     }
 
     if( fw_version != "unknown" ) {
@@ -314,15 +336,24 @@ if( "Server: WebServer" >< banner  || "Server: lighttpd" >< banner ) {
     hw_ver = eregmatch( pattern:"Hardware Version.*([ABCDEIT][12])(</?|&nbsp;)", string:buf );
     if( hw_ver[1] ) {
       hw_version = hw_ver[1];
-    } else {
+    }
+
+    if( hw_version == "unknown" ) {
       hw_ver = eregmatch( pattern:'"Hardware Version"\\);</script> : ([^<]+)</td>', string:buf );
-      if( hw_ver[1] ) {
+      if( hw_ver[1] )
         hw_version = hw_ver[1];
-      } else {
+    }
+
+    if( hw_version == "unknown" ) {
         hw_ver = eregmatch( pattern:'show_words[(]TA3[)]</script>[A-Za-z ]*: ([0-9A-Z.]+)', string:buf );
         if( hw_ver[1] )
           hw_version = hw_ver[1];
-      }
+    }
+
+    if( hw_version == "unknown" ) {
+      hw_ver = eregmatch( pattern:'<span class="hwversion">.*[:>] ?([0-9A-Z.]+)<\\/span', string:buf );
+      if( hw_ver[1] )
+        hw_version = hw_ver[1];
     }
 
     if( hw_version != "unknown" ) {

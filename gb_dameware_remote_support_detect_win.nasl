@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dameware_remote_support_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # DameWare Remote Support Version Detection (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107383");
-  script_version("$Revision: 12753 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
+  script_version("2019-07-31T09:47:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 17:23:16 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +51,6 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
-include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if (!os_arch)

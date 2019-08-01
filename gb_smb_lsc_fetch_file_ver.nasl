@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_lsc_fetch_file_ver.nasl 12770 2018-12-12 10:35:08Z cfischer $
 #
 # SMB: Gather file version info for authenticated scans
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108517");
-  script_version("$Revision: 12770 $");
+  script_version("2019-07-31T09:47:07+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 11:35:08 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-12-12 10:15:08 +0100 (Wed, 12 Dec 2018)");
   script_name("SMB: Gather file version info for authenticated scans");
   script_category(ACT_GATHER_INFO);
@@ -50,7 +49,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("version_func.inc");
 include("secpod_smb_func.inc");
 
 sysPath = smb_get_system32root();

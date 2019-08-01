@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bsplayer_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # BS Player Free Edition Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800268");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10883 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-07-31T09:28:39+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 09:28:39 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("BS Player Free Edition Version Detection");
@@ -50,7 +49,6 @@ include("secpod_reg.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);

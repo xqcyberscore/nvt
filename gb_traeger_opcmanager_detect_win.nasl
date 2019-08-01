@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107646");
-  script_version("2019-04-26T08:24:31+0000");
-  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
+  script_version("2019-07-31T09:47:07+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-04-23 11:30:34 +0200 (Tue, 23 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,6 @@ include( "smb_nt.inc" );
 include( "cpe.inc" );
 include( "host_details.inc" );
 include( "secpod_smb_func.inc" );
-include( "version_func.inc" );
 
 os_arch = get_kb_item( "SMB/Windows/Arch" );
 if( !os_arch )

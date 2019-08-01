@@ -23,11 +23,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815178");
-  script_version("2019-07-18T05:45:58+0000");
+  script_version("2019-08-01T07:22:04+0000");
   script_cve_id("CVE-2019-2818", "CVE-2019-2821");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-18 05:45:58 +0000 (Thu, 18 Jul 2019)");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-08-01 07:22:04 +0000 (Thu, 01 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-17 13:19:32 +0530 (Wed, 17 Jul 2019)");
   script_name("Oracle Java SE Security Updates (jul2019-5072835) 01 - Linux");
 

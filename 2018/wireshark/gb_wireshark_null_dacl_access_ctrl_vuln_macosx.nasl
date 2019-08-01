@@ -28,11 +28,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813591");
-  script_version("2019-06-11T10:18:21+0000");
+  script_version("2019-07-31T14:13:14+0000");
   script_cve_id("CVE-2018-14438");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-06-11 10:18:21 +0000 (Tue, 11 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-07-31 14:13:14 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2018-07-30 16:58:30 +0530 (Mon, 30 Jul 2018)");
 
   script_name("Wireshark 'non-NULL DACL' Access Control Vulnerability (Mac OS X)");
@@ -51,12 +51,13 @@ if(description)
 
   script_tag(name:"affected", value:"Wireshark version through 2.6.6 on Mac OS X.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th June, 2019.
-  Information regarding this issue will be updated once solution details are available. Please see the references for more information.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14921");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

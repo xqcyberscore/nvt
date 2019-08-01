@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107463");
-  script_version("2019-07-30T11:00:05+0000");
-  script_tag(name:"last_modification", value:"2019-07-30 11:00:05 +0000 (Tue, 30 Jul 2019)");
+  script_version("2019-07-31T10:11:16+0000");
+  script_tag(name:"last_modification", value:"2019-07-31 10:11:16 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2019-01-18 14:41:50 +0100 (Fri, 18 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,10 +81,10 @@ foreach key( key_list ) {
       concluded += '\nDisplayVersion: ' + vers;
     }
 
-    set_kb_item( name:"horner_apg/cscape_envisionrv/detected", value:TRUE );
+    set_kb_item( name:"hornerautomation/cscape_envisionrv/detected", value:TRUE );
 
     register_and_report_cpe( app:"Horner APG " + appName, ver:version, concluded:concluded,
-                             base:"cpe:/a:horner_apg:cscape_envisionrv:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
+                             base:"cpe:/a:hornerautomation:cscape_envisionrv:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
     exit( 0 );
   }
 }

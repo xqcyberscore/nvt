@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_investintech_prdts_detect.nasl 10884 2018-08-10 11:02:52Z cfischer $
 #
 # Investintech Products Version Detection
 #
@@ -28,9 +27,9 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802501");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10884 $");
+  script_version("2019-07-31T09:47:07+0000");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 13:02:52 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"creation_date", value:"2011-11-09 17:25:24 +0530 (Wed, 09 Nov 2011)");
   script_name("Investintech Products Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -47,7 +46,6 @@ if(description)
 
 include("cpe.inc");
 include("smb_nt.inc");
-include("version_func.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
