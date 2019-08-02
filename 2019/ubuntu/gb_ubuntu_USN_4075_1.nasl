@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844110");
-  script_version("2019-07-30T06:12:43+0000");
+  script_version("2019-08-02T07:02:11+0000");
   script_cve_id("CVE-2019-13917");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-30 06:12:43 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-08-02 07:02:11 +0000 (Fri, 02 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-26 02:00:49 +0000 (Fri, 26 Jul 2019)");
   script_name("Ubuntu Update for exim4 USN-4075-1");
   script_category(ACT_GATHER_INFO);

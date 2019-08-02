@@ -23,11 +23,11 @@ CPE = "cpe:/a:zoom:zoom";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815259");
-  script_version("2019-07-22T05:46:27+0000");
+  script_version("2019-08-02T07:02:11+0000");
   script_cve_id("CVE-2019-13567");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-22 05:46:27 +0000 (Mon, 22 Jul 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-08-02 07:02:11 +0000 (Fri, 02 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-19 16:27:34 +0530 (Fri, 19 Jul 2019)");
   script_name("Zoom Client Remote Code Execution Vulnerability July19 -MAC OS X");
 
