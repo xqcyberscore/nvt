@@ -23,11 +23,11 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142585");
-  script_version("2019-07-24T08:39:52+0000");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_version("2019-08-05T06:52:30+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 06:52:30 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-12 02:13:53 +0000 (Fri, 12 Jul 2019)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
 
   script_cve_id("CVE-2019-12827", "CVE-2019-13161");
 

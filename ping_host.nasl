@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("2019-07-08T14:12:44+0000");
-  script_tag(name:"last_modification", value:"2019-07-08 14:12:44 +0000 (Mon, 08 Jul 2019)");
+  script_version("2019-08-02T13:03:59+0000");
+  script_tag(name:"last_modification", value:"2019-08-02 13:03:59 +0000 (Fri, 02 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,6 +55,7 @@ if(description)
   script_add_preference(name:"nmap: try also with only -sP", type:"checkbox", value:"no", id:11);
   script_add_preference(name:"Log nmap output", type:"checkbox", value:"no", id:12);
   script_add_preference(name:"Log failed nmap calls", type:"checkbox", value:"no", id:13);
+  script_add_preference(name:"nmap timing policy", type:"radio", value:"Normal;Paranoid;Sneaky;Polite;Aggressive;Insane", id:14);
 
   script_tag(name:"summary", value:"This check tries to determine whether a remote host is up (alive).
 
@@ -230,6 +231,24 @@ if( "yes" >< use_nmap ) {
   argv[x++] = 'nmap';
   argv[x++] = '--reason';
   argv[x++] = '-sP';
+
+  timing_templates = make_array( "Paranoid", 0,
+                                 "Sneaky", 1,
+                                 "Polite", 2,
+                                 "Normal", 3,
+                                 "Aggressive", 4,
+                                 "Insane", 5 );
+
+  timing_preference = script_get_preference( "nmap timing policy", id:14 );
+  if( isnull( timing_preference ) )
+    timing_preference = "Normal";
+
+  timing = timing_templates[timing_preference];
+
+  if( ! isnull( timing ) ) {
+    _timing   = "-T" + timing;
+    argv[x++] = _timing;
+  }
 
   if( "yes" >!< arp_ping )
     argv[x++] = "--send-ip";

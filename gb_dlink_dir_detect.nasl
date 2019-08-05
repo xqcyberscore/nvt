@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103689");
-  script_version("2019-07-31T11:53:32+0000");
-  script_tag(name:"last_modification", value:"2019-07-31 11:53:32 +0000 (Wed, 31 Jul 2019)");
+  script_version("2019-08-01T10:36:59+0000");
+  script_tag(name:"last_modification", value:"2019-08-01 10:36:59 +0000 (Thu, 01 Aug 2019)");
   script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -361,6 +361,76 @@ if( "Server: WebServer" >< banner  || "Server: lighttpd" >< banner ) {
       set_kb_item( name:"d-link/dir/hw_version", value:hw_version );
       hw_concluded = hw_ver[0];
       hw_conclurl  = report_vuln_url( port:port, url:url, url_only:TRUE );
+    }
+  }
+}
+
+# Some devices (e.g. DIR-816) redirect to /dir_login.asp
+if( banner =~ 'Location:.+dir_login.asp' ) {
+  buf = http_get_cache( item:"/dir_login.asp", port:port );
+
+  if( buf =~ "Ver='DIR-[0-9]+" || buf =~ 'Product Page:.+ DIR-[0-9A-Z]+' ) {
+
+    detected = TRUE;
+
+    mo = eregmatch( string:buf, pattern:'Product Page ?: ?DIR-([0-9A-Z]+)' );
+    if( mo[1] ) {
+      model = mo[1];
+    }
+    if( model == "unknown" ) {
+      mo = eregmatch( string:buf, pattern:"Ver ?= ?'DIR-([0-9A-Z]+)'" );
+      if( mo[1] )
+        model = mo[1];
+    }
+
+    if( model != "unknown" ) {
+      w_concluded = mo[0];
+      os_app += "-" + model + " Firmware";
+      os_cpe += "-" + tolower( model ) + "_firmware";
+      hw_app += "-" + model + " Device";
+      hw_cpe += "-" + tolower( model );
+      set_kb_item( name:"d-link/dir/model", value:model );
+    } else {
+      os_app += " Unknown Model Firmware";
+      os_cpe += "-unknown_model_firmware";
+      hw_app += " Unknown Model Device";
+      hw_cpe += "-unknown_model";
+    }
+
+    fw_ver = eregmatch(pattern:"Firmware Version ?: ?([0-9A-Z.]+)<", string:buf);
+    if( fw_ver[1] ) {
+      fw_version = fw_ver[1];
+    }
+    if( fw_version == "unknown" ) {
+      fw_ver = eregmatch( pattern:'FirmwareVer ?= ?["\']([0-9A-Z.]+)["\']', string:buf );
+      if( fw_ver[1] )
+      fw_version = fw_ver[1];
+    }
+
+    if( fw_version != "unknown" ) {
+      os_cpe += ":" + fw_version;
+      set_kb_item( name:"d-link/dir/fw_version", value:fw_version );
+      if( fw_concluded )
+        fw_concluded += '\n';
+      fw_concluded += fw_ver[0];
+      fw_conclurl = report_vuln_url( port:port, url:url, url_only:TRUE );
+    }
+
+    hw_ver = eregmatch( pattern:"Hardware Version.*([ABCDEIT][12])(</?| )", string:buf );
+    if( hw_ver[1] ) {
+      hw_version = hw_ver[1];
+    }
+    if( hw_version == "unknown" ) {
+      hw_ver = eregmatch( pattern:'HardwareVer ?= ?["\']([0-9A-Z]+)["\']', string:buf );
+      if( hw_ver[1] )
+        hw_version = hw_ver[1];
+    }
+
+    if( hw_version != "unknown" ) {
+      hw_cpe += ":" + tolower( hw_version );
+      set_kb_item( name:"d-link/dir/hw_version", value:hw_version );
+      hw_concluded = hw_ver[0];
+      hw_conclurl = report_vuln_url( port:port, url:url, url_only:TRUE );
     }
   }
 }
