@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_manager_detect.nasl 13874 2019-02-26 11:51:40Z cfischer $
 #
 # OpenVAS / Greenbone Vulnerability Manager Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103825");
-  script_version("$Revision: 13874 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 12:51:40 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-08-05T07:09:20+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 07:09:20 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2013-11-08 12:24:10 +0100 (Fri, 08 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,9 +63,9 @@ send( socket:soc, data:req + '\r\n' );
 res = recv( socket:soc, length:256 );
 close( soc );
 
-# nb: GMP and OMP services are both still answering with an omp_response only
-# so we only can differ between the protocol based on its version later.
-if( "omp_response" >< res && "GET_VERSION" >< res ) {
+# nb: The GMP service of early GVM-10 versions still answered with an omp_response
+# so we only differ between the protocol based on its version later.
+if( "GET_VERSION" >< res && ( "omp_response" >< res || "gmp_response" >< res ) ) {
 
   set_kb_item( name:"openvasmd_gvmd/detected", value:TRUE );
   set_kb_item( name:"openvas_gvm/framework_component/detected", value:TRUE );

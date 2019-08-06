@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("2019-05-07T06:30:33+0000");
-  script_tag(name:"last_modification", value:"2019-05-07 06:30:33 +0000 (Tue, 07 May 2019)");
+  script_version("2019-08-05T11:12:31+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 11:12:31 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -471,6 +471,10 @@ if( "Siemens, SIMATIC HMI" >< sysdesc ) { # 1.3.6.1.4.1.25623.1.0.141682 (gb_sim
 
 if( sysdesc =~ "^SMS [^ ]+ v?SMS" ) {
   exit( 0 ); # 1.3.6.1.4.1.25623.1.0.108569 (gb_tippingpoint_sms_snmp_detect.nasl)
+}
+
+if( "Crestron Electronics AM-" >< sysdesc ) {
+  exit( 0 ); # 1.3.6.1.4.1.25623.1.0.141392 (gb_crestron_airmedia_snmp_detect.nasl)
 }
 
 # nb: More detailed OS Detection covered in gb_netapp_data_ontap_consolidation.nasl

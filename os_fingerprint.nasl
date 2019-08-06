@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("2019-07-30T10:17:20+0000");
-  script_tag(name:"last_modification", value:"2019-07-30 10:17:20 +0000 (Tue, 30 Jul 2019)");
+  script_version("2019-08-05T10:47:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 10:47:21 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,6 +74,7 @@ if(description)
                       "gb_ricoh_iwb_detect.nasl", "gb_codesys_os_detection.nasl",
                       "gb_simatic_hmi_consolidation.nasl", "gb_wago_plc_consolidation.nasl",
                       "gb_rockwell_micrologix_consolidation.nasl", "gb_rockwell_powermonitor_http_detect.nasl",
+                      "gb_crestron_cip_detect.nasl",
                       "gb_beward_ip_cameras_detect_consolidation.nasl", "gb_zavio_ip_cameras_detect.nasl",
                       "gb_tp_link_ip_cameras_detect.nasl", "gb_pearl_ip_cameras_detect.nasl",
                       "gb_qsee_ip_camera_detect.nasl",
@@ -100,7 +101,8 @@ if(description)
                       "gb_nntp_os_detection.nasl", "gb_android_adb_detect.nasl",
                       "netbios_name_get.nasl", "global_settings.nasl");
   if(FEED_NAME == "GSF" || FEED_NAME == "SCM")
-    script_dependencies("gsf/gb_synetica_datastream_devices_detect_telnet.nasl",
+    script_dependencies("gsf/gb_crestron_airmedia_consolidation.nasl",
+                        "gsf/gb_synetica_datastream_devices_detect_telnet.nasl",
                         "gsf/gb_paloalto_globalprotect_portal_detect.nasl",
                         "gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl");
   script_exclude_keys("keys/TARGET_IS_IPV6");

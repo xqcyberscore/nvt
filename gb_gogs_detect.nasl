@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gogs_detect.nasl 12326 2018-11-13 05:25:34Z ckuersteiner $
 #
 # Gogs (Go Git Service) Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105951");
-  script_version("$Revision: 12326 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 06:25:34 +0100 (Tue, 13 Nov 2018) $");
+  script_version("2019-08-05T09:07:29+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 09:07:29 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-02-06 14:11:41 +0700 (Fri, 06 Feb 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,9 +68,9 @@ foreach dir( make_list_unique( "/", "/gogs", cgi_dirs( port:port ) ) ) {
   url = dir + "/user/login";
   res = http_get_cache( item:url, port:port );
 
-  if( res !~ 'HTTP/1.. 200' ) continue;
+  if( res !~ "^HTTP/1\.[01] 200" ) continue;
 
-  if( "Gogs" >< res && "i_like_gogits" >< res) {
+  if( "<title>Sign In - Gogs" >< res || ( "Gogs" >< res && "i_like_gogits" >< res ) ) {
 
     version = "unknown";
 

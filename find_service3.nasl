@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service3.nasl 13874 2019-02-26 11:51:40Z cfischer $
 #
 # Service Detection with '<xml/>' Request
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108198");
-  script_version("$Revision: 13874 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 12:51:40 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-08-05T07:09:20+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 07:09:20 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-07-20 14:08:04 +0200 (Thu, 20 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -88,10 +87,10 @@ if( "oap_response" >< r && "GET_VERSION" >< r ) {
   exit( 0 );
 }
 
-# nb: GMP and OMP services are both still answering with an omp_response only
-# so we only can differ between the protocol based on its version detected by
+# nb: The GMP service of early GVM-10 versions still answered with an omp_response
+# so we only differ between the protocol based on its version detected by
 # gb_openvas_manager_detect.nasl.
-if( "omp_response" >< r && "GET_VERSION" >< r ) {
+if( "GET_VERSION" >< r && ( "omp_response" >< r || "gmp_response" >< r ) ) {
   register_service( port:port, proto:"omp_gmp", message:"A OpenVAS / Greenbone Vulnerability Manager supporting the OMP/GMP protocol seems to be running on this port." );
   log_message( port:port, data:"A OpenVAS / Greenbone Vulnerability Manager supporting the OMP/GMP protocol seems to be running on this port." );
   exit( 0 );

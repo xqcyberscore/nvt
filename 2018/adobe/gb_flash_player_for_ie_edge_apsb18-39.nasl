@@ -28,11 +28,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814292");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-08-05T07:17:10+0000");
   script_cve_id("CVE-2018-15978");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-08-05 07:17:10 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-11-14 17:24:45 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-39)");
   script_category(ACT_GATHER_INFO);

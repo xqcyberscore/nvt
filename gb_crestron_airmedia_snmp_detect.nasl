@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_crestron_airmedia_snmp_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Crestron AirMedia Presentation Gateway Detection (SNMP)
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141392");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-08-05T11:12:31+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 11:12:31 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-08-23 16:34:16 +0700 (Thu, 23 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +38,7 @@ if (description)
   script_name("Crestron AirMedia Presentation Gateway Detection (SNMP)");
 
   script_tag(name:"summary", value:"This script performs SNMP based detection of Crestron AirMedia Presentation
-Gateway devices.");
+  Gateway devices.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -52,8 +51,6 @@ Gateway devices.");
   exit(0);
 }
 
-include("cpe.inc");
-include("host_details.inc");
 include("snmp_func.inc");
 
 port = get_snmp_port(default: 161);
@@ -71,22 +68,15 @@ if (isnull(mod[1]))
 
 model = mod[1];
 
-version = "unknown";
+set_kb_item(name: "crestron_airmedia/detected", value: TRUE);
+set_kb_item(name: "crestron_airmedia/snmp/detected", value: TRUE);
+set_kb_item(name: "crestron_airmedia/snmp/port", value: port);
+set_kb_item(name: "crestron_airmedia/snmp/" + port + "/model", value: model);
 
 vers = eregmatch(pattern: "Version ([0-9.]+)", string: sysdesc);
-if (!isnull(vers[1]))
-  version = vers[1];
-
-set_kb_item(name: "crestron_airmedia/detected", value: TRUE);
-
-cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:crestron:" + tolower(model) + ":");
-if (!cpe)
-  cpe = 'cpe:/o:crestron:' + tolower(model);
-
-register_product(cpe: cpe, location: port + "/udp", port: port, service: "snmp");
-
-log_message(data: build_detection_report(app: "Crestron " + model, version: version, install: port + "/udp",
-                                         cpe: cpe),
-            port: port, proto: "udp");
+if (!isnull(vers[1])) {
+  set_kb_item(name: "crestron_airmedia/snmp/" + port + "/fw_version", value: vers[1]);
+  set_kb_item(name: "crestron_airmedia/snmp/" + port + "/concluded", value: sysdesc);
+}
 
 exit(0);

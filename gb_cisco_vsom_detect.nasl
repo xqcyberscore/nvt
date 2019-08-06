@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vsom_detect.nasl 11616 2018-09-26 07:46:07Z ckuersteiner $
 #
 # Cisco Video Surveillance Manager Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141501");
-  script_version("$Revision: 11616 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:46:07 +0200 (Wed, 26 Sep 2018) $");
+  script_version("2019-08-05T06:21:37+0000");
+  script_tag(name:"last_modification", value:"2019-08-05 06:21:37 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-09-26 11:42:53 +0700 (Wed, 26 Sep 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,15 +62,20 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
 
-res = http_get_cache(port: port, item: "/vsom/");
+url = "/vsom";
+res = http_get_cache(port: port, item: url + "/");
 
 if ("<title>Video Surveillance Operations Manager" >< res || "VSOM_SETTINGS" >< res) {
-  version = "unknown";
 
+  version = "unknown";
+  install = url;
+
+  # <tr><td id="version">Version 6.3.2</td></tr>
   vers = eregmatch(pattern: 'version">Version ([0-9.]+)', string: res);
-  if (!isnull(vers[1]))
+  if (!isnull(vers[1])) {
     version = vers[1];
-  else {
+    concUrl = report_vuln_url(port: port, url: install, url_only: TRUE);
+  } else {
     # This might change?
     url = "/vsom/js/cisco/neptune-all--1.js";
     req = http_get(port: port, item: url);
@@ -81,7 +85,7 @@ if ("<title>Video Surveillance Operations Manager" >< res || "VSOM_SETTINGS" >< 
     vers = eregmatch(pattern: 'SOFTWARE_VERSION="([0-9.]+)"', string: res);
     if (!isnull(vers[1])) {
       version = vers[1];
-      concUrl = url;
+      concUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
     }
   }
 
@@ -89,12 +93,12 @@ if ("<title>Video Surveillance Operations Manager" >< res || "VSOM_SETTINGS" >< 
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:cisco:video_surveillance_manager:");
   if (!cpe)
-    cpe = 'cpe:/a:cisco:video_surveillance_manager';
+    cpe = "cpe:/a:cisco:video_surveillance_manager";
 
-  register_product(cpe: cpe, location: "/vsom", port: port);
+  register_product(cpe: cpe, location: install, port: port, service: "www");
 
   log_message(data: build_detection_report(app: "Cisco Video Surveillance Manager", version: version,
-                                           install: "/vsom", cpe: cpe, concluded: vers[0], concludedUrl: concUrl),
+                                           install: install, cpe: cpe, concluded: vers[0], concludedUrl: concUrl),
               port: port);
   exit(0);
 }

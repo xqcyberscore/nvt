@@ -26,26 +26,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900320");
-  script_version("2019-07-24T08:39:52+0000");
+  script_version("2019-08-05T07:17:10+0000");
   script_cve_id("CVE-2009-0658", "CVE-2009-0927", "CVE-2009-0193", "CVE-2009-0928",
                 "CVE-2009-1061", "CVE-2009-1062");
   script_bugtraq_id(33751, 34169, 34229);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-08-05 07:17:10 +0000 (Mon, 05 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_name("Buffer Overflow Vulnerability in Adobe Acrobat and Reader (Windows)");
 
   script_tag(name:"summary", value:"This host has Adobe Acrobat or Adobe Reader installed, and is prone to buffer
-overflow vulnerability.");
+  overflow vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"This issue is due to error in array indexing while processing JBIG2 streams
-and unspecified vulnerability related to a JavaScript method.");
+  and unspecified vulnerability related to a JavaScript method.");
+
   script_tag(name:"impact", value:"This can be exploited to corrupt arbitrary memory via a specially crafted PDF
-file, related to a non-JavaScript function call and to execute arbitrary code
-in context of the affected application.");
+  file, related to a non-JavaScript function call and to execute arbitrary code
+  in context of the affected application.");
+
   script_tag(name:"affected", value:"Adobe Reader/Acrobat version 9.x < 9.1, 8.x < 8.1.4, 7.x < 7.1.1 on Windows.");
+
   script_tag(name:"solution", value:"Upgrade to Reader/Acrobat version 9.1 or 7.1.1 or 8.1.4 or later.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,7 +80,8 @@ if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
     if(version_in_range(version:readerVer, test_version:"7.0", test_version2:"7.1.0")||
        version_in_range(version:readerVer, test_version:"8.0", test_version2:"8.1.3")||
        readerVer =~ "^9\.0"){
-      security_message( port: 0, data: "The target host was found to be vulnerable" );
+      report = report_fixed_ver(installed_version:readerVer, fixed_version:"9.1/7.1.1/8.1.4");
+      security_message(port:0, data:report);
     }
   }
 }
@@ -82,13 +89,15 @@ if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 CPE = "cpe:/a:adobe:acrobat";
 if(acrobatVer = get_app_version(cpe:CPE))
 {
-if(readerVer =~ "^(7|8|9)") {
-  if(version_in_range(version:acrobatVer, test_version:"7.0", test_version2:"7.1.0")||
-     version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.1.3")||
-     acrobatVer =~ "^9\.0")
+  if(acrobatVer =~ "^[7-9]\.")
   {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-    exit(0);
+    if(version_in_range(version:acrobatVer, test_version:"7.0", test_version2:"7.1.0")||
+       version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.1.3")||
+       acrobatVer =~ "^9\.0")
+    {
+      report = report_fixed_ver(installed_version:acrobatVer, fixed_version:"9.1/7.1.1/8.1.4");
+      security_message(port:0, data:report);
+      exit(0);
+    }
   }
- }
 }
