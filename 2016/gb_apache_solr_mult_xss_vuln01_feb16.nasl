@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_mult_xss_vuln01_feb16.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Apache Solr Multiple Cross-Site Scripting Vulnerabilities-01 Feb16
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806881");
-  script_version("$Revision: 11938 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2015-8795");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:30 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Solr Multiple Cross-Site Scripting Vulnerabilities-01 Feb16");
@@ -50,7 +49,7 @@ if(description)
     files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to to inject arbitrary web script or HTML via crafted fields.");
+  attackers to inject arbitrary web script or HTML via crafted fields.");
 
   script_tag(name:"affected", value:"Apache Solr versions 4.10.2, 5.0");
 

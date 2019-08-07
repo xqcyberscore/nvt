@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1235_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for open-iscsi USN-1235-1
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1235-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840779");
-  script_version("$Revision: 14132 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,7 +45,7 @@ if(description)
   script_tag(name:"affected", value:"open-iscsi on Ubuntu 8.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"Colin Watson discovered that iscsi_discovery in Open-iSCSI did not safely
-  create temporary files. A local attacker could exploit this to to overwrite
+  create temporary files. A local attacker could exploit this to overwrite
   arbitrary files with root privileges.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

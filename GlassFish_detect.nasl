@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GlassFish_detect.nasl 12985 2019-01-09 07:04:34Z cfischer $
 #
 # GlassFish Server Detection
 #
@@ -9,7 +8,7 @@
 #
 # Updated by: Antu Sanadi <santu@secpod.com> on 2010-01-31
 # Updated to detect recent versions (3.x)
-# Updated to to read the data from index.html, on 2012-01-06
+# Updated to read the data from index.html, on 2012-01-06
 #
 # Updated By : Sooraj KS <kssooraj@secpod.com> on 2012-05-07
 # - Updated according to CR57
@@ -34,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100190");
-  script_version("$Revision: 12985 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 08:04:34 +0100 (Wed, 09 Jan 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-05-10 17:01:14 +0200 (Sun, 10 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

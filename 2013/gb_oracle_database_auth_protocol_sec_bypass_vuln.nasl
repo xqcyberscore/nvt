@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_auth_protocol_sec_bypass_vuln.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # Oracle Database Server Authentication Protocol Security Bypass Vulnerability
 #
@@ -29,17 +28,17 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803957");
-  script_version("$Revision: 12634 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2012-3137");
   script_bugtraq_id(55651);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2013-10-28 17:27:36 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle Database Server Authentication Protocol Security Bypass Vulnerability");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to to bypass the authentication
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass the authentication
   process, gain unauthorized access to the database and obtain sensitive information.");
 
   script_tag(name:"affected", value:"Oracle Database Server versions 10.2.0.3, 10.2.0.4, 10.2.0.5, 11.1.0.7,

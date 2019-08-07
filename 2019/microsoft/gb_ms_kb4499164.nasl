@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815051");
-  script_version("2019-06-04T06:44:21+0000");
+  script_version("2019-08-07T05:35:03+0000");
   script_cve_id("CVE-2018-11091", "CVE-2018-12126", "CVE-2018-12127", "CVE-2018-12130",
                 "CVE-2019-0683", "CVE-2019-0708", "CVE-2019-0725", "CVE-2019-0734",
                 "CVE-2019-0758", "CVE-2019-0863", "CVE-2019-0881", "CVE-2019-0882",
@@ -33,12 +33,12 @@ if(description)
                 "CVE-2019-0936", "CVE-2019-0940", "CVE-2019-0961");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-04 06:44:21 +0000 (Tue, 04 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-08-07 05:35:03 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 10:16:13 +0530 (Wed, 15 May 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4499164)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
-  update according to Microsoft KB4499164");
+  update according to Microsoft KB4499164.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on
   the target host.");
@@ -57,6 +57,8 @@ if(description)
   - An error Active Directory Forest trusts due to a default setting.
 
   - Windows Server DHCP service improperly process specially crafted packets.
+
+  - Remote Code Execution Vulnerability in Windows Remote Desktop Service (Bluekeep).
 
   For more information about the vulnerabilities refer Reference links.");
 
@@ -84,7 +86,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -95,14 +96,12 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) <= 0){
 }
 
 dllPath = smb_get_system32root();
-if(!dllPath ){
+if(!dllPath)
   exit(0);
-}
 
 fileVer = fetch_file_version(sysPath:dllPath, file_name:"Ntdll.dll");
-if(!fileVer){
+if(!fileVer)
   exit(0);
-}
 
 if(version_is_less(version:fileVer, test_version:"6.1.7601.24441"))
 {
@@ -111,4 +110,5 @@ if(version_is_less(version:fileVer, test_version:"6.1.7601.24441"))
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

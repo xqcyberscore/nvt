@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bsplayer_mult_bof_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # BS.Player '.bsl' File Buffer Overflow Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902055");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-2004", "CVE-2010-2009");
   script_bugtraq_id(37831, 38568);
@@ -58,7 +57,7 @@ crafted mp3 file to the media library.");
   release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is installed BS Player and is prone to multiple buffer
 overflow vulnerabilities.");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute
 arbitrary code by tricking a user into opening a specially files. Failed
 attacks will cause denial-of-service conditions.");
   script_tag(name:"affected", value:"BS.Global BS.Player version 2.51 Build 1022 and prior.");

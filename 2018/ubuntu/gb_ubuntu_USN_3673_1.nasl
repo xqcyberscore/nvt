@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3673_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for unbound USN-3673-1
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843546");
-  script_version("$Revision: 14288 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-06-09 05:48:51 +0200 (Sat, 09 Jun 2018)");
   script_cve_id("CVE-2017-15105");
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +38,7 @@ if(description)
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Ralph Dolmans and Karst Koymans discovered that Unbound did not properly
-handle certain NSEC records. An attacker could use this to to prove the
+handle certain NSEC records. An attacker could use this to prove the
 non-existence (NXDOMAIN answer) of an existing wildcard record, or trick
 Unbound into accepting a NODATA proof.");
   script_tag(name:"affected", value:"unbound on Ubuntu 18.04 LTS,

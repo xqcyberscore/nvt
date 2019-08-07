@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_astra_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Joomla Component 'com_astra' SQL Injection Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802130");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,20 +46,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
 
-  script_tag(name:"impact", value:"Successful exploitation will let attackers to to cause SQL Injection
-attack and gain sensitive information.");
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct a SQL Injection
+  attack and gain sensitive information.");
 
   script_tag(name:"affected", value:"Joomla Astra component.");
 
   script_tag(name:"insight", value:"The flaw is due to input passed via the 'F' parameter to 'index.php' when
-'option' is set to 'com_astra' is not properly sanitised before being used in the SQL query.");
+  'option' is set to 'com_astra' is not properly sanitised before being used in the SQL query.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+  a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"summary", value:"This host is running Joomla Astra component and is prone to SQL injection
-vulnerability.");
+  script_tag(name:"summary", value:"This host is running Joomla Astra component and is prone to an SQL injection
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 

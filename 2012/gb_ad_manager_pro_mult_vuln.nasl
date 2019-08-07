@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ad_manager_pro_mult_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803019");
-  script_version("$Revision: 13659 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2012-08-30 17:10:10 +0530 (Thu, 30 Aug 2012)");
   script_name("Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities");
 
@@ -55,7 +54,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to the latest version");
   script_tag(name:"summary", value:"This host is running Ad Manager Pro and is prone to multiple sql
   injection and cross site scripting vulnerabilities.");
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to to manipulate SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to manipulate SQL
   queries by injecting arbitrary SQL code or execute arbitrary HTML and
   script code in a user's browser session in context of affected website.");
   script_tag(name:"affected", value:"Ad Manager Pro");

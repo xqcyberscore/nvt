@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3523_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for linux USN-3523-1
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843409");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-01-10 07:39:53 +0100 (Wed, 10 Jan 2018)");
   script_cve_id("CVE-2017-5754", "CVE-2017-17863", "CVE-2017-16995", "CVE-2017-17862",
                 "CVE-2017-17864");
@@ -56,7 +55,7 @@ if(description)
   unreachable code. A local attacker could use this to cause a denial of service.
   (CVE-2017-17862) Jann Horn discovered that the Berkeley Packet Filter (BPF)
   implementation in the Linux kernel mishandled pointer data values in some
-  situations. A local attacker could use this to to expose sensitive information
+  situations. A local attacker could use this to expose sensitive information
   (kernel memory). (CVE-2017-17864)");
   script_tag(name:"affected", value:"linux on Ubuntu 17.10");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");

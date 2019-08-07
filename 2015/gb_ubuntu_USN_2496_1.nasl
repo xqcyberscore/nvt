@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842088");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-02-10 05:30:54 +0100 (Tue, 10 Feb 2015)");
   script_cve_id("CVE-2014-8485", "CVE-2014-8501", "CVE-2014-8502", "CVE-2014-8737",
                 "CVE-2014-8738", "CVE-2014-8503", "CVE-2014-8504", "CVE-2014-8484",
@@ -71,7 +71,7 @@ crash). (CVE-2014-8503)
 
 Michal Zalewski discovered a stack-based buffer overflow in the
 srec_scan function in libbfd in GNU binutils. An attacker could
-use this to to craft input that could cause a denial of service
+use this to craft input that could cause a denial of service
 (application crash)  the GNU C library's Fortify Source printf
 protection should prevent the possibility of executing arbitrary code.
 (CVE-2014-8504)

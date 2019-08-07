@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_isqlplus_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Oracle 9iAS iSQLplus XSS
 #
@@ -25,14 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# This vulnerability was found by
-# Rafel Ivgi, The-Insider <theinsider@012.net.il>
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12112");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,20 +41,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/OracleApache");
   script_xref(name:"URL", value:"http://www.securitytracker.com/alerts/2004/Jan/1008838.html");
+
   script_tag(name:"summary", value:"The login-page of Oracle9i iSQLplus allows the injection of HTML and Javascript
-code via the username and password parameters.
+  code via the username and password parameters.");
 
-Description :
-
-The remote host is running a version of the Oracle9i 'isqlplus' CGI which
-is vulnerable to a cross site scripting issue.
-
-An attacker may exploit this flaw to to steal the cookies of legitimate
-users on the remote host.");
+  script_tag(name:"impact", value:"An attacker may exploit this flaw to steal the cookies of legitimate
+  users on the remote host.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
- of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
- disable respective features, remove the product or replace the product by another one.");
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -69,11 +61,19 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-host = http_host_name( dont_add_port:TRUE );
-if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
+host = http_host_name(dont_add_port:TRUE);
+if(http_get_has_generic_xss(port:port, host:host))
+  exit(0);
 
- req = http_get(item:"/isqlplus?action=logon&username=foo%22<script>foo</script>&password=test", port:port);
- res = http_keepalive_send_recv(port:port, data:req);
- if( isnull( res ) ) exit( 0 );
- if( res =~ "^HTTP/1\.[01] 200" && '<script>foo</script>' >< res )
- 	security_message(port);
+url = "/isqlplus?action=logon&username=vt-test%22<script>vt-test</script>&password=test";
+req = http_get(item:url, port:port);
+res = http_keepalive_send_recv(port:port, data:req);
+if(!res)
+  exit(0);
+
+if(res =~ "^HTTP/1\.[01] 200" && '<script>vt-test</script>' >< res) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+}
+
+exit(0);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1071_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for linux-source-2.6.15 vulnerabilities USN-1071-1
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1071-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840595");
-  script_version("$Revision: 14132 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-02-28 16:24:14 +0100 (Mon, 28 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -91,7 +90,7 @@ if(description)
 
   Dan Rosenberg discovered that the Linux kernel L2TP implementation
   contained multiple integer signedness errors. A local attacker could
-  exploit this to to crash the kernel, or possibly gain root privileges.
+  exploit this to crash the kernel, or possibly gain root privileges.
   (CVE-2010-4160)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

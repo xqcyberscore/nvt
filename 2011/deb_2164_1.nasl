@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2164_1.nasl 14275 2019-03-18 14:39:45Z cfischer $
 # Description: Auto-generated from advisory DSA 2164-1 (shadow)
 #
 # Authors:
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68999");
-  script_version("$Revision: 14275 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-03-07 16:04:02 +0100 (Mon, 07 Mar 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -43,9 +42,8 @@ if(description)
   script_xref(name:"URL", value:"https://secure1.securityspace.com/smysecure/catid.html?in=DSA%202164-1");
   script_tag(name:"insight", value:"Kees Cook discovered that the chfn and chsh utilities do not properly
 sanitize user input that includes newlines.  An attacker could use this
-to to corrupt passwd entries and may create users or groups in NIS
+to corrupt passwd entries and may create users or groups in NIS
 environments.
-
 
 Packages in the oldstable distribution (lenny) are not affected by this
 problem.

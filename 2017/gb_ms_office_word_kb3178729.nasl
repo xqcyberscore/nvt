@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810779");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2017-0254");
   script_bugtraq_id(98101);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-05-10 11:22:22 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability (KB3178729)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to to Microsoft KB3178729");
+  update according to Microsoft KB3178729");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

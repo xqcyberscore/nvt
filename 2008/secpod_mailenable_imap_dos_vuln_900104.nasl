@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mailenable_imap_dos_vuln_900104.nasl 13414 2019-02-01 13:56:18Z cfischer $
 #
 # MailEnable IMAP Denial of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900104");
-  script_version("$Revision: 13414 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:56:18 +0100 (Fri, 01 Feb 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3449");
   script_bugtraq_id(30498);
@@ -46,7 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.mailenable.com/hotfix/ME-10042.EXE");
   script_xref(name:"URL", value:"http://secunia.com/advisories/31325");
 
-  script_tag(name:"summary", value:"The host is running MailEnable Mail Server, which prone to Denial
+  script_tag(name:"summary", value:"The host is running MailEnable Mail Server, which is prone to a Denial
   of Service vulnerability.");
 
   script_tag(name:"insight", value:"The flaw exists due to the load created when handling multiple IMAP connections

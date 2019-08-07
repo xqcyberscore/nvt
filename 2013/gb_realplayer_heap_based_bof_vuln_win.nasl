@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_heap_based_bof_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # RealNetworks RealPlayer Heap Based BoF Vulnerability (Windows)
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803601");
-  script_version("$Revision: 11865 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2013-1750");
   script_bugtraq_id(58539);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2013-05-14 18:27:30 +0530 (Tue, 14 May 2013)");
   script_name("RealNetworks RealPlayer Heap Based BoF Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://www.scip.ch/en/?vuldb.8026");
@@ -43,7 +42,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_realplayer_detect_win.nasl");
   script_mandatory_keys("RealPlayer/Win/Ver");
-  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to to cause heap
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to cause heap
   based buffer overflow leading to arbitrary code execution or denial of
   service condition.");
   script_tag(name:"affected", value:"RealPlayer version 16.0.0.0 and prior");

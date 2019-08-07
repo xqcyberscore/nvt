@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814894");
-  script_version("2019-05-22T07:03:13+0000");
+  script_version("2019-08-07T05:35:03+0000");
   script_cve_id("CVE-2019-0708");
   script_bugtraq_id(108273);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-22 07:03:13 +0000 (Wed, 22 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-07 05:35:03 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-05-17 15:27:29 +0530 (Fri, 17 May 2019)");
   script_name("Microsoft Windows Remote Desktop Service Remote Code Execution Vulnerability (KB4500331)");
 
@@ -37,13 +37,16 @@ if(description)
   on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when an unauthenticated attacker
-  connects to the system using RDP and sends specially crafted requests.");
+  connects to the system using RDP and sends specially crafted requests. The vulnerability
+  is known as 'BlueKeep'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to
   execute arbitrary code on the target system.");
 
   script_tag(name:"affected", value:"Microsoft Windows XP SP3
+
   Microsoft Windows Server 2003 SP2
+
   Microsoft Windows XP Professional x64 Edition SP2");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the
@@ -61,22 +64,18 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_reg.inc");
 include("secpod_smb_func.inc");
 
-
 sysPath = smb_get_system32root();
-if(!sysPath ){
+if(!sysPath)
   exit(0);
-}
 
 fileVer = fetch_file_version(sysPath:sysPath, file_name:"\drivers\Termdd.sys");
-if(!fileVer){
+if(!fileVer)
   exit(0);
-}
 
 if(hotfix_check_sp(xp:4) > 0)
 {
@@ -99,4 +98,5 @@ else if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0){
     exit(0);
   }
 }
+
 exit(99);

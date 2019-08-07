@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_app_serv_xst_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Sun Java System Application Server Cross Site Tracing Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:sun:java_system_application_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800162");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-02-08 10:53:20 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -49,7 +48,7 @@ if(description)
   script_mandatory_keys("sun_java_appserver/installed");
   script_require_ports("Services/www", 80, 8080);
 
-  script_tag(name:"impact", value:"Successful exploitation lets the attackers to to get sensitive information,
+  script_tag(name:"impact", value:"Successful exploitation lets the attackers to get sensitive information,
 such as cookies or authentication data, contained in the HTTP headers.");
 
   script_tag(name:"affected", value:"Sun Java System Application Server Standard Edition 7 and later updates,

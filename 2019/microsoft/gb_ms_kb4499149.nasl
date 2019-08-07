@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815054");
-  script_version("2019-05-27T07:36:21+0000");
+  script_version("2019-08-07T05:35:03+0000");
   script_cve_id("CVE-2019-0708", "CVE-2019-0734", "CVE-2019-0758", "CVE-2019-0881",
                 "CVE-2019-0882", "CVE-2019-0884", "CVE-2019-0885", "CVE-2019-0889",
                 "CVE-2019-0890", "CVE-2019-0891", "CVE-2019-0893", "CVE-2019-0894",
@@ -31,12 +31,12 @@ if(description)
                 "CVE-2019-0936", "CVE-2019-0961");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-27 07:36:21 +0000 (Mon, 27 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-07 05:35:03 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 10:16:13 +0530 (Wed, 15 May 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4499149)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
-  update according to Microsoft KB4499149");
+  update according to Microsoft KB4499149.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
@@ -50,6 +50,8 @@ if(description)
   - Scripting engine handles objects in memory in Microsoft browsers.
 
   - Windows Jet Database Engine improperly handles objects in memory.
+
+  - Remote Code Execution Vulnerability in Windows Remote Desktop Service (Bluekeep).
 
   For more information about the vulnerabilities refer Reference links.");
 
@@ -86,14 +88,12 @@ if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
 }
 
 sysPath = smb_get_system32root();
-if(!sysPath ){
+if(!sysPath)
   exit(0);
-}
 
 ntlVer = fetch_file_version(sysPath:sysPath, file_name:"Ntoskrnl.exe");
-if(!ntlVer){
+if(!ntlVer)
   exit(0);
-}
 
 if(version_is_less(version:ntlVer, test_version:"6.0.6003.20512"))
 {
@@ -102,4 +102,5 @@ if(version_is_less(version:ntlVer, test_version:"6.0.6003.20512"))
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

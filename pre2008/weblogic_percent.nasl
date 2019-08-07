@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: weblogic_percent.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: WebLogic Server /%00/ bug
 #
 # Authors:
@@ -22,11 +21,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
+CPE = "cpe:/a:oracle:weblogic_server";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10698");
-  script_version("2019-04-10T13:42:28+0000");
-  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_version("2019-08-06T09:50:57+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 09:50:57 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2513);
   script_tag(name:"cvss_base", value:"5.0");
@@ -55,6 +56,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -76,10 +78,11 @@ function http_getdirlist(itemstr, port) {
   }
 }
 
-port = get_http_port(default:80);
+if(!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!get_kb_item("www/" + port + "/WebLogic_Server"))
-  exit(0); # make sure it is a WebLogic Server at this port.
+if(!get_app_location(cpe: CPE, port: port, nofork: TRUE))
+  exit(0);
 
 http_getdirlist(itemstr:"/", port:port); # Anti FP
 http_getdirlist(itemstr:"/%2e/", port:port);

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_java_process_manager.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Oracle 9iAS Java Process Manager
 #
 # Authors:
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10851");
-  script_version("2019-04-10T13:42:28+0000");
-  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4293);
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,7 +49,7 @@ if(description)
   and stop them.");
 
   script_tag(name:"impact", value:"By default, accessing the location /oprocmgr-status via HTTP
-  lets an attacker obtain the list of processes running on the remote host, and even to to start
+  lets an attacker obtain the list of processes running on the remote host, and even to start
   or stop them.");
 
   script_tag(name:"solution_type", value:"Mitigation");

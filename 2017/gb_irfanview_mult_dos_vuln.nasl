@@ -28,7 +28,7 @@ CPE = "cpe:/a:irfanview:irfanview:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811953");
-  script_version("2019-05-03T13:51:56+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2017-15769", "CVE-2017-15768", "CVE-2017-15766", "CVE-2017-15767",
                 "CVE-2017-15765", "CVE-2017-15764", "CVE-2017-15763", "CVE-2017-15762",
                 "CVE-2017-15761", "CVE-2017-15759", "CVE-2017-15760", "CVE-2017-15758",
@@ -40,7 +40,7 @@ if(description)
                 "CVE-2017-15737");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-10-26 10:40:33 +0530 (Thu, 26 Oct 2017)");
   script_name("IrfanView Multiple DoS Vulnerabilities");
 
@@ -58,7 +58,7 @@ if(description)
   - User Mode Write AV near NULL.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to to execute arbitrary code or cause a denial of service.");
+  attackers to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"IrfanView Version 4.50 64-bit");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of

@@ -28,16 +28,16 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811951");
-  script_version("2019-05-03T13:51:56+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2017-15787", "CVE-2017-15788", "CVE-2017-15786", "CVE-2017-15785",
-		"CVE-2017-15784", "CVE-2017-15783", "CVE-2017-15782", "CVE-2017-15780",
-		"CVE-2017-15781", "CVE-2017-15779", "CVE-2017-15778", "CVE-2017-15777",
-		"CVE-2017-15776", "CVE-2017-15775", "CVE-2017-15774", "CVE-2017-15772",
-		"CVE-2017-15773", "CVE-2017-15803", "CVE-2017-15802", "CVE-2017-15801",
+                "CVE-2017-15784", "CVE-2017-15783", "CVE-2017-15782", "CVE-2017-15780",
+                "CVE-2017-15781", "CVE-2017-15779", "CVE-2017-15778", "CVE-2017-15777",
+                "CVE-2017-15776", "CVE-2017-15775", "CVE-2017-15774", "CVE-2017-15772",
+                "CVE-2017-15773", "CVE-2017-15803", "CVE-2017-15802", "CVE-2017-15801",
                 "CVE-2017-15789");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-10-25 12:35:33 +0530 (Wed, 25 Oct 2017)");
 
   script_name("XnView Multiple DoS Vulnerabilities");
@@ -54,7 +54,7 @@ if(description)
   - Improper validation of '.dwg' files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to to execute arbitrary code or cause a denial of service.");
+  attackers to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"XnView Version 2.43");
 

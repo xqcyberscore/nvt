@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902496");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2011-2010");
   script_bugtraq_id(50950);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-12-14 15:59:45 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Office IME (Chinese) Privilege Elevation Vulnerability (2652016)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47062/");
@@ -45,7 +45,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to to execute arbitrary code
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
   with kernel-mode privileges.");
   script_tag(name:"affected", value:"Microsoft Pinyin IME 2010
   Microsoft Office Pinyin SimpleFast Style 2010 and

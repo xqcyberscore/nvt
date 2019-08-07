@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms10_024.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Microsoft Windows SMTP Server MX Record Denial of Service Vulnerability
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100596");
-  script_version("$Revision: 13960 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_bugtraq_id(39308, 39381);
   script_cve_id("CVE-2010-0024", "CVE-2010-0025");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +52,7 @@ if(description)
   references for more information.");
 
   script_tag(name:"summary", value:"The Microsoft Windows Simple Mail Transfer Protocol (SMTP) Server is
-  prone to a denial-of-service vulnerability and to to an information-disclosure vulnerability.");
+  prone to a denial-of-service vulnerability and to an information-disclosure vulnerability.");
 
   script_tag(name:"impact", value:"Successful exploits of the denial-of-service vulnerability will cause the
   affected SMTP server to stop responding, denying service to legitimate users.

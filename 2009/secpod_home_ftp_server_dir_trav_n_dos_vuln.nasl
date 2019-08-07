@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_home_ftp_server_dir_trav_n_dos_vuln.nasl 13610 2019-02-12 15:17:00Z cfischer $
 #
 # Home FTP Server DOS And Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900260");
-  script_version("$Revision: 13610 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:17:00 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-11-30 15:32:46 +0100 (Mon, 30 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +46,7 @@ if(description)
   script_require_ports("Services/ftp", 21);
   script_mandatory_keys("HomeFTPServer/Ver");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to to cause a Denial of Service
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a Denial of Service
   or directory traversal attacks on the affected application.");
 
   script_tag(name:"affected", value:"Home FTP Server version 1.10.1.139 and prior.");

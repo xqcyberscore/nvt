@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1368_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for apache2 USN-1368-1
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1368-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840900");
-  script_version("$Revision: 14132 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2012-02-21 19:00:08 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-3607", "CVE-2011-4317", "CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053");
   script_tag(name:"cvss_base", value:"4.6");
@@ -67,7 +66,7 @@ if(description)
 
   It was discovered that the Apache HTTP Server incorrectly handled certain
   type fields within a scoreboard shared memory segment. A local attacker
-  could exploit this to to cause a denial of service. (CVE-2012-0031)
+  could exploit this to cause a denial of service. (CVE-2012-0031)
 
   Norman Hippert discovered that the Apache HTTP Server incorrecly handled
   header information when returning a Bad Request (400) error page. A remote

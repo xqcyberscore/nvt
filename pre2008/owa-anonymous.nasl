@@ -4,7 +4,7 @@
 # Authors:
 # Javier Fernández-Sanguino Peña <jfs@computer.org>
 # based on scripts made by Renaud Deraison <deraison@cvs.nessus.org>
-# Slightly modified by rd to to do pattern matching.
+# Slightly modified by rd to do pattern matching.
 #
 # Copyright:
 # Copyright (C) 2001 Javier Fernández-Sanguino Peña
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10781");
-  script_version("2019-07-30T10:49:59+0000");
-  script_tag(name:"last_modification", value:"2019-07-30 10:49:59 +0000 (Tue, 30 Jul 2019)");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3301);
   script_cve_id("CVE-2001-0660");

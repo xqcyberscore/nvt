@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805017");
-  script_version("2019-05-17T08:39:44+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2014-6318");
   script_bugtraq_id(70981);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 08:39:44 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2014-11-12 13:56:45 +0530 (Wed, 12 Nov 2014)");
   script_name("MS Windows Remote Desktop Protocol Security Feature Bypass Vulnerability (3003743)");
 
@@ -44,7 +44,7 @@ if(description)
   Protocol (RDP) not properly logging failed logon attempts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to to bypass the audit logon security feature.");
+  attacker to bypass the audit logon security feature.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012/R2
   Microsoft Windows 8 x32/x64 Edition

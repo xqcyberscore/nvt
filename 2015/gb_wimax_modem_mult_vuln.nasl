@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wimax_modem_mult_vuln.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # WIMAX Modem Multiple Vulnerabilities
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806799");
-  script_version("$Revision: 11408 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-12-15 09:04:51 +0530 (Tue, 15 Dec 2015)");
   script_name("WIMAX Modem Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -55,7 +54,7 @@ if(description)
   - The '/cgi-bin/pw.cgi' which fails to properly restrict access.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to to read sensitive information and set it on his own modem and
+  attackers to read sensitive information and set it on his own modem and
   send a packet to the modem for crashing/downgrading/DOS and to obtain the
   control of similar modem in order to launch DOS or DDOS attacks on targets.");
 

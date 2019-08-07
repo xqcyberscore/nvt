@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803978");
-  script_version("2019-05-21T06:50:08+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-21 06:50:08 +0000 (Tue, 21 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2013-12-10 17:56:31 +0530 (Tue, 10 Dec 2013)");
   script_name("Microsoft Digital Certificates Security Advisory (2916652)");
 
@@ -53,7 +53,7 @@ if(description)
 
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to to spoof content, perform
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to spoof content, perform
   phishing attacks, or perform man-in-the-middle attacks.");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2677070");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160914-ios-xe.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS Software Data in Motion Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6403");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12149 $");
+  script_version("2019-08-06T11:17:21+0000");
 
   script_name("Cisco IOS Software Data in Motion Denial of Service Vulnerability");
 
@@ -44,7 +43,7 @@ if (description)
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
   script_tag(name:"summary", value:"A vulnerability in the Data in Motion (DMo) application in Cisco IOS
-software with the IOx feature set could allow an unauthenticated, remote attacker to to cause a denial of service
+software with the IOx feature set could allow an unauthenticated, remote attacker to cause a denial of service
 condition in the DMo process.");
 
   script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation by the affected
@@ -57,7 +56,7 @@ system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2016-09-16 11:26:46 +0700 (Fri, 16 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

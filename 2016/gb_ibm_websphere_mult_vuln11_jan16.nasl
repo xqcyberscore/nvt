@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln11_jan16.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM Websphere Application Server Multiple Vulnerabilities -11 Jan16
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806839");
-  script_version("$Revision: 13803 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2013-3029", "CVE-2013-4005");
   script_bugtraq_id(61937, 61901);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2016-01-20 14:33:03 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Multiple Vulnerabilities -11 Jan16");
@@ -52,7 +51,7 @@ if(description)
     console.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attacker to to hijack the authentication and to inject arbitrary web
+  remote attacker to hijack the authentication and to inject arbitrary web
   script or HTML via unspecified fields.");
 
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)

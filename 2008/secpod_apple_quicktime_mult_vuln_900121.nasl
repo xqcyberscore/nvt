@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_quicktime_mult_vuln_900121.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Apple QuickTime Movie/PICT/QTVR Multiple Remote Vulnerabilities
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900121");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_bugtraq_id(31086);
   script_cve_id("CVE-2008-3615", "CVE-2008-3635", "CVE-2008-3624", "CVE-2008-3625",
@@ -49,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/496163");
   script_xref(name:"URL", value:"http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=744");
 
-  script_tag(name:"summary", value:"This host has Apple QuickTime installed, which prone to multiple
+  script_tag(name:"summary", value:"This host has Apple QuickTime installed, which is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"insight", value:"The flaws exist due to,
@@ -74,7 +73,7 @@ if(description)
   - parsing of movie video files in QuickTimeH264.scalar and MP4 video
   files in QuickTimeH264.qtx.");
 
-  script_tag(name:"affected", value:"Apple QuickTime versions prior to 7.5.5 on Windows (all)");
+  script_tag(name:"affected", value:"Apple QuickTime versions prior to 7.5.5 on Windows (all).");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -86,11 +85,11 @@ if(description)
   exit(0);
 }
 
- if(!get_kb_item("SMB/WindowsVersion")){
-        exit(0);
- }
+if(!get_kb_item("SMB/WindowsVersion")){
+  exit(0);
+}
 
- if(egrep(pattern:"^([0-6]\..*|7\.([0-4](\..*)?|5(\.[0-4])?))$",
-          string:get_kb_item("QuickTime/Win/Ver"))){
-        security_message( port: 0, data: "The target host was found to be vulnerable" );
- }
+if(egrep(pattern:"^([0-6]\..*|7\.([0-4](\..*)?|5(\.[0-4])?))$",
+         string:get_kb_item("QuickTime/Win/Ver"))){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+}

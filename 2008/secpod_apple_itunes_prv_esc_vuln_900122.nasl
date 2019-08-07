@@ -27,8 +27,8 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900122");
-  script_version("2019-05-17T10:45:27+0000");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_bugtraq_id(31089);
   script_cve_id("CVE-2008-3636");
@@ -45,13 +45,13 @@ if(description)
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2008/Sep/1020839.html");
   script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce//2008/Sep/msg00001.html");
 
-  script_tag(name:"summary", value:"The host is installed with Apple iTunes, which prone to privilege
+  script_tag(name:"summary", value:"The host is installed with Apple iTunes, which is prone to a privilege
   escalation vulnerability.");
 
   script_tag(name:"insight", value:"The flaw is due to integer overflow error in a third-party
   driver bundled with iTune.");
 
-  script_tag(name:"affected", value:"Apple iTunes versions prior to 8.0 on Windows");
+  script_tag(name:"affected", value:"Apple iTunes versions prior to 8.0 on Windows.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

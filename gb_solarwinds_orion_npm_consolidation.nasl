@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142006");
-  script_version("$Revision: 13748 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 05:10:22 +0100 (Tue, 19 Feb 2019) $");
+  script_version("2019-08-07T10:07:22+0000");
+  script_tag(name:"last_modification", value:"2019-08-07 10:07:22 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-02-19 10:04:35 +0700 (Tue, 19 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,56 +46,60 @@ including the version number.");
   exit(0);
 }
 
-include("cpe.inc");
-include("host_details.inc");
+include( "cpe.inc" );
+include( "host_details.inc" );
 
-if (!get_kb_item("solarwinds/orion/npm/detected"))
-  exit(0);
+if( ! get_kb_item( "solarwinds/orion/npm/detected" ) )
+  exit( 0 );
 
 detected_version = "unknown";
 
-foreach source (make_list("win", "http")) {
-  version_list = get_kb_list("solarwinds/orion/npm/" + source + "/*/version");
-  foreach vers (version_list) {
-    if (vers != "unknown" && detected_version == "unknown")
+foreach source( make_list( "smb", "http" ) ) {
+  version_list = get_kb_list( "solarwinds/orion/npm/" + source + "/*/version" );
+  foreach vers( version_list ) {
+    if( vers != "unknown" && detected_version == "unknown" )
       detected_version = vers;
   }
 }
 
 # e.g. 9.5 SP2
-cpe_vers = str_replace( string: detected_version, find: " ", replace: ".");
-cpe = build_cpe(value: cpe_vers, exp: "^([0-9SP. ]+)",
-                base: "cpe:/a:solarwinds:orion_network_performance_monitor:");
-if (!cpe)
-  cpe = 'cpe:/a:solarwinds:orion_network_performance_monitor';
+cpe_vers = str_replace( string:detected_version, find:" ", replace:"." );
+cpe_vers = tolower( cpe_vers );
+cpe = build_cpe( value:cpe_vers, exp:"^([0-9SP. ]+)", base:"cpe:/a:solarwinds:orion_network_performance_monitor:" );
+if( ! cpe )
+  cpe = "cpe:/a:solarwinds:orion_network_performance_monitor";
 
-if (http_ports = get_kb_list("solarwinds/orion/npm/http/port")) {
-  if (!isnull(http_ports))
-    extra += '\nRemote Detection over HTTP(s):\n';
+if( http_ports = get_kb_list( "solarwinds/orion/npm/http/port" ) ) {
+  foreach port( http_ports ) {
+    concluded = get_kb_item( "solarwinds/orion/npm/http/" + port + "/concluded" );
+    location =  get_kb_item( "solarwinds/orion/npm/http/" + port + "/location" );
+    extra += 'Remote Detection over HTTP(s):\n';
+    extra += '   HTTP(s) on port:          ' + port + '/tcp\n';
+    if( concluded )
+      extra += '   Concluded:     ' + concluded + '\n';
+      extra += '   Location:      ' + location + '\n';
 
-  foreach port (http_ports) {
-    concluded = get_kb_item("solarwinds/orion/npm/http/" + port + "/concluded");
-    location =  get_kb_item("solarwinds/orion/npm/http/" + port + "/location");
-    extra += '   Port:       ' + port + '/tcp\n';
-    if (concluded)
-      extra += '   Concluded:  ' + concluded + '\n';
-    extra += '   Location:   ' + location + '\n';
-
-    register_product(cpe: cpe, location: location, port: port, service: "www");
+    register_product( cpe:cpe, location:location, port:port, service:"www" );
   }
 }
 
-if (win_path = get_kb_item("solarwinds/orion/npm/win/path")) {
+if( win_path = get_kb_item( "solarwinds/orion/npm/smb/path" ) ) {
   extra += 'Local Detection on Windows:\n';
-  extra += '   Path:       ' + win_path + '\n';
+  extra += 'Path:           ' + win_path + '\n';
 
-  register_product(cpe: cpe, location: win_path, port: 0, service: "smb-login");
+  if( concluded = get_kb_item( "solarwinds/orion/npm/smb/concluded" ) )
+    extra += concluded + '\n';
+
+  register_product( cpe:cpe, location:win_path, port:0, service:"smb-login" );
 }
 
-report = build_detection_report(app: "SolarWinds Orion Network Performance Monitor", version: detected_version,
-         cpe: cpe, install: "/", extra: extra);
+report = build_detection_report( app:"SolarWinds Orion Network Performance Monitor", version:detected_version, cpe:cpe, install:"/" );
 
-if (report)
-  log_message(port: 0, data: report);
+if( extra ) {
+  report += '\n\nDetection methods:\n';
+  report += '\n' + extra;
+}
 
-exit(0);
+log_message( port:0, data:report );
+
+exit( 0 );

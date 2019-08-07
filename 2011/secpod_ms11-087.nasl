@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902767");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2011-3402");
   script_bugtraq_id(50462);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-12-14 09:28:44 +0530 (Wed, 14 Dec 2011)");
   script_name("Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2567053)");
   script_xref(name:"URL", value:"https://secunia.com/advisories/46724/");
@@ -58,7 +58,7 @@ if(description)
   Microsoft Windows Vista Service Pack 2 and prior
 
   Microsoft Windows Server 2008 Service Pack 2 and prior");
-  script_tag(name:"insight", value:"The flaw is due to to an error within the Win32k kernel-mode driver
+  script_tag(name:"insight", value:"The flaw is due to an error within the Win32k kernel-mode driver
   (win32k.sys) when parsing TrueType fonts.");
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to

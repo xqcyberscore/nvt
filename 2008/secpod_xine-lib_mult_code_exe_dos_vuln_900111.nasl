@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xine-lib_mult_code_exe_dos_vuln_900111.nasl 12743 2018-12-10 13:27:06Z cfischer $
 # Description: xine-lib Multiple Vulnerabilities
 #
 # Authors:
@@ -26,12 +25,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900111");
-  script_version("$Revision: 12743 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2008-5235");
   script_bugtraq_id(30698);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 14:27:06 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -44,7 +43,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2382");
   script_xref(name:"URL", value:"http://sourceforge.net/project/shownotes.php?release_id=619869&group_id=9655");
 
-  script_tag(name:"summary", value:"The host is installed with xine-lib, which prone to multiple
+  script_tag(name:"summary", value:"The host is installed with xine-lib, which is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"insight", value:"The flaws are due to,

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852379");
-  script_version("2019-04-26T08:24:31+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2018-16873", "CVE-2018-16874", "CVE-2018-16875", "CVE-2019-5736");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:42:08 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for containerd, openSUSE-SU-2019:1079-1 (containerd, docker, docker-runc, golang-github-docker-libnetwork, runc)");
   script_category(ACT_GATHER_INFO);
@@ -66,7 +66,7 @@ if(description)
 
   - Add daemon.json file with rotation logs configuration (bsc#1114832)
 
-  - Update to Docker 18.09.1-ce (bsc#1124308) and to to runc 96ec2177ae84.
+  - Update to Docker 18.09.1-ce (bsc#1124308) and to runc 96ec2177ae84.
   See upstream changelog in the packaged
   /usr/share/doc/packages/docker/CHANGELOG.md.
 

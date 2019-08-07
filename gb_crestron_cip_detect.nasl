@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141365");
-  script_version("2019-08-05T10:47:21+0000");
-  script_tag(name:"last_modification", value:"2019-08-05 10:47:21 +0000 (Mon, 05 Aug 2019)");
+  script_version("2019-08-06T07:54:22+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 07:54:22 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-08-14 13:10:06 +0700 (Tue, 14 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -83,6 +83,7 @@ if (!recv || hexstr(recv[0]) != "15" || strlen(recv) < 266)
   exit(0);
 
 model = "unknown";
+version = "unknown";
 
 hostname = bin2string(ddata: substr(recv, 10, 40), noprint_replacement: "");
 extra = "Hostname:    " + hostname + '\n';

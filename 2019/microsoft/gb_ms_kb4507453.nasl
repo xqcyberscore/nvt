@@ -18,11 +18,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815410");
-  script_version("2019-07-25T13:18:08+0000");
+  script_version("2019-08-07T05:48:24+0000");
   script_cve_id("CVE-2019-0683", "CVE-2019-0785", "CVE-2019-0811", "CVE-2019-0865",
                 "CVE-2019-0880", "CVE-2019-0887", "CVE-2019-0966", "CVE-2019-0975",
                 "CVE-2019-0998", "CVE-2019-1001", "CVE-2019-1004", "CVE-2019-1006",
@@ -35,11 +34,11 @@ if(description)
                 "CVE-2019-1104", "CVE-2019-1106", "CVE-2019-1107", "CVE-2019-1108",
                 "CVE-2019-1117", "CVE-2019-1118", "CVE-2019-1119", "CVE-2019-1120",
                 "CVE-2019-1121", "CVE-2019-1122", "CVE-2019-1123", "CVE-2019-1124",
-                "CVE-2019-1126", "CVE-2019-1127", "CVE-2019-1128", "CVE-2019-1129",
-                "CVE-2019-1130");
+                "CVE-2019-1125", "CVE-2019-1126", "CVE-2019-1127", "CVE-2019-1128",
+                "CVE-2019-1129", "CVE-2019-1130");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-25 13:18:08 +0000 (Thu, 25 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-08-07 05:48:24 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-10 08:56:08 +0530 (Wed, 10 Jul 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4507453)");
 
@@ -61,6 +60,8 @@ if(description)
 
   - Windows Graphics Device Interface (GDI) improperly handles objects in
     the memory.
+
+  - Kernel Information Disclosure Vulnerability (SWAPGS Attack).
 
   For more information about the vulnerabilities refer Reference links.");
 
@@ -88,7 +89,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -99,14 +99,12 @@ if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
 }
 
 sysPath = smb_get_system32root();
-if(!sysPath ){
+if(!sysPath)
   exit(0);
-}
 
 edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
-if(!edgeVer){
+if(!edgeVer)
   exit(0);
-}
 
 if(version_in_range(version:edgeVer, test_version:"11.0.18362.0", test_version2:"11.0.18362.238"))
 {
@@ -115,4 +113,5 @@ if(version_in_range(version:edgeVer, test_version:"11.0.18362.0", test_version2:
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

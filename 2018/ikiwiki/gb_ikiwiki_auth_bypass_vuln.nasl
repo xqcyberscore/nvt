@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_auth_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # IkiWiki Authentication Bypass Vulnerability
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113160");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-04-18 14:00:00 +0200 (Wed, 18 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +48,7 @@ if( description )
   script_dependencies("gb_ikiwiki_consolidation.nasl");
   script_mandatory_keys("ikiwiki/detected");
 
-  script_tag(name:"summary", value:"A flaw, similar to to CVE-2016-9646 exists in the passwordauth plugin's use of CGI::FormBuilder,
+  script_tag(name:"summary", value:"A flaw, similar to CVE-2016-9646 exists in the passwordauth plugin's use of CGI::FormBuilder,
   allowing an attacker to bypass authentication via repeated parameters");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to bypass access restrictions.");

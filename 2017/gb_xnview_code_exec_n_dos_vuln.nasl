@@ -28,7 +28,7 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811402");
-  script_version("2019-05-03T13:51:56+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2017-9914", "CVE-2017-9912", "CVE-2017-9910", "CVE-2017-9911",
                 "CVE-2017-9908", "CVE-2017-9909", "CVE-2017-9906", "CVE-2017-9907",
                 "CVE-2017-9905", "CVE-2017-9903", "CVE-2017-9904", "CVE-2017-9901",
@@ -54,7 +54,7 @@ if(description)
                 "CVE-2017-14270", "CVE-2017-14541", "CVE-2017-14538", "CVE-2017-9913");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 13:51:56 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-08-07 19:41:51 +0530 (Mon, 07 Aug 2017)");
   script_name("XnView Multiple Vulnerabilities");
 
@@ -77,7 +77,7 @@ if(description)
   - User Mode Write AV near NULL.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to to execute arbitrary code or cause a denial of service.");
+  attackers to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"XnView Version 2.44 and earlier");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.

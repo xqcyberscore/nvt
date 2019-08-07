@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_presenter_xss_vuln_900110.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Adobe Presenter viewer.swf and loadflash.js XSS Vulnerability
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900110");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_bugtraq_id(30615);
   script_cve_id("CVE-2008-3515", "CVE-2008-3516");
@@ -47,13 +46,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2322");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb08-17.html");
 
-  script_tag(name:"summary", value:"The host is running Adobe Presenter, which prone to to input
+  script_tag(name:"summary", value:"The host is running Adobe Presenter, which is prone to input
   validation errors which can be exploited by malicious people to conduct cross-site scripting vulnerability.");
 
   script_tag(name:"insight", value:"Input validation errors in the 'viewer.swf' and 'loadflash.js' files,
   which could be exploited by attackers to execute arbitrary scripting code in the user's browser session.");
 
-  script_tag(name:"affected", value:"Adobe Presenter 6.x and 7.x");
+  script_tag(name:"affected", value:"Adobe Presenter 6.x and 7.x.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,29 +64,27 @@ if(description)
   exit(0);
 }
 
- include("smb_nt.inc");
+include("smb_nt.inc");
 
- if(!(get_kb_item("SMB/WindowsVersion"))){
-        exit(0);
- }
+if(!(get_kb_item("SMB/WindowsVersion"))){
+  exit(0);
+}
 
- if(!registry_key_exists(key:"SOFTWARE\Adobe\Presenter")){
-        exit(0);
- }
+if(!registry_key_exists(key:"SOFTWARE\Adobe\Presenter")){
+  exit(0);
+}
 
- adobeVer = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-				 "\Uninstall\Adobe Presenter 6",
-			     item:"DisplayVersion");
- if(!adobeVer)
- {
-	adobeVer = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                                 "\Uninstall\Adobe Presenter 7",
+adobeVer = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Adobe Presenter 6",
+                           item:"DisplayVersion");
+if(!adobeVer)
+{
+  adobeVer = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Adobe Presenter 7",
                              item:"DisplayVersion");
-	if(!adobeVer){
-		exit(0);
-	}
- }
+  if(!adobeVer){
+    exit(0);
+  }
+}
 
- if(egrep(pattern:"^(6\..*|7\.0)$", string:adobeVer)){
-        	security_message( port: 0, data: "The target host was found to be vulnerable" );
- }
+if(egrep(pattern:"^(6\..*|7\.0)$", string:adobeVer)){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+}

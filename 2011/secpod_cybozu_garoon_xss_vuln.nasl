@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902534");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-1332");
   script_bugtraq_id(48446);
@@ -46,7 +46,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("CybozuGaroon/Installed");
 
-  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   HTML and script code in a user's browser session in context of an affected site.");
 
   script_tag(name:"affected", value:"Cybozu Garoon version 2.0.0 through 2.1.3.");

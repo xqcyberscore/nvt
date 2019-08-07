@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_dos_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Apple Safari 'webkit' Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801332");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1728");
   script_tag(name:"cvss_base", value:"9.3");
@@ -54,7 +53,7 @@ when processing 'JavaScript' that writes sequences in an infinite loop.");
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is
-prone to to Denial of Service vulnerabilities.");
+prone to Denial of Service vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }

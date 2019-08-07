@@ -28,9 +28,9 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100356");
-  script_version("2019-07-05T09:54:18+0000");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2009-4028", "CVE-2009-4030");
-  script_tag(name:"last_modification", value:"2019-07-05 09:54:18 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-11-20 12:35:38 +0100 (Fri, 20 Nov 2009)");
   script_bugtraq_id(37075, 37076);
   script_tag(name:"cvss_base", value:"6.8");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37075");
   script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-41.html");
 
-  script_tag(name:"summary", value:"MySQL is prone to a security-bypass vulnerability and to to a local
+  script_tag(name:"summary", value:"MySQL is prone to a security-bypass vulnerability and to a local
   privilege-escalation vulnerability.");
 
   script_tag(name:"impact", value:"An attacker can exploit the security-bypass issue to bypass certain

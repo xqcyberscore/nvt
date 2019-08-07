@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902059");
-  script_version("2019-05-16T08:02:32+0000");
-  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-1733");
   script_tag(name:"cvss_base", value:"6.8");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running OCS Inventory NG and is prone to multiple SQL
   injection vulnerabilities.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to to view, add, modify
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to view, add, modify
   or delete information in the back-end database.");
 
   script_tag(name:"affected", value:"OCS Inventory NG prior to 1.02.3");

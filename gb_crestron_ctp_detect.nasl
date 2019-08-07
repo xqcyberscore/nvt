@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141174");
-  script_version("2019-06-06T07:39:31+0000");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_version("2019-08-06T04:52:49+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 04:52:49 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-06-13 08:39:58 +0700 (Wed, 13 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,14 +71,22 @@ if (recv !~ "(Control|MC3|CP3) Console") {
   exit(0);
 }
 
+version = "unknown";
+model = "unknown";
+install = port + "/tcp";
+
 set_kb_item(name: "crestron_device/detected", value: TRUE);
 
 send(socket: soc, data: raw_string(0x0d, "showhw", 0x0d));
 recv = recv(socket: soc, length: 512);
 
 mod = eregmatch(pattern: 'Processor Type:([^\r]+)', string: recv);
-if (!isnull(mod[1]))
+if (!isnull(mod[1])) {
   model = ereg_replace(pattern: '(\t| )', string: mod[1], replace: '');
+  app_name = "Crestron " + model + " Firmware";
+} else {
+  app_name = "Crestron Unknown Model Firmware";
+}
 
 send(socket: soc, data: raw_string(0x0d, "ver", 0x0d));
 recv = recv(socket: soc, length: 512);
@@ -88,13 +96,13 @@ vers = eregmatch(pattern: "\[v([0-9.]+)", string: recv);
 if (!isnull(vers[1]))
   version = vers[1];
 
-cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:crestron:" + tolower(model) + ":");
+cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:crestron:" + tolower(model) + "_firmware:");
 if (!cpe)
-  cpe = 'cpe:/o:crestron:' + tolower(model);
+  cpe = "cpe:/o:crestron:" + tolower(model) + "_firmware";
 
-register_product(cpe: cpe, location: port + "/tcp", port: port, service: "telnet");
+register_product(cpe: cpe, location: install, port: port, service: "telnet");
 
-log_message(data: build_detection_report(app: "Crestron " + model, version: version, install: port + "/tcp",
+log_message(data: build_detection_report(app: app_name, version: version, install: install,
                                          cpe: cpe),
             port: port);
 

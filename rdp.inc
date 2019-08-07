@@ -495,8 +495,8 @@ function rdp_create_pdu_client_info_request( user_name, domain_name, ip_addr ) {
     user_name = vt_strings["ping_string"];
   }
 
-  user_name = ascii2unicode( data:user_name );
   user_name = substr( user_name, 0, 20 );
+  user_name = ascii2unicode( data:user_name );
   user_name_len = strlen( user_name );
 
   if( ! domain_name ) {
@@ -504,8 +504,8 @@ function rdp_create_pdu_client_info_request( user_name, domain_name, ip_addr ) {
     domain_name = vt_strings["ping_string"];
   }
 
-  domain_name = ascii2unicode( data:domain_name );
   domain_name = substr( domain_name, 0, 24 );
+  domain_name = ascii2unicode( data:domain_name );
   domain_name_len = strlen( domain_name );
 
   if( ! ip_addr )
@@ -916,7 +916,7 @@ function rdp_parse_serverdata( data, debug ) {
 function rdp_build_pkt( data, channel_id, client_info, rdp_sec, enc_data, hmackey ) {
 
   local_var data, channel_id, client_info, rdp_sec, enc_data, hmackey;
-  local_var flags, pdu, user_data_len, udl_with_flags, req;
+  local_var flags, pdu, user_data_len, udl_with_flag, req;
 
   if( ! data ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#rdp_build_pkt" );

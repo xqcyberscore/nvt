@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_win_jun10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities june-10 (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902204");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-07-01 15:58:11 +0200 (Thu, 01 Jul 2010)");
   script_cve_id("CVE-2010-1196", "CVE-2010-1200", "CVE-2010-1199", "CVE-2010-1202");
   script_bugtraq_id(41050);
@@ -49,7 +48,7 @@ if(description)
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
 
-  script_tag(name:"impact", value:"Successful exploitation will let attackers to to cause a denial of service
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to cause a denial of service
   or execute arbitrary code.");
 
   script_tag(name:"affected", value:"Seamonkey version prior to 2.0.5,

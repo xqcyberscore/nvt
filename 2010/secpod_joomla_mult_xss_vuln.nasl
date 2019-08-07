@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_mult_xss_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Joomla! Multiple Cross-site Scripting Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901168");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-08-06T11:17:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-3712");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +51,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to to inject arbitrary web script
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to inject arbitrary web script
 or HTML via vectors involving 'multiple encoded entities'.");
 
   script_tag(name:"affected", value:"Joomla! versions 1.5.x before 1.5.21");

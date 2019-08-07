@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_access_bypass_vuln_SA-CORE-2017-002.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Drupal Core Access Bypass Vulnerability (SA-CORE-2017-002)
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810759");
-  script_version("$Revision: 11923 $");
+  script_version("2019-08-06T11:17:21+0000");
   script_cve_id("CVE-2017-6919");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-06 11:17:21 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-04-20 12:14:26 +0530 (Thu, 20 Apr 2017)");
   # A site is only affected by this if some of the conditions are met.
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -54,7 +53,7 @@ if(description)
   An attacker can get or register a user account on the site.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to to obtain sensitive information.");
+  attackers to obtain sensitive information.");
 
   script_tag(name:"affected", value:"Drupal version 8 prior to 8.2.8 and 8.3.1");
 
