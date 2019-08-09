@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141365");
-  script_version("2019-08-06T07:54:22+0000");
-  script_tag(name:"last_modification", value:"2019-08-06 07:54:22 +0000 (Tue, 06 Aug 2019)");
+  script_version("2019-08-07T09:13:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-07 09:13:21 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-08-14 13:10:06 +0700 (Tue, 14 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,12 +92,13 @@ data = bin2string(ddata: substr(recv, 266), noprint_replacement: "");
 mod = eregmatch(pattern: "(.*) \[", string: data);
 if (!isnull(mod[1])) {
   model = mod[1];
-  app_name = "Crestron " + model + " Firmware";
+  os_name = "Crestron " + model + " Firmware";
   # Report e.g. "MP2E Cntrl Eng" as "mp2e"
   cpe_model = split(model, sep: " ", keep: FALSE);
   cpe_model = tolower(cpe_model[0]);
 } else {
-  app_name = "Crestron Unknown Model Firmware";
+  os_name = "Crestron Unknown Model Firmware";
+  cpe_model = "unknown_model";
 }
 
 vers = eregmatch(pattern: "\[v([0-9.]+)", string: data);
@@ -110,10 +111,6 @@ if (!isnull(build[1]))
 
 set_kb_item(name: "crestron_device/detected", value: TRUE);
 
-cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:crestron:" + cpe_model + "_firmware:");
-if (!cpe)
-  cpe = 'cpe:/o:crestron:' + cpe_model + "_firmware";
-
 register_service(port: port, proto: "crestron-cip", ipproto: "udp");
 
 # nb: Separately handled in gsf/gb_crestron_airmedia_consolidation.nasl
@@ -125,11 +122,18 @@ if (model =~ "^AM-") {
   set_kb_item(name: "crestron_airmedia/cip/" + port + "/fw_version", value: version);
 } else {
 
-  register_and_report_os(os: app_name, cpe: cpe, desc: "Crestron Device Detection (CIP)", runs_key: "unixoide");
-  register_product(cpe: cpe, location: port + "/udp", port: port, proto: "udp", service: "crestron-cip");
+  os_cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:crestron:" + cpe_model + "_firmware:");
+  if (!os_cpe)
+    os_cpe = "cpe:/o:crestron:" + cpe_model + "_firmware";
 
-  log_message(data: build_detection_report(app: app_name, version: version, install: port + "/udp",
-                                           cpe: cpe, extra: extra),
+  hw_cpe = "cpe:/h:crestron:" + cpe_model;
+
+  register_and_report_os(os: os_name, cpe: os_cpe, desc: "Crestron Device Detection (CIP)", runs_key: "unixoide");
+  register_product(cpe: os_cpe, location: port + "/udp", port: port, proto: "udp", service: "crestron-cip");
+  register_product(cpe: hw_cpe, location: port + "/udp", port: port, proto: "udp", service: "crestron-cip");
+
+  log_message(data: build_detection_report(app: os_name, version: version, install: port + "/udp",
+                                           cpe: os_cpe, extra: extra),
               port: port, proto: "udp");
 }
 

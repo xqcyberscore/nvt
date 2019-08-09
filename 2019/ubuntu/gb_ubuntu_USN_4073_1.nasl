@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844108");
-  script_version("2019-07-30T06:12:43+0000");
+  script_version("2019-08-08T09:10:13+0000");
   script_cve_id("CVE-2019-13615");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-30 06:12:43 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-08-08 09:10:13 +0000 (Thu, 08 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-26 02:00:31 +0000 (Fri, 26 Jul 2019)");
   script_name("Ubuntu Update for libebml USN-4073-1");
   script_category(ACT_GATHER_INFO);

@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("2019-04-24T11:06:32+0000");
+  script_version("2019-08-09T05:47:28+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-24 11:06:32 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-08-09 05:47:28 +0000 (Fri, 09 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -323,6 +323,40 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
               cpe += ":unknown_edition";
 
             register_and_report_os( os:os_str, cpe:cpe, banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+          } else if( "windows embedded" >< os_str_lo ) {
+
+            cpe = "cpe:/o:microsoft:windows_embedded";
+
+            if( "8.1" >< os_str_lo )
+              cpe += "_8.1:";
+            else if( "7601" >< os_str_lo )
+              cpe += "_7:-:sp1:";
+            else if( "7600" >< os_str_lo )
+              cpe += "_7:-:-:";
+            else
+              cpe += ":-:-:";
+
+            # https://en.wikipedia.org/wiki/Windows_IoT#Embedded_family
+            if( "compact" >< os_str_lo )
+              cpe += "compact";
+            else if( "standard" >< os_str_lo )
+              cpe += "standard";
+            else if( "enterprise" >< os_str_lo )
+              cpe += "enterprise";
+            else if( "server" >< os_str_lo )
+              cpe += "server";
+            else if( "industry" >< os_str_lo )
+              cpe += "industry";
+            else if( "navready" >< os_str_lo )
+              cpe += "navready";
+            else if( "automotive" >< os_str_lo )
+              cpe += "automotive";
+            else if( "handheld" >< os_str_lo )
+              cpe += "handheld";
+            else if( "pro" >< os_str_lo )
+              cpe += "pro";
+
+            register_and_report_os( os:os_str, cpe:cpe, banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows 5.1" >< os_str_lo && "windows 2000 lan manager" >< smb_str_lo ) {
             register_and_report_os( os:"Windows XP", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows 5.0" >< os_str_lo && "windows 2000 lan manager" >< smb_str_lo ) {
@@ -331,12 +365,6 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_xp:-:sp2:x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows xp 5.2" >< smb_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_xp:-:-:x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows embedded" >< os_str_lo ) {
-            if( "embedded 8.1" >< os_str_lo ) {
-              register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_embedded_8.1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-            } else {
-              register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_embedded", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-            }
           } else if( "windows vista" >< os_str_lo && "service pack 1" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista:-:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows vista" >< os_str_lo && "service pack 2" >< os_str_lo ) {

@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-07-29T09:02:04+0000");
-  script_tag(name:"last_modification", value:"2019-07-29 09:02:04 +0000 (Mon, 29 Jul 2019)");
+  script_version("2019-08-07T12:17:53+0000");
+  script_tag(name:"last_modification", value:"2019-08-07 12:17:53 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -964,17 +964,25 @@ if( "Unknown command: " >< uname || "Unknown command or missing feature key" >< 
   system = ssh_cmd( socket:sock, cmd:'version', nosh:TRUE );
   if( ( "Cisco" >< system || "IronPort" >< system ) && system =~ 'Security( Virtual)? Management' )
   {
-
-    set_kb_item( name:"cisco_csm/system", value:system );
-    set_kb_item( name:"cisco_csm/installed", value:TRUE );
+    set_kb_item( name:"cisco_csm/detected", value:TRUE );
+    set_kb_item( name:"cisco_csm/ssh-login/detected", value:TRUE );
+    set_kb_item( name:"cisco_csm/ssh-login/port", value:port );
+    set_kb_item( name:"cisco_csm/ssh-login/" + port + "/concluded", value:system );
 
     set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
-    version = eregmatch( pattern:'Version: ([^\r\n]+)', string:system );
-    if( ! isnull( version[1] ) ) set_kb_item( name:"cisco_csm/version/ssh", value:version[1] );
+    version = "unknown";
+    model   = "unknown";
+    vers = eregmatch( pattern:'Version: ([^\r\n]+)', string:system );
+    if( ! isnull( vers[1] ) )
+      version = vers[1];
 
-    model = eregmatch( pattern:'Model: ([^\r\n]+)', string:system );
-    if( ! isnull( model[1] ) ) set_kb_item( name:"cisco_csm/model/ssh", value:model[1] );
+    mod = eregmatch( pattern:'Model: ([^\r\n]+)', string:system );
+    if( ! isnull( mod[1] ) )
+      model = mod[1];
+
+    set_kb_item( name:"cisco_csm/ssh-login/" + port + "/version", value:version );
+    set_kb_item( name:"cisco_csm/ssh-login/" + port + "/model", value:model );
 
     exit( 0 );
   }

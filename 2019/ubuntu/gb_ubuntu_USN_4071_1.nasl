@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844106");
-  script_version("2019-07-25T11:54:35+0000");
+  script_version("2019-08-08T06:47:52+0000");
   script_cve_id("CVE-2019-13636", "CVE-2019-13638");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-25 11:54:35 +0000 (Thu, 25 Jul 2019)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-08-08 06:47:52 +0000 (Thu, 08 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-25 02:01:39 +0000 (Thu, 25 Jul 2019)");
   script_name("Ubuntu Update for patch USN-4071-1");
   script_category(ACT_GATHER_INFO);

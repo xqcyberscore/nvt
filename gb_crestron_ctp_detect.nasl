@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141174");
-  script_version("2019-08-06T04:52:49+0000");
-  script_tag(name:"last_modification", value:"2019-08-06 04:52:49 +0000 (Tue, 06 Aug 2019)");
+  script_version("2019-08-07T09:13:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-07 09:13:21 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-06-13 08:39:58 +0700 (Wed, 13 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,6 +57,7 @@ if(description)
 include("cpe.inc");
 include("host_details.inc");
 include("telnet_func.inc");
+include("misc_func.inc");
 
 port = telnet_get_port(default: 41795);
 
@@ -79,31 +80,44 @@ set_kb_item(name: "crestron_device/detected", value: TRUE);
 
 send(socket: soc, data: raw_string(0x0d, "showhw", 0x0d));
 recv = recv(socket: soc, length: 512);
+if (recv)
+  concl = recv;
 
 mod = eregmatch(pattern: 'Processor Type:([^\r]+)', string: recv);
 if (!isnull(mod[1])) {
   model = ereg_replace(pattern: '(\t| )', string: mod[1], replace: '');
-  app_name = "Crestron " + model + " Firmware";
+  os_name = "Crestron " + model + " Firmware";
+  cpe_model = tolower(model);
 } else {
-  app_name = "Crestron Unknown Model Firmware";
+  os_name = "Crestron Unknown Model Firmware";
+  cpe_model = "unknown_model";
 }
 
 send(socket: soc, data: raw_string(0x0d, "ver", 0x0d));
 recv = recv(socket: soc, length: 512);
+if (recv)
+  concl += '\n' + recv;
+
 close(soc);
 
 vers = eregmatch(pattern: "\[v([0-9.]+)", string: recv);
 if (!isnull(vers[1]))
   version = vers[1];
 
-cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:crestron:" + tolower(model) + "_firmware:");
-if (!cpe)
-  cpe = "cpe:/o:crestron:" + tolower(model) + "_firmware";
+register_service(port: port, proto: "crestron-ctp");
 
-register_product(cpe: cpe, location: install, port: port, service: "telnet");
+os_cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:crestron:" + cpe_model + "_firmware:");
+if (!os_cpe)
+  os_cpe = "cpe:/o:crestron:" + cpe_model + "_firmware";
 
-log_message(data: build_detection_report(app: app_name, version: version, install: install,
-                                         cpe: cpe),
+hw_cpe = "cpe:/h:crestron:" + cpe_model;
+
+register_and_report_os(os: os_name, cpe: os_cpe, desc: "Crestron Device Detection (CTP)", runs_key: "unixoide");
+register_product(cpe: os_cpe, location: install, port: port, service: "crestron-ctp");
+register_product(cpe: hw_cpe, location: install, port: port, service: "crestron-ctp");
+
+log_message(data: build_detection_report(app: os_name, version: version, install: install,
+                                         cpe: os_cpe, concluded: concl),
             port: port);
 
 exit(0);

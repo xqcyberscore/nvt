@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844113");
-  script_version("2019-07-30T06:12:43+0000");
+  script_version("2019-08-08T09:10:13+0000");
   script_cve_id("CVE-2019-3461");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-30 06:12:43 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-08-08 09:10:13 +0000 (Thu, 08 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-30 02:00:42 +0000 (Tue, 30 Jul 2019)");
   script_name("Ubuntu Update for tmpreaper USN-4077-1");
   script_category(ACT_GATHER_INFO);
@@ -35,7 +35,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=(UBUNTU18\.04 LTS|UBUNTU16\.04 LTS)");
 
   script_xref(name:"USN", value:"4077-1");
-  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2019-July/005039.html");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-4077-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'tmpreaper'
   package(s) announced via the USN-4077-1 advisory.");

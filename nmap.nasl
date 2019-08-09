@@ -52,8 +52,8 @@ if( OPENVAS_VERSION && version_is_greater_equal( version:OPENVAS_VERSION, test_v
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("2019-05-07T10:42:32+0000");
-  script_tag(name:"last_modification", value:"2019-05-07 10:42:32 +0000 (Tue, 07 May 2019)");
+  script_version("2019-08-07T06:55:45+0000");
+  script_tag(name:"last_modification", value:"2019-08-07 06:55:45 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,6 +65,8 @@ if(description)
   script_mandatory_keys("Tools/Present/nmap");
 
   script_xref(name:"URL", value:"https://nmap.org/");
+  script_xref(name:"URL", value:"https://nmap.org/book/performance-timing-templates.html");
+  script_xref(name:"URL", value:"https://nmap.org/book/man-performance.html");
 
   script_add_preference(name:"TCP scanning technique :", type:"radio", value:"connect();SYN scan;FIN scan;Xmas Tree scan;SYN FIN scan;FIN SYN scan;Null scan;No TCP scan");
 
@@ -95,6 +97,8 @@ if(description)
   script_add_preference(name:"Data length : ", type:"entry", value:"");
   script_add_preference(name:"Run dangerous port scans even if safe checks are set", type:"checkbox", value:"no");
   script_add_preference(name:"Log nmap output", type:"checkbox", value:"no");
+  script_add_preference(name:"Defeat RST ratelimit", type:"checkbox", value:"no");
+  script_add_preference(name:"Defeat ICMP ratelimit", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This plugin runs nmap to find open ports.");
 
@@ -215,6 +219,10 @@ if( ! res ) {
         argv[i++] = "SYNFIN";
       }
     }
+
+    p = script_get_preference( "Defeat RST ratelimit" );
+    if( "yes" >< p )
+      argv[i++] = "--defeat-rst-ratelimit";
   }
 
   # UDP & RPC scans or fingerprinting may kill a buggy IP stack
@@ -235,8 +243,13 @@ if( ! res ) {
 
   if( port_range ) { # Null for command line tests only
 
-    if( "U:" >< port_range )
+    if( "U:" >< port_range ) {
       argv[i++] = "-sU";
+
+      p = script_get_preference( "Defeat ICMP ratelimit" );
+      if( "yes" >< p )
+        argv[i++] = "--defeat-icmp-ratelimit";
+    }
 
     argv[i++] = "-p";
     argv[i++] = port_range;

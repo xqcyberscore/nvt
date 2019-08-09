@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844110");
-  script_version("2019-08-02T07:02:11+0000");
+  script_version("2019-08-09T06:43:03+0000");
   script_cve_id("CVE-2019-13917");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-08-02 07:02:11 +0000 (Fri, 02 Aug 2019)");
+  script_tag(name:"last_modification", value:"2019-08-09 06:43:03 +0000 (Fri, 09 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-26 02:00:49 +0000 (Fri, 26 Jul 2019)");
   script_name("Ubuntu Update for exim4 USN-4075-1");
   script_category(ACT_GATHER_INFO);
@@ -40,12 +40,11 @@ if(description)
   script_tag(name:"summary", value:"The remote host is missing an update for the 'exim4'
   package(s) announced via the USN-4075-1 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Jeremy Harris discovered that Exim incorrectly
-handled sort expansions. In environments where sort expansions are used, a remote
-attacker could possibly use this issue to execute arbitrary code as root.");
+  script_tag(name:"insight", value:"Jeremy Harris discovered that Exim incorrectly handled sort expansions. In
+environments where sort expansions are used, a remote attacker could
+possibly use this issue to execute arbitrary code as root.");
 
   script_tag(name:"affected", value:"'exim4' package(s) on Ubuntu 19.04, Ubuntu 18.04 LTS, Ubuntu 16.04 LTS.");
 
@@ -120,4 +119,5 @@ if(release == "UBUNTU16.04 LTS") {
   }
   exit(0);
 }
+
 exit(0);

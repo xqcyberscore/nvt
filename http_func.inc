@@ -2328,3 +2328,37 @@ function http_set_is_marked_embedded( port ) {
   _http_is_embedded_array[port] = TRUE;
   return TRUE;
 }
+
+# @brief Extracts the body of a full (including headers) HTTP response.
+#
+# @param data The HTTP response to extract the body from.
+#
+# @return The extracted body of the HTTP response, the whole data if it has
+#         missed HTTP headers or NULL if no data was passed.
+#
+function http_extract_body_from_response( data ) {
+
+  local_var data;
+  local_var pattern, split;
+
+  if( ! data ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_extract_body_from_response" );
+    return NULL;
+  }
+
+  if( data !~ "^HTTP/1\.[01] [0-9]{3}" ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_extract_body_from_response(): Invalid data not containing HTTP headers passed." );
+    return data;
+  }
+
+  pattern = '\r\n\r\n#######header#######body#######split#######';
+  data = str_replace( string:data, find:'\r\n\r\n', replace:pattern, count:1 );
+  if( pattern >!< data )
+    return data;
+
+  split = split( data, sep:pattern, keep:FALSE );
+  if( max_index( split ) != 2 )
+    return data;
+
+  return split[1];
+}

@@ -140,6 +140,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.142010", # gb_rockwell_powermonitor_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142684", # gsf/gb_crestron_airmedia_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141365", # gb_crestron_cip_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.141174", # gb_crestron_ctp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.114075", # gb_beward_ip_cameras_detect_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.114095", # gb_zavio_ip_cameras_detect.nasl
     "1.3.6.1.4.1.25623.1.0.114097", # gb_tp_link_ip_cameras_detect.nasl
@@ -263,6 +264,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.142010", # gb_rockwell_powermonitor_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142684", # gsf/gb_crestron_airmedia_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141365", # gb_crestron_cip_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.141174", # gb_crestron_ctp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.114075", # gb_beward_ip_cameras_detect_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.114095", # gb_zavio_ip_cameras_detect.nasl
     "1.3.6.1.4.1.25623.1.0.114097", # gb_tp_link_ip_cameras_detect.nasl

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876498");
-  script_version("2019-06-20T06:01:12+0000");
+  script_version("2019-08-09T06:43:03+0000");
   script_cve_id("CVE-2019-10152");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-20 06:01:12 +0000 (Thu, 20 Jun 2019)");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-08-09 06:43:03 +0000 (Fri, 09 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-15 02:09:58 +0000 (Sat, 15 Jun 2019)");
   script_name("Fedora Update for podman FEDORA-2019-b66d704846");
   script_category(ACT_GATHER_INFO);

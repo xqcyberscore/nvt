@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csm_default_web_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Cisco Content Security Management Appliance Web Interface Default Credentials
 #
@@ -25,25 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:cisco:content_security_management_appliance";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105435");
-  script_version("$Revision: 13659 $");
+  script_version("2019-08-07T12:17:53+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cisco Content Security Management Appliance Web Interface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-07 12:17:53 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-11-06 14:06:55 +0100 (Fri, 06 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("gb_cisco_ironport_csma_detect.nasl");
-  script_require_ports("Services/www", 443);
-  script_mandatory_keys("cisco_csm/http/cookie", "cisco_csm/http/port");
+  script_dependencies("gb_cisco_csma_version.nasl");
+  script_mandatory_keys("cisco_csm/http/cookie", "cisco_csm/http/detected");
 
-  script_tag(name:"summary", value:'The remote Cisco Content Security Management Appliance Web Interface is prone to a default account authentication bypass vulnerability.');
+  script_tag(name:"summary", value:'The remote Cisco Content Security Management Appliance Web Interface
+  is prone to a default account authentication bypass vulnerability.');
 
-  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to
+  sensitive information or modify system configuration.');
 
   script_tag(name:"vuldetect", value:'Try to login with default credentials.');
 
@@ -59,9 +61,16 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-if( ! port = get_kb_item( "cisco_csm/http/port" ) ) exit( 0 );
-if( ! cookie = get_kb_item( "cisco_csm/http/cookie" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
+  exit( 0 );
+
+if( ! get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( ! cookie = get_kb_item( "cisco_csm/http/" + port + "/cookie" ) )
+  exit( 0 );
 
 postdata = 'action=Login&referrer=&screen=login&username=admin&password=ironport';
 len = strlen( postdata );
@@ -97,7 +106,7 @@ if( isnull( ac[1] ) ) exit( 0 );
 
 cookie = ac[1] + cookie;
 
-if( http_vuln_check( port:port, url:'/services/system_status', pattern:"action=Logout", extra_check:make_list("System Status","Logged in as"), cookie:cookie ) ) {
+if( http_vuln_check( port:port, url:'/services/system_status', pattern:"action=Logout", extra_check:make_list("System Status", "Logged in as"), cookie:cookie ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csma_cisco-sa-20170607-esa.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Content Security Management Appliance Message Tracking Cross-Site Scripting Vulnerability
 #
@@ -25,7 +24,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:cisco:content_security_management_appliance";
+CPE = "cpe:/a:cisco:content_security_management_appliance";
 
 if (description)
 {
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6661");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12106 $");
+  script_version("2019-08-07T12:17:53+0000");
 
   script_name("Cisco Content Security Management Appliance Message Tracking Cross-Site Scripting Vulnerability");
 
@@ -44,26 +43,26 @@ if (description)
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
   script_tag(name:"summary", value:"A vulnerability in the web-based management interface of Cisco Content
-Security Management Appliance (SMA) could allow an unauthenticated, remote attacker to conduct a cross-site
-scripting (XSS) attack against a user of the web-based management interface of an affected device.");
+  Security Management Appliance (SMA) could allow an unauthenticated, remote attacker to conduct a cross-site
+  scripting (XSS) attack against a user of the web-based management interface of an affected device.");
 
   script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of user-supplied input
-by the web-based management interface of an affected device. An attacker could exploit this vulnerability by
-persuading a user of the interface to click a crafted link.");
+  by the web-based management interface of an affected device. An attacker could exploit this vulnerability by
+  persuading a user of the interface to click a crafted link.");
 
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary script
-code in the context of the interface or allow the attacker to access sensitive browser-based information.");
+  code in the context of the interface or allow the attacker to access sensitive browser-based information.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-07 12:17:53 +0000 (Wed, 07 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-06-08 11:00:35 +0700 (Thu, 08 Jun 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_csma_version.nasl");
-  script_mandatory_keys("cisco_csm/installed");
+  script_mandatory_keys("cisco_csm/detected");
 
   exit(0);
 }
@@ -71,7 +70,7 @@ code in the context of the interface or allow the attacker to access sensitive b
 include("host_details.inc");
 include("version_func.inc");
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, nofork: TRUE))
   exit(0);
 
 if (version == "10.1.0-049") {
