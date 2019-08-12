@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_detect.nasl 13882 2019-02-26 13:07:41Z cfischer $
 #
 # Greenbone Security Assistant (GSA) Detection
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103841");
-  script_version("$Revision: 13882 $");
+  script_version("2019-08-09T09:15:19+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:07:41 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-09 09:15:19 +0000 (Fri, 09 Aug 2019)");
   script_tag(name:"creation_date", value:"2013-11-29 14:30:41 +0100 (Fri, 29 Nov 2013)");
   script_name("Greenbone Security Assistant (GSA) Detection");
   script_category(ACT_GATHER_INFO);
@@ -59,7 +58,7 @@ port = get_http_port( default:9392 );
 url = "/login/login.html";
 buf = http_get_cache( item:url, port:port );
 
-if( buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
+if( buf && buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
 
   install = "/";
   vers    = "unknown";
@@ -68,6 +67,7 @@ if( buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
     vers = version[1];
 
   set_kb_item( name:"greenbone_security_assistant/detected", value:TRUE );
+  set_kb_item( name:"greenbone_security_assistant/" + port + "/omp", value:TRUE ); # nb: for gb_gsa_admin_login.nasl to be able to choose the auth endpoint
   set_kb_item( name:"greenbone_security_assistant/" + port + "/version", value:vers );
   set_kb_item( name:"openvas_gvm/framework_component/detected", value:TRUE );
 
@@ -92,12 +92,14 @@ if( buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
 url = "/login";
 buf = http_get_cache( item:url, port:port );
 
-if( buf =~ "^HTTP/1\.[01] 200" && "<title>Greenbone Security Assistant</title>" >< buf ) {
+if( buf && buf =~ "^HTTP/1\.[01] 200" && ( "<title>Greenbone Security Assistant</title>" >< buf ||
+                                           "<title>Greenbone Security Manager</title>" >< buf ) ) {
 
   install = "/";
   vers    = "unknown";
 
   set_kb_item( name:"greenbone_security_assistant/detected", value:TRUE );
+  set_kb_item( name:"greenbone_security_assistant/" + port + "/gmp", value:TRUE ); # nb: for gb_gsa_admin_login.nasl to be able to choose the auth endpoint
   set_kb_item( name:"greenbone_security_assistant/" + port + "/version", value:vers );
   set_kb_item( name:"openvas_gvm/framework_component/detected", value:TRUE );
 

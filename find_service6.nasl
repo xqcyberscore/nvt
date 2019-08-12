@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service6.nasl 14246 2019-03-18 07:20:13Z cfischer $
 #
 # Service Detection with 'BINARY' Request
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108204");
-  script_version("$Revision: 14246 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 08:20:13 +0100 (Mon, 18 Mar 2019) $");
+  script_version("2019-08-08T09:26:51+0000");
+  script_tag(name:"last_modification", value:"2019-08-08 09:26:51 +0000 (Thu, 08 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -117,6 +116,17 @@ if( r =~ '^SSH-2.0-libssh[_-][0-9.]+[^\\r\\n]+$' ||
 if( rhexstr == "0011496e76616c696420636f6d6d616e640a000000" ) {
   register_service( port:port, proto:"apcupsd", message:"A apcupsd service seems to be running on this port." );
   log_message( port:port, data:"A apcupsd service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  01 39 39 39 39 46 46 31 42 03                      .9999FF1B.
+#
+# nb: See find_service1.nasl as well
+#
+# nb: The last digit is the EXT char which defaults to 0x03 but can be changed on some devices according to the vendor documentation.
+if( rhexstr =~ "013939393946463142.." ) {
+  register_service( port:port, proto:"automated-tank-gauge", message:"A Automated Tank Ggauge (ATG) service seems to be running on this port." );
+  log_message( port:port, data:"A Automated Tank Gauge (ATG) service seems to be running on this port." );
   exit( 0 );
 }
 

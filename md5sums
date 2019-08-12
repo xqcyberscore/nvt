@@ -85,7 +85,7 @@ ce250226f7637da58088fc6c341e6ae9  famd_detect.nasl
 621c82afe9ee5776fa10af7aaba559ed  gb_electrasoft_32bit_ftp_detect.nasl
 d0650be849e3082f52141de38574444a  gb_ibm_bigfix_remote_control_detect.nasl
 db21c9bf43014308d1094de2f4839bbd  secpod_ghostscript_detect_win.nasl
-f5b48979e94b56550c18a3e6acee7661  find_service1.nasl
+1d36f56dcada00276d896b02c0d6a730  find_service1.nasl
 2c23af52b56ec572ab6ff75ad77c0f85  gb_phpnagios_detect.nasl
 c8e60b99eb653c13278fcc59e660686b  gb_coremailxt_detect.nasl
 f89049dd8ccf78418ce6f481a7a49362  secpod_postgresql_detect_win.nasl
@@ -7925,7 +7925,7 @@ edc011e0248c251bfba8eb2bf2bcd5b6  gb_avm_fritz_wlanrepeater_detect_upnp.nasl
 0eca25b05af4b7fd86d3c2de46d08520  secpod_ms_lync_server_detect_win.nasl
 c1725740488aa26baf62a3b4c6ec1164  gb_setseed_detect.nasl
 2dd1584630d486b169cdd642c126d0e2  gb_snom_http_detect.nasl
-5b00ca33aac26d80724a12418bd0fd68  find_service6.nasl
+78e1acc46b565d6b4c1fa2ef79e87813  find_service6.nasl
 84b2c7b4ade461c4913f6f353886c343  gb_lunascape_detect.nasl
 8839b299415d7a2a415c5ad922671698  gb_bournal_detect.nasl
 8d8fffdaf51a5e71e2cdcf8e07fa15bd  gb_adobe_media_encoder_detect_win.nasl
@@ -7946,7 +7946,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 758b4dc1a2c186e45ba79aac6475197b  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-bdf4f5f80c0ae5980945df74b1c28ba6  plugin_feed_info.inc
+c6d01c5277632570977a415f9bd5334e  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -14896,7 +14896,7 @@ dcf4f9042198bcd342a0dbcdac4bd09c  2018/debian/deb_4148.nasl
 0e041c6ca66502bb9e6c1b3f67e56230  2018/debian/deb_dla_1089.nasl
 44cba9367047df840dcbbd67b0f28165  2018/debian/deb_dla_1257.nasl
 152cf105ab5dcbf259b4d9691e692d14  2018/debian/deb_4285.nasl
-a76e7bb60f84ccb2bf050395f61e963e  2018/debian/deb_dla_1587.nasl
+2b8f13e65ba39ad60437f2871d4ba69b  2018/debian/deb_dla_1587.nasl
 ef84784c94539495f02b455bd64beb07  2018/debian/deb_4315.nasl
 48bd4d7b36b00a4fbe5341a7d7152d2d  2018/debian/deb_dla_1286.nasl
 b6e14f98299d2a2aeba7b5c916ea4b85  2018/debian/deb_4254.nasl
@@ -15940,7 +15940,7 @@ add8200b7e2fdb58eebedc80734eca51  2018/ubuntu/gb_ubuntu_USN_3474_1.nasl
 f35a69871fa3d43410eaf943426e180d  2018/ubuntu/gb_ubuntu_USN_3824_1.nasl
 86407a568ee1bcf17adfcce24b79d61d  2018/ubuntu/gb_ubuntu_USN_3732_1.nasl
 c68cb77d4f83cfaeea4946e8c745929a  2018/ubuntu/gb_ubuntu_USN_3761_2.nasl
-6e229c83003d8e042cba38a27e1a03d9  2018/ubuntu/gb_ubuntu_USN_3843_1.nasl
+ced6ebc2bcf65d2a36aa0bf68ac83343  2018/ubuntu/gb_ubuntu_USN_3843_1.nasl
 0b98bdcf100be318c0f7648f3d0533c4  2018/ubuntu/gb_ubuntu_USN_3534_1.nasl
 05076fe1b6d8f1112663ed4d8e23d839  2018/ubuntu/gb_ubuntu_USN_3596_1.nasl
 d9bddb9ae8640701f414a31537b3c914  2018/ubuntu/gb_ubuntu_USN_3696_1.nasl
@@ -20840,7 +20840,7 @@ d329bddef5ef6a4890a63d79d2f2948f  gb_netwave_ip_cam_detect.nasl
 74664d92fa6284a1e8af328ec99ed391  gb_apache_activemq_artemis_detect.nasl
 45ee4f26b5d9a0029a59ef34acb62f59  gb_openssh_remote_detect.nasl
 2205094e3da89219460090e083fa4d86  gb_oracle_ats_detect_win.nasl
-026dfaa1dd903f5a7113d744c5e74cb2  gb_advantech_webaccess_hmi_designer_detect_win.nasl
+d702161df1b24cf8d1c22dc35a4a878e  gb_advantech_webaccess_hmi_designer_detect_win.nasl
 4709fbb3f07a8caa833d4d8ee98bb3e6  gb_ibm_endpoint_manager_for_remote_control_detect.nasl
 5378467e89384c89fb20c6301762e2cf  gb_PhreeBooks_detect.nasl
 79e3dbdec029c1658efcbc81c4aa1641  gb_hpe_sizer_microsoft_skype_business_server_detect.nasl
@@ -21057,7 +21057,7 @@ f2a443ed57b073400f652bc2ec20bdef  toolcheck.nasl
 19ac6f5da18a7bdb7dde35cc061e67b4  gb_winftp_serv_detect.nasl
 5335ea2a3b73ba34c520a72ab1b52835  gb_splunk_light_detect.nasl
 b7cb2c8bc17879a0d83e3a7560df82eb  gb_cisco_asdm_detect.nasl
-019d876ac91d27dc9130a2a13117a17b  unknown_services.nasl
+91a28b9e47ecff20bf75ea72d5a09fd4  unknown_services.nasl
 2dc223656065af90c20d684acbcb8825  gb_freeipa_detect.nasl
 b7f5bdbae3336ecfa2d34b81231d48cc  gb_justsystems_ichitaro_prdts_detect.nasl
 d6647b6062dadf46944bb2640c9593f6  gb_adobe_illustrator_detect_win.nasl
@@ -21073,7 +21073,7 @@ f9a6f93d0693ac898f3255ec3f2b10e8  gb_teamviewer_detect_macosx.nasl
 26dbeb78cadbe86e93b191c947d2feb0  gb_symantec_web_gateway_detect.nasl
 083527c250565f4968e9074f540d69e0  gb_bitvise_ssh_client_detect.nasl
 2a64fb4deeeafa66438607661665b378  gb_oracle_ebusiness_suite_detect.nasl
-e2c4305b6a1a0f931b024dd7d61b4e38  gb_gsa_detect.nasl
+f2f317b754e000599719a9c486b39c96  gb_gsa_detect.nasl
 4d665ab81b48c71745ad738e62359b17  gb_mysql_mariadb_os_detection.nasl
 c6813472edd3da23db2e0a9984c4d731  gb_powershell_core_detect_lin.nasl
 0e63ab7c435a71c7a73f95a34c90ebc3  pdns_version.nasl
@@ -25862,7 +25862,7 @@ d259bdbbd99ba95357beb105edea99f3  2015/ELSA-2010-0198.nasl
 732e20ebd0ade538576d7442074aca4d  2015/gb_CESA-2015_0983_tomcat_centos7.nasl
 57e01cf9c92a43a3bf6f2cef9f111a9b  2015/gb_ubuntu_USN_2667_1.nasl
 329735bc5909e4985e81751a6cb49904  2015/gb_RHSA-2015_1930-01_ntp.nasl
-8deaa3ec5a85bb631cb3bb5999c66fc5  2015/gb_gsa_admin_login.nasl
+83b02a30a6fcbb2e3c5b26e0e1680da8  2015/gb_gsa_admin_login.nasl
 fd43f9b0e217f025fac7192419999b00  2015/ELSA-2013-1409.nasl
 45f1fba608071bafb82768822c161a55  2015/gb_fedora_2015_13529_php-guzzle-Guzzle_fc22.nasl
 f8e559017358ab78cad91029b7ea75f8  2015/glsa-201406-06.nasl
@@ -42887,7 +42887,7 @@ ddee9dd86646b9871af446411a66e64c  gb_planex_csw50hd_camera_remote_detect.nasl
 766c95945429a8ca3559af1264350629  gb_rockwell_bootp_dhcp_tool_detect_win.nasl
 3e63b3f6e5d5d6c1c82a55f5f00ca1d9  sw_rockmongo_detect.nasl
 b4446450a4cfaa5f89b46777d223335c  gb_xovis_pc_sensor_detect.nasl
-328bccd6b32f986b2910a1c27e4a38de  http_func.inc
+84fa68a63c46d74182c063fbdc280b3a  http_func.inc
 5dc627a2adea3c3f8d63e5b550cd821e  xerox_printers.inc
 0bee3fe9ca38bf0c31aefa03638cc15d  gb_interlogix_truvision_detect.nasl
 c23333c14cb96e6576a8cbd14092b73f  gb_evalsmsi_detect.nasl
@@ -52091,6 +52091,7 @@ caab1c1837ebffa7f575eba97c4083bb  2019/moodle/gb_moodle_auth_bypass_vuln_mar19_0
 257d80ba53b2f3297b00944b900827af  2019/redis/gb_redis_mult_vuln_mar19.nasl
 b21a892672d3b7e8472f07b77fac0388  2019/gb_mult_ip_cameras_config_download_vuln.nasl
 bcf7fce1b28d35e14157a893f4baeb7b  2019/teampass/gb_teampass_info_disc_vuln.nasl
+40253933af74b33dcb89ad02b03754ed  2019/teampass/gb_teampass_xss_vuln.nasl
 3f0a6df51134181e0782e2b3c18568cf  2019/nuuo/gb_nuuo_nvr_rce_vuln.nasl
 e4439d393121fc8973d922dcd8a8491a  2019/coship/gb_coship_routers_pw_reset_vuln.nasl
 3935895d4cdb283f161d4e265432b6ee  2019/phpmyadmin/gb_phpmyadmin_PMASA-2019-2_lin.nasl
@@ -52149,6 +52150,8 @@ b3884082a4087b994b60feab618b688f  2019/openxchange/gb_open_xchange_appsuite_5640
 06ed502cd3c0ea2e79db6e616ec2504d  2019/openssl/gb_openssl_secadv_20190226_win.nasl
 788d3dd09b861cee69ef91bf5e8f2233  2019/openssl/gb_openssl_secadv_20190226_lin.nasl
 1843b0c5ac9c529f8c5e783f0e366f57  2019/openssl/gb_openssl_secadv_20190306_win.nasl
+f2876b8b26422999497ed25db81cb45c  2019/mongodb/gb_mongodb_SERVER-38984_lin.nasl
+ead7aa2e0b625ff507a0490efe402d39  2019/mongodb/gb_mongodb_SERVER-38984_win.nasl
 0944441749e93bfedfe653e01f373b9e  2019/wireshark/gb_wireshark_wnpa-sec-2019-01_win.nasl
 036b4fddc5716d83dd60b8735458a7f6  2019/wireshark/gb_wireshark_dos_vuln_jul19_win.nasl
 73534f9e9425aeced910e80c7f97929b  2019/wireshark/gb_wireshark_wnpa-sec-2019-05_win.nasl

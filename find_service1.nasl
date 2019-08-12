@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-06-21T04:23:37+0000");
-  script_tag(name:"last_modification", value:"2019-06-21 04:23:37 +0000 (Fri, 21 Jun 2019)");
+  script_version("2019-08-08T09:26:51+0000");
+  script_tag(name:"last_modification", value:"2019-08-08 09:26:51 +0000 (Thu, 08 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -971,6 +971,33 @@ if( port == 514 && "getnameinfo: Temporary failure in name resolution" >< r ) {
 if( rhexstr =~ "^01010018.{16}00000000.{64}0{32}.{64}$" ) {
   register_service( port:port, proto:"nping-echo", message:"An nping-echo server seems to be running on this port." );
   log_message( port:port, data:"An nping-echo server seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  39 39 46 46 31 42 03 01 39 39 39 39 46 46 31 42    99FF1B..9999FF1B
+# 0x10:  03 01 39 39 39 39 46 46 31 42 03 01 39 39 39 39    ..9999FF1B..9999
+# 0x20:  46 46 31 42 03 01 39 39 39 39 46 46 31 42 03 01    FF1B..9999FF1B..
+# 0x30:  39 39 39 39 46 46 31 42 03 01 39 39 39 39 46 46    9999FF1B..9999FF
+# 0x40:  31 42 03 01 39 39 39 39 46 46 31 42 03 01 39 39    1B..9999FF1B..99
+# 0x50:  39 39 46 46 31 42 03 01 39 39 39 39 46 46 31 42    99FF1B..9999FF1B
+# 0x60:  03
+#
+# or:
+#
+# 0x00:  01 39 39 39 39 46 46 31 42 03 01 39 39 39 39 46    .9999FF1B..9999F
+# 0x10:  46 31 42 03 01 39 39 39 39 46 46 31 42 03 01 39    F1B..9999FF1B..9
+# 0x20:  39 39 39 46 46 31 42 03 01 39 39 39 39 46 46 31    999FF1B..9999FF1
+# 0x30:  42 03 01 39 39 39 39 46 46 31 42 03 01 39 39 39    B..9999FF1B..999
+# 0x40:  39 46 46 31 42 03 01 39 39 39 39 46 46 31 42 03    9FF1B..9999FF1B.
+# 0x50:  01 39 39 39 39 46 46 31 42 03 01 39 39 39 39 46    .9999FF1B..9999F
+# 0x60:  46 31 42 03                                        F1B.
+#
+# nb: See find_service6.nasl as well
+#
+# nb: The last digit is the EXT char which defaults to 0x03 but can be changed on some devices according to the vendor documentation.
+if( rhexstr =~ "013939393946463142.." ) {
+  register_service( port:port, proto:"automated-tank-gauge", message:"A Automated Tank Gauge (ATG) service seems to be running on this port." );
+  log_message( port:port, data:"A Automated Tank Gauge (ATG) service seems to be running on this port." );
   exit( 0 );
 }
 

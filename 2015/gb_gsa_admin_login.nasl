@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 13944 2019-02-28 17:04:29Z cfischer $
 #
 # Greenbone Security Assistant (GSA) Default Credentials
 #
@@ -30,12 +29,12 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 13944 $");
+  script_version("2019-08-09T09:15:19+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("Greenbone Security Assistant (GSA) Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 18:04:29 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-09 09:15:19 +0000 (Fri, 09 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
+  script_name("Greenbone Security Assistant (GSA) Default Credentials");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
@@ -65,6 +64,7 @@ if(description)
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) )
   exit( 0 );
@@ -75,7 +75,13 @@ if( ! dir  = get_app_location( cpe:CPE, port:port ) )
 if( dir == "/" )
   dir = "";
 
-url = dir + "/omp";
+if( get_kb_item( "greenbone_security_assistant/" + port + "/gmp" ) ) {
+  url = dir + "/gmp";
+  is_omp = FALSE;
+} else {
+  url = dir + "/omp";
+  is_omp = TRUE;
+}
 
 creds = make_array( "admin", "admin", # OpenVAS Virtual Appliance
                     "sadmin", "changeme", # Docker image from https://github.com/falegk/openvas_pg#usage
@@ -85,9 +91,7 @@ creds = make_array( "admin", "admin", # OpenVAS Virtual Appliance
                     "gmp", "gmp",
                     "omp", "omp" );
 
-report    = 'It was possible to login using the following credentials (username:password):\n';
-useragent = http_get_user_agent();
-host      = http_host_name( port:port );
+report = 'It was possible to login using the following credentials (username:password):\n';
 
 foreach username( keys( creds ) ) {
 
@@ -99,51 +103,70 @@ foreach username( keys( creds ) ) {
               'Content-Disposition: form-data; name="cmd"\r\n' +
               '\r\n' +
               'login\r\n' +
-              '-----------------------------' + bound + '\r\n' +
-              'Content-Disposition: form-data; name="text"\r\n' +
-              '\r\n' +
-              '/omp?r=1\r\n' +
-              '-----------------------------' + bound + '\r\n' +
-              'Content-Disposition: form-data; name="login"\r\n' +
-              '\r\n' +
-              username + '\r\n' +
-              '-----------------------------' + bound + '\r\n' +
-              'Content-Disposition: form-data; name="password"\r\n' +
-              '\r\n' +
-              password + '\r\n' +
-              '-----------------------------' + bound + '--\r\n';
+              '-----------------------------' + bound + '\r\n';
 
-  len = strlen( post_data );
+  if( is_omp ) {
+    post_data += 'Content-Disposition: form-data; name="text"\r\n' +
+                 '\r\n' +
+                 '/omp?r=1\r\n' +
+                 '-----------------------------' + bound + '\r\n';
+  }
 
-  req = 'POST ' + url + ' HTTP/1.1\r\n' +
-        'Host: ' + host + '\r\n' +
-        'User-Agent: ' + useragent + '\r\n' +
-        'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
-        'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
-        'Accept-Encoding: identity\r\n' +
-        'Referer: http://' + host + '/login/login.html\r\n' +
-        'Connection: close\r\n' +
-        'Content-Type: multipart/form-data; boundary=---------------------------' + bound + '\r\n' +
-        'Content-Length: ' + len + '\r\n' +
-        '\r\n' +
-        post_data;
+  post_data += 'Content-Disposition: form-data; name="login"\r\n' +
+               '\r\n' +
+               username + '\r\n' +
+               '-----------------------------' + bound + '\r\n' +
+               'Content-Disposition: form-data; name="password"\r\n' +
+               '\r\n' +
+               password + '\r\n' +
+               '-----------------------------' + bound + '--\r\n';
+
+  referer_url = "/login";
+  if( is_omp )
+    referer_url += "/login.html";
+
+  headers = make_array( "Content-Type", "multipart/form-data; boundary=---------------------------" + bound );
+
+  req = http_post_req( port:port, url:url, data:post_data, add_headers:headers, referer_url:referer_url, accept_header:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-  if( ! buf || "HTTP/1.1 303" >!< buf )
+  if( ! buf )
     continue;
 
-  token = eregmatch( pattern:'token=([^\r\n "]+)', string:buf );
-  if( isnull( token[1] ) )
-    continue;
+  if( is_omp ) {
+    if( buf !~ "^HTTP/1\.[01] 303" )
+      continue;
+
+    token = eregmatch( pattern:'token=([^\r\n "]+)', string:buf );
+    if( isnull( token[1] ) )
+      continue;
+
+  } else {
+    if( buf !~ "^HTTP/1\.[01] 200" || buf =~ "Authentication required" )
+      continue;
+
+    # nb: Currently not required but we're verifying it anyway for a maybe later use.
+    token = eregmatch( pattern:'<token>([^<]+)</token>', string:buf );
+    if( isnull( token[1] ) )
+      continue;
+  }
 
   cookie = eregmatch( pattern:'Set-Cookie: ([^\r\n]+)', string:buf );
   if( isnull( cookie[1] ) )
     continue;
 
-  url += '?r=1&token=' + token[1];
+  if( is_omp ) {
+    url += '?r=1&token=' + token[1];
 
-  if( http_vuln_check( port:port, url:url, pattern:">Logged in as<", extra_check:make_list( ">Tasks<", ">Targets<", ">Logout<" ), cookie:cookie[1] ) ) {
-    vuln    = TRUE;
-    report += '\n' + username + ":" + password;
+    if( http_vuln_check( port:port, url:url, pattern:">Logged in as", extra_check:make_list( ">Tasks<", ">Targets<", ">Logout<" ), cookie:cookie[1] ) ) {
+      vuln    = TRUE;
+      report += '\n' + username + ":" + password;
+    }
+  } else {
+    # nb: For /gmp we already know that we have logged in in this case and don't need to do a second request like for /omp
+    if( '<help_response status="200" status_text="OK">' >< buf || buf =~ "<role>.+</role>" || buf =~ "<session>.+</session>" ) {
+      vuln    = TRUE;
+      report += '\n' + username + ":" + password;
+    }
   }
 }
 

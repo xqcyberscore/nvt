@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1587.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1587-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891587");
-  script_version("$Revision: 14270 $");
+  script_version("2019-08-12T06:58:52+0000");
   script_cve_id("CVE-2015-5297");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1587-1] pixman security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-12 06:58:52 +0000 (Mon, 12 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-11-23 00:00:00 +0100 (Fri, 23 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

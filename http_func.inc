@@ -1977,15 +1977,16 @@ function report_vuln_url( port, url, url_only ) {
 #                           accepting the hostname in the request.
 # @param dont_add_xscanner  Can be used in conjunction with the user_agent parameter. If set to TRUE the function
 #                           is not adding a separate X-Scanner: header field to the request.
+# @param referer_url        A URL like "/test.html" from which the Referer like Referer: http://127.0.0.1/test.html is build from.
 #
 # @return A string containing the raw HTTP POST request or NULL if no port parameter was passed or
 #         the data passed in the add_headers parameter isn't an array.
 #
 # @example req = http_post_req( port:port, url:"/", data:data, accept_header:"application/json", add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
 #
-function http_post_req( port, url, data, add_headers, accept_header, accept_encoding, user_agent, host_header_use_ip, dont_add_xscanner ) {
+function http_post_req( port, url, data, add_headers, accept_header, accept_encoding, user_agent, host_header_use_ip, dont_add_xscanner, referer_url ) {
 
-  local_var port, url, data, add_headers, accept_header, accept_encoding, user_agent, host_header_use_ip, dont_add_xscanner;
+  local_var port, url, data, add_headers, accept_header, accept_encoding, user_agent, host_header_use_ip, dont_add_xscanner, referer_url;
   local_var x_header, len, vtstrings, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
@@ -2039,6 +2040,13 @@ function http_post_req( port, url, data, add_headers, accept_header, accept_enco
         'Accept: ' + accept_header + '\r\n' +
         'Accept-Encoding: ' + accept_encoding + '\r\n';
 
+  if( referer_url ) {
+    proto  = "http";
+    if( get_port_transport( port ) > ENCAPS_IP )
+      proto = "https";
+    req += 'Referer: ' + proto + '://' + host + referer_url + '\r\n';
+  }
+
   if( data )
     req += 'Content-Length: ' + len + '\r\n';
 
@@ -2047,7 +2055,7 @@ function http_post_req( port, url, data, add_headers, accept_header, accept_enco
 
   if( ! isnull( add_headers ) ) {
     foreach header( keys( add_headers ) )
-      req += header +': ' + add_headers[header] + '\r\n';
+      req += header + ': ' + add_headers[header] + '\r\n';
   }
 
   req += '\r\n';
@@ -2075,15 +2083,16 @@ function http_post_req( port, url, data, add_headers, accept_header, accept_enco
 #                           accepting the hostname in the request.
 # @param dont_add_xscanner  Can be used in conjunction with the user_agent parameter. If set to TRUE the function
 #                           is not adding a separate X-Scanner: header field to the request.
+# @param referer_url        A URL like "/test.html" from which the Referer like Referer: http://127.0.0.1/test.html is build from.
 #
 # @return A string containing the raw HTTP GET request or NULL if no port parameter was passed or
 #         the data passed in the add_headers parameter isn't an array.
 #
 # @example req = http_get_req( port:port, url:"/", accept_header:"text/html", add_headers:make_array( "Cookie", "PHPSESSID=" + sessid ) );
 #
-function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner ) {
+function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner, referer_url ) {
 
-  local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner;
+  local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner, referer_url;
   local_var x_header, vtstrings, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
@@ -2132,12 +2141,19 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
         'Accept-Language: en\r\n' +
         'Accept-Charset: iso-8859-1,*,utf-8\r\n';
 
+  if( referer_url ) {
+    proto  = "http";
+    if( get_port_transport( port ) > ENCAPS_IP )
+      proto = "https";
+    req += 'Referer: ' + proto + '://' + host + referer_url + '\r\n';
+  }
+
   if( x_header )
     req += x_scanner_string + '\r\n';
 
   if( ! isnull( add_headers ) ) {
     foreach header( keys( add_headers ) )
-      req += header +': ' + add_headers[header] + '\r\n';
+      req += header + ': ' + add_headers[header] + '\r\n';
   }
 
   req += '\r\n';
