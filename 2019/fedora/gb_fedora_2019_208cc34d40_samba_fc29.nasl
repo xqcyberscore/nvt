@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876380");
-  script_version("2019-05-22T11:13:26+0000");
+  script_version("2019-08-14T06:47:48+0000");
   script_cve_id("CVE-2018-16860", "CVE-2019-3870", "CVE-2019-3880", "CVE-2018-14629",
                 "CVE-2018-16841", "CVE-2018-16851", "CVE-2018-16852", "CVE-2018-16853",
                 "CVE-2018-16857");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-22 11:13:26 +0000 (Wed, 22 May 2019)");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-08-14 06:47:48 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-05-19 02:09:46 +0000 (Sun, 19 May 2019)");
   script_name("Fedora Update for samba FEDORA-2019-208cc34d40");
   script_category(ACT_GATHER_INFO);

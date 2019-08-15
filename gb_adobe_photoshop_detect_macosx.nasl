@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_detect_macosx.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Adobe Photoshop Version Detection (Mac OS X)
 #
@@ -30,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802783");
-  script_version("$Revision: 13650 $");
+  script_version("2019-08-14T14:30:23+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-14 14:30:23 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2012-05-16 10:35:58 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Photoshop Version Detection (Mac OS X)");
@@ -92,7 +91,7 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6"))
 
 if(isnull(photoVer) || "does not exist" >< photoVer)
 {
-  foreach ver (make_list("2014", "2014.2.2", "2015", "2015.1", "2015.5", "2015.5.1", "2017", "2017.0.1", "2017.1.0", "2017.1.1", "2018"))
+  foreach ver (make_list("2014", "2014.2.2", "2015", "2015.1", "2015.5", "2015.5.1", "2017", "2017.0.1", "2017.1.0", "2017.1.1", "2018", "2019"))
   {
 
     photoVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +

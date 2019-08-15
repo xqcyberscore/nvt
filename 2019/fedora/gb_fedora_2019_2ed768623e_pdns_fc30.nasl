@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876548");
-  script_version("2019-07-04T09:58:18+0000");
+  script_version("2019-08-13T08:33:23+0000");
   script_cve_id("CVE-2019-10162", "CVE-2019-10163");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-04 09:58:18 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-08-13 08:33:23 +0000 (Tue, 13 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-01 02:11:19 +0000 (Mon, 01 Jul 2019)");
   script_name("Fedora Update for pdns FEDORA-2019-2ed768623e");
   script_category(ACT_GATHER_INFO);

@@ -155,6 +155,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.140454", # gb_checkpoint_fw_version.nasl
     "1.3.6.1.4.1.25623.1.0.103621", # gb_smb_windows_detect.nasl
     "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142731", # gsf/gb_tibco_loglogic_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.114106", # gsf/gb_synetica_datastream_devices_detect_telnet.nasl
@@ -279,6 +280,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.140454", # gb_checkpoint_fw_version.nasl
     "1.3.6.1.4.1.25623.1.0.103621", # gb_smb_windows_detect.nasl
     "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142731", # gsf/gb_tibco_loglogic_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.105271", # gb_citrix_netscaler_version.nasl

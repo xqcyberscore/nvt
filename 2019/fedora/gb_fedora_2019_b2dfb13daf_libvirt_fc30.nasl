@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876563");
-  script_version("2019-07-11T11:32:19+0000");
+  script_version("2019-08-15T09:18:49+0000");
   script_cve_id("CVE-2019-10161", "CVE-2019-10166", "CVE-2019-10167", "CVE-2019-10168", "CVE-2019-3886", "CVE-2019-10132", "CVE-2018-12126", "CVE-2018-12127", "CVE-2018-12130", "CVE-2019-11091");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-11 11:32:19 +0000 (Thu, 11 Jul 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-08-15 09:18:49 +0000 (Thu, 15 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-09 02:14:46 +0000 (Tue, 09 Jul 2019)");
   script_name("Fedora Update for libvirt FEDORA-2019-b2dfb13daf");
   script_category(ACT_GATHER_INFO);

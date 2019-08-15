@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3111-01_liblouis.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for liblouis RHSA-2017:3111-01
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812076");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-08-13T08:33:23+0000");
+  script_tag(name:"last_modification", value:"2019-08-13 08:33:23 +0000 (Tue, 13 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-11-04 09:05:51 +0100 (Sat, 04 Nov 2017)");
   script_cve_id("CVE-2014-8184", "CVE-2017-13738", "CVE-2017-13740", "CVE-2017-13741",
                 "CVE-2017-13742", "CVE-2017-13743", "CVE-2017-13744");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for liblouis RHSA-2017:3111-01");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'liblouis'

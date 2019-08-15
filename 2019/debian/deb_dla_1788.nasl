@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891788");
-  script_version("2019-05-16T02:00:18+0000");
+  script_version("2019-08-14T06:47:48+0000");
   script_cve_id("CVE-2018-16860");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-16 02:00:18 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-08-14 06:47:48 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 02:00:18 +0000 (Thu, 16 May 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1788-1] samba security update)");
   script_category(ACT_GATHER_INFO);

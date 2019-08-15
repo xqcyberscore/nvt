@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891832");
-  script_version("2019-06-25T02:00:09+0000");
+  script_version("2019-08-15T09:18:49+0000");
   script_cve_id("CVE-2019-10161", "CVE-2019-10167");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-25 02:00:09 +0000 (Tue, 25 Jun 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-08-15 09:18:49 +0000 (Thu, 15 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-25 02:00:09 +0000 (Tue, 25 Jun 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1832-1] libvirt security update)");
   script_category(ACT_GATHER_INFO);

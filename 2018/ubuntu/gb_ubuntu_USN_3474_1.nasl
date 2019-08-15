@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3474_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for liblouis USN-3474-1
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843734");
-  script_version("$Revision: 14288 $");
+  script_version("2019-08-13T08:33:23+0000");
   script_cve_id("CVE-2014-8184");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-08-13 08:33:23 +0000 (Tue, 13 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-10-26 06:13:16 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for liblouis USN-3474-1");
   script_category(ACT_GATHER_INFO);

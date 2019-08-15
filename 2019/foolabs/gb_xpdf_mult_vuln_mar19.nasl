@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113413");
-  script_version("2019-06-28T07:09:02+0000");
-  script_tag(name:"last_modification", value:"2019-06-28 07:09:02 +0000 (Fri, 28 Jun 2019)");
+  script_version("2019-08-12T11:34:42+0000");
+  script_tag(name:"last_modification", value:"2019-08-12 11:34:42 +0000 (Mon, 12 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-20 10:52:47 +0000 (Thu, 20 Jun 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -30,7 +30,8 @@ if(description)
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_cve_id("CVE-2019-10018", "CVE-2019-10019", "CVE-2019-10020", "CVE-2019-10021", "CVE-2019-10022", "CVE-2019-10023",
-  "CVE-2019-10024", "CVE-2019-10025", "CVE-2019-10026", "CVE-2019-12957", "CVE-2019-12958");
+  "CVE-2019-10024", "CVE-2019-10025", "CVE-2019-10026", "CVE-2019-12957", "CVE-2019-12958", "CVE-2019-14288",
+  "CVE-2019-14289", "CVE-2019-14290", "CVE-2019-14291", "CVE-2019-14292", "CVE-2019-14293", "CVE-2019-14294");
 
   script_name("Xpdf <= 4.01.01 Multiple Vulnerabilities");
 
@@ -69,7 +70,21 @@ if(description)
     to cause a Denial of Service or an information leak, or possibly have unspecified other impact.
 
   - A heap-based buffer over-read could be triggered in FoFiType1C::convertToType0 in fofi/FoFiType1C.cc when
-    it is trying to access the second privateDicts array element, because the array has only one element allowed.");
+    it is trying to access the second privateDicts array element, because the array has only one element allowed.
+
+  - integer overflow in the function JBIG2Bitmap::combine at JBIG2Stream.cc for the 'one byte per line' case
+
+  - integer overflow in the function JBIG2Bitmap::combine at JBIG2Stream.cc for the 'multiple bytes per line' case
+
+  - out of bounds read in the function GfxPatchMeshShading::parse at GfxState.cc for typeA==6 case 2
+
+  - out of bounds read in the function GfxPatchMeshShading::parse at GfxState.cc for typeA==6 case 3
+
+  - out of bounds read in the function GfxPatchMeshShading::parse at GfxState.cc for typeA!=6 case 1
+
+  - out of bounds read in the function GfxPatchMeshShading::parse at GfxState.cc for typeA!=6 case 2
+
+  - use-after-free in the function JPXStream::fillReadBuf at JPXStream.cc due to an out of bounds read");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to crash the application
   or access sensitive information.");
   script_tag(name:"affected", value:"Xpdf through version 4.01.01.");

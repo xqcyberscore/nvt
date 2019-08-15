@@ -369,6 +369,12 @@ eol_cpes[ 'cpe:/a:samba:samba' ] = make_array(
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
+# http://igss.schneider-electric.com/products/igss/download/licensed-versions.aspx 
+eol_cpes[ 'cpe:/a:schneider-electric:igss' ] = make_array(
+  'versions',      '2.0:unknown;3.0:unknown;4.1:unknown;5.0:unknown;5.1:unknown;6.0:unknown;7.0:unknown;8.0:unknown;9.0:unknown;10.0:unknown;11.0:unknown',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
 # https://symfony.com/roadmap
 eol_cpes[ 'cpe:/a:sensiolabs:symfony' ] = make_array(
   'versions',      '4.4:2022-11-30;4.3:2020-07-31;4.2:2020-01-31;4.1:2019-07-31;4.0:2019-01-31;3.4:2021-11-30;3.3:2018-07-31;3.2:2018-01-31;3.1:2017-07-31;3.0:2017-01-31;2.8:2019-11-30;2.7:2019-05-31;2.6:2016-01-31;2.5:2015-07-31;2.4:2015-01-31;2.3:2017-05-31;2.2:2014-05-31;2.1:2013-11-30;2.0:2013-09-30',

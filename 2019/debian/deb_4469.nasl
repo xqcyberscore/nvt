@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704469");
-  script_version("2019-06-24T02:00:21+0000");
+  script_version("2019-08-15T09:18:49+0000");
   script_cve_id("CVE-2017-5715", "CVE-2017-5753", "CVE-2018-12126", "CVE-2018-12127", "CVE-2018-12130", "CVE-2018-3639", "CVE-2019-10161", "CVE-2019-10167", "CVE-2019-11091");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-24 02:00:21 +0000 (Mon, 24 Jun 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-08-15 09:18:49 +0000 (Thu, 15 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-24 02:00:21 +0000 (Mon, 24 Jun 2019)");
   script_name("Debian Security Advisory DSA 4469-1 (libvirt - security update)");
   script_category(ACT_GATHER_INFO);

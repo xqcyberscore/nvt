@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704455");
-  script_version("2019-06-06T14:25:19+0000");
+  script_version("2019-08-14T06:47:48+0000");
   script_cve_id("CVE-2018-16860", "CVE-2019-12098");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-06-06 14:25:19 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-08-14 06:47:48 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-05 02:00:07 +0000 (Wed, 05 Jun 2019)");
   script_name("Debian Security Advisory DSA 4455-1 (heimdal - security update)");
   script_category(ACT_GATHER_INFO);

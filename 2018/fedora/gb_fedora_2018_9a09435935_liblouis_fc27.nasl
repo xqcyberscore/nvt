@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9a09435935_liblouis_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for liblouis FEDORA-2018-9a09435935
 #
@@ -27,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875152");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-08-13T08:33:23+0000");
+  script_tag(name:"last_modification", value:"2019-08-13 08:33:23 +0000 (Tue, 13 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-10-08 08:23:01 +0200 (Mon, 08 Oct 2018)");
   script_cve_id("CVE-2018-17294", "CVE-2018-11683", "CVE-2014-8184", "CVE-2017-13738",
                 "CVE-2017-13740", "CVE-2017-13741", "CVE-2017-13742", "CVE-2017-13743",
                 "CVE-2017-13744");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for liblouis FEDORA-2018-9a09435935");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'liblouis'

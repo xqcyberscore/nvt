@@ -1,38 +1,33 @@
-###############################################################################
-# OpenVAS Vulnerability Test
+# Copyright (C) 2018 Greenbone Networks GmbH
+# Text descriptions are largely excerpted from the referenced
+# advisory, and are Copyright (C) the respective author(s)
 #
-# Nmap Denial of Service Vulnerability (Windows)
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Authors:
-# Rinu Kuriakose <krinu@secpod.com>
-#
-# Copyright:
-# Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2
-# (or any later version), as published by the Free Software Foundation.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 CPE = "cpe:/a:nmap:nmap";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813825");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-08-14T08:06:18+0000");
   script_cve_id("CVE-2018-15173");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-14 08:06:18 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-08-14 12:02:26 +0530 (Tue, 14 Aug 2018)");
 
   script_name("Nmap Denial of Service Vulnerability (Windows)");
@@ -52,14 +47,13 @@ if(description)
 
   script_tag(name:"affected", value:"Nmap versions 7.70 and prior on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th March, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to Nmap 7.80 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://code610.blogspot.com/2018/07/crashing-nmap-770.html");
-  script_xref(name:"URL", value:"https://nmap.org");
+  script_xref(name:"URL", value:"https://seclists.org/nmap-announce/2019/0");
 
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -73,13 +67,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
-nmapVer = infos['version'];
-nmappath = infos['location'];
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if(version_is_less_equal(version:nmapVer, test_version:"7.70")) {
-  report = report_fixed_ver(installed_version:nmapVer, fixed_version:"None", install_path:nmappath);
-  security_message(data:report);
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_less(version:vers, test_version:"7.80")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"7.80", install_path:path);
+  security_message(data:report, port:0);
   exit(0);
 }
 

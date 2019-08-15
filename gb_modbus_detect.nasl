@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Modbus Detection
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106522");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-08-13T03:21:09+0000");
+  script_tag(name:"last_modification", value:"2019-08-13 03:21:09 +0000 (Tue, 13 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -102,6 +101,26 @@ for (i=0; i<3; i++) {
   if (res) {
     # skip 7 bytes of MBAP header
     offset = 7;
+
+    # Handle exception responds
+    # Exceptions contain the sent function code + 0x80 (0x2b + 0x80 = 0xab) and the exception code itself as the
+    # second byte
+    # https://en.wikipedia.org/wiki/Modbus#Exception_responses
+    if (strlen(res) == 9) {
+      if (hexstr(res[offset]) == "ab") {
+        register_service(port: port, ipproto: "tcp", proto: "modbus");
+
+        report = 'A Modbus service is running at this port.';
+
+        log_message(port: port, data: report);
+
+        close(sock);
+        exit(0);
+      } else {
+        close(sock);
+        exit(0);
+      }
+    }
 
     # we need at least 7 more info bytes
     if (strlen(res) < (7 + offset))

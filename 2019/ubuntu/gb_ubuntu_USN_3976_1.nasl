@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844005");
-  script_version("2019-05-17T10:04:07+0000");
+  script_version("2019-08-14T06:47:48+0000");
   script_cve_id("CVE-2018-16860");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 10:04:07 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-08-14 06:47:48 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 02:02:47 +0000 (Wed, 15 May 2019)");
   script_name("Ubuntu Update for samba USN-3976-1");
   script_category(ACT_GATHER_INFO);

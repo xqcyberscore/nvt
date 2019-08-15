@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891843");
-  script_version("2019-07-04T02:00:08+0000");
+  script_version("2019-08-13T08:33:23+0000");
   script_cve_id("CVE-2019-10162", "CVE-2019-10163");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-04 02:00:08 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-08-13 08:33:23 +0000 (Tue, 13 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-04 02:00:08 +0000 (Thu, 04 Jul 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1843-1] pdns security update)");
   script_category(ACT_GATHER_INFO);

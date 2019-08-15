@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113408");
-  script_version("2019-06-11T13:14:37+0000");
-  script_tag(name:"last_modification", value:"2019-06-11 13:14:37 +0000 (Tue, 11 Jun 2019)");
+  script_version("2019-08-14T12:29:28+0000");
+  script_tag(name:"last_modification", value:"2019-08-14 12:29:28 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-11 14:51:31 +0000 (Tue, 11 Jun 2019)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_rancher_detect.nasl");
-  script_mandatory_keys("rancher/installed");
+  script_mandatory_keys("rancher/detected");
 
   script_tag(name:"summary", value:"Rancher is prone to a remote code execution (RCE) vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");

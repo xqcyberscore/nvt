@@ -21,19 +21,19 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142700");
-  script_version("2019-08-06T09:19:32+0000");
-  script_tag(name:"last_modification", value:"2019-08-06 09:19:32 +0000 (Tue, 06 Aug 2019)");
+  script_version("2019-08-14T05:43:13+0000");
+  script_tag(name:"last_modification", value:"2019-08-14 05:43:13 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-06 09:13:00 +0000 (Tue, 06 Aug 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_cve_id("CVE-2019-14529");
+  script_cve_id("CVE-2019-14529", "CVE-2019-14530");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("OpenEMR < 5.0.2 SQL Injection Vulnerability");
+  script_name("OpenEMR < 5.0.2 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -42,7 +42,13 @@ if(description)
   script_dependencies("gb_openemr_detect.nasl");
   script_mandatory_keys("openemr/installed");
 
-  script_tag(name:"summary", value:"OpenEMR is prone to an SQL injection vulnerability in interface/forms/eye_mag/save.php.");
+  script_tag(name:"summary", value:"OpenEMR is prone to multiple vulnerabilities.");
+
+  script_tag(name:"insight", value:"OpenEMR is prone to multiple vulnerabilities:
+
+  - SQL injection vulnerability in interface/forms/eye_mag/save.php (CVE-2019-14529)
+
+  - Authenticated file download vulnerability (CVE-2019-14530)");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -51,6 +57,7 @@ if(description)
   script_tag(name:"solution", value:"Update to version 5.0.2 or later.");
 
   script_xref(name:"URL", value:"https://github.com/openemr/openemr/pull/2592");
+  script_xref(name:"URL", value:"https://github.com/Wezery/CVE-2019-14530");
 
   exit(0);
 }

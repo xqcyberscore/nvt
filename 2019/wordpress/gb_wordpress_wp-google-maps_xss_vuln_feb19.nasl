@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112552");
-  script_version("2019-03-29T09:25:06+0000");
-  script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
+  script_version("2019-08-14T12:59:51+0000");
+  script_tag(name:"last_modification", value:"2019-08-14 12:59:51 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 23:58:11 +0100 (Thu, 28 Mar 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -76,7 +76,7 @@ if("=== WP Google Maps ===" >< res && "Changelog" >< res) {
 
   if(changelog[1]) {
 
-    vers = eregmatch( pattern: "= ([0-9.]+)", string: changelog[1]);
+    vers = eregmatch( pattern: "[=*] ([0-9.]+)", string: changelog[1]);
 
     if(vers[1] && version_is_less(version: vers[1], test_version: "7.10.43")) {
       report = report_fixed_ver(installed_version: vers[1], fixed_version: "7.10.43", file_checked: url);

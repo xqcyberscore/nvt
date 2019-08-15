@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_web_app_installers.nasl 12754 2018-12-11 09:39:53Z cfischer $
 #
 # Unprotected Web App Installers (HTTP)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107307");
-  script_version("$Revision: 12754 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 10:39:53 +0100 (Tue, 11 Dec 2018) $");
+  script_version("2019-08-12T11:42:09+0000");
+  script_tag(name:"last_modification", value:"2019-08-12 11:42:09 +0000 (Mon, 12 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-05-07 12:00:20 +0200 (Mon, 07 May 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -96,7 +95,9 @@ genericfiles = make_array(
 "/setup/index.php", 'CubeCart / phpMyAdmin installer#-#<title>(CubeCart .* Installer|phpMyAdmin setup)</title>',
 "/setup/setup.php", 'WaWision WaWi, ERP CRM installer#-#<title>WaWision Installer</title>',
 "/tao/install/", 'TAO installer#-#<title>TAO Installation</title>',
-"/install/", "phpBB installer#-#<title>Introduction</title>#-#<span>Install</span></a></li>"
+"/install/", "phpBB installer#-#<title>Introduction</title>#-#<span>Install</span></a></li>",
+"/v1/settings/first-login", 'Rancher first login value is set to true#-#"value":"true"',
+"/v3/settings/first-login", 'Rancher first login value is set to true#-#"value":"true"'
 );
 
 # nb: Used later without the cgi_dirs() result
@@ -160,7 +161,7 @@ function check_files( filesarray, dirlist, port ) {
       url = dir + file;
 
       if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:infos[1], extra_check:extra, usecache:TRUE ) ) {
-        report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE ) + ":" + infos[0];
+        report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE ) + " - " + infos[0];
         VULN = TRUE;
       }
     }

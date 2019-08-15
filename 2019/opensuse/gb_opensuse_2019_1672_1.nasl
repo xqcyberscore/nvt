@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852601");
-  script_version("2019-07-04T09:58:18+0000");
+  script_version("2019-08-15T09:18:49+0000");
   script_cve_id("CVE-2019-10161", "CVE-2019-10166", "CVE-2019-10167");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-04 09:58:18 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-08-15 09:18:49 +0000 (Thu, 15 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-07-01 02:00:36 +0000 (Mon, 01 Jul 2019)");
   script_name("openSUSE Update for libvirt openSUSE-SU-2019:1672-1 (libvirt)");
   script_category(ACT_GATHER_INFO);
