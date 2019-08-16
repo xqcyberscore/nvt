@@ -1185,3 +1185,82 @@ function policy_match_multiple_reg_values(key, type, item_default_array, reg_sz,
 
   return ret;
 }
+
+
+# @brief Cut a string on a "count" occurrence of a pattern
+#
+# @param str the string to cut
+# @param sep the separation string / char
+# @param count the x occurrence of the pattern where to cut the string
+# @param glue char which is used to concat the substrings again
+#
+# @return major_version the concatenated string
+#
+function policy_get_major_version_app(str, sep, count, glue){
+  local_var str, sep, count, glue, split_version, counter, major_version;
+
+  split_version = split(str, sep:sep, keep:FALSE);
+
+  for(counter = 0; counter < count; counter++){
+    if(counter == 0)
+      major_version = string(split_version[counter]);
+    else
+      major_version = string(major_version, glue, split_version[counter]);
+  }
+
+  return(major_version);
+}
+
+
+# @brief Returns reporting variables for wrong or missing app
+#
+# @param target_app App of host that should be matched
+#
+# @return ret array with value, comment and compliant strings
+#
+function policy_report_wrong_app(target_app){
+  local_var target_app, ret;
+
+  ret["value"] = "None";
+  ret["comment"] = "No installation found for software: " + target_app + ".";
+  ret["compliant"] = "incomplete";
+
+  return ret;
+}
+
+
+# @brief Build a list from a comma separated string
+#
+# @param str comma separated app list as a string
+#
+# @return ret list of apps
+#
+function policy_build_list_from_string(str){
+  local_var str, app_list, counter;
+
+  app_list = split(str, sep:",", keep:"FALSE");
+
+  for(counter = 0; counter < max_index(app_list); counter ++){
+    app_list[counter] = ereg_replace(string:chomp(app_list[counter]), pattern:"^(\s+)", replace:"");
+  }
+
+  return(app_list);
+}
+
+
+# @brief Build a item default list from a list
+#
+# @param list the list with items
+# @param default the set points for the items
+#
+# @return ret list of items with set points
+#
+function policy_build_items_default_list(list, default){
+  local_var list, default, item, ret;
+
+  foreach item (list){
+    ret[item] = default;
+  }
+
+  return(ret);
+}
