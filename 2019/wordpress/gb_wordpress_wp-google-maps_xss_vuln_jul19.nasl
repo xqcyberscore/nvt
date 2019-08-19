@@ -19,11 +19,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112626");
-  script_version("2019-08-14T12:59:51+0000");
-  script_tag(name:"last_modification", value:"2019-08-14 12:59:51 +0000 (Wed, 14 Aug 2019)");
+  script_version("2019-08-19T06:39:26+0000");
+  script_tag(name:"last_modification", value:"2019-08-19 06:39:26 +0000 (Mon, 19 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-14 12:51:11 +0000 (Wed, 14 Aug 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2019-14792");
 
