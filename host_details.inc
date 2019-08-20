@@ -114,6 +114,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142078", # gb_drobo_nas_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108557", # gb_euleros_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142729", # gsf/gb_fortios_sslvpn_portal_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
@@ -230,6 +231,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142078", # gb_drobo_nas_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108557", # gb_euleros_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142729", # gsf/gb_fortios_sslvpn_portal_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl

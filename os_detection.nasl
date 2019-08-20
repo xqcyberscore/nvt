@@ -108,7 +108,8 @@ if(description)
                         "gsf/gb_paloalto_globalprotect_portal_detect.nasl",
                         "gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl",
                         "gsf/gb_tibco_loglogic_http_detect.nasl",
-                        "gsf/gb_inea_me-rtu_http_detect.nasl");
+                        "gsf/gb_inea_me-rtu_http_detect.nasl",
+                        "gsf/gb_fortios_sslvpn_portal_detect.nasl");
 
   script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
 
