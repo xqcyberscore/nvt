@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107644");
-  script_version("2019-07-31T09:47:07+0000");
-  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
+  script_version("2019-08-17T13:43:58+0000");
+  script_tag(name:"last_modification", value:"2019-08-17 13:43:58 +0000 (Sat, 17 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-04-24 12:50:31 +0200 (Wed, 24 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -78,7 +78,8 @@ foreach key( key_list ) {
       if( ! found )
         continue;
     }
-
+    concluded  = "Registry-Key:   " + key + item + '\n';
+    concluded += "DisplayName:    " + appName;
     location = "unknown";
     version = "unknown";
 
@@ -93,7 +94,7 @@ foreach key( key_list ) {
         vers = fetch_file_version( sysPath:location, file_name:filename );
         if( vers ) {
           version = vers;
-          concluded = version + " from file " + location + filename;
+          concluded += '\nVersion: ' + version + ' fetched from file ' + location + filename;
         }
       }
     }
@@ -101,7 +102,7 @@ foreach key( key_list ) {
     set_kb_item( name:"delta_electronics/cncsoft/suite/detected", value:TRUE );
 
     register_and_report_cpe( app:"Delta Electronics CNCSoft Suite", ver:version, concluded:concluded,
-                             base:"cpe:/a:delta_electronics:cncsoft_suite:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
+                             base:"cpe:/a:deltaww:cncsoft:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
     exit( 0 );
   }
 }

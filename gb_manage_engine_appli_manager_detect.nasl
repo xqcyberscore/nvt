@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_appli_manager_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # ManageEngine Applications Manager Detection
 #
@@ -27,26 +26,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808054");
-  script_version("$Revision: 11015 $");
+  script_version("2019-08-20T08:12:54+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-20 08:12:54 +0000 (Tue, 20 Aug 2019)");
   script_tag(name:"creation_date", value:"2016-05-23 10:45:33 +0530 (Mon, 23 May 2016)");
+
   script_name("ManageEngine Applications Manager Detection");
 
-  script_tag(name:"summary", value:"Detects the installed version of
-  ManageEngine Applications Manager.
+  script_tag(name:"summary", value:"Detection of ManageEngine Applications Manager
 
-  This script check the presence of ManageEngine Applications Manager from the
-  banner and sets the result in KB.");
+  The script sends a connection request to the server and attempts to detect ManageEngine Applications Manager
+  and to extract its version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_require_ports("Services/www", 9090, 8443);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -57,9 +58,10 @@ include("http_keepalive.inc");
 
 managePort = get_http_port(default:9090);
 
-foreach dir(make_list_unique( "/", "/manageengine", cgi_dirs(port:managePort))) {
+foreach dir (make_list_unique( "/", "/manageengine", cgi_dirs(port:managePort))) {
   install = dir;
-  if( dir == "/" ) dir = "";
+  if (dir == "/")
+    dir = "";
 
   url = dir + "/index.do";
 
@@ -71,10 +73,14 @@ foreach dir(make_list_unique( "/", "/manageengine", cgi_dirs(port:managePort))) 
     vers = eregmatch(pattern: "\?build=([0-9]+)", string: rcvRes);
     if (!isnull(vers[1])) {
       version = vers[1];
-      set_kb_item(name: "ManageEngine/Applications/Manager/version", value: version);
+    } else {
+      # Applications Manager (Build No:14260)
+      vers = eregmatch(pattern: "Build No:([0-9]+)", string: rcvRes);
+      if (!isnull(vers[1]))
+        version = vers[1];
     }
 
-    set_kb_item( name:"ManageEngine/Applications/Manager/Installed", value:TRUE );
+    set_kb_item(name: "ManageEngine/Applications/Manager/Installed", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9]+)", base: "cpe:/a:manageengine:applications_manager:");
     if (!cpe)

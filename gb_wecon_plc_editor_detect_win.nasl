@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107561");
-  script_version("$Revision: 13641 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 15:56:21 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-08-20T08:57:21+0000");
+  script_tag(name:"last_modification", value:"2019-08-20 08:57:21 +0000 (Tue, 20 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-02-12 14:28:04 +0100 (Tue, 12 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,27 +57,40 @@ if("x86" >< os_arch) {
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-if(isnull(key_list)) exit(0);
+if(isnull(key_list))
+  exit(0);
 
 foreach key (key_list) {
   foreach item (registry_enum_keys(key:key)) {
 
     appName = registry_get_sz(key:key + item, item:"DisplayName");
-    if(!appName || appName !~ "Wecon PLC Editor") continue;
+    if(!appName || appName !~ "Wecon PLC Editor")
+      continue;
 
-    concluded = appName;
+    concluded  = "Registry-Key:   " + key + item + '\n';
+    concluded += "DisplayName:    " + appName;
     location = "unknown";
+    version = "unknown";
 
     loc = registry_get_sz(key:key + item, item:"InstallLocation");
-    if(loc) location = loc;
+    if(loc)
+      location = loc;
 
-    if(!version = registry_get_sz(key:key + item, item:"DisplayVersion"))
-      version = "unknown";
+    # N.B. PLC Editor V1.3.3 U once existed but is not available anymore for testing CVE-2018-14792
+    #      It is not clear what 'DisplayVersion' might have contained.
+    #      To get 'cpe:/a:we-con:plc_editor:1.3.3u' the following is done:
 
-    set_kb_item(name:"wecon/plc_editor/win/detected", value:TRUE);
+    if( ver = registry_get_sz( key:key + item, item:"DisplayVersion" ) ) {
+      lowver = tolower( ver );
+      vers = ereg_replace( pattern:' ', string:lowver, replace:'' );
+      version = vers;
+      concluded += '\nDisplayVersion: ' + vers;
+    }
+
+    set_kb_item(name:"wecon/plc_editor/detected", value:TRUE);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-                          base:"cpe:/a:we-con:plc_editor:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+                          base:"cpe:/a:we-con:plc_editor:", expr:"^([0-9.u]+)", insloc:location, regService:"smb-login", regPort:0);
     exit(0);
   }
 }
