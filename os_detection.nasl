@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-08-15T09:23:40+0000");
-  script_tag(name:"last_modification", value:"2019-08-15 09:23:40 +0000 (Thu, 15 Aug 2019)");
+  script_version("2019-08-21T09:33:13+0000");
+  script_tag(name:"last_modification", value:"2019-08-21 09:33:13 +0000 (Wed, 21 Aug 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -109,7 +109,8 @@ if(description)
                         "gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl",
                         "gsf/gb_tibco_loglogic_http_detect.nasl",
                         "gsf/gb_inea_me-rtu_http_detect.nasl",
-                        "gsf/gb_fortios_sslvpn_portal_detect.nasl");
+                        "gsf/gb_fortios_sslvpn_portal_detect.nasl",
+                        "gsf/gb_dell_emc_powerconnect_consolidation.nasl");
 
   script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
 
