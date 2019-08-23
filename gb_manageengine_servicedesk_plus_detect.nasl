@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140780");
-  script_version("2019-06-26T12:44:12+0000");
-  script_tag(name:"last_modification", value:"2019-06-26 12:44:12 +0000 (Wed, 26 Jun 2019)");
+  script_version("2019-08-23T04:24:16+0000");
+  script_tag(name:"last_modification", value:"2019-08-23 04:24:16 +0000 (Fri, 23 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-02-16 10:29:54 +0700 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,11 +68,11 @@ if( "<title>ManageEngine ServiceDesk Plus</title>" >< res && "j_security_check" 
   if( isnull( version[1] ) ) {
     # example: getCustomHtml('/custom/login/log-logo.png','ManageEngine ServiceDesk Plus','http://www.manageengine.com/products/service-desk/index.html','10.0',''); //NO OUTPUTENCODING
     # or: getCustomHtml('/custom/customimages/Custom_LoginLogo.gif','ManageEngine ServiceDesk Plus','http://www.manageengine.com/products/service-desk/index.html','9.3'); //NO OUTPUTENCODING
-    version = eregmatch( string:res, pattern:"ManageEngine ServiceDesk Plus','http://.*','([0-9.]+)'", icase:TRUE );
+    version = eregmatch( string:res, pattern:"ManageEngine ServiceDesk Plus','http(s)?://.*','([0-9.]+)'", icase:TRUE );
   }
 
-  if( ! isnull( version[1] ) ) {
-    major = version[1];
+  if( ! isnull( version[2] ) ) {
+    major = version[2];
     concluded += '\n    Version: ' + version[0];
     set_kb_item( name:"manageengine/servicedesk_plus/http/" + port + "/version", value:major );
   }

@@ -7935,7 +7935,7 @@ eb807e2f13746004cfd81e2abfcef786  gb_lica_minicmts_detect.nasl
 87ff5acfdface094e2f8da0fe48530d7  secpod_reg.inc
 2b5402d8f7aea582ec7e0e2ecf059ca4  gb_kannel_detect.nasl
 1df35200c3e124c79606be6fe9fd92df  gb_advantech_webaccess_dashboard_detect_win.nasl
-60e047b9cdaceea0e17042d5e37f7ae5  gb_manageengine_servicedesk_plus_detect.nasl
+dc8a4a272c865da190a9b472bca24408  gb_manageengine_servicedesk_plus_detect.nasl
 55e40175de3a37ace69bed89fe781ccc  ident_process_owner.nasl
 214baeceea5c7ac5e5ba8b724d31082a  secpod_ida_pro_detect.nasl
 b1b5d6b986588351f8631fb3fa1e03ec  gb_palo_alto_panOS_version.nasl
@@ -7946,7 +7946,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 758b4dc1a2c186e45ba79aac6475197b  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-c8dab345842ca4478db13a4704629404  plugin_feed_info.inc
+42f98526078169b60db06783e01e37d5  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -19459,7 +19459,7 @@ abac14c00a1a9b7272391bdf9755b71d  gb_sophos_safeguard_detect_win.nasl
 62ab6b7235c8241d6d8bf1cbc933349e  gb_ManageEngine_ServiceDesk_Plus_detect.nasl
 ba17d89d0f8f58aeb9ba52c473b9f431  gb_baofeng_storm_detect.nasl
 68c100c3d849e7e511e63c870a74d010  gb_honeywell_ip_camera_detect.nasl
-4574a72a00f3c770df8982f2353eb1ba  gb_manageengine_servicedesk_plus_msp_detect.nasl
+79eb1d0d8d28444d3268e8de0041704e  gb_manageengine_servicedesk_plus_msp_detect.nasl
 04eac92f0e8f85c48a41eca1c0fb9ec6  gb_xamarin_studio_detect_macosx.nasl
 fd5ddba881b28b5b2ce537a4b571c1e3  gb_accellion_fta_detect.nasl
 b8044fd8387ff8cf5fbc5357e770fed5  gb_vibnode_consolidation.nasl
@@ -36436,7 +36436,7 @@ f29ac69059c5130bac4b0e5a64f86d05  gb_burp_suite_ce_detect_win.nasl
 edf9f31be16ae795be6d2fffa0f1c955  secpod_novell_prdts_detect_lin.nasl
 1bb0e7ceb56028b6c6598fd84a0cd66b  gb_solarwinds_orion_npm_detect_win.nasl
 f11522ae83322bc869455259604c035b  gb_ibm_openadmin_tool_detect.nasl
-ae47190668fed9d9c0e7eaf9cf4ea541  gb_ioserver_opc_server_detect_win.nasl
+ad31113716c57be4c9d66f78eeff9597  gb_ioserver_opc_server_detect_win.nasl
 50fae43dc414c8b9cf034db9c5e7344d  gb_emc_networker_detect.nasl
 ca55a988c9f8fe7595dbcb732ca7f99f  secpod_libpng_detect_lin.nasl
 15d37755beaa5ba2f903c123e3b57499  secpod_subversion_detect.nasl
@@ -49065,7 +49065,10 @@ e5225d1f93802ef6fc29e12926e728f8  2019/otrs/gb_otrs_OSA-2019-06.nasl
 3214676b41eafb15dae8bfac2a11f421  2019/otrs/gb_otrs_OSA-2018-02.nasl
 cc8739f820ef4081de1c6d04e5cc5ebf  2019/otrs/gb_otrs_rce_vuln_mar19_01.nasl
 8f389fc2008a621dcf911988426b29fb  2019/otrs/gb_otrs_OSA-2019-03.nasl
+c6f02972ffd937268efde320ea0a84e8  2019/otrs/gb_otrs_OSA-2019-10.nasl
+8030e105cb6a03b963ce462b05aec8fa  2019/otrs/gb_otrs_OSA-2019-12.nasl
 442548c957c8f2d4d7031869c4c2045d  2019/otrs/gb_otrs_data_loss_vuln_feb18.nasl
+d2c10afe189b139ea723422e0674d27e  2019/otrs/gb_otrs_OSA-2019-11.nasl
 3bb278371ab4255e8ddb3f696fd1f82a  2019/eclipse/gb_jetty_546577_win.nasl
 00a8d250ee6113f0eed0a89c015c04c7  2019/eclipse/gb_jetty_546576_win.nasl
 fe7409d01d2dcd07440acf4e835cc67b  2019/eclipse/gb_jetty_546121_lin.nasl
@@ -50390,7 +50393,7 @@ f97a493fe677833f9e1f51b5c1c7675a  2019/microsoft/gb_ms_kb4507452.nasl
 9b1b9622cb658717261d313c3dafe87d  2019/microsoft/gb_ms_kb4507449.nasl
 c6c0c4802879f63d719d7d06a5feb4bb  2019/microsoft/gb_ms_kb4499151.nasl
 d425689ff32c8a184014d05aea087e7e  2019/microsoft/gb_ms_kb4503291.nasl
-a8bbf81abad2d0c390008e789de45252  2019/microsoft/gb_ms_kb4475533.nasl
+6dce2f83a508112ff2cdb1daa1a540ae  2019/microsoft/gb_ms_kb4475533.nasl
 4298ca8c5d8ad2622b01f1fc7166febf  2019/microsoft/gb_ms_kb4499149.nasl
 0789b69e1494f9cbc50b8c5629e33ac5  2019/microsoft/gb_ms_office_click2run_mult_vuln_june19.nasl
 adb86cf151b06737b3b5bf5128dbc001  2019/microsoft/gb_ms_kb4475506.nasl
@@ -50402,7 +50405,7 @@ adb86cf151b06737b3b5bf5128dbc001  2019/microsoft/gb_ms_kb4475506.nasl
 f8f298fbc372460e5c50058b275017aa  2019/microsoft/gb_ms_kb4475513.nasl
 12b2d2810794442a1eb74dc5a3c80de6  2019/microsoft/gb_ms_kb4493509.nasl
 cc986b991404933f9de16b1f1bbf1858  2019/microsoft/gb_ms_kb4503267.nasl
-04faea7ca3b8acd8af07eb70fc3fc075  2019/microsoft/gb_ms_kb4475553.nasl
+6d826724437913aa40cb87a55ef3ba72  2019/microsoft/gb_ms_kb4475553.nasl
 27602969e30b5079e181c9c253669e21  2019/microsoft/gb_ms_kb4462223.nasl
 6b2b91cb26bc3711a81a99ed197498b6  2019/microsoft/gb_ms_kb4464567.nasl
 e74b57bdd1e614fd18667744312cbb41  2019/microsoft/gb_ms_kb4487000.nasl
@@ -50437,7 +50440,7 @@ c5b391beb7363b693c9f2ad8fb8017b5  2019/microsoft/gb_ms_kb4461595.nasl
 a19e92e7d47e0bd91e45d28d9a076d71  2019/microsoft/gb_ms_kb4462112.nasl
 3ce4a889540586f277eaca2a27d070e0  2019/microsoft/gb_ms_kb4480055.nasl
 9bfde452672ed39888bf375cd16ac984  2019/microsoft/gb_ms_kb4475517.nasl
-eec5153e04fdb429b412b503ee9301c0  2019/microsoft/gb_ms_kb4475547.nasl
+2d2726fa5f231bd15a4950aa7bfca214  2019/microsoft/gb_ms_kb4475547.nasl
 6740ff2c84a1fecbbfb552ce15243464  2019/microsoft/gb_ms_kb4506987.nasl
 d41a777bd7fc9940263be56da94e7a5b  2019/microsoft/gb_ms_kb4464590.nasl
 c0c1b713088f0437daf247857d1da2c2  2019/microsoft/gb_ms_kb4489881.nasl
@@ -50450,7 +50453,7 @@ ddb53f6aa4b64ebc0a63e75b09d68c3b  2019/microsoft/gb_ms_visual_studio_rce_vuln_ma
 4d68ceb20ae9072c8df1beab58500bcf  2019/microsoft/gb_ms_kb4462154.nasl
 71cbc7c6c249775db38d488fdf8eaecb  2019/microsoft/gb_ms_kb4461543.nasl
 9cb0bbcd0cdbf6c71790263095bfedec  2019/microsoft/gb_ms_kb4509410.nasl
-dca78a2c79bffeb8610c32fe96e60ddc  2019/microsoft/gb_ms_kb4475563.nasl
+a9179a68eb553bea3c0274d88b311307  2019/microsoft/gb_ms_kb4475563.nasl
 4c1d07ddd5b3c71d56f243d01d99b54b  2019/microsoft/gb_ms_kb4499167.nasl
 aa6ef469b0da424acc7d6662cdbe9850  2019/microsoft/gb_ms_kb4512508.nasl
 5305d40ab0590db800c894eed70ec325  2019/microsoft/gb_microsoft_azure_ad_connect_eop_vuln_win.nasl
@@ -50474,7 +50477,7 @@ e51c36b7374ffda8d17392ac81b28915  2019/microsoft/gb_ms_kb4483453.nasl
 f9b5543bbc747e6026eda24708563aef  2019/microsoft/gb_ms_kb4483458.nasl
 2275de2f8ba49d81b1194c5e28eba0cc  2019/microsoft/gb_ms_kb4480978.nasl
 42970ad3e7d58b3c3df1234de1cef12c  2019/microsoft/gb_ms_kb4489878.nasl
-e19b000dea4a7494df59733b1dbd6ce4  2019/microsoft/gb_ms_kb4475573.nasl
+c9c4ab7188bd626fe8771cb75a08730b  2019/microsoft/gb_ms_kb4475573.nasl
 a8bedb6a421dfa0abe16e262f09ef82e  2019/microsoft/gb_visual_studio_nuget_tampering_vuln_mac.nasl
 fa177dd20b92c6d68785144f923381ec  2019/microsoft/gb_ms_kb4505220.nasl
 fe87e02038d77b34fadc3d4f33e63a23  2019/microsoft/gb_ms_kb4507421.nasl
@@ -50522,7 +50525,7 @@ d16d8c875f6c44dbb5f5bb00f6dc57c6  2019/microsoft/gb_ms_kb4498353.nasl
 162797dcd2804a9b8f5831991afcfee4  2019/microsoft/gb_ms_kb4498947.nasl
 c4e3ce072783cccfc020a2fa0c3997df  2019/microsoft/gb_ms_kb4462174.nasl
 3eb788306623a013957f056ab8b3ace1  2019/microsoft/gb_ms_kb4493441.nasl
-13d9795b76a8dc802bc66e4cfd9dff20  2019/microsoft/gb_ms_kb4475540.nasl
+98b254529e3ec586bfef3042318872d4  2019/microsoft/gb_ms_kb4475540.nasl
 6f39e9289d73ca6470e138862be4b467  2019/microsoft/gb_ms_kb4464558.nasl
 eaa0543ba623b5341281e9916451230a  2019/microsoft/gb_ms_powershell_wdac_sec_bypass_vuln_win.nasl
 6748f9d0b8df2d2e6ceaae93c5d951ec  2019/microsoft/gb_ms_visual_studio_mult_info_disc_vuln_jan19.nasl
@@ -52341,7 +52344,7 @@ a627d1f3f507268d1ccab5cb3eb63fc1  2019/inverse-inc/gb_sogo_dos_vuln.nasl
 afcf844f3121ecc0b60cb1a07a4eec51  2019/inverse-inc/gb_sogo_mult_xss_vuln.nasl
 6e6018a28b0d3a874859fd80b26009c1  2019/inverse-inc/gb_sogo_mult_vuln.nasl
 d4234e88c299fb13b631548e3e4e5902  2019/openemr/gb_openemr_mult_vuln.nasl
-5d3dbcff5d05110009553cf0072e8f94  2019/openemr/gb_openemr_sql_inj_vuln.nasl
+7af6f4548e752ae70119963eb1cd9bcb  2019/openemr/gb_openemr_sql_inj_vuln.nasl
 92d966e8c5e89c602e713b8141742814  2019/openemr/gb_openemr_xss_vuln.nasl
 b5cc6d7fa784ab3a80a11a7f1fe6b23e  2019/winrar/gb_winrar_out_of_bounds_write_vuln_feb19.nasl
 fdd8f3cf7b7f032d405ca554f1c1d7da  2019/openxchange/gb_open_xchange_appsuite_mult_vuln_jan17.nasl

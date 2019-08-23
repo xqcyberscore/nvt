@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107569");
-  script_version("2019-07-31T09:47:07+0000");
-  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
+  script_version("2019-08-22T12:50:42+0000");
+  script_tag(name:"last_modification", value:"2019-08-22 12:50:42 +0000 (Thu, 22 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-04-20 10:47:50 +0200 (Sat, 20 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -33,7 +33,7 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"Detects the installed version
-  of IOServer Pty Ltd. OPC Server for Windows.");
+  of IOServer Pty Ltd. IOServer OPC Server for Windows.");
 
   script_xref(name:"URL", value:"http://www.ioserver.com/");
 
@@ -65,24 +65,30 @@ foreach key ( key_list ) {
   foreach item ( registry_enum_keys( key:key ) ) {
 
     appName = registry_get_sz( key:key + item, item:"DisplayName" );
-    if( !appName || appName !~ "IOServer OPC Server" ) continue;
+    if( !appName || appName !~ "IOServer OPC Server" )
+      continue;
 
-    concluded = appName;
+    concluded  = "Registry-Key:   " + key + item + '\n';
+    concluded += "DisplayName:    " + appName;
     location = "unknown";
+    version = "unknown";
 
     loc = registry_get_sz( key:key + item, item:"UninstallString" );
     if( loc ) {
       split = split( loc, sep:"\" );
       location = ereg_replace( string:loc, pattern:split[max_index( split ) - 1], replace:'' );
+      file = "IOServer.exe";
+      vers = fetch_file_version( sysPath:location, file_name:file );
+      if( vers && vers =~ "^[0-9.]{3,}" ) {
+        version = vers;
+        concluded += '\nFile version:    ' + vers + ' fetched from ' + location + file;
+      }
     }
 
-    version = "unknown";
-    version = fetch_file_version( sysPath:location, file_name:"IOServer.exe" );
-
-    set_kb_item( name:"ioserver/ioserver_opc_server/win/detected", value:TRUE );
+    set_kb_item( name:"ioserver/ioserver/detected", value:TRUE );
 
     register_and_report_cpe( app:appName, ver:version, concluded:concluded,
-                             base:"cpe:/a:ioserver:ioserver_opc_server:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
+                             base:"cpe:/a:ioserver:ioserver:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
     exit( 0 );
   }
 }
