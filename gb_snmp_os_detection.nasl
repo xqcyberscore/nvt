@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("2019-08-05T11:12:31+0000");
-  script_tag(name:"last_modification", value:"2019-08-05 11:12:31 +0000 (Mon, 05 Aug 2019)");
+  script_version("2019-08-26T08:17:26+0000");
+  script_tag(name:"last_modification", value:"2019-08-26 08:17:26 +0000 (Mon, 26 Aug 2019)");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -109,57 +109,87 @@ if( sysdesc =~ "Microsoft Corp. Windows 98" || sysdesc =~ "Hardware:.*Software: 
   set_kb_item( name:"Host/OS/SNMP", value:"Windows" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:75 );
 
-  if( "windows 98" >< sysdesc ) {
-    register_and_report_os( os:'Windows 98', cpe:'cpe:/o:microsoft:windows_98', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+  if( "Windows 98" >< sysdesc ) {
+    register_and_report_os( os:"Microsoft Windows 98", cpe:"cpe:/o:microsoft:windows_98", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   version = eregmatch( pattern:"Software: Windows.*Version ([0-9.]+)", string:sysdesc );
 
-  if( isnull( version[1] ) || version[1] !~ "[4-6]\.[0-2]" ) {
-    register_and_report_os( os:'Windows', cpe:'cpe:/o:microsoft:windows', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+  if( isnull( version[1] ) || ( version[1] !~ "^[4-6]\.[0-3]" && version[1] !~ "^3\.51?" ) ) {
+    register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   winVal = version[1];
 
-  if( winVal == "4.0" ) {
-    register_and_report_os( os:'Windows NT', version:"4.0", cpe:'cpe:/o:microsoft:windows_nt', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+  # https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions
+  # IMPORTANT: Before registering two or more OS make sure that all OS variants have reached
+  # their EOL as we currently can't control / prioritize which of the registered OS is chosen
+  # for the "BestOS" and we would e.g. report a Server 2012 as EOL if Windows 8 was chosen.
+
+  if( winVal == "3.5" ) {
+    register_and_report_os( os:"Microsoft Windows NT", version:"3.5", cpe:"cpe:/o:microsoft:windows_nt", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
-  if( ( winVal == "5.0" || winVal == "5.1") && ( "Windows 2000" >< sysdesc ) ) {
-    register_and_report_os( os:'Windows 2000', cpe:'cpe:/o:microsoft:windows_2000', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+  if( winVal == "3.51" ) {
+    register_and_report_os( os:"Microsoft Windows NT", version:"3.51", cpe:"cpe:/o:microsoft:windows_nt", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    exit( 0 );
+  }
+
+  if( winVal == "4.0" ) {
+    register_and_report_os( os:"Microsoft Windows NT", version:"4.0", cpe:"cpe:/o:microsoft:windows_nt", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    exit( 0 );
+  }
+
+  if( winVal == "5.0" ) {
+    register_and_report_os( os:"Microsoft Windows 2000", cpe:"cpe:/o:microsoft:windows_2000", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   if( winVal == "5.1" ) {
-    register_and_report_os( os:'Windows XP', cpe:'cpe:/o:microsoft:windows_xp', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows XP", cpe:"cpe:/o:microsoft:windows_xp", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   if( winVal == "5.2" ) {
-    register_and_report_os( os:'Windows Server 2003', cpe:'cpe:/o:microsoft:windows_server_2003', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows Server 2003 R2", cpe:"cpe:/o:microsoft:windows_server_2003:r2", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows XP x64", cpe:"cpe:/o:microsoft:windows_xp:-:-:x64", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   if( winVal == "6.0" ) {
-    register_and_report_os( os:'Windows Vista', cpe:'cpe:/o:microsoft:windows_vista', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    # keep: register_and_report_os( os:"Microsoft Windows Server 2008", cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    # keep: register_and_report_os( os:"Microsoft Windows Vista", cpe:"cpe:/o:microsoft:windows_vista", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows Server 2008 or Microsoft Windows Vista", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   if( winVal == "6.1" ) {
-    register_and_report_os( os:'Windows 7', cpe:'cpe:/o:microsoft:windows_7', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    # keep: register_and_report_os( os:"Microsoft Windows Server 2008 R2", cpe:"cpe:/o:microsoft:windows_server_2008:r2", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    # keep: register_and_report_os( os:"Microsoft Windows 7", cpe:"cpe:/o:microsoft:windows_7", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows Server 2008 R2 or Microsoft Windows 7", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   if( winVal == "6.2" ) {
-    register_and_report_os( os:'Windows 8', cpe:'cpe:/o:microsoft:windows_8', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    # keep: register_and_report_os( os:"Microsoft Windows Server 2012", cpe:"cpe:/o:microsoft:windows_server_2012", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    # keep: register_and_report_os( os:"Microsoft Windows 8", cpe:"cpe:/o:microsoft:windows_8", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows Server 2012 or Microsoft Windows 8", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    exit( 0 );
+  }
+
+  if( winVal == "6.3" ) {
+    # keep: register_and_report_os( os:"Microsoft Windows Server 2012 R2", cpe:"cpe:/o:microsoft:windows_server_2012:r2", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    # keep: register_and_report_os( os:"Microsoft Windows 8.1", cpe:"cpe:/o:microsoft:windows_8.1", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows Server 2012 R2 or Microsoft Windows 8.1", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 
   # we don't know the real windows version if we reached here. So just register windows.
-  register_and_report_os( os:'Windows', cpe:'cpe:/o:microsoft:windows', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_detect_lin.nasl 13535 2019-02-08 11:14:12Z cfischer $
 #
 # Adobe Reader Version Detection (Linux)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800108");
-  script_version("$Revision: 13535 $");
+  script_version("2019-08-20T12:18:54+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 12:14:12 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-20 12:18:54 +0000 (Tue, 20 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-10-04 09:54:24 +0200 (Sat, 04 Oct 2008)");
   script_name("Adobe Reader Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -57,23 +56,26 @@ if(!sock)
   exit(0);
 
 adobePath = find_file(file_name:"AcroVersion", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
-foreach path (adobePath) {
+foreach path(adobePath) {
 
   path = chomp(path);
   if(!path)
     continue;
 
-  adobeVer = get_bin_version(full_prog_name:"cat", version_argv:path, ver_pattern:"[0-9.]{3,}(_SU[0-9])?");
+  #Examples for returned versions:
+  #8.1.2_SU1
+  #9.5.5
+  adobeVer = get_bin_version(full_prog_name:"cat", version_argv:path, ver_pattern:"^[0-9.]{3,}(_SU[0-9])?$");
   if(adobeVer) {
 
     set_kb_item(name:"Adobe/Reader/Linux/Version", value:adobeVer[0]);
     set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/Linux/Installed", value:TRUE);
 
-    cpe = build_cpe(value:adobeVer[0], exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");
+    cpe = build_cpe(value:adobeVer[0], exp:"^([0-9.]{3,}(_SU[0-9])?)$", base:"cpe:/a:adobe:acrobat_reader:");
     if(!cpe)
       cpe = "cpe:/a:adobe:acrobat_reader";
 
-    register_product(cpe:cpe, location:path, service:"ssh-login");
+    register_product(cpe:cpe, location:path, service:"ssh-login", port:0);
 
     log_message(data:build_detection_report(app:"Adobe Reader",
                                             version:adobeVer[0],

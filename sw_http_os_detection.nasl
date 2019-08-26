@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-05-07T06:30:33+0000");
-  script_tag(name:"last_modification", value:"2019-05-07 06:30:33 +0000 (Tue, 07 May 2019)");
+  script_version("2019-08-26T08:08:12+0000");
+  script_tag(name:"last_modification", value:"2019-08-26 08:08:12 +0000 (Mon, 26 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -531,10 +531,10 @@ function check_http_banner( port, banner ) {
     }
 
     # https://en.wikipedia.org/wiki/Internet_Information_Services#History
-    # Some IIS versions are shipped with two OS variants so registering both here.
-    # IMPORTANT: Before registering both make sure that both OS variants have reached EOL
-    # as we currently can't control / prioritize which of the registered OS is chosen for
-    # the "BestOS" we would e.g. report a Server 2012 as EOL if Windows 8 was chosen.
+    # Some IIS versions are shipped with two or more OS variants so registering all here.
+    # IMPORTANT: Before registering two or more OS make sure that all OS variants have reached
+    # their EOL as we currently can't control / prioritize which of the registered OS is chosen
+    # for the "BestOS" and we would e.g. report a Server 2012 as EOL if Windows 8 was chosen.
     if( "Microsoft-IIS" >< banner ) {
       version = eregmatch( pattern:"Microsoft-IIS/([0-9.]+)", string:banner );
       if( ! isnull( version[1] ) ) {
@@ -569,6 +569,7 @@ function check_http_banner( port, banner ) {
           return;
         }
         if( version[1] == "6.0" ) {
+          register_and_report_os( os:"Microsoft Windows Server 2003 R2", cpe:"cpe:/o:microsoft:windows_server_2003:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows XP Professional x64", cpe:"cpe:/o:microsoft:windows_xp:-:-:x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
@@ -590,11 +591,11 @@ function check_http_banner( port, banner ) {
           return;
         }
         if( version[1] == "2.0" ) {
-          register_and_report_os( os:"Microsoft Windows NT 4.0", cpe:"cpe:/o:microsoft:windows_nt:4.0", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+          register_and_report_os( os:"Microsoft Windows NT", version:"4.0", cpe:"cpe:/o:microsoft:windows_nt", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
         }
         if( version[1] == "1.0" ) {
-          register_and_report_os( os:"Microsoft Windows NT 3.51", cpe:"cpe:/o:microsoft:windows_nt:3.51", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+          register_and_report_os( os:"Microsoft Windows NT", version:"3.51", cpe:"cpe:/o:microsoft:windows_nt", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
         }
       }
