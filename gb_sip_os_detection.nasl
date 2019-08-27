@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_os_detection.nasl 13746 2019-02-18 16:08:21Z cfischer $
 #
 # SIP Server OS Identification
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108201");
-  script_version("$Revision: 13746 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 17:08:21 +0100 (Mon, 18 Feb 2019) $");
+  script_version("2019-08-27T06:15:20+0000");
+  script_tag(name:"last_modification", value:"2019-08-27 06:15:20 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -86,6 +85,11 @@ if( serverbanner ) {
   }
 
   # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+  if( "+deb10" >< serverbanner ) {
+    register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:concluded, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
   if( "+deb9" >< serverbanner ) {
     register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:concluded, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );

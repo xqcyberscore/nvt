@@ -19,8 +19,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107448");
-  script_version("2019-06-14T09:58:10+0000");
-  script_tag(name:"last_modification", value:"2019-06-14 09:58:10 +0000 (Fri, 14 Jun 2019)");
+  script_version("2019-08-26T09:37:47+0000");
+  script_tag(name:"last_modification", value:"2019-08-26 09:37:47 +0000 (Mon, 26 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-01-12 15:02:52 +0100 (Sat, 12 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,9 +69,8 @@ if ('U.motion</title>' >< buf && 'U.motion Control' >< buf) {
   set_kb_item(name: "schneider/umotion_builder/detected", value: TRUE);
 
   register_and_report_cpe(app: "Schneider Electric U.motion Builder Software", ver: version,
-                          base: "cpe:/a:schneider:umotion_builder:", expr: "^([0-9.]+)", insloc: "/umotion",
+                          base: "cpe:/a:schneider-electric:u.motion_builder:", expr: "^([0-9.]+)", insloc: "/umotion",
                           regPort: port, concluded: vers[0], conclUrl: conclUrl, regService: "www");
-  exit(0);
 }
 
 exit(0);

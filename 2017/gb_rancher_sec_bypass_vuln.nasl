@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rancher_sec_bypass_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Rancher Server Security Bypass Vulnerability
 #
@@ -29,38 +28,37 @@ CPE = "cpe:/a:rancher:rancher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107248");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
-  script_tag(name:"creation_date", value:"2017-10-16 10:53:43 +0200 (Mon, 16 Oct 2017)");
+  script_version("2019-08-26T11:32:39+0000");
   script_cve_id("CVE-2017-7297");
   script_bugtraq_id(97180);
-
+  script_tag(name:"last_modification", value:"2019-08-26 11:32:39 +0000 (Mon, 26 Aug 2019)");
+  script_tag(name:"creation_date", value:"2017-10-16 10:53:43 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("Rancher Server Security Bypass Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_rancher_detect.nasl");
+  script_mandatory_keys("rancher/detected");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97180");
+  script_xref(name:"URL", value:"https://github.com/rancher/rancher/issues/8296");
+
   script_tag(name:"summary", value:"Rancher Server is prone to a security-bypass vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Security Exposure: Any authenticated users can disable auth via API");
+  script_tag(name:"insight", value:"Security Exposure: Any authenticated users can disable auth via API.");
 
-  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions.");
 
-  script_tag(name:"affected", value:"rancher Server 1.5.2, rancher Server 1.4.2, rancher Server 1.3.4, rancher Server 1.2.3");
-  script_tag(name:"solution", value:"Update to : rancher Server 1.5.3, rancher Server 1.4.3, rancher Server 1.3.5 or rancher Server 1.2.4.");
+  script_tag(name:"affected", value:"Rancher Server 1.5.2, 1.4.2, 1.3.4 and 1.2.3. Other versions might be affected as well.");
 
-  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97180");
+  script_tag(name:"solution", value:"Update to Rancher Server 1.5.3, 1.4.3, 1.3.5, 1.2.4 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-
-  script_family("Web application abuses");
-
-  script_dependencies("gb_rancher_detect.nasl");
-  script_mandatory_keys("rancher/installed");
-  script_require_ports("Services/www", 8080);
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -68,46 +66,36 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe: CPE)){
+if(!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(!Ver = get_app_version(cpe: CPE, port: Port)){
+if(!vers = get_app_version(cpe: CPE, port: port))
   exit(0);
-}
 
-Vuln = FALSE;
-
-if(version_is_equal(version: Ver, test_version: "1.5.2"))
-{
-  Vuln = TRUE;
+if(vers =~ "^1\.5\." && version_is_less(version: vers, test_version: "1.5.3")) {
+  VULN = TRUE;
   fix = "1.5.3";
 }
 
-else if(version_is_equal(version: Ver, test_version: "1.4.2"))
-{
-  Vuln = TRUE;
+else if(vers =~ "^1\.4\." && version_is_less(version: vers, test_version: "1.4.3")) {
+  VULN = TRUE;
   fix = "1.4.3";
 }
 
-else if(version_is_equal(version: Ver, test_version: "1.3.4"))
-{
-  Vuln = TRUE;
+else if(vers =~ "^1\.3\." && version_is_less(version: vers, test_version: "1.3.5")) {
+  VULN = TRUE;
   fix = "1.3.5";
 }
 
-else if(version_is_equal(version: Ver, test_version: "1.2.3"))
-{
-  Vuln = TRUE;
+else if(vers =~ "^1\.2\." && version_is_less(version: vers, test_version: "1.2.4")) {
+  VULN = TRUE;
   fix = "1.2.4";
 }
 
-if(Vuln)
-{
-  report = report_fixed_ver(installed_version: Ver, fixed_version: fix);
-  security_message(port: Port, data: report);
+if(VULN) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: fix);
+  security_message(port: port, data: report);
   exit(0);
 }
 
 exit(99);
-

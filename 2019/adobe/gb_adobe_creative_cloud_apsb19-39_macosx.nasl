@@ -26,8 +26,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.815543");
   script_version("2019-08-14T14:30:23+0000");
   script_cve_id("CVE-2019-8063", "CVE-2019-7957", "CVE-2019-7958", "CVE-2019-7959");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"last_modification", value:"2019-08-14 14:30:23 +0000 (Wed, 14 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-14 17:36:11 +0530 (Wed, 14 Aug 2019)");
   script_tag(name:"qod_type", value:"executable_version");

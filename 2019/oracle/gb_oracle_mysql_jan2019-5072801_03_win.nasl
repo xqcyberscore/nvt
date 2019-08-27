@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_jan2019-5072801_03_win.nasl 13237 2019-01-23 10:24:40Z asteins $
 #
 # Oracle MySQL 8.0.x < 8.0.13 Security Update (2019-5072801) Windows
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112493");
-  script_version("$Revision: 13237 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 11:24:40 +0100 (Wed, 23 Jan 2019) $");
+  script_version("2019-08-26T11:25:15+0000");
+  script_tag(name:"last_modification", value:"2019-08-26 11:25:15 +0000 (Mon, 26 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-01-16 13:12:11 +0100 (Wed, 16 Jan 2019)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
@@ -48,18 +47,23 @@ if (description)
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
-  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
+  script_mandatory_keys("MySQL/installed", "Host/runs_windows");
 
   script_tag(name:"summary", value:"Oracle MySQL is prone to multiple vulnerabilities.");
+
   script_tag(name:"insight", value:"The attacks range in variety and difficulty. Most of them allow an attacker
   with network access via multiple protocols to compromise the MySQL Server.
 
   For further information refer to the official advisory via the referenced link.");
+
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability can result in unauthorized
   access to critical data or complete access to all MySQL Server accessible data and unauthorized ability
   to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"affected", value:"MySQL 8.0.13 and prior on Windows.");
+
   script_tag(name:"solution", value:"Updates are available. Apply the necessary patch from the referenced link.");
 
   script_xref(name:"URL", value:"https://www.oracle.com/technetwork/security-advisory/cpujan2019-5072801.html#AppendixMSQL");

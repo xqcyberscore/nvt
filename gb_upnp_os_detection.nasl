@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108200");
-  script_version("2019-04-24T11:06:32+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 11:06:32 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-08-27T06:15:20+0000");
+  script_tag(name:"last_modification", value:"2019-08-27 06:15:20 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -165,6 +165,8 @@ if( egrep( pattern:"^Server: Debian", string:banner, icase:TRUE ) ) {
   version = eregmatch( pattern:"Server: Debian/([0-9.]+)", string:banner, icase:TRUE );
   if( ! isnull( version[1] ) ) {
     register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "Debian/buster" >< banner ) {
+    register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else if( "Debian/stretch" >< banner ) {
     register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else if( "Debian/jessie" >< banner ) {

@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108192");
-  script_version("2019-04-24T11:19:50+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 11:19:50 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-08-27T06:15:20+0000");
+  script_tag(name:"last_modification", value:"2019-08-27 06:15:20 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-07-17 09:13:48 +0100 (Mon, 17 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -176,7 +176,7 @@ if( "ubuntu" >< banner ) {
 
 # 5.0.32-Debian_7etch12-log
 if( "+deb" >< banner || "~jessie" >< banner || "~wheezy" >< banner || "~stretch" >< banner ||
-    "etch" >< banner || "-Debian" >< banner ||
+    "etch" >< banner || "-Debian" >< banner || "~buster" >< banner ||
     "squeeze" >< banner || "lenny" >< banner || # squeeze has .squeeze or ~squeeze versions, lenny as well
     "~bpo" >< banner ) { # Banners for debian backports like 5.6.30-1~bpo8+1-log
 
@@ -194,6 +194,8 @@ if( "+deb" >< banner || "~jessie" >< banner || "~wheezy" >< banner || "~stretch"
     register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else if( "+deb9" >< banner || "~stretch" >< banner || "~bpo9" >< banner ) {
     register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "+deb10" >< banner || "~buster" >< banner || "~bpo10" >< banner ) {
+    register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }

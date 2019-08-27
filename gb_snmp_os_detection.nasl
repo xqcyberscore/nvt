@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("2019-08-26T08:17:26+0000");
-  script_tag(name:"last_modification", value:"2019-08-26 08:17:26 +0000 (Mon, 26 Aug 2019)");
+  script_version("2019-08-27T06:15:20+0000");
+  script_tag(name:"last_modification", value:"2019-08-27 06:15:20 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -78,6 +78,9 @@ if( sysdesc =~ "Linux" && " Debian " >< sysdesc ) {
   } else if( "+deb9" >< sysdesc || "~bpo9" >< sysdesc ) {
     set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux 9" );
     register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "+deb10" >< sysdesc || "~bpo10" >< sysdesc ) {
+    set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux 10" );
+    register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux" );
     register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );

@@ -24,11 +24,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107017");
   script_cve_id("CVE-2019-11477", "CVE-2019-11478", "CVE-2019-11479");
-  script_version("2019-06-21T11:42:12+0000");
+  script_version("2019-08-26T10:45:39+0000");
 
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-06-21 11:42:12 +0000 (Fri, 21 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-08-26 10:45:39 +0000 (Mon, 26 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-21 11:11:07 +0200 (Fri, 21 Jun 2019)");
 
   script_name("Greenbone OS - Kernel Denial of Service Vulnerabilities - June 19");
@@ -72,7 +72,7 @@ if(description)
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! version = get_kb_item( "greenbone/gos/version" ) )
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) )
   exit( 0 );
 
 version = str_replace( string:version, find:"-", replace:"." );

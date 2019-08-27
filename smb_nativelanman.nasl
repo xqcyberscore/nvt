@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("2019-08-09T05:47:28+0000");
+  script_version("2019-08-27T06:15:20+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-09 05:47:28 +0000 (Fri, 09 Aug 2019)");
+  script_tag(name:"last_modification", value:"2019-08-27 06:15:20 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -184,8 +184,10 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
             if( "Samba 4.2.10-Debian" >< smb_str || "Samba 4.2.14-Debian" >< smb_str ) {
               os_str = "Debian GNU/Linux 8";
-            } else if( "Samba 4.5.8-Debian" >< smb_str || "Samba 4.5.12-Debian" >< smb_str ) {
+            } else if( "Samba 4.5.8-Debian" >< smb_str || "Samba 4.5.12-Debian" >< smb_str || "Samba 4.5.16-Debian" >< smb_str ) {
               os_str = "Debian GNU/Linux 9";
+            } else if( "Samba 4.9.5-Debian" >< smb_str ) {
+              os_str = "Debian GNU/Linux 10";
             } else {
               os_str = "Debian GNU/Linux";
             }
@@ -409,11 +411,13 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         } else if( "vxworks" >< os_str_lo ) {
           register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "debian" >< os_str_lo ) {
-          if( "8" >< os_str ) {
+          if( " 8" >< os_str ) {
             # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
             register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "9" >< os_str ) {
+          } else if( " 9" >< os_str ) {
             register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( " 10" >< os_str ) {
+            register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
