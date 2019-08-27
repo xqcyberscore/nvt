@@ -74,24 +74,15 @@ fixtext = 'Set following UI path accordingly:
 Computer Configuration/Windows Settings/Security Settings/Account Policies/Password Policy/' + title;
 default = script_get_preference('Required');
 
-value = rsop_securitysettingsboolean(select:select,keyname:keyname);
-if( value == ''){
-  value = 'false';
-}
+query = "SELECT " + select + " FROM RSOP_SecuritySettingBoolean WHERE KeyName = '" + keyname + "' AND precedence = '1'";
+result = policy_rsop_query(query:query, default: default);
 
-if(tolower(chomp(value)) == tolower(default)){
-  compliant = 'yes';
-}else{
-  compliant = 'no';
-}
-
-policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_logging(text:'"' + title + '" is set to: ' + result['value']);
 policy_add_oid();
 policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
-policy_set_kb(val:value);
-policy_set_compliance(compliant:compliant);
-
+policy_set_kb(val:result['value']);
+policy_set_compliance(compliant:result['compliant']);
 
 exit(0);
