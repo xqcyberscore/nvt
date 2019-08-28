@@ -381,6 +381,12 @@ eol_cpes[ 'cpe:/a:sensiolabs:symfony' ] = make_array(
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
+# https://tiki.org/Versions#Version_Lifecycle
+eol_cpes[ 'cpe:/a:tiki:tikiwiki_cms/groupware' ] = make_array(
+  'versions',      '18:2023-01-31;15:2021-04-30;13:2015-11-30;12:2018-11-30;11:unknown;10:unknown;9:unknown;8:unknown;7:unknown;6:unknown;5:unknown;4:unknown;3:unknown;2:unknown;1:unknown',
+  'version_regex', '^([0-9]+)'
+);
+
 # https://typo3.org/typo3-cms/roadmap/
 # https://typo3.org/about/the-history-of-typo3/
 eol_cpes[ 'cpe:/a:typo3:typo3' ] = make_array(

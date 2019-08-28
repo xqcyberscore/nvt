@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_mult_vuln.nasl 13858 2019-02-26 04:17:07Z ckuersteiner $
 #
 # Terramaster TOS <= 3.1.03 Multiple Vulnerabilities
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:noontec:terramaster";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141751");
-  script_version("$Revision: 13858 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 05:17:07 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-08-28T07:30:37+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 07:30:37 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-12-04 17:22:47 +0700 (Tue, 04 Dec 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +60,7 @@ if (description)
 
   script_tag(name:"affected", value:"Terramaster TOS version 3.1.03 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 26th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 28th August, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://blog.securityevaluators.com/vulnerabilities-in-terramaster-tos-3-1-03-fb99cf88b86a?gi=2baa8c595109");

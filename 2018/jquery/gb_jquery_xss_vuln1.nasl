@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jquery_xss_vuln1.nasl 12183 2018-11-01 10:13:13Z ckuersteiner $
 #
 # jQuery < 3.0.0 XSS Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:jquery:jquery";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141635");
-  script_version("$Revision: 12183 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-01 11:13:13 +0100 (Thu, 01 Nov 2018) $");
+  script_version("2019-08-27T12:52:16+0000");
+  script_tag(name:"last_modification", value:"2019-08-27 12:52:16 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-11-01 15:57:33 +0700 (Thu, 01 Nov 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -72,11 +71,13 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
 
+version = infos["version"];
+
 if (version_is_less(version: version, test_version: "3.0.0")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "3.0.0");
+  report = report_fixed_ver(installed_version: version, fixed_version: "3.0.0", install_path: infos["location"]);
   security_message(port: port, data: report);
   exit(0);
 }

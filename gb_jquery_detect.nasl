@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jquery_detect.nasl 14001 2019-03-05 15:06:57Z cfischer $
 #
 # jQuery Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141622");
-  script_version("$Revision: 14001 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 16:06:57 +0100 (Tue, 05 Mar 2019) $");
+  script_version("2019-08-27T13:05:31+0000");
+  script_tag(name:"last_modification", value:"2019-08-27 13:05:31 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-11-01 09:53:59 +0700 (Thu, 01 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +83,7 @@ function extract_jquery_location( jquerydir, jqueryfile, basedir ) {
   }
 
   if (location != "/")
-    location = ereg_replace( string:location, pattern:"(/)$", replace:"" );
+    location = ereg_replace(string: location, pattern: "(/)$", replace: "");
 
   if (jqueryfile !~ "^/")
     jqueryfile = "/" + jqueryfile;
@@ -101,6 +100,7 @@ function extract_jquery_location( jquerydir, jqueryfile, basedir ) {
 
 pattern = 'src=["\']([^ ]*)(jquery[-.]?([0-9.]+)?(\\.(min|slim|slim\\.min)?)\\.js)';
 detected_urls = make_list();
+detected_vers = make_list();
 
 port = get_http_port(default: 80);
 
@@ -168,7 +168,7 @@ foreach dir (make_list_unique("/", cgi_dirs(port: port))) {
   # src="./assets/javascript/jquery.min.js?assets_version=411"
   else if (!isnull(detect[2])) {
 
-    infos = extract_jquery_location( jquerydir:detect[1], jqueryfile:detect[2], basedir:dir );
+    infos = extract_jquery_location(jquerydir: detect[1], jqueryfile: detect[2], basedir: dir);
     location = infos["location"];
     url = infos["fullurl"];
     if (!location)
@@ -193,7 +193,7 @@ foreach dir (make_list_unique("/", cgi_dirs(port: port))) {
       if (!isnull(vers[1])) {
         version = vers[1];
         concl   = vers[0];
-        concUrl = url;
+        concUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
       }
     } else {
       extra  = "The jQuery library is hosted on a different server. Because of this it is not possible to gather the ";
@@ -206,6 +206,17 @@ foreach dir (make_list_unique("/", cgi_dirs(port: port))) {
       continue;
 
     detected_urls = make_list(detected_urls, location);
+
+    # nb: Some systems are using something like e.g. the following which we currently can't resolve:
+    # a/b/../../js/jquery-1.10.2.min.js
+    # c/d/../../js/jquery-1.10.2.min.js
+    # Temporarily exclude such links for now.
+    if ("../" >< location ) {
+      if (in_array(search: version, array: detected_vers, part_match: FALSE))
+        continue;
+
+      detected_vers = make_list(detected_vers, version);
+    }
 
     set_kb_item(name: "jquery/detected", value: TRUE);
 

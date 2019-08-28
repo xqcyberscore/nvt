@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704503");
-  script_version("2019-08-20T12:58:09+0000");
+  script_version("2019-08-27T07:56:59+0000");
   script_cve_id("CVE-2019-14809", "CVE-2019-9512", "CVE-2019-9514");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-20 12:58:09 +0000 (Tue, 20 Aug 2019)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"2019-08-27 07:56:59 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-20 02:00:17 +0000 (Tue, 20 Aug 2019)");
   script_name("Debian Security Advisory DSA 4503-1 (golang-1.11 - security update)");
   script_category(ACT_GATHER_INFO);

@@ -1,14 +1,10 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tikiwiki_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Tiki Wiki CMS Groupware Version Detection
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
-#
-# Updated by Rachana Shetty <srachana@secpod.com> on 2011-12-06
-# - Updated to detect the recent versions and CR 57
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -30,13 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901001");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-08-27T10:44:19+0000");
+  script_tag(name:"last_modification", value:"2019-08-27 10:44:19 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("Tiki Wiki CMS Groupware Version Detection");
+
   script_category(ACT_GATHER_INFO);
+
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
@@ -45,11 +44,9 @@ if(description)
 
   script_xref(name:"URL", value:"http://tiki.org/");
 
-  script_tag(name:"summary", value:"Detection of Tiki Wiki CMS Groupware, a open source web application
-  is a wiki-based CMS.
+  script_tag(name:"summary", value:"Detection of Tiki Wiki CMS Groupware
 
-  The script sends a connection request to the web server and attempts to
-  extract the version number from the reply.");
+  The script sends a connection request to the web server and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -62,31 +59,45 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/tikiwiki", "/tiki", "/wiki", "/", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  req = http_get( item:dir + "/tiki-index.php", port:port );
-  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+  res = http_get_cache( item:dir + "/tiki-index.php", port:port );
 
-  if( res =~ "HTTP/1.. 200" && ( "TikiWiki" >< res || "Tiki Wiki CMS" >< res ) ) {
+  if( res =~ "^HTTP/1\.[01] 200" && ( 'content="Tiki Wiki CMS Groupware' >< res || '/css/tiki_base.css"' >< res || 'title="Tiki powered site"' >< res ||
+                                      'href="tiki-remind_password.php"' >< res || "This is Tikiwiki " >< res || '"lib/tiki-js.js"' >< res ||
+                                      '"Tikiwiki powered site"' >< res || 'img/tiki/tikilogo.png"' >< res ) ) {
 
     version = "unknown";
 
-    ver = eregmatch(pattern:"TikiWiki ([0-9.]+)", string:res);
+    # This is Tikiwiki v2.3  -Arcturus- &#169; 2002&#8211;2008 by the
+    # Toto je TikiWiki v1.9.8.3  -Sirius- &#169; 2002&#8211;2007 &ndash;
+    # >TikiWiki CMS/Groupware</a>  v2.2  -Arcturus-
+    ver = eregmatch( pattern:"(Tiki[wW]iki v?|TikiWiki CMS/Groupware</a>\s*v)([0-9.]+)", string:res );
 
-    if( ver[1] != NULL ) {
-      version = ver[1];
+    if( ! isnull( ver[2] ) ) {
+      version = ver[2];
     } else {
       url = dir + "/README";
-      req = http_get( item:url, port:port );
-      res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-      if( res =~ "HTTP/1.. 200" ) {
+      res = http_get_cache( item:url, port:port );
+      if( res =~ "^HTTP/1\.[01] 200" && "Tiki" >< res ) {
+
+        # version 2.3 -Arcturus-
+        # version 2.2 (CVS) -Arcturus-
+        # version 1.9.8.3 -Sirius-
+        # Version 7.2
+        # Version 12.2
+        # Version 20.0
+        #
+        # all of them have the following:
+        # Tiki! The wiki with a lot of features!
         ver = eregmatch( pattern:"[v|V]ersion ([0-9.]+)", string:res );
-        if( ver[1] != NULL ) {
+        if( ! isnull( ver[1] ) ) {
           version = ver[1];
           conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
         }
@@ -94,9 +105,8 @@ foreach dir( make_list_unique( "/tikiwiki", "/tiki", "/wiki", "/", cgi_dirs( por
     }
 
     url = dir + "/tiki-install.php";
-    req = http_get( item:url, port:port );
-    res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-    if( res =~ "HTTP/1.. 200" && "<title>Tiki Installer" >< res ) {
+    res = http_get_cache( item:url, port:port );
+    if( res =~ "^HTTP/1\.[01] 200" && "<title>Tiki Installer" >< res ) {
       extra = "The Tiki Installer is available at " + report_vuln_url( port:port, url:url, url_only:TRUE );
     }
 
@@ -104,20 +114,20 @@ foreach dir( make_list_unique( "/tikiwiki", "/tiki", "/wiki", "/", cgi_dirs( por
     set_kb_item( name:"TikiWiki/" + port + "/Ver", value:tmp_version );
     set_kb_item( name:"TikiWiki/installed", value:TRUE );
 
-    cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:tiki:tikiwiki_cms/groupware:" );
-    if( isnull( cpe ) )
-      cpe = 'cpe:/a:tiki:tikiwiki_cms/groupware';
+    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:tiki:tikiwiki_cms/groupware:" );
+    if( ! cpe )
+      cpe = "cpe:/a:tiki:tikiwiki_cms/groupware";
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
 
-    log_message( data: build_detection_report( app:"Tiki Wiki CMS Groupware",
-                                               version:version,
-                                               install:install,
-                                               cpe:cpe,
-                                               extra:extra,
-                                               concludedUrl:conclUrl,
-                                               concluded:ver[0] ),
-                                               port:port );
+    log_message( data:build_detection_report( app:"Tiki Wiki CMS Groupware",
+                                              version:version,
+                                              install:install,
+                                              cpe:cpe,
+                                              extra:extra,
+                                              concludedUrl:conclUrl,
+                                              concluded:ver[0] ),
+                 port:port );
   }
 }
 
