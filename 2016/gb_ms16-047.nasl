@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807660");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-08-28T14:04:51+0000");
   script_cve_id("CVE-2016-0128");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-08-28 14:04:51 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2016-04-13 08:09:15 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Windows SAM and LSAD Privilege Elevation Vulnerability (3148527)");
 
@@ -47,11 +47,17 @@ if(description)
   gain access to the SAM database.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
-  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 10 x32/x64");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
@@ -72,12 +78,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
 
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
@@ -94,19 +98,19 @@ if(!sysVer){
   exit(0);
 }
 
-if (sysVer =~ "^(6\.0\.6002\.1)"){
+if (sysVer =~ "^6\.0\.6002\.1"){
   Vulnerable_range = "Less than 6.0.6002.19623";
 }
-else if (sysVer =~ "^(6\.0\.6002\.2)"){
+else if (sysVer =~ "^6\.0\.6002\.2"){
   Vulnerable_range = "6.0.6002.23000 - 6.0.6002.23935";
 }
-else if (sysVer =~ "^(6\.3\.9600\.1)"){
+else if (sysVer =~ "^6\.3\.9600\.1"){
   Vulnerable_range = "Less than 6.3.9600.18265";
 }
-else if (sysVer =~ "^(10\.0\.10240)"){
+else if (sysVer =~ "^10\.0\.10240"){
   Vulnerable_range = "Less than 10.0.10240.16766";
 }
-else if (sysVer =~ "^(10\.0\.10586)"){
+else if (sysVer =~ "^10\.0\.10586"){
   Vulnerable_range = "10.0.10586.0 - 10.0.10586.211";
 }
 
@@ -121,7 +125,7 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   ## Presently GDR information is not available.
-  #if(version_is_less(version:sysVer, test_version:"6.1.7601.23000", test_version2:"6.1.7601.23389")){
+  #if(version_in_range(version:sysVer, test_version:"6.1.7601.23000", test_version2:"6.1.7601.23389")){
   if(version_is_less(version:sysVer, test_version:"6.1.7601.23390")){
     Vulnerable_range = "Less than 6.1.7601.23390";
     VULN = TRUE ;
@@ -133,8 +137,8 @@ else if(hotfix_check_sp(win2012:1) > 0)
   ## Presently GDR information is not available.
   #if(version_in_range(version:sysVer, test_version:"6.2.9200.21000", test_version2:"6.2.9200.21810")){
   if(version_is_less(version:sysVer, test_version:"6.2.9200.21811")){
-     Vulnerable_range = "Less than 6.2.9200.21811";
-     VULN = TRUE ;
+    Vulnerable_range = "Less than 6.2.9200.21811";
+    VULN = TRUE ;
   }
 }
 
@@ -148,8 +152,8 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
   if(version_is_less(version:sysVer, test_version:"10.0.10240.16766") ||
-     version_in_range(version:sysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.211")){
-     VULN = TRUE ;
+    version_in_range(version:sysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.211")){
+    VULN = TRUE ;
   }
 }
 

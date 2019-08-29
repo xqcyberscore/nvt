@@ -21,9 +21,9 @@ CPE = "cpe:/a:discourse:discourse";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108598");
-  script_version("2019-06-18T06:52:36+0000");
+  script_version("2019-08-28T13:27:25+0000");
   script_cve_id("CVE-2019-5418", "CVE-2019-5419", "CVE-2019-5420");
-  script_tag(name:"last_modification", value:"2019-06-18 06:52:36 +0000 (Tue, 18 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-08-28 13:27:25 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-17 06:03:35 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -60,10 +60,10 @@ if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:
   exit( 0 );
 
 vers = infos["version"];
-path = infos["location"];
 
-if( version_is_less( version:vers, test_version:"2.3.0.beta5" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"2.3.0.beta5", install_path:path );
+if( version_is_less( version:vers, test_version:"2.3.0" ) ||
+    version_in_range( version:vers, test_version:"2.3.0.beta1", test_version2:"2.3.0.beta4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.3.0.beta5", install_path:infos["location"] );
   security_message( port:port, data:report );
   exit( 0 );
 }

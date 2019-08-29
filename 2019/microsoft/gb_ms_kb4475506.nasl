@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815195");
-  script_version("2019-08-22T06:41:28+0000");
+  script_version("2019-08-28T13:24:22+0000");
   script_cve_id("CVE-2019-1155");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-08-22 06:41:28 +0000 (Thu, 22 Aug 2019)");
+  script_tag(name:"last_modification", value:"2019-08-28 13:24:22 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-14 11:52:30 +0530 (Wed, 14 Aug 2019)");
   script_name("Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4475506)");
 
@@ -82,11 +82,11 @@ foreach key(key_list)
   if(msPath)
   {
     offPath = msPath + "\Microsoft Shared\Office14";
-    msdllVer = fetch_file_version(sysPath:offPath, file_name:"acecore.dll");
+    msdllVer = fetch_file_version(sysPath:offPath, file_name:"aceexcl.dll");
 
     if(msdllVer && version_in_range(version:msdllVer, test_version:"14.0", test_version2:"14.0.7236.4999"))
     {
-      report = report_fixed_ver( file_checked:offPath + "\acecore.dll",
+      report = report_fixed_ver( file_checked:offPath + "\aceexcl.dll",
                                  file_version:msdllVer, vulnerable_range:"14.0 - 14.0.7236.4999");
       security_message(data:report);
       exit(0);

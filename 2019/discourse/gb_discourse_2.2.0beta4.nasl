@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_discourse_2.2.0beta4.nasl 13336 2019-01-29 07:11:23Z ckuersteiner $
 #
 # Discourse < 2.2.0.beta4 Multiple Vulnerabilities
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:discourse:discourse";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141936");
-  script_version("$Revision: 13336 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:11:23 +0100 (Tue, 29 Jan 2019) $");
+  script_version("2019-08-28T13:27:25+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 13:27:25 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-01-29 13:51:11 +0700 (Tue, 29 Jan 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -71,11 +70,14 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
 
-if (version_is_less(version: version, test_version: "2.2.0.beta4")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "2.2.0.beta4");
+vers = infos["version"];
+
+if (version_is_less(version: vers, test_version: "2.2.0") ||
+    version_in_range(version: vers, test_version: "2.2.0.beta1", test_version2: "2.2.0.beta3")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "2.2.0.beta4", install_path: infos["location"]);
   security_message(port: port, data: report);
   exit(0);
 }

@@ -29,12 +29,12 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814307");
-  script_version("2019-04-26T13:30:35+0000");
+  script_version("2019-08-28T14:04:51+0000");
   script_cve_id("CVE-2018-14647");
   script_bugtraq_id(105396);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-26 13:30:35 +0000 (Fri, 26 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-08-28 14:04:51 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 17:01:58 +0530 (Wed, 03 Oct 2018)");
 
   script_name("Python Elementtree Denial of Service Vulnerability (Mac OS X)");
@@ -86,7 +86,7 @@ if (version_is_less(version: pyVer, test_version: "2.7.16")) {
   exit(0);
 }
 
-if (version_in_range(version: pyVer, test_version: "3.4", test_version: "3.6.6")) {
+if (version_in_range(version: pyVer, test_version: "3.4", test_version2: "3.6.6")) {
   report = report_fixed_ver(installed_version: pyVer, fixed_version: "3.6.7", install_path: pypath);
   security_message(port: 0, data:report);
   exit(0);

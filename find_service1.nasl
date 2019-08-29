@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-08-08T09:26:51+0000");
-  script_tag(name:"last_modification", value:"2019-08-08 09:26:51 +0000 (Thu, 08 Aug 2019)");
+  script_version("2019-08-28T10:33:00+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 10:33:00 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -234,6 +234,9 @@ if( r_len == 0 ) {
   rhexstr = hexstr( r );
 }
 
+rbinstr_space = bin2string( ddata:r, noprint_replacement:' ' );
+rbinstr_nospace = bin2string( ddata:r );
+
 # aka HTTP/0.9
 if( r =~ '^[ \t\r\n]*<HTML>.*</HTML>' ) {
   report_service( port:port, svc:"www", banner:r );
@@ -296,9 +299,23 @@ if( "Host" >< r && " is blocked " >< r && "mysqladmin flush-hosts" >< r ) {
 #0x50:  6B 65 74 73 20 6F 75 74 20 6F 66 20 6F 72 64 65    kets out of orde
 #0x60:  72                                                 r
 
-if( ( "mysql_native_password" >< r && "Got packets out of order" >< r ) ||
-    "001b000001ff8404476f74207061636b657473206f7574206f66206f72646572" >< rhexstr ||
-    "006d7973716c5f6e61746976655f70617373776f726400" >< rhexstr ) {
+# SphinxQL of the Sphinx search server is responding with something like the following below
+# which would make this detection to wrongly detect a SphinxQL service as MySQL.
+#
+# 3.0.2 e3d296ef@190531 release
+#
+# 0x00:  61 00 00 00 0A 33 2E 30 2E 32 20 65 33 64 32 39    a....3.0.2 e3d29
+# 0x10:  36 65 66 40 31 39 30 35 33 31 20 72 65 6C 65 61    6ef@190531 relea
+# 0x20:  73 65 00 01 00 00 00 01 02 03 04 05 06 07 08 00    se..............
+# 0x30:  08 82 21 02 00 08 00 15 00 00 00 00 00 00 00 00    ..!.............
+# 0x40:  00 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 00 6D    ...............m
+# 0x50:  79 73 71 6C 5F 6E 61 74 69 76 65 5F 70 61 73 73    ysql_native_pass
+# 0x60:  77 6F 72 64 00                                     word.
+#
+if( rbinstr_space !~ "[0-9.]+ [0-9a-z]+@[0-9a-z]+ release" &&
+    ( ( "mysql_native_password" >< r && "Got packets out of order" >< r ) ||
+        "001b000001ff8404476f74207061636b657473206f7574206f66206f72646572" >< rhexstr ||
+        "006d7973716c5f6e61746976655f70617373776f726400" >< rhexstr ) ) {
   register_service( port:port, proto:"mysql", message:"A MySQL/MariaDB server seems to be running on this port." );
   log_message( port:port, data:"A MySQL/MariaDB server seems to be running on this port." );
   exit( 0 );
@@ -377,17 +394,29 @@ if( match( string:r, pattern:"Language received from client:*Setlocale:*" ) ) {
   exit( 0 );
 }
 
-#invalid command (code=12064, len=1414541105)
-if( egrep( string:bin2string( ddata:r, noprint_replacement:' ' ), pattern:"invalid command \(code=([0-9]+), len=([0-9]+)\)" ) ) {
+# invalid command (code=12064, len=1414541105)
+# nb: Don't use a ^ anchor, the banner is located within some binary blob.
+# nb: see sw_sphinxsearch_detect.nasl as well
+if( banner = egrep( string:rbinstr_space, pattern:"invalid command \(code=([0-9]+), len=([0-9]+)\)" ) ) {
   register_service( port:port, proto:"sphinxapi", message:"A Sphinx search server seems to be running on this port" );
   log_message( port:port, data:"A Sphinx search server seems to be running on this port" );
+  set_kb_item( name:"sphinxsearch/" + port + "/sphinxapi/banner", value:banner );
   exit( 0 );
 }
 
-#2.0.9-id64-release (rel20-r4115) or 2.1.2-id64-release (r4245)
-if( egrep( string:bin2string( ddata:r, noprint_replacement:' ' ), pattern:"([0-9.]+)-id([0-9]+)-release \(([0-9a-z\-]+)\)" ) ) {
+# Examples:
+# 2.0.9-id64-release (rel20-r4115)
+# 2.1.2-id64-release (r4245)
+# 2.0.4-release (r3135)
+# 2.2.11-id64-release (95ae9a6)
+# 2.8.0 4006794b@190128 release
+# 3.0.2 e3d296ef@190531 release
+# nb: Don't use a ^ anchor, the banner is located within some binary blob.
+# nb: see sw_sphinxsearch_detect.nasl as well
+if( banner = egrep( string:rbinstr_space, pattern:"([0-9.]+)(-(id([0-9]+)-)?release \(([0-9a-z\-]+)\)| [0-9a-z]+@[0-9a-z]+ release)" ) ) {
   register_service( port:port, proto:"sphinxql", message:"A Sphinx search server (MySQL listener) seems to be running on this port" );
   log_message( port:port, data:"A Sphinx search server (MySQL listener) seems to be running on this port" );
+  set_kb_item( name:"sphinxsearch/" + port + "/sphinxql/banner", value:banner );
   exit( 0 );
 }
 
@@ -433,7 +462,7 @@ if( match( string:r, pattern:'RESPONSE/None/*/application/json:*{"status": *, "m
   exit( 0 );
 }
 
-if( "DRb::DRbConnError" >< bin2string( ddata:r ) ) {
+if( "DRb::DRbConnError" >< rbinstr_nospace ) {
   register_service( port:port, proto:"drb", message:"A Distributed Ruby (dRuby/DRb) service seems to be running on this port." );
   log_message( port:port, data:"A Distributed Ruby (dRuby/DRb) service seems to be running on this port." );
   exit( 0 );
@@ -561,7 +590,7 @@ if( "Connection from client using unsupported AMQP attempted" >< r || "amqp:deco
 
 if( "ActiveMQ" >< r && ( "PlatformDetails" >< r || "StackTraceEnable" >< r || "ProviderVersion" >< r || "TcpNoDelayEnabled" >< r ) ) {
   # nb: Set the response for later use in gb_apache_activemq_detect.nasl
-  set_kb_item( name:"ActiveMQ/JMS/banner/" + port, value:bin2string( ddata:r ) );
+  set_kb_item( name:"ActiveMQ/JMS/banner/" + port, value:rbinstr_nospace );
   register_service( port:port, proto:"activemq_jms", message:"A ActiveMQ JMS service seems to be running on this port." );
   log_message( port:port, data:"A ActiveMQ JMS service seems to be running on this port." );
   exit( 0 );

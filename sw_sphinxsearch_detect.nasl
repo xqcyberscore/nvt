@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_sphinxsearch_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Sphinx search server Detection
 #
@@ -27,13 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111034");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-08-28T10:03:56+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 10:03:56 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-08-31 18:00:00 +0200 (Mon, 31 Aug 2015)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sphinx search server Detection");
-
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
@@ -42,7 +40,9 @@ if(description)
 
   script_tag(name:"summary", value:"The script checks the presence of a Sphinx search server
   and sets the version in the kb.");
+
   script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -51,79 +51,112 @@ include("host_details.inc");
 include("dump.inc");
 include("misc_func.inc");
 
-ports = get_kb_list( "Services/sphinxql" );
-if( ! ports) ports = make_list( 9306 );
+ports = get_ports_for_service( default_list:make_list( 9306 ), proto:"sphinxql" );
 
-foreach port ( ports ) {
+foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  if( ! banner = get_kb_item( "sphinxsearch/" + port + "/sphinxql/banner" ) ) {
 
     soc = open_sock_tcp( port );
-    if( soc ) {
+    if( ! soc )
+      continue;
 
-      send( socket: soc, data: "TEST\r\n" );
-
-      buf = recv( socket:soc, length:64 );
-      close( soc );
-
-      if( version = eregmatch( string:bin2string( ddata:buf, noprint_replacement:' ' ), pattern: "([0-9.]+)-id([0-9]+)-release \(([0-9a-z\-]+)\)" ) ) {
-
-        register_service(port:port, proto:"sphinxql");
-        set_kb_item( name:"sphinxsearch/" + port + "/version", value: version[1] );
-        set_kb_item( name:"sphinxsearch/" + port + "/installed", value: TRUE );
-
-        ## CPE is currently not registered
-        cpe = build_cpe( value: version[1], exp:"^([0-9.]+)",base:"cpe:/a:sphinxsearch:sphinxsearch:" );
-        if( isnull( cpe ) )
-          cpe = 'cpe:/a:sphinxsearch:sphinxsearch';
-
-        register_product( cpe:cpe, location:port + '/tcp', port:port );
-
-        log_message( data: build_detection_report( app:"Sphinx search server",
-                                                       version:version[1],
-                                                       install:port + '/tcp',
-                                                       cpe:cpe,
-                                                       concluded:version[0]),
-                                                       port:port);
-      }
-    }
-  }
-}
-
-port = get_kb_item( "Services/sphinxapi" );
-if ( ! port ) port = 9312;
-
-if( get_port_state( port ) ) {
-
-  soc = open_sock_tcp( port );
-  if( soc ) {
-
-    send( socket: soc, data: "TEST\r\n\r\n" );
+    send( socket:soc, data:"TEST\r\n" );
 
     buf = recv( socket:soc, length:64 );
     close( soc );
+    if( ! buf )
+      continue;
 
-    if( banner = egrep( string: bin2string( ddata:buf, noprint_replacement:' ' ), pattern: "invalid command \(code=([0-9]+), len=([0-9]+)\)" ) ) {
+    banner = bin2string( ddata:buf, noprint_replacement:' ' );
+    if( ! banner )
+      continue;
+  }
 
-      version = "unknown";
+  # Examples:
+  # 2.0.9-id64-release (rel20-r4115)
+  # 2.1.2-id64-release (r4245)
+  # 2.0.4-release (r3135)
+  # 2.2.11-id64-release (95ae9a6)
+  # 2.8.0 4006794b@190128 release
+  # 3.0.2 e3d296ef@190531 release
+  # nb: Don't use a ^ anchor, the banner is located within some binary blob.
+  # nb: see find_service1.nasl as well
+  if( version = eregmatch( string:banner, pattern:"([0-9.]+)(-(id([0-9]+)-)?release \(([0-9a-z\-]+)\)| [0-9a-z]+@[0-9a-z]+ release)" ) ) {
 
-      register_service(port:port, proto:"sphinxapi");
-      set_kb_item( name:"sphinxsearch/" + port + "/version", value: version );
-      set_kb_item( name:"sphinxsearch/" + port + "/installed", value: TRUE );
+    replace_kb_item( name:"sphinxsearch/" + port + "/sphinxql/banner", value:banner );
 
-      ## CPE is currently not registered
-      cpe = 'cpe:/a:sphinxsearch:sphinxsearch';
+    install = port + "/tcp";
 
-      register_product( cpe:cpe, location:port + '/tcp', port:port );
+    register_service( port:port, proto:"sphinxql" );
+    set_kb_item( name:"sphinxsearch/detected", value:TRUE );
+    set_kb_item( name:"sphinxsearch/noauth", value:TRUE );
+    set_kb_item( name:"sphinxsearch/" + port + "/detected", value:TRUE );
+    set_kb_item( name:"sphinxsearch/" + port + "/noauth", value:TRUE );
+    set_kb_item( name:"sphinxsearch/" + port + "/version", value:version[1] );
 
-      log_message( data: build_detection_report( app:"Sphinx search server",
-                                                     version:version,
-                                                     install:port + '/tcp',
-                                                     cpe:cpe,
-                                                     concluded:banner),
-                                                     port:port);
-    }
+    cpe = build_cpe( value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:sphinxsearch:sphinxsearch:" );
+    if( ! cpe )
+      cpe = "cpe:/a:sphinxsearch:sphinxsearch";
+
+    register_product( cpe:cpe, location:install, port:port, service:"sphinxql" );
+
+    log_message( data:build_detection_report( app:"Sphinx search server",
+                                              version:version[1],
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:version[0] ),
+                 port:port );
   }
 }
 
-exit(0);
+port = get_port_for_service( default:9312, proto:"sphinxapi" );
+
+if( ! banner = get_kb_item( "sphinxsearch/" + port + "/sphinxapi/banner" ) ) {
+
+  soc = open_sock_tcp( port );
+  if( ! soc )
+    exit( 0 );
+
+  send( socket:soc, data:"TEST\r\n\r\n" );
+
+  buf = recv( socket:soc, length:64 );
+  close( soc );
+  if( ! buf )
+    exit( 0 );
+
+  banner = bin2string( ddata:buf, noprint_replacement:' ' );
+  if( ! banner )
+    exit( 0 );
+}
+
+# invalid command (code=12064, len=1414541105)
+# nb: Don't use a ^ anchor, the banner is located within some binary blob.
+# nb: see find_service1.nasl as well
+if( banner = egrep( string:banner, pattern:"invalid command \(code=([0-9]+), len=([0-9]+)\)" ) ) {
+
+  replace_kb_item( name:"sphinxsearch/" + port + "/sphinxapi/banner", value:banner );
+
+  version = "unknown";
+  install = port + "/tcp";
+
+  register_service( port:port, proto:"sphinxapi" );
+  set_kb_item( name:"sphinxsearch/detected", value:TRUE );
+  set_kb_item( name:"sphinxsearch/noauth", value:TRUE );
+  set_kb_item( name:"sphinxsearch/" + port + "/detected", value:TRUE );
+  set_kb_item( name:"sphinxsearch/" + port + "/noauth", value:TRUE );
+  set_kb_item( name:"sphinxsearch/" + port + "/version", value:version );
+
+  cpe = "cpe:/a:sphinxsearch:sphinxsearch";
+
+  register_product( cpe:cpe, location:install, port:port, service:"sphinxapi" );
+
+  log_message( data:build_detection_report( app:"Sphinx search server",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:banner ),
+               port:port );
+}
+
+exit( 0 );

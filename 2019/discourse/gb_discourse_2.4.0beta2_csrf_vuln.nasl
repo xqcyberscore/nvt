@@ -21,8 +21,8 @@ CPE = "cpe:/a:discourse:discourse";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108623");
-  script_version("2019-08-27T11:05:23+0000");
-  script_tag(name:"last_modification", value:"2019-08-27 11:05:23 +0000 (Tue, 27 Aug 2019)");
+  script_version("2019-08-28T13:27:25+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 13:27:25 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-27 10:58:21 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -68,7 +68,8 @@ if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:
 
 vers = infos["version"];
 
-if( version_is_less_equal( version:vers, test_version:"2.4.0.beta2" ) ) {
+if (version_is_less(version: vers, test_version: "2.4.0") ||
+    version_in_range(version: vers, test_version: "2.4.0.beta1", test_version2: "2.4.0.beta2")) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:infos["location"] );
   security_message( port:port, data:report );
   exit( 0 );

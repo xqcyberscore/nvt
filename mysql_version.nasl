@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_version.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Detection of MySQL/MariaDB
 #
@@ -27,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100152");
-  script_version("$Revision: 10929 $");
+  script_version("2019-08-27T09:12:56+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
-  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"last_modification", value:"2019-08-27 09:12:56 +0000 (Tue, 27 Aug 2019)");
+  script_tag(name:"creation_date", value:"2009-04-23 19:21:19 +0000 (Thu, 23 Apr 2009)");
   script_name("MySQL/MariaDB Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
@@ -50,7 +49,6 @@ if(description)
   exit(0);
 }
 
-
 include("misc_func.inc");
 include("mysql.inc");
 include("cpe.inc");
@@ -60,12 +58,11 @@ include("version_func.inc");
 
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
-port = get_kb_item( "Services/mysql" );
-if( ! port ) port = 3306;
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_port_for_service( default:3306, proto:"mysql" );
 
 # Don't detect MySQL / MariaDB on SphinxQL
-if( get_kb_item( "sphinxsearch/" + port + "/installed" ) ) exit( 0 );
+if( get_kb_item( "sphinxsearch/" + port + "/installed" ) )
+  exit( 0 );
 
 # I found no Plugin that ever set mysql_version ("mysql/version/"). But perhaps i missed something, so i check first if version is set.
 if( ! version = get_mysql_version( port:port ) ) {

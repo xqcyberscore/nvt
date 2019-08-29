@@ -1,6 +1,5 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_dc_cont_detect_win.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Adobe Acrobat Reader DC (Continuous Track) Detect (Windows)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812918");
-  script_version("$Revision: 11420 $");
+  script_version("2019-08-28T13:24:22+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-28 13:24:22 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-02-15 10:59:46 +0530 (Thu, 15 Feb 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Reader DC (Continuous Track) Detect (Windows)");
@@ -83,7 +82,7 @@ foreach key (key_list)
     adobeName = registry_get_sz(key:key + item, item:"DisplayName");
     adobePath = registry_get_sz(key:key + item, item:"InstallLocation");
 
-    if("Adobe Acrobat Reader DC" >< adobeName && "Acrobat Reader DC" >< adobePath)
+    if("Adobe Acrobat Reader DC" >< adobeName && "Acrobat Reader DC" >< adobePath && " for Adobe" >!< adobeName)
     {
       adobeVer = registry_get_sz(key:key + item, item:"DisplayVersion");
       if(adobeVer)

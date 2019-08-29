@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gb_hp_openview_nnm_41829.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # HP OpenView Network Node Manager 'execvp_nc()' Code Execution Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100786");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-08-28T13:49:51+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 13:49:51 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
   script_bugtraq_id(41829);
   script_tag(name:"cvss_base", value:"10.0");
