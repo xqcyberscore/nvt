@@ -1,18 +1,13 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_showcase_remote_code_exec_vuln.nasl 13679 2019-02-15 08:20:11Z cfischer $
+# Copyright (C) 2017 Greenbone Networks GmbH
+# Text descriptions are largely excerpted from the referenced
+# advisory, and are Copyright (C) of their respective author(s)
 #
-# Apache Struts2 Showcase Remote Code Execution Vulnerability
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Authors:
-# Antu Sanadi <santu@secpod.com>
-#
-# Copyright:
-# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2
-# (or any later version), as published by the Free Software Foundation.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,19 +17,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811309");
-  script_version("$Revision: 13679 $");
+  script_version("2019-08-28T08:33:01+0000");
   script_cve_id("CVE-2017-9791");
   script_bugtraq_id(99484);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-28 08:33:01 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-07-10 10:54:29 +0530 (Mon, 10 Jul 2017)");
-  script_name("Apache Struts2 Showcase Remote Code Execution Vulnerability");
+  script_name("Apache Struts2 Showcase Remote Code Execution Vulnerability (S2-048)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -43,11 +37,11 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"https://www.checkpoint.com/defense/advisories/public/2017/cpai-2017-0558.html");
-  script_xref(name:"URL", value:"http://struts.apache.org/docs/s2-048.html");
-  script_xref(name:"URL", value:"http://struts.apache.org/announce.html#a20170707");
+  script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/WW/S2-048");
+  script_xref(name:"URL", value:"https://struts.apache.org/announce-2017.html#a20170707");
 
   script_tag(name:"summary", value:"This host is running Apache Struts2 and
-  is prone to remote code execution vulnerability.");
+  is prone to a remote code execution vulnerability.");
 
   script_tag(name:"vuldetect", value:"Try to execute a command by sending a
   special crafted HTTP POST request.");
@@ -61,7 +55,7 @@ if(description)
   remote attackers to execute arbitrary code in the context of the affected
   application.");
 
-  script_tag(name:"affected", value:"Apache Struts 2.3.x with Struts 1 plugin and Struts 1 action");
+  script_tag(name:"affected", value:"Apache Struts 2.3.x with Struts 1 plugin and Struts 1 action.");
 
   script_tag(name:"solution", value:"As mitigation always use resource keys
   instead of passing a raw message to the ActionMessage as shown below, never

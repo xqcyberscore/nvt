@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("2019-08-21T09:33:13+0000");
-  script_tag(name:"last_modification", value:"2019-08-21 09:33:13 +0000 (Wed, 21 Aug 2019)");
+  script_version("2019-08-28T07:11:15+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 07:11:15 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -71,6 +71,7 @@ if(description)
                       "gb_dlink_dns_detect.nasl", "gb_dlink_dir_detect.nasl",
                       "gb_dlink_dwr_detect.nasl", "gb_wd_mycloud_consolidation.nasl",
                       "gb_intelbras_ncloud_devices_http_detect.nasl", "gb_netapp_data_ontap_consolidation.nasl",
+                      "gb_ricoh_printer_consolidation.nasl",
                       "gb_ricoh_iwb_detect.nasl", "gb_codesys_os_detection.nasl",
                       "gb_simatic_hmi_consolidation.nasl", "gb_wago_plc_consolidation.nasl",
                       "gb_rockwell_micrologix_consolidation.nasl", "gb_rockwell_powermonitor_http_detect.nasl",

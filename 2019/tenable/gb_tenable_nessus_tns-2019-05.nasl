@@ -23,10 +23,10 @@ CPE = "cpe:/a:tenable:nessus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112632");
-  script_version("2019-08-16T08:57:19+0000");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-08-16 08:57:19 +0000 (Fri, 16 Aug 2019)");
+  script_version("2019-08-30T07:50:58+0000");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-08-30 07:50:58 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-06-26 15:43:12 +0200 (Wed, 26 Jun 2019)");
 
   script_tag(name:"qod_type", value:"remote_banner");

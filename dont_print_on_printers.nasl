@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("2019-06-06T07:39:31+0000");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_version("2019-08-28T07:11:15+0000");
+  script_tag(name:"last_modification", value:"2019-08-28 07:11:15 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -161,6 +161,11 @@ if( sysdesc = get_snmp_sysdesc( port:port ) ) {
   if( sysdesc =~ '^SHARP (MX|AR)' ) {
     is_printer = TRUE;
   }
+
+  # RICOH
+  if( sysdesc =~ "^RICOH" && "RICOH Network Printer" >< sysdesc ) {
+    is_printer = TRUE;
+  }
 }
 
 if( is_printer ) report( data:"Detected SNMP SysDesc on port " + port + '/udp:\n\n' + sysdesc );
@@ -210,7 +215,7 @@ if( get_port_state( port ) ) {
     is_printer = TRUE;
   } else if ("220 Dell Laser Printer " >< banner) {
     is_printer = TRUE;
-  } else if ("220 RICOH Aficio " >< banner) {
+  } else if ("220 RICOH" >< banner) {
     is_printer = TRUE;
   } else if ("220 FTP print service" >< banner) {
     is_printer = TRUE;

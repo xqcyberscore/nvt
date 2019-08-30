@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pjl_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Printer Job Language (PJL) Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80079");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-08-29T10:30:15+0000");
+  script_tag(name:"last_modification", value:"2019-08-29 10:30:15 +0000 (Thu, 29 Aug 2019)");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Printer Job Language (PJL) Detection");
@@ -65,12 +64,14 @@ if( ! port ) {
   not_in_kb = TRUE;
 }
 
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! get_port_state( port ) )
+  exit( 0 );
 
 # PJL ports get the Hex banner set to "aeaeaeaeae" in register_all_pjl_ports()
 if( hexstr( get_unknown_banner( port:port, dontfetch:TRUE ) ) == "aeaeaeaeae" || not_in_kb ) {
   s = open_sock_tcp( port );
-  if( ! s ) exit( 0 );
+  if( ! s )
+    exit( 0 );
 
   send( socket:s, data:'\x1b%-12345X@PJL INFO ID\r\n\x1b%-12345X\r\n' );
   r = recv( socket:s, length:1024 );
@@ -80,13 +81,17 @@ if( hexstr( get_unknown_banner( port:port, dontfetch:TRUE ) ) == "aeaeaeaeae" ||
     lines = split( r, keep:FALSE );
     if( max_index( lines ) >= 1 && strlen( lines[1] ) > 0 ) {
       info = ereg_replace( string:lines[1], pattern:'^ *"(.*)" *$', replace: "\1" );
-      if( strlen( info ) == 0 ) info = lines[1];
+      if( strlen( info ) == 0 )
+        info = lines[1];
       d = strcat( 'The device INFO ID is:\n', info );
+      set_kb_item( name:"hp-pjl/banner/available", value:TRUE );
+      set_kb_item( name:"hp-pjl/" + port + "/banner", value:chomp( info ) );
     } else {
       d = "";
     }
     log_message( port:port, data:d );
-    set_kb_item( name:"devices/hp_printer", value:TRUE );
+    set_kb_item( name:"devices/hp_printer", value:TRUE ); # TBD: Have seen this on Ricoh printers as well...
+    set_kb_item( name:"hp-pjl/port", value:port );
 
     if( not_in_kb ) {
       register_service( port:port, proto:"hp-pjl" );

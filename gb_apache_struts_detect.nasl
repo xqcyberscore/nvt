@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Apache Struts Version Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800276");
-  script_version("$Revision: 10908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-08-29T07:36:00+0000");
+  script_tag(name:"last_modification", value:"2019-08-29 07:36:00 +0000 (Thu, 29 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -189,7 +188,7 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
       if(isnull(cpe))
         cpe = 'cpe:/a:apache:struts';
 
-      register_product(cpe: cpe, location: install, port: asPort);
+      register_product(cpe: cpe, location: install, port: asPort, service: "www");
 
       log_message( data: build_detection_report( app:"Apache Struts",
                                                  version: strutsVersion,

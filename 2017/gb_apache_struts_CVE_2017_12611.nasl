@@ -1,14 +1,6 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_12611.nasl 13679 2019-02-15 08:20:11Z cfischer $
-#
-# Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability
-#
-# Authors:
-# Christian Fischer <christian.fischer@greenbone.net>
-#
-# Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,18 +15,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108243");
-  script_version("$Revision: 13679 $");
+  script_version("2019-08-28T08:33:01+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-28 08:33:01 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-09-11 12:00:00 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-12611");
-  script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability");
+  script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability (S2-053)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -42,21 +33,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning", "global_settings/disable_generic_webapp_scanning");
 
-  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-053.html");
+  script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/WW/S2-053");
 
-  script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to execute arbitrary code in the context of the affected application.");
+  script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to execute arbitrary
+  code in the context of the affected application.");
 
   script_tag(name:"vuldetect", value:"Try to execute a command by sending a special crafted HTTP GET request.
 
-  NOTE: This script needs to check every parameter of a web application with various crafted requests. This is a time-consuming process and
-  this script won't run by default. If you want to check for this vulnerability please enable 'Enable generic web application scanning'
-  within the script preferences of the NVT 'Global variable settings (OID: 1.3.6.1.4.1.25623.1.0.12288)'.");
+  NOTE: This script needs to check every parameter of a web application with various crafted requests. This is a
+  time-consuming process and this script won't run by default. If you want to check for this vulnerability please
+  enable 'Enable generic web application scanning' within the script preferences of the NVT 'Global variable
+  settings (OID: 1.3.6.1.4.1.25623.1.0.12288)'.");
 
-  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"solution", value:"Upgrade to Struts 2.3.34, 2.5.12 or later.");
 
   script_tag(name:"summary", value:"Apache Struts is prone to a remote code-execution vulnerability.");
 
-  script_tag(name:"affected", value:"Struts 2.0.1 - Struts 2.3.33, Struts 2.5 - Struts 2.5.10.");
+  script_tag(name:"affected", value:"Struts 2.0.0 - 2.3.33
+
+  Struts 2.5 - 2.5.10.1.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
@@ -79,7 +74,8 @@ port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 
 cgis = http_get_kb_cgis( port:port, host:host );
-if( ! cgis ) exit( 0 );
+if( ! cgis )
+  exit( 0 );
 
 foreach cgi( cgis ) {
 
@@ -113,7 +109,8 @@ foreach cgi( cgis ) {
 }
 
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 foreach cgi( cgis ) {
 
