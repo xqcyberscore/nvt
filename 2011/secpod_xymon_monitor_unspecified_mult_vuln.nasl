@@ -23,17 +23,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = 'cpe:/a:xymon:xymon';
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902504");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-08-29T08:30:40+0000");
+  script_tag(name:"last_modification", value:"2019-08-29 08:30:40 +0000 (Thu, 29 Aug 2019)");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_cve_id("CVE-2011-1716");
   script_bugtraq_id(47156);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
   script_name("Xymon Monitor Unspecified Multiple Cross Site Scripting Vulnerabilities");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/44036");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/66542");
   script_xref(name:"URL", value:"http://xymon.svn.sourceforge.net/viewvc/xymon/branches/4.3.2/Changes?revision=6673&view=markup");
@@ -43,7 +47,6 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_xymon_monitor_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("xymon/detected");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
@@ -65,13 +68,22 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(vers = get_version_from_kb(port:port,app:"Xymon"))
-{
-  if(version_is_less_equal(version:vers, test_version:"4.3.0")){
-    security_message(port:port);
-  }
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
+  exit(0);
+
+version = infos["version"];
+location = infos["location"];
+
+if (version_is_less(version: version, test_version: "4.3.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "4.3.1", install_path: location);
+  security_message(port: port, data: report);
+  exit(0);
 }
+
+exit(99);

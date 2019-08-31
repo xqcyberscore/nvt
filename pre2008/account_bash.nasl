@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15583");
-  script_version("2019-04-29T15:08:03+0000");
-  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
+  script_version("2019-08-30T13:00:30+0000");
+  script_tag(name:"last_modification", value:"2019-08-30 13:00:30 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -35,7 +35,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Malware");
   script_copyright("This script is Copyright (C) 2004 Michel Arboi");
-  script_dependencies("find_service.nasl", "ssh_detect.nasl");
+  script_dependencies("find_service.nasl", "ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/telnet", 23, "Services/ssh", 22);
   script_exclude_keys("default_credentials/disable_default_account_checks");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Axis Network Camera Cross-Site Scripting Vulnerability
 #
@@ -30,10 +29,10 @@ CPE = "cpe:/a:axis:network_camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811276");
-  script_version("$Revision: 12106 $");
+  script_version("2019-08-30T12:23:10+0000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-30 12:23:10 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-08-07 18:10:07 +0530 (Mon, 07 Aug 2017)");
 
   script_cve_id("CVE-2017-12413");
@@ -51,7 +50,7 @@ if (description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute javascript code in the context of current user.");
 
-  script_tag(name:"affected", value:"Axis Camera model 2100 Network Camera 2.43");
+  script_tag(name:"affected", value:"Axis Camera model 2100 Network Camera 2.43.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -63,30 +62,30 @@ if (description)
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/143657");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_axis_network_cameras_ftp_detect.nasl");
   script_mandatory_keys("axis/camera/version", "axis/camera/model");
-  script_require_ports("Services/ftp", 21, "Services/www", 80);
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if (!axport = get_app_port(cpe:CPE))
+if (!port = get_app_port(cpe:CPE))
   exit(0);
 
-if (!(version = get_app_version(cpe:CPE, port:axport)) ||
-    !(model = get_kb_item("axis/camera/model")))
+if (!version = get_app_version(cpe:CPE, port:port) ||
+    !model = get_kb_item("axis/camera/model"))
   exit(0);
 
 if(model == "2100" && version == "2.43")
 {
   report = report_fixed_ver(installed_version:model + " " + version, fixed_version:"None");
-  security_message(data:report, port:axport);
+  security_message(data:report, port:port);
   exit(0);
 }
 
-exit(0);
+exit(99);

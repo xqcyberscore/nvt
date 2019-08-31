@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_nbg6716_rce_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Zyxel NBG6716 RCE Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140497");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-08-30T12:23:10+0000");
+  script_tag(name:"last_modification", value:"2019-08-30 12:23:10 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-11-10 13:05:48 +0700 (Fri, 10 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,9 +48,10 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Zyxel NBG6716 devices allow command injection in the ozkerz component
-because beginIndex and endIndex are used directly in a popen call.");
+  because beginIndex and endIndex are used directly in a popen call.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Sends a crafted request via HTTP GET and checks whether
+  it is possible to execute a remote command.");
 
   script_tag(name:"solution", value:"Upgrade to firmware version V1.00(AAKG.11)C0 or later.");
 
@@ -74,6 +74,8 @@ if ("title>NBG6716 - Login</title>" >< res && "Model:NBG6716" >< res) {
     security_message(port: port, data: report);
     exit(0);
   }
+
+  exit(99);
 }
 
-exit(99);
+exit(0);

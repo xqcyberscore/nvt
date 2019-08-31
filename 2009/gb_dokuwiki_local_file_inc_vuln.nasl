@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_local_file_inc_vuln.nasl 11796 2018-10-09 13:08:43Z jschulte $
 #
 # DokuWiki 'doku.php' Local File Inclusion Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800582");
-  script_version("$Revision: 11796 $");
+  script_version("2019-08-30T12:23:10+0000");
   script_cve_id("CVE-2009-1960");
   script_bugtraq_id(35095);
   script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:08:43 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-30 12:23:10 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("DokuWiki 'doku.php' Local File Inclusion Vulnerability");
@@ -52,8 +51,8 @@ if(description)
   script_tag(name:"summary", value:"This host is running DokuWiki and is prone
   to Local File Inclusion vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host. Also send a crafted
-  request via HTTP GET and check whether it is possible to read a local file.");
+  script_tag(name:"vuldetect", value:"Sends a crafted request via HTTP GET and checks whether
+  it is possible to read a local file.");
 
   script_tag(name:"insight", value:"The flaw is due to error in
   'config_cascade[main][default][]' parameter in 'inc/init.php' is not properly
@@ -72,8 +71,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name:"URL", value:"http://www.dokuwiki.org/dokuwiki");
-
   exit(0);
 }
 
@@ -82,9 +79,14 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if( dir == "/" ) dir = "";
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 files = traversal_files();
 

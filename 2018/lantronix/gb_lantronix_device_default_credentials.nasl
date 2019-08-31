@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_default_credentials.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Lantronix Devices Default Credentials Vulnerability
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107329");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-08-30T12:23:10+0000");
+  script_tag(name:"last_modification", value:"2019-08-30 12:23:10 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 18:29:24 +0200 (Thu, 12 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,31 +50,32 @@ if( description )
 
   script_tag(name:"summary", value:"Lantronix devices have a default useraccount 'root' with password 'system' which grants
   admin rights TELNET access.");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
+
   script_tag(name:"impact", value:"Using the command 'set privilege' followed by entering the password 'system' enables the
   attacker to gather information, change configurations, telnet to other hosts etc.");
+
   script_tag(name:"affected", value:"Lantronix devices with telnet access.");
+
   script_tag(name:"solution", value:"Consult your documentation how to change default credentials and/or disable remote access
   to the device.");
-
-  script_xref(name:"URL", value:"https://www.lantronix.com/");
 
   exit(0);
 }
 
 include( "host_details.inc" );
 
-port = get_kb_item("lantronix_device/telnet/port");
-username = "root";
-password = "system";
-
-if( ! get_kb_item("lantronix_device/telnet/" + port + "/access") ) {
+port = get_kb_item( "lantronix_device/telnet/port" );
+if( ! get_kb_item("lantronix_device/telnet/" + port + "/access") )
   exit ( 0 );
-}
 
 soc = open_sock_tcp( port );
 if( ! soc )
  exit( 0 );
+
+username = "root";
+password = "system";
 
 recv1 = recv( socket:soc, length:2048, timeout:10 );
 
@@ -89,7 +89,7 @@ if( "prompt for assistance" >< recv1 && "Username>" >< recv1 ) {
       send( socket:soc, data:'system\r\n\r\n' );
       recv4 = recv( socket:soc, length:2048, timeout:10 );
       close(soc);
-      if ( recv4 =~ "Local_.+>>" ) {    # The >> indicates the root shell
+      if ( recv4 =~ "Local_.+>>" ) { # The >> indicates the root shell
         vuln = TRUE;
         set_kb_item(name:"lantronix_device/telnet/" + port + "/full_access", value:TRUE );
       }

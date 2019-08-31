@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_power_manager_default_credentials.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # HP Power Manager Management Web Server Login Remote Code Execution Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:hp:power_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100350");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-08-30T13:00:30+0000");
+  script_tag(name:"last_modification", value:"2019-08-30 13:00:30 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2009-11-18 12:44:57 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -39,10 +38,10 @@ if(description)
 
   script_name("HP Power Manager Management default credentials");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("hp_power_manager_detect.nasl");
+  script_dependencies("hp_power_manager_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("hp_power_manager/detected");
   script_exclude_keys("default_credentials/disable_default_account_checks");
@@ -61,30 +60,33 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port(cpe: CPE))
+# If optimize_test = no
+if (get_kb_item("default_credentials/disable_default_account_checks"))
   exit(0);
 
-if (!dir = get_app_location(cpe: CPE, port: port))
+if (!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if (!dir = get_app_location(cpe:CPE, port:port))
   exit(0);
 
 if (dir == "/")
   dir = "";
 
 variables = "HtmlOnly=true&Login=admin&Password=admin&loginButton=Submit%20Login";
-host      = http_host_name( port:port );
+host      = http_host_name(port:port);
 filename  = dir + "/goform/formLogin";
 
-req = string( "POST ", filename, " HTTP/1.0\r\n",
-              "Referer: ","http://", host, filename, "\r\n",
-              "Host: ", host, "\r\n",
-              "Content-Type: application/x-www-form-urlencoded\r\n",
-              "Content-Length: ", strlen(variables),
-              "\r\n\r\n",
-              variables
-            );
-result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+req = string("POST ", filename, " HTTP/1.0\r\n",
+             "Referer: http://", host, filename, "\r\n",
+             "Host: ", host, "\r\n",
+             "Content-Type: application/x-www-form-urlencoded\r\n",
+             "Content-Length: ", strlen(variables),
+             "\r\n\r\n",
+             variables);
+res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-if ("top.location.href = '/Contents/index.asp';" >< result) {
+if (res && "top.location.href = '/Contents/index.asp';" >< res) {
   report = report_vuln_url(port:port, url:filename);
   security_message(port:port, data:report);
   exit(0);

@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.23938");
-  script_version("2019-06-06T07:39:31+0000");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_version("2019-08-30T13:00:30+0000");
+  script_tag(name:"last_modification", value:"2019-08-30 13:00:30 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
   script_cve_id("CVE-1999-0508");
   script_tag(name:"cvss_base", value:"4.6");
@@ -47,7 +47,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 - 2006 Javier Fernandez-Sanguino and Renaud Deraison");
   script_family("CISCO");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl", "ssh_detect.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/telnet", 23, "Services/ssh", 22);
   script_mandatory_keys("ssh_or_telnet/banner/available");
   script_exclude_keys("default_credentials/disable_default_account_checks");

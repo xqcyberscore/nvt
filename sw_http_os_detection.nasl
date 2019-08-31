@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-08-27T06:15:20+0000");
-  script_tag(name:"last_modification", value:"2019-08-27 06:15:20 +0000 (Tue, 27 Aug 2019)");
+  script_version("2019-08-30T09:26:55+0000");
+  script_tag(name:"last_modification", value:"2019-08-30 09:26:55 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -954,6 +954,20 @@ function check_http_banner( port, banner ) {
     # nb: More detailed OS Detection covered in gb_netapp_data_ontap_consolidation.nasl
     if( egrep( pattern:"^Server: (NetApp|Data ONTAP)", string:banner, icase:FALSE ) ) {
       register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
+
+    # Seems to run on embedded Linux/Unix on Devices like:
+    # Enterasys RBT-8200
+    # 3Com WX2200 WAP
+    # Juniper Trapeze
+    # e.g.
+    # Server: TreeNeWS/0.0.1
+    # Server: TreeNeWS/ETt
+    # Server: TreeNeWS/je
+    # Server: TreeNeWS/Xade_
+    if( "Server: TreeNeWS" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }
 

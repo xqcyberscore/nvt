@@ -1,6 +1,5 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_laser_printer_2335dn_passwd_disc_vuln.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Dell Laser MFP 2335dn Printer Password Disclosure Vulnerability
 #
@@ -29,19 +28,19 @@ CPE = "cpe:/h:dell:2335dn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814218");
-  script_version("$Revision: 12308 $");
+  script_version("2019-08-30T12:23:10+0000");
   script_cve_id("CVE-2018-15748");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-08-30 12:23:10 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2018-09-19 16:18:38 +0530 (Wed, 19 Sep 2018)");
   script_name("Dell Laser MFP 2335dn Printer Password Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Dell Laser MFP 2335dn
   Printer and is prone to a password disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
-  on the target host.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks
+  if if is possible to access sensitive information.");
 
   script_tag(name:"insight", value:"The flaw exists as any user can retrieve the
   configured SMTP or LDAP password by viewing the HTML source code of the Email
@@ -73,22 +72,26 @@ if(description)
   exit(0);
 }
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
-include( "misc_func.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
-if(!http_port = get_app_port( cpe: CPE )) exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!get_app_location(cpe:CPE, port:port))
+  exit(0);
 
 url = "/default.html";
-req = http_get_req( port: http_port, url: url);
-res = http_keepalive_send_recv( port: http_port, data: req );
+req = http_get_req(port:port, url:url);
+res = http_keepalive_send_recv(port:port, data:req);
 
-if(http_vuln_check(port:http_port, url:url, pattern:"Dell Laser MFP 2335dn", check_header:TRUE,
+if(http_vuln_check(port:port, url:url, pattern:"Dell Laser MFP 2335dn", check_header:TRUE,
                    extra_check:make_list('var ldapPassword = "', 'var smtpPassword = "')))
 {
-  report = report_vuln_url(port:http_port, url: url);
-  security_message(data: report, port: http_port);
+  report = report_vuln_url(port:port, url:url);
+  security_message(data:report, port:port);
   exit(0);
 }
 

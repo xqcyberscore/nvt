@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_850_mult_vuln.nasl 12439 2018-11-20 13:01:33Z cfischer $
 #
 # D-Link DIR-850L Multiple Vulnerabilities
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140304");
-  script_version("$Revision: 12439 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 14:01:33 +0100 (Tue, 20 Nov 2018) $");
+  script_version("2019-08-30T12:23:10+0000");
+  script_tag(name:"last_modification", value:"2019-08-30 12:23:10 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-08-16 16:49:52 +0700 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +46,8 @@ if(description)
 
   This vulnerability was known to be exploited by the IoT Botnet 'Reaper' in 2017.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Sends a crafted request via HTTP POST and checks whether
+  it is possible to read a local file.");
 
   script_tag(name:"insight", value:"D-Link DIR 850L is prone to multiple vulnerabilities:
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_transcode_server_com_exec_vuln.nasl 14300 2019-03-19 07:52:26Z mmartin $
 #
 # QNAP NAS 'Transcode Server' Command Execution Vulnerability
 #
@@ -30,11 +29,11 @@ CPE_PREFIX = "cpe:/h:qnap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811727");
-  script_version("$Revision: 14300 $");
+  script_version("2019-08-30T07:56:16+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2017-13067");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:52:26 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-08-30 07:56:16 +0000 (Fri, 30 Aug 2019)");
   script_tag(name:"creation_date", value:"2017-09-01 10:43:16 +0530 (Fri, 01 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("QNAP NAS 'Transcode Server' Command Execution Vulnerability");
@@ -83,7 +82,7 @@ CPE = infos["cpe"];
 if (!model = get_kb_item("qnap/dismodel"))
   exit(0);
 
-if(model != "((TS-131)|(TS-431))")
+if(model !~ "(TS-131|TS-431)")
   exit(0);
 
 # TODO: Use get_app_version() and make sure it returns the version as well as the build
