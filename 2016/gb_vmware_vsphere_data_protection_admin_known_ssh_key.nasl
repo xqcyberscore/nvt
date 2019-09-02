@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vsphere_data_protection_admin_known_ssh_key.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # VMSA-2016-0024: vSphere Data Protection (VDP) updates address SSH Key-Based authentication issue (admin_key)
 #
@@ -31,37 +30,42 @@ if(description)
   script_cve_id("CVE-2016-7456");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13568 $");
+  script_version("2019-09-02T07:13:48+0000");
   script_name("VMSA-2016-0024: vSphere Data Protection (VDP) updates address SSH Key-Based authentication issue (admin_key)");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0024.html");
 
-  script_tag(name:"vuldetect", value:"Try to login with a known private ssh key");
+  script_tag(name:"vuldetect", value:"Try to login with a known private SSH key.");
 
-  script_tag(name:"solution", value:"Apply the Patch");
+  script_tag(name:"solution", value:"Apply the update from the referenced vendor advisory.");
 
   script_tag(name:"summary", value:"vSphere Data Protection (VDP) updates address SSH key-based authentication issue.");
+
   script_tag(name:"insight", value:"VDP contains a private SSH key with a known password that is configured to allow key-based
   authentication. Exploitation of this issue may allow an unauthorized remote attacker to log into the appliance with root privileges.");
 
-  script_tag(name:"affected", value:"VDP 6.1.x, 6.0.x, 5.8.x, 5.5.x");
+  script_tag(name:"affected", value:"VDP 6.1.x, 6.0.x, 5.8.x, 5.5.x.");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-02 07:13:48 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-12-28 11:03:22 +0100 (Wed, 28 Dec 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_ATTACK);
   script_family("General");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
- exit(0);
-
+  exit(0);
 }
 
 include("ssh_func.inc");
+
+# If optimize_test = no
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 port = get_ssh_port(default:22);
 
@@ -135,14 +139,14 @@ foreach key ( keys )
   if( ! soc = open_sock_tcp( port ) ) continue;
 
   login = ssh_login( socket:soc, login:user, password:NULL, priv:key, passphrase:pf );
-
   if( login == 0 )
   {
-    cmd = ssh_cmd( socket:soc, cmd:'id' );
+    cmd = 'id';
+    res = ssh_cmd( socket:soc, cmd:cmd );
     close( soc );
-    if( cmd =~ "uid=[0-9]+.*gid=[0-9]+" )
+    if( res =~ "uid=[0-9]+.*gid=[0-9]+" )
     {
-      security_message( port:port, data: 'It was possible to login as user `admin` using a known SSH private key with passphrase `' + pf  + '` and to execute the `id` command. Result:\n\n' + cmd + '\n');
+      security_message( port:port, data:'It was possible to login as user "' + user + '" using a known SSH private key with passphrase "' + pf  + '" and to execute the "' + cmd + '" command. Result:\n\n' + res);
       exit( 0 );
     }
     exit( 0 );

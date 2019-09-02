@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bad_ssh_keys.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Static SSH Key Used
 #
@@ -28,25 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105398");
-  script_version("$Revision: 13568 $");
+  script_version("2019-09-02T07:13:48+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Static SSH Key Used");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-02 07:13:48 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-10-14 11:48:40 +0200 (Wed, 14 Oct 2015)");
   script_category(ACT_ATTACK);
   script_family("Gain a shell remotely");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"impact", value:"A remote attacker can exploit this issue to gain unauthorized access to affected devices. Successfully exploiting this issue allows
   attackers to completely compromise the devices.");
 
-  script_tag(name:"vuldetect", value:"Try to login as root using a known static private key.");
+  script_tag(name:"vuldetect", value:"Try to login as root using a known static SSH private key.");
 
-  script_tag(name:"solution", value:"Remove the known key.");
+  script_tag(name:"solution", value:"Remove the known SSH private key.");
 
   script_tag(name:"summary", value:"The remote host has a known private key installed.");
 
@@ -59,7 +59,11 @@ if(description)
 include("bad_ssh_keys.inc");
 include("ssh_func.inc");
 
-port = get_ssh_port(default:22);
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_default_account_checks" ) )
+  exit( 0 );
+
+port = get_ssh_port( default:22 );
 
 if( ! soc = open_sock_tcp( port ) )
   exit( 0 );

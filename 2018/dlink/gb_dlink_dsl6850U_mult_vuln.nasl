@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl6850U_mult_vuln.nasl 12274 2018-11-09 07:51:05Z cfischer $
 #
 # D-Link DSL-6850U Multiple Vulnerabilities
 #
@@ -29,21 +28,22 @@ CPE_PREFIX = "cpe:/o:dlink";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812376");
-  script_version("$Revision: 12274 $");
+  script_version("2019-09-02T07:13:48+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 08:51:05 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-02 07:13:48 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-01-03 15:39:16 +0530 (Wed, 03 Jan 2018)");
   script_name("D-Link DSL-6850U Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_dlink_dsl_detect.nasl", "gb_dlink_dap_detect.nasl", "gb_dlink_dir_detect.nasl", "gb_dlink_dwr_detect.nasl");
+  script_dependencies("gb_dlink_dsl_detect.nasl", "gb_dlink_dap_detect.nasl", "gb_dlink_dir_detect.nasl",
+                      "gb_dlink_dwr_detect.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("Host/is_dlink_device"); # nb: Experiences in the past have shown that various different devices are affected
   script_require_ports("Services/www", 80);
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3588");
-  script_xref(name:"URL", value:"http://www.dlink.com/");
 
   script_tag(name:"summary", value:"The host is a D-Link DSL-6850U router
   and is prone to multiple vulnerabilities.");
@@ -78,17 +78,25 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! infos = get_app_port_from_cpe_prefix( cpe:CPE_PREFIX, service:"www", first_cpe_only:TRUE ) ) exit( 0 );
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_default_account_checks" ) )
+  exit( 0 );
+
+if( ! infos = get_app_port_from_cpe_prefix( cpe:CPE_PREFIX, service:"www", first_cpe_only:TRUE ) )
+  exit( 0 );
 
 port = infos["port"];
 CPE = infos["cpe"];
 
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
 if( dir == "/" ) dir = "";
 
 url = dir + "/lainterface.html";
 res = http_get_cache( item:url, port:port );
-if( ! res || res !~ "^HTTP/1\.[01] 401" ) exit( 0 );
+if( ! res || res !~ "^HTTP/1\.[01] 401" )
+  exit( 0 );
 
 host = http_host_name( port:port );
 
@@ -96,7 +104,7 @@ host = http_host_name( port:port );
 req = string( "GET ", url, " HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
               "Authorization: Basic c3VwcG9ydDpzdXBwb3J0\r\n",
-              "\r\n");
+              "\r\n" );
 res = http_keepalive_send_recv( port:port, data:req );
 
 if( res && "WAN SETTINGS" >< res && "value='3G Interface" >< res && "menu.html" >< res &&

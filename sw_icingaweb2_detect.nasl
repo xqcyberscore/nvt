@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_icingaweb2_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # Icinga Web 2 Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111055");
-  script_version("$Revision: 11021 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-09-02T06:20:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-02 06:20:01 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-11-21 19:00:00 +0100 (Sat, 21 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +53,8 @@ include("host_details.inc");
 include("misc_func.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", "/icinga", "/icingaweb2", cgi_dirs( port:port ) ) ) {
 
@@ -67,7 +67,7 @@ foreach dir( make_list_unique( "/", "/icinga", "/icingaweb2", cgi_dirs( port:por
 
   if( buf =~ "^HTTP/1\.[01] 200" &&
       ( "<title>Icinga Web 2 Login" >< buf ||
-        "Icinga Web 2 &copy; 20" >< buf ||
+        "Icinga Web 2 &copy;" >< buf ||
         "var icinga = new Icinga" >< buf ) ) {
 
     version = "unknown";
@@ -79,14 +79,14 @@ foreach dir( make_list_unique( "/", "/icinga", "/icingaweb2", cgi_dirs( port:por
     set_kb_item( name:"www/" + port + "/icingaweb2", value:version );
     set_kb_item( name:"icingaweb2/installed", value:TRUE );
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
 
     log_message( data:build_detection_report( app:"Icinga Web 2",
                                               version:version,
                                               install:install,
                                               concludedUrl:conclUrl,
                                               cpe:cpe ),
-                                              port:port );
+                 port:port );
   }
 }
 

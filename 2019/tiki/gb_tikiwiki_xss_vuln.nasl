@@ -23,11 +23,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142795");
-  script_version("2019-08-27T02:52:43+0000");
-  script_tag(name:"last_modification", value:"2019-08-27 02:52:43 +0000 (Tue, 27 Aug 2019)");
+  script_version("2019-08-31T10:35:42+0000");
+  script_tag(name:"last_modification", value:"2019-08-31 10:35:42 +0000 (Sat, 31 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-27 02:46:05 +0000 (Tue, 27 Aug 2019)");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2019-15314");
 

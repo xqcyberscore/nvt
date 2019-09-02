@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imp_detect.nasl 12016 2018-10-22 12:50:10Z cfischer $
 #
 # Horde IMP Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12643");
-  script_version("$Revision: 12016 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 14:50:10 +0200 (Mon, 22 Oct 2018) $");
+  script_version("2019-09-02T06:20:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-02 06:20:01 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,7 +78,7 @@ foreach dir( make_list_unique( "/webmail", "/horde", "/horde/imp", "/email", "/i
   res = http_get_cache( port:port, item:url );
 
   if( res && res =~ "^HTTP/1\.[01] 200" &&
-      ( "<!-- IMP: Copyright 200" >< res ||
+      ( "<!-- IMP: Copyright" >< res ||
         "document.imp_login.imapuser.value" >< res ||
         "document.imp_login.loginButton.disabled" >< res ||
         "IMP: http://horde.org/imp/" >< res

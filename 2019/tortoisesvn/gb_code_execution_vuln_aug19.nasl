@@ -23,11 +23,11 @@ CPE = "cpe:/a:tortoisesvn:tortoisesvn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107701");
-  script_version("2019-08-30T09:47:09+0000");
+  script_version("2019-08-31T10:35:42+0000");
   script_cve_id("CVE-2019-14422");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-08-30 09:47:09 +0000 (Fri, 30 Aug 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-08-31 10:35:42 +0000 (Sat, 31 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-28 17:43:37 +0200 (Wed, 28 Aug 2019)");
   script_name("TortoiseSVN <= 1.12.1 Remote Code Execution (RCE) Vulnerability");
   script_category(ACT_GATHER_INFO);

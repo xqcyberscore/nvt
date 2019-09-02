@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844138");
-  script_version("2019-08-20T10:47:01+0000");
+  script_version("2019-08-31T10:35:42+0000");
   script_cve_id("CVE-2019-13377");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-20 10:47:01 +0000 (Tue, 20 Aug 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-08-31 10:35:42 +0000 (Sat, 31 Aug 2019)");
   script_tag(name:"creation_date", value:"2019-08-15 02:00:40 +0000 (Thu, 15 Aug 2019)");
   script_name("Ubuntu Update for wpa USN-4098-1");
   script_category(ACT_GATHER_INFO);

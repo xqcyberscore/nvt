@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_array_networks_vxAG_vAPV_ssh_root_auth_bypass_vuln.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # Array Networks vxAG/xAPV Authentication Bypass Vulnerabilities
 #
@@ -28,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804417");
-  script_version("$Revision: 13571 $");
+  script_version("2019-09-02T07:13:48+0000");
   script_bugtraq_id(66299);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-02 07:13:48 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-03-20 12:13:13 +0530 (Thu, 20 Mar 2014)");
   script_name("Array Networks vxAG/xAPV Authentication Bypass Vulnerabilities");
 
@@ -40,7 +39,7 @@ if(description)
   authentication bypass vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a default SSH credentials and check whether it is possible to login to
-  the target machine");
+  the target machine.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
 
@@ -67,34 +66,41 @@ if(description)
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_family("Gain a shell remotely");
-  script_dependencies("ssh_detect.nasl");
+  script_family("Default Accounts");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
 
 include("ssh_func.inc");
 
-qdPort = get_ssh_port(default:22);
-if(!qdSoc = open_sock_tcp(qdPort))
+# If optimize_test = no
+if(get_kb_item("default_credentials/disable_default_account_checks"))
   exit(0);
 
-userName = "mfg";
-pwd = "mfg";
+port = get_ssh_port(default:22);
+if(!soc = open_sock_tcp(port))
+  exit(0);
 
-loginCheck = ssh_login (socket:qdSoc, login:userName, password:pwd, pub:NULL, priv:NULL, passphrase:NULL );
-if(loginCheck == 0 )
+user = "mfg";
+pass = "mfg";
+
+login = ssh_login(socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL);
+if(login == 0)
 {
-  cmd = ssh_cmd(socket:qdSoc, cmd:"id" );
+  cmd = "id";
+  res = ssh_cmd(socket:soc, cmd:cmd);
 
-  if(ereg(pattern:"uid=[0-9]+.*gid=[0-9]+", string:cmd))
+  if(ereg(pattern:"uid=[0-9]+.*gid=[0-9]+", string:res))
   {
-    security_message(port:qdPort);
-    close(qdSoc);
+    report = 'It was possible to login as user "' + user + '" with password "' + pass + '" and to execute the "' + cmd + '" command. Result:\n\n' + res;
+    security_message(port:port, data:report);
+    close(soc);
     exit(0);
   }
 }
 
-close(qdSoc);
+close(soc);
