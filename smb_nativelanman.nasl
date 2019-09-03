@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("2019-08-27T06:15:20+0000");
+  script_version("2019-09-02T12:59:02+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-27 06:15:20 +0000 (Tue, 27 Aug 2019)");
+  script_tag(name:"last_modification", value:"2019-09-02 12:59:02 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -480,6 +480,14 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           # nb: We want to report an unknown banner here as well to catch reports with more detailed info
           register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+        # OS String: SunOS 5.11 illumos-47b8d4b884; SMB String: Native SMB service
+        } else if( "SunOS" >< os_str ) {
+          sun_ver = eregmatch( pattern:"SunOS ([0-9.]+)", string:os_str );
+          if( sun_ver[1] ) {
+            register_and_report_os( os:"SunOS", version:sun_ver[1], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
         } else {
           register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
         }

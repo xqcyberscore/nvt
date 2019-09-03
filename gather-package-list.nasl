@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-08-07T12:17:53+0000");
-  script_tag(name:"last_modification", value:"2019-08-07 12:17:53 +0000 (Wed, 07 Aug 2019)");
+  script_version("2019-09-02T12:59:02+0000");
+  script_tag(name:"last_modification", value:"2019-09-02 12:59:02 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -3240,7 +3240,45 @@ if( "Endian Firewall " >< rls ) {
   exit( 0 );
 }
 
-if( ! is_pfsense ) {
+if( rls = egrep( string:rls, pattern:"OpenIndiana ", icase:FALSE ) ) {
+
+  rls = chomp( rls );
+  concl = "/etc/release: " + rls;
+  set_kb_item( name:"openindiana/release", value:rls );
+
+  report = "We are able to login and detect that you are running OpenIndiana";
+  openi_cpe = "cpe:/o:openindiana:openindiana";
+
+  # e.g.:
+  #              OpenIndiana Hipster 2018.04 (powered by illumos)
+  #              OpenIndiana Hipster 2019.04 (powered by illumos)
+  # The tested 2014.x, 2015.x and 2016.x releases had this one:
+  #              OpenIndiana Development oi_151.1.8 X86 (powered by illumos)
+  if( " Development " >< rls ) {
+    openi_version = eregmatch( pattern:"OpenIndiana Development oi_([0-9.]+)", string:rls );
+    openi_cpe += "_development";
+  } else if( " Hipster " >< rls ) {
+    openi_version = eregmatch( pattern:"OpenIndiana Hipster ([0-9.]+)", string:rls );
+    openi_cpe += "_hipster";
+  } else {
+    register_unknown_os_banner( banner:rls, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+    openi_cpe += "_unknown_release";
+  }
+
+  if( ! isnull( openi_version[1] ) ) {
+    report += " " + openi_version[1];
+    register_and_report_os( os:"OpenIndiana", version:openi_version[1], cpe:openi_cpe, banner_type:"SSH login", banner:concl, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"OpenIndiana", cpe:openi_cpe, banner_type:"SSH login", banner:concl, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
+
+  log_message( data:report + ". Note: Local Security Checks (LSC) are not available for this OS." );
+
+  # nb: SunOS will be caught later below
+  is_openindiana = TRUE;
+}
+
+if( ! is_pfsense && ! is_openindiana ) {
   # How about Trustix?
   rls2 = ssh_cmd( socket:sock, cmd:"cat /etc/trustix-release", return_errors:FALSE );
 
@@ -3314,7 +3352,7 @@ if( "Trustix Secure Linux release 1.1" >< rls ||
 }
 # Missing Trustix e-2
 
-if( ! is_pfsense ) {
+if( ! is_pfsense && ! is_openindiana ) {
   # How about Gentoo? Note, just check that its ANY gentoo release, since the build
   # doesn't matter for purposes of checking package version numbers.
   rls = ssh_cmd( socket:sock, cmd:"cat /etc/gentoo-release", return_errors:FALSE );
@@ -3338,7 +3376,7 @@ if( "Gentoo" >< rls ) {
   exit( 0 );
 }
 
-if( ! is_pfsense ) {
+if( ! is_pfsense && ! is_openindiana ) {
   # EulerOS
   # nb: Sometimes there seems to be inconsistencies in the output, this was seen on a 2.0 SP0 (without SP) installation:
   # cat /etc/redhat-release: EulerOS release 2.0
@@ -3601,10 +3639,13 @@ if( "SunOS " >< uname ) {
 
   hardwaretype = ssh_cmd( socket:sock, cmd:"uname -p" );
   set_kb_item( name:"ssh/login/solhardwaretype", value:hardwaretype );
-  if( hardwaretype >< "sparc" ) {
-    log_message( port:port, data:"We are able to login and detect that you are running Solaris " + osversion + " Arch: SPARC" );
-  } else {
-    log_message( port:port, data:"We are able to login and detect that you are running Solaris " + osversion + " Arch: x86" );
+
+  if( ! is_openindiana ) {
+    if( "sparc" >< hardwaretype ) {
+      log_message( port:port, data:"We are able to login and detect that you are running Solaris " + osversion + " Arch: SPARC" );
+    } else {
+      log_message( port:port, data:"We are able to login and detect that you are running Solaris " + osversion + " Arch: x86" );
+    }
   }
 
   buf = ssh_cmd( socket:sock, cmd:"pkginfo" );

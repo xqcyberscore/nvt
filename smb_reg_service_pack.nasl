@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10401");
-  script_version("2019-05-15T09:55:33+0000");
+  script_version("2019-09-02T14:00:31+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-15 09:55:33 +0000 (Wed, 15 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-02 14:00:31 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Registry : Windows Build Number and Service Pack Version");
   script_category(ACT_GATHER_INFO);
@@ -59,39 +59,83 @@ include("host_details.inc");
 SCRIPT_DESC = "SMB Registry : Windows Service Pack version";
 
 access = get_kb_item( "SMB/registry_access");
-if( ! access ) exit( 0 );
+if( ! access )
+  exit( 0 );
 
-winVal = registry_get_sz( key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CurrentVersion" );
-if( winVal ) set_kb_item( name:"SMB/WindowsVersion", value:winVal );
+key = "SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+if( ! registry_key_exists( key:key, query_cache:FALSE, save_cache:TRUE ) ) {
+  sleep( 1 );
+  if( ! registry_key_exists( key:key, query_cache:FALSE, save_cache:TRUE ) )
+    exit( 0 ); # nb: No reporting here, we might just have hit some Unix/Linux SMB implementation where the login was possible.
+}
 
-winBuild = registry_get_sz( key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CurrentBuild" );
-if( winBuild ) set_kb_item( name:"SMB/WindowsBuild", value:winBuild );
+# nb: Double checking all keys for e.g. a failed connection and similar
+if( ! winVal = registry_get_sz( key:key, item:"CurrentVersion", query_cache:FALSE, save_cache:TRUE ) ) {
+  sleep( 1 );
+  winVal = registry_get_sz( key:key, item:"CurrentVersion", query_cache:FALSE, save_cache:TRUE );
+}
 
-winName = registry_get_sz( key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"ProductName" );
+if( ! winName = registry_get_sz( key:key, item:"ProductName", query_cache:FALSE, save_cache:TRUE ) ) {
+  sleep( 1 );
+  winName = registry_get_sz( key:key, item:"ProductName", query_cache:FALSE, save_cache:TRUE );
+}
+
+if( ! winBuild = registry_get_sz( key:key, item:"CurrentBuild", query_cache:FALSE, save_cache:TRUE ) ) {
+  sleep( 1 );
+  winBuild = registry_get_sz( key:key, item:"CurrentBuild", query_cache:FALSE, save_cache:TRUE );
+}
+
+if( ! csdVer = registry_get_sz( key:key, item:"CSDVersion", query_cache:FALSE, save_cache:TRUE ) ) {
+  sleep( 1 );
+  csdVer = registry_get_sz( key:key, item:"CSDVersion", query_cache:FALSE, save_cache:TRUE );
+}
+
+if( winVal ) {
+  # nb: Workaround for e.g. SunOS 5.11 (OpenIndiana) which has a Samba Server reporting 6.1 as the CurrentVersion
+  # via registry access but doesn't report any winName. From the code below it looks like NT 4.0 might have not
+  # provided a winName so this is excluded here.
+  if( winVal != "4.0" && ! winName )
+    exit( 0 );
+
+  set_kb_item( name:"SMB/WindowsVersion", value:winVal );
+}
+
+if( winBuild )
+  set_kb_item( name:"SMB/WindowsBuild", value:winBuild );
 
 if( winName ) {
   set_kb_item( name:"SMB/WindowsName", value:winName );
   os_str = winName;
-  if( winVal ) os_str += ' ' + winVal;
+  if( winVal )
+    os_str += ' ' + winVal;
   replace_kb_item( name:"Host/OS/smb", value:os_str );
   replace_kb_item( name:"SMB/OS", value:os_str );
 }
 
-csdVer = registry_get_sz( key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CSDVersion" );
-if( ! csdVer ) csdVer = "NO_Service_Pack";
+if( ! csdVer )
+  csdVer = "NO_Service_Pack";
 
 key = "SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
-if( ! registry_key_exists( key:key ) ) {
-  report  = "It was not possible to access the registry key 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'";
-  report += " due to e.g. missing access permissions of the scanning user. Authenticated scans might be incomplete, ";
-  report += "please check the references how to correctly configure the user account for Authenticated scans.";
-  set_kb_item( name:"SMB/registry_access_missing_permissions/report", value:report );
-  set_kb_item( name:"SMB/registry_access_missing_permissions", value:TRUE );
-  log_message( port:0, data:report );
-  exit( 0 );
+if( ! registry_key_exists( key:key, query_cache:FALSE, save_cache:TRUE ) ) {
+  sleep( 1 );
+  if( ! registry_key_exists( key:key, query_cache:FALSE, save_cache:TRUE ) ) {
+    report  = "It was not possible to access the registry key '" + key + "' due to e.g. missing access ";
+    report += "permissions of the scanning user. Authenticated scans might be incomplete, please check ";
+    report += "the references how to correctly configure the user account for Authenticated scans.";
+    set_kb_item( name:"SMB/registry_access_missing_permissions/report", value:report );
+    set_kb_item( name:"SMB/registry_access_missing_permissions", value:TRUE );
+    log_message( port:0, data:report );
+    exit( 0 );
+  }
 }
 
-arch = registry_get_sz( key:key, item:"PROCESSOR_ARCHITECTURE" );
+# nb: Another double check, the processor arch is required for most
+# authenticated product detection VTs.
+if( ! arch = registry_get_sz( key:key, item:"PROCESSOR_ARCHITECTURE", query_cache:FALSE, save_cache:TRUE ) ) {
+  sleep( 1 );
+  arch = registry_get_sz( key:key, item:"PROCESSOR_ARCHITECTURE", query_cache:FALSE, save_cache:TRUE );
+}
+
 if( "64" >< arch ) {
   set_kb_item( name:"SMB/Windows/Arch", value:"x64" );
 } else if( "x86" >< arch ) {

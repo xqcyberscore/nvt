@@ -5326,16 +5326,19 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
 # @brief Checks if a specified key exists in the remote registry.
 #
-# @param key  The registry key to check, e.g. "SOFTWARE\Microsoft\Office"
-# @param type The type of the registry tree to query. Valid values are "HKLM, HKU and HKCU". If no type was specified the function
-#             defaults to "HKLM".
+# @param key         The registry key to check, e.g. "SOFTWARE\Microsoft\Office"
+# @param type        The type of the registry tree to query. Valid values are "HKLM, HKU and HKCU". If no type was specified the function
+#                    defaults to "HKLM".
+# @param query_cache Specifies if the existence of the key should be queried from the internal redis KB.
+# @param save_cache  Specifies if the existence of the key should be cached into the internal redis KB.
 #
 # @return NULL if important connection parameters are missing or a connection couldn't be established,
 #         TRUE if the key exist and FALSE otherwise.
 #
-function registry_key_exists( key, type ) {
+function registry_key_exists( key, type, query_cache, save_cache ) {
 
-  local_var key, type, name, _smb_port, login, pass, domain, soc, r, prot, uid, tid, pipe, r2, i;
+  local_var key, type, query_cache, save_cache;
+  local_var name, _smb_port, login, pass, domain, soc, r, prot, uid, tid, pipe, r2, i;
   local_var kb_proxy_key, kb_proxy;
 
   if( ! key ) {
@@ -5343,16 +5346,23 @@ function registry_key_exists( key, type ) {
     return NULL;
   }
 
+  if( isnull( query_cache ) )
+    query_cache = TRUE;
+  if( isnull( save_cache ) )
+    save_cache = TRUE;
+
   if( ! type )
     type = "HKLM";
   else
     type = toupper( type );
 
-  # Query KB ("proxy") first.
   kb_proxy_key = "SMB//registry_key_exists//Registry//" + type + "//" + tolower( key );
-  kb_proxy = get_kb_item( kb_proxy_key );
-  if( ! isnull( kb_proxy ) )
-    return int( kb_proxy );
+
+  if( query_cache ) {
+    kb_proxy = get_kb_item( kb_proxy_key );
+    if( ! isnull( kb_proxy ) )
+      return int( kb_proxy );
+  }
 
   if( kb_smb_is_samba() ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Windows SMB NVT was started against a Samba Server" );
@@ -5360,78 +5370,78 @@ function registry_key_exists( key, type ) {
   }
 
   name = kb_smb_name();
-  if( ! name ) return NULL;
+  if( ! name )
+    return NULL;
 
   _smb_port = kb_smb_transport();
-  if( ! _smb_port ) return NULL;
-  if( ! get_port_state( _smb_port ) ) return NULL;
+  if( ! _smb_port )
+    return NULL;
+
+  if( ! get_port_state( _smb_port ) )
+    return NULL;
 
   soc = open_sock_tcp( _smb_port );
-  if( ! soc ) return NULL;
+  if( ! soc )
+    return NULL;
 
-  # Request the session
   r = smb_session_request( soc:soc, remote:name );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # Negotiate the protocol
   prot = smb_neg_prot( soc:soc );
   if( ! prot ) {
     close( soc );
     return NULL;
   }
 
-  login  = kb_smb_login();
-  pass   = kb_smb_password();
-  domain = kb_smb_domain();
-  if( ! login ) login = "";
-  if( ! pass )  pass  = "";
+  login = kb_smb_login();
+  if( ! login )
+    login = "";
 
-  # Set up our session
+  pass = kb_smb_password();
+  if( ! pass )
+    pass = "";
+
+  domain = kb_smb_domain();
+
   r = smb_session_setup( soc:soc, login:login, password:pass, domain:domain, prot:prot );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # and extract our uid
   uid = session_extract_uid( reply:r );
   if( ! uid ) {
     close( soc );
     return NULL;
   }
 
-  # Connect to the remote IPC and extract the TID we are attributed
   r = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # and extract our tree id
   tid = tconx_extract_tid( reply:r );
   if( ! tid ) {
     close( soc );
     return NULL;
   }
 
-  # Create a pipe to \winreg
   r = smbntcreatex( soc:soc, uid:uid, tid:tid, name:"\winreg" );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # and extract its ID
   pipe = smbntcreatex_extract_pipe( reply:r );
   if( ! pipe ) {
     close( soc );
     return NULL;
   }
 
-  # Setup things
   r = pipe_accessible_registry( soc:soc, uid:uid, tid:tid, pipe:pipe );
   if( ! r ) {
     close( soc );
@@ -5464,7 +5474,8 @@ function registry_key_exists( key, type ) {
   if( ! r2 && strlen( r2 ) < 104 ) {
     # Using string() as set_kb_item won't allow to set a value of 0 into the KB.
     # It will be converted to an int again when querying the KB above.
-    set_kb_item( name:kb_proxy_key, value:string( "0" ) );
+    if( save_cache )
+      replace_kb_item( name:kb_proxy_key, value:string( "0" ) );
     return FALSE;
   }
 
@@ -5472,7 +5483,8 @@ function registry_key_exists( key, type ) {
     for( i = 1; i < 20; i++ ) {
       if( strlen( r2 ) > ( 140 + i ) ) {
         if( ord( r2[140+i] ) != 0 ) {
-          set_kb_item( name:kb_proxy_key, value:TRUE );
+          if( save_cache )
+            replace_kb_item( name:kb_proxy_key, value:TRUE );
           return TRUE;
         }
       }
@@ -5481,7 +5493,8 @@ function registry_key_exists( key, type ) {
     for( i = 1; i < 20; i++ ) {
       if( strlen( r2 ) > ( 84 + i ) ) {
         if( ord( r2[84+i] ) != 0 ) {
-          set_kb_item( name:kb_proxy_key, value:TRUE );
+          if( save_cache )
+            replace_kb_item( name:kb_proxy_key, value:TRUE );
           return TRUE;
         }
       }
@@ -5489,7 +5502,8 @@ function registry_key_exists( key, type ) {
   }
   # Using string() as set_kb_item won't allow to set a value of 0 into the KB.
   # It will be converted to an int again when querying the KB above.
-  set_kb_item( name:kb_proxy_key, value:string( "0" ) );
+  if( save_cache )
+    replace_kb_item( name:kb_proxy_key, value:string( "0" ) );
   return FALSE;
 }
 
@@ -6734,19 +6748,20 @@ function registry_get_binary( key, item, type ) {
 # @brief Get the SZ value of a specified key and item from the remote registry. The function queries the knowledge base first
 #        to check if an item was already found and cached and if not it tries to establish a SMB connection to the remote host.
 #
-# @param key  The registry key to query, e.g. "SYSTEM\CurrentControlSet\Services\mrxsmb10"
-# @param item The item within the specified key to query, e.g. "Start"
-# @param type The type of the registry tree to query. Valid values are "HKLM, HKU and HKCU". If no type was specified the function
-#             defaults to "HKLM".
-# @param multi_sz If the value is a multi_sz, newlines should be considered.
-# @param no_cache Specifies if the returned item should be cached into the internal redis KB.
+# @param key         The registry key to query, e.g. "SYSTEM\CurrentControlSet\Services\mrxsmb10"
+# @param item        The item within the specified key to query, e.g. "Start"
+# @param type        The type of the registry tree to query. Valid values are "HKLM, HKU and HKCU". If no type was specified the function
+#                    defaults to "HKLM".
+# @param multi_sz    If the value is a multi_sz, newlines should be considered.
+# @param query_cache Specifies if the returned item should be queried from the internal redis KB.
+# @param save_cache  Specifies if the returned item should be cached into the internal redis KB.
 #
 # @return NULL if important connection parameters are missing or a connection couldn't be established,
 #         FALSE if the key or item could not be found and the value of the queried item within the specified key otherwise.
 #
-function registry_get_sz( key, item, type, multi_sz, no_cache ) {
+function registry_get_sz( key, item, type, multi_sz, query_cache, save_cache ) {
 
-  local_var key, item, type, multi_sz, no_cache;
+  local_var key, item, type, multi_sz, query_cache, save_cache;
   local_var kb_proxy_key, kb_proxy, name, _smb_port, login, pass, domain, soc;
   local_var r, prot, uid, tid, pipe, r2, r3, r3_value;
 
@@ -6760,16 +6775,23 @@ function registry_get_sz( key, item, type, multi_sz, no_cache ) {
     return NULL;
   }
 
+  if( isnull( query_cache ) )
+    query_cache = TRUE;
+  if( isnull( save_cache ) )
+    save_cache = TRUE;
+
   if( ! type )
     type = "HKLM";
   else
     type = toupper( type );
 
-  # Query KB ("proxy") first.
   kb_proxy_key = "SMB//registry_get_sz//Registry//" + type + "//" + tolower( key ) + "//" + tolower( item );
-  kb_proxy = get_kb_item( kb_proxy_key );
-  if( ! no_cache && ( ! isnull( kb_proxy ) || kb_proxy ) )
-    return kb_proxy;
+
+  if( query_cache ) {
+    kb_proxy = get_kb_item( kb_proxy_key );
+    if( ! isnull( kb_proxy ) || kb_proxy )
+      return kb_proxy;
+  }
 
   if( kb_smb_is_samba() ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Windows SMB NVT was started against a Samba Server" );
@@ -6777,77 +6799,78 @@ function registry_get_sz( key, item, type, multi_sz, no_cache ) {
   }
 
   name = kb_smb_name();
-  if( ! name ) return NULL;
+  if( ! name )
+    return NULL;
 
   _smb_port = kb_smb_transport();
-  if( ! _smb_port ) return NULL;
-  if( ! get_port_state( _smb_port ) ) return NULL;
-  soc = open_sock_tcp( _smb_port );
-  if( ! soc ) return NULL;
+  if( ! _smb_port )
+    return NULL;
 
-  # Request the session
+  if( ! get_port_state( _smb_port ) )
+    return NULL;
+
+  soc = open_sock_tcp( _smb_port );
+  if( ! soc )
+    return NULL;
+
   r = smb_session_request( soc:soc, remote:name );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # Negotiate the protocol
   prot = smb_neg_prot( soc:soc );
   if( ! prot ) {
     close( soc );
     return NULL;
   }
 
-  login  = kb_smb_login();
-  pass   = kb_smb_password();
-  domain = kb_smb_domain();
-  if( ! login ) login = "";
-  if( ! pass )  pass = "";
+  login = kb_smb_login();
+  if( ! login )
+    login = "";
 
-  # Set up our session
+  pass = kb_smb_password();
+  if( ! pass )
+    pass = "";
+
+  domain = kb_smb_domain();
+
   r = smb_session_setup( soc:soc, login:login, password:pass, domain:domain, prot:prot );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # and extract our uid
   uid = session_extract_uid( reply:r );
   if( ! uid ) {
     close( soc );
     return NULL;
   }
 
-  # Connect to the remote IPC and extract the TID we are attributed
   r = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # and extract our tree id
   tid = tconx_extract_tid( reply:r );
   if( ! tid ) {
     close( soc );
     return NULL;
   }
 
-  # Create a pipe to \winreg
   r = smbntcreatex( soc:soc, uid:uid, tid:tid, name:"\winreg" );
   if( ! r ) {
     close( soc );
     return NULL;
   }
 
-  # and extract its ID
   pipe = smbntcreatex_extract_pipe( reply:r );
   if( ! pipe ) {
     close( soc );
     return NULL;
   }
 
-  # Setup things
   r = pipe_accessible_registry( soc:soc, uid:uid, tid:tid, pipe:pipe );
   if( ! r ) {
     close( soc );
@@ -6895,16 +6918,15 @@ function registry_get_sz( key, item, type, multi_sz, no_cache ) {
       if( ! val )
         val = "";
 
-      if( ! no_cache )
-        set_kb_item( name:kb_proxy_key, value:val );
+      if( save_cache )
+        replace_kb_item( name:kb_proxy_key, value:val );
       return val;
     }
 
-    # Place value into the KB
     if( ! isnull( r3_value ) ) {
       r3_value = chomp( r3_value ); # Sometimes we're getting a trailing newline back so make sure that this is removed.
-      if( ! no_cache )
-        set_kb_item( name:kb_proxy_key, value:r3_value );
+      if( save_cache )
+        replace_kb_item( name:kb_proxy_key, value:r3_value );
     } else {
       r3_value = FALSE;
     }

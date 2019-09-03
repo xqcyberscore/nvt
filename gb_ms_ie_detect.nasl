@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800209");
-  script_version("2019-07-31T09:47:07+0000");
+  script_version("2019-09-02T14:00:31+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-31 09:47:07 +0000 (Wed, 31 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-02 14:00:31 +0000 (Mon, 02 Sep 2019)");
   script_tag(name:"creation_date", value:"2008-12-19 13:40:09 +0100 (Fri, 19 Dec 2008)");
   script_name("Microsoft Internet Explorer Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -60,9 +60,9 @@ if(!registry_key_exists(key:ver_key))
   exit(0);
 
 ver_item = "svcVersion";
-if(!ver = registry_get_sz(item:ver_item, key:ver_key, no_cache:TRUE)) {
+if(!ver = registry_get_sz(item:ver_item, key:ver_key, query_cache:FALSE, save_cache:TRUE)) {
   # nb: Try the same key again to avoid detecting a wrong version on e.g. network problems
-  if(!ver = registry_get_sz(item:ver_item, key:ver_key)) {
+  if(!ver = registry_get_sz(item:ver_item, key:ver_key, query_cache:FALSE, save_cache:TRUE)) {
     ver_item = "Version";
     ver = registry_get_sz(item:ver_item, key:ver_key);
     if(ver)

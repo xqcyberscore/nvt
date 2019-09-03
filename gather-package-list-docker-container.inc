@@ -1638,4 +1638,38 @@ function get_container_os(container_id, soc) {
     ret = register_detected_docker_os(container_id:container_id, os:"Gentoo", oskey:"GENTOO");
     return ret;
   }
+
+  rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/release");
+  if(_rls = egrep(string:rls, pattern:"OpenIndiana ", icase:FALSE)) {
+
+    _rls = chomp(_rls);
+    openi_cpe = "cpe:/o:openindiana:openindiana";
+    os_name = "OpenIndiana";
+
+    # e.g.:
+    #              OpenIndiana Hipster 2018.04 (powered by illumos)
+    #              OpenIndiana Hipster 2019.04 (powered by illumos)
+    # The tested 2014.x, 2015.x and 2016.x releases had this one:
+    #              OpenIndiana Development oi_151.1.8 X86 (powered by illumos)
+    if(" Development " >< _rls) {
+      openi_version = eregmatch(pattern:"OpenIndiana Development oi_([0-9.]+)", string:_rls);
+      openi_cpe += "_development";
+      os_key = "OPENINDIANADEV";
+    } else if(" Hipster " >< _rls) {
+      openi_version = eregmatch(pattern:"OpenIndiana Hipster ([0-9.]+)", string:_rls);
+      openi_cpe += "_hipster";
+      os_name += " Hipster";
+      os_key = "OPENINDIANAHIPSTER";
+    } else {
+      openi_cpe += "_unknown_release";
+      os_name += " Unknown Release";
+      os_key = "OPENINDIANAUNKNOWN";
+    }
+
+    if(!isnull(openi_version[1]))
+      openi_cpe += ":" + openi_version[1];
+
+    ret = register_detected_docker_os(container_id:container_id, os:os_name, oskey:os_key, oscpe:openi_cpe);
+    return ret;
+  }
 }
