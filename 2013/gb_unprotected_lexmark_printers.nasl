@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_lexmark_printers.nasl 7158 2017-09-18 06:38:57Z cfischer $
 #
 # Unprotected Lexmark Printer
 #
@@ -28,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103686");
-  script_version("$Revision: 7158 $");
+  script_version("2019-09-04T08:55:10+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 08:38:57 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"2019-09-04 08:55:10 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-03-28 11:51:27 +0100 (Thu, 28 Mar 2013)");
+
   script_name("Unprotected Lexmark Printer");
+
   script_category(ACT_ATTACK);
+
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_lexmark_printers_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("lexmark_printer/installed");
-
-  script_xref(name:"URL", value:"http://www1.lexmark.com/en_US/");
+  script_dependencies("gb_lexmark_printer_consolidation.nasl");
+  script_mandatory_keys("lexmark_printer/http/detected", "lexmark_printer/model");
 
   script_tag(name:"summary", value:"The remote Lexmark Printer is not protected by a password.");
 
@@ -56,14 +55,20 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("lexmark_printers.inc");
 include("http_func.inc");
 
-port = get_kb_item( "lexmark_printer/port" );
-if( ! port ) exit( 0 );
+CPE_PREFIX = "cpe:/o:lexmark:";
 
-model = get_kb_item( "lexmark_model" );
-if( ! model ) exit( 0 );
+if( ! infos = get_app_port_from_cpe_prefix( cpe:CPE_PREFIX, service:"www", first_cpe_only:TRUE ) )
+  exit(0);
+
+port = infos["port"];
+
+model = get_kb_item( "lexmark_printer/model" );
+if( ! model )
+  exit( 0 );
 
 ret = check_lexmark_default_login( model:model, port:port );
 if( ret && ret == 2 ) {

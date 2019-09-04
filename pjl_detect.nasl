@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80079");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("2019-08-29T10:30:15+0000");
-  script_tag(name:"last_modification", value:"2019-08-29 10:30:15 +0000 (Thu, 29 Aug 2019)");
+  script_version("2019-09-04T08:39:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 08:39:34 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Printer Job Language (PJL) Detection");
   script_category(ACT_GATHER_INFO);
@@ -90,7 +90,6 @@ if( hexstr( get_unknown_banner( port:port, dontfetch:TRUE ) ) == "aeaeaeaeae" ||
       d = "";
     }
     log_message( port:port, data:d );
-    set_kb_item( name:"devices/hp_printer", value:TRUE ); # TBD: Have seen this on Ricoh printers as well...
     set_kb_item( name:"hp-pjl/port", value:port );
 
     if( not_in_kb ) {

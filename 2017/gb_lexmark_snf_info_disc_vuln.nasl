@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_snf_info_disc_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Lexmark Scan To Network Information Disclosure Vulnerability
 #
@@ -25,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE_PREFIX = "cpe:/h:lexmark";
+CPE_PREFIX = "cpe:/o:lexmark";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140358");
-  script_version("$Revision: 12260 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
+  script_version("2019-09-04T08:55:10+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 08:55:10 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-09-06 08:42:19 +0700 (Wed, 06 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,8 +45,8 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_lexmark_printers_detect.nasl");
-  script_mandatory_keys("lexmark_printer/installed");
+  script_dependencies("gb_lexmark_printer_consolidation.nasl");
+  script_mandatory_keys("lexmark_printer/http/detected");
 
   script_tag(name:"summary", value:"Lexmark Scan to Network <= 3.2.9 is prone to an information disclosure
   vulnerability.");

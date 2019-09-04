@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("2019-08-29T10:39:20+0000");
-  script_tag(name:"last_modification", value:"2019-08-29 10:39:20 +0000 (Thu, 29 Aug 2019)");
+  script_version("2019-09-03T05:31:07+0000");
+  script_tag(name:"last_modification", value:"2019-09-03 05:31:07 +0000 (Tue, 03 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -510,9 +510,14 @@ foreach port( ports ) {
     guess += '\n- DataStream (DS800) Device';
   }
 
-  if( "RICOH" >< banner && "FTP server" ) {
+  if( "RICOH" >< banner && "FTP server" >< banner ) {
     set_kb_item( name:"ftp/ricoh/printer/detected", value:TRUE );
     guess += '\n- RICOH Printer';
+  }
+
+  if( "Lexmark" >< banner && "FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/lexmark/printer/detected", value:TRUE );
+    guess += '\n- Lexmark Printer';
   }
 
   report = 'Remote FTP server banner:\n\n' + banner;

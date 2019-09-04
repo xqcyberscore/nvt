@@ -1,19 +1,13 @@
-##############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_nagios_core_xss_vuln.nasl 13999 2019-03-05 13:15:01Z cfischer $
+# Copyright (C) 2018 Greenbone Networks GmbH
+# Text descriptions are largely excerpted from the referenced
+# advisory, and are Copyright (C) the respective author(s)
 #
-# Nagios Core <= 4.4.2 XSS Vulnerability
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Authors:
-# Christian Kuersteiner <christian.kuersteiner@greenbone.net>
-#
-# Copyright:
-# Copyright (c) 2018 Greenbone Networks GmbH
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,15 +17,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 CPE = "cpe:/a:nagios:nagios";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141795");
-  script_version("$Revision: 13999 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 14:15:01 +0100 (Tue, 05 Mar 2019) $");
+  script_version("2019-09-04T06:57:03+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 06:57:03 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-12-18 10:01:00 +0700 (Tue, 18 Dec 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -39,7 +32,7 @@ if(description)
   script_cve_id("CVE-2018-18245");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Nagios Core <= 4.4.2 XSS Vulnerability");
 
@@ -57,11 +50,10 @@ if(description)
 
   script_tag(name:"affected", value:"Nagios Core version 4.4.2 and probably prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th March, 2019. Information regarding this
-  issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to Nagios Core version 4.4.3 or later.");
 
   script_xref(name:"URL", value:"https://herolab.usd.de/wp-content/uploads/sites/4/2018/12/usd20180026.txt");
-  script_xref(name:"URL", value:"https://www.nagios.org/downloads/nagios-core");
+  script_xref(name:"URL", value:"https://raw.githubusercontent.com/NagiosEnterprises/nagioscore/master/Changelog");
 
   exit(0);
 }
@@ -75,8 +67,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "4.4.2")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if (version_is_less(version: version, test_version: "4.4.3")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "4.4.3");
   security_message(port: port, data: report);
   exit(0);
 }

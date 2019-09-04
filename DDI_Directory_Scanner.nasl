@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("2019-07-29T06:18:25+0000");
-  script_tag(name:"last_modification", value:"2019-07-29 06:18:25 +0000 (Mon, 29 Jul 2019)");
+  script_version("2019-09-03T09:29:56+0000");
+  script_tag(name:"last_modification", value:"2019-09-03 09:29:56 +0000 (Tue, 03 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -987,6 +987,20 @@ testDirList = make_list(
 "webpos/control/main",
 "webtools/control/main",
 "workeffort/control/main",
+# GVM / GSA related URLs
+# "css", nb: Already existing above, still keeping as comments
+# "help",
+# "img",
+# "js",
+# "login",
+"gmp",
+"locales",
+"omp",
+"static",
+"static/img",
+"static/js",
+"static/css",
+"system_report",
 # e.g. Metasploitable2 VM
 "dvwa",
 "mutillidae",

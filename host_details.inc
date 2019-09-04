@@ -135,6 +135,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.141923", # gb_netapp_data_ontap_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.142807", # gb_ricoh_printer_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141736", # gb_ricoh_iwb_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142838", # gb_lexmark_printer_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108494", # gb_codesys_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141766", # gb_wago_plc_consolidation.nasl
@@ -264,6 +265,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.141923", # gb_netapp_data_ontap_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.142807", # gb_ricoh_printer_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141736", # gb_ricoh_iwb_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142838", # gb_lexmark_printer_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108494", # gb_codesys_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141766", # gb_wago_plc_consolidation.nasl
@@ -535,7 +537,7 @@ function host_runs() {
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|euleros|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
                 'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward|' +
-                'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl|qsee)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system|synetica(:| )datastream|ricoh(:| ).+_firmware)';
+                'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl|qsee)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system|synetica(:| )datastream|ricoh(:| ).+_firmware)|lexmark(:| ).+_firmware)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

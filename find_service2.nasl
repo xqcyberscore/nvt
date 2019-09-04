@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 14067 2019-03-09 17:49:36Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -8,7 +7,7 @@
 # Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
-# Copyright (C) 2002 Michel Arboi
+# Copyright (C) 2005 Michel Arboi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 14067 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-09 18:49:36 +0100 (Sat, 09 Mar 2019) $");
+  script_version("2019-09-04T07:30:59+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 07:30:59 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Service Detection with 'HELP' Request'");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Service detection");
   script_dependencies("find_service1.nasl", "find_service_3digits.nasl", "rpcinfo.nasl", "dcetest.nasl", "apache_SSL_complain.nasl");
   script_require_ports("Services/unknown");
@@ -367,10 +366,21 @@ if( egrep( pattern:"^220.*Administrator Service ready\.", string:r ) ||
   exit( 0 );
 }
 
+# 0x00:  0D 0A 49 6E 74 65 67 72 61 74 65 64 20 70 6F 72    ..Integrated por
+# 0x10:  74 0D 0A 50 72 69 6E 74 65 72 20 54 79 70 65 3A    t..Printer Type:
+# 0x20:  20 4C 65 78 6D 61 72 6B 20 4D 53 38 31 30 0D 0A     Lexmark MS810..
+# 0x30:  50 72 69 6E 74 20 4A 6F 62 20 53 74 61 74 75 73    Print Job Status
+# 0x40:  3A 20 4E 6F 20 4A 6F 62 20 43 75 72 72 65 6E 74    : No Job Current
+# 0x50:  6C 79 20 41 63 74 69 76 65 0D 0A 50 72 69 6E 74    ly Active..Print
+# 0x60:  65 72 20 53 74 61 74 75 73 3A 20 30 20 52 65 61    er Status: 0 Rea
+# 0x70:  64 79 0D 0A                                        dy..
+#
+# nb: This is a "fake" finger server, showing the printer status.
+# See find_service1.nasl as well
 if( "Integrated port" >< r && "Printer Type" >< r && "Print Job Status" >< r ) {
-  # This is a "fake" finger server, showing the printer status.
-  # see bug#496
-  register_service( port:port, proto:"finger-lexmark" );
+  register_service( port:port, proto:"fingerd-printer", message:"A printer related finger service seems to be running on this port." );
+  log_message( port:port, data:"A printer related finger service seems to be running on this port." );
+  set_kb_item( name:"fingerd-printer/" + port + "/banner", value:ereg_replace( string:r, pattern:'(^\r\n|\r\n$)', replace:"" ) );
   exit( 0 );
 }
 
