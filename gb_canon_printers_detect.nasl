@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Canon Printer Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803719");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-09-04T09:24:02+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 09:24:02 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-06-20 13:42:47 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,7 +66,6 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     ( (('canonlogo.gif" alt="CANON"' >< buf2) || ('canonlogo.gif" alt=' >< buf2) || ("canonlogo.gif" >< buf2 && "Series</title>" >< buf2)) &&
        ">Copyright CANON INC" >< buf2 ) )
 {
-  set_kb_item( name:"target_is_printer", value:TRUE );
   set_kb_item( name:"canon_printer/installed", value:TRUE );
   set_kb_item( name:"canon_printer/port", value:port );
 
@@ -95,7 +93,7 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     {
       ##Remove Non-Breaking SPace
       if("&nbsp;" >< printer_model[1]){
-        canon_model = ereg_replace(pattern:"&nbsp;", replace:" ", string:printer_model[1]);
+        canon_model = ereg_replace( pattern:"&nbsp;", replace:" ", string:printer_model[1] );
       } else {
         canon_model =  printer_model[1] ;
       }
@@ -120,12 +118,13 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     cpe = cpe + ":" + firm_ver[1];
   }
 
-  register_product( cpe:cpe, location:port + "/tcp", port:port );
-  log_message(data:build_detection_report(app:"Canon " + model + " Printer Device",
-                                            version: firm_ver[1],
+  register_product( cpe:cpe, location:port + "/tcp", port:port, service:"www" );
+  log_message( data:build_detection_report( app:"Canon " + model + " Printer Device",
+                                            version:firm_ver[1],
                                             install:port + "/tcp",
                                             cpe:cpe,
-                                            concluded:printer_model[0]));
+                                            concluded:printer_model[0] ),
+               port:port );
 
   pref = get_kb_item( "global_settings/exclude_printers" );
   if( pref == "yes" ) {

@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100152");
-  script_version("2019-08-27T09:12:56+0000");
+  script_version("2019-09-04T09:30:13+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-27 09:12:56 +0000 (Tue, 27 Aug 2019)");
+  script_tag(name:"last_modification", value:"2019-09-04 09:30:13 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-04-23 19:21:19 +0000 (Thu, 23 Apr 2009)");
   script_name("MySQL/MariaDB Detection");
   script_category(ACT_GATHER_INFO);
@@ -61,7 +61,7 @@ set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 port = get_port_for_service( default:3306, proto:"mysql" );
 
 # Don't detect MySQL / MariaDB on SphinxQL
-if( get_kb_item( "sphinxsearch/" + port + "/installed" ) )
+if( get_kb_item( "sphinxsearch/" + port + "/detected" ) )
   exit( 0 );
 
 # I found no Plugin that ever set mysql_version ("mysql/version/"). But perhaps i missed something, so i check first if version is set.

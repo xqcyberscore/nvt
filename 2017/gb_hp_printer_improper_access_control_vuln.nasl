@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_improper_access_control_vuln.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # HP Printer Wi-Fi Direct Improper Access Control Vulnerability
 #
@@ -27,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807397");
-  script_version("$Revision: 12467 $");
+  script_version("2019-09-04T09:18:53+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-04 09:18:53 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-02-14 12:24:12 +0530 (Tue, 14 Feb 2017)");
   script_name("HP Printer Wi-Fi Direct Improper Access Control Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_hp_printer_detect.nasl");
-  script_mandatory_keys("hp_printer/installed", "target_is_printer");
+  script_mandatory_keys("hp_printer/port", "hp_fw_ver", "hp_model");
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://neseso.com/advisories/NESESO-2017-0111.pdf");
@@ -82,20 +81,17 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-hpPort = get_kb_item("hp_printer/port");
-if(!hpPort){
-  hpPort = 0;
-}
+port = get_kb_item("hp_printer/port");
+if(!port)
+  exit(0);
 
 fw_ver = get_kb_item("hp_fw_ver");
-if(!fw_ver){
+if(!fw_ver)
   exit(0);
-}
 
 model = get_kb_item("hp_model");
-if(!model){
+if(!model)
   exit(0);
-}
 
 if("Officejet Pro 8620" >< model || "Officejet Pro 8710" >< model)
 {
@@ -103,11 +99,11 @@ if("Officejet Pro 8620" >< model || "Officejet Pro 8710" >< model)
   {
     vuln_url = "/DevMgmt/Email/Contacts";
 
-    if(http_vuln_check(port:hpPort, url:vuln_url , check_header:TRUE,  pattern:"<emaildyn:EmailContacts xmlns:dd=",
+    if(http_vuln_check(port:port, url:vuln_url, check_header:TRUE,  pattern:"<emaildyn:EmailContacts xmlns:dd=",
        extra_check:make_list("www.hp.com", "xmlns:emaildyn=", "emailservicedyn", "dictionaries")))
     {
-      report = report_vuln_url(port:hpPort, url:vuln_url);
-      security_message(port:hpPort, data:report);
+      report = report_vuln_url(port:port, url:vuln_url);
+      security_message(port:port, data:report);
       exit(0);
     }
   }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kyocera_printers_detect.nasl 9972 2018-05-26 12:31:48Z cfischer $
 #
 # Kyocera Printer Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103707");
-  script_version("$Revision: 9972 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-26 14:31:48 +0200 (Sat, 26 May 2018) $");
+  script_version("2019-09-04T09:18:53+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 09:18:53 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-05-08 11:31:24 +0100 (Wed, 08 May 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +76,6 @@ foreach url(keys(urls)) {
       concluded = kyo[0];
       model     = kyo[1];
 
-      set_kb_item(name:"target_is_printer", value:TRUE);
       set_kb_item(name:"kyocera_printer/installed", value:TRUE);
       set_kb_item(name:"kyocera_printer/port", value:port);
       set_kb_item(name:"kyocera_model", value:model);
@@ -87,7 +85,7 @@ foreach url(keys(urls)) {
       cpe = "cpe:/h:kyocera:" + cpe_model;
       cpe = str_replace(string:cpe, find:" ", replace:"_");
 
-      register_product(cpe:cpe, location:port + "/tcp", port:port);
+      register_product(cpe:cpe, location:port + "/tcp", port:port, service:"www");
       log_message(port:port, data:"The remote Host is a Kyocera " + model + " printer device.\nCPE: " + cpe + "\nConcluded: " + concluded);
 
       pref = get_kb_item("global_settings/exclude_printers");

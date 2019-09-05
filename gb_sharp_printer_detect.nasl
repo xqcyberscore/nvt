@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharp_printer_detect.nasl 9972 2018-05-26 12:31:48Z cfischer $
 #
 # Sharp Printer Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103779");
-  script_version("$Revision: 9972 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-26 14:31:48 +0200 (Sat, 26 May 2018) $");
+  script_version("2019-09-04T09:18:53+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 09:18:53 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-09-02 14:31:24 +0100 (Mon, 02 Sep 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +63,8 @@ port = get_http_port(default:80);
 banner = get_http_banner(port:port);
 
 # If updating here please also update check in dont_print_on_printers.nasl
-if("Extend-sharp-setting-status" >!< banner && "Server: Rapid Logic" >!< banner)exit(0);
+if("Extend-sharp-setting-status" >!< banner && "Server: Rapid Logic" >!< banner)
+  exit(0);
 
 urls = get_sharp_detect_urls();
 
@@ -72,21 +72,22 @@ foreach url (keys(urls)) {
 
   buf = http_get_cache(item:url, port:port);
 
-  if("Extend-sharp-setting-status" >!< buf)continue;
+  if("Extend-sharp-setting-status" >!< buf)
+    continue;
 
   if(match = eregmatch(pattern:urls[url], string:buf, icase:TRUE)) {
 
-    if(isnull(match[1]))continue;
+    if(isnull(match[1]))
+      continue;
 
     model = chomp(match[1]);
 
-    set_kb_item(name:"target_is_printer", value:TRUE);
     set_kb_item(name:"sharp_printer/installed", value:TRUE);
     set_kb_item(name:"sharp_model", value:model);
 
     cpe = build_sharp_cpe(model:model);
 
-    register_product(cpe:cpe, location:port + "/tcp", port:port);
+    register_product(cpe:cpe, location:port + "/tcp", port:port, service:"www");
 
     log_message(port:port, data:"The remote Host is a Sharp " + model + " printer device.\nCPE: " + cpe + "\nConcluded: " + match[0]);
 

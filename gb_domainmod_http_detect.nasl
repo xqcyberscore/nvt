@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_domainmod_http_detect.nasl 13242 2019-01-23 12:36:13Z jschulte $
 #
 # DomainMOD Detection
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113326");
-  script_version("$Revision: 13242 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 13:36:13 +0100 (Wed, 23 Jan 2019) $");
+  script_version("2019-09-05T06:53:15+0000");
+  script_tag(name:"last_modification", value:"2019-09-05 06:53:15 +0000 (Thu, 05 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-01-22 14:43:33 +0100 (Tue, 22 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,35 +62,69 @@ include( "http_keepalive.inc" );
 include( "cpe.inc" );
 
 port = get_http_port( default: 80 );
+if( ! can_host_php( port: port ) )
+  exit( 0 );
 
 foreach location( make_list_unique( "/", "/domainmod", cgi_dirs( port: port ) ) ) {
   dir = location;
   if( dir == "/" )
     dir = "";
 
-  url = dir += "/CHANGELOG";
+  url = dir + "/CHANGELOG";
   buf = http_get_cache( item: url, port: port );
-  if( buf !~ 'DomainMod CHANGELOG' ) continue;
+  if( buf && buf =~ "^HTTP/1\.[01] 200" && buf =~ 'DomainMod CHANGELOG' ) {
 
-  set_kb_item( name: "domainmod/detected", value: TRUE );
+    set_kb_item( name: "domainmod/detected", value: TRUE );
 
-  version = "unknown";
+    conclUrl = report_vuln_url( port: port, url: url, url_only: TRUE );
+    version = "unknown";
 
-  ver = eregmatch( string: buf, pattern: 'v([0-9.]+)' );
-  if( ! isnull( ver[1] ) ) {
-    version = ver[1];
+    ver = eregmatch( string: buf, pattern: 'v([0-9.]+)' );
+    if( ! isnull( ver[1] ) )
+      version = ver[1];
+
+    register_and_report_cpe( app: 'DomainMOD',
+                             ver: version,
+                             concluded: ver[0],
+                             base: CPE,
+                             expr: '([0-9.]+)',
+                             insloc: location,
+                             regPort: port,
+                             regService: "www",
+                             conclUrl: conclUrl );
+
+    continue;
   }
 
-  register_and_report_cpe( app: 'DomainMOD',
-                           ver: version,
-                           concluded: ver[0],
-                           base: CPE,
-                           expr: '([0-9.]+)',
-                           insloc: location,
-                           regPort: port,
-                           conclUrl: url );
+  url = dir + "/index.php";
+  buf = http_get_cache( item: url, port: port );
+  if( buf && buf =~ "^HTTP/1\.[01] 200" && "<title>DomainMOD</title>" >< buf ) {
 
-  exit( 0 );
+    set_kb_item( name: "domainmod/detected", value: TRUE );
+
+    conclUrl = report_vuln_url( port: port, url: url, url_only: TRUE );
+    version = "unknown";
+
+    url = dir + "/version.txt";
+    req = http_get( item: url, port: port );
+    buf = http_keepalive_send_recv( port: port, data: req, bodyonly: TRUE );
+
+    ver = eregmatch( string: buf, pattern: '^([0-9.]+)' );
+    if( ! isnull( ver[1] ) ) {
+      version = ver[1];
+      conclUrl = report_vuln_url( port: port, url: url, url_only: TRUE );
+    }
+
+    register_and_report_cpe( app: 'DomainMOD',
+                             ver: version,
+                             concluded: ver[0],
+                             base: CPE,
+                             expr: '([0-9.]+)',
+                             insloc: location,
+                             regPort: port,
+                             regService: "www",
+                             conclUrl: conclUrl );
+  }
 }
 
 exit( 0 );

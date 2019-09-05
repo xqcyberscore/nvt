@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-08-28T10:33:00+0000");
-  script_tag(name:"last_modification", value:"2019-08-28 10:33:00 +0000 (Wed, 28 Aug 2019)");
+  script_version("2019-09-04T07:25:04+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 07:25:04 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1027,6 +1027,40 @@ if( rhexstr =~ "^01010018.{16}00000000.{64}0{32}.{64}$" ) {
 if( rhexstr =~ "013939393946463142.." ) {
   register_service( port:port, proto:"automated-tank-gauge", message:"A Automated Tank Gauge (ATG) service seems to be running on this port." );
   log_message( port:port, data:"A Automated Tank Gauge (ATG) service seems to be running on this port." );
+  exit( 0 );
+}
+
+# on port 1050/tcp:
+# 0x00:  46 69 6E 67 65 72 20 6F 6E 6C 69 6E 65 20 75 73    Finger online us
+# 0x10:  65 72 20 6C 69 73 74 20 72 65 71 75 65 73 74 20    er list request # nb: space
+# 0x20:  64 65 6E 69 65 64 2E 0D 0A 0A                      denied....
+#
+# on port 79/tcp:
+# 0x00:  55 6E 61 62 6C 65 20 74 6F 20 66 69 6E 64 20 73    Unable to find s
+# 0x10:  70 65 63 69 66 69 65 64 20 75 73 65 72 2E 0D 0A    pecified user...
+
+if( r == 'Finger online user list request denied.\r\n\n' ||
+    r == 'Unable to find specified user.\r\n' ) {
+  register_service( port:port, proto:"finger", message:"A finger service seems to be running on this port." );
+  log_message( port:port, data:"A finger service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  0D 0A 49 6E 74 65 67 72 61 74 65 64 20 70 6F 72    ..Integrated por
+# 0x10:  74 0D 0A 50 72 69 6E 74 65 72 20 54 79 70 65 3A    t..Printer Type:
+# 0x20:  20 4C 65 78 6D 61 72 6B 20 4D 53 38 31 30 0D 0A     Lexmark MS810..
+# 0x30:  50 72 69 6E 74 20 4A 6F 62 20 53 74 61 74 75 73    Print Job Status
+# 0x40:  3A 20 4E 6F 20 4A 6F 62 20 43 75 72 72 65 6E 74    : No Job Current
+# 0x50:  6C 79 20 41 63 74 69 76 65 0D 0A 50 72 69 6E 74    ly Active..Print
+# 0x60:  65 72 20 53 74 61 74 75 73 3A 20 30 20 52 65 61    er Status: 0 Rea
+# 0x70:  64 79 0D 0A                                        dy..
+#
+# nb: This is a "fake" finger server, showing the printer status.
+# See find_service2.nasl as well
+if( "Integrated port" >< r && "Printer Type" >< r && "Print Job Status" >< r ) {
+  register_service( port:port, proto:"fingerd-printer", message:"A printer related finger service seems to be running on this port." );
+  log_message( port:port, data:"A printer related finger service seems to be running on this port." );
+  set_kb_item( name:"fingerd-printer/" + port + "/banner", value:ereg_replace( string:r, pattern:'(^\r\n|\r\n$)', replace:"" ) );
   exit( 0 );
 }
 
