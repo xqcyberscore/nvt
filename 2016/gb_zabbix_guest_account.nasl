@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_guest_account.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Zabbix Default Guest Account
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106180");
-  script_version("$Revision: 11493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,25 +45,28 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("zabbix_web_detect.nasl");
+  script_dependencies("zabbix_web_detect.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("Zabbix/Web/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"Zabbix has a default guest account with no password set. It was possible
-to access the dashboard without special authentication.");
+  to access the dashboard without special authentication.");
 
   script_tag(name:"vuldetect", value:"Tries to access the dashboard without credentials.");
 
   script_tag(name:"insight", value:"Initially Zabbix has a guest account with no password set but as well
-with no privileges on Zabbix objects which is used to access the user interface when no credentials are set.");
+  with no privileges on Zabbix objects which is used to access the user interface when no credentials are set.");
 
   script_tag(name:"impact", value:"An attacker may use this account to use further attacks to elevate
-his privileges.");
+  his privileges.");
 
   script_tag(name:"solution", value:"Disable the guest account.");
 
-
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("host_details.inc");
 include("http_func.inc");

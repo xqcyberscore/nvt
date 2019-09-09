@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_forti_80581.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability
 #
@@ -32,7 +31,7 @@ if(description)
   script_cve_id("CVE-2016-1909");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13568 $");
+  script_version("2019-09-06T14:17:49+0000");
 
   script_name("Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability");
 
@@ -53,17 +52,21 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-04-07 16:08:03 +0200 (Fri, 07 Apr 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ssh_func.inc");
 include("misc_func.inc");

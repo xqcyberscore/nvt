@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_default_admin.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # ntopng Default Admin Credentials
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:ntop:ntopng';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108032");
-  script_version("$Revision: 11026 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-12-26 17:00:00 +0100 (Mon, 26 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,9 +37,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_ntopng_detect.nasl");
+  script_dependencies("gb_ntopng_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("ntopng/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"This script detects default admin credentials for ntopng.");
 
@@ -58,6 +58,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

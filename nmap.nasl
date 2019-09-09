@@ -52,8 +52,8 @@ if( OPENVAS_VERSION && version_is_greater_equal( version:OPENVAS_VERSION, test_v
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("2019-08-07T06:55:45+0000");
-  script_tag(name:"last_modification", value:"2019-08-07 06:55:45 +0000 (Wed, 07 Aug 2019)");
+  script_version("2019-09-09T06:03:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -108,7 +108,6 @@ if(description)
 }
 
 include("host_details.inc");
-include("network_func.inc");
 
 if( get_kb_item( "Host/dead" ) ) exit( 0 );
 

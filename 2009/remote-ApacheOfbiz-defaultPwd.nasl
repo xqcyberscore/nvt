@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-ApacheOfbiz-defaultPwd.nasl 9893 2018-05-17 15:57:09Z cfischer $
 #
 # Apache Open For Business (OFBiz) Default Admin Credentials
 #
@@ -26,8 +25,8 @@ CPE = "cpe:/a:apache:open_for_business_project";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101023");
-  script_version("$Revision: 9893 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 17:57:09 +0200 (Thu, 17 May 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-04-25 21:03:34 +0200 (Sat, 25 Apr 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -35,8 +34,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
   script_family("Default Accounts");
-  script_dependencies("remote-detect-ApacheOfbiz.nasl");
+  script_dependencies("remote-detect-ApacheOfbiz.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("ApacheOFBiz/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"The remote host is running the Apache OFBiz with default
   administrator username and password.");
@@ -52,12 +52,15 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_app_location( port:port, cpe:CPE, nofork:TRUE ) ) exit( 0 ); # To have a reference to the Detection-NVT
+if( ! get_app_location( port:port, cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 modules = get_kb_list( "ApacheOFBiz/" + port + "/modules" );
 if( modules ) {

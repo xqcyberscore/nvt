@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loadbalancer_org_enterprise_va_static_ssh_key.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # Loadbalancer.org Enterprise VA 7.5.2 Static SSH Key
 #
@@ -28,22 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103922");
-  script_version("$Revision: 13571 $");
+  script_version("2019-09-06T15:20:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Loadbalancer.org Enterprise VA 7.5.2 Static SSH Key");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125754/Loadbalancer.org-Enterprise-VA-7.5.2-Static-SSH-Key.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 15:20:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-03-18 11:16:16 +0100 (Tue, 18 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Gain a shell remotely");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"impact", value:"A remote attacker can exploit this issue to gain unauthorized root
   access to affected devices. Successfully exploiting this issue allows
@@ -61,12 +61,15 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"summary", value:"Loadbalancer.org Enterprise VA 7.5.2 contains a default
-  SSH private key");
+  SSH private key.");
 
-  script_tag(name:"affected", value:"Loadbalancer.org Enterprise VA versions 7.5.2 and below");
+  script_tag(name:"affected", value:"Loadbalancer.org Enterprise VA versions 7.5.2 and below.");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ssh_func.inc");
 

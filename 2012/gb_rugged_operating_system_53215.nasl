@@ -29,23 +29,23 @@ CPE = "cpe:/o:ruggedcom:ros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103499");
-  script_version("2019-06-06T07:39:31+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_bugtraq_id(53215);
   script_cve_id("CVE-2012-1803");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-06-21 13:07:51 +0200 (Thu, 21 Jun 2012)");
   script_name("Rugged Operating System Backdoor Unauthorized Access Vulnerability");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("gb_ros_detect.nasl", "toolcheck.nasl");
+  script_dependencies("gb_ros_detect.nasl", "toolcheck.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/telnet", 23);
   script_mandatory_keys("rugged_os/installed", "Tools/Present/perl");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53215");
-  script_xref(name:"URL", value:"http://www.ruggedcom.com/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522467");
   script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-12-116-01.pdf");
   script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICSA-12-146-01.pdf");
@@ -65,14 +65,15 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("telnet_func.inc");
 include("host_details.inc");
 include("misc_func.inc");
 include("dump.inc");
 
-port = 23;
-if(!get_port_state(port))
-  exit(0);
+port = telnet_get_port(default:23);
 
 banner = telnet_get_banner(port:port);
 if(!banner || ( "Rugged Operating System" >!< banner || "MAC Address" >!< banner))

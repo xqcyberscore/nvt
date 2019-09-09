@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80107");
-  script_version("2019-06-06T07:39:31+0000");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -37,8 +37,10 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
   script_family("Brute force attacks");
   script_require_ports("Services/telnet", 23);
-  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl",
+                      "telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("Tools/Present/ncrack", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file", "telnet/banner/available");
+  script_exclude_keys("default_credentials/disable_brute_force_checks");
 
   script_tag(name:"summary", value:"This plugin runs ncrack to find telnet accounts & passwords by brute force.");
 
@@ -49,6 +51,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_brute_force_checks"))
+  exit(0);
 
 include("telnet_func.inc");
 

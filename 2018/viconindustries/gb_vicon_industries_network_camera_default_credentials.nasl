@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_default_credentials.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Vicon Industries Network Cameras Default Credentials
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107336");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-08-02 14:06:43 +0200 (Thu, 02 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,19 +45,24 @@ if( description )
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_vicon_industries_network_camera_consolidation.nasl");
+  script_dependencies("gb_vicon_industries_network_camera_consolidation.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www");
   script_mandatory_keys("vicon_industries/network_camera/http/port");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"Vicon Industries Network Cameras use the default credentials root:system.");
-  script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
-  script_tag(name:"affected", value:"All Vicon Industries Network Cameras.");
-  script_tag(name:"solution", value:"Change the default password.");
 
-  script_xref(name:"URL", value:"https://www.vicon-security.com/");
+  script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
+
+  script_tag(name:"affected", value:"All Vicon Industries Network Cameras.");
+
+  script_tag(name:"solution", value:"Change the default password.");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include( "host_details.inc" );
 include( "http_func.inc" );

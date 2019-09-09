@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yealink_voip_phone_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Yealink VoIP Phone SIP-T38G Multiple Vulnerabilities
 #
@@ -27,39 +26,44 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804468");
-  script_version("$Revision: 11402 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_cve_id("CVE-2013-5755", "CVE-2013-5756", "CVE-2013-5757", "CVE-2013-5758",
                 "CVE-2013-5759");
   script_bugtraq_id(68054, 68052, 68053, 68053, 68051);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-06-20 12:14:02 +0530 (Fri, 20 Jun 2014)");
   script_name("Yealink VoIP Phone SIP-T38G Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Yealink VoIP Phone and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Send a crafted default credential via HTTP GET request and check whether it
   is able to login or not.");
+
   script_tag(name:"insight", value:"- The 'user' account has a password of 'user' (hash = s7C9Cx.rLsWFA), the
-   'admin' account has a password of 'admin' (hash = uoCbM.VEiKQto), and
-   the 'var' account has a password of 'var' (hash = jhl3iZAe./qXM).
+  'admin' account has a password of 'admin' (hash = uoCbM.VEiKQto), and
+  the 'var' account has a password of 'var' (hash = jhl3iZAe./qXM).
 
   - The '/cgi-bin/cgiServer.exx' script not properly sanitizing user input,
-   specifically encoded path traversal style attacks (e.g. '%2F') supplied
-   via the 'page' parameter.
+  specifically encoded path traversal style attacks (e.g. '%2F') supplied
+  via the 'page' parameter.
 
   - Contains a flaw in the /cgi-bin/cgiServer.exx script that is triggered
-   when handling system calls.
+  when handling system calls.
 
   - The /cgi-bin/cgiServer.exx script not properly sanitizing user input,
-   specifically absolute paths supplied via the 'command' parameter.");
+  specifically absolute paths supplied via the 'command' parameter.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trivially gain privileged
   access to the device, execute arbitrary commands and gain access to arbitrary files.");
+
   script_tag(name:"affected", value:"Yealink VoIP Phone SIP-T38G");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -71,13 +75,16 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("SIP-T38G/banner");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

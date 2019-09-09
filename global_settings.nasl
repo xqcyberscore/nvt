@@ -43,7 +43,7 @@ if(description)
   script_add_preference(name:"Exclude directories containing detected known server manuals from CGI scanning", type:"checkbox", value:"yes", id:6);
   script_add_preference(name:"Enable generic web application scanning", type:"checkbox", value:"no", id:7);
 
-  script_add_preference(name:"Network type", type:"radio", value:"Mixed (use RFC 1918);Private LAN; Public WAN (Internet)", id:8);
+  script_add_preference(name:"Network type", type:"radio", value:"Mixed (use RFC 1918);Private LAN;Public WAN (Internet);Public LAN", id:8);
   script_add_preference(name:"Report verbosity", type:"radio", value:"Normal;Quiet;Verbose", id:9);
 
   script_add_preference(name:"Log verbosity", type:"radio", value:"Normal;Quiet;Verbose;Debug", id:10);
@@ -164,3 +164,6 @@ if( islocalnet() )
 
 if( is_private_addr() )
   set_kb_item( name:"keys/is_private_addr", value:TRUE );
+
+if( is_public_addr() )
+  set_kb_item( name:"keys/is_public_addr", value:TRUE );

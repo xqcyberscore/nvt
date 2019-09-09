@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quantum_dxi_ssh_root_auth_bypass_vuln.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Quantum DXi Remote 'root' Authentication Bypass Vulnerability
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804414");
-  script_version("$Revision: 13568 $");
+  script_version("2019-09-06T15:20:49+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 15:20:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-03-19 11:54:59 +0530 (Wed, 19 Mar 2014)");
   script_name("Quantum DXi Remote 'root' Authentication Bypass Vulnerability");
 
@@ -39,7 +38,7 @@ if(description)
   authentication bypass vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a SSH Private Key and check whether it is possible to login to
-  the target machine");
+  the target machine.");
 
   script_tag(name:"insight", value:"- The root user has a hardcoded password that is unknown and not changeable.
   Normally access is only through the restricted shells.
@@ -50,8 +49,10 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to  gain unauthorized root
   access to affected devices and completely compromise the devices.");
 
-  script_tag(name:"affected", value:"Quantum DXi V1000 2.2.1 and below");
+  script_tag(name:"affected", value:"Quantum DXi V1000 2.2.1 and below.");
+
   script_tag(name:"solution", value:"Upgrade to Quantum DXi V1000 2.3.0.1 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125755");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/quantum-dxi-v1000-221-ssh-key-root-user");
@@ -59,14 +60,16 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Gain a shell remotely");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
-
-  script_xref(name:"URL", value:"http://quantum.com");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ssh_func.inc");
 

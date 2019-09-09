@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_default_admin_credentials.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # ntopng Default Admin Credentials Check
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:ntop:ntopng';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112078");
-  script_version("$Revision: 11025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-10-11 10:51:21 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,17 +45,24 @@ if(description)
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_ntopng_detect.nasl");
+  script_dependencies("gb_ntopng_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 3000);
   script_mandatory_keys("ntopng/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"ntopng is prone to a default account authentication bypass vulnerability.");
+
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to sensitive information.");
+
   script_tag(name:"vuldetect", value:"This script tries to login with default credentials.");
+
   script_tag(name:"solution", value:"Change the password.");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -64,7 +70,7 @@ include("host_details.inc");
 include("misc_func.inc");
 
 if(!port = get_app_port(cpe:CPE)) exit(0);
-get_app_location(cpe:CPE, port:port, nofork:TRUE); # To have a reference to the Detection-NVT
+if(!get_app_location(cpe:CPE, port:port)) exit(0);
 
 host = http_host_name(port:port);
 

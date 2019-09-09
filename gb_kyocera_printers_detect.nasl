@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103707");
-  script_version("2019-09-04T09:18:53+0000");
-  script_tag(name:"last_modification", value:"2019-09-04 09:18:53 +0000 (Wed, 04 Sep 2019)");
+  script_version("2019-09-07T14:39:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:39:01 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-05-08 11:31:24 +0100 (Wed, 08 May 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   # nb: Don't use http_version.nasl as the Detection should run as early
   # as possible if the printer should be marked dead as requested.
-  script_dependencies("find_service.nasl", "httpver.nasl");
+  script_dependencies("find_service.nasl", "httpver.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -64,10 +64,12 @@ urls = get_ky_detect_urls();
 
 foreach url(keys(urls)) {
 
-  pattern = url;
-  url = urls[url];
+  pattern = urls[url];
+  url = ereg_replace(string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"");
 
   buf = http_get_cache(item:url, port:port);
+  if(!buf || buf !~ "^HTTP/1\.[01] 200")
+    continue;
 
   if(kyo = eregmatch(pattern:pattern, string:buf, icase:TRUE)) {
 

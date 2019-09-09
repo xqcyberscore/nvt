@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eirs_d1000_rce_11_16.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # Eir D1000 Modem CWMP Remote Command Execution
 #
@@ -30,7 +29,7 @@ CPE = 'cpe:/a:allegrosoft:rompager';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140054");
-  script_version("$Revision: 11026 $");
+  script_version("2019-09-06T15:20:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -41,29 +40,37 @@ if(description)
   script_xref(name:"URL", value:"https://devicereversing.wordpress.com/2016/11/07/eirs-d1000-modem-is-wide-open-to-being-hacked/");
 
   script_tag(name:"vuldetect", value:"Try to open a port in the firewall then start a ssh server on this port and try to login.");
+
   script_tag(name:"insight", value:"By sending certain TR-064 commands, scaner can instruct the modem to open a port on the firewall
   and to start a ssh server on this port. This allows ssh access to the modem. The default login password for the D1000 is the Wi-Fi password.
   This is easily obtained with another TR-064 command.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
   are to upgrade to a newer release, disable respective features, remove the product or replace the product
   by another one.");
+
   script_tag(name:"summary", value:"The Eir D1000 Modem has bugs that allow an attacker to gain full control of the modem from the Internet.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 15:20:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-11-11 10:15:15 +0100 (Fri, 11 Nov 2016)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("gb_allegro_rompager_detect.nasl");
+  script_dependencies("gb_allegro_rompager_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 7547);
   script_mandatory_keys("allegro_rompager/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_MPEiX_FTP_Accounts.nasl 13613 2019-02-12 16:12:57Z cfischer $
 # Description: MPEi/X Default Accounts
 #
 # Authors:
@@ -25,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11000");
-  script_version("$Revision: 13613 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,9 +35,10 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("This script is Copyright (C) 2001 H D Moore");
   script_family("Default Accounts");
-  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ftp", 21);
   script_mandatory_keys("ftp/hp/arpa_ftp/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Apply complex passwords to all accounts.");
 
@@ -49,6 +49,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ftp_func.inc");
 

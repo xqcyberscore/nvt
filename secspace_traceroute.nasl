@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secspace_traceroute.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # traceroute
 #
@@ -8,10 +7,7 @@
 # This script was written by Thomas Reinke <reinke@securityspace.com>
 #
 # Copyright:
-# Copyright (c) 2005 E-Soft Inc. http://www.securityspace.com
-# 2006/06/10: Improved to handle up to 3 consecutive missing nodes.
-#
-# 2010/07/10 Complete rewrite  by Michael Meyer <michael.meyer@greenbone.net>
+# Copyright (c) 2010 E-Soft Inc. http://www.securityspace.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -31,13 +27,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.51662");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("2019-09-09T06:03:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-07-08 19:27:45 +0200 (Thu, 08 Jul 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Traceroute");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2005 E-Soft Inc. http://www.securityspace.com");
+  script_copyright("Copyright (c) 2010 E-Soft Inc. http://www.securityspace.com");
   script_family("General");
   script_dependencies("ping_host.nasl", "secpod_open_tcp_ports.nasl", "global_settings.nasl");
   script_mandatory_keys("TCP/PORTS");
@@ -58,7 +54,6 @@ if(description)
 
 include("host_details.inc");
 include("misc_func.inc");
-include("network_func.inc");
 
 function get_filter(ipsrc,port,sport,ipdst) {
 

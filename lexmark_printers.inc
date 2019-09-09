@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: lexmark_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,18 +20,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 7288 $
-#
 ###############################################################################
 
+# @brief Returns an array containing the URL for a Lexmark printer detection
+#        as the array key and the regex to extract the type/model as the value.
+#
+# @note The array key might contain a pattern like e.g. (numbers incrementing
+#       for multiple same URLs):
+#
+#       #--avoid-dup1--#
+#
+#       to be able to have different array keys for the same URL.
+#       Make sure to strip such patterns away with ereg_replace
+#       in the VT calling this function.
+#
+# @return An array as described in the function description.
+#
 function get_lexmark_detect_urls() {
 
   local_var lexmark_detect_urls;
 
   lexmark_detect_urls = make_array();
-  lexmark_detect_urls['<title>Lexmark ([^<]+)</title>'] = '/';
-  lexmark_detect_urls['<title>Lexmark&#032;([^<]+)</title>'] = '/';
+
+  lexmark_detect_urls['/']                 = '<title>Lexmark ([^<]+)</title>';
+  lexmark_detect_urls['/#--avoid-dup1--#'] = '<title>Lexmark&#032;([^<]+)</title>';
 
   return lexmark_detect_urls;
 }

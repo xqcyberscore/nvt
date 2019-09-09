@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("2019-06-11T14:05:30+0000");
-  script_tag(name:"last_modification", value:"2019-06-11 14:05:30 +0000 (Tue, 11 Jun 2019)");
+  script_version("2019-09-07T14:49:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:49:34 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -35,7 +35,7 @@ if(description)
   script_category(ACT_END);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gather-package-list.nasl", "ssh_login_failed.nasl");
+  script_dependencies("gather-package-list.nasl", "ssh_login_failed.nasl", "global_settings.nasl");
   script_mandatory_keys("login/SSH/success");
 
   script_xref(name:"URL", value:"https://docs.greenbone.net/GSM-Manual/gos-4/en/vulnerabilitymanagement.html#requirements-on-target-systems-with-linux-unix");

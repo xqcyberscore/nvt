@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orientdb_default_credentials.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # OrientDB Server Default Credentials
 #
@@ -30,18 +29,19 @@ CPE = "cpe:/a:orientdb:orientdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112080");
-  script_version("$Revision: 10726 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_name("OrientDB Server Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-10-13 08:49:15 +0200 (Fri, 13 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_orientdb_server_detect.nasl");
+  script_dependencies("gb_orientdb_server_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 2480);
   script_mandatory_keys("OrientDB/auth_required");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Change the passwords.");
 
@@ -57,6 +57,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("host_details.inc");

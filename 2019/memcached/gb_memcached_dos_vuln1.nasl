@@ -21,11 +21,11 @@ CPE = "cpe:/a:memcached:memcached";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142840");
-  script_version("2019-09-03T09:05:36+0000");
-  script_tag(name:"last_modification", value:"2019-09-03 09:05:36 +0000 (Tue, 03 Sep 2019)");
+  script_version("2019-09-09T06:54:37+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:54:37 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-03 07:14:37 +0000 (Tue, 03 Sep 2019)");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2019-15026");
 

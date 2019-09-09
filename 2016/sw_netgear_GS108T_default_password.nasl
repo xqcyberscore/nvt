@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_netgear_GS108T_default_password.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # NETGEAR ProSAFE GS108T Default Password
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105629");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-04-29 11:25:48 +0200 (Fri, 29 Apr 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -37,10 +36,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_dependencies("gb_netgear_prosafe_consolidation.nasl");
+  script_dependencies("gb_netgear_prosafe_consolidation.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("netgear/prosafe/http/detected");
-
-  script_xref(name:"URL", value:"https://www.netgear.com/support/product/GS108Tv1.aspx");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Change the password.");
 
@@ -53,6 +51,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esxi_init.nasl 13247 2019-01-23 15:12:20Z cfischer $
 #
 # VMware ESXi scan initialization.
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103447");
-  script_version("$Revision: 13247 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 16:12:20 +0100 (Wed, 23 Jan 2019) $");
+  script_version("2019-09-07T15:01:50+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 15:01:50 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-03-14 14:54:53 +0100 (Wed, 14 Mar 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,9 +36,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_esxi_authorization.nasl");
+  script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_esxi_authorization.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("VMware/ESX/typ/ESXi", "VMware/ESX/port");
+  script_exclude_keys("global_settings/authenticated_scans_disabled");
 
   script_add_preference(name:"ESXi login name:", type:"entry", value:"");
   script_add_preference(name:"ESXi login password:", type:"password", value:"");
@@ -50,6 +50,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("global_settings/authenticated_scans_disabled"))
+  exit(0);
 
 include("vmware_esx.inc");
 include("host_details.inc");

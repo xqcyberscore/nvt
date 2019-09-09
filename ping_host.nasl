@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("2019-08-02T13:03:59+0000");
-  script_tag(name:"last_modification", value:"2019-08-02 13:03:59 +0000 (Fri, 02 Aug 2019)");
+  script_version("2019-09-09T06:03:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -97,7 +97,6 @@ if(description)
 
 include("misc_func.inc");
 include("host_details.inc");
-include("network_func.inc");
 
 global_var report_dead_methods, failed_nmap_report;
 report_dead_methods = ""; # nb: To make openvas-nasl-lint happy...

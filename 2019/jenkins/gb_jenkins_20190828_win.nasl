@@ -23,11 +23,11 @@ CPE = "cpe:/a:jenkins:jenkins";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142824");
-  script_version("2019-08-30T04:18:39+0000");
-  script_tag(name:"last_modification", value:"2019-08-30 04:18:39 +0000 (Fri, 30 Aug 2019)");
+  script_version("2019-09-06T10:56:37+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 10:56:37 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-30 04:17:53 +0000 (Fri, 30 Aug 2019)");
-  script_tag(name:"cvss_base", value:"7.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-10383", "CVE-2019-10384");
 

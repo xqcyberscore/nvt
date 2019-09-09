@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interlogix_truvision_default_credentials.nasl 12900 2018-12-28 16:37:41Z tpassfeld $
 #
 # Interlogix TruVision Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114057");
-  script_version("$Revision: 12900 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 17:37:41 +0100 (Fri, 28 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-12-28 17:07:10 +0100 (Fri, 28 Dec 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Interlogix TruVision Default Credentials");
-  script_dependencies("gb_interlogix_truvision_detect.nasl");
+  script_dependencies("gb_interlogix_truvision_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("interlogix/truvision/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://static.interlogix.com/library/1072627A%20TruVision%20IP%20Camera%20Configuration%20Manual.pdf");
 
@@ -63,6 +63,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
@@ -71,7 +74,7 @@ include("http_func.inc");
 CPE = "cpe:/a:interlogix:truvision";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 creds = make_array("admin", "1234");
 

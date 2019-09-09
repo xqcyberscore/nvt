@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_http_default_no_pass.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
 # AVM FRITZ!Box Default / no Password (HTTP)
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/o:avm:fritz%21_os";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108042");
-  script_version("$Revision: 11412 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-01-10 15:00:00 +0100 (Tue, 10 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,9 +37,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_avm_fritz_box_detect.nasl");
+  script_dependencies("gb_avm_fritz_box_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("avm_fritz_box/http/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"This script detects if the device has:
 
@@ -61,6 +61,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("host_details.inc");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mobotix_webcam_default_credentials.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Mobotix Webcam Default Credentials
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113233");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-19 10:04:40 +0200 (Thu, 19 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,19 +43,24 @@ if( description )
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_mobotix_webcam_detect.nasl");
+  script_dependencies("gb_mobotix_webcam_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("mobotix/webcam/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"Mobotix Webcams use the default credentials admin:meinsm.");
-  script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
-  script_tag(name:"affected", value:"All Mobotix Webcams.");
-  script_tag(name:"solution", value:"Change the default password.");
 
-  script_xref(name:"URL", value:"https://www.mobotix.com/");
+  script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
+
+  script_tag(name:"affected", value:"All Mobotix Webcams.");
+
+  script_tag(name:"solution", value:"Change the default password.");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 CPE = "cpe:/h:mobotix:webcam";
 
@@ -65,7 +69,8 @@ include( "http_func.inc" );
 include( "http_keepalive.inc" );
 include( "misc_func.inc" );
 
-if ( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
+if( ! get_app_location( port: port, cpe: CPE ) ) exit( 0 );
 
 username = "admin";
 password = "meinsm";

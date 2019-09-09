@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_www_default_admin_password.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Default password `adminIWSS85` for admin account (http)
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:trendmicro:interscan_web_security_virtual_appliance';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140243");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-04-10 16:37:30 +0200 (Mon, 10 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,9 +37,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_www_detect.nasl");
+  script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_www_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 8443);
   script_mandatory_keys("trend_micro/InterScan/Web_Security_Virtual_Appliance/www");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"This script detects if the remote Trend Micro InterScan Web Security
   Virtual Appliance has a default password of `adminIWSS85` for the `admin` account.");
@@ -53,12 +53,16 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
+if( ! get_app_location( port:port, cpe:CPE ) ) exit( 0 );
 
 url = '/logon.jsp';
 req = http_get( item:url, port:port );

@@ -160,11 +160,13 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142731", # gsf/gb_tibco_loglogic_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142733", # gsf/gb_inea_me-rtu_http_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108632", # gsf/gb_mult_vendors_wlan_controller_aps_detection.nasl
     "1.3.6.1.4.1.25623.1.0.142756", # gsf/gb_dell_emc_powerconnect_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.114106", # gsf/gb_synetica_datastream_devices_detect_telnet.nasl
     "1.3.6.1.4.1.25623.1.0.142620", # gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142850", # gsf/gb_cisco_ind_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103809", # gb_junos_snmp_version.nasl
     "1.3.6.1.4.1.25623.1.0.105271", # gb_citrix_netscaler_version.nasl
     "1.3.6.1.4.1.25623.1.0.103429", # gb_snmp_os_detection.nasl
@@ -290,12 +292,14 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.112309", # gb_nec_communication_platforms_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142731", # gsf/gb_tibco_loglogic_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142733", # gsf/gb_inea_me-rtu_http_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108632", # gsf/gb_mult_vendors_wlan_controller_aps_detection.nasl
     "1.3.6.1.4.1.25623.1.0.142756", # gsf/gb_dell_emc_powerconnect_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.105271", # gb_citrix_netscaler_version.nasl
     "1.3.6.1.4.1.25623.1.0.114106", # gsf/gb_synetica_datastream_devices_detect_telnet.nasl
     "1.3.6.1.4.1.25623.1.0.142620", # gsf/gb_cisco_vision_dynamic_signage_director_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142850", # gsf/gb_cisco_ind_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103809", # gb_junos_snmp_version.nasl
     "1.3.6.1.4.1.25623.1.0.103429", # gb_snmp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108014", # gb_dns_os_detection.nasl
@@ -537,7 +541,8 @@ function host_runs() {
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|euleros|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
                 'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward|' +
-                'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl|qsee)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system|synetica(:| )datastream|ricoh(:| ).+_firmware)|lexmark(:| ).+_firmware)';
+                'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl|qsee)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system|synetica(:| )datastream|' +
+                'ricoh(:| ).+_firmware)|lexmark(:| ).+_firmware|:wlan_controller_ap_firmware)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

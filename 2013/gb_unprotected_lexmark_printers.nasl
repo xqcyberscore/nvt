@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103686");
-  script_version("2019-09-04T08:55:10+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-09-04 08:55:10 +0000 (Wed, 04 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-03-28 11:51:27 +0100 (Thu, 28 Mar 2013)");
 
   script_name("Unprotected Lexmark Printer");
@@ -39,8 +39,9 @@ if(description)
 
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_lexmark_printer_consolidation.nasl");
+  script_dependencies("gb_lexmark_printer_consolidation.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("lexmark_printer/http/detected", "lexmark_printer/model");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"The remote Lexmark Printer is not protected by a password.");
 
@@ -55,6 +56,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 include("lexmark_printers.inc");
 include("http_func.inc");
@@ -62,9 +66,13 @@ include("http_func.inc");
 CPE_PREFIX = "cpe:/o:lexmark:";
 
 if( ! infos = get_app_port_from_cpe_prefix( cpe:CPE_PREFIX, service:"www", first_cpe_only:TRUE ) )
-  exit(0);
+  exit( 0 );
 
 port = infos["port"];
+cpe = infos["cpe"];
+
+if( ! get_app_location( port:port, cpe:cpe ) )
+  exit( 0 );
 
 model = get_kb_item( "lexmark_printer/model" );
 if( ! model )

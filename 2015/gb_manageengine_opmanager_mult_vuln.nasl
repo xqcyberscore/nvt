@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 13755 2019-02-19 10:42:02Z jschulte $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 13755 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:42:02 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,19 +64,26 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_manage_engine_opmanager_consolidation.nasl");
-  script_mandatory_keys("manageengine/opmanager/http/detected");
+  script_dependencies("gb_manage_engine_opmanager_consolidation.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("manageengine/opmanager/http/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/pgsql-submitquery-do-vulnerability");
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
 if(!opmngrPort = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!get_app_location(port:port, cpe:opmngrPort))
   exit(0);
 
 url = "jsp/Login.do";

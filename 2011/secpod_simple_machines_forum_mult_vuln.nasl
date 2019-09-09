@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_simple_machines_forum_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Simple Machines Forum Multiple Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:simplemachines:smf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902446");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("2019-09-07T11:55:45+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 11:55:45 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-1127", "CVE-2011-1128", "CVE-2011-1129",
                 "CVE-2011-1130", "CVE-2011-1131");
@@ -48,11 +47,13 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_simple_machines_forum_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("SMF/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain access or cause a
-  denial of service or to conduct SQL injection attacks, obtain sensitive
-  information.");
-  script_tag(name:"affected", value:"Simple Machines Forum (SMF) before 1.1.13 and 2.x before 2.0 RC5");
+  denial of service or to conduct SQL injection attacks, obtain sensitive information.");
+
+  script_tag(name:"affected", value:"Simple Machines Forum (SMF) before 1.1.13 and 2.x before 2.0 RC5.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error in 'SSI.php', it does not properly restrict guest access.
@@ -68,13 +69,12 @@ if(description)
 
   - An error in PlushSearch2 function in 'Search.php', allow remote attackers
     to obtain sensitive information via a search.");
+
   script_tag(name:"summary", value:"The host is installed with Simple Machines Forum and is prone
   to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to version 1.1.13 or 2.0 RC5
-  *****
-  NOTE : Ignore this warning, if above mentioned fix is applied already.
-  *****");
-  script_xref(name:"URL", value:"http://download.simplemachines.org/");
+
+  script_tag(name:"solution", value:"Apply the patch or upgrade to version 1.1.13 or 2.0 RC5.");
+
   script_xref(name:"URL", value:"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0-RC4_security.zip");
 
   script_tag(name:"solution_type", value:"VendorFix");

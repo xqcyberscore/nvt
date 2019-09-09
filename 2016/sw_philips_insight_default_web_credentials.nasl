@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_philips_insight_default_web_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Philips In.Sight Default Webinterface Credentials
 #
@@ -28,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111097");
-  script_version("$Revision: 13659 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_cve_id("CVE-2015-2882");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Philips In.Sight Default Webinterface Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-04-24 12:00:00 +0200 (Sun, 24 Apr 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_dependencies("find_service.nasl", "nmap_mac.nasl");
+  script_dependencies("find_service.nasl", "nmap_mac.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning", "default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"http://www.ifc0nfig.com/a-close-look-at-the-philips-in-sight-ip-camera-range/");
   script_xref(name:"URL", value:"https://www.rapid7.com/docs/Hacking-IoT-A-Case-Study-on-Baby-Monitor-Exposures-and-Vulnerabilities.pdf");
@@ -48,8 +47,11 @@ if(description)
   script_tag(name:"summary", value:"The remote Philips In.Sight Device has default credentials set.");
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain
   access to sensitive information or modify system configuration.");
+
   script_tag(name:"vuldetect", value:"Connect to the telnet service and try to login with default credentials.");
+
   script_tag(name:"insight", value:"It was possible to login with default credentials of admin:M100-4674448 or user:M100-4674448");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore. General
   solution options are to upgrade to a newer release, disable respective features, remove the
@@ -60,6 +62,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

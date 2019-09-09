@@ -19,18 +19,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114085");
-  script_version("$Revision: 14333 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:24:22 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-03-15 15:02:42 +0100 (Fri, 15 Mar 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Amcrest Technologies IP Camera Default Credentials");
-  script_dependencies("gb_amcrest_ip_camera_detect.nasl");
+  script_dependencies("gb_amcrest_ip_camera_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("amcrest/ip_camera/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://support.amcrest.com/hc/en-us/articles/360002043651-How-To-Access-Your-Web-UI");
 
@@ -54,6 +55,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -64,7 +68,7 @@ CPE = "cpe:/a:amcrest:ip_camera";
 if(!port = get_app_port(cpe: CPE, service: "www"))
   exit(0);
 
-if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port))
   exit(0);
 
 #Credentials are in reversed order to allow for multiple passwords linked to the same user.

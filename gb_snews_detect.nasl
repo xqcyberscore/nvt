@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snews_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # sNews Version Detection
 #
@@ -28,15 +27,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801242");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11224 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
+  script_version("2019-09-07T11:55:45+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 11:55:45 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-08-04 08:26:41 +0200 (Wed, 04 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("sNews Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -46,7 +45,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -88,12 +86,13 @@ foreach dir (make_list_unique("/sNews", "/snews", "/", cgi_dirs(port:port)))
 
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + port + "/snews", value:tmp_version);
+    set_kb_item(name:"snews/detected", value:TRUE);
 
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:solucija:snews:");
     if( isnull( cpe ) )
       cpe = 'cpe:/a:solucija:snews';
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
 
     log_message( data: build_detection_report( app:"sNews",
                                                version:version,

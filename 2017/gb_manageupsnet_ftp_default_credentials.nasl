@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageupsnet_ftp_default_credentials.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # ManageUPSNET FTP Default Credentials
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113052");
-  script_version("$Revision: 13499 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-11-16 11:04:05 +0100 (Thu, 16 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,9 +43,10 @@ if( description )
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ftp", 21);
   script_mandatory_keys("ftp/manageupsnet/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"ManageUPSNET Telnet and FTP uses remote credentials 'admin' - 'admin'.");
 
@@ -62,6 +62,9 @@ if( description )
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include( "ftp_func.inc" );
 

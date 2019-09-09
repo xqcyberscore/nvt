@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_default_cmc_credentials.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # SolarWinds Log and Event Manager cmc SSH Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105452");
-  script_version("$Revision: 13571 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SolarWinds Log and Event Manager cmc SSH Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-11-13 19:06:56 +0100 (Fri, 13 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22, 32022);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"The remote SolarWinds Log and Event Manager is prone to a default account authentication bypass vulnerability.");
 
@@ -56,6 +56,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ssh_func.inc");
 

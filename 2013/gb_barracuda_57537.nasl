@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_57537.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Multiple Barracuda Products Security Bypass and Backdoor Unauthorized Access Vulnerabilities
 #
@@ -29,23 +28,23 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103646");
   script_bugtraq_id(57537);
-  script_version("$Revision: 13568 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Multiple Barracuda Products Security Bypass and Backdoor Unauthorized Access Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-01-29 10:48:20 +0100 (Tue, 29 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57537");
   script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20130124-0_Barracuda_Appliances_Backdoor_wo_poc_v10.txt");
-  script_xref(name:"URL", value:"https://www.barracudanetworks.com/products/");
 
   script_tag(name:"solution", value:"Update to Security Definition 2.0.5.");
 
@@ -75,6 +74,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ssh_func.inc");
 

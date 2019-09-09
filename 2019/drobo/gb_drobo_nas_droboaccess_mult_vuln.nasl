@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142107");
-  script_version("2019-07-24T14:33:07+0000");
-  script_tag(name:"last_modification", value:"2019-07-24 14:33:07 +0000 (Wed, 24 Jul 2019)");
+  script_version("2019-09-09T07:59:19+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 07:59:19 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-03-08 12:09:22 +0700 (Fri, 08 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   - Unauthenticated Command Injection in username parameter in delete_user (CVE-2018-14701)");
 
-  script_tag(name:"solution", value:"No known solution is available as of 08th March, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 09th September, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");

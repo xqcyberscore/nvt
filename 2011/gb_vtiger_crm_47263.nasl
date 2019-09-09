@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_47263.nasl 12926 2019-01-03 03:38:48Z ckuersteiner $
 #
 # vtiger CRM 'sortfieldsjson.php' Local File Include Vulnerability
 #
@@ -30,8 +29,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103145");
   script_cve_id("CVE-2012-4867");
-  script_version("$Revision: 12926 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 04:38:48 +0100 (Thu, 03 Jan 2019) $");
+  script_version("2019-09-07T11:55:45+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 11:55:45 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
   script_bugtraq_id(47263);
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,7 +39,6 @@ if (description)
   script_name("vtiger CRM 'sortfieldsjson.php' Local File Include Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/47263");
-  script_xref(name:"URL", value:"http://www.vtiger.com/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -48,22 +46,21 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_vtiger_crm_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("vtiger/detected");
 
   script_tag(name:"summary", value:"vtiger CRM is prone to a local file-include vulnerability because it
-fails to properly sanitize user-supplied input.
+  fails to properly sanitize user-supplied input.");
 
-An attacker can exploit this vulnerability to obtain potentially
-sensitive information and execute arbitrary local scripts in the
-context of the webserver process. This may allow the attacker to
-compromise the application and the underlying computer. Other attacks
-are also possible.
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to obtain potentially
+  sensitive information and execute arbitrary local scripts in the context of the webserver process.
+  This may allow the attacker to compromise the application and the underlying computer. Other attacks
+  are also possible.");
 
-vtiger CRM 5.2.1 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"vtiger CRM 5.2.1 is vulnerable. Other versions may also be affected.");
 
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 

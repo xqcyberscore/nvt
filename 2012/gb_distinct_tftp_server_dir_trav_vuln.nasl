@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Distinct TFTP Server Directory Traversal Vulnerability
 #
@@ -28,10 +27,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802623");
   script_bugtraq_id(52938);
-  script_version("$Revision: 13543 $");
+  script_version("2019-09-09T06:41:58+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-09 06:41:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-04-09 15:15:15 +0530 (Mon, 09 Apr 2012)");
   script_name("Distinct TFTP Server Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -42,7 +41,6 @@ if(description)
   script_require_keys("tftp/detected", "Host/runs_windows");
   script_exclude_keys("tftp/backdoor", "keys/TARGET_IS_IPV6");
 
-  script_xref(name:"URL", value:"http://www.distinct.com");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52938");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18718");
   script_xref(name:"URL", value:"http://www.spentera.com/advisories/2012/SPN-01-2012.pdf");
@@ -50,7 +48,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation allows an attacker to obtain sensitive
   information and launch further attacks.");
 
-  script_tag(name:"affected", value:"Distinct TFTP Server version 3.01 and prior");
+  script_tag(name:"affected", value:"Distinct TFTP Server version 3.01 and prior.");
 
   script_tag(name:"insight", value:"The flaw is caused due an input validation error within the TFTP
   service and can be exploited to download or manipulate files in arbitrary locations outside the
@@ -70,14 +68,8 @@ if(description)
 include("host_details.inc");
 include("misc_func.inc");
 include("tftp.inc");
-include("network_func.inc");
 
-port = get_kb_item("Services/udp/tftp");
-if(!port)
-  port = 69;
-
-if(!get_udp_port_state(port))
-  exit(0);
+port = get_port_for_service(default:69, proto:"tftp", ipproto:"udp");
 
 if(get_kb_item("tftp/" + port + "/backdoor"))
   exit(0);

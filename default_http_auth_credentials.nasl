@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 13679 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
-  script_family("Default Accounts");
+  script_family("Brute force attacks");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl",
                       "gb_default_credentials_options.nasl", "cgi_directories.nasl"); # cgi_directories.nasl pulls in the NVTs setting a /content/auth_required
@@ -54,6 +53,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_brute_force_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

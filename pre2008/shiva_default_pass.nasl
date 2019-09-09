@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10500");
-  script_version("2019-06-06T07:39:31+0000");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-1999-0508");
   script_tag(name:"cvss_base", value:"4.6");
@@ -36,9 +36,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2000 Stefaan Van Dooren");
   script_family("Default Accounts");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/telnet", 23);
   script_mandatory_keys("telnet/banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Telnet to this router and set a different password immediately.");
 
@@ -52,6 +53,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("telnet_func.inc");
 

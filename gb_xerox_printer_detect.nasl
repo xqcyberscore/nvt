@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103648");
-  script_version("2019-09-04T09:18:53+0000");
-  script_tag(name:"last_modification", value:"2019-09-04 09:18:53 +0000 (Wed, 04 Sep 2019)");
+  script_version("2019-09-07T14:39:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:39:01 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-01-30 14:31:24 +0100 (Wed, 30 Jan 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   # nb: Don't use http_version.nasl as the Detection should run as early
   # as possible if the printer should be marked dead as requested.
-  script_dependencies("find_service.nasl", "httpver.nasl");
+  script_dependencies("find_service.nasl", "httpver.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -66,9 +66,14 @@ urls = get_xerox_detect_urls();
 
 foreach url (keys(urls)) {
 
-  buf = http_get_cache(item: url, port: port);
+  pattern = urls[url];
+  url = ereg_replace(string: url, pattern: "(#--avoid-dup[0-9]+--#)", replace: "");
 
-  if(match = eregmatch(pattern: urls[url], string: buf, icase: TRUE)) {
+  buf = http_get_cache(item: url, port: port);
+  if(!buf || (buf !~ "^HTTP/1\.[01] 200" && buf !~ "^HTTP/1\.[01] 401"))
+    continue;
+
+  if(match = eregmatch(pattern: pattern, string: buf, icase: TRUE)) {
 
     if(isnull(match[1]))
       continue;
@@ -127,7 +132,7 @@ foreach url (keys(urls)) {
     exit(0);
   }
 
-  else if("HTTP/1.1 401" >< buf && "CentreWare Internet Services" >< buf)  {
+  else if(buf =~ "^HTTP/1\.[01] 401" && "CentreWare Internet Services" >< buf)  {
 
     set_kb_item(name: "xerox_printer/detected", value: TRUE);
     set_kb_item(name: "xerox_printer/http/detected", value: TRUE);

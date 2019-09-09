@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_ftp_default_pass.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # AVM FRITZ!Box Default Password (FTP)
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/o:avm:fritz%21_os";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108043");
-  script_version("$Revision: 13497 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-01-11 11:00:00 +0100 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,9 +38,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_avm_fritz_box_detect.nasl");
+  script_dependencies("gb_avm_fritz_box_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ftp", 21);
   script_mandatory_keys("avm_fritz_box/ftp/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"This script detects if the device has a default password set.");
 
@@ -58,6 +58,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("ftp_func.inc");
 include("host_details.inc");
 
@@ -68,7 +71,7 @@ creds = make_list( "1234",
                    "passwort" );
 
 if( ! port = get_app_port( cpe:CPE, service:"ftp" ) ) exit( 0 );
-get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to the Detection-NVT
+if( ! get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( get_kb_item( "ftp/" + port + "/anonymous" ) ) exit( 0 );
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpunit_rce.nasl 14161 2019-03-13 17:56:04Z cfischer $
 #
 # PHPUnit 'CVE-2017-9841' Remote Code Execution Vulnerability
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108439");
-  script_version("$Revision: 14161 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 18:56:04 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-09-06T05:30:42+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 05:30:42 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-04-14 15:29:22 +0200 (Sat, 14 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,10 +43,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value:"http://phpunit.vulnbusters.com/");
+  script_xref(name:"URL", value:"https://web.archive.org/web/20190214092000/http://phpunit.vulnbusters.com/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/101798");
   script_xref(name:"URL", value:"https://moodle.org/mod/forum/discuss.php?d=358588");
   script_xref(name:"URL", value:"https://lists.wikimedia.org/pipermail/mediawiki-announce/2017-November/000216.html");
+  script_xref(name:"URL", value:"https://www.drupal.org/psa-2019-09-04");
+  script_xref(name:"URL", value:"https://www.drupal.org/project/mailchimp/issues/2946280");
 
   script_tag(name:"summary", value:"PHPUnit is prone to an arbitrary code-execution vulnerability.");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_database_open_access_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Database Open Access Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902799");
-  script_version("$Revision: 11374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_version("2019-09-09T06:03:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-03-01 17:10:53 +0530 (Thu, 01 Mar 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -45,9 +44,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to obtain the sensitive
   information of the database.");
+
   script_tag(name:"insight", value:"Do not restricting direct access of databases to the remote systems.");
+
   script_tag(name:"summary", value:"The host is running a Database server and is prone to information
   disclosure vulnerability.");
+
   script_tag(name:"affected", value:"- MySQL/MariaDB
 
   - IBM DB2
@@ -59,6 +61,7 @@ if(description)
   - Oracle Database
 
   - Microsoft SQL Server");
+
   script_tag(name:"solution", value:"Restrict Database access to remote systems.");
 
   script_tag(name:"solution_type", value:"Workaround");
@@ -67,8 +70,7 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc"); # For make_list_unique()
-include("network_func.inc");
+include("http_func.inc");
 include("misc_func.inc");
 
 function is_oracle_db( port ) {

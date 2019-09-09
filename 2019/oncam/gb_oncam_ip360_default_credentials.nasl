@@ -19,18 +19,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114094");
-  script_version("2019-05-03T12:45:16+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 12:45:16 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-04-30 13:25:57 +0200 (Tue, 30 Apr 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Oncam IP 360 Default Credentials");
-  script_dependencies("gb_oncam_ip360_detect.nasl");
+  script_dependencies("gb_oncam_ip360_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("oncam/ip360/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://www.oncamgrandeye.com/wp-content/uploads/2017/11/evo-05_mini_recessed_camera_quick_start_guide.pdf");
 
@@ -54,6 +55,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -64,7 +68,7 @@ CPE = "cpe:/a:oncam:ip360";
 if(!port = get_app_port(cpe: CPE, service: "www"))
   exit(0);
 
-if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port))
   exit(0);
 
 #Credential is in reversed order to allow for multiple passwords linked to the same user.

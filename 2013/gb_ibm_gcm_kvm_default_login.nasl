@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_gcm_kvm_default_login.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # IBM GCM16/GCM32 Default Login
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103763");
-  script_version("$Revision: 13659 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-08-19 11:03:03 +0100 (Mon, 19 Aug 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,21 +38,30 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_ibm_gcm_kvm_webinterface_detect.nasl");
+  script_dependencies("gb_ibm_gcm_kvm_webinterface_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("GCM_16_32/web/installed", "GCM_16_32/web/port");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
-  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to
-sensitive information or modify system configuration without requiring authentication.');
-  script_tag(name:"vuldetect", value:'This check tries to login into the remote KVM as Admin.');
-  script_tag(name:"insight", value:'It was possible to login with username "Admin" and an empty password.');
-  script_tag(name:"solution", value:'Set a password.');
+  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to
+  sensitive information or modify system configuration without requiring authentication.");
+
+  script_tag(name:"vuldetect", value:"This check tries to login into the remote KVM as Admin.");
+
+  script_tag(name:"insight", value:"It was possible to login with username 'Admin' and an empty password.");
+
+  script_tag(name:"solution", value:"Set a password.");
+
   script_tag(name:"solution_type", value:"Workaround");
-  script_tag(name:"summary", value:'The remote IBM GCM16 or GCM32 KVM is prone to a default account
-authentication bypass vulnerability.');
+
+  script_tag(name:"summary", value:"The remote IBM GCM16 or GCM32 KVM is prone to a default account
+  authentication bypass vulnerability.");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 

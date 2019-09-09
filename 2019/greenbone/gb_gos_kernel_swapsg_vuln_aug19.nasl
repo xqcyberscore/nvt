@@ -24,10 +24,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108620");
   script_cve_id("CVE-2019-1125");
-  script_version("2019-08-26T10:45:39+0000");
-  script_tag(name:"cvss_base", value:"4.7");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-26 10:45:39 +0000 (Mon, 26 Aug 2019)");
+  script_version("2019-09-09T06:54:37+0000");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-09-09 06:54:37 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-26 10:24:17 +0000 (Mon, 26 Aug 2019)");
   script_name("Greenbone OS - 'Spectre SWAPGS' gadget vulnerability - August 19");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dahua_devices_default_credentials.nasl 12426 2018-11-19 17:35:36Z tpassfeld $
 #
 # Dahua Devices Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114040");
-  script_version("$Revision: 12426 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 18:35:36 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-10-15 21:06:41 +0200 (Mon, 15 Oct 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Dahua Devices Default Credentials");
-  script_dependencies("gb_dahua_devices_detect.nasl");
+  script_dependencies("gb_dahua_devices_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("dahua/device/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://customvideosecurity.com/blog/tag/default-password-axis/");
 
@@ -63,6 +63,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -71,7 +74,7 @@ include("misc_func.inc");
 CPE = "cpe:/a:dahua:nvr";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 #There is an artificial password limit of 6 characters for some reason.
 #Credentials for: 1. Dahua; 2. Lorex

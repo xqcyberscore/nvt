@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10673");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1281, 4797);
   script_cve_id("CVE-2000-1209");
@@ -38,8 +38,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 H D Moore");
   script_family("Default Accounts");
+  script_dependencies("mssqlserver_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/mssql", 1433);
-  script_dependencies("mssqlserver_detect.nasl");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Disable this account, or set a password to it. In addition
   to this, it is suggested you filter incoming tcp traffic to this port.
@@ -70,6 +71,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("misc_func.inc");
 

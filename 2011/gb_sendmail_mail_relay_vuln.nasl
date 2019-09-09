@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_mail_relay_vuln.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # Sendmail Mail Relay Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:sendmail:sendmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802194");
-  script_version("$Revision: 13204 $");
+  script_version("2019-09-09T06:03:58+0000");
   script_cve_id("CVE-2002-1278", "CVE-2003-0285");
   script_bugtraq_id(6118, 7580);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-11-15 12:51:12 +0530 (Tue, 15 Nov 2011)");
   script_name("Sendmail Mail Relay Vulnerability");
   script_category(ACT_ATTACK);
@@ -74,7 +73,6 @@ if(description)
 
 include("smtp_func.inc");
 include("misc_func.inc");
-include("network_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"smtp" ) )

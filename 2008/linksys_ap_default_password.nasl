@@ -18,8 +18,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80070");
-  script_version("$Revision: 13794 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_xref(name:"OSVDB", value:"821");
   script_tag(name:"cvss_base", value:"7.5");
@@ -28,9 +28,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Renaud Deraison");
   script_family("Default Accounts");
-  script_dependencies("gb_linksys_devices_detect.nasl");
+  script_dependencies("gb_linksys_devices_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Linksys/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Connect to this port with a web browser, and click on the 'Password'
   section to set a strong password");
@@ -44,6 +45,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

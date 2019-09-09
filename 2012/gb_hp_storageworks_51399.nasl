@@ -31,38 +31,44 @@ if(description)
   script_cve_id("CVE-2011-4788", "CVE-2012-0697");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("2019-06-06T07:39:31+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_name("HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-02-21 13:19:06 +0100 (Tue, 21 Feb 2012)");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51399");
   script_xref(name:"URL", value:"http://h10010.www1.hp.com/wwpc/us/en/sm/WF05a/12169-304616-241493-241493-241493-3971478.html");
-  script_xref(name:"URL", value:"http://www.compaq.com/storage/");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-12-015/");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/885499");
 
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("gb_get_http_banner.nasl", "ssh_detect.nasl", "telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "ssh_detect.nasl", "telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80, "Services/ssh", 22, "Services/telnet", 23);
   script_mandatory_keys("WindRiver-WebServer/banner");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"impact", value:"An attacker could exploit these issues to access arbitrary files on
- the affected computer, or gain administrative access to the affected application. This may aid in
- the compromise of the underlying computer.");
+  the affected computer, or gain administrative access to the affected application. This may aid in
+  the compromise of the underlying computer.");
+
   script_tag(name:"affected", value:"HP StorageWorks P2000 G3 is affected.");
+
   script_tag(name:"solution", value:"The vendor released an update to address this issue. Please see the
- references for more information.");
+  references for more information.");
+
   script_tag(name:"summary", value:"HP StorageWorks is prone to a security-bypass vulnerability and a directory-
- traversal vulnerability.");
+  traversal vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ssh_func.inc");
 include("telnet_func.inc");

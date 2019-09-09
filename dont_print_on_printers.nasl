@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("2019-09-04T08:55:10+0000");
-  script_tag(name:"last_modification", value:"2019-09-04 08:55:10 +0000 (Wed, 04 Sep 2019)");
+  script_version("2019-09-06T10:04:32+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 10:04:32 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,6 +61,7 @@ include("sharp_printers.inc");
 include("kyocera_printers.inc");
 include("lexmark_printers.inc");
 include("xerox_printers.inc");
+include("ricoh_printers.inc");
 include("snmp_func.inc");
 
 pjl_ports_list = make_list();
@@ -286,26 +287,42 @@ if( mac = get_kb_item( "Host/mac_address" ) ) {
 
 if( is_printer ) report( data:"Detected MAC-Address of a Printer-Vendor: " + mac );
 
-# Keep the HTTP check at the bottom as this can take quite some time
-konica_detect_urls = make_array();
-konica_detect_urls['/wcd/top.xml'] = '301 Movprm';
-konica_detect_urls['/wcd/system_device.xml'] = '301 Movprm';
-konica_detect_urls['/wcd/system.xml'] = '301 Movprm';
+# nb: Keep the HTTP check at the bottom as this can take quite some time
 
-# Patch by Laurent Facq
+# nb: For the HTTPS detection these pattern needs to be updated
+# as those redirects only happen on HTTP.
+konica_detect_urls = make_array();
+konica_detect_urls['/wcd/top.xml'] = "^HTTP/1\.[01] 301 Movprm";
+konica_detect_urls['/wcd/system_device.xml'] = "^HTTP/1\.[01] 301 Movprm";
+konica_detect_urls['/wcd/system.xml'] = "^HTTP/1\.[01] 301 Movprm";
+
 ports = make_list( 80, 8000, 280, 631 ); # TODO: Re-add 443 and add 8443 once a solution was found to detect SSL/TLS without a dependency to find_service.nasl
 
 foreach port( ports ) {
 
   if( ! get_port_state( port ) ) continue;
 
-  # Sharp can be detected from the banner, see also gb_sharp_printer_detect.nasl
+  # Sharp can be detected from the start page, see also gb_sharp_printer_detect.nasl
   # If updating here please also update check gb_sharp_printer_detect.nasl
-  banner = get_http_banner( port:port );
-  if( "Extend-sharp-setting-status" >< banner && "Server: Rapid Logic" >< banner ) {
-    is_printer = TRUE;
-    reason     = "Sharp Banner/Text on port " + port + "/tcp: " + banner;
-    break;
+  buf = http_get_cache( item:"/", port:port );
+  if( buf && buf =~ "^HTTP/1\.[01] 200" && ( "Extend-sharp-setting-status" >< buf || "Server: Rapid Logic" >< buf ) ) {
+
+    urls = get_sharp_detect_urls();
+    foreach url( keys( urls ) ) {
+
+      pattern = urls[url];
+      url = ereg_replace( string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"" );
+
+      buf = http_get_cache( item:url, port:port );
+      if( ! buf || buf !~ "^HTTP/1\.[01] 200" )
+        continue;
+
+      if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
+        is_printer = TRUE;
+        reason     = "Sharp Banner/Text on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+        break;
+      }
+    }
   }
 
   # Canon, see also gb_canon_printers_detect.nasl
@@ -339,11 +356,15 @@ foreach port( ports ) {
   # Konica Minolta TODO: Move to own printer detect NVT
   foreach url( keys( konica_detect_urls ) ) {
 
-    buf = http_get_cache( item:url, port:port );
+    pattern = konica_detect_urls[url];
 
-    if( eregmatch( pattern:konica_detect_urls[url], string:buf, icase:TRUE ) ) {
+    buf = http_get_cache( item:url, port:port );
+    if( ! buf )
+      continue;
+
+    if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
       is_printer = TRUE;
-      reason     = "Found pattern: " + konica_detect_urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      reason     = "Found pattern: " + pattern + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;
     }
   }
@@ -354,11 +375,16 @@ foreach port( ports ) {
   urls = get_hp_detect_urls();
   foreach url( keys( urls ) ) {
 
-    buf = http_get_cache( item:url, port:port );
+    pattern = urls[url];
+    url = ereg_replace( string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"" );
 
-    if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
+    buf = http_get_cache( item:url, port:port );
+    if( ! buf || buf !~ "^HTTP/1\.[01] 200" )
+      continue;
+
+    if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
       is_printer = TRUE;
-      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      reason     = "Found pattern: " + pattern + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;
     }
   }
@@ -369,11 +395,16 @@ foreach port( ports ) {
   urls = get_ky_detect_urls();
   foreach url( keys( urls ) ) {
 
-    buf = http_get_cache( item:urls[url], port:port );
+    pattern = urls[url];
+    url = ereg_replace( string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"" );
 
-    if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
+    buf = http_get_cache( item:url, port:port );
+    if( ! buf || buf !~ "^HTTP/1\.[01] 200" )
+      continue;
+
+    if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
       is_printer = TRUE;
-      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      reason     = "Found pattern: " + pattern + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;
     }
   }
@@ -384,11 +415,16 @@ foreach port( ports ) {
   urls = get_lexmark_detect_urls();
   foreach url( keys( urls ) ) {
 
-    buf = http_get_cache( item:urls[url], port:port );
+    pattern = urls[url];
+    url = ereg_replace( string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"" );
 
-    if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
+    buf = http_get_cache( item:url, port:port );
+    if( ! buf || buf !~ "^HTTP/1\.[01] 200" )
+      continue;
+
+    if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
       is_printer = TRUE;
-      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      reason     = "Found pattern: " + pattern + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;
     }
   }
@@ -399,11 +435,43 @@ foreach port( ports ) {
   urls = get_xerox_detect_urls();
   foreach url( keys( urls ) ) {
 
-    buf = http_get_cache( item:url, port:port );
+    pattern = urls[url];
+    url = ereg_replace( string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"" );
 
-    if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
+    buf = http_get_cache( item:url, port:port );
+    if( ! buf || ( buf !~ "^HTTP/1\.[01] 200" && buf !~ "^HTTP/1\.[01] 401" ) )
+      continue;
+
+    if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
       is_printer = TRUE;
-      reason     = "Found pattern: " + urls[url] + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      reason     = "Found pattern: " + pattern + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+
+    # nb: See bottom of gb_xerox_printer_detect.nasl
+    if( buf =~ "^HTTP/1\.[01] 401" && "CentreWare Internet Services" >< buf ) {
+      is_printer = TRUE;
+      reason     = "Found pattern: CentreWare Internet Services on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+  }
+
+  if( is_printer ) break;
+
+  # Ricoh, see also gb_ricoh_printer_http_detect.nasl
+  urls = get_ricoh_detect_urls();
+  foreach url( keys( urls ) ) {
+
+    pattern = urls[url];
+    url = ereg_replace( string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"" );
+
+    buf = http_get_cache( item:url, port:port );
+    if( ! buf || buf !~ "^HTTP/1\.[01] 200" )
+      continue;
+
+    if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
+      is_printer = TRUE;
+      reason     = "Found pattern: " + pattern + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;
     }
   }

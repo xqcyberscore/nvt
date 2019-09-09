@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zyxel_pwd.nasl 4904 2017-01-02 12:45:48Z cfi $
 #
 # Default password router Zyxel
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10714");
-  script_version("2019-04-11T14:06:24+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3161);
   script_tag(name:"cvss_base", value:"10.0");
@@ -41,9 +40,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 Giovanni Fiaschi");
   script_family("Default Accounts");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports(23);
   script_mandatory_keys("telnet/banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Telnet to this router and set a password immediately.");
 
@@ -58,6 +58,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 port = 23;
 if( ! get_port_state( port ) ) exit( 0 );

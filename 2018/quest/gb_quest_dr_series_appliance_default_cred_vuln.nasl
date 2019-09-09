@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quest_dr_series_appliance_default_cred_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Quest DR Series Appliance Default Login Credentials Vulnerability
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:quest:dr_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813012");
-  script_version("$Revision: 12120 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-03-09 13:07:37 +0530 (Fri, 09 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Quest DR Series Appliance Default Login Credentials Vulnerability");
@@ -55,18 +54,21 @@ if(description)
 
   script_tag(name:"solution_type", value:"Mitigation");
 
-  script_xref(name:"URL", value:"https://www.quest.com");
   script_xref(name:"URL", value:"https://support.quest.com/dr-series/kb/220574/what-are-the-default-login-credentials-for-the-dr-");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
-  script_dependencies("gb_quest_dr_series_appliance_detect.nasl");
+  script_dependencies("gb_quest_dr_series_appliance_detect.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("quest/dr/appliance/detected");
   script_require_ports("Services/www", 80, 443);
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("host_details.inc");
 include("http_func.inc");
@@ -76,7 +78,8 @@ include("misc_func.inc");
 if (!drPort = get_app_port(cpe:CPE))
   exit(0);
 
-if(!dir = get_app_location(cpe: CPE, port: drPort)) exit(0);
+if(!dir = get_app_location(cpe: CPE, port: drPort))
+  exit(0);
 
 url = dir + 'ws/v1.0/jsonrpc';
 login_data = '{"jsonrpc":"2.0","method":"Logon","params":{"UserName":"administrator","Password":"St0r@ge!"},"id":1}';

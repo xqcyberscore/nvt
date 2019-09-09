@@ -19,11 +19,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113491");
-  script_version("2019-09-03T11:38:53+0000");
-  script_tag(name:"last_modification", value:"2019-09-03 11:38:53 +0000 (Tue, 03 Sep 2019)");
+  script_version("2019-09-06T10:56:37+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 10:56:37 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-03 11:55:23 +0000 (Tue, 03 Sep 2019)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

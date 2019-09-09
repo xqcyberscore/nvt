@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142807");
-  script_version("2019-08-29T10:30:15+0000");
-  script_tag(name:"last_modification", value:"2019-08-29 10:30:15 +0000 (Thu, 29 Aug 2019)");
+  script_version("2019-09-07T14:49:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:49:34 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-27 09:14:25 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,8 @@ if (description)
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_ricoh_printer_snmp_detect.nasl", "gb_ricoh_printer_ftp_detect.nasl",
-                      "gb_ricoh_printer_http_detect.nasl", "gb_ricoh_printer_pjl_detect.nasl");
+                      "gb_ricoh_printer_http_detect.nasl", "gb_ricoh_printer_pjl_detect.nasl",
+                      "global_settings.nasl");
   script_mandatory_keys("ricoh_printer/detected");
 
   script_xref(name:"URL", value:"https://www.ricoh.com/products/printers-and-copiers/");

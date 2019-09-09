@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_wincc_default_sql_password.nasl 11536 2018-09-21 19:44:30Z cfischer $
 #
 # Siemens WinCC MSSQL Default Credentials
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111057");
-  script_version("$Revision: 11536 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-11-24 10:00:00 +0100 (Tue, 24 Nov 2015)");
   script_bugtraq_id(41753);
   script_cve_id("CVE-2010-2772");
@@ -41,16 +40,21 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
+  script_dependencies("mssqlserver_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/mssql", 1116);
-  script_dependencies("mssqlserver_detect.nasl");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
-  script_tag(name:"summary", value:'The remote Siemens WinCC MSSQL server has default credentials set.');
-  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
-  access to sensitive information or modify system configuration.');
-  script_tag(name:"vuldetect", value:'Connect to the MS SQL service and try to login with default credentials.');
-  script_tag(name:"insight", value:'It was possible to login with default credentials of WinCCAdmin/2WSXcde. and/or
-  WinCCConnect/2WSXcder');
-  script_tag(name:"solution", value:'Update to V7.0 SP2 Update 1 (V 7.0.2.1) or later.');
+  script_tag(name:"summary", value:"The remote Siemens WinCC MSSQL server has default credentials set.");
+
+  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain
+  access to sensitive information or modify system configuration.");
+
+  script_tag(name:"vuldetect", value:"Connect to the MS SQL service and try to login with default credentials.");
+
+  script_tag(name:"insight", value:"It was possible to login with default credentials of WinCCAdmin/2WSXcde. and/or
+  WinCCConnect/2WSXcder");
+
+  script_tag(name:"solution", value:"Update to V7.0 SP2 Update 1 (V 7.0.2.1) or later.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/41753");
   script_xref(name:"URL", value:"http://scadastrangelove.blogspot.de/2012/07/wincc-default-password-7-years-long.html");
@@ -59,6 +63,9 @@ if(description)
   script_tag(name:"solution_type", value:"Mitigation");
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 pkt_hdr = raw_string(
     0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,

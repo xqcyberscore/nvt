@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: network_func.inc 13781 2019-02-20 10:25:43Z cfischer $
 #
 # Methods for handling some network operations
 #
@@ -28,26 +27,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13781 $
-#
 ###############################################################################
 
-# test if address is on a LAN, reserved or not routable address
+# @brief test if address is on a Private LAN, reserved or not routable address.
+#
+# @param addr the (optional IP address to test)
+#
+# @return TRUE if the tested address is on a Private LAN, reserved or not routable address.
+#         FALSE otherwise.
+#
 function is_private_addr( addr ) {
 
-  local_var addr, a, all_addr_private, all_addr_public, network_type;
+  local_var addr;
+  local_var all_addr_private, all_addr_public, network_type, a;
+
   all_addr_private = FALSE;
   all_addr_public  = FALSE;
 
   network_type = get_kb_item( "global_settings/network_type" );
   if( network_type ) {
-    if( "LAN" >< network_type ) all_addr_private = TRUE;
-    else if( "Internet" >< network_type ) all_addr_public = TRUE;
+    if( "Private LAN" >< network_type )
+      all_addr_private = TRUE;
+    else if( "Internet" >< network_type || "Public LAN" >< network_type )
+      all_addr_public = TRUE;
   }
 
-  if( all_addr_private ) return TRUE;
-  if( all_addr_public ) return FALSE;
+  if( all_addr_private || islocalhost() )
+    return TRUE;
+
+  if( all_addr_public && ! islocalhost() )
+    return FALSE;
 
   if( ! addr ) {
     a = get_host_ip();
@@ -55,23 +64,60 @@ function is_private_addr( addr ) {
     a = addr;
   }
 
+  # nb: The next checks are for the "Mixed" configuration in network_type
+
   # Localhost + RFC1918
-  if( a =~ "^0*(127|10)\.[0-9]+\.[0-9]+\.[0-9]+" ) return TRUE;
+  if( a =~ "^0*(127|10)\.[0-9]+\.[0-9]+\.[0-9]+" )
+    return TRUE;
 
   # RFC 1918 + Link local (RFC 3330)
-  if( a =~ "^0*(192\.0*168|169\.0*254)\.[0-9]+\.[0-9]+" ) return TRUE;
+  if( a =~ "^0*(192\.0*168|169\.0*254)\.[0-9]+\.[0-9]+" )
+    return TRUE;
 
   # RFC 1918
-  if( a =~ "^0*172\.0*(1[6-9]|2[0-9]|3[01])\.[0-9]+\.[0-9]+" ) return TRUE;
+  if( a =~ "^0*172\.0*(1[6-9]|2[0-9]|3[01])\.[0-9]+\.[0-9]+" )
+    return TRUE;
 
   # TEST-NET - RFC 3330
-  if( a =~ "^0*192\.0*0\.0*2\.[0-9]+" ) return TRUE;
+  if( a =~ "^0*192\.0*0\.0*2\.[0-9]+" )
+    return TRUE;
 
   # RFC 2544
-  if( a =~ "^0*192\.0*1[89]\.[0-9]+\.[0-9]+" ) return TRUE;
+  if( a =~ "^0*192\.0*1[89]\.[0-9]+\.[0-9]+" )
+    return TRUE;
 
   # TODO: Add IPv6
 
+  return FALSE;
+}
+
+# @brief test if address is on a WAN (Internet) or Public LAN
+#
+# @param addr the (optional IP address to test)
+#
+# @return TRUE if the tested address is on a WAN (Internet) or Public LAN,
+#         FALSE otherwise.
+#
+function is_public_addr( addr ) {
+
+  local_var addr;
+
+  if( islocalhost() )
+    return FALSE;
+
+  if( islocalnet() && ! is_private_addr( addr:addr ) )
+    return TRUE;
+
+  if( is_private_addr( addr:addr ) )
+    return FALSE;
+
+  if( ! is_private_addr( addr:addr ) )
+    return TRUE;
+
+  # nb: We shouldn't end up here, nevertheless we're returning FALSE.
+  # This makes sure that we're not reporting a false positive for VTs
+  # reporting a publicly accessible service were its actually not known
+  # if the service is publicly accessible.
   return FALSE;
 }
 

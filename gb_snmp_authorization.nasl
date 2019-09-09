@@ -27,24 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105076");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("2019-07-08T14:12:44+0000");
-  script_tag(name:"last_modification", value:"2019-07-08 14:12:44 +0000 (Mon, 08 Jul 2019)");
+  script_version("2019-09-09T05:32:36+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 05:32:36 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-09-02 10:42:27 +0200 (Tue, 02 Sep 2014)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("SNMP Authorization"); # nb: Don't change the script name, this name is hardcoded within some manager functions...
   script_category(ACT_SETTINGS);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Credentials");
+  script_dependencies("global_settings.nasl");
+  script_exclude_keys("global_settings/authenticated_scans_disabled");
 
   script_add_preference(name:"SNMP Community:", type:"password", value:"", id:1); # nb: Don't change this name and id, these are hardcoded / used in GVMd
 
-  if( defined_func( "snmpv3_get" ) ) {
-  script_add_preference(name:"SNMPv3 Username:", type:"entry", value:"", id:2); # nb: Don't change this name and id, these are hardcoded / used in GVMd
-  script_add_preference(name:"SNMPv3 Password:", type:"password", value:"", id:3); # nb: Don't change this name and id, these are hardcoded / used in GVMd
-  script_add_preference(name:"SNMPv3 Authentication Algorithm:", type:"radio", value:"md5;sha1", id:4); # nb: Don't change this name and id, these are hardcoded / used in GVMd
-  script_add_preference(name:"SNMPv3 Privacy Password:", type:"password", value:"", id:5); # nb: Don't change this name and id, these are hardcoded / used in GVMd
-  script_add_preference(name:"SNMPv3 Privacy Algorithm:", type:"radio", value:"aes;des", id:6); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+  if(defined_func("snmpv3_get")) {
+    script_add_preference(name:"SNMPv3 Username:", type:"entry", value:"", id:2); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+    script_add_preference(name:"SNMPv3 Password:", type:"password", value:"", id:3); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+    script_add_preference(name:"SNMPv3 Authentication Algorithm:", type:"radio", value:"md5;sha1", id:4); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+    script_add_preference(name:"SNMPv3 Privacy Password:", type:"password", value:"", id:5); # nb: Don't change this name and id, these are hardcoded / used in GVMd
+    script_add_preference(name:"SNMPv3 Privacy Algorithm:", type:"radio", value:"aes;des", id:6); # nb: Don't change this name and id, these are hardcoded / used in GVMd
   }
 
   script_tag(name:"summary", value:"This script allows users to enter the information
@@ -56,6 +58,9 @@ if(description)
 
   exit(0);
 }
+
+if( get_kb_item( "global_settings/authenticated_scans_disabled" ) )
+  exit( 0 );
 
 snmp_community = script_get_preference( "SNMP Community:", id:1 );
 if( snmp_community && snmp_community != "(null)" ) {

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_command_injection.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Generic HTTP Command Injection Check
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112054");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-07T14:49:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:49:34 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-09-27 09:42:21 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +37,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning", "global_settings/disable_generic_webapp_scanning");
 

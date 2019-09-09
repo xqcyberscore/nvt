@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_lfi.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT <=1.2.3 (db_type) Local File Inclusion Vulnerability
 #
@@ -29,10 +28,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100947");
-  script_version("$Revision: 12818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_version("2019-09-07T11:55:45+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 11:55:45 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-12-15 13:36:34 +0100 (Wed, 15 Dec 2010)");
   script_bugtraq_id(45399);
+  script_cve_id("CVE-2010-4348", "CVE-2010-4349", "CVE-2010-4350");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
 
@@ -47,20 +47,19 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("mantisbt/detected");
 
   script_tag(name:"summary", value:"Mantis is prone to a local file-include vulnerability because it fails
-to properly sanitize user supplied input. Input passed through the
-'db_type' parameter (GET & POST) to upgrade_unattended.php script is
-not properly verified before being used to include files.
+  to properly sanitize user supplied input. Mantis is also prone to a cross-site scripting attack.");
 
-Mantis is also prone to a cross-site scripting attack.");
+  script_tag(name:"insight", value:"Input passed through the 'db_type' parameter (GET & POST) to
+  upgrade_unattended.php script is not properly verified before being used to include files.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade
+  to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -85,11 +84,11 @@ files = traversal_files();
 foreach file (keys(files)) {
   url = dir + "/admin/upgrade_unattended.php?db_type=" + crap(data:"..%2f",length:5*15) + files[file] +"%00";
 
-  if (http_vuln_check(port:port, url:url,pattern:file)) {
+  if (http_vuln_check(port:port, url:url, pattern:file)) {
     report = report_vuln_url(port: port, url: url);
     security_message(port:port, data: report);
     exit(0);
   }
 }
 
-exit(0);
+exit(99);

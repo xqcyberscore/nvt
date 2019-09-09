@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orange_livebox_router_default_credentials.nasl 12888 2018-12-27 18:16:07Z tpassfeld $
 #
 # Orange Livebox Router Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114054");
-  script_version("$Revision: 12888 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 19:16:07 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-12-27 17:18:05 +0100 (Thu, 27 Dec 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Orange Livebox Router Default Credentials");
-  script_dependencies("gb_orange_livebox_router_detect.nasl");
+  script_dependencies("gb_orange_livebox_router_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("orange/livebox/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://github.com/zadewg/LIVEBOX-0DAY");
   script_xref(name:"URL", value:"http://setuprouter.com/router/arcadyan/arv7519/login.htm");
@@ -64,15 +64,17 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 
-
 CPE = "cpe:/h:orange:livebox";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 creds = make_array("admin", "admin",
                    "kpn", "kpn-adsl");

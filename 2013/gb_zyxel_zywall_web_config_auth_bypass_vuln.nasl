@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_zywall_web_config_auth_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ZyXEL ZyWALL Web Configurator Authentication Bypass Vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803199");
-  script_version("$Revision: 11401 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-05-14 17:25:01 +0530 (Tue, 14 May 2013)");
   script_name("ZyXEL ZyWALL Web Configurator Authentication Bypass Vulnerability");
 
@@ -40,19 +39,27 @@ if(description)
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("RomPager/banner");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"insight", value:"By default, ZyXEL ZyWALL installs with default user credentials
   (username/password combination). The web configurator account has a password of
   '1234', which is publicly known and documented. This allows remote attackers to
   trivially access the program or system and gain privileged access.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by
+  another one.");
+
   script_tag(name:"summary", value:"This host is running ZyXEL ZyWALL Web Configurator and prone to
   authentication bypass vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain
   administrative access, circumventing existing authentication mechanisms.");
+
   script_tag(name:"affected", value:"ZyXEL ZyWALL");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -60,6 +67,8 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

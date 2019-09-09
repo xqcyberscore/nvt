@@ -23,11 +23,11 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142791");
-  script_version("2019-08-26T09:34:49+0000");
-  script_tag(name:"last_modification", value:"2019-08-26 09:34:49 +0000 (Mon, 26 Aug 2019)");
+  script_version("2019-09-09T06:54:37+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:54:37 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-26 09:30:35 +0000 (Mon, 26 Aug 2019)");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-15074");
 

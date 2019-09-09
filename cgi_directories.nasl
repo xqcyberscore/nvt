@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-07T14:49:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:49:34 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,9 +35,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");
-  script_dependencies("webmirror.nasl", "DDI_Directory_Scanner.nasl", "gb_twonky_server_detect.nasl",
-  "gb_owncloud_detect.nasl", "gb_adobe_aem_remote_detect.nasl", "gb_libreoffice_online_detect.nasl",
-  "gb_apache_activemq_detect.nasl", "gb_orientdb_server_detect.nasl"); # gb_* are additional dependencies setting auth_required
+  script_dependencies("webmirror.nasl", "DDI_Directory_Scanner.nasl", "global_settings.nasl",
+                      "gb_twonky_server_detect.nasl", "gb_owncloud_detect.nasl", "gb_adobe_aem_remote_detect.nasl",
+                      "gb_libreoffice_online_detect.nasl", "gb_apache_activemq_detect.nasl",
+                      "gb_orientdb_server_detect.nasl"); # gb_* are additional dependencies setting auth_required
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");

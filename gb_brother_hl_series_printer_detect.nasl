@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brother_hl_series_printer_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Brother HL Series Printers Detection
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813390");
-  script_version("$Revision: 11408 $");
+  script_version("2019-09-07T14:49:34+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-07 14:49:34 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-06-06 15:18:41 +0530 (Wed, 06 Jun 2018)");
   script_name("Brother HL Series Printers Detection");
 
@@ -46,7 +45,7 @@ if(description)
   script_family("Product detection");
   # nb: Don't use http_version.nasl as the Detection should run as early
   # as possible if the printer should be marked dead as requested.
-  script_dependencies("find_service.nasl", "httpver.nasl");
+  script_dependencies("find_service.nasl", "httpver.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

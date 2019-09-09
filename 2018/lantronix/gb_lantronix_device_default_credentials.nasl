@@ -27,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107329");
-  script_version("2019-08-30T12:23:10+0000");
-  script_tag(name:"last_modification", value:"2019-08-30 12:23:10 +0000 (Fri, 30 Aug 2019)");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 18:29:24 +0200 (Thu, 12 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,8 +45,9 @@ if( description )
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_lantronix_device_version.nasl");
+  script_dependencies("gb_lantronix_device_version.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("lantronix_device/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"Lantronix devices have a default useraccount 'root' with password 'system' which grants
   admin rights TELNET access.");
@@ -63,6 +64,9 @@ if( description )
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include( "host_details.inc" );
 

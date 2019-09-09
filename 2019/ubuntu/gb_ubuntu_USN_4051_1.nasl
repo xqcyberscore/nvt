@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844085");
-  script_version("2019-07-11T11:32:19+0000");
+  script_version("2019-09-09T06:54:37+0000");
   script_cve_id("CVE-2019-7307");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-11 11:32:19 +0000 (Thu, 11 Jul 2019)");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-09-09 06:54:37 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-07-09 02:00:37 +0000 (Tue, 09 Jul 2019)");
   script_name("Ubuntu Update for apport USN-4051-1");
   script_category(ACT_GATHER_INFO);

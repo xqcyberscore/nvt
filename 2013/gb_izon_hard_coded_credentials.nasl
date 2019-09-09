@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103824");
-  script_version("2019-06-06T07:39:31+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_cve_id("CVE-2013-6236");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -35,15 +35,16 @@ if(description)
   script_xref(name:"URL", value:"https://blog.duosecurity.com/2013/10/izon-ip-camera-hardcoded-passwords-and-unencrypted-data-abound/");
   script_xref(name:"URL", value:"https://securityledger.com/2013/10/apple-store-favorite-izon-cameras-riddled-with-security-holes/");
 
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-11-07 11:02:55 +0200 (Thu, 07 Nov 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/telnet", 23);
   script_mandatory_keys("telnet/izon/ip_camera/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"impact", value:"Attackers can exploit these issues to gain unauthorized access to the
   affected device and perform certain administrative actions.");
@@ -68,6 +69,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("telnet_func.inc");
 include("misc_func.inc");

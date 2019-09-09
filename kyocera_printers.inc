@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: kyocera_printers.inc 13658 2019-02-14 08:16:14Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,25 +20,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13658 $
-#
 ###############################################################################
 
 global_var ky_last_user, ky_last_pass;
 
+# @brief Returns an array containing the URL for a Kyocera printer detection
+#        as the array key and the regex to extract the type/model as the value.
+#
+# @note The array key might contain a pattern like e.g. (numbers incrementing
+#       for multiple same URLs):
+#
+#       #--avoid-dup1--#
+#
+#       to be able to have different array keys for the same URL.
+#       Make sure to strip such patterns away with ereg_replace
+#       in the VT calling this function.
+#
+# @return An array as described in the function description.
+#
 function get_ky_detect_urls() {
 
   local_var ky_detect_urls;
 
   ky_detect_urls = make_array();
 
-  ky_detect_urls['var ModelName="([^"]+)"'] = '/';
-  ky_detect_urls['HeaderStatusPC."([^"]+)"'] = '/startwlm/Start_Wlm.htm';
-  ky_detect_urls['PtrVal\\[0\\] = "([^"]+)";'] = '/eng/start/about.htm';
-  ky_detect_urls['PtrVal\\[0\\] = "([^"]+)"'] = '/start/about.htm';
-  ky_detect_urls['sVal\\[0\\] = "([^"]+)";'] = '/eng/status/statprn.htm';
-  ky_detect_urls['sVal\\[0\\] = "([^"]+)"'] = '/eng/status/statprn1.htm';
+  ky_detect_urls['/']                        = 'var ModelName="([^"]+)"';
+  ky_detect_urls['/startwlm/Start_Wlm.htm']  = 'HeaderStatusPC."([^"]+)"';
+  ky_detect_urls['/eng/start/about.htm']     = 'PtrVal\\[0\\] = "([^"]+)";';
+  ky_detect_urls['/start/about.htm']         = 'PtrVal\\[0\\] = "([^"]+)";';
+  ky_detect_urls['/eng/status/statprn.htm']  = 'sVal\\[0\\] = "([^"]+)";';
+  ky_detect_urls['/eng/status/statprn1.htm'] = 'sVal\\[0\\] = "([^"]+)";';
 
   return ky_detect_urls;
 }

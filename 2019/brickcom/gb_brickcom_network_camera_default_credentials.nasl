@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_network_camera_default_credentials.nasl 12933 2019-01-03 19:50:09Z tpassfeld $
 #
 # Brickcom Network Camera Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114059");
-  script_version("$Revision: 12933 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 20:50:09 +0100 (Thu, 03 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-01-03 19:42:47 +0100 (Thu, 03 Jan 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Brickcom Network Camera Default Credentials");
-  script_dependencies("gb_brickcom_network_camera_detect.nasl");
+  script_dependencies("gb_brickcom_network_camera_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("brickcom/network_camera/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://www.brickcom.com/support/faq_contents.php?id=48");
 
@@ -63,6 +63,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
@@ -74,7 +77,7 @@ if(model = get_kb_item("brickcom/network_camera/model")) {
 }
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 creds = make_array("admin", "admin");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_DPC3928SL_snmp_auth_bypass_vuln.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810980");
-  script_version("$Revision: 11959 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_cve_id("CVE-2017-5135");
   script_bugtraq_id(98092);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-05-19 17:59:31 +0530 (Fri, 19 May 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability");
@@ -66,21 +65,27 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("snmp_detect.nasl");
+  script_dependencies("snmp_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
   script_mandatory_keys("SNMP/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("snmp_func.inc");
+include("misc_func.inc");
 
 snmp_port = get_snmp_port( default:161 );
 if( get_kb_item( "SNMP/" + snmp_port + "/v12c/all_communities" ) ) exit( 0 ); # For devices which are accepting every random community
 
-# Passing community string
-# Any string integer value
-community = "testOpenVAS";
+vt_strings = get_vt_strings();
+
+# Passing community string, any string integer value works
+community = vt_strings["default"];
 
 if(ret = snmp_get( port:snmp_port, oid:'1.3.6.1.2.1.1.1.0', version:2, community:community ))
 {

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: labrea.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # scan for LaBrea tarpitted hosts
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10796");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("2019-09-09T06:59:32+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:59:32 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +36,6 @@ if(description)
   script_copyright("This script is Copyright (C) 2001 by John Lampe");
   script_family("Port scanners");
   script_dependencies("ping_host.nasl");
-  script_exclude_keys("keys/TARGET_IS_IPV6"); # nb: This doesn't work as global_settings.nasl is in ACT_SETTINGS which is > ACT_SCANNER so we can't run global_settings.nasl before this one...
 
   script_tag(name:"summary", value:"This script performs a labrea tarpit scan, by
   sending a bogus ACK and ACK-windowprobe to a potential host. It also sends a TCP SYN
@@ -48,9 +46,10 @@ if(description)
   exit(0);
 }
 
+if(TARGET_IS_IPV6())
+  exit(0);
 
-if(TARGET_IS_IPV6())exit(0);
-include('global_settings.inc');
+include("global_settings.inc");
 
 # Labrea only answers to TCP probes
 if (get_kb_item('/tmp/ping/ICMP') )

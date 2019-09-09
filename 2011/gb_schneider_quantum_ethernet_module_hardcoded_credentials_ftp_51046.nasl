@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_ftp_51046.nasl 13506 2019-02-06 14:18:08Z cfischer $
 #
 # Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability
 #
@@ -30,21 +29,21 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103366");
   script_bugtraq_id(51046);
   script_cve_id("CVE-2011-4859", "CVE-2011-4860", "CVE-2011-4861");
-  script_version("$Revision: 13506 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 15:18:08 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-12-14 10:13:05 +0100 (Wed, 14 Dec 2011)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ftp", 21);
   script_mandatory_keys("ftp/ftp_ready_banner/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51046");
-  script_xref(name:"URL", value:"http://www.schneider-electric.com/site/home/index.cfm/ww/?selectCountry=true");
   script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-346-01.pdf");
   script_xref(name:"URL", value:"http://reversemode.com/index.php?option=com_content&task=view&id=80&Itemid=1");
 
@@ -62,6 +61,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ftp_func.inc");
 

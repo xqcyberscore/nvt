@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_GS110TP_default_password.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Netgear GS110TP Default Password
 #
@@ -28,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103666");
-  script_version("$Revision: 11082 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Netgear GS110TP Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-02-20 12:01:48 +0100 (Wed, 20 Feb 2013)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Web_Server/banner");
-
-  script_xref(name:"URL", value:"http://support.netgear.com/product/GS110TP");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Change the password.");
+
   script_tag(name:"summary", value:"The remote Netgear GS110TP has the default password 'password'.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -51,6 +50,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

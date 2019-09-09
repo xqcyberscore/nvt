@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_mult_xss_vuln.nasl 13462 2019-02-05 09:37:54Z ckuersteiner $
 #
 # Atutor Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:atutor:atutor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802561");
-  script_version("$Revision: 13462 $");
+  script_version("2019-09-07T11:55:45+0000");
   script_bugtraq_id(51423);
   script_cve_id("CVE-2012-6528");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:37:54 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-07 11:55:45 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-01-17 12:09:44 +0530 (Tue, 17 Jan 2012)");
 
   script_name("Atutor Multiple Cross Site Scripting Vulnerabilities");
@@ -46,19 +45,19 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("gb_atutor_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("atutor/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary web
   script or HTML in a user's browser session in the context of an affected site.");
 
-  script_tag(name:"affected", value:"ATutor version 2.0.3");
+  script_tag(name:"affected", value:"ATutor version 2.0.3.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to an input passed to the various pages are not
   properly sanitised before being returned to the user.");
 
-  script_tag(name:"solution", value:"Update to ATutor Version 2.1");
+  script_tag(name:"solution", value:"Update to ATutor Version 2.1.");
 
   script_tag(name:"summary", value:"This host is running Atutor and is prone to multiple cross site
   scripting vulnerabilities.");

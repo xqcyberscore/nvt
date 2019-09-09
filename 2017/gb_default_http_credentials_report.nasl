@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_http_credentials_report.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials Reporting
 #
@@ -27,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103240");
-  script_version("$Revision: 11663 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-01-06 13:47:00 +0100 (Fri, 06 Jan 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
   script_name("HTTP Brute Force Logins With Default Credentials Reporting");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_category(ACT_END);
-  script_family("Default Accounts");
+  script_family("Brute force attacks");
   script_dependencies("default_http_auth_credentials.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("default_http_auth_credentials/started");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803193");
-  script_version("$Revision: 12131 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-04-18 15:27:50 +0530 (Thu, 18 Apr 2013)");
   script_name("Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability");
 
@@ -42,17 +41,23 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("ADSL_MODEM/banner");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to access the web
   interface of the affected devices using two distinct hard-coded users.");
+
   script_tag(name:"affected", value:"Sitecom WLM-3500, firmware versions < 1.07");
+
   script_tag(name:"solution", value:"Upgrade to Sitecom WLM-3500, firmware versions 1.07 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is running Sitecom WLM-3500 Router and is prone to authentication
   bypass vulnerability.");
+
   script_tag(name:"insight", value:"Sitecom WLM-3500 routers contain an undocumented access backdoor that can be
   abused to bypass existing authentication mechanisms.
 
@@ -62,9 +67,11 @@ if(description)
   of the device that contains, among the other things, also the password for the
   'admin' user. Thus, escalating to administrative privileges is trivial.");
 
-  script_xref(name:"URL", value:"http://www.sitecom.com/");
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("misc_func.inc");

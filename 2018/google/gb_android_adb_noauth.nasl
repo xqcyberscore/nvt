@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_android_adb_noauth.nasl 10447 2018-07-06 16:49:22Z cfischer $
 #
 # Android Debug Bridge (ADB) Accessible Without Authentication
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/o:google:android";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108450");
-  script_version("$Revision: 10447 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 18:49:22 +0200 (Fri, 06 Jul 2018) $");
+  script_version("2019-09-09T06:03:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-06 14:37:42 +0200 (Fri, 06 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -64,7 +63,6 @@ if(description)
 }
 
 include("host_details.inc");
-include("network_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! get_kb_item( "adb/" + port + "/noauth" ) ) exit( 99 );

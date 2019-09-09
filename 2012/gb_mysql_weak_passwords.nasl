@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_weak_passwords.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # MySQL / MariaDB weak password
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103551");
-  script_version("$Revision: 12175 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-08-23 10:38:09 +0200 (Thu, 23 Aug 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -36,9 +35,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("mysql_version.nasl");
+  script_dependencies("mysql_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Change the password as soon as possible.");
 
@@ -50,6 +50,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("byte_func.inc");
 include("host_details.inc");
@@ -65,7 +68,7 @@ port = infos['port'];
 cpe  = infos['cpe'];
 
 if( get_kb_item( "MySQL/" + port + "/blocked" ) ) exit( 0 );
-if( ! get_app_location( cpe:cpe, port:port, nofork:TRUE ) ) exit( 0 ); # To have a reference to the Detection-NVT
+if( ! get_app_location( cpe:cpe, port:port, nofork:TRUE ) ) exit( 0 );
 
 username = "root";
 passwords = make_list("admin", "root", "mysql", "password", "passw0rd", "123456", "12345678", "mysqladmin", "qwerty", "letmein", "database", "");

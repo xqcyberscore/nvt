@@ -27,35 +27,44 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804475");
-  script_version("$Revision: 11402 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-07-21 12:35:29 +0530 (Mon, 21 Jul 2014)");
   script_name("ZKSoftware WebServer Default Admin Credentials");
 
   script_tag(name:"summary", value:"This host is running ZKSoftware WebServer and it has default admin
   credentials.");
+
   script_tag(name:"vuldetect", value:"Send a crafted default admin credentials via HTTP POST request and check
   whether it is possible to login or not.");
+
   script_tag(name:"insight", value:"It was possible to login with default credentials.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to gain access to sensitive
   information or modify system configuration.");
+
   script_tag(name:"affected", value:"ZKSoftware WebServer");
+
   script_tag(name:"solution", value:"Change the default credentials.");
+
   script_tag(name:"solution_type", value:"Mitigation");
   script_xref(name:"URL", value:"http://blog.infobytesec.com/2014/07/perverting-embedded-devices-zksoftware_2920.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("ZK_Web_Server/banner");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("http_keepalive.inc");

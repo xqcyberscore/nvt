@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_ssh_version.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Cisco Wireless LAN Controller Detection (SSH)
 #
@@ -30,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105429");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("2019-09-06T15:07:56+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 15:07:56 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-10-30 14:08:04 +0100 (Fri, 30 Oct 2015)");
   script_name("Cisco Wireless LAN Controller Detection (SSH)");
 
@@ -44,7 +43,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl", "gather-package-list.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
+  script_mandatory_keys("ssh/server_banner/available", "Secret/SSH/login", "Secret/SSH/password");
 
   exit(0);
 }
@@ -94,7 +93,6 @@ for( i=0; i < 3; i++ )
 
   version = eregmatch( pattern:'Product Version[.]+ ([0-9][^\r\n ]+)', string:buf );
   if( ! isnull( version[1] ) ) set_kb_item( name:"cisco_wlc/version/ssh", value:version[1] );
-
 
   model = eregmatch(string:buf, pattern:"PID: ([^,]+),");
   if( ! isnull( model[1] ) ) set_kb_item( name:"cisco_wlc/model/ssh", value:model[1] );

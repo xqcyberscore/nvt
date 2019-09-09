@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xiongmai_net_surveillance_default_credentials.nasl 14176 2019-03-14 11:29:33Z tpassfeld $
 #
 # Xiongmai Net Surveillance Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114039");
-  script_version("$Revision: 14176 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:29:33 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-10-09 19:58:10 +0200 (Tue, 09 Oct 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Xiongmai Net Surveillance Default Credentials");
-  script_dependencies("gb_xiongmai_net_surveillance_detect.nasl");
+  script_dependencies("gb_xiongmai_net_surveillance_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("xiongmai/net_surveillance/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://www.sec-consult.com/en/blog/2018/10/millions-of-xiongmai-video-surveillance-devices-can-be-hacked-via-cloud-feature-xmeye-p2p-cloud/");
   script_xref(name:"URL", value:"https://krebsonsecurity.com/tag/xc3511/");
@@ -64,6 +64,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -74,7 +77,7 @@ CPE = "cpe:/a:xiongmai:net_surveillance";
 if(!port = get_app_port(cpe: CPE, service: "www"))
   exit(0);
 
-if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port))
   exit(0);
 
 creds = make_array("admin", "",

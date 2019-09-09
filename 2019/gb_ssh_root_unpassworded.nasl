@@ -19,20 +19,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108587");
-  script_version("2019-05-24T13:07:17+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_cve_id("CVE-2019-5021", "CVE-1999-0502");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-24 13:07:17 +0000 (Fri, 24 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-05-24 12:35:09 +0000 (Fri, 24 May 2019)");
   script_name("Unpassworded 'root' Account (SSH)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl", "os_detection.nasl");
+  script_dependencies("ssh_detect.nasl", "os_detection.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_require_keys("Host/runs_unixoide");
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://talosintelligence.com/vulnerability_reports/TALOS-2019-0782");
   script_xref(name:"URL", value:"https://alpinelinux.org/posts/Docker-image-vulnerability-CVE-2019-5021.html");
@@ -60,6 +61,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("host_details.inc");
 include("ssh_func.inc");

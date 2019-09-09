@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_camera_default_credentials.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Trendnet Internet Camera Default Credentials
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112338");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-25 14:03:42 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,18 +43,23 @@ if( description )
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_trendnet_camera_detect.nasl");
+  script_dependencies("gb_trendnet_camera_detect.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("trendnet/ip_camera/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"Trendnet IP cameras use the default credentials admin:admin.");
-  script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
-  script_tag(name:"affected", value:"All Trendnet IP cameras.");
-  script_tag(name:"solution", value:"Change the default password for the admin account.");
 
-  script_xref(name:"URL", value:"https://www.trendnet.com/");
+  script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
+
+  script_tag(name:"affected", value:"All Trendnet IP cameras.");
+
+  script_tag(name:"solution", value:"Change the default password for the admin account.");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 CPE = "cpe:/h:trendnet:ip_camera";
 
@@ -65,6 +69,7 @@ include( "http_keepalive.inc" );
 include( "misc_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
+if( ! get_app_location( port: port, cpe: CPE ) ) exit( 0 );
 
 username = "admin";
 password = "admin";

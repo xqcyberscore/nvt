@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_authorization.nasl 13247 2019-01-23 15:12:20Z cfischer $
 #
 # This script allows to set SSH credentials for target hosts.
 #
@@ -31,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90022");
-  script_version("$Revision: 13247 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 16:12:20 +0100 (Wed, 23 Jan 2019) $");
+  script_version("2019-09-07T15:01:50+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 15:01:50 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2007-11-01 23:55:52 +0100 (Thu, 01 Nov 2007)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,10 +52,11 @@ if(description)
   exit(0);
 }
 
+if( get_kb_item( "global_settings/authenticated_scans_disabled" ) )
+  exit( 0 );
+
 include("ssh_func.inc");
 include("host_details.inc");
-
-if( get_kb_item( "global_settings/authenticated_scans_disabled" ) ) exit( 0 );
 
 # nb: Check if port for us is known
 port = kb_ssh_transport();

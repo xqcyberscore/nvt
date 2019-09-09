@@ -19,18 +19,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114087");
-  script_version("2019-04-04T14:50:45+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-03-20 14:57:35 +0100 (Wed, 20 Mar 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Intellio Visus Default Credentials");
-  script_dependencies("gb_intellio_visus_detect.nasl");
+  script_dependencies("gb_intellio_visus_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("intellio/visus/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://technodocbox.com/Cameras_and_Camcorders/67505238-Firmware-version-3-2-0.html");
 
@@ -54,6 +55,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
@@ -62,7 +66,7 @@ include("http_keepalive.inc");
 CPE = "cpe:/a:intellio:visus";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 creds = make_array("admin", "admin");
 

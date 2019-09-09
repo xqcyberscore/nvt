@@ -23,13 +23,13 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815547");
-  script_version("2019-08-20T10:47:01+0000");
+  script_version("2019-09-06T10:56:37+0000");
   script_cve_id("CVE-2019-13602", "CVE-2019-14437", "CVE-2019-14438", "CVE-2019-14498",
                 "CVE-2019-14533", "CVE-2019-14534", "CVE-2019-14535", "CVE-2019-14776",
                 "CVE-2019-14777", "CVE-2019-14778", "CVE-2019-14970");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-08-20 10:47:01 +0000 (Tue, 20 Aug 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-09-06 10:56:37 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-20 15:30:25 +0530 (Tue, 20 Aug 2019)");
   script_name("VLC Media Player Multiple Vulnerabilities-sb-vlc308 (Mac OS X)");
   script_category(ACT_GATHER_INFO);

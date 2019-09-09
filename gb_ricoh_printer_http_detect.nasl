@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142810");
-  script_version("2019-08-29T09:18:53+0000");
-  script_tag(name:"last_modification", value:"2019-08-29 09:18:53 +0000 (Thu, 29 Aug 2019)");
+  script_version("2019-09-07T14:39:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:39:01 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-28 04:38:13 +0000 (Wed, 28 Aug 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -35,29 +35,33 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "httpver.nasl");
+  script_dependencies("find_service.nasl", "httpver.nasl", "global_settings.nasl");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
 
+include("ricoh_printers.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
-urls = make_array(
-  "/machinei.asp?Lang=en-us", 'class="modelName">([^<]+)<',   # class="modelName">SP C250DN</td>
-  "/web/guest/en/websys/status/configuration.cgi", ">Model Name<[^:]+:<[^<]+<td nowrap>((Aficio )?[^<]+)"  # >Model Name</td><td nowrap>:</td><td nowrap>Aficio MP C3501</td>
-  );
+urls = get_ricoh_detect_urls();
 
 foreach url (keys(urls)) {
-  res = http_get_cache(port: port, item: url);
 
-  match = eregmatch(pattern: urls[url], string: res, icase: TRUE);
-  if (res =~ "^HTTP/1\.[01] 200" && !isnull(match[1])) {
+  pattern = urls[url];
+  url = ereg_replace(string: url, pattern: "(#--avoid-dup[0-9]+--#)", replace: "");
+
+  res = http_get_cache(item: url, port: port);
+  if(!res || res !~ "^HTTP/1\.[01] 200")
+    continue;
+
+  match = eregmatch(pattern: pattern, string: res, icase: TRUE);
+  if (!isnull(match[1])) {
     model = chomp(match[1]);
     concluded = '\n' + match[0];
     concludedUrl = '\n' + report_vuln_url(port: port, url: url, url_only: TRUE);

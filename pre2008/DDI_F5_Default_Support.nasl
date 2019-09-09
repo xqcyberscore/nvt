@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_F5_Default_Support.nasl 13685 2019-02-15 10:06:52Z cfischer $
 # Description: F5 Device Default Support Password
 #
 # Authors:
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10820");
-  script_version("$Revision: 13685 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,9 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2001 Digital Defense Inc.");
   script_family("Default Accounts");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning", "default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Remove the support account entirely or
   change the password of this account to something that is difficult to guess.");
@@ -55,6 +54,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("http_func.inc");
 include("misc_func.inc");

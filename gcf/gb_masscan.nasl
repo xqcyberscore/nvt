@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_masscan.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # masscan (NASL wrapper)
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105924");
-  script_version("$Revision: 10411 $");
+  script_version("2019-09-09T06:59:32+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-09 06:59:32 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-10-07 11:55:49 +0700 (Tue, 07 Oct 2014)");
   script_name("masscan (NASL wrapper)");
   script_category(ACT_SCANNER);
@@ -39,7 +38,6 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/masscan");
-  script_exclude_keys("keys/TARGET_IS_IPV6"); # nb: This doesn't work as global_settings.nasl is in ACT_SETTINGS which is > ACT_SCANNER so we can't run global_settings.nasl before this one...
 
   script_tag(name:"summary", value:'This plugin runs masscan (Mass IP port scanner) to find open
   ports. Currently the tool supports just IPv4.');
@@ -54,9 +52,8 @@ if(description)
   exit(0);
 }
 
-if (TARGET_IS_IPV6()) {
+if (TARGET_IS_IPV6())
   exit(0);
-}
 
 ip = get_host_ip();
 esc_ip = "";
@@ -73,9 +70,9 @@ for (i=0; i<len; i++) {
 i = 0;
 argv[i++] = "masscan";
 
-argv[i++] = "-n";	# no DNS resolution
-argv[i++] = "-Pn";	# treat host as alive
-argv[i++] = "-oG";	# grepable output
+argv[i++] = "-n";  # no DNS resolution
+argv[i++] = "-Pn"; # treat host as alive
+argv[i++] = "-oG"; # grepable output
 argv[i++] = "-";
 
 scan_rate = script_get_preference("Scan rate (packets/sec) :");
@@ -116,11 +113,10 @@ if (p =~ '^[0-9]+$') {
 argv[i++] = ip;
 
 scanner_status(current:0, total:65525);
-res = pread(cmd:"masscan", argv:argv, cd:1);
+res = pread(cmd:"masscan", argv:argv, cd:TRUE);
 
-if (!res) {
-  exit(0);		# error
-}
+if (!res)
+  exit(0); # error
 
 if (egrep(string:res, pattern:'^# +Ports scanned: +TCP\\(65535;')) {
   full_scan = 1;
@@ -131,7 +127,7 @@ if (egrep(string:res, pattern:'^# +Ports scanned: +TCP\\(65535;')) {
 res = egrep(string:res, pattern:"Host: +" + esc_ip + " ");
 if (!res) {
   mark_dead = get_kb_item("/ping_host/mark_dead");
-  if (mark_dead >< "yes") {
+  if ("yes" >< mark_dead) {
     set_kb_item( name:"Host/dead", value:TRUE );
   }
   exit(0);
@@ -142,8 +138,8 @@ res = ereg_replace(pattern:'Host: +[0-9.]+ [()\t]+Ports: +', string:res, replace
 scanned = 0;
 udp_scanned = 0;
 
-foreach blob (split(res, keep:0)) {
-  v = eregmatch(string:blob, icase:1,
+foreach blob (split(res, keep:FALSE)) {
+  v = eregmatch(string:blob, icase:TRUE,
        pattern: "^(Host: .*:)? *([0-9]+)/([^/]+)/([^/]+)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?");
   if (!isnull(v)) {
     port = v[2];

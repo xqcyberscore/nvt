@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rip_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # RIP detection
 #
@@ -69,8 +68,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11822");
-  script_version("2019-04-11T14:27:11+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 14:27:11 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-09-09T06:03:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -90,7 +89,6 @@ if(description)
 
 include("host_details.inc");
 ##include("dump.inc");
-include("network_func.inc");
 include("misc_func.inc");
 
 function rip_test( port, priv ) {

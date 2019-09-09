@@ -30,17 +30,18 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103465");
   script_bugtraq_id(52940, 52942);
   script_cve_id("CVE-2012-4879", "CVE-2012-3013");
-  script_version("2019-05-14T08:13:05+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-14 08:13:05 +0000 (Tue, 14 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-04-12 11:29:33 +0200 (Thu, 12 Apr 2012)");
   script_name("WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("http_version.nasl", "telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("http_version.nasl", "telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80, "Services/telnet", 23);
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52940");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52942");
@@ -59,6 +60,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("telnet_func.inc");
 include("http_func.inc");

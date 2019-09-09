@@ -30,7 +30,7 @@ if(description)
   script_cve_id("CVE-2016-7456");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("2019-09-02T07:13:48+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_name("VMSA-2016-0024: vSphere Data Protection (VDP) updates address SSH Key-Based authentication issue (dpnid)");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0024.html");
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"affected", value:"VDP 6.1.x, 6.0.x, 5.8.x, 5.5.x");
 
-  script_tag(name:"last_modification", value:"2019-09-02 07:13:48 +0000 (Mon, 02 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-12-28 11:04:22 +0100 (Wed, 28 Dec 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -61,11 +61,11 @@ if(description)
   exit(0);
 }
 
-include("ssh_func.inc");
-
 # If optimize_test = no
 if(get_kb_item("default_credentials/disable_default_account_checks"))
   exit(0);
+
+include("ssh_func.inc");
 
 port = get_ssh_port(default:22);
 

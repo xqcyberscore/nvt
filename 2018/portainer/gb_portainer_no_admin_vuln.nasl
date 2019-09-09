@@ -26,8 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114016");
-  script_version("2019-05-13T12:10:49+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 12:10:49 +0000 (Mon, 13 May 2019)");
+  script_version("2019-09-09T06:03:58+0000");
+  script_cve_id("CVE-2018-19367");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-08-06 11:59:55 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -41,8 +42,6 @@ if(description)
   script_xref(name:"URL", value:"https://info.lacework.com/hubfs/Containers%20At-Risk_%20A%20Review%20of%2021%2C000%20Cloud%20Environments.pdf");
   script_xref(name:"URL", value:"https://github.com/portainer/portainer/issues/2475");
   script_xref(name:"URL", value:"https://github.com/portainer/portainer/pull/2500");
-
-  script_cve_id("CVE-2018-19367");
 
   script_tag(name:"summary", value:"Portainer is prone to an information disclosure and authentication bypass vulnerability.");
 
@@ -69,7 +68,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("network_func.inc");
 include("host_details.inc");
 
 CPE = "cpe:/a:portainer:portainer";

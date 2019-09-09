@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_brute_force.nasl 11638 2018-09-27 06:42:05Z cfischer $
 #
 # Microsoft's SQL Server Brute Force
 #
@@ -41,18 +40,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10862");
-  script_version("$Revision: 11638 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Microsoft's SQL Server Brute Force");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 H D Moore");
-  script_family("Default Accounts");
+  script_family("Brute force attacks");
+  script_dependencies("mssqlserver_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/mssql", 1433);
-  script_dependencies("mssqlserver_detect.nasl");
   script_mandatory_keys("MS/SQLSERVER/Running");
+  script_exclude_keys("default_credentials/disable_brute_force_checks");
 
   script_tag(name:"solution", value:"Please set a difficult to guess password for these accounts.");
 
@@ -72,6 +72,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_brute_force_checks"))
+  exit(0);
 
 pkt_hdr = raw_string(
     0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,

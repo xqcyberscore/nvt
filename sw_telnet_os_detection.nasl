@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("2019-07-04T07:54:10+0000");
-  script_tag(name:"last_modification", value:"2019-07-04 07:54:10 +0000 (Thu, 04 Jul 2019)");
+  script_version("2019-09-05T12:32:47+0000");
+  script_tag(name:"last_modification", value:"2019-09-05 12:32:47 +0000 (Thu, 05 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -95,6 +95,16 @@ if( "CMC-TC-PU2" >< banner ) {
 
 if( "User Access Verification" >< banner && "Username:" >< banner ) {
   register_and_report_os( os:"Cisco IOS", cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# Copyright (c) 2002 - 2012 Juniper Networks, Inc. All rights reserved.
+# Copyright (c) 2002 - 2009 Trapeze Networks, Inc. All rights reserved.
+# Copyright (c) 2004 - 2008 3Com Corporation. All rights reserved.
+#
+# Those are WLAN Controller / Access Points which are most likely running an embedded Linux/Unix.
+if( banner =~ "Copyright \(c\) [0-9]+ - [0-9]+ ((Juniper|Trapeze) Networks, Inc|3Com Corporation)\. All rights reserved\." ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

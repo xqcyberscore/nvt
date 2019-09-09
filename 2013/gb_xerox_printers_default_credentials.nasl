@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printers_default_credentials.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
 #
 # Xerox Printer Default Account Authentication Bypass Vulnerability
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103649");
-  script_version("$Revision: 12940 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-01-30 15:51:27 +0100 (Wed, 30 Jan 2013)");
   script_name("Xerox Printer Default Account Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_xerox_printer_detect.nasl");
+  script_dependencies("gb_xerox_printer_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("xerox_printer/http/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"http://www.h-online.com/security/news/item/Report-Thousands-of-embedded-systems-on-the-net-without-protection-1446441.html");
 
@@ -58,10 +58,12 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
-# For http_keepalive_send_recv in check_xerox_default_login
 include("http_keepalive.inc");
-include("misc_func.inc"); # For base64() in check_xerox_default_login
+include("misc_func.inc");
 include("xerox_printers.inc");
 
 port = get_kb_item("xerox_printer/http/port");

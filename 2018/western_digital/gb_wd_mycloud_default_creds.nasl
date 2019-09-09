@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_default_creds.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Western Digital MyCloud NAS Default Credentials (HTTP)
 #
@@ -30,18 +29,19 @@ CPE_PREFIX = "cpe:/o:wdc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108485");
-  script_version("$Revision: 13679 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-11-23 17:50:04 +0100 (Fri, 23 Nov 2018)");
   script_name("Western Digital MyCloud NAS Default Credentials (HTTP)");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_wd_mycloud_consolidation.nasl");
+  script_dependencies("gb_wd_mycloud_consolidation.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wd-mycloud/http/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"The Western Digital MyCloud device is using known
   and default credentials for the HTTP based web interface.");
@@ -58,6 +58,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("host_details.inc");
 include("http_func.inc");

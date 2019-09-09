@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103833");
   script_cve_id("CVE-2013-6796");
-  script_version("2019-05-03T14:30:54+0000");
+  script_version("2019-09-09T06:03:58+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 14:30:54 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
   script_name("DeepOfix SMTP Authentication Bypass");
   script_category(ACT_ATTACK);
@@ -70,12 +70,11 @@ if(description)
 
 include("smtp_func.inc");
 include("misc_func.inc");
-include("network_func.inc");
 include("host_details.inc");
 
 port = get_smtp_port(default:25);
 banner = get_smtp_banner(port:port);
-# e.g. 220 deepofix.local ESMTP from the packetstorm advisory.
+# e.g. '220 deepofix.local ESMTP' from the packetstorm advisory.
 if(!banner || (banner !~ "^220 [^ ]+ ESMTP$" && "Powered by the new deepOfix Mail Server" >!< banner && "Welcome to deepOfix" >!< banner))
   exit(0);
 

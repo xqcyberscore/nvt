@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813818");
-  script_version("2019-07-15T12:45:34+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-15 12:45:34 +0000 (Mon, 15 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-08-07 12:34:02 +0530 (Tue, 07 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -61,10 +61,15 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
-  script_dependencies("gb_avtech_avc7xx_dvr_device_detect.nasl");
+  script_dependencies("gb_avtech_avc7xx_dvr_device_detect.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("avtech/avc7xx/dvr/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
+
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("url_func.inc");
 include("host_details.inc");
@@ -75,7 +80,7 @@ include("http_keepalive.inc");
 CPE = "cpe:/o:avtech:avc7xx_dvr";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 creds = make_array("admin", "admin");
 

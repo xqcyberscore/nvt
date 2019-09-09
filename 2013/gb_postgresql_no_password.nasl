@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_no_password.nasl 10312 2018-06-25 11:10:27Z cfischer $
 #
 # PostgreSQL no password
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103798");
-  script_version("$Revision: 10312 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:10:27 +0200 (Mon, 25 Jun 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-10-07 14:28:02 +0200 (Mon, 07 Oct 2013)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -38,9 +37,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("postgresql_detect.nasl");
+  script_dependencies("postgresql_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Set a password as soon as possible.");
 
@@ -52,11 +52,16 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 
-port = get_app_port(cpe:CPE);
-if(!port)port = 5432;
-if(!get_tcp_port_state(port))exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!get_app_location(port:port, cpe:CPE))
+  exit(0);
 
 function check_login(user, port) {
 

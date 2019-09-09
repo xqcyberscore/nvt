@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_basler_ip_camera_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Basler IP Camera Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114030");
-  script_version("$Revision: 11328 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-09-10 12:59:11 +0200 (Mon, 10 Sep 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Basler IP Camera Default Credentials");
-  script_dependencies("gb_basler_ip_camera_detect.nasl");
+  script_dependencies("gb_basler_ip_camera_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("basler/ip_camera/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://ipvm.com/reports/ip-cameras-default-passwords-directory");
 
@@ -63,6 +63,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -71,7 +74,7 @@ include("misc_func.inc");
 CPE = "cpe:/a:basler:ip_camera";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 username = "admin";
 password = "admin";

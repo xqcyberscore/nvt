@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: sharp_printers.inc 13658 2019-02-14 08:16:14Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,22 +20,33 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13658 $
-#
 ###############################################################################
 
 global_var sharp_cookie, sharp_last_user, sharp_last_pass;
 
+# @brief Returns an array containing the URL for a Sharp printer detection
+#        as the array key and the regex to extract the type/model as the value.
+#
+# @note The array key might contain a pattern like e.g. (numbers incrementing
+#       for multiple same URLs):
+#
+#       #--avoid-dup1--#
+#
+#       to be able to have different array keys for the same URL.
+#       Make sure to strip such patterns away with ereg_replace
+#       in the VT calling this function.
+#
+# @return An array as described in the function description.
+#
 function get_sharp_detect_urls() {
 
   local_var sharp_detect_urls;
 
   sharp_detect_urls = make_array();
 
-  sharp_detect_urls['/'] = '<title>(MX-M260N|AR-M155|AR-M450U|AR-M550U|MX-M700N|MX-M620N|AR-M351U|AR-M451U|MX-M550N|AR-M700U|AR-M276|MX-M310N|AR-168D|AR-M236|MX-M450U|AR-M237|MX-M350N|MX-M550U|AR-M160|AL-2051|AL-2061|MX-B201D)</title>';
+  sharp_detect_urls['/']                      = '<title>(MX-M260N|AR-M155|AR-M450U|AR-M550U|MX-M700N|MX-M620N|AR-M351U|AR-M451U|MX-M550N|AR-M700U|AR-M276|MX-M310N|AR-168D|AR-M236|MX-M450U|AR-M237|MX-M350N|MX-M550U|AR-M160|AL-2051|AL-2061|MX-B201D)</title>';
   sharp_detect_urls['/login.html?/main.html'] = '<title>.* - ([^<]+)</title>';
-  sharp_detect_urls['/link.html'] = '>(AR-M350|im3511|im4512)<';
+  sharp_detect_urls['/link.html']             = '>(AR-M350|im3511|im4512)<';
 
   return sharp_detect_urls;
 }

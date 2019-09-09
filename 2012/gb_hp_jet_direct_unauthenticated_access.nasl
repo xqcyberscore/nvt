@@ -28,18 +28,19 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103390");
   script_cve_id("CVE-1999-1061");
-  script_version("2019-06-06T07:39:31+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_name("HP LaserJet Printers Unauthenticated Access");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-01-13 10:43:06 +0100 (Fri, 13 Jan 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports(23);
   script_mandatory_keys("telnet/hp/jetdirect/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Connect to this printer via telnet and set a password by executing
   the 'passwd' command.");
@@ -53,6 +54,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("telnet_func.inc");
 include("misc_func.inc");

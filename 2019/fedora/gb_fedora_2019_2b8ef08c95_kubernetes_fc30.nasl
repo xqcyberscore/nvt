@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876720");
-  script_version("2019-08-28T11:48:42+0000");
+  script_version("2019-09-09T06:54:37+0000");
   script_cve_id("CVE-2019-11250", "CVE-2019-1002101", "CVE-2019-11248", "CVE-2019-11249", "CVE-2019-11246", "CVE-2019-11247");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-08-28 11:48:42 +0000 (Wed, 28 Aug 2019)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-09-09 06:54:37 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-27 02:32:41 +0000 (Tue, 27 Aug 2019)");
   script_name("Fedora Update for kubernetes FEDORA-2019-2b8ef08c95");
   script_category(ACT_GATHER_INFO);

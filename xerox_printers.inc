@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: xerox_printers.inc 13658 2019-02-14 08:16:14Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,29 +20,39 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13658 $
-#
 ###############################################################################
 
 global_var xerox_cookie, xerox_last_user, xerox_last_pass;
 
+# @brief Returns an array containing the URL for a Xerox printer detection
+#        as the array key and the regex to extract the type/model as the value.
+#
+# @note The array key might contain a pattern like e.g. (numbers incrementing
+#       for multiple same URLs):
+#
+#       #--avoid-dup1--#
+#
+#       to be able to have different array keys for the same URL.
+#       Make sure to strip such patterns away with ereg_replace
+#       in the VT calling this function.
+#
+# @return An array as described in the function description.
+#
 function get_xerox_detect_urls() {
 
   local_var xerox_detect_urls;
 
   xerox_detect_urls = make_array();
 
-  # URL                                   # Regex
-  xerox_detect_urls['/header.php']      = 'id="productName">XEROX ((WorkCentre|Phaser|ColorQube) [^<]+)</div>'; # WorkCentre 6400 a.o.
-  xerox_detect_urls['/sitemap.php']     = '<div id="productName">XEROX<sup>&reg; </sup>([^<]+)<sup>'; # WorkCentre 6655 a.o.
-  xerox_detect_urls['/hdstat.htm']      = '(WorkCentre [^ \r\n]+)';                                   # WorkCentre 7120 a.o.
-  xerox_detect_urls['/headhome.htm']    = '<title>((Xerox )?(WorkCentre|Phaser) [^ <\r\n]+)';         # WorkCentre 6605dn a.o.
-  xerox_detect_urls['/tabsFrame.dhtml'] = '(WorkCentre [^ <]+)';                                      # WorkCentre M20i a.o.
-  xerox_detect_urls['/hdjobq.htm']      = '((WorkCentre|ApeosPort-IV) [^ \r\n]+)';                    # WorkCentre M118 a.o
-  xerox_detect_urls['/home.html']       = '((WorkCentre|Phaser|ColorQube) [^ \n\r<]+)';               # Phaser 3435 a.o
-  xerox_detect_urls['/properties/configuration.php'] = 'Machine Model:</td><td>Xerox (AltaLink [^<]+)'; # AltaLink
-  xerox_detect_urls['/setting/prtinfo.htm'] = 'Product Name</td><td class=std_2>(DocuPrint [^<]+)'; # DocuPrint
+  xerox_detect_urls['/header.php']                   = 'id="productName">XEROX ((WorkCentre|Phaser|ColorQube) [^<]+)</div>'; # WorkCentre 6400 a.o.
+  xerox_detect_urls['/sitemap.php']                  = '<div id="productName">XEROX<sup>&reg; </sup>([^<]+)<sup>';           # WorkCentre 6655 a.o.
+  xerox_detect_urls['/hdstat.htm']                   = '(WorkCentre [^ \r\n]+)';                                             # WorkCentre 7120 a.o.
+  xerox_detect_urls['/headhome.htm']                 = '<title>((Xerox )?(WorkCentre|Phaser) [^ <\r\n]+)';                   # WorkCentre 6605dn a.o.
+  xerox_detect_urls['/tabsFrame.dhtml']              = '(WorkCentre [^ <]+)';                                                # WorkCentre M20i a.o.
+  xerox_detect_urls['/hdjobq.htm']                   = '((WorkCentre|ApeosPort-IV) [^ \r\n]+)';                              # WorkCentre M118 a.o
+  xerox_detect_urls['/home.html']                    = '((WorkCentre|Phaser|ColorQube) [^ \n\r<]+)';                         # Phaser 3435 a.o
+  xerox_detect_urls['/properties/configuration.php'] = 'Machine Model:</td><td>Xerox (AltaLink [^<]+)';                      # AltaLink
+  xerox_detect_urls['/setting/prtinfo.htm']          = 'Product Name</td><td class=std_2>(DocuPrint [^<]+)';                 # DocuPrint
 
   # Detection string from dont_print_on_printers.nasl. TBD: Include here?
   # if( banner && "Server: Xerox_MicroServer/Xerox" >< banner || "Server: EWS-NIC" >< banner || "<title>DocuPrint" >< banner || "<title>Phaser" >< banner || ( "XEROX WORKCENTRE" >< banner && "Xerox Corporation. All Rights Reserved." >< banner ) || ( "DocuCentre" >< banner && "Fuji Xerox Co., Ltd." >< banner ) ) {

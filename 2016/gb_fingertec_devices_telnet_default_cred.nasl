@@ -25,10 +25,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807525");
-  script_version("2019-06-06T07:39:31+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-03-16 15:57:40 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("FingerTec Devices Telnet Default Credentials Vulnerability");
@@ -54,18 +54,21 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL", value:"https://digital-panther.com");
   script_xref(name:"URL", value:"http://blog.infobytesec.com/2014/07/perverting-embedded-devices-zksoftware_2920.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/telnet", 23);
   script_mandatory_keys("telnet/fingertex/device/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("telnet_func.inc");
 include("misc_func.inc");

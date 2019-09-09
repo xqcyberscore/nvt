@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printer_consolidation.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
 #
 # Xerox Printer Detection Consolidation
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141824");
-  script_version("$Revision: 12940 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
+  script_version("2019-09-07T14:49:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 14:49:34 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-01-04 13:08:39 +0700 (Fri, 04 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +43,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("gb_xerox_printer_detect.nasl", "gb_xerox_printer_snmp_detect.nasl");
+  script_dependencies("gb_xerox_printer_detect.nasl", "gb_xerox_printer_snmp_detect.nasl", "global_settings.nasl");
   script_mandatory_keys("xerox_printer/detected");
 
   script_xref(name:"URL", value:"https://www.xerox.com/en-us/printing-equipment");

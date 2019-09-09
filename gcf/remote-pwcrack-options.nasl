@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-pwcrack-options.nasl 11543 2018-09-21 20:25:26Z cfischer $
 #
 # Remote password cracking - common options
 #
@@ -26,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80104");
-  script_version("$Revision: 11543 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:25:26 +0200 (Fri, 21 Sep 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -35,8 +34,9 @@ if(description)
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
   script_family("Brute force attacks");
-  script_dependencies("toolcheck.nasl");
+  script_dependencies("toolcheck.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("Tools/Present/pd_or_ncrack");
+  script_exclude_keys("default_credentials/disable_brute_force_checks");
 
   script_add_preference(name:"Logins file : ", value:"", type:"file");
   script_add_preference(name:"Passwords file : ", value:"", type:"file");
@@ -53,6 +53,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_brute_force_checks"))
+  exit(0);
 
 # Exit if nasl version is too old (<2200)
 if (! defined_func("script_get_preference_file_location"))

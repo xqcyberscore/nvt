@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openx_multiple_open_redirect_vuln.nasl 14127 2019-03-13 07:37:35Z ckuersteiner $
 #
 # OpenX Multiple Open Redirect Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:openx:openx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804877");
-  script_version("$Revision: 14127 $");
+  script_version("2019-09-07T11:55:45+0000");
   script_cve_id("CVE-2014-2230");
   script_bugtraq_id(70603);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:37:35 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-07 11:55:45 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-11-05 11:59:46 +0530 (Wed, 05 Nov 2014)");
   script_name("OpenX Multiple Open Redirect Vulnerabilities");
 
@@ -53,7 +52,7 @@ if(description)
   a victim from the intended legitimate web site to an arbitrary web site of the
   attacker's choosing.");
 
-  script_tag(name:"affected", value:"OpenX version 2.8.10 and probably prior");
+  script_tag(name:"affected", value:"OpenX version 2.8.10 and probably prior.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -69,9 +68,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("OpenX_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("openx/installed");
 
   exit(0);
 }
@@ -94,7 +93,7 @@ url = dir + "/www/delivery/ck.php?_maxdest=http://www.example.com";
 sndReq = http_get(item: url,  port: port);
 rcvRes = http_keepalive_send_recv(port: port, data: sndReq);
 
-if (rcvRes && rcvRes =~ "HTTP/1.. 302" && rcvRes =~ "Location.*http://www.example.com") {
+if (rcvRes && rcvRes =~ "^HTTP/1\.[01] 302" && rcvRes =~ "Location.*http://www.example.com") {
   report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);

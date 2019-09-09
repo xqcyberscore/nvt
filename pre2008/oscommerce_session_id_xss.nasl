@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_session_id_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: osCommerce Malformed Session ID XSS Vulnerability
 #
 # Authors:
@@ -22,28 +21,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
-# From: JeiAr [security@gulftech.org]
-# Subject: osCommerce Malformed Session ID XSS Vuln
-# Date: Wednesday 17/12/2003 19:59
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11958");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-09-07T11:55:45+0000");
+  script_tag(name:"last_modification", value:"2019-09-07 11:55:45 +0000 (Sat, 07 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2003-1219");
   script_bugtraq_id(9238);
   script_name("osCommerce Malformed Session ID XSS Vulnerability");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Web application abuses");
   script_dependencies("oscommerce_detect.nasl");
-  script_require_keys("Software/osCommerce");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Software/osCommerce");
 
   script_tag(name:"solution", value:"Update to osCommerce 2.2 Milestone 3 or later which will redirect the user
   to the index page when a malformed session ID is used, so that a new session ID can be generated.");

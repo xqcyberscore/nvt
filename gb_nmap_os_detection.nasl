@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 11943 2018-10-17 14:46:48Z cfischer $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 11943 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
+  script_version("2019-09-09T06:03:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,7 +71,6 @@ if(description)
 
 include("host_details.inc");
 include("misc_func.inc");
-include("network_func.inc");
 
 SCRIPT_DESC = "Nmap OS Identification (NASL wrapper)";
 

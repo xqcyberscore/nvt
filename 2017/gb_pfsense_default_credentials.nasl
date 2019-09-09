@@ -30,8 +30,8 @@ CPE = 'cpe:/a:pfsense:pfsense';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112122");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-11-14 10:54:12 +0100 (Tue, 14 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,13 +46,17 @@ if(description)
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_pfsense_detect.nasl");
+  script_dependencies("gb_pfsense_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("pfsense/installed");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Change the passwords.");
+
   script_tag(name:"summary", value:"In pfSense it is possible to gain administrative access via default credentials.");
+
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to sensitive information.");
+
   script_tag(name:"insight", value:"By convention, each time you create a new instance of pfSense, the admin user is being created with default credentials:
   Username: admin, Password: pfsense.");
 
@@ -62,6 +66,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
@@ -69,7 +76,7 @@ include("misc_func.inc");
 include("url_func.inc");
 
 if(!port = get_app_port(cpe:CPE, service:"www")) exit(0);
-get_app_location(cpe:CPE, port:port, nofork:TRUE); # To have a reference to the detection NVT
+if(!get_app_location(cpe:CPE, port:port)) exit(0);
 
 req_1 = http_get(port:port, item:"/");
 res_1 = http_keepalive_send_recv(port:port, data:req_1, bodyonly:FALSE);

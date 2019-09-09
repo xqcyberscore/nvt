@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_unprotected_web.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Lantronix Devices Unprotected Web Access
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112133");
-  script_version("$Revision: 11923 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-11-22 11:46:00 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,19 +43,24 @@ if(description)
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_lantronix_device_version.nasl");
+  script_dependencies("gb_lantronix_device_version.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("lantronix_device/http/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"summary", value:"The Lantronix UDS1100 Device Server web interface is accessible via an unprotected HTTP connection.");
+
   script_tag(name:"impact", value:"Successful exploitation allows an attacker to configure and control the device.");
+
   script_tag(name:"solution", value:"Ensure that the Lantronix web access is protected via strong login credentials.");
 
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("misc_func.inc");
 include("http_func.inc");
-
 
 if( ! port = get_kb_item( "lantronix_device/http/port" ) ) exit( 0 );
 

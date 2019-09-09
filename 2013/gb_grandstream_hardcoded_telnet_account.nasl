@@ -27,7 +27,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103737");
-  script_version("2019-06-06T07:39:31+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_cve_id("CVE-2013-3542", "CVE-2013-3962", "CVE-2013-3963");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,19 +36,28 @@ if (description)
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jun/84");
 
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-06-11 14:29:08 +0200 (Tue, 11 Jun 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/telnet", 23);
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by
+  another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"The remote Grandstream device has the default telnet user and password '!#/'.");
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("telnet_func.inc");
 

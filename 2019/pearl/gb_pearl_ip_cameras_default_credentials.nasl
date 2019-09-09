@@ -19,18 +19,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114100");
-  script_version("2019-05-17T12:51:00+0000");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-17 12:51:00 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 12:38:22 +0200 (Thu, 16 May 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Pearl IP Cameras Default Credentials");
-  script_dependencies("gb_pearl_ip_cameras_detect.nasl");
+  script_dependencies("gb_pearl_ip_cameras_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("pearl/ip_camera/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://www.manualslib.de/manual/105950/7Links-Px-3690-675.html?page=15#manual");
 
@@ -54,6 +55,9 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
@@ -67,7 +71,7 @@ if(!info = get_app_port_from_cpe_prefix(cpe: CPE, service: "www"))
 CPE = info["cpe"];
 port = info["port"];
 
-if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a reference to the Detection-NVT
+if(!get_app_location(cpe: CPE, port: port))
   exit(0);
 
 creds = make_array("admin", "admin");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vnc_brute_force.nasl 13328 2019-01-28 13:17:49Z cfischer $
 #
 # VNC Brute Force Login
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106056");
-  script_version("$Revision: 13328 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:17:49 +0100 (Mon, 28 Jan 2019) $");
+  script_version("2019-09-06T14:17:49+0000");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 09:59:19 +0700 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -37,9 +36,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Brute force attacks");
-  script_dependencies("vnc_security_types.nasl");
+  script_dependencies("vnc_security_types.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/vnc", 5900, 5901, 5902);
   script_mandatory_keys("vnc/detected", "vnc/security_types/detected");
+  script_exclude_keys("default_credentials/disable_brute_force_checks");
 
   script_add_preference(name:"Passwords", type:"entry", value:"admin, vnc, test, password");
 
@@ -64,9 +64,10 @@ if(description)
   exit(0);
 }
 
-include("misc_func.inc");
+if(get_kb_item("default_credentials/disable_brute_force_checks"))
+  exit(0);
 
-include("network_func.inc");
+include("misc_func.inc");
 
 if( ! defined_func( "DES" ) )
   exit( 0 );

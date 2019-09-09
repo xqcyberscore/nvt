@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_bigip_ssh_root_auth_bypass.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # F5 BIG-IP remote root authentication bypass Vulnerability
 #
@@ -28,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103494");
-  script_version("$Revision: 13568 $");
+  script_version("2019-09-06T15:20:49+0000");
   script_bugtraq_id(53897);
 
   script_name("F5 BIG-IP remote root authentication bypass Vulnerability");
@@ -38,16 +37,17 @@ if(description)
   script_xref(name:"URL", value:"https://www.trustmatta.com/advisories/MATTA-2012-002.txt");
   script_xref(name:"URL", value:"http://support.f5.com/kb/en-us/solutions/public/13000/600/sol13600.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-06 15:20:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-06-14 13:35:33 +0200 (Thu, 14 Jun 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Gain a shell remotely");
   script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("ssh/server_banner/available");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_tag(name:"solution", value:"Updates are available. See the References for more information.");
 
@@ -69,6 +69,9 @@ if(description)
 
   exit(0);
 }
+
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
 
 include("ssh_func.inc");
 

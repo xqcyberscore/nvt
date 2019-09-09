@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_unifi_video_default_credentials.nasl 12830 2018-12-18 19:42:17Z tpassfeld $
 #
 # Ubiquiti Networks Unifi Video Default Credentials
 #
@@ -28,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114049");
-  script_version("$Revision: 12830 $");
+  script_version("2019-09-06T14:17:49+0000");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 20:42:17 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-12-17 19:08:14 +0100 (Mon, 17 Dec 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_name("Ubiquiti Networks Unifi Video Default Credentials");
-  script_dependencies("gb_ubnt_unifi_video_detect.nasl");
+  script_dependencies("gb_ubnt_unifi_video_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("ubnt/unifi_video/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_xref(name:"URL", value:"https://customvideosecurity.com/research/blog/default-passwords-for-most-ip-network-camera-brands/");
 
@@ -63,15 +63,17 @@ if(description)
   exit(0);
 }
 
+if(get_kb_item("default_credentials/disable_default_account_checks"))
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 
-
 CPE = "cpe:/a:ubnt:unifi_video";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!get_app_location(cpe: CPE, port: port)) exit(0);
 
 creds = make_array("ubnt", "ubnt",
                    "root", "ubnt",
