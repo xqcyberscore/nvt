@@ -21,11 +21,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142842");
-  script_version("2019-09-03T08:37:44+0000");
-  script_tag(name:"last_modification", value:"2019-09-03 08:37:44 +0000 (Tue, 03 Sep 2019)");
+  script_version("2019-09-10T07:33:37+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 07:33:37 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-03 08:27:20 +0000 (Tue, 03 Sep 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-2390");
 

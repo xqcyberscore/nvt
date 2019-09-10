@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_xss_vuln2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # PRTG Network Monitor Multiple Vulnerabilities
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:paessler:prtg_network_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140434");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-09-09T13:48:19+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 13:48:19 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-10-17 16:07:51 +0700 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -92,9 +91,9 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "17.3.33.2830")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "17.4.35");
   security_message(port: port, data: report);
   exit(0);
 }
 
-exit(0);
+exit(99);

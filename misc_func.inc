@@ -30,9 +30,6 @@
 global_var _misc_func_debug;
 _misc_func_debug = 0;
 
-# Global var to avoid that we're repeatedly asking redis for something we already know.
-global_var __3rdparty_domain;
-
 # @brief This function is deprecated.
 #
 function get_unknown_svc() {

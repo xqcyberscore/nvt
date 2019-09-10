@@ -130,6 +130,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103689", # gb_dlink_dir_detect.nasl
     "1.3.6.1.4.1.25623.1.0.113293", # gb_dlink_dwr_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142867", # gb_zyxel_ap_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108488", # gb_wd_mycloud_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108491", # gb_intelbras_ncloud_devices_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.141923", # gb_netapp_data_ontap_consolidation.nasl
@@ -262,6 +263,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103689", # gb_dlink_dir_detect.nasl
     "1.3.6.1.4.1.25623.1.0.113293", # gb_dlink_dwr_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142867", # gb_zyxel_ap_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108488", # gb_wd_mycloud_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108491", # gb_intelbras_ncloud_devices_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.141923", # gb_netapp_data_ontap_consolidation.nasl
@@ -536,13 +538,13 @@ function host_runs() {
       return "unknown";
   }
 
-  #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and other *_os_detection.nasl
+  #nb: update this to include possible cpes and txt (name in text form) from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|euleros|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
                 'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward|' +
                 'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl|qsee)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system|synetica(:| )datastream|' +
-                'ricoh(:| ).+_firmware)|lexmark(:| ).+_firmware|:wlan_controller_ap_firmware)';
+                'ricoh(:| ).+_firmware|lexmark(:| ).+_firmware|:wlan_controller_ap_firmware|zyxel(:| ).+_firmware)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13821 2019-02-21 19:42:54Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -22,13 +21,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 13821 $
-#
 ###############################################################################
 
 # Global vars to avoid that we're repeatedly asking redis for something we already know.
-global_var _smtp_is_broken_array, _smtp_is_wrapped_array, __smtp_helo;
+global_var _smtp_is_broken_array, _smtp_is_wrapped_array, __smtp_helo, __3rdparty_domain;
 
 # nb: key is the port or NULL (if not previously checked), value TRUE/FALSE if broken/wrapped or not
 _smtp_is_broken_array = make_array();

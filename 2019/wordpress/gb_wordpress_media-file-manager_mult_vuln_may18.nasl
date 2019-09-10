@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112533");
-  script_version("2019-09-05T08:03:34+0000");
-  script_tag(name:"last_modification", value:"2019-09-05 08:03:34 +0000 (Thu, 05 Sep 2019)");
+  script_version("2019-09-09T13:48:19+0000");
+  script_tag(name:"last_modification", value:"2019-09-09 13:48:19 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-03-06 11:54:00 +0100 (Wed, 06 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -78,7 +78,7 @@ if("Media File Manager" >< res && "Changelog" >< res) {
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
   if(vers[1] && version_is_less(version: vers[1], test_version: "1.4.4")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "NoneAvailable", file_checked: url);
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.4.4", file_checked: url);
     security_message(port: port, data: report);
     exit(0);
   }
