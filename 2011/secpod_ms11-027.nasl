@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900281");
-  script_version("2019-05-03T08:55:39+0000");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_version("2019-09-10T12:29:47+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 12:29:47 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_bugtraq_id(40490, 45546, 47197);
   script_cve_id("CVE-2010-0811", "CVE-2010-3973", "CVE-2011-1243", "CVE-2010-4588");
@@ -37,7 +37,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/42693");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15809/");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64250");
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms10-034.mspx");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2011/ms11-027");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/240797");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS11-027.mspx");
   exit(0);
 }
 
@@ -81,11 +80,10 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("secpod_activex.inc");
 
-if(hotfix_check_sp(win2k:5, xp:4, win2003:3, winVista:3, win7:2, win2008:3) <= 0){
+if(hotfix_check_sp(win2k:5, xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008x64:3, win2008r2:2) <= 0){
   exit(0);
 }
 
-## MS11-027 Hotfix check
 if(hotfix_missing(name:"2508272") == 0){
   exit(0);
 }

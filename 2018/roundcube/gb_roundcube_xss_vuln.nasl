@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_xss_vuln.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Roundcube Webmail < 1.3.8 XSS Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141701");
-  script_version("$Revision: 12832 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
+  script_version("2019-09-10T11:55:44+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 11:55:44 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-11-19 16:11:36 +0700 (Mon, 19 Nov 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,7 +48,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_roundcube_detect.nasl");
-  script_mandatory_keys("roundcube/installed");
+  script_mandatory_keys("roundcube/detected");
 
   script_tag(name:"summary", value:"steps/mail/func.inc in Roundcube has XSS via crafted use of <svg><style>, as
 demonstrated by an onload attribute in a BODY element, within an HTML attachment.");
@@ -68,14 +67,17 @@ demonstrated by an onload attribute in a BODY element, within an HTML attachment
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if(!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
+
+version = infos['version'];
+path = infos['location'];
 
 if (version_is_less(version: version, test_version: "1.3.8")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "1.3.8");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.3.8", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

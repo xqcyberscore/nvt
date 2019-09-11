@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_mx_inj_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Roundcube Webmail < 1.3.6 MX Injection Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140959");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-09-10T11:55:44+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 11:55:44 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-04-10 13:53:54 +0700 (Tue, 10 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,7 +48,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_roundcube_detect.nasl");
-  script_mandatory_keys("roundcube/installed");
+  script_mandatory_keys("roundcube/detected");
 
   script_tag(name:"summary", value:"In Roundcube from versions 1.2.0 to 1.3.5, with the archive plugin enabled
 and configured, it's possible to exploit the unsanitized, user-controlled '_uid' parameter to perform an MX (IMAP)
@@ -73,14 +72,17 @@ NOTE: this is less easily exploitable in 1.3.4 and later because of a Same Origi
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if(!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
+
+version = infos['version'];
+path = infos['location'];
 
 if (version_in_range(version: version, test_version: "1.2.0", test_version2: "1.3.5")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "1.3.6");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.3.6", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

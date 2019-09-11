@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_file_disc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Roundcube Webmail File Disclosure Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112134");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-09-10T11:55:44+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 11:55:44 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-11-22 17:17:17 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +48,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_roundcube_detect.nasl");
-  script_mandatory_keys("roundcube/installed");
+  script_mandatory_keys("roundcube/detected");
 
   script_tag(name:"summary", value:"Roundcube Webmail is prone to a file disclosure vulnerability.");
 
@@ -72,26 +71,29 @@ The issue is related to file-based attachment plugins and _task=settings&_action
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if(!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
+
+version = infos['version'];
+path = infos['location'];
 
 if (version_in_range(version: version, test_version: "1.1.0", test_version2: "1.1.9")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "1.1.10");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.1.10", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }
 
 if (version_in_range(version: version, test_version: "1.2.0", test_version2: "1.2.6")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.7");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.7", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }
 
 if (version_in_range(version: version, test_version: "1.3.0", test_version2: "1.3.2")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "1.3.3");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.3.3", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

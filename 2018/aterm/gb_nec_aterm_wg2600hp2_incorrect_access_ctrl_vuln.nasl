@@ -1,37 +1,31 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_nec_aterm_wg2600hp2_incorrect_access_ctrl_vuln.nasl 12998 2019-01-09 13:46:07Z asteins $
+# Copyright (C) 2018 Greenbone Networks GmbH
+# Text descriptions are largely excerpted from the referenced
+# advisory, and are Copyright (C) the respective author(s)
 #
-# NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Authors:
-# Rinu Kuriakose <krinu@secpod.com>
-#
-# Copyright:
-# Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2
-# (or any later version), as published by the Free Software Foundation.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813880");
-  script_version("2019-03-22T15:58:59+0000");
+  script_version("2019-09-09T14:36:36+0000");
   script_cve_id("CVE-2017-12575");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-22 15:58:59 +0000 (Fri, 22 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-09-09 14:36:36 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-09-07 18:21:50 +0530 (Fri, 07 Sep 2018)");
 
   script_name("NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability");
@@ -43,7 +37,6 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Aug/26");
-  script_xref(name:"URL", value:"http://www.aterm.jp/product/atermstation/product/warpstar/wg2600hp2");
 
   script_tag(name:"summary", value:"The host is installed with NEC Aterm WG2600HP2
   wireless LAN router and is prone to an incorrect access control vulnerability.");
@@ -58,10 +51,11 @@ if(description)
 
   script_tag(name:"affected", value:"NEC Aterm WG2600HP2 wireless LAN router");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd March, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
 
   exit(0);

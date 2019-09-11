@@ -21,8 +21,8 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142410");
-  script_version("2019-05-23T05:45:00+0000");
-  script_tag(name:"last_modification", value:"2019-05-23 05:45:00 +0000 (Thu, 23 May 2019)");
+  script_version("2019-09-04T12:20:04+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 12:20:04 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-05-15 08:05:42 +0000 (Wed, 15 May 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_roundcube_detect.nasl");
-  script_mandatory_keys("roundcube/installed");
+  script_mandatory_keys("roundcube/detected");
 
   script_tag(name:"summary", value:"Roundcube Webmail is prone to an information disclosure vulnerability.");
 

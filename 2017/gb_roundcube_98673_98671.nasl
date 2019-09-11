@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_98673_98671.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Roundcube Webmail CVE-2015-5381 - CVE-2015-5383 Multiple Vulnerabilities
 #
@@ -29,10 +28,10 @@ CPE = 'cpe:/a:roundcube:webmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108170");
-  script_version("$Revision: 12083 $");
+  script_version("2019-09-10T11:55:44+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-10 11:55:44 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-05-30 15:00:00 +0200 (Tue, 30 May 2017)");
   script_cve_id("CVE-2015-5381", "CVE-2015-5382", "CVE-2015-5383");
   script_bugtraq_id(98671, 98673);
@@ -41,8 +40,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_roundcube_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("roundcube/installed");
+  script_mandatory_keys("roundcube/detected");
 
   script_tag(name:"summary", value:"This host is installed with Roundcube Webmail and is prone to
   multiple vulnerabilities.");
@@ -81,21 +79,27 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if(!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if( version_is_less( version:vers, test_version:"1.0.6" ) ) {
+if(!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
+  exit(0);
+
+version = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:version, test_version:"1.0.6" ) ) {
   vuln = TRUE;
   fix = "1.0.6";
 }
 
-if( version_in_range( version:vers, test_version:"1.1.0", test_version2:"1.1.1" ) ) {
+if( version_in_range( version:version, test_version:"1.1.0", test_version2:"1.1.1" ) ) {
   vuln = TRUE;
   fix = "1.1.2";
 }
 
 if( vuln ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:fix );
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

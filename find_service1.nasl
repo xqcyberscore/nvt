@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-09-04T07:25:04+0000");
-  script_tag(name:"last_modification", value:"2019-09-04 07:25:04 +0000 (Wed, 04 Sep 2019)");
+  script_version("2019-09-10T09:26:02+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 09:26:02 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -411,12 +411,33 @@ if( banner = egrep( string:rbinstr_space, pattern:"invalid command \(code=([0-9]
 # 2.2.11-id64-release (95ae9a6)
 # 2.8.0 4006794b@190128 release
 # 3.0.2 e3d296ef@190531 release
-# nb: Don't use a ^ anchor, the banner is located within some binary blob.
+#
+# Binary:
+# 0x00:  4B 00 00 00 0A 32 2E 38 2E 30 20 34 30 30 36 37    K....2.8.0 40067
+# 0x10:  39 34 62 40 31 39 30 31 32 38 20 72 65 6C 65 61    94b@190128 relea
+# 0x20:  73 65 00 01 00 00 00 01 02 03 04 05 06 07 08 00    se..............
+# 0x30:  08 82 21 02 00 00 00 00 00 00 00 00 00 00 00 00    ..!.............
+# 0x40:  00 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 00       ...............
+#
+# 0x00:  61 00 00 00 0A 33 2E 30 2E 32 20 65 33 64 32 39    a....3.0.2 e3d29
+# 0x10:  36 65 66 40 31 39 30 35 33 31 20 72 65 6C 65 61    6ef@190531 relea
+# 0x20:  73 65 00 01 00 00 00 01 02 03 04 05 06 07 08 00    se..............
+# 0x30:  08 82 21 02 00 08 00 15 00 00 00 00 00 00 00 00    ..!.............
+# 0x40:  00 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 00 6D    ...............m
+# 0x50:  79 73 71 6C 5F 6E 61 74 69 76 65 5F 70 61 73 73    ysql_native_pass
+# 0x60:  77 6F 72 64 00
+#
+# 0x00:  48 00 00 00 0A 32 2E 30 2E 38 2D 69 64 36 34 2D    H....2.0.8-id64-
+# 0x10:  72 65 6C 65 61 73 65 20 28 72 33 38 33 31 29 00    release (r3831).
+# 0x20:  01 00 00 00 01 02 03 04 05 06 07 08 00 08 82 21    ...............!
+# 0x30:  02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01    ................
+# 0x40:  02 03 04 05 06 07 08 09 0A 0B 0C 0D                ............
+#
 # nb: see sw_sphinxsearch_detect.nasl as well
-if( banner = egrep( string:rbinstr_space, pattern:"([0-9.]+)(-(id([0-9]+)-)?release \(([0-9a-z\-]+)\)| [0-9a-z]+@[0-9a-z]+ release)" ) ) {
+if( egrep( string:r, pattern:'^.\0{3}\n([0-9.]+)(-(id([0-9]+)-)?release \\(([0-9a-z-]+)\\)| [0-9a-z]+@[0-9a-z]+ release)' ) ) {
   register_service( port:port, proto:"sphinxql", message:"A Sphinx search server (MySQL listener) seems to be running on this port" );
   log_message( port:port, data:"A Sphinx search server (MySQL listener) seems to be running on this port" );
-  set_kb_item( name:"sphinxsearch/" + port + "/sphinxql/banner", value:banner );
+  set_kb_item( name:"sphinxsearch/" + port + "/sphinxql/banner", value:rbinstr_space );
   exit( 0 );
 }
 

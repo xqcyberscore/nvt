@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_efail_vuln.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Roundcube Webmail < 1.3.7 Enigma Plugin PGP Vulnerability (EFAIL)
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:roundcube:webmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108457");
-  script_version("$Revision: 12832 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
+  script_version("2019-09-04T12:20:04+0000");
+  script_tag(name:"last_modification", value:"2019-09-04 12:20:04 +0000 (Wed, 04 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-08-26 17:24:50 +0200 (Sun, 26 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,7 +44,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_roundcube_detect.nasl");
-  script_mandatory_keys("roundcube/installed");
+  script_mandatory_keys("roundcube/detected");
 
   script_tag(name:"summary", value:"Roundcube versions prior to 1.3.7 with enabled PGP support
   via the Enigma Plugin mishandle the Modification Detection Code (MDC) feature or accept an

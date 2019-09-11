@@ -21,8 +21,8 @@ CPE = "cpe:/o:greenbone:greenbone_os";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142853");
-  script_version("2019-09-06T06:52:28+0000");
-  script_tag(name:"last_modification", value:"2019-09-06 06:52:28 +0000 (Fri, 06 Sep 2019)");
+  script_version("2019-09-10T07:16:21+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 07:16:21 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-06 02:27:18 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -51,6 +51,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
   script_xref(name:"URL", value:"https://github.com/greenbone/gsa/issues/1601");
+  script_xref(name:"URL", value:"https://github.com/greenbone/gsa/pull/1603");
   script_xref(name:"URL", value:"https://www.greenbone.net/en/roadmap-lifecycle/");
 
   exit(0);
@@ -73,14 +74,14 @@ if (dir == "/")
 vt_strings = get_vt_strings();
 pattern = vt_strings["lowercase_rand"];
 
-url = "/%0a%0a%3Cscript%3Ealert('" + pattern + "');%3C/script%3Ewebsite.jsp";
+url = "/%0a%0a%3Cscript%3Ealert('" + pattern + "');%3C/script%3Etest";
 
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port: port, data: req);
 if (!res)
   exit(0);
 
-check = '<p>The requested URL /\n\n<script>alert(\'' + pattern + '\');</script>website.jsp is not available</p>';
+check = '<p>The requested URL /\n\n<script>alert(\'' + pattern + '\');</script>test is not available</p>';
 
 if (res =~ "HTTP/1\.[01] 404" && check >< res) {
   report = report_vuln_url(port: port, url: url);
