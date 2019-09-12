@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("2019-08-08T11:59:35+0000");
-  script_tag(name:"last_modification", value:"2019-08-08 11:59:35 +0000 (Thu, 08 Aug 2019)");
+  script_version("2019-09-10T13:26:14+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -85,7 +85,7 @@ if(description)
                       "nessus_detect.nasl", "nntpserver_detect.nasl",
                       "ntp_open.nasl", "oracle_tnslsnr_version.nasl",
                       "ossim_server_detect.nasl", "PC_anywhere_tcp.nasl",
-                      "perforce_detect.nasl", "pjl_detect.nasl",
+                      "perforce_detect.nasl", "gb_pcl_pjl_detect.nasl",
                       "postgresql_detect.nasl",
                       "pptp_detect.nasl", "qmtp_detect.nasl",
                       "radmin_detect.nasl", "remote-detect-filemaker.nasl",

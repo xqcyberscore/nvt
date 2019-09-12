@@ -127,37 +127,108 @@ function known_service( port, ipproto ) {
   return p;
 }
 
-# This function does not fork!
+# @brief Checks if the service on the remote host at the specified port is unknown / not registered in the KB.
+#
+# @param port    The port to check.
+# @param ipproto The IP protocol (optional) to check, defaults to "tcp".
+#
+# @note This function does not fork.
+#
+# @return TRUE if the service is unknown, FALSE otherwise and NULL if no port parameter was passed.
+#
 function service_is_unknown( port, ipproto ) {
 
-  local_var k, p, port, ipproto;
+  local_var port, ipproto;
+  local_var known, _known;
 
-  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#service_is_unknown" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#service_is_unknown" );
+    return NULL;
+  }
 
-  if( ! ipproto ) ipproto = "tcp";
-  k = strcat( "Known/", ipproto, "/", port );
-  p = get_kb_list( k );
-  if( isnull( p ) ) return TRUE;
-  foreach k( p ) {
-    if( k != "unknown" ) { # fool proof
+  if( ! ipproto )
+    ipproto = "tcp";
+
+  known = get_kb_list( "Known/" + ipproto + "/" + port );
+  if( ! known )
+    return TRUE;
+
+  foreach _known( known ) {
+    if( _known && _known != "unknown" ) {
       return FALSE;
     }
   }
   return TRUE;
 }
 
+# @brief Checks if the service on the remote host at the specified port is known / registered in the KB.
+#
+# @param port    The port to check.
+# @param ipproto The IP protocol (optional) to check, defaults to "tcp".
+#
+# @note This function does not fork.
+#
+# @return TRUE if the service is known, FALSE otherwise and NULL if no port parameter was passed.
+#
+function service_is_known( port, ipproto ) {
+
+  local_var port, ipproto;
+  local_var known, _known;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#service_is_known" );
+    return NULL;
+  }
+
+  if( ! ipproto )
+    ipproto = "tcp";
+
+  known = get_kb_list( "Known/" + ipproto + "/" + port );
+  if( ! known )
+    return FALSE;
+
+  foreach _known( known ) {
+    if( _known && _known != "unknown" ) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+# @brief Verifies if the service on the remote host at the specified port is registered with the specified proto.
+#
+# @param port    The port to check.
+# @param ipproto The IP protocol (optional) to check, defaults to "tcp".
+# @param proto   A (mandatory) service protocol (e.g. "www" for HTTP were Services/www is evaluated).
+#
+# @note This function does not fork.
+#
+# @return TRUE if the service is registered with the specified proto, FALSE otherwise and NULL if no port or proto parameter was passed.
+#
 function verify_service( port, ipproto, proto ) {
 
-  local_var k, p, port, ipproto, proto;
+  local_var port, ipproto, proto;
+  local_var known, _known;
 
-  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#verify_service" );
-  if( ! proto ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#proto#-#verify_service" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#verify_service" );
+    return NULL;
+  }
 
-  if( ! ipproto ) ipproto = "tcp";
-  k = strcat( "Known/", ipproto, "/", port );
-  p = get_kb_list( k );
-  foreach k( p ) {
-    if( k == proto ) {
+  if( ! proto ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#proto#-#verify_service" );
+    return NULL;
+  }
+
+  if( ! ipproto )
+    ipproto = "tcp";
+
+  known = get_kb_list( "Known/" + ipproto + "/" + port );
+  if( ! known )
+    return FALSE;
+
+  foreach _known( known ) {
+    if( _known && _known == proto ) {
       return TRUE;
     }
   }
@@ -995,25 +1066,6 @@ function is_fragile_port( port ) {
 
   foreach fragile_port( fragile_ports ) {
     if( port == fragile_port ) return TRUE;
-  }
-  return;
-}
-
-function register_all_pjl_ports( ports ) {
-
-  local_var ports, port;
-
-  if( isnull( ports ) || typeof( ports ) != "array" ) {
-    ports = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
-  }
-
-  foreach port( ports ) {
-    if( get_port_state( port ) ) {
-      register_service( port:port, proto:"hp-pjl" );
-      register_service( port:port, proto:"fragile_port" );
-      replace_kb_item( name:"BannerHex/" + port, value:"aeaeaeaeae" );
-      replace_kb_item( name:"Banner/" + port, value:"ignore-this-banner" );
-    }
   }
   return;
 }

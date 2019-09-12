@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80079");
-  script_version("2019-09-04T08:39:34+0000");
-  script_tag(name:"last_modification", value:"2019-09-04 08:39:34 +0000 (Wed, 04 Sep 2019)");
+  script_version("2019-09-10T13:26:14+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -48,15 +48,23 @@ if(description)
 
   This is indicates the remote device is probably a printer running JetDirect.
 
-  Through PJL, users can submit printing jobs, transfer files to or from the printers, change some settings, etc...");
+  Through PJL, users can submit printing jobs, transfer files to or from the printers, change some settings, etc...
+
+  This VT has been replaced by VT 'Printer Job Language (PJL) / Printer Command Language (PCL) Detection'
+  (OID: 1.3.6.1.4.1.25623.1.0.108641).");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }
 
+exit(66);
+
 include("host_details.inc");
 include("misc_func.inc");
+include("pcl_pjl.inc");
 
 port = get_kb_item( "Services/hp-pjl" );
 if( ! port ) {
@@ -67,7 +75,7 @@ if( ! port ) {
 if( ! get_port_state( port ) )
   exit( 0 );
 
-# PJL ports get the Hex banner set to "aeaeaeaeae" in register_all_pjl_ports()
+# PJL ports get the Hex banner set to "aeaeaeaeae" in pcl_pjl_register_all_ports()
 if( hexstr( get_unknown_banner( port:port, dontfetch:TRUE ) ) == "aeaeaeaeae" || not_in_kb ) {
   s = open_sock_tcp( port );
   if( ! s )
@@ -94,7 +102,7 @@ if( hexstr( get_unknown_banner( port:port, dontfetch:TRUE ) ) == "aeaeaeaeae" ||
 
     if( not_in_kb ) {
       register_service( port:port, proto:"hp-pjl" );
-      register_all_pjl_ports();
+      pcl_pjl_register_all_ports();
     }
   }
 }

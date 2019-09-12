@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("2019-09-06T10:04:32+0000");
-  script_tag(name:"last_modification", value:"2019-09-06 10:04:32 +0000 (Fri, 06 Sep 2019)");
+  script_version("2019-09-10T13:26:14+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -63,6 +63,7 @@ include("lexmark_printers.inc");
 include("xerox_printers.inc");
 include("ricoh_printers.inc");
 include("snmp_func.inc");
+include("pcl_pjl.inc");
 
 pjl_ports_list = make_list();
 
@@ -88,7 +89,7 @@ function report( data ) {
 
   local_var data, port;
 
-  register_all_pjl_ports( ports:pjl_ports_list );
+  pcl_pjl_register_all_ports( ports:pjl_ports_list );
   if( ! invalid_list ) {
     foreach port( pjl_ports_list ) {
       if( get_port_state( port ) ) {

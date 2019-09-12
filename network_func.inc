@@ -314,18 +314,20 @@ function is_radius_alive( port ) {
 #        and registers it as a MAC Host Detail. The function will also verify the syntax of the MAC Address and converts it into
 #        the common unioxide syntax "01:23:45:67:89:ab" before saving / registering it.
 #
-# @param data The string containing the MAC Address.
-# @param desc The name of the VT which has extracted the MAC Address. This is used when registering the Host Detail.
+# @param data          The string containing the MAC Address.
+# @param desc          The name of the VT which has extracted the MAC Address. This is used when registering the Host Detail.
+# @param prefix_string The prefix which is appended in the search pattern (e.g. HWAddress = MAC) to identify the MAC Address.
 #
-# @note Please note that you should strip the passed string to a minimum before passing it to this function.
+# @note Please note that you should strip the passed string to a minimum before passing it to this function. As an alternative
+#       you can also pass a string which should be used in the search pattern (e.g. HWAddress = MAC) to identify the MAC Address.
 # @note You need to include "host_details.inc" for @ref register_host_details into your VT.
 #
 # @return The extracted MAC Address as a string if it was successfully saved / registered, FALSE otherwise and NULL in the
 #         case where no data and/or desc parameter was passed.
 #
-function verify_register_mac_address( data, desc ) {
+function verify_register_mac_address( data, desc, prefix_string ) {
 
-  local_var data, des;
+  local_var data, des, prefix_string;
   local_var mac, final_mac;
 
   if( ! data ) {
@@ -351,7 +353,7 @@ function verify_register_mac_address( data, desc ) {
   #
   # nb: The regex is done in a more complex way as we want to extract the digits only to be able to
   # easier convert it into the unixoide syntax later.
-  if( mac = eregmatch( string:data, pattern:"(([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})|([0-9a-f]{2})([0-9a-f]{2})\.([0-9a-f]{2})([0-9a-f]{2})\.([0-9a-f]{2})([0-9a-f]{2}))", icase:TRUE ) ) {
+  if( mac = eregmatch( string:data, pattern:prefix_string + "(([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})|([0-9a-f]{2})([0-9a-f]{2})\.([0-9a-f]{2})([0-9a-f]{2})\.([0-9a-f]{2})([0-9a-f]{2}))", icase:TRUE ) ) {
 
     # nb: The second regex for the Cisco syntax starts at index 8
     if( ! isnull( mac[8] ) )

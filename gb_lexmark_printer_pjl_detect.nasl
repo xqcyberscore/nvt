@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142837");
-  script_version("2019-09-04T09:30:13+0000");
-  script_tag(name:"last_modification", value:"2019-09-04 09:30:13 +0000 (Wed, 04 Sep 2019)");
+  script_version("2019-09-10T13:26:14+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-03 01:49:06 +0000 (Tue, 03 Sep 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("pjl_detect.nasl");
+  script_dependencies("gb_pcl_pjl_detect.nasl");
   script_require_ports("Services/hp-pjl", 9100);
   script_mandatory_keys("hp-pjl/banner/available");
 

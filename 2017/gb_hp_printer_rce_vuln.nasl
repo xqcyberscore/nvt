@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_rce_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # HP Printers Arbitrary Code Execution Vulnerability
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106920");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-09-10T13:26:14+0000");
+  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-07-05 09:03:32 +0700 (Wed, 05 Jul 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +45,7 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Remote file access");
-  script_dependencies("pjl_detect.nasl", "os_detection.nasl");
+  script_dependencies("gb_pcl_pjl_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/hp-pjl", 9100);
   script_require_keys("Host/runs_unixoide");
   # nb: Don't add an script_mandatory_keys from e.g. pjl_detect.nasl
@@ -81,7 +80,7 @@ if (!get_port_state(port))
 
 files = traversal_files("linux");
 
-# PJL ports get the Hex banner set to "aeaeaeaeae" in register_all_pjl_ports()
+# PJL ports get the Hex banner set to "aeaeaeaeae" in pcl_pjl_register_all_ports()
 if (hexstr(get_unknown_banner(port: port, dontfetch: TRUE)) == "aeaeaeaeae" || not_in_kb) {
   soc = open_sock_tcp(port);
   if (!soc)

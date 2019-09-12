@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_detect_win.nasl 12478 2018-11-22 07:59:26Z santu $
 #
 # Microsoft Project Version Detection (Windows)
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814337");
-  script_version("$Revision: 12478 $");
+  script_version("2019-09-11T14:33:42+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:59:26 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-11 14:33:42 +0000 (Wed, 11 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-11-19 17:15:31 +0530 (Mon, 19 Nov 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Project Version Detection (Windows)");
@@ -64,7 +63,7 @@ if(!osArch){
 }
 
 if("x86" >< osArch){
-  key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 else if("x64" >< osArch){
