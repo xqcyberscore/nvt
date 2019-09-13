@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("2019-08-30T13:19:11+0000");
-  script_tag(name:"last_modification", value:"2019-08-30 13:19:11 +0000 (Fri, 30 Aug 2019)");
+  script_version("2019-09-12T07:08:37+0000");
+  script_tag(name:"last_modification", value:"2019-09-12 07:08:37 +0000 (Thu, 12 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -334,6 +334,12 @@ else if( "Debian" >< banner || "Raspbian" >< banner )
   if( "SSH-2.0-OpenSSH_7.4p1 Debian-10" >< banner || "SSH-2.0-OpenSSH_7.4p1 Raspbian-10" >< banner || ( "~bpo9" >< banner && "SSH-2.0-OpenSSH_" >< banner ) )
   {
     register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.9p1 Debian-10" >< banner || "SSH-2.0-OpenSSH_7.9p1 Raspbian-10" >< banner || ( "~bpo10" >< banner && "SSH-2.0-OpenSSH_" >< banner ) )
+  {
+    register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 

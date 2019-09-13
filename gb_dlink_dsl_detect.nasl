@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_detect.nasl 12266 2018-11-08 16:05:51Z cfischer $
 #
 # D-Link DSL Devices Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812377");
-  script_version("$Revision: 12266 $");
+  script_version("2019-09-12T07:25:40+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 17:05:51 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-12 07:25:40 +0000 (Thu, 12 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-01-03 16:00:40 +0530 (Wed, 03 Jan 2018)");
   script_name("D-Link DSL Devices Detection");
   script_category(ACT_GATHER_INFO);
@@ -61,7 +60,7 @@ foreach url( make_list( "/", "/cgi-bin/webproc" ) ) {
   buf = http_get_cache( port:port, item:url );
 
   # Server: Linux, WEBACCESS/1.0, DSL-2890AL Ver AU_1.02.10
-  if( "Server: micro_httpd" >!< buf && "Server: Boa" >!< buf && "Server: Linux," >!< buf && "Server: RomPager/" >!< buf )
+  if( "Server: micro_httpd" >!< buf && "Server: Boa" >!< buf && "Server: Linux," >!< buf && "Server: RomPager/" >!< buf && "/cgi-bin/SETUP/sp_home.asp" >!< buf )
     continue;
 
   # NOTE: Those are NO D-Link but Asus Routers:
@@ -77,7 +76,8 @@ foreach url( make_list( "/", "/cgi-bin/webproc" ) ) {
   # <div class="pp">Product Page : DSL-2890AL<a href="javascript:check_is_modified('http://support.dlink.com/')"><span id="model" align="left"></span></a></div>
   if( 'WWW-Authenticate: Basic realm="DSL-([0-9A-Z]+)' >< buf || "<title>D-Link DSL-" >< buf ||
       ( "D-Link" >< buf && ( "Product Page : DSL-" >< buf || "Server: Linux, WEBACCESS/1.0, DSL-" >< buf ) ) ||
-      ( "DSL Router" >< buf && buf =~ "Copyright.*D-Link Systems" ) ) {
+      ( "DSL Router" >< buf && buf =~ "Copyright.*D-Link Systems" ) ||
+      ( "<TITLE>DSL-" >< buf && "var PingDlink" >< buf ) ) {
 
     set_kb_item( name:"Host/is_dlink_dsl_device", value:TRUE );
     set_kb_item( name:"Host/is_dlink_device", value:TRUE );
@@ -129,6 +129,24 @@ foreach url( make_list( "/", "/cgi-bin/webproc" ) ) {
       if( fw_ver[1] ) {
         fw_version = fw_ver[1];
         os_cpe    += ":" + fw_version;
+        set_kb_item( name:"d-link/dsl/fw_version", value:fw_version );
+        if( conclUrl )
+          conclUrl += '\n';
+        conclUrl += report_vuln_url( port:port, url:url2, url_only:TRUE );
+        if( os_concl )
+          os_concl += '\n';
+        os_concl += fw_ver[0];
+      }
+    }
+
+    if( fw_version == "unknown" ) {
+      # e.g. on DSL-2875AL
+      # var showfwver='1.00.01';
+      url2 = "/cgi-bin/login.asp";
+      res = http_get_cache( port:port, item:url2 );
+      fw_ver = eregmatch( pattern:"var showfwver='([0-9.]+)'", string:res );
+      if( ! isnull( fw_ver[1] ) ) {
+        fw_version = fw_ver[1];
         set_kb_item( name:"d-link/dsl/fw_version", value:fw_version );
         if( conclUrl )
           conclUrl += '\n';

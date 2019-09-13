@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("2019-09-10T13:26:14+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-09-12T06:07:50+0000");
+  script_tag(name:"last_modification", value:"2019-09-12 06:07:50 +0000 (Thu, 12 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,15 +38,18 @@ if(description)
   script_family("Settings");
   script_dependencies("gb_snmp_sysdesc.nasl", "nmap_mac.nasl", "global_settings.nasl");
 
-  script_add_preference(name:"Exclude PJL printer ports from scan", type:"entry", value:"9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116");
+  script_add_preference(name:"Exclude PJL printer ports from scan", type:"entry", value:"2000,2501,9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116,10001");
 
-  script_tag(name:"summary", value:"The host seems to be an AppSocket or socketAPI printer.
-  Scanning it will waste paper. So ports 9100-9107 & 9112-9116 won't be scanned by default.");
+  script_tag(name:"summary", value:"The host seems to be an AppSocket or socketAPI printer. Scanning it
+  will waste paper. So ports 2000, 2501, 9100-9107, 9112-9116 and 10001 won't be scanned by default.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
+
+if( get_kb_item( "Host/scanned" ) == 0 )
+  exit( 0 );
 
 include("host_details.inc");
 include("ftp_func.inc");
@@ -71,7 +74,8 @@ function check_pjl_port_list( list ) {
 
   local_var list, ports, port;
 
-  if( ! list ) return FALSE;
+  if( ! list )
+    return FALSE;
 
   ports = split( list, sep:",", keep:FALSE );
 
@@ -80,7 +84,8 @@ function check_pjl_port_list( list ) {
     if( ! ereg( pattern:"^[0-9]{1,5}$", string:port ) ) {
       return FALSE;
     }
-    if( int( port ) > 65535 ) return FALSE;
+    if( int( port ) > 65535 )
+      return FALSE;
   }
   return TRUE;
 }
@@ -106,18 +111,17 @@ function report( data ) {
 
 is_printer = FALSE;
 
-if( get_kb_item( "Host/scanned" ) == 0 ) exit( 0 );
-
 pjl_ports = script_get_preference( "Exclude PJL printer ports from scan" );
+pjl_default_ports_string = pcl_pjl_get_default_ports_string();
 
 if( strlen( pjl_ports ) > 0 ) {
   pjl_ports = str_replace( string:pjl_ports, find:" ", replace:"" );
   if( ! check_pjl_port_list( list:pjl_ports ) ) {
-    report = '"Exclude PJL printer ports from scan" has wrong format or contains an invalid port and was ignored. Please use a\ncomma separated list of ports without spaces. Example: 9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116\n\n';
-    report += 'The following default ports were excluded from the scan to avoid printing out paper on this printer during a scan:\n\n9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116';
+    report = '"Exclude PJL printer ports from scan" has wrong format or contains an invalid port and was ignored. Please use a\ncomma separated list of ports without spaces. Example: ' + pjl_default_ports_string + '\n\n';
+    report += 'The following default ports were excluded from the scan to avoid printing out paper on this printer during a scan:\n\n' + pjl_default_ports_string;
     invalid_list = TRUE;
     log_message( port:0, data:report );
-    pjl_ports_list = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
+    pjl_ports_list = pcl_pjl_get_default_ports();
   } else {
     pjl_report = pjl_ports;
     ports = split( pjl_ports, sep:",", keep:FALSE );
@@ -126,15 +130,14 @@ if( strlen( pjl_ports ) > 0 ) {
     }
   }
 } else {
-  pjl_report = "9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116";
-  pjl_ports_list = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
+  pjl_report = pjl_default_ports_string;
+  pjl_ports_list = pcl_pjl_get_default_ports();
 }
 
 # First try SNMP on default 161
 port = 161;
 if( sysdesc = get_snmp_sysdesc( port:port ) ) {
 
-  # xerox
   if( "Xerox WorkCentre" >< sysdesc ||
       "XEROX DocuCentre" >< sysdesc ||
       "XEROX DocuPrint"  >< sysdesc ||
@@ -143,28 +146,23 @@ if( sysdesc = get_snmp_sysdesc( port:port ) ) {
     is_printer = TRUE;
   }
 
-  # canon
   if( sysdesc =~ "^Canon[^/]+/P" ||
       "Canon LBP" >< sysdesc ) {
     is_printer = TRUE;
   }
 
-  # KYOCERA
-  if( ( sysdesc =~ "^KYOCERA" && "Print" >< sysdesc ) ) {
+  if( sysdesc =~ "^KYOCERA" && "Print" >< sysdesc ) {
     is_printer = TRUE;
   }
 
-  # Lexmark
   if( sysdesc =~ '^Lexmark.*version.*kernel' ) {
     is_printer = TRUE;
   }
 
-  # sharp
   if( sysdesc =~ '^SHARP (MX|AR)' ) {
     is_printer = TRUE;
   }
 
-  # RICOH
   if( sysdesc =~ "^RICOH" && "RICOH Network Printer" >< sysdesc ) {
     is_printer = TRUE;
   }
@@ -188,7 +186,7 @@ if( get_udp_port_state( port ) ) {
 
 if( is_printer ) report( data:"Detected UDP AppSocket on port " + port + '/udp' );
 
-#TBD: Also test 9101-9107 & 9112-9116?
+#TBD: Also test all ports of pcl_pjl_get_default_ports()?
 #The ( ! r && se == ETIMEDOUT ) might cause false positives here
 port = 9100;
 if( get_port_state( port ) ) {
@@ -213,21 +211,21 @@ if( get_port_state( port ) ) {
 
   banner = get_ftp_banner( port:port );
 
-  if("JD FTP Server Ready" >< banner) {
+  if( "JD FTP Server Ready" >< banner ) {
     is_printer = TRUE;
-  } else if ("220 Dell Laser Printer " >< banner) {
+  } else if( "220 Dell Laser Printer " >< banner ) {
     is_printer = TRUE;
-  } else if ("220 RICOH" >< banner) {
+  } else if( "220 RICOH" >< banner ) {
     is_printer = TRUE;
-  } else if ("220 FTP print service" >< banner) {
+  } else if( "220 FTP print service" >< banner ) {
     is_printer = TRUE;
-  } else if ("220 KONICA MINOLTA" >< banner) {
+  } else if( "220 KONICA MINOLTA" >< banner ) {
     is_printer = TRUE;
-  } else if ("220 Xerox" >< banner) {
+  } else if( "220 Xerox" >< banner ) {
     is_printer = TRUE;
-  } else if ("FUJI XEROX" >< banner) {
+  } else if( "FUJI XEROX" >< banner ) {
     is_printer = TRUE;
-  } else if ("Lexmark" >< banner) {
+  } else if( "Lexmark" >< banner ) {
     is_printer = TRUE;
   }
 }
@@ -257,7 +255,9 @@ if( get_port_state( port ) ) {
     send( socket:soc, data:raw_string( 0x0d, 0x0a ) );
     banner = recv( socket:soc, length:512, timeout:5 );
     close( soc );
-    if( banner && "Printer Type: Lexmark" >< banner ) {
+    if( banner && ( "Printer Type: " >< banner ||
+                    "Print Job Status: " >< banner ||
+                    "Printer Status: " >< banner ) ) {
       is_printer = TRUE;
     }
   }
@@ -301,7 +301,8 @@ ports = make_list( 80, 8000, 280, 631 ); # TODO: Re-add 443 and add 8443 once a 
 
 foreach port( ports ) {
 
-  if( ! get_port_state( port ) ) continue;
+  if( ! get_port_state( port ) )
+    continue;
 
   # Sharp can be detected from the start page, see also gb_sharp_printer_detect.nasl
   # If updating here please also update check gb_sharp_printer_detect.nasl

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111034");
-  script_version("2019-09-10T09:26:02+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 09:26:02 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-09-12T07:47:19+0000");
+  script_tag(name:"last_modification", value:"2019-09-12 07:47:19 +0000 (Thu, 12 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-08-31 18:00:00 +0200 (Mon, 31 Aug 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -103,8 +103,7 @@ foreach port( ports ) {
   # 0x40:  02 03 04 05 06 07 08 09 0A 0B 0C 0D                ............
   #
   # nb: see find_service1.nasl as well
-  # nb: The pattern is a little bit different from the find_service1.nasl because binary data was already stripped away.
-  if( version = eregmatch( string:banner, pattern:"^.{5}([0-9.]+)(-(id([0-9]+)-)?release \(([0-9a-z-]+)\)| [0-9a-z]+@[0-9a-z]+ release)" ) ) {
+  if( version = eregmatch( string:banner, pattern:"^.\s{4}([0-9.]+)(-(id[0-9]+-)?release \([0-9a-z-]+\)| [0-9a-z]+@[0-9a-z]+ release)" ) ) {
 
     replace_kb_item( name:"sphinxsearch/" + port + "/sphinxql/banner", value:banner );
 

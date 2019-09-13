@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-09-10T09:26:02+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 09:26:02 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-09-12T07:44:41+0000");
+  script_tag(name:"last_modification", value:"2019-09-12 07:44:41 +0000 (Thu, 12 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -434,7 +434,8 @@ if( banner = egrep( string:rbinstr_space, pattern:"invalid command \(code=([0-9]
 # 0x40:  02 03 04 05 06 07 08 09 0A 0B 0C 0D                ............
 #
 # nb: see sw_sphinxsearch_detect.nasl as well
-if( egrep( string:r, pattern:'^.\0{3}\n([0-9.]+)(-(id([0-9]+)-)?release \\(([0-9a-z-]+)\\)| [0-9a-z]+@[0-9a-z]+ release)' ) ) {
+if( r[1] == '\0' && r[2] == '\0' && r[3] == '\0' &&
+    eregmatch( string:rbinstr_space, pattern:"^.\s{4}[0-9.]+(-(id[0-9]+-)?release \([0-9a-z-]+\)| [0-9a-z]+@[0-9a-z]+ release)" ) ) {
   register_service( port:port, proto:"sphinxql", message:"A Sphinx search server (MySQL listener) seems to be running on this port" );
   log_message( port:port, data:"A Sphinx search server (MySQL listener) seems to be running on this port" );
   set_kb_item( name:"sphinxsearch/" + port + "/sphinxql/banner", value:rbinstr_space );

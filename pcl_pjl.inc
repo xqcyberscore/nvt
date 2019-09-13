@@ -62,7 +62,7 @@ function pcl_pjl_register_all_ports( ports ) {
   local_var ports, port;
 
   if( isnull( ports ) || typeof( ports ) != "array" ) {
-    ports = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
+    ports = pcl_pjl_get_default_ports();
   }
 
   foreach port( ports ) {
@@ -74,4 +74,31 @@ function pcl_pjl_register_all_ports( ports ) {
     }
   }
   return;
+}
+
+# @brief Creates a list of default PCL/PJL ports.
+#        https://www.ibm.com/support/pages/recommended-pjl-port-number-values-lan-3812-pjl-device-descriptions
+#
+# @return The created list of default PCL/PJL ports.
+#
+function pcl_pjl_get_default_ports() {
+
+  local_var ports;
+
+  ports = make_list( 2000, 2501, 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116, 10001 );
+
+  return ports;
+}
+
+# @brief Creates a comma separated string of default PCL/PJL ports.
+#
+# @return The comma separated string of default PCL/PJL ports.
+#
+function pcl_pjl_get_default_ports_string() {
+
+  local_var ports;
+
+  ports = "2000,2501,9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116,10001";
+
+  return ports;
 }

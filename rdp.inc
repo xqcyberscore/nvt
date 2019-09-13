@@ -1183,12 +1183,12 @@ function rdp_send( socket, data, debug, debug_req_name ) {
   local_var socket, data, debug, debug_req_name;
 
   if( ! socket ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#rdp_send_recv" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#rdp_send" );
     return FALSE;
   }
 
   if( ! data ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#rdp_send_recv" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#rdp_send" );
     return FALSE;
   }
 
@@ -1245,7 +1245,7 @@ function rdp_recv( socket, debug, debug_req_name ) {
   local_var header, hd_len, buf, len;
 
   if( ! socket ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#rdp_send_recv" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#rdp_recv" );
     return FALSE;
   }
 

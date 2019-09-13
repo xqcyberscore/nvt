@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108641");
-  script_version("2019-09-10T13:26:14+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-09-12T06:15:43+0000");
+  script_tag(name:"last_modification", value:"2019-09-12 06:15:43 +0000 (Thu, 12 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-10 11:01:30 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -31,7 +31,7 @@ if(description)
   script_family("Service detection");
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "dont_print_on_printers.nasl");
-  script_require_ports("Services/hp-pjl", 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116);
+  script_require_ports("Services/hp-pjl", 2000, 2501, 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116, 10001);
 
   script_xref(name:"URL", value:"http://www.maths.usyd.edu.au/u/psz/ps.html");
   script_xref(name:"URL", value:"https://web.archive.org/web/20130416193817/http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=bpl04568");
@@ -57,7 +57,7 @@ include("misc_func.inc");
 include("network_func.inc");
 include("pcl_pjl.inc");
 
-default_ports = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
+default_ports = pcl_pjl_get_default_ports();
 ports = get_ports_for_service( proto:"hp-pjl", default_list:default_ports );
 
 vt_strings  = get_vt_strings();
