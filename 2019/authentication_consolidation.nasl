@@ -135,7 +135,13 @@ if(get_kb_item("login/SSH/success") && !get_kb_item("ssh/no_linux_shell")){
 	ssh_close_connection();
 }
 
-if("root" == buf){
+user = buf;
+if (buf =~ '^Could not chdir to home directory.*') {
+    split_buffer = split(buf);
+    user = split_buffer[1];
+}
+
+if(user == "root"){
 	report += "SSH sudo available\n";
 	full_ssh_auth = full_ssh_auth && TRUE;
 }else{
@@ -150,3 +156,4 @@ if(full_smb_auth || full_ssh_auth){
 log_message(data:report);
 
 exit(0);
+
