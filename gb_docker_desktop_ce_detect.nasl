@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107680");
-  script_version("2019-07-25T12:21:33+0000");
-  script_tag(name:"last_modification", value:"2019-07-25 12:21:33 +0000 (Thu, 25 Jul 2019)");
+  script_version("2019-09-14T12:54:56+0000");
+  script_tag(name:"last_modification", value:"2019-09-14 12:54:56 +0000 (Sat, 14 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-06-08 20:57:30 +0200 (Sat, 08 Jun 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +84,7 @@ foreach key( key_list ) {
 
     if( buildVer = registry_get_sz( key:key + item, item:"ChannelName" ) ) {
       build = buildVer;
-      concluded += '\nChannelName: ' + build;
+      concluded += '\nChannelName:    ' + build;
     }
     set_kb_item( name:"docker/docker_desktop_ce/detected", value:TRUE );
 

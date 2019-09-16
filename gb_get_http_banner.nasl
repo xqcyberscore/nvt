@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("2019-09-06T05:19:52+0000");
-  script_tag(name:"last_modification", value:"2019-09-06 05:19:52 +0000 (Fri, 06 Sep 2019)");
+  script_version("2019-09-12T09:53:02+0000");
+  script_tag(name:"last_modification", value:"2019-09-12 09:53:02 +0000 (Thu, 12 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -393,5 +393,6 @@ set_mandatory_key( key:"Oracle-Application-or-HTTP-Server", regex:"Oracle-(Appli
 set_mandatory_key( key:"NetData", regex:"NetData Embedded HTTP Server", banner:banner );
 set_mandatory_key( key:"Nimble", regex:"^Server: Nimble/", banner:banner );
 set_mandatory_key( key:"TreeNeWS", regex:"^Server: TreeNeWS", banner:banner );
+set_mandatory_key( key:"Couchbase_Server", regex:"^Server: Couchbase Server", banner:banner );
 
 exit( 0 );

@@ -7950,7 +7950,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 758b4dc1a2c186e45ba79aac6475197b  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-741fa74e1ab09471226fa645dd3db135  plugin_feed_info.inc
+85b17a1669704d1c46b9e891a2954fa6  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -20821,7 +20821,7 @@ fbd102e57839cfc23cd1d82bdf4621ce  gb_dlink_wifimanger_detect_win.nasl
 37495ce67beeddc481962f9aaf8e6a1a  gb_opensc_detect.nasl
 ccea86f70ad0f155b0b579ae4fa63975  FreeWebShop_detect.nasl
 3e36d0aa48b9d3fee4e9071b399d883a  secpod_google_sketchup_detect_macosx.nasl
-160ece4a974c42ea7959a17c782e2559  sw_http_os_detection.nasl
+886cdec0d85b44d65816289909e30cad  sw_http_os_detection.nasl
 c84250462ad151ae0c82382f217afea6  gb_serimux_ssh_console_switch_detect.nasl
 8a5105be4ae55159dbb66651de578273  default_account.inc
 08a02ac888633b5c9e554232c55ee527  webapp_detect.nasl
@@ -21103,7 +21103,7 @@ df22953fe22c883b31de799c3cc222ff  gb_wideimage_detect.nasl
 edb6a7ed81be76d9bf4d6350e7bcc855  gb_microsoft_lync_detect_macosx.nasl
 24f7f864355ef8d990a02cd501d524de  gb_crestron_cip_detect.nasl
 188191a761b7a6db361aa09fd7c410f0  gb_linkspheric_detect.nasl
-860cee0439e8af915d333f0dc0dcfa69  gb_dns_os_detection.nasl
+8778f55380fc375a500d2e67ca78f469  gb_dns_os_detection.nasl
 cdef9109fd190dc51dd60074a82ed24e  gb_k7_anti_virus_premium_detect_win.nasl
 74aa7a30dce601e50d943bed8fe9ce2a  gb_siteengine_detect.nasl
 2c217c7da3fc5f780c4c5ec57b39337c  gb_sendio_detect.nasl
@@ -21312,7 +21312,7 @@ f4fea293e3fe3e1f4debbb880b7f7a55  gb_cisco_small_business_devices_snmp_detect.na
 fd9e60366617b197647a15baf8cb4676  gb_parallels_plesk_sitebuilder_remote_detect.nasl
 c10461a1cc8c4197a8347ca34f419519  gb_wpn_xm_server_stack_detect.nasl
 97be58d294bcd7ff380a95b2f44f7956  gb_adobe_bridge_cc_detect.nasl
-5bafd11fcd983a8c2f444463468fd5cd  gb_docker_desktop_ce_detect.nasl
+93eef074ab21406122713d052012b18d  gb_docker_desktop_ce_detect.nasl
 c24b55eb4fc9fa6de7e142eff29e3425  gb_nulllogic_groupware_detect_win.nasl
 c0a0d06f09182e1543675663ef816988  gb_avast_endpoint_protection_plus_detect.nasl
 0a06517945864467d0337d05d458beb3  yppasswdd.nasl
@@ -49567,6 +49567,7 @@ c1750fd6775b532973edf29013917cc2  2019/debian/deb_4464.nasl
 f6b7e5469ed874bb915c2f4430cc624c  2019/debian/deb_dla_1897.nasl
 bf9604ba868b1b43cf170aab09f16b44  2019/debian/deb_dla_1728.nasl
 fe2df023432aa0fe4104e686d538e805  2019/debian/deb_dla_1851.nasl
+357ccea66e2ddb7296195a252b97919a  2019/debian/deb_4522.nasl
 f6fe89070eed3a70a33adaa8d514f863  2019/debian/deb_dla_1665.nasl
 41c564ab33e9706a248f1b16146f88ec  2019/debian/deb_dla_1687.nasl
 76d54e043bb0aa22322133ff41df81bd  2019/debian/deb_4475.nasl
@@ -49616,6 +49617,7 @@ fb5f928faa633d209cd57043795b4d2f  2019/debian/deb_dla_1646.nasl
 9ba9a136b3ded9b25b2e816dbb542bb3  2019/debian/deb_dla_1763.nasl
 d3e6b8d969b3e13466ec276b234075a0  2019/debian/deb_dla_1761.nasl
 80fb7dd37161acbc35a4d884f7ca0d54  2019/debian/deb_4365.nasl
+5c81b20109482425513b27fb07d1cf98  2019/debian/deb_dla_1917.nasl
 ed4d30293e8886f266de291dd9540a56  2019/debian/deb_dla_1704.nasl
 c01807c39beb02ee96bf5d975964f2aa  2019/debian/deb_dla_1859.nasl
 cefafa231a5e64082326649102e4649c  2019/debian/deb_4430.nasl
@@ -49626,6 +49628,7 @@ cefafa231a5e64082326649102e4649c  2019/debian/deb_4430.nasl
 2fdf7054b70597343e9bf204ee9a84f7  2019/debian/deb_dla_1752.nasl
 b64144d704c6bb2e23d093c0abd65962  2019/debian/deb_dla_1679.nasl
 ec744bc9ecc7195e5407a2e3f8a91220  2019/debian/deb_dla_1902.nasl
+9296dec3f5d0e89f8c48b60754077f70  2019/debian/deb_dla_1921.nasl
 7f2e0ba3549b27f4c32709a6efc36f24  2019/debian/deb_dla_1683.nasl
 833a76cb245cb62335f5ad2bda293140  2019/debian/deb_dla_1656.nasl
 028a2ca4f0f57d5083ae11f28b83a9c9  2019/debian/deb_dla_1898.nasl
@@ -49784,6 +49787,7 @@ d63eebc3ac685de669359d5fa0ef73e1  2019/debian/deb_dla_1782.nasl
 e7c00e87c9dd733557fdf214ab69b20a  2019/debian/deb_dla_1627.nasl
 713ea5de0391ccd2ae33c50f23c77b26  2019/debian/deb_4420.nasl
 e5da2ea641385c3342fb3e609f9d7531  2019/debian/deb_4462.nasl
+515205c79ba003cfda4a8ad61b4f01f0  2019/debian/deb_dla_1920.nasl
 edaf01f78b7028f37c1a9a0c2e4ea950  2019/debian/deb_4447.nasl
 dc5fa0eea0f63b2206c374ad813c9c48  2019/debian/deb_dla_1833.nasl
 4e75c888b72900cb069476c7555eaf5d  2019/debian/deb_dla_1634.nasl
@@ -49902,6 +49906,7 @@ b18b1fd337a08de6d2b7779e2cad33d4  2019/debian/deb_4387.nasl
 2c2f7aba3959ab246d755406c3a23f47  2019/debian/deb_4404.nasl
 2661cfe5279bb70631ca42c2472f947d  2019/debian/deb_dla_1739.nasl
 7a05ed915bec5e111732e5a24875d8dd  2019/debian/deb_dla_1727.nasl
+c4bd7fab561f351c256641991efb45da  2019/debian/deb_dla_1919.nasl
 46da6cdf06f6a83a603d02ea128ae80d  2019/debian/deb_dla_1820.nasl
 5e000403823fa6e9767dd4c0e73e5904  2019/debian/deb_dla_1762.nasl
 b9adaf398a4d68cd08a271c75daa1884  2019/debian/deb_dla_1796.nasl
@@ -50209,6 +50214,7 @@ bbf24fccb0a2be4482eb76a6c2a25d70  2019/ubuntu/gb_ubuntu_USN_3977_2.nasl
 37c0fa154b0f64478c7bebcde6b6fa7e  2019/ubuntu/gb_ubuntu_USN_4103_2.nasl
 28973459588ce8990cba96b6fd9e1d1e  2019/ubuntu/gb_ubuntu_USN_3911_1.nasl
 763d623554e16b587ebd3b0f17915441  2019/ubuntu/gb_ubuntu_USN_4063_1.nasl
+fcf61343edd9a56cfc5d63d2c68d7248  2019/ubuntu/gb_ubuntu_USN_4129_1.nasl
 d3477d51d02add32ae62396d38024566  2019/ubuntu/gb_ubuntu_USN_4040_1.nasl
 acd0f04ebe69009d5d372463f3123a4f  2019/ubuntu/gb_ubuntu_USN_3932_2.nasl
 58c61e51a90f2522bcea00b621a2fadc  2019/ubuntu/gb_ubuntu_USN_4103_1.nasl
@@ -50235,6 +50241,7 @@ a58a41d2db6bc55763b0e327c12dd3b5  2019/ubuntu/gb_ubuntu_USN_3871_4.nasl
 a92f8ce906ec9ef668e55bbc552e9e83  2019/ubuntu/gb_ubuntu_USN_4054_1.nasl
 03720841a0ce237d2e6769367579b21b  2019/ubuntu/gb_ubuntu_USN_3947_1.nasl
 97d8e675873edb4de705239779f6e5f4  2019/ubuntu/gb_ubuntu_USN_4111_1.nasl
+56e52340bc813ca6efaa4e91b0866aee  2019/ubuntu/gb_ubuntu_USN_4132_1.nasl
 25b05bdd50826f0c2b4730b26eb76781  2019/ubuntu/gb_ubuntu_USN_4035_1.nasl
 04b38a455625985358c2698309f9d3bf  2019/ubuntu/gb_ubuntu_USN_3941_1.nasl
 1fc2b79911dff020c5021c03b0ab2667  2019/ubuntu/gb_ubuntu_USN_3913_1.nasl
@@ -50260,6 +50267,7 @@ f7358aaa5b38e26ccde04f9c579b16ef  2019/ubuntu/gb_ubuntu_USN_3901_1.nasl
 21a0b9a57b6aa8abcda70a34fd4c36fc  2019/ubuntu/gb_ubuntu_USN_3915_1.nasl
 d9441cfdd804d46bbc292be7700079e7  2019/ubuntu/gb_ubuntu_USN_3989_1.nasl
 bb2849dd1647e48b746980f56941b67b  2019/ubuntu/gb_ubuntu_USN_4084_1.nasl
+edeea02865edef5f0c22f7503ccd2e7d  2019/ubuntu/gb_ubuntu_USN_4131_1.nasl
 1ad4f784977b968ea948ef8eb1a1dcf0  2019/ubuntu/gb_ubuntu_USN_4020_1.nasl
 1504ba955808281387b2cfe646218145  2019/ubuntu/gb_ubuntu_USN_4052_1.nasl
 33f8958f441b6cf7e3499b103aefdfba  2019/ubuntu/gb_ubuntu_USN_4123_1.nasl
@@ -50312,12 +50320,14 @@ c9b1ddcfd8b18109803f166d93d4f082  2019/ubuntu/gb_ubuntu_USN_3954_1.nasl
 1dcf82274f6f54a717b7c023b6d0452d  2019/ubuntu/gb_ubuntu_USN_3967_1.nasl
 2052c32ee355e6f86da539bde5c5844c  2019/ubuntu/gb_ubuntu_USN_3977_1.nasl
 4d6746862f979f5bf81e935f58b573dc  2019/ubuntu/gb_ubuntu_USN_3969_1.nasl
+1ff2c24a31a721ae3dc697043972d159  2019/ubuntu/gb_ubuntu_USN_4130_1.nasl
 b3d76a1c5cea285ab98964ca85f56889  2019/ubuntu/gb_ubuntu_USN_4081_1.nasl
 eea1921d86bdd8a2a34d81fe988ce23a  2019/ubuntu/gb_ubuntu_USN_3878_2.nasl
 3015ea7403f8a1cabaaaf10d24e26647  2019/ubuntu/gb_ubuntu_USN_3845_2.nasl
 2aade4e5c0be91d3ee966e2e5ae1d59d  2019/ubuntu/gb_ubuntu_USN_4015_1.nasl
 62d5f465f87ed6c2ceb6decc2eb60f71  2019/ubuntu/gb_ubuntu_USN_4068_1.nasl
 fdf4d642bfc9f86b42ba84641db89245  2019/ubuntu/gb_ubuntu_USN_3914_2.nasl
+76f96f90db8384a2ffb5aed60b4f1dfd  2019/ubuntu/gb_ubuntu_USN_4128_1.nasl
 d15bdd4502ab37f32eb9e5c0b47159ec  2019/ubuntu/gb_ubuntu_USN_3936_1.nasl
 d795483cc55272857cb7513f3c1648e0  2019/ubuntu/gb_ubuntu_USN_3859_1.nasl
 650585152bf29de92a5574293a633b1c  2019/ubuntu/gb_ubuntu_USN_3871_2.nasl
@@ -50382,6 +50392,7 @@ e252a869a90f2c94e0ad05ca70b238b7  2019/ubuntu/gb_ubuntu_USN_4095_1.nasl
 9dc212398df2f52027fa64883956a11a  2019/ubuntu/gb_ubuntu_USN_4031_1.nasl
 e1176a22f77aeb8881afb4ab3e0e3287  2019/ubuntu/gb_ubuntu_USN_4049_1.nasl
 13d8989e628a3e0f77131b61d7d75a1a  2019/ubuntu/gb_ubuntu_USN_3994_1.nasl
+a27bfdd2348282d6d8e63a14582eeaf5  2019/ubuntu/gb_ubuntu_USN_4115_2.nasl
 17cf92320c14612ee33b11a9976678e1  2019/ubuntu/gb_ubuntu_USN_3934_1.nasl
 fb56f71f9c21ed788837c7125e4341b5  2019/ubuntu/gb_ubuntu_USN_3897_1.nasl
 8f11f5603214369add80687fade9ad9b  2019/ubuntu/gb_ubuntu_USN_4122_1.nasl
@@ -50463,6 +50474,7 @@ bc9ec7158b27088dd1f160617c0c687d  2019/ubuntu/gb_ubuntu_USN_4108_1.nasl
 8421783d2a9a749adba1f25b541fb2e7  2019/ubuntu/gb_ubuntu_USN_4079_2.nasl
 dc7c4c2399e266d556e470177ac55e57  2019/ubuntu/gb_ubuntu_USN_3871_5.nasl
 9f8b143a76ad0302a29e503498ce5b6e  2019/ubuntu/gb_ubuntu_USN_3964_1.nasl
+0e005b0d6fb5b59d949d316810d4ab9d  2019/ubuntu/gb_ubuntu_USN_4120_2.nasl
 0318ad61c69786465272923b6b66db45  2019/ubuntu/gb_ubuntu_USN_3905_1.nasl
 69630e148dee07b88fe3f58a862b3b6a  2019/ubuntu/gb_ubuntu_USN_3925_1.nasl
 31c4d2cacee13b729e7e6177d3def252  2019/ubuntu/gb_ubuntu_USN_3912_1.nasl
@@ -50730,6 +50742,7 @@ c1076da71c55b7c84791433fe2578a74  2019/microsoft/gb_dotnet_core_sdk_mult_dos_vul
 907ce4cb6101429e59e3b83975f51588  2019/microsoft/gb_ms_kb4512507.nasl
 78d3aae941c9a835b67e03a6c468384e  2019/microsoft/gb_ms_office_mult_vuln_sep19_macosx.nasl
 09ccb512f193057b4f92497e20205aba  2019/microsoft/gb_ms_kb4483452.nasl
+e307b015a7545e2ec85556887ebff10d  2019/microsoft/gb_asp_dotnet_core_mult_vuln_sep19_win.nasl
 f6a09de50bf94d8b4ba7b5551f37cb28  2019/microsoft/gb_ms_kb4493475.nasl
 5ece71512b91781a5005d5a0f0499e30  2019/microsoft/gb_ms_kb4497398.nasl
 74c7a30ef4d2ee0c80e3ff23adfdb877  2019/microsoft/gb_ms_kb4507453.nasl
@@ -50767,6 +50780,7 @@ b1e8993237ed2ad00519bcb32f7cfa1f  2019/microsoft/gb_ms_kb4462177.nasl
 06ed6b4444e52086b01065e4c7ff5128  2019/microsoft/gb_ms_kb4475607.nasl
 816d26f0f101ac3993ae3b193dcc66e3  2019/microsoft/gb_ms_office_mult_vuln_feb19_macosx.nasl
 804514352bfd46769c86aa32f0bf30d5  2019/microsoft/gb_ms_kb4462230.nasl
+e434b322bd890fbfd860f8c9ad2a7593  2019/microsoft/gb_dotnet_core_sdk_mult_vuln_sep19_win.nasl
 bf6964f5a57925caa85add883b416bd9  2019/microsoft/gb_ms_kb4486563.nasl
 79be861410fddc81f16b3c716adedd03  2019/microsoft/gb_ms_office_excel_rce_vuln_july19_macosx.nasl
 af7e20c408c0f9aa9c0026baa413e203  2019/microsoft/gb_ms_kb4480064.nasl
@@ -50831,6 +50845,7 @@ a531e55eb1f9740798e41cc52310e117  2019/fedora/gb_fedora_2019_df57551f6d_jackson-
 2759ae696005e1305d3882c8b32a648d  2019/fedora/gb_fedora_2019_a171d0d192_irssi_fc29.nasl
 d2d41ceea948c4e91cc0d72ad280ba44  2019/fedora/gb_fedora_2019_02046db281_mediawiki_fc30.nasl
 3b35a1ba1cad6c98e04c30c38a22ceb6  2019/fedora/gb_fedora_2019_7f7489dc8c_seamonkey_fc30.nasl
+30180d78995c3511923a31b8a1adeb89  2019/fedora/gb_fedora_2019_bdadf4c6f5_sphinx_fc29.nasl
 75545f6c71db6386ea59c816da7429c2  2019/fedora/gb_fedora_2019_db1e9b3002_mod_auth_mellon_fc29.nasl
 2a4fbc81e0129bfae79dbb7fe50fdb70  2019/fedora/gb_fedora_2019_27e7b92407_mate-user-admin_fc29.nasl
 08b1b59b00100a7c5a5da39b25d06b26  2019/fedora/gb_fedora_2019_1fccede810_dnf_fc29.nasl
@@ -50885,6 +50900,7 @@ daf67525c64f95f3374c0f0b61ed49b5  2019/fedora/gb_fedora_2019_83858fc57b_kernel-h
 0733a6261293df044f49eb2a87bc42c8  2019/fedora/gb_fedora_2019_063672154a_c3p0_fc29.nasl
 c3611451dcd319df5a444184ac4ef458  2019/fedora/gb_fedora_2019_5e92985aee_firefox_fc29.nasl
 4a18bce53786c1e32e22065e7d8ca484  2019/fedora/gb_fedora_2019_6174b47003_runc_fc29.nasl
+b16b2fe66869b8d0e60bbaba134904e4  2019/fedora/gb_fedora_2019_5cd3a50c8a_wordpress_fc29.nasl
 e193c376e95844f1bb518ea1eaf3eaf7  2019/fedora/gb_fedora_2019_dcd49378b8_vim_fc29.nasl
 1e2da6b06da39d1ab03c7d676dabe62d  2019/fedora/gb_fedora_2019_6cf96757fe_golang_fc28.nasl
 c1d7d05972fdc696273cd5e51c4fdb4b  2019/fedora/gb_fedora_2019_fd116d3002_thunderbird_fc30.nasl
@@ -50978,6 +50994,7 @@ b58b272ddabd10e1d2d51b0dc7799494  2019/fedora/gb_fedora_2019_16de0047d4_kernel-t
 64bc9fc44e6f01b365f59104340c78d2  2019/fedora/gb_fedora_2019_32067d8b15_php-symfony4_fc29.nasl
 8ed744b1a5c183472353f06a8a9a5aab  2019/fedora/gb_fedora_2019_0233ec0ff3_libarchive_fc29.nasl
 10d594f6729c88c0b937aa337d1c50ad  2019/fedora/gb_fedora_2018_042156f164_net-snmp_fc29.nasl
+c145ea488ba145a107ea89d4fba647b2  2019/fedora/gb_fedora_2019_d04f66e595_dhcp_fc29.nasl
 2b7452cc20b0f640632357a7f154f9b2  2019/fedora/gb_fedora_2019_f791948895_bind-dyndb-ldap_fc30.nasl
 453594b97c0536ed155e339fd1a25a27  2019/fedora/gb_fedora_2019_bed9afe622_PyYAML_fc29.nasl
 a5c93e9d3ffcf085ba5d35cdfe6071b6  2019/fedora/gb_fedora_2019_2a16e1ab93_radare2_fc30.nasl
@@ -51079,9 +51096,11 @@ f569ec65ab9fd34da4e6291e706e5752  2019/fedora/gb_fedora_2019_3c45bd2cc3_mingw-qt
 66abe7b511364845e94d995eecc0db7c  2019/fedora/gb_fedora_2019_541e91b477_ignition_fc28.nasl
 d0e3b2ffd4c94bb7a33ed835f6834505  2019/fedora/gb_fedora_2019_1a0d4443f8_gnutls_fc28.nasl
 2d305c9350916e79dd32a0863e8c3ed8  2019/fedora/gb_fedora_2019_333a7aa511_radvd_fc28.nasl
+6429c2e68788dd8dea9b50aa4fee9626  2019/fedora/gb_fedora_2019_4954d8773c_python38_fc30.nasl
 73a5e7381b666517e316999d7a39e970  2019/fedora/gb_fedora_2019_befe3bd225_mupdf_fc30.nasl
 e8a2a4f684af6accaa1fa82b1fd39df9  2019/fedora/gb_fedora_2019_70d89f8806_libtiff_fc29.nasl
 30fef7ca53618d7664bd3b9c52c0e7c5  2019/fedora/gb_fedora_2019_e01bc28777_pdfresurrect_fc30.nasl
+d8c8c567dafcb6e94795744d7807ec9b  2019/fedora/gb_fedora_2019_d58eb75449_python38_fc29.nasl
 dea2e9d8155bd87e6d80bbe157fda20c  2019/fedora/gb_fedora_2019_e957cecffd_polkit_fc29.nasl
 9a9d1f33123319c9eb76dbb54ead937b  2019/fedora/gb_fedora_2019_ec55814c1c_python-django_fc29.nasl
 d1aec903d32714ccfad92f1661520de8  2019/fedora/gb_fedora_2019_4226584eef_php-horde-horde_fc29.nasl
@@ -51190,6 +51209,7 @@ ad3095469f5224c9f137d048b5a9287b  2019/fedora/gb_fedora_2019_14d102033e_freetds_
 420d3b8d341255f5d70dc59c158f24b7  2019/fedora/gb_fedora_2019_918aad6bd5_SDL_fc28.nasl
 849f18a297b25452f927524b7e4cda99  2019/fedora/gb_fedora_2019_6baeb15da3_python34_fc28.nasl
 7fc3d8f57283734157fbbe6d163758f2  2019/fedora/gb_fedora_2019_f791948895_dnsperf_fc30.nasl
+c94df3e4c2b2512f5f96aeb0b296a188  2019/fedora/gb_fedora_2019_d04f66e595_bind-dyndb-ldap_fc29.nasl
 f930ecec3b12c419f7c5310f6177cf3a  2019/fedora/gb_fedora_2018_3eed69eedc_thunderbird_fc29.nasl
 b155f2f9ba438c9d8109cd68912e671d  2019/fedora/gb_fedora_2019_00870e8bfc_anaconda_fc29.nasl
 a4659b31828c24c5ca66b7d2068210b8  2019/fedora/gb_fedora_2019_aeda234b68_xen_fc30.nasl
@@ -51305,6 +51325,7 @@ fc297598e84f46ef6f74ded94820c4b0  2019/fedora/gb_fedora_2019_c7da53319c_haproxy_
 797986d229fa4e379b10d0e4f6872e39  2019/fedora/gb_fedora_2019_216ba46b12_mingw-poppler_fc28.nasl
 6bf0beaeffead3c3055da084c6469bc9  2019/fedora/gb_fedora_2019_7a0497cbc2_wget_fc29.nasl
 f440c5eca4090a935274338199996bf4  2019/fedora/gb_fedora_2019_b5e690b96e_qt_fc28.nasl
+b99e0c586c2f638404aa51f7bdc020c7  2019/fedora/gb_fedora_2019_cd24f60a94_cobbler_fc29.nasl
 e2a70d4f086e985cc6d69ff564f98a5a  2019/fedora/gb_fedora_2019_aa99c99f24_firefox_fc28.nasl
 de5288f5a5bf4533f37ed1a049811d20  2019/fedora/gb_fedora_2019_640f8d8dd1_kernel-headers_fc30.nasl
 626cf89f612939d7cbe3cc89571ce97e  2019/fedora/gb_fedora_2018_ec3bf1b228_kernel-headers_fc29.nasl
@@ -51339,6 +51360,7 @@ f0a309ffb8f47f2c594ab2f5077beb59  2019/fedora/gb_fedora_2019_bf800b1c04_kubernet
 0f3b893d4371541e78c6260ba4fafa68  2019/fedora/gb_fedora_2019_ac7e19b0c8_krb5_fc28.nasl
 3cf97e4b956e121a1c853b3c2563cd1c  2019/fedora/gb_fedora_2019_1cfe24db5c_rubygem-activejob_fc30.nasl
 5f2117c63c934b3281403bf82165e8bc  2019/fedora/gb_fedora_2018_08ceba4f8f_php_fc29.nasl
+4931d441464f85d457b72a1f17de8ac0  2019/fedora/gb_fedora_2019_62b65ed7f6_libextractor_fc30.nasl
 078b5ca7713f6726b41f4b4c295e903d  2019/fedora/gb_fedora_2018_02ba093706_qt5-qtwebengine_fc29.nasl
 6bcb64f93b850c9158b9002841073838  2019/fedora/gb_fedora_2019_5409bb5e68_oniguruma_fc29.nasl
 b550f6e3ec0167c3ecc6cd863c615bbd  2019/fedora/gb_fedora_2019_9667df8350_freeradius_fc29.nasl
@@ -51393,6 +51415,7 @@ d3f26eec0e497b08d1ec85ae8308792a  2019/fedora/gb_fedora_2019_df57551f6d_jackson-
 04e9a2c071675ed6bab046cbbafc9015  2019/fedora/gb_fedora_2019_be9add5b77_kernel-tools_fc29.nasl
 eb8ea0efb874b4e01d2051907c38ce45  2019/fedora/gb_fedora_2019_1a87523729_squirrelmail_fc29.nasl
 83fff85ae1105db2ffdccd7ccb408014  2019/fedora/gb_fedora_2019_5ad2149e99_python2-django1.11_fc28.nasl
+e991feed75d3b6f6cd2954f3a375d91e  2019/fedora/gb_fedora_2019_d04f66e595_dnsperf_fc29.nasl
 c22be779692b1203fbf9641246d79ccd  2019/fedora/gb_fedora_2019_f873e2799f_mariadb-connector-odbc_fc29.nasl
 cb0a29de728bd32a01566c87c8cbe1fd  2019/fedora/gb_fedora_2019_9f2ee52c88_kdelibs3_fc29.nasl
 8f0a1d9bb241b5460e596d47cd33a299  2019/fedora/gb_fedora_2019_aabdaa013d_kernel-tools_fc29.nasl
@@ -51501,6 +51524,7 @@ d76a7955a7dbb08fb0963318c1f84d0d  2019/fedora/gb_fedora_2019_7155125125_mediacon
 05bd1a2a27f18e0b259c0cb1eae0ebb1  2019/fedora/gb_fedora_2019_0811a88d77_kea_fc30.nasl
 577008ad158d48b54b111cb00df15d87  2019/fedora/gb_fedora_2019_335c3ad86a_libpng_fc29.nasl
 c9a845bca8619452c5f2a8393e090146  2019/fedora/gb_fedora_2019_c424e3bb72_golang_fc28.nasl
+1a2c612e0ba70c16d88272230c8c4760  2019/fedora/gb_fedora_2019_113d27cb80_chromium_fc29.nasl
 2f939c51d442c91c2440cd46d3421ce8  2019/fedora/gb_fedora_2019_6fafd84f5d_python3_fc28.nasl
 f184e668dd5e6972361f383d8fa5c22b  2019/fedora/gb_fedora_2019_96516ce0ac_community-mysql_fc29.nasl
 96f54520e7acaa0449fbe8f3047fef8a  2019/fedora/gb_fedora_2019_a06dffab1c_drupal7_fc29.nasl
@@ -51643,6 +51667,7 @@ fd270204f5d9b6e2a9f5e27e0d1e5dd4  2019/fedora/gb_fedora_2019_3c45bd2cc3_mingw-qt
 071be67036835f273b81d3cf6ce54d03  2019/fedora/gb_fedora_2019_20a89ca9af_kernel_fc28.nasl
 64cd322306f19b623ef4bb1b0ad69317  2019/fedora/gb_fedora_2019_7d0d59764e_postgresql-jdbc_fc29.nasl
 cb07f97a9cfcfa96588d66054094628a  2019/fedora/gb_fedora_2019_0398d1b049_haproxy_fc28.nasl
+b0142e6f4dd3b95e33a4d3a7daf15b3d  2019/fedora/gb_fedora_2019_d04f66e595_bind_fc29.nasl
 464a5e10adf38ab714ecb54472ac8087  2019/fedora/gb_fedora_2019_1f05925d82_libgcrypt_fc30.nasl
 ddd8ed8e02a6f1c569c30865129edea2  2019/fedora/gb_fedora_2018_571ea64f3d_mbedtls_fc29.nasl
 2e8ed12188bc62aadd35e437b52507dc  2019/fedora/gb_fedora_2019_13d2ba0aed_php-phpmyadmin-sql-parser_fc30.nasl
@@ -51705,6 +51730,7 @@ b5f42e704a5dc7c12a3879dbe8960e9e  2019/fedora/gb_fedora_2019_7085420900_mingw-po
 00b7b23f919e8cf37875b90172f6e3cb  2019/fedora/gb_fedora_2019_509c133845_kernel_fc28.nasl
 325ac0b453b54d8ecd905d86f73be948  2019/fedora/gb_fedora_2019_ef5551fcff_perl-Email-Address-List_fc28.nasl
 d26b79d851f53ec21282c4ee42087f43  2019/fedora/gb_fedora_2019_15f5147b27_file_fc29.nasl
+19305418bae0ab2c43cd87e9b76e541c  2019/fedora/gb_fedora_2019_3cacfb34ad_cobbler_fc30.nasl
 83b0bc00bce92db848492ec6e02f2866  2019/fedora/gb_fedora_2019_615e060d4e_libzip_fc29.nasl
 38c549c66ed970dd3ee80d4122dd200c  2019/fedora/gb_fedora_2018_2f9521c82e_flatpak_fc29.nasl
 d7ffbc307db98426adc1ca5dd3b9c086  2019/fedora/gb_fedora_2019_3c45bd2cc3_mingw-qt5-qttools_fc29.nasl
@@ -51824,6 +51850,7 @@ f36843f2dd39bb05d4839db012b4a960  2019/fedora/gb_fedora_2019_d645f4337d_webkit2g
 f856be29b10989c10627cfee991ddda5  2019/fedora/gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl
 89057f7f20283ecb1fff6564a42adcd4  2019/fedora/gb_fedora_2018_a2e9bd6eae_php-PHPMailer_fc29.nasl
 26c837e9b6e24e17e11d945dd5f07772  2019/fedora/gb_fedora_2019_86f32cbab1_python3_fc28.nasl
+ae7ebfd9090fb17794cfba9bcdaa05c9  2019/fedora/gb_fedora_2019_5628767261_libextractor_fc29.nasl
 65806ed333071934147e4c0e8dbf9372  2019/fedora/gb_fedora_2019_c22338aa23_firefox_fc30.nasl
 14cba03eb9d41ae5f1a422de949145ec  2019/fedora/gb_fedora_2019_7ec378191e_kernel-headers_fc29.nasl
 42ac91c9d3d4d483bc2e71042e9befc8  2019/fedora/gb_fedora_2019_3da64f3e61_kernel-tools_fc28.nasl
@@ -51886,6 +51913,7 @@ b1300271b912d5b1a4d92ac4a7857e41  2019/fedora/gb_fedora_2019_99eefddc65_gnutls_f
 20f0d27ff6ef95a36f2629f05a39a270  2019/fedora/gb_fedora_2019_1b61a528dd_dovecot_fc29.nasl
 7f41dc34db011ae8fda3c4eb52e2946a  2019/fedora/gb_fedora_2019_2ea119f414_buildbot_fc29.nasl
 4ead99f166a3e249a551634408310cd4  2019/fedora/gb_fedora_2019_3c1aed2aa9_cfitsio_fc28.nasl
+95c96580b5027b68643d1ef5f4c8e726  2019/fedora/gb_fedora_2019_d9677f2b92_wordpress_fc30.nasl
 650e47c9d01ead0e0be95319b6381139  2019/fedora/gb_fedora_2019_581a1e17c7_firefox_fc30.nasl
 13f112a4dd77054b1d0eb9e1c2200771  2019/fedora/gb_fedora_2019_d333d01e08_mxml_fc28.nasl
 e860f5405c1224774cc7b7b8f5e74cf6  2019/fedora/gb_fedora_2019_2f47af13f6_tor_fc28.nasl
@@ -51902,6 +51930,7 @@ d3b9d327b17131523316f5a74978edc9  2019/fedora/gb_fedora_2019_7b9af09b17_libfilez
 84c697e631438acf398a2d5c54f3092f  2019/fedora/gb_fedora_2019_614f1cd5a8_community-mysql_fc29.nasl
 c81f365337e91d1fb3d0abe811fa21e2  2019/fedora/gb_fedora_2018_209371341e_java-1.8.0-openjdk-aarch32_fc29.nasl
 78c1dd1a1d95c90edeca077b2b9e52d1  2019/fedora/gb_fedora_2019_ce2933b003_kernel_fc28.nasl
+a58038d0792fc1c56d8de1eb05c8bd90  2019/fedora/gb_fedora_2019_9231a18768_sphinx_fc30.nasl
 4f0776f2464f8171e87552fa59db4149  2019/fedora/gb_fedora_2019_8b8c774b84_aria2_fc28.nasl
 c7745ea1d079833a847d53096502e3be  2019/fedora/gb_fedora_2019_8b5e704a73_poppler_fc28.nasl
 71769155cc3d89507939f8efd55b26c2  2019/fedora/gb_fedora_2018_3a195026f5_cairo_fc29.nasl
@@ -52009,9 +52038,12 @@ c6b0533c21025f5bc2002d2578ba6d50  2019/google/gb_libreoffice_rce_vuln_feb19_maco
 7a93c67208f741028c976b5904951f54  2019/google/gb_google_chrome_stable-channel-update-for-desktop_23-2019-04_win.nasl
 543b840d27f49aac368b8471868200ea  2019/google/gb_google_chrome_stable-channel-update-for-desktop_30-2019-04_macosx.nasl
 7f89e3f752e72fcf4aef1a814e474d78  2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_win.nasl
+1c9e10fe2a19bbee3606922d25ec31fe  2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-09_macosx.nasl
 75ec9c3e3b2684f8f57e3f0b26cb25f5  2019/google/gb_google_chrome_stable-channel-update-for-desktop_30-2019-07_lin.nasl
 7ae954a79606bbbf7d835aecb552bb1f  2019/google/gb_google_chrome_stable-channel-update-for-desktop_26-2019-08_lin.nasl
+b06db787630c16bfac182faa617ca5be  2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-09_win.nasl
 9394c7d36c881b800a8e8d985493f611  2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-06_macosx.nasl
+af8de455bcf49837f98dc0a81b954fa3  2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-09_lin.nasl
 b36f3cce419627d803b61c8f5b9c6208  2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-08_win.nasl
 03c1b0f45b9cef085d310bbc438c446d  2019/maygion/gb_maygion_ipcamera_default_credentials.nasl
 6f3e5e87a017dcfc46964266c668725c  2019/nginx/gb_nginx_mult_vuln.nasl
@@ -52192,6 +52224,7 @@ a255e5df42d0fd2911aee87699a24e92  2019/opensuse/gb_opensuse_2019_1924_1.nasl
 31f378e3538c92b19a1d44aab23915c2  2019/opensuse/gb_opensuse_2019_0154_1.nasl
 e32279cd862f30e07c5e8763e123cb95  2019/opensuse/gb_opensuse_2019_1250_1.nasl
 10f9ae9fa6c40f5b6ed59bee81e69f51  2019/opensuse/gb_opensuse_2019_1797_1.nasl
+f46bb9f27db897bf8035142f247299f5  2019/opensuse/gb_opensuse_2019_2131_1.nasl
 dd89dd4b941a93f9c381412bad5affd0  2019/opensuse/gb_opensuse_2019_1590_1.nasl
 9503bac69ad0649f9561efd4c956571e  2019/opensuse/gb_opensuse_2019_1553_1.nasl
 fc3a6152bcb0db04860137fa13327730  2019/opensuse/gb_opensuse_2019_1200_1.nasl
@@ -52244,6 +52277,7 @@ f7f8107651fb612e62879827e6d66eb0  2019/opensuse/gb_opensuse_2019_1293_1.nasl
 6ef1d722ddbc6a61abd8c5027940a02f  2019/opensuse/gb_opensuse_2019_0306_1.nasl
 e11b7bf70fece3c8705e101861b9df67  2019/opensuse/gb_opensuse_2019_1420_1.nasl
 965bfca18c79d4bf802a8000d3b35ae2  2019/opensuse/gb_opensuse_2019_1392_1.nasl
+eed3943ea9f51def689353d6d682d68e  2019/opensuse/gb_opensuse_2019_2115_1.nasl
 b7ef7746c9b1bf04a45001f03e9f2a9d  2019/opensuse/gb_opensuse_2019_2071_1.nasl
 6d76817df028d95beddb26df58e225c5  2019/opensuse/gb_opensuse_2019_1848_1.nasl
 f24572d6ca0d73d22d602c5fb9f50b85  2019/opensuse/gb_opensuse_2019_1166_1.nasl
@@ -52410,6 +52444,7 @@ b562496b5931606e23a6541fa5d627d5  2019/opensuse/gb_opensuse_2019_0251_1.nasl
 fc410a0e100c9d5d28abc6c920042e07  2019/opensuse/gb_opensuse_2019_1805_1.nasl
 52d5a5ba1e6c7ec694fa1f624b7f86cd  2019/opensuse/gb_opensuse_2019_1372_1.nasl
 585f718e0a0d8db8e276ada4b1b18aa5  2019/opensuse/gb_opensuse_2019_0021_1.nasl
+51772bdfedec5d28ea7dbcee22be8c2b  2019/opensuse/gb_opensuse_2019_2118_1.nasl
 d556660246ab31b26e6736b6f2b7240c  2019/opensuse/gb_opensuse_2019_1908_1.nasl
 86e183c8d34946e2329580d668000ebd  2019/opensuse/gb_opensuse_2019_1274_1.nasl
 e4c58f37513053b2e1dc7b35f447f912  2019/opensuse/gb_opensuse_2019_0295_1.nasl
@@ -52498,6 +52533,7 @@ b15f98a81667df3e1ef15e59e7b212fc  2019/opensuse/gb_opensuse_2019_1325_1.nasl
 988b09f97e5a21726639db6570ce38b5  2019/opensuse/gb_opensuse_2019_1771_1.nasl
 8a35f0feb874da584cb140e3d3eb2587  2019/opensuse/gb_opensuse_2019_1510_1.nasl
 06279064e907c01ec79ee116718305ac  2019/opensuse/gb_opensuse_2019_1508_1.nasl
+2519cd77a021367a5069c12908781b56  2019/opensuse/gb_opensuse_2019_2114_1.nasl
 7c0da264470c912aaf57fbadfcf4c0f1  2019/opensuse/gb_opensuse_2019_1291_1.nasl
 a3f3c77bf54b8d35c95aec8a5c14ee87  2019/opensuse/gb_opensuse_2019_1929_1.nasl
 be281ecc72be5f5bace34af6c6a1c2b9  2019/opensuse/gb_opensuse_2019_1089_1.nasl
@@ -52636,6 +52672,7 @@ d1da90964e5c07c4b150fe077dd2f128  2019/apple/gb_apple_macosx_HT210119_02.nasl
 8987b285657eeaced5536d69e2605c48  2019/apple/gb_apple_icloud_HT209451.nasl
 817367a6ba3e8506915bb67e3bcc2a81  2019/apple/gb_apple_macosx_HT209600_01.nasl
 b44651d743a3e112d8e0d088016a0f93  2019/apple/gb_apple_itunes_HT209604.nasl
+34e8addc793f41cc1fd87cbbe392343c  2019/apple/gb_apple_macosx_HT210548.nasl
 e65056d56d3456fc78cf8bfec40f8653  2019/apple/gb_apple_macosx_HT210348_02.nasl
 a1786f3ac64a27590e50b2baa9f0cb80  2019/apple/gb_apple_macosx_HT209600_04.nasl
 5c8fab8be48f8f8d9d1bdb1f59869ad3  2019/mywebsql/gb_mywebsql_mult_vuln_feb19.nasl
@@ -52804,7 +52841,7 @@ b1d5999409b90be8ba25eb8a6b94e497  gb_3com_officeconnect_vpn_firewall_detect.nasl
 9441a8d5b9279b732d22fdea8f91839a  host_details.inc
 d0ffd0a990eb7827ca67bbfb3da8e471  pkg-lib-gentoo.inc
 4fa36fbb0cea9e0460ae239233657dee  gb_novell_zenworks_mobile_management_detect.nasl
-d97aabab6f56eab786eab1efba5e9fb9  gb_get_http_banner.nasl
+4e9076011d30ba774fe4dcdfb9375ca0  gb_get_http_banner.nasl
 5e7800a0b262f84ef42bc748c0a1e150  gb_adobe_photoshop_detect.nasl
 deda14fec14cc7663962b3dc86194713  gb_avm_fritz_box_detect_upnp.nasl
 cfc14f8778ba963fcf32fc9bfcca1ace  gb_factorytalk_activation_manager_detect_win.nasl

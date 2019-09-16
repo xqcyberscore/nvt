@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-08-30T09:26:55+0000");
-  script_tag(name:"last_modification", value:"2019-08-30 09:26:55 +0000 (Fri, 30 Aug 2019)");
+  script_version("2019-09-14T07:48:09+0000");
+  script_tag(name:"last_modification", value:"2019-09-14 07:48:09 +0000 (Sat, 14 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -804,6 +804,7 @@ function check_http_banner( port, banner ) {
     # ZNC 1.6.5+deb1 - http://znc.in
     # ZNC 1.6.5+deb1~bpo8 - http://znc.in
     # ZNC 1.6.5+deb1+deb9u1 - http://znc.in
+    # ZNC 1.7.2+deb3 - http://znc.in -> This is on Debian 10
     # nb: The +deb banner (which is using something like +deb1~bpo8) often doesn't match directly to the OS
     if( "ZNC" >< banner && ( "~bpo" >< banner || "+deb" >< banner ) ) {
       # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
@@ -811,8 +812,10 @@ function check_http_banner( port, banner ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else if( "~bpo8" >< banner ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else if( "~bpo9" >< banner || banner =~ "\+deb[0-9]\+deb9" ) {
+      } else if( "1.6.5+deb1" >< banner || "~bpo9" >< banner || banner =~ "\+deb[0-9]\+deb9" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "1.7.2+deb3" >< banner || "~bpo10" >< banner || banner =~ "\+deb[0-9]\+deb10" ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
