@@ -48,6 +48,16 @@ function get_lexmark_detect_urls() {
   return lexmark_detect_urls;
 }
 
+
+# @brief Checks for default/no authentication at Lexmark printers
+#
+# @param model The model name of the printer
+#
+# @param port  The port to check
+#
+# @return 2 in case of successful authentication, TRUE in case of authentication error and FALSE in case of
+#         an error (e.g. no model details found) 
+#
 function check_lexmark_default_login( model, port ) {
 
   local_var model, port, lex, host, req, buf;
@@ -59,10 +69,16 @@ function check_lexmark_default_login( model, port ) {
     if( lex['req_type'] == "GET" ) {
       if( lex['req_auth'] == "BASIC" ) {
 
-        host = http_host_name( port:port );
-        req = string( "GET ", lex['login_url']," HTTP/1.1\r\n",
-                      "Host: ", host, "\r\n" );
-        buf = http_send_recv( port:port, data:req + '\r\n', bodyonly:FALSE );
+        if( lex['headers'] ) {
+
+          req = http_get_req( port:port, url:lex['login_url'], add_headers:lex['headers'] );
+          buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+        } else {
+
+          req = http_get( port:port, item:lex['login_url'] );
+          buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+        }
+
         lexmark_error_exit( buf:buf );
 
         if( ereg( pattern:lex['http_status'], string:buf ) ) {
@@ -75,13 +91,60 @@ function check_lexmark_default_login( model, port ) {
   }
 }
 
+# @brief Returns an array with the details about the login/restricted pages to check authentication for depending
+#        on the model provided
+#
+# @param model The model to return the details for
+#
+# @return An array containing the needed information for authentication checks
+#
+#         ret_array["req_type"]        = the request type (GET/POST)
+#         ret_array["login_url"]       = the url to check authentication
+#         ret_array["req_auth"]        = the kind of authentication (currently BASIC)
+#         ret_array["no_default_auth"] = boolean if default no authentication is set
+#         ret_array["headers"]         = HTTP headers to add to the request as an array (optional)
+#         ret_array["http_status"]     = the HTTP status to expect from a successful authentication as a regex
+#         ret_array["login_success"]   = regex to check for in case of successful authentication
+#
 function lexmark_login_details( model ) {
 
   local_var model, lexmark_printer;
 
   lexmark_printer = make_array();
 
-  if(model == "T644"   ||
+  if(model == "CS421dn"   ||
+          model == "CS622de"   ||
+          model == "CS923de"   ||
+          model == "CX421adn"  ||
+          model == "CX522ade"  ||
+          model == "CX622ade"  ||
+          model == "MS321dn"   ||
+          model == "MS421dn"   ||
+          model == "MS521dn"   ||
+          model == "MS621dn"   ||
+          model == "MS821n"    ||
+          model == "MS821dn"   ||
+          model == "MS823n"    ||
+          model == "MS823dn"   ||
+          model == "MS826de"   ||
+          model == "MX321adn"  ||
+          model == "MX421ade"  ||
+          model == "MX622adhe" ||
+          model == "XC8160") {
+
+    lexmark_printer['req_type']  = "GET";
+    lexmark_printer['login_url'] = '/webglue/content?c=%2FSettings%2FSecurity%2FEditSecuritySetups%2FInternalAccounts%2FManageInternalGroups&lang=en';
+    lexmark_printer['req_auth']  = "BASIC";
+    lexmark_printer['no_default_auth'] = "TRUE";
+    lexmark_printer['headers'] = make_array("X-Requested-With", "XMLHttpRequest");
+
+    lexmark_printer['http_status'] = 'HTTP/1.. 200';
+    lexmark_printer['login_success'] = '\nAdd Group\n';
+
+    return lexmark_printer;
+  }
+
+  else if(model == "T644"   ||
      model == "E450dn" ||
      model == "T642"   ||
      model == "119") {
@@ -128,6 +191,7 @@ function lexmark_login_details( model ) {
           model == "T652"    ||
           model == "C792"    ||
           model == "MX410de" ||
+          model == "MX910de" ||
           model == "T654"    ||
           model == "C925"    ||
           model == "X746"    ||
@@ -142,6 +206,46 @@ function lexmark_login_details( model ) {
 
     lexmark_printer['http_status'] = 'HTTP/1.. 200';
     lexmark_printer['login_success'] = 'select name="auth_type" id="auth_type"';
+
+    return lexmark_printer;
+  }
+
+  else if(model == "CS310dn"  ||
+          model == "CS317dn"  ||
+          model == "CS410dn"  ||
+          model == "CX310dn"  ||
+          model == "CX317dn"  ||
+          model == "CX410de"  ||
+          model == "CX417de"  ||
+          model == "CX510de"  ||
+          model == "CX517de"  ||
+          model == "MX310dn"  ||
+          model == "MX317dn"  ||
+          model == "MX410de"  ||
+          model == "MX417de"  ||
+          model == "MX510de"  ||
+          model == "MX511de"  ||
+          model == "MX517de"  ||
+          model == "MX611de"  ||
+          model == "MX617de"  ||
+          model == "X860de"   ||
+          model == "X864de"   ||
+          model == "X950"     ||
+          model == "x954"     ||
+          model == "XC2132"   ||
+          model == "XM1145"   ||
+          model == "XM3150"   ||
+          model == "XM5170"   ||
+          model == "XM7155"   ||
+          model == "XM7170") {
+
+    lexmark_printer['req_type']  = "GET";
+    lexmark_printer['login_url'] = '/cgi-bin/dynamic/config/gen/changepass.html';
+    lexmark_printer['req_auth']  = "BASIC";
+    lexmark_printer['no_default_auth'] = "TRUE";
+
+    lexmark_printer['http_status'] = 'HTTP/1.. 200';
+    lexmark_printer['login_success'] = ': 8( | )?-( )?128 ';
 
     return lexmark_printer;
   }
@@ -204,6 +308,12 @@ function lexmark_login_details( model ) {
   }
 }
 
+# @brief Helper function to check for error status received
+#
+# @param buf HTTP response from printer
+#
+# @return TRUE if no error occurred, exit with code 0 in case of an error received
+#
 function lexmark_error_exit( buf ) {
 
   local_var buf;

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms_rdp_detect.nasl 11031 2018-08-17 09:42:45Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100062");
-  script_version("$Revision: 11031 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
+  script_version("2019-09-14T08:07:03+0000");
+  script_tag(name:"last_modification", value:"2019-09-14 08:07:03 +0000 (Sat, 14 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-03-19 19:54:28 +0100 (Thu, 19 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -182,7 +181,7 @@ function check_with_cookie( port ) {
 # The default port. TBD: Add others like 3388?
 ports = make_list( 3389 );
 
-unknown_ports = get_unknown_port_list( default:3389 );
+unknown_ports = unknown_get_ports( default_port_list:make_list( 3389 ) );
 if( ! isnull( unknown_ports ) )
   ports = make_list( ports, unknown_ports );
 

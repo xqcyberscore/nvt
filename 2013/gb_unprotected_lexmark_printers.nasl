@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103686");
-  script_version("2019-09-06T14:17:49+0000");
+  script_version("2019-09-13T09:26:54+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-09-06 14:17:49 +0000 (Fri, 06 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-13 09:26:54 +0000 (Fri, 13 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-03-28 11:51:27 +0100 (Thu, 28 Mar 2013)");
 
   script_name("Unprotected Lexmark Printer");
@@ -41,14 +41,14 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_lexmark_printer_consolidation.nasl", "gb_default_credentials_options.nasl");
   script_mandatory_keys("lexmark_printer/http/detected", "lexmark_printer/model");
-  script_exclude_keys("default_credentials/disable_default_account_checks");
 
-  script_tag(name:"summary", value:"The remote Lexmark Printer is not protected by a password.");
+  script_tag(name:"summary", value:"The remote Lexmark Printer is not protected by a password and/or permissions
+  for default users are too lose.");
 
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access
   to sensitive information or modify system configuration without requiring authentication.");
 
-  script_tag(name:"solution", value:"Set a password.");
+  script_tag(name:"solution", value:"Set a password and/or restrict permissions for default users.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -56,12 +56,11 @@ if(description)
   exit(0);
 }
 
-if(get_kb_item("default_credentials/disable_default_account_checks"))
-  exit(0);
-
 include("host_details.inc");
 include("lexmark_printers.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
 CPE_PREFIX = "cpe:/o:lexmark:";
 

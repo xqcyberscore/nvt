@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10946");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-09-14T08:07:03+0000");
+  script_tag(name:"last_modification", value:"2019-09-14 08:07:03 +0000 (Sat, 14 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,7 @@ include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 
-ports = get_unknown_port_list( default:6346 ); # Detection is commeted out in nasl_builtin_find_service.c
+ports = unknown_get_ports( default_port_list:make_list( 6346 ) ); # Detection is commented out in nasl_builtin_find_service.c
 
 foreach port ( ports ) {
 

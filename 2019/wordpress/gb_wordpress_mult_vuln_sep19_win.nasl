@@ -21,11 +21,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112639");
-  script_version("2019-09-09T08:37:22+0000");
-  script_tag(name:"last_modification", value:"2019-09-09 08:37:22 +0000 (Mon, 09 Sep 2019)");
+  script_version("2019-09-16T06:26:00+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:26:00 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-09 08:20:00 +0000 (Mon, 09 Sep 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
+  script_cve_id("CVE-2019-16217", "CVE-2019-16218", "CVE-2019-16219", "CVE-2019-16220", "CVE-2019-16221",
+                "CVE-2019-16222", "CVE-2019-16223");
 
   script_name("WordPress Multiple Vulnerabilities - September19 (Windows)");
 

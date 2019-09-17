@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rsh.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # rsh Service Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108478");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-09-17T06:05:09+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 06:05:09 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-03-26 19:23:59 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,7 +56,7 @@ data = string( '0\0', "root", '\0', "root", '\0', 'id\0' ); #  Found in http://c
 
 ports = make_list( 514 );
 
-unkn_ports = get_unknown_port_list( default:514 );
+unkn_ports = unknown_get_ports( default_port_list:make_list( 514 ) );
 if( unkn_ports && is_array( unkn_ports ) )
   ports = make_list( ports, unkn_ports );
 

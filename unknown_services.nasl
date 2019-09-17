@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("2019-09-10T13:26:14+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 13:26:14 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-09-16T05:49:35+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 05:49:35 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -104,7 +104,8 @@ if(description)
                       "zabbix_detect.nasl");
 
   if(FEED_NAME == "GSF" || FEED_NAME == "SCM")
-    script_dependencies("gsf/gb_sap_gateway_detect.nasl", "gsf/gb_atg_service_detect.nasl");
+    script_dependencies("gsf/gb_sap_gateway_detect.nasl", "gsf/gb_atg_service_detect.nasl",
+                        "gsf/gb_dicom_service_detection.nasl");
 
   script_require_ports("Services/unknown");
 

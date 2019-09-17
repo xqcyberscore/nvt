@@ -977,13 +977,17 @@ function in_array( search, array, part_match ) {
 # @param array      The array to check for the existence of the array key.
 # @param part_match If set to TRUE (optional) a partial match/search for the
 #                   array key is done.
+# @param bin_search If binary data is included in the array to be searched the array
+#                   key might hold a 0x00 raw_string. The foreach used in this function
+#                   doesn't work for such a NULL char and thus this parameter needs to be
+#                   set to TRUE (optional) so that the comparison works as expected.
 #
 # @return TRUE if the array key exists, FALSE otherwise and NULL if no array
 #         was passed or the key parameter is missing.
 
-function array_key_exist( key, array, part_match ) {
+function array_key_exist( key, array, part_match, bin_search ) {
 
-  local_var key, array, part_match;
+  local_var key, array, part_match, bin_search;
   local_var a;
 
   if( typeof( array ) != "array" ) {
@@ -997,10 +1001,18 @@ function array_key_exist( key, array, part_match ) {
   }
 
   foreach a( keys( array ) ) {
+
+    if( bin_search ) {
+      if( ! a )
+        a = raw_string( 0x00 );
+    }
+
     if( part_match ) {
-      if( key >< a ) return TRUE;
+      if( key >< a )
+        return TRUE;
     } else {
-      if( a == key ) return TRUE;
+      if( a == key )
+        return TRUE;
     }
   }
 
@@ -1070,13 +1082,35 @@ function is_fragile_port( port ) {
   return;
 }
 
+# @brief Returns all "unknown" ports of the target host which are saved
+#        in the KB entry "Services/unknown" found by the scanner. If no
+#        ports where found open or no "default" parameter is passed
+#        (if "nodefault" isn't set to TRUE) it will exit. In the case
+#        where the "unscanned_closed" scanner setting is set to "no"
+#        it will return the port passed via the default parameter.
+#
+# @note This function will fork on multiple open ports.
+#
+# @param default   The port to return if "unscanned_closed" is set to "no" and no ports have been found open.
+# @param nodefault Don't exit if no "default" parameter is passed, it still will exit if no unknown services are detected at all.
+# @param ipproto   An (optional) IP protocol (e.g. "tcp" or "udp") to evaluate. If this parameter isn't passed it will default to "tcp".
+#
+# @return The open / found "unknown" ports or the port passed via the default parameter in the case of no found ports
+#         and "unscanned_closed" is set to "no".
+#
 function get_unknown_port( default, nodefault, ipproto ) {
 
-  local_var default, nodefault, ipproto, udp, _port, port;
+  local_var default, nodefault, ipproto;
+  local_var udp, _port, port;
 
-  if( ! nodefault && ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port" );
+  if( ! nodefault && ! default ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port" );
+    exit( 0 );
+  }
 
-  if( ! ipproto ) ipproto = "tcp";
+  if( ! ipproto )
+    ipproto = "tcp";
+
   if( ipproto == "tcp" ) {
     udp = FALSE;
     port = get_kb_item( "Services/unknown" );
@@ -1095,46 +1129,84 @@ function get_unknown_port( default, nodefault, ipproto ) {
     }
   }
 
-  if( port ) {
+  if( port )
     _port = port;
-  } else {
+  else
     _port = default;
-  }
 
-  if( ! _port ) exit( 0 );
+  if( ! _port )
+    exit( 0 );
 
   if( ! udp ) {
     # Ignore NetBIOS port as previously done in get_unknown_svc()
-    if( _port == 139 ) exit( 0 );
+    if( _port == 139 )
+      exit( 0 );
 
     # Includes e.g. PJL ports which are printing everything
     # sent to them so exit for such a port here
-    if( is_fragile_port( port:_port ) ) exit( 0 );
+    if( is_fragile_port( port:_port ) )
+      exit( 0 );
   }
 
   # Don't check port passed in default variable. Other detections
   # (like telnet.nasl) might have falsely marked this as known.
   if( _port != default ) {
-    if( ! service_is_unknown( port:_port, ipproto:ipproto ) ) exit( 0 );
+    if( ! service_is_unknown( port:_port, ipproto:ipproto ) )
+      exit( 0 );
   }
 
   if( ! udp ) {
-    if( ! get_port_state( _port ) ) exit( 0 );
+    if( ! get_port_state( _port ) )
+      exit( 0 );
   } else {
-    if( ! get_udp_port_state( _port ) ) exit( 0 );
+    if( ! get_udp_port_state( _port ) )
+      exit( 0 );
   }
+
   return _port;
 }
 
-function get_unknown_port_list( default, nodefault, ipproto ) {
+# @brief Returns all ports of "unknown" services of the remote host which are
+#        saved in the KB entry "Services/unknown" as found by the scanner. If no
+#        "unknown" services where found on the remote host and no list is passed
+#        to the "default_port_list" parameter the function will return an empty
+#        list. In the case where the "unscanned_closed" scanner setting is set
+#        it will return (if passed) the ports included in the list of the
+#        to "no" default_port_list parameter.
+#
+# @note  In contrast to @ref get_unknown_port this function will not fork and is
+#        returning a list instead. This should be used e.g. for Detection-VTs
+#        where we want to make sure that we're not getting blocked by the remote
+#        service with to many concurrent connections or if a fork for each port
+#        is not desired.
+#
+# @param default_port_list The port list to return if "unscanned_closed" is set to "no" and no "unknown" services have been found on the remote host.
+# @param nodefault         Don't return an empty list if no "default_port_list" was passed (via the same named parameter), it is still returning an
+#                          empty list if no ports matching the passed info were detected.
+# @param ipproto           An (optional) IP protocol (e.g. "tcp" or "udp") to evaluate. If this parameter isn't passed it will default to "tcp".
+#
+# @return The open / found "unknown" ports as a list, if none where found an empty list. In the case of no found ports and
+#         "unscanned_closed" is set to "no" a set of default ports or the list passed to the default_port_list parameter.
+#
+function unknown_get_ports( default_port_list, nodefault, ipproto ) {
 
-  local_var default, nodefault, ipproto, udp, port, port_list, _port_list, __port_list;
+  local_var default_port_list, nodefault, ipproto;
+  local_var __port_list, udp, port_list, _default, _port_list, _port;
 
   __port_list = make_list();
 
-  if( ! nodefault && ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port_list" );
+  if( ! nodefault && ! is_array( default_port_list ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default_port_list#-#unknown_get_ports" );
+    return __port_list;
+  }
 
-  if( ! ipproto ) ipproto = "tcp";
+  # nb: If nodefault is specified above we define an empty default_port_list for some parts of the code below.
+  if( ! is_array( default_port_list ) )
+    default_port_list = make_list();
+
+  if( ! ipproto )
+    ipproto = "tcp";
+
   if( ipproto == "tcp" ) {
     udp = FALSE;
     port_list = get_kb_list( "Services/unknown" );
@@ -1145,7 +1217,7 @@ function get_unknown_port_list( default, nodefault, ipproto ) {
       if( get_kb_item( "global_settings/non-default_udp_service_discovery" ) ) {
         port_list = get_kb_list( "Services/udp/unknown" );
       } else {
-        port_list = make_list( default );
+        port_list = default_port_list;
       }
     } else {
       udp = FALSE;
@@ -1154,40 +1226,47 @@ function get_unknown_port_list( default, nodefault, ipproto ) {
   }
 
   if( port_list ) {
-    if( ! in_array( search:default, array:port_list ) ) { # The passed default might be already in the Services/unknown list
-      _port_list = make_list( default, port_list );
-    } else {
-      _port_list = port_list;
+    _port_list = port_list;
+    foreach _default( default_port_list ) {
+      if( ! in_array( search:_default, array:port_list, part_match:FALSE ) ) { # The passed default might be already in the Services/unknown list
+        _port_list = make_list( _default, _port_list );
+      }
     }
   } else {
-    _port_list = make_list( default );
+    _port_list = default_port_list;
   }
 
-  foreach port( _port_list ) {
+  foreach _port( _port_list ) {
 
     if( ! udp ) {
       # Ignore NetBIOS port as previously done in get_unknown_svc()
-      if( port == 139 ) continue;
+      if( _port == 139 )
+        continue;
 
       # Includes e.g. PJL ports which are printing everything
       # sent to them so continue for such a port here
-      if( is_fragile_port( port:port ) ) continue;
+      if( is_fragile_port( port:_port ) )
+        continue;
     }
 
-    # Don't check port passed in default variable. Other detections
+    # Don't check ports passed in the default_port_list. Other detections
     # (like telnet.nasl) might have falsely marked this as known.
-    if( port != default ) {
-      if( ! service_is_unknown( port:port, ipproto:ipproto ) ) continue;
+    if( ! in_array( search:_port, array:default_port_list, part_match:FALSE ) ) {
+      if( ! service_is_unknown( port:_port, ipproto:ipproto ) )
+        continue;
     }
 
     if( ! udp ) {
-      if( ! get_port_state( port ) ) continue;
+      if( ! get_port_state( _port ) )
+        continue;
     } else {
-      if( ! get_udp_port_state( port ) ) continue;
+      if( ! get_udp_port_state( _port ) )
+        continue;
     }
 
-    __port_list = make_list( __port_list, port );
+    __port_list = make_list( __port_list, _port );
   }
+
   return __port_list;
 }
 
@@ -1836,34 +1915,44 @@ function get_local_gos_version() {
 #         depending on the platform the scanner is running at. Currently the following array indices
 #         are supported / available:
 #
-#         ret_array["default"] = either "GBN-VT" or "OpenVAS-VT"
-#         ret_array["default_rand"] = "default" with random numbers appended
-#         ret_array["default_hex"] = "default" converted to a hex string
-#         ret_array["default_rand_hex"] = "default_rand" converted to a hex string
+#         ret_array["default"]           = either "GBN-VT" or "OpenVAS-VT"
+#         ret_array["default_rand"]      = "default" with random numbers appended
+#         ret_array["default_hex"]       = "default" converted to a hex string
+#         ret_array["default_rand_hex"]  = "default_rand" converted to a hex string
+#         ret_array["default_ver_space"] = "default" with the current library version appended and a space as a separator
+#         ret_array["default_ver_dash"]  = "default" with the current library version appended and a dash as a separator
 #
 #         ret_array["ping_string"] = either "GBN-VT" or "OpenVAS-VT" in a form of e.g. "_GBN-VT1234_" filled up to 16 bytes of total length, for the use in the "-p" parameter of unixoide ping commands which allows a max. of 16 bytes in the passed string
 #
-#         ret_array["lowercase"] = either "gbn-vt" or "openvas-vt"
-#         ret_array["lowercase_rand"] = "lowercase" with random numbers appended
-#         ret_array["lowercase_hex"] = "lowercase" converted to a hex string
-#         ret_array["lowercase_rand_hex"] = "lowercase_rand" converted to a hex string
+#         ret_array["lowercase"]           = either "gbn-vt" or "openvas-vt"
+#         ret_array["lowercase_rand"]      = "lowercase" with random numbers appended
+#         ret_array["lowercase_hex"]       = "lowercase" converted to a hex string
+#         ret_array["lowercase_rand_hex"]  = "lowercase_rand" converted to a hex string
+#         ret_array["lowercase_ver_space"] = "lowercase" with the current library version appended and a space as a separator
+#         ret_array["lowercase_ver_dash"]  = "lowercase" with the current library version appended and a dash as a separator
 #
-#         ret_array["uppercase"] = either "GBN-VT" or "OPENVAS-VT"
-#         ret_array["uppercase_rand"] = "uppercase" with random numbers appended
-#         ret_array["uppercase_hex"] = "uppercase" converted to a hex string
-#         ret_array["uppercase_rand_hex"] = "uppercase_rand" converted to a hex string
+#         ret_array["uppercase"]           = either "GBN-VT" or "OPENVAS-VT"
+#         ret_array["uppercase_rand"]      = "uppercase" with random numbers appended
+#         ret_array["uppercase_hex"]       = "uppercase" converted to a hex string
+#         ret_array["uppercase_rand_hex"]  = "uppercase_rand" converted to a hex string
+#         ret_array["uppercase_ver_space"] = "uppercase" with the current library version appended and a space as a separator
+#         ret_array["uppercase_ver_dash"]  = "uppercase" with the current library version appended and a dash as a separator
 #
 function get_vt_strings() {
 
-  local_var ret_array, vt_string, vt_string_lo, vt_string_up, rand_numbers;
+  local_var ret_array, vt_string, vt_string_lo, vt_string_up, rand_numbers, version;
 
   ret_array = make_array();
 
-  if( executed_on_gos() ) {
+  if( executed_on_gos() )
     vt_string = "GBN-VT";
-  } else {
+  else
     vt_string = "OpenVAS-VT";
-  }
+
+  if( OPENVAS_VERSION )
+    version = OPENVAS_VERSION;
+  else
+    version = "1.0"; # nb: Just as a fallback if OPENVAS_VERSION isn't defined somehow.
 
   vt_string_lo = tolower( vt_string );
   vt_string_up = toupper( vt_string );
@@ -1873,6 +1962,8 @@ function get_vt_strings() {
   ret_array["default_rand"] = vt_string + rand_numbers;
   ret_array["default_hex"] = hexstr( vt_string );
   ret_array["default_rand_hex"] = hexstr( vt_string + rand_numbers );
+  ret_array["default_ver_space"] = vt_string + " " + version;
+  ret_array["default_ver_dash"] = vt_string + "-" + version;
 
    # nb: e.g. for the use in the "-p" parameter of unixoide ping commands which allows a max. of 16 bytes in the passed string
   ret_array["ping_string"] = "_" + vt_string + substr( rand_numbers, 0, 16 - strlen( vt_string ) - 3 ) + "_";
@@ -1881,11 +1972,15 @@ function get_vt_strings() {
   ret_array["lowercase_rand"] = vt_string_lo + rand_numbers;
   ret_array["lowercase_hex"] = hexstr( vt_string_lo );
   ret_array["lowercase_rand_hex"] = hexstr( vt_string_lo + rand_numbers );
+  ret_array["lowercase_ver_space"] = vt_string_lo + " " + version;
+  ret_array["lowercase_ver_dash"] = vt_string_lo + "-" + version;
 
   ret_array["uppercase"] = vt_string_up;
   ret_array["uppercase_rand"] = vt_string_up + rand_numbers;
   ret_array["uppercase_hex"] = hexstr( vt_string_up );
   ret_array["uppercase_rand_hex"] = hexstr( vt_string_up + rand_numbers );
+  ret_array["uppercase_ver_space"] = vt_string_up + " " + version;
+  ret_array["uppercase_ver_dash"] = vt_string_up + "-" + version;
 
   return ret_array;
 }
