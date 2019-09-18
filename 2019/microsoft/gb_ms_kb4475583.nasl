@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815601");
-  script_version("2019-09-11T14:33:42+0000");
+  script_version("2019-09-17T08:10:12+0000");
   script_cve_id("CVE-2019-1264");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-11 14:33:42 +0000 (Wed, 11 Sep 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-09-17 08:10:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-11 11:20:50 +0530 (Wed, 11 Sep 2019)");
   script_name("Microsoft Office 2016 Security Bypass Vulnerability (KB4475583)");
 

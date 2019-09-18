@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swarmpit_exposure_vuln.nasl 13864 2019-02-26 07:19:57Z cfischer $
 #
 # Swarmpit Web UI Public WAN (Internet) Accessible
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114014");
-  script_version("$Revision: 13864 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 08:19:57 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-23 17:04:15 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,8 +36,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("global_settings.nasl", "gb_swarmpit_detect.nasl");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
-  script_mandatory_keys("swarmpit/detected");
+  script_mandatory_keys("swarmpit/detected", "keys/is_public_addr");
 
   script_xref(name:"URL", value:"https://info.lacework.com/hubfs/Containers%20At-Risk_%20A%20Review%20of%2021%2C000%20Cloud%20Environments.pdf");
 
@@ -73,15 +71,17 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc"); # For report_vuln_url()
+include("http_func.inc");
 include("network_func.inc");
 include("host_details.inc");
 
-if(islocalnet() || islocalhost() || is_private_addr()) exit(0);
+if(!is_public_addr())
+  exit(0);
 
 CPE = "cpe:/a:swarmpit:swarmpit";
 
-if(!port = get_app_port(cpe: CPE)) exit(0);
+if(!port = get_app_port(cpe: CPE))
+  exit(0);
 
 if(get_kb_item("swarmpit/" + port + "/detected")) {
   report = "Swarmpit UI is exposed to the public under the following URL: " + report_vuln_url(port: port, url: "/", url_only: TRUE);

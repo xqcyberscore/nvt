@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105957");
-  script_version("2019-09-09T06:03:58+0000");
-  script_tag(name:"last_modification", value:"2019-09-09 06:03:58 +0000 (Mon, 09 Sep 2019)");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-03-04 09:41:51 +0700 (Wed, 04 Mar 2015)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -69,6 +69,9 @@ if(description)
 
   exit(0);
 }
+
+if(TARGET_IS_IPV6())
+  exit(0);
 
 include("host_details.inc");
 include("misc_func.inc");

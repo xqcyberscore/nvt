@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876518");
-  script_version("2019-06-20T06:01:12+0000");
+  script_version("2019-09-17T08:10:12+0000");
   script_cve_id("CVE-2019-1221", "CVE-2019-1220", "CVE-2019-12209");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-20 06:01:12 +0000 (Thu, 20 Jun 2019)");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-09-17 08:10:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-06-20 02:13:41 +0000 (Thu, 20 Jun 2019)");
   script_name("Fedora Update for pam-u2f FEDORA-2019-b6d3c8b0a8");
   script_category(ACT_GATHER_INFO);

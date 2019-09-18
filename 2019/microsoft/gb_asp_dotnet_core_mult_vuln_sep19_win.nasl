@@ -23,11 +23,11 @@ CPE = "cpe:/a:microsoft:asp.net_core" ;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815617");
-  script_version("2019-09-16T07:48:47+0000");
+  script_version("2019-09-17T08:10:12+0000");
   script_cve_id("CVE-2019-1302", "CVE-2019-1301");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-09-16 07:48:47 +0000 (Mon, 16 Sep 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-09-17 08:10:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-11 08:59:02 +0530 (Wed, 11 Sep 2019)");
   script_name(".NET Core Multiple Vulnerabilities (Sep 2019)");
 

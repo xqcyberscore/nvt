@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: tftp_files_hp_ignite_ux_passwd.nasl 13194 2019-01-21 13:18:47Z cfischer $
 # Description: TFTP file detection (HP Ignite-UX passwd)
 #
 # Authors:
@@ -25,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19509");
-  script_version("$Revision: 13194 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 14:18:47 +0100 (Mon, 21 Jan 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14568);
   script_cve_id("CVE-2004-0951");
@@ -47,7 +46,7 @@ if(description)
   that exposes the /etc/passwd file to anonymous TFTP access.");
 
   script_tag(name:"solution", value:"Upgrade to a version of the Ignite-UX application that does not exhibit this
-  behaviour. If it is not required, disable or uninstall the TFTP server.  Otherwise restrict access to trusted sources only.");
+  behaviour. If it is not required, disable or uninstall the TFTP server. Otherwise restrict access to trusted sources only.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -55,14 +54,13 @@ if(description)
   exit(0);
 }
 
-include("tftp.inc");
-
-port = get_kb_item("Services/udp/tftp");
-if(!port)
-  port = 69;
-
-if(!get_udp_port_state(port))
+if(TARGET_IS_IPV6())
   exit(0);
+
+include("tftp.inc");
+include("misc_func.inc");
+
+port = get_port_for_service(default:69, proto:"tftp", ipproto:"udp");
 
 if(get_kb_item("tftp/" + port + "/backdoor"))
   exit(0);

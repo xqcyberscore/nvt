@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portainer_no_auth_vuln.nasl 13864 2019-02-26 07:19:57Z cfischer $
 #
 # Portainer UI No Authentication Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114017");
-  script_version("$Revision: 13864 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 08:19:57 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-08-06 13:40:12 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
@@ -37,8 +36,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("global_settings.nasl", "gb_portainer_detect.nasl");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
-  script_mandatory_keys("portainer/detected");
+  script_mandatory_keys("portainer/detected", "keys/is_public_addr");
 
   script_xref(name:"URL", value:"https://info.lacework.com/hubfs/Containers%20At-Risk_%20A%20Review%20of%2021%2C000%20Cloud%20Environments.pdf");
 
@@ -71,9 +69,11 @@ include("host_details.inc");
 
 CPE = "cpe:/a:portainer:portainer";
 
-if(islocalnet() || islocalhost() || is_private_addr()) exit(0);
+if(!is_public_addr())
+  exit(0);
 
-if(!port = get_app_port(cpe: CPE)) exit(0);
+if(!port = get_app_port(cpe: CPE))
+  exit(0);
 
 res = http_get_cache(port: port, item: "/api/status");
 if(egrep(pattern: '\\"Authentication\\":false', string: res)) {

@@ -355,6 +355,7 @@ function telnet_close_socket( socket, data ) {
   # nb: Some devices need a separate exit to accept subsequent requests
   if( ( "Sollae Systems" >< data && ( data =~ "lsh>$" || data =~ "msh>$" || "password" >< data ) ) ||
     'Please type "menu" for the MENU system,' >< data || 'or "?" for help, or "/" for current settings' >< data || # nb: HP JetDirect
+    ( "BusyBox" >< data && "Built-in shell" >< data ) || "Enter 'help' for a list of built-in commands." >< data || # nb: Both for BusyBox
     "Welcome to NetLinx" >< data || "Local devices for system" >< data ) { # nb: Both for AMX NetLinx
     send( socket:socket, data:'exit\r\n' );
   } else if( "X - Exit Telnet Session" >< data ) { # nb: DataStream DS800

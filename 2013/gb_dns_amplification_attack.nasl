@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_amplification_attack.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # DNS Amplification Attack
 #
@@ -28,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103718");
-  script_version("$Revision: 12025 $");
+  script_version("2019-09-17T09:03:12+0000");
   script_cve_id("CVE-2006-0987");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-05-28 11:31:19 +0200 (Tue, 28 May 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,8 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("dns_server.nasl", "global_settings.nasl");
   script_require_udp_ports("Services/udp/domain", 53);
-  script_mandatory_keys("DNS/identified");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
+  script_mandatory_keys("DNS/identified", "keys/is_public_addr");
 
   script_xref(name:"URL", value:"http://www.us-cert.gov/ncas/alerts/TA13-088A");
   script_xref(name:"URL", value:"http://www.isotf.org/news/DNS-Amplification-Attacks.pdf");
@@ -63,8 +61,12 @@ if(description)
   because the responses are legitimate data coming from valid servers, it is
   especially difficult to block these types of attacks.");
 
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"summary", value:"A misconfigured Domain Name System (DNS)server can be exploited to participate
   in a Distributed Denial of Service (DDoS) attack.");
 
@@ -74,13 +76,12 @@ if(description)
 }
 
 include("network_func.inc");
+include("misc_func.inc");
 
-if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
+if( ! is_public_addr() )
+  exit( 0 );
 
-port = get_kb_item( "Services/udp/domain" );
-if ( ! port ) port = 53;
-
-if( ! get_udp_port_state( port ) ) exit( 0 );
+port = get_port_for_service(default:25, proto:"domain", ipproto:"udp");
 
 soc = open_sock_udp( port );
 if( ! soc ) exit( 0 );

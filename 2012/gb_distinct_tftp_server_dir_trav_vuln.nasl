@@ -27,10 +27,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802623");
   script_bugtraq_id(52938);
-  script_version("2019-09-09T06:41:58+0000");
+  script_version("2019-09-17T09:03:12+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-09 06:41:58 +0000 (Mon, 09 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-04-09 15:15:15 +0530 (Mon, 09 Apr 2012)");
   script_name("Distinct TFTP Server Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -64,6 +64,9 @@ if(description)
 
   exit(0);
 }
+
+if(TARGET_IS_IPV6())
+  exit(0);
 
 include("host_details.inc");
 include("misc_func.inc");

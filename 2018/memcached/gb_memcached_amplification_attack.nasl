@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_amplification_attack.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Memcached Amplification Attack (Memcrashed)
 #
@@ -32,9 +31,9 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108357");
-  script_version("$Revision: 10411 $");
+  script_version("2019-09-17T09:03:12+0000");
   script_cve_id("CVE-2018-1000115");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-03-01 08:31:24 +0100 (Thu, 01 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,8 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("gb_memcached_detect_udp.nasl", "global_settings.nasl");
   script_require_udp_ports("Services/udp/memcached", 11211);
-  script_mandatory_keys("Memcached/detected");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
+  script_mandatory_keys("Memcached/detected", "keys/is_public_addr");
 
   script_xref(name:"URL", value:"https://github.com/memcached/memcached/wiki/ReleaseNotes156");
   script_xref(name:"URL", value:"https://blogs.akamai.com/2018/02/memcached-udp-reflection-attacks.html");
@@ -93,7 +91,8 @@ include("host_details.inc");
 include("misc_func.inc");
 include("dump.inc");
 
-if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
+if( ! is_public_addr() )
+  exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) ) exit( 0 );

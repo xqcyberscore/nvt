@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_44712.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Quick Tftp Server Pro Directory Traversal Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100899");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-11-09 13:58:26 +0100 (Tue, 09 Nov 2010)");
   script_bugtraq_id(44712);
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,7 +35,6 @@ if(description)
   script_name("Quick Tftp Server Pro Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44712");
-  script_xref(name:"URL", value:"http://www.tallsoft.com/tftpserver.htm");
 
   script_category(ACT_ATTACK);
   script_family("Remote file access");
@@ -65,16 +63,14 @@ if(description)
   exit(0);
 }
 
+if(TARGET_IS_IPV6())
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("tftp.inc");
 
-port = get_kb_item("Services/udp/tftp");
-if(!port)
-  port = 69;
-
-if(!get_udp_port_state(port))
-  exit(0);
+port = get_port_for_service(default:69, proto:"tftp", ipproto:"udp");
 
 if(get_kb_item("tftp/" + port + "/backdoor"))
   exit(0);

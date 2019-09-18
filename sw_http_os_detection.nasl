@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-09-14T07:48:09+0000");
-  script_tag(name:"last_modification", value:"2019-09-14 07:48:09 +0000 (Sat, 14 Sep 2019)");
+  script_version("2019-09-17T06:44:20+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 06:44:20 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -981,18 +981,43 @@ function check_http_banner( port, banner ) {
 
 function check_php_banner( port, host ) {
 
-  local_var port, host, phpList, phpFiles, phpBanner, phpscriptsUrls, phpscriptsUrl, _phpBanner, banner_type;
+  local_var port, host;
+  local_var dir, checkFiles, phpFilesList, count, phpFile, checkFile, banner, phpBanner, phpscriptsUrls, phpscriptsUrl, _phpBanner, banner_type;
 
-  phpList = http_get_kb_file_extensions( port:port, host:host, ext:"php" );
-  if( phpList ) phpFiles = make_list( phpList );
-
-  if( phpFiles[0] ) {
-    phpBanner = get_http_banner( port:port, file:phpFiles[0] );
-  } else {
-    phpBanner = get_http_banner( port:port, file:"/index.php" );
+  foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+    if( dir == "/" ) dir = "";
+    checkFiles = make_list( checkFiles, dir + "/", dir + "/index.php" );
   }
 
-  phpBanner = egrep( pattern:"^X-Powered-By: PHP/.+$", string:phpBanner, icase:TRUE );
+  phpFilesList = http_get_kb_file_extensions( port:port, host:host, ext:"php" );
+  if( phpFilesList && is_array( phpFilesList ) ) {
+    count = 0;
+    foreach phpFile( phpFilesList ) {
+      count++;
+      checkFiles = make_list_unique( checkFiles, phpFile );
+      if( count >= 10 ) break; # TBD: Should be enough files to check, maybe we could even lower this to 5...
+    }
+  }
+
+  foreach checkFile( checkFiles ) {
+
+    banner = get_http_banner( port:port, file:checkFile );
+
+    phpBanner = egrep( pattern:"^X-Powered-By: PHP/.+$", string:banner, icase:TRUE );
+    if( ! phpBanner )
+      continue;
+
+    phpBanner = chomp( phpBanner );
+
+    if( egrep( pattern:"^X-Powered-By: PHP/[0-9.]+$", string:phpBanner ) ) {
+      phpBanner = NULL;
+      continue;
+    }
+
+    banner_type = "PHP Server banner";
+    break;
+  }
+
   if( ! phpBanner ) {
     # nb: Currently set by sw_apcu_info.nasl and gb_phpinfo_output_detect.nasl but could be extended by other PHP scripts providing such info
     phpscriptsUrls = get_kb_list( "php/banner/from_scripts/" + host + "/" + port + "/urls" );
@@ -1006,10 +1031,6 @@ function check_php_banner( port, host ) {
         }
       }
     }
-  } else {
-    banner_type = "PHP Server banner";
-    phpBanner = chomp( phpBanner );
-    if( egrep( pattern:"^X-Powered-By: PHP/[0-9.]+$", string:phpBanner ) ) return;
   }
 
   if( phpBanner ) {

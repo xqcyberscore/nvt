@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: tftp_files_cisco_ios.nasl 13194 2019-01-21 13:18:47Z cfischer $
 # Description: TFTP file detection (Cisco IOS)
 #
 # Authors:
@@ -34,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17342");
-  script_version("$Revision: 13194 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 14:18:47 +0100 (Mon, 21 Jan 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -63,14 +62,13 @@ if(description)
   exit(0);
 }
 
-include("tftp.inc");
-
-port = get_kb_item("Services/udp/tftp");
-if(!port)
-  port = 69;
-
-if(!get_udp_port_state(port))
+if(TARGET_IS_IPV6())
   exit(0);
+
+include("tftp.inc");
+include("misc_func.inc");
+
+port = get_port_for_service(default:69, proto:"tftp", ipproto:"udp");
 
 if(get_kb_item("tftp/" + port + "/rand_file_response"))
   exit(0);

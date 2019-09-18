@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wintftp_server_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # WinTFTP Server Pro Remote Directory Traversal Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902271");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-12-09 06:49:11 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -68,16 +67,14 @@ if(description)
   exit(0);
 }
 
+if(TARGET_IS_IPV6())
+  exit(0);
+
 include("host_details.inc");
 include("misc_func.inc");
 include("tftp.inc");
 
-port = get_kb_item("Services/udp/tftp");
-if(!port)
-  port = 69;
-
-if(!get_udp_port_state(port))
-  exit(0);
+port = get_port_for_service(default:69, proto:"tftp", ipproto:"udp");
 
 if(get_kb_item("tftp/" + port + "/backdoor"))
   exit(0);

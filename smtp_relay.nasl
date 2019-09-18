@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 13470 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,8 +38,7 @@ if(description)
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl", "global_settings.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
-  script_mandatory_keys("smtp/banner/available");
-  script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "keys/islocalnet");
+  script_mandatory_keys("smtp/banner/available", "keys/is_public_addr");
 
   script_tag(name:"solution", value:"Improve the configuration of your SMTP server so that your SMTP server
   cannot be used as a relay any more.");
@@ -60,14 +58,8 @@ include("smtp_func.inc");
 include("misc_func.inc");
 include("network_func.inc");
 
-if(islocalhost())
-  exit(0);
-
-if(islocalnet())
-  exit(0);
-
-if(is_private_addr())
-  exit(0);
+if( ! is_public_addr() )
+  exit( 0 );
 
 domain = get_3rdparty_domain();
 src_name = this_host_name();

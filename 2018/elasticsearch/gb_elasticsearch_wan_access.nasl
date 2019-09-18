@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_wan_access.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Elasticsearch Public WAN (Internet) Accessible
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108448");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-04 15:46:03 +0200 (Wed, 04 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,8 +39,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_elastsearch_detect.nasl", "global_settings.nasl");
-  script_mandatory_keys("elasticsearch/noauth");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
+  script_mandatory_keys("elasticsearch/noauth", "keys/is_public_addr");
 
   script_xref(name:"URL", value:"https://duo.com/blog/beyond-s3-exposed-resources-on-aws");
 
@@ -66,11 +64,15 @@ if(description)
 include("host_details.inc");
 include("network_func.inc");
 
-if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
+if( ! is_public_addr() )
+  exit( 0 );
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_kb_item( "elasticsearch/" + port + "/noauth" ) ) exit( 99 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-get_app_location( cpe:CPE, port:port, nofork:TRUE ); # nb: To have a reference to the Detection-NVT
+if( ! get_kb_item( "elasticsearch/" + port + "/noauth" ) )
+  exit( 99 );
+
+get_app_location( cpe:CPE, port:port, nofork:TRUE );
 security_message( port:port );
 exit( 0 );

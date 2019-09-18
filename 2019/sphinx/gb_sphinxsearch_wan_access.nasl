@@ -21,8 +21,8 @@ CPE = "cpe:/a:sphinxsearch:sphinxsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108621");
-  script_version("2019-08-27T09:12:56+0000");
-  script_tag(name:"last_modification", value:"2019-08-27 09:12:56 +0000 (Tue, 27 Aug 2019)");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-27 08:54:09 +0000 (Tue, 27 Aug 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -31,8 +31,7 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("sw_sphinxsearch_detect.nasl", "global_settings.nasl");
-  script_mandatory_keys("sphinxsearch/noauth");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
+  script_mandatory_keys("sphinxsearch/noauth", "keys/is_public_addr");
 
   script_xref(name:"URL", value:"https://www.bsi.bund.de/EN/Topics/IT-Crisis-Management/CERT-Bund/CERT-Reports/HOWTOs/Open-Sphinx-Server/open-Sphinx-server_node.html");
 
@@ -56,7 +55,7 @@ if(description)
 include("host_details.inc");
 include("network_func.inc");
 
-if( islocalnet() || islocalhost() || is_private_addr() )
+if( ! is_public_addr() )
   exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) )

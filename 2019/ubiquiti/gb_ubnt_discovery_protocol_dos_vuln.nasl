@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_discovery_protocol_dos_vuln.nasl 13431 2019-02-04 09:22:08Z ckuersteiner $
 #
 # UBNT Discovery Protocol Amplification Attack
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141956");
-  script_version("$Revision: 13431 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 10:22:08 +0100 (Mon, 04 Feb 2019) $");
+  script_version("2019-09-17T09:03:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-02-04 15:09:35 +0700 (Mon, 04 Feb 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,8 +43,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_ubnt_discovery_protocol_detect.nasl");
-  script_mandatory_keys("ubnt_discovery_proto/detected");
+  script_dependencies("gb_ubnt_discovery_protocol_detect.nasl", "global_settings.nasl");
+  script_mandatory_keys("ubnt_discovery_proto/detected", "keys/is_public_addr");
 
   script_tag(name:"summary", value:"A publicly access Ubiquity device exposing the UBNT Discovery Protocol can
 be exploited to participate in a Distributed Denial of Service (DDoS) attack.");
@@ -77,8 +76,8 @@ queries, an attacker can produce an overwhelming amount of traffic with little e
 include("misc_func.inc");
 include("network_func.inc");
 
-if (islocalnet() || islocalhost() || is_private_addr())
-  exit( 0 );
+if (!is_public_addr())
+  exit(0);
 
 if (!port = get_port_for_service(default: 10001, ipproto: "udp", proto: "ubnt discovery"))
   exit(0);
