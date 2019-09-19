@@ -36,9 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Service detection");
-  script_dependencies("gb_host_alive_check2.nasl", "toolcheck.nasl", "global_settings.nasl",
+  script_dependencies("gb_host_alive_check2.nasl", "global_settings.nasl",
                       "os_detection.nasl"); # To avoid launching it directly at the beginning of the ACT_GATHER_INFO phase
-  script_mandatory_keys("global_settings/mark_host_dead_failed_icmp", "Tools/Present/ping");
+  script_mandatory_keys("global_settings/mark_host_dead_failed_icmp");
 
   script_tag(name:"summary", value:"This plugin checks the target host in the phase 3 of a scan
   and marks it as 'dead' to the scanner if it is not answering to an ICMP ping anymore.
@@ -53,21 +53,12 @@ if(description)
 
 include("host_details.inc");
 
-if( ! cmd = get_kb_item( "Tools/Present/ping/bin" ) )
-  exit( 0 );
+if( ! find_in_path( "nmap" ) ) exit( 0 );
 
-i = 0;
-ping_args = make_list();
-ping_args[i++] = cmd;
+ip   = get_host_ip();
+ping = pread( cmd:"nmap", argv:make_list( 'nmap','-Pn','--top-ports','50', ip ), cd:1 );
 
-if( extra_cmd = get_kb_item( "Tools/Present/ping/extra_cmd" ) )
-  ping_args[i++] = extra_cmd;
-
-ping_args[i++] = "-c 3";
-ping_args[i++] = get_host_ip();
-
-ping = pread( cmd:cmd, argv:ping_args, cd:TRUE );
-if( "3 packets transmitted, 0 received" >< ping || "3 packets transmitted, 0 packets received" >< ping ) { #nb: inetutils vs. iputils
+if( "Host is up" >!< ping ) { #nb: inetutils vs. iputils
   log_message( port:0, data:"Target host seems to be suspended or disconnected from the Network. It was marked as 'dead' to the scanner and the scan was aborted." );
   register_host_detail( name:"dead", value:1 );
   set_kb_item( name:"Host/dead", value:TRUE );

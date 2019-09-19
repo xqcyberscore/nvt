@@ -124,7 +124,7 @@ if(offVer =~ "^(12|14)\..*")
         VULN1 = TRUE;
         Vulnerable_range1 = "2010 - 2010.1400.4740.0999";
       }
-      else if(version_in_range(version:fileVer1, test_version:"2010.1400.7000", test_version2:"2010.1400.7006.0999"));
+      else if(version_in_range(version:fileVer1, test_version:"2010.1400.7000", test_version2:"2010.1400.7006.0999"))
       {
         VULN1 = TRUE;
         Vulnerable_range1 = "2010.1400.7000 - 2010.1400.7006.0999";

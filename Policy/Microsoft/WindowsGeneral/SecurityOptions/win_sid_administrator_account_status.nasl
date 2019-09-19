@@ -34,7 +34,7 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
-  script_name('Microsoft Windows: Accounts: Administrator account status');
+  script_name('Microsoft Windows: Accounts: Administrator account SID status');
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
