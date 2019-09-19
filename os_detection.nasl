@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-09-10T04:44:13+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 04:44:13 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-09-18T06:33:38+0000");
+  script_tag(name:"last_modification", value:"2019-09-18 06:33:38 +0000 (Wed, 18 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,8 +73,9 @@ if(description)
                       "gb_dlink_dwr_detect.nasl", "gb_zyxel_ap_http_detect.nasl",
                       "gb_wd_mycloud_consolidation.nasl",
                       "gb_intelbras_ncloud_devices_http_detect.nasl", "gb_netapp_data_ontap_consolidation.nasl",
-                      "gb_ricoh_printer_consolidation.nasl", "gb_lexmark_printer_consolidation.nasl",
-                      "gb_ricoh_iwb_detect.nasl", "gb_codesys_os_detection.nasl",
+                      "gb_ricoh_printer_consolidation.nasl", "gb_ricoh_iwb_detect.nasl",
+                      "gb_lexmark_printer_consolidation.nasl", "gb_toshiba_printer_consolidation.nasl",
+                      "gb_codesys_os_detection.nasl",
                       "gb_simatic_hmi_consolidation.nasl", "gb_wago_plc_consolidation.nasl",
                       "gb_rockwell_micrologix_consolidation.nasl", "gb_rockwell_powermonitor_http_detect.nasl",
                       "gb_crestron_cip_detect.nasl", "gb_crestron_ctp_detect.nasl",
@@ -114,7 +115,8 @@ if(description)
                         "gsf/gb_fortios_sslvpn_portal_detect.nasl",
                         "gsf/gb_mult_vendors_wlan_controller_aps_detection.nasl",
                         "gsf/gb_dell_emc_powerconnect_consolidation.nasl",
-                        "gsf/gb_cisco_ind_http_detect.nasl");
+                        "gsf/gb_cisco_ind_http_detect.nasl",
+                        "gsf/gb_silverpeak_edgeconnect_consolidation.nasl");
 
   script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
 

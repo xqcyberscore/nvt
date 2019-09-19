@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("2019-09-09T12:27:37+0000");
-  script_tag(name:"last_modification", value:"2019-09-09 12:27:37 +0000 (Mon, 09 Sep 2019)");
+  script_version("2019-09-18T06:33:38+0000");
+  script_tag(name:"last_modification", value:"2019-09-18 06:33:38 +0000 (Wed, 18 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -518,6 +518,11 @@ foreach port( ports ) {
   if( "Lexmark" >< banner && "FTP Server" >< banner ) {
     set_kb_item( name:"ftp/lexmark/printer/detected", value:TRUE );
     guess += '\n- Lexmark Printer';
+  }
+
+  if( "TOSHIBA" >< banner && " FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/toshiba/printer/detected", value:TRUE );
+    guess += '\n- Toshiba Printer';
   }
 
   if( "220-You are user number " >< banner || "220-Local time is now " >< banner ||

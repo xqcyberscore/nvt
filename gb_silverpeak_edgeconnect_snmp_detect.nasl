@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverpeak_edgeconnect_snmp_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Silver Peak EdgeConnect Detection (SNMP)
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141389");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-09-18T12:14:55+0000");
+  script_tag(name:"last_modification", value:"2019-09-18 12:14:55 +0000 (Wed, 18 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-08-23 12:36:07 +0700 (Thu, 23 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +51,6 @@ devices.");
   exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("snmp_func.inc");
 
@@ -61,33 +59,35 @@ port = get_snmp_port(default: 161);
 if (!sysdesc = get_snmp_sysdesc(port: port))
   exit(0);
 
-if ("Silver Peak Systems" >!< sysdesc && "VXOA " >!< sysdesc)
+if ("Silver Peak Systems, Inc. EC" >!< sysdesc || "VXOA " >!< sysdesc)
   exit(0);
 
 set_kb_item(name: "silverpeak_edgeconnect/detected", value: TRUE);
+set_kb_item(name: "silverpeak_edgeconnect/snmp/detected", value: TRUE);
+set_kb_item(name: "silverpeak_edgeconnect/snmp/port", value: port);
 
-# Silver Peak Systems, Inc. ECV
-#Linux REG-GTW-FRANKFURT 2.6.38.6-rc1 #1 VXOA 8.1.8.0_71257 SMP Mon Jun 18 15:28:45 PDT 2018 x86_64
-mod = eregmatch(pattern: "Silver Peak Systems, Inc. (EC(V|XS))", string: sysdesc);
+#Silver Peak Systems, Inc. ECV
+#Linux $hostname 2.6.38.6-rc1 #1 VXOA 8.1.8.0_71257 SMP Mon Jun 18 15:28:45 PDT 2018 x86_64
+#
+#Silver Peak Systems, Inc. ECXS
+#Linux $hostname 2.6.38.6-rc1 #1 VXOA 8.1.9.3_74197 SMP Tue Jan 29 16:46:04 PST 2019 x86_64
+#
+#Silver Peak Systems, Inc. ECXL
+#Linux $hostname 2.6.38.6-rc1 #1 VXOA 8.1.7.14_72871 SMP Thu Oct 11 01:20:43 PDT 2018 x86_64
+#
+#Silver Peak Systems, Inc. ECM
+#Linux $hostname 2.6.38.6-rc1 #1 VXOA 8.1.6.0_67090 SMP Fri Sep 15 17:35:59 PDT 2017 x86_64
+#
+mod = eregmatch(pattern: "Silver Peak Systems, Inc. (EC(V|XS|S|M|L|XL))", string: sysdesc);
 if (!isnull(mod[1])) {
   model = mod[1];
-  set_kb_item(name: "silverpeak_edgeconnect/model", value: model);
+  set_kb_item(name: "silverpeak_edgeconnect/snmp/" + port + "/model", value: model);
 }
 
-version = "unknown";
-
-vers = eregmatch(pattern: "VXOA ([0-9.]+)", string: sysdesc);
-if (!isnull(vers[1]))
-  version = vers[1];
-
-cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:silver-peak:vx:");
-if (!cpe)
-  cpe = 'cpe:/a:silver-peak:vx';
-
-register_product(cpe: cpe, location: port + "/udp", port: port, service: "snmp");
-
-log_message(data: build_detection_report(app: "Silver Peak EdgeConnect " + model, version: version,
-                                         install: port + "/udp", cpe: cpe, concluded: sysdesc),
-            port: port, proto: "udp");
+vers = eregmatch(pattern: "VXOA ([0-9._]+)", string: sysdesc);
+if (!isnull(vers[1])) {
+  set_kb_item(name: "silverpeak_edgeconnect/snmp/" + port + "/version", value: vers[1]);
+  set_kb_item(name: "silverpeak_edgeconnect/snmp/" + port + "/concluded", value: sysdesc);
+}
 
 exit(0);

@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("2019-09-12T06:07:50+0000");
-  script_tag(name:"last_modification", value:"2019-09-12 06:07:50 +0000 (Thu, 12 Sep 2019)");
+  script_version("2019-09-18T06:33:38+0000");
+  script_tag(name:"last_modification", value:"2019-09-18 06:33:38 +0000 (Wed, 18 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -65,6 +65,7 @@ include("kyocera_printers.inc");
 include("lexmark_printers.inc");
 include("xerox_printers.inc");
 include("ricoh_printers.inc");
+include("toshiba_printers.inc");
 include("snmp_func.inc");
 include("pcl_pjl.inc");
 
@@ -166,6 +167,10 @@ if( sysdesc = get_snmp_sysdesc( port:port ) ) {
   if( sysdesc =~ "^RICOH" && "RICOH Network Printer" >< sysdesc ) {
     is_printer = TRUE;
   }
+
+  if( sysdesc =~ "^TOSHIBA e-STUDIO" ) {
+    is_printer = TRUE;
+  }
 }
 
 if( is_printer ) report( data:"Detected SNMP SysDesc on port " + port + '/udp:\n\n' + sysdesc );
@@ -226,6 +231,8 @@ if( get_port_state( port ) ) {
   } else if( "FUJI XEROX" >< banner ) {
     is_printer = TRUE;
   } else if( "Lexmark" >< banner ) {
+    is_printer = TRUE;
+  } else if( "TOSHIBA e-STUDIO" >< banner ) {
     is_printer = TRUE;
   }
 }
@@ -462,6 +469,26 @@ foreach port( ports ) {
 
   # Ricoh, see also gb_ricoh_printer_http_detect.nasl
   urls = get_ricoh_detect_urls();
+  foreach url( keys( urls ) ) {
+
+    pattern = urls[url];
+    url = ereg_replace( string:url, pattern:"(#--avoid-dup[0-9]+--#)", replace:"" );
+
+    buf = http_get_cache( item:url, port:port );
+    if( ! buf || buf !~ "^HTTP/1\.[01] 200" )
+      continue;
+
+    if( eregmatch( pattern:pattern, string:buf, icase:TRUE ) ) {
+      is_printer = TRUE;
+      reason     = "Found pattern: " + pattern + " on URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+      break;
+    }
+  }
+
+  if( is_printer ) break;
+
+  # Toshiba, see also gb_toshiba_printer_http_detect.nasl
+  urls = get_toshiba_detect_urls();
   foreach url( keys( urls ) ) {
 
     pattern = urls[url];

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("2019-09-12T07:44:41+0000");
-  script_tag(name:"last_modification", value:"2019-09-12 07:44:41 +0000 (Thu, 12 Sep 2019)");
+  script_version("2019-09-19T08:06:29+0000");
+  script_tag(name:"last_modification", value:"2019-09-19 08:06:29 +0000 (Thu, 19 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1060,9 +1060,25 @@ if( rhexstr =~ "013939393946463142.." ) {
 # on port 79/tcp:
 # 0x00:  55 6E 61 62 6C 65 20 74 6F 20 66 69 6E 64 20 73    Unable to find s
 # 0x10:  70 65 63 69 66 69 65 64 20 75 73 65 72 2E 0D 0A    pecified user...
-
+#
+# 0x00:  4C 6F 67 69 6E 20 6E 61 6D 65 3A 20 47 45 54 20    Login name: GET # nb: space
+# 0x10:  20 20 20 20 20 20 09 09 09 49 6E 20 72 65 61 6C          ...In real
+# 0x20:  20 6C 69 66 65 3A 20 3F 3F 3F 0D 0A                 life: ???..
+#
+# nb: This example below is shorter because private IP/hostnames were removed.
+# 0x0000:  0D 0A 20 20 20 20 4C 69 6E 65 20 20 20 20 20 55    ..    Line     U
+# 0x0010:  73 65 72 20 20 20 20 20 20 48 6F 73 74 28 73 29    ser      Host(s)
+# 0x0020:  20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                    # nb: spaces
+# 0x0030:  20 20 49 64 6C 65 20 4C 6F 63 61 74 69 6F 6E 0D      Idle Location.
+# 0x0040:  0A 20 20 33 32 20 76 74 79 20 30 20 20 20 20 20    .  32 vty 0     # nb: spaces
+# 0x0050:  20 20 20 20 20 20 20 20 69 64 6C 65 20 20 20 20            idle    # nb: spaces
+# 0x0060:  20 20 20 20 20 20 20 20 20 20 20 20 20 30 30 3A                 00:
+# 0x0070:  30 30 3A 30 31 20 31 35 34 2E 31 31 37 2E 31 35    00:01
 if( r == 'Finger online user list request denied.\r\n\n' ||
-    r == 'Unable to find specified user.\r\n' ) {
+    r == 'Unable to find specified user.\r\n' ||
+    egrep( string:r, pattern:"Line\s+User\s+Host", icase:TRUE ) ||
+    egrep( string:r, pattern:"Login\s+Name\s+TTY", icase:TRUE ) ||
+    eregmatch( string:r, pattern:"^Login name: GET", icase:FALSE ) ) {
   register_service( port:port, proto:"finger", message:"A finger service seems to be running on this port." );
   log_message( port:port, data:"A finger service seems to be running on this port." );
   exit( 0 );
@@ -1083,6 +1099,32 @@ if( "Integrated port" >< r && "Printer Type" >< r && "Print Job Status" >< r ) {
   register_service( port:port, proto:"fingerd-printer", message:"A printer related finger service seems to be running on this port." );
   log_message( port:port, data:"A printer related finger service seems to be running on this port." );
   set_kb_item( name:"fingerd-printer/" + port + "/banner", value:ereg_replace( string:r, pattern:'(^\r\n|\r\n$)', replace:"" ) );
+  exit( 0 );
+}
+
+# DICOM on 104/tcp and 11112/tcp
+# nb: This is the A-ABORT message but not all services / implementations are responding to our probes.
+#
+# 0x00:  07 00 00 00 00 04 00 00 02 01                      ..........
+#
+# or (which seems to send different A-ABORT messages multiple times.
+#
+# 0x00:  07 00 00 00 00 04 00 00 00 00 07 00 00 00 00 04    ................
+# 0x10:  00 00 02 02 07 00 00 00 00 04 00 00 02 02 07 00    ................
+# 0x20:  00 00 00 04 00 00 02 02 07 00 00 00 00 04 00 00    ................
+# 0x30:  02 02 07 00 00 00 00 04 00 00 02 02 07 00 00 00    ................
+# 0x40:  00 04 00 00 02 02 07 00 00 00 00 04 00 00 02 02    ................
+# 0x50:  07 00 00 00 00 04 00 00 02 02 07 00 00 00 00 04    ................
+# 0x60:  00 00 02 02 07 00 00 00 00 04 00 00 02 02 07 00    ................
+# 0x70:  00 00 00 04 00 00 02 02 07 00 00 00 00 04 00 00    ................
+# 0x80:  02 02 07 00 00 00 00 04 00 00 02 02 07 00 00 00    ................
+# 0x90:  00 04 00 00 02 02 07 00 00 00 00 04 00 00 02 02    ................
+# 0xA0:  07 00 00 00 00 04 00 00 02 02 07 00 00 00 00 04    ................
+# 0xB0:  00 00 02 02 07 00 00 00 00 04 00 00 02 02          ..............
+
+if( rhexstr =~ "^(07000000000400000[0-2]0[0-6]){1,}$" ) {
+  register_service( port:port, proto:"dicom", message:"A Digital Imaging and Communications in Medicine (DICOM) service seems to be running on this port." );
+  log_message( port:port, data:"A Digital Imaging and Communications in Medicine (DICOM) service seems to be running on this port." );
   exit( 0 );
 }
 

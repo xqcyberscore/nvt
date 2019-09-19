@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_limesurvey_detect.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey Version Detection
 #
@@ -27,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900352");
-  script_version("$Revision: 13093 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
+  script_version("2019-09-16T11:52:11+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 11:52:11 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,11 +56,10 @@ The script sends a connection request to the server and attempts to detect LimeS
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 surveyPort = get_http_port(default:80);
-if( ! can_host_php( port:surveyPort ) ) exit( 0 );
+if (!can_host_php(port:surveyPort)) exit(0);
 
 foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSurveyor", cgi_dirs( port:surveyPort ) ) ) {
 
@@ -78,17 +76,30 @@ foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSur
     res = http_keepalive_send_recv(port:surveyPort, data:req);
 
     # Changes from 2.6.6LTS (build 171111) to 2.6.7LTS (build 171208) Feb 23, 2018
-    surveyVer = eregmatch(pattern: "Changes from [^)]+) to ([0-9.]+)[^)]+\)", string: res);
+    # Changes from 2.50+ (build 160816) to 2.50+ (build 160817) Aug 17, 2016
+    # Changes from 2.70.0 (build 170921) to 2.71.0 (build 170925) Sept 25, 2017
+    # Changes from 3.0.0-beta.1 (build 170720) to 3.0.0-beta.2 (build 170810) Aug 10, 2017
+    # Changes from 1.87RC1 (build 7886) to 1.87RC2 (build 7922) [18-11-2009] - Legend: + new feature, # update feature, - bug fix
+    # Changes from 0.992 to 0.993
+    surveyVer = eregmatch(pattern: "Changes from [^)]+\)? to ([0-9.]+)(\+|-?[0-9a-zA-Z.]+)?", string: res);
     if (!isnull(surveyVer[1])) {
       version = surveyVer[1];
+      if (!isnull(surveyVer[2]))
+        version += surveyVer[2];
       concUrl = url;
     }
 
     set_kb_item(name: "limesurvey/installed", value: TRUE);
 
-    cpe = build_cpe(value: version, exp: "([0-9.]+)", base: "cpe:/a:limesurvey:limesurvey:");
-    if (!cpe)
-      cpe = "cpe:/a:limesurvey:limesurvey";
+    cpe = "cpe:/a:limesurvey:limesurvey";
+    if (version != "unknown") {
+      if (!isnull(surveyVer[2])) {
+        update_version = ereg_replace(string: surveyVer[2], pattern: "[-.]", replace: "");
+        cpe += ":" + surveyVer[1] + ":" + update_version;
+      } else {
+        cpe += ":" + surveyVer[1];
+      }
+    }
 
     register_product(cpe: cpe, location: rep_dir, port: surveyPort, service: "www");
 
@@ -104,17 +115,25 @@ foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSur
     req = http_get(item: url, port: surveyPort);
     res = http_keepalive_send_recv(port:surveyPort, data:req);
 
-    surveyVer = eregmatch(pattern:"Changes from ([0-9.]+) to ([0-9.]+)", string:res);
-    if (!isnull(surveyVer[2])) {
-      version = surveyVer[2];
+    surveyVer = eregmatch(pattern:"Changes from ([0-9.]+)(\+|-?[0-9a-zA-Z.]+)? to ([0-9.]+)(\+|-?[0-9a-zA-Z.]+)?", string:res);
+    if (!isnull(surveyVer[3])) {
+      version = surveyVer[3];
+      if (!isnull(surveyVer[4]))
+        version += surveyVer[4];
       concUrl = url;
     }
 
     set_kb_item(name: "limesurvey/installed", value: TRUE);
 
-    cpe = build_cpe(value: version, exp: "([0-9.]+)", base: "cpe:/a:limesurvey:limesurvey:");
-    if (!cpe)
-      cpe = "cpe:/a:limesurvey:limesurvey";
+    cpe = "cpe:/a:limesurvey:limesurvey";
+    if (version != "unknown") {
+      if (!isnull(surveyVer[4])) {
+        update_version = ereg_replace(string: surveyVer[4], pattern: "[-.]", replace: "");
+        cpe += ":" + surveyVer[3] + ":" + update_version;
+      } else {
+        cpe += ":" + surveyVer[3];
+      }
+    }
 
     register_product(cpe: cpe, location: rep_dir, port: surveyPort, service: "www");
 

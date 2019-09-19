@@ -34,7 +34,7 @@ function pcl_pjl_get_detect_requests() {
   # https://developers.hp.com/system/files/PJL_Technical_Reference_Manual.pdf
   reqs = make_list( "@PJL INFO ID", "@PJL INFO STATUS", "@PJL INFO LOG", "@PJL INFO SUPPLIES", "@PJL INFO PRODINFO", "@PJL ECHO" + vt_strings["default"] );
   foreach req( reqs )
-    final_reqs['\x1b%-12345X' + req + ' \r\n\x1b%-12345X\r\n'] = req + '\r\n';
+    final_reqs['\x1b%-12345X' + req + '\r\n\x1b%-12345X\r\n'] = req + '\r\n';
 
   # PCL5:
   # https://web.archive.org/web/20151122184353/http://download.brother.com/welcome/doc002907/Tech_Manual_Y.pdf
