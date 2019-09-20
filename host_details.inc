@@ -119,6 +119,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140811", # gb_siemens_ruggedcom_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.142907", # gsf/gb_ewon_flexy_cosy_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.20285",  # ilo_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
@@ -244,6 +245,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140811", # gb_siemens_ruggedcom_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.142907", # gsf/gb_ewon_flexy_cosy_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.20285",  # ilo_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
@@ -548,7 +550,7 @@ function host_runs() {
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
                 'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward|' +
                 'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl|qsee)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system|synetica(:| )datastream|' +
-                'ricoh(:| ).+_firmware|lexmark(:| ).+_firmware|:wlan_controller_ap_firmware|zyxel(:| ).+_firmware|toshiba(:| ).+_firmware|silver(-| )peak(:| )edgeconnect)';
+                'ricoh(:| ).+_firmware|lexmark(:| ).+_firmware|:wlan_controller_ap_firmware|zyxel(:| ).+_firmware|toshiba(:| ).+_firmware|silver(-| )peak(:| )edgeconnect|ewon(:| ).+_firmware)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

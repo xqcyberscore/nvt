@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("2019-09-18T06:33:38+0000");
-  script_tag(name:"last_modification", value:"2019-09-18 06:33:38 +0000 (Wed, 18 Sep 2019)");
+  script_version("2019-09-19T09:26:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-19 09:26:34 +0000 (Thu, 19 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -114,7 +114,8 @@ if(description)
                         "gsf/gb_mult_vendors_wlan_controller_aps_detection.nasl",
                         "gsf/gb_dell_emc_powerconnect_consolidation.nasl",
                         "gsf/gb_cisco_ind_http_detect.nasl",
-                        "gsf/gb_silverpeak_edgeconnect_consolidation.nasl");
+                        "gsf/gb_silverpeak_edgeconnect_consolidation.nasl",
+                        "gsf/gb_ewon_flexy_cosy_http_detect.nasl");
   script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.phrack.org/issues.html?issue=57&id=7#article");

@@ -18,13 +18,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
-CPE = "cpe:/a:getsimple:getsimple";
+CPE = "cpe:/a:get-simple:getsimple_cms";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142569");
-  script_version("2019-07-09T06:37:36+0000");
-  script_tag(name:"last_modification", value:"2019-07-09 06:37:36 +0000 (Tue, 09 Jul 2019)");
+  script_version("2019-09-19T13:15:15+0000");
+  script_tag(name:"last_modification", value:"2019-09-19 13:15:15 +0000 (Thu, 19 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-07-09 06:33:08 +0000 (Tue, 09 Jul 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
