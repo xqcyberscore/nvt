@@ -28,13 +28,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802803");
-  script_version("2019-05-17T10:45:27+0000");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2012-0751", "CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754",
                 "CVE-2012-0757", "CVE-2012-0756", "CVE-2012-0767");
   script_bugtraq_id(52037, 52032, 52033, 52034, 51999, 52036, 52040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-17 10:45:27 +0000 (Fri, 17 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-02-22 11:17:41 +0530 (Wed, 22 Feb 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Windows) - Feb12");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48033");
@@ -48,11 +48,13 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code in the context of the affected application or cause a denial of
-  service condition.");
+  code in the context of the affected application or cause a denial of service condition.");
+
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.15
-  Adobe Flash Player version 11.x through 11.1.102.55 and prior on Windows");
+  Adobe Flash Player version 11.x through 11.1.102.55 and prior on Windows.");
+
   script_tag(name:"insight", value:"Flaws are due to
 
   - A memory corruption error in ActiveX control.
@@ -61,16 +63,19 @@ if(description)
 
   - An unspecified error related to MP4 parsing.
 
-  - Many unspecified erros which allows to bypass certain security
-    restrictions.
+  - Many unspecified errors which allows to bypass certain security
+  restrictions.
 
   - Improper validation of user supplied input which allows attackers
-    to execute arbitrary HTML and script code in a user's browser session");
+  to execute arbitrary HTML and script code in a user's browser session.");
+
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.1.102.62 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.adobe.com/downloads/");
+
   exit(0);
 }
 

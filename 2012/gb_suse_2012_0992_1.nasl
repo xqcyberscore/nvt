@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0992_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for opera openSUSE-SU-2012:0992-1 (opera)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850311");
-  script_version("$Revision: 14114 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
+  script_version("2019-09-20T12:52:10+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 12:52:10 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:16 +0530 (Thu, 13 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -98,8 +97,7 @@ if(description)
   characters in HTML could incorrectly be ignored, which
   could facilitate XSS attacks. See our advisory Fixed
   another issue where small windows could be used to trick
-  users into executing downloads as reported by Jordi
-  Chancel.
+  users into executing downloads as reported by Jordi Chancel.
 
   Description truncated, please see the referenced URL(s) for more information.");
 

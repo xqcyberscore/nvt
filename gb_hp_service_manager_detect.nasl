@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_detect.nasl 12365 2018-11-15 10:30:55Z ckuersteiner $
 #
 # HP / Micro Focus Service Manager Detection
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106125");
-  script_version("$Revision: 12365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 11:30:55 +0100 (Thu, 15 Nov 2018) $");
+  script_version("2019-09-20T09:18:34+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 09:18:34 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-07-11 12:33:22 +0700 (Mon, 11 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,17 +63,19 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
 
-foreach dir (make_list_unique("/sm", "/sm7", "/sc", "/hpsm", cgi_dirs(port: port))) {
+foreach dir (make_list_unique("/sm", "/sm7", "/sc", "/hpsm", "/webtier", "/sm-webtier", cgi_dirs(port: port))) {
   install = dir;
   if (dir == "/")
     dir = "";
 
   url = dir + "/index.do";
   res = http_get_cache(port: port, item: url);
+  if (res =~ 'Location: (http(s)?://[^/]+)?/' + dir + '/ess.do\r\n') {
+    url = dir + "/ess.do";
+    res = http_get_cache(port: port, item: url);
+  }
 
-  if (res =~ "<title>(HP )?Service Manager: Login</title>" &&
-      ("Hewlett-Packard Development Company, L.P." >< res || "Micro Focus" >< res) &&
-      'id="old.password"  name="old.password"/>' >< res) {
+  if ("HPLogoSolidBlue.ico" >< res && 'id="old.password"  name="old.password"/>' >< res) {
     version = "unknown";
 
     ver = eregmatch(pattern: '<script type="text/javascript" src="([/a-z]+)([0-9.]+).*login.js"></script>',
@@ -85,14 +86,24 @@ foreach dir (make_list_unique("/sm", "/sm7", "/sc", "/hpsm", cgi_dirs(port: port
       ver = eregmatch(pattern: 'href="([/a-z]+)([0-9.]+)/login.css">', string: res);
       if (!isnull(ver[2]))
         version = ver[2];
+      else {
+        ver = eregmatch(pattern: "\.ico\?v=([0-9.]+)", string: res);
+        if (!isnull(ver[1]))
+          version = ver[1];
+      }
     }
 
     set_kb_item(name: "hp_service_manager/detected", value: TRUE);
 
-    # Might has to be changed later on to microfocus
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:hp:service_manager:");
     if (isnull(cpe))
       cpe = "cpe:/a:hp:service_manager";
+
+    register_product(cpe: cpe, location: install, port: port);
+
+    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:microfocus:service_manager:");
+    if (isnull(cpe))
+      cpe = "cpe:/a:microfocus:service_manager";
 
     register_product(cpe: cpe, location: install, port: port);
 

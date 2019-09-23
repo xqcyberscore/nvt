@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900088");
-  script_version("2019-05-03T10:54:50+0000");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-03-11 16:41:30 +0100 (Wed, 11 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -56,13 +56,13 @@ if(description)
   Microsoft Windows Server 2008 Service Pack 1 and prior.");
 
   script_tag(name:"insight", value:"- Error in the Windows DNS server may cause it to not properly reuse cached
-    responses.
+  responses.
 
   - Error in the Windows DNS server may cause it to not properly cache
-    responses to specifially crafted DNS queries.
+  responses to specifically crafted DNS queries.
 
   - Failure in access validation to restrict access when defining WPAD and
-    ISATAP entries.");
+  ISATAP entries.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 

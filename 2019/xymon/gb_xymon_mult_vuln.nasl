@@ -21,11 +21,11 @@ CPE = 'cpe:/a:xymon:xymon';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142822");
-  script_version("2019-08-29T08:30:40+0000");
-  script_tag(name:"last_modification", value:"2019-08-29 08:30:40 +0000 (Thu, 29 Aug 2019)");
+  script_version("2019-09-23T07:03:18+0000");
+  script_tag(name:"last_modification", value:"2019-09-23 07:03:18 +0000 (Mon, 23 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-29 08:12:03 +0000 (Thu, 29 Aug 2019)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2019-13451", "CVE-2019-13452", "CVE-2019-13455", "CVE-2019-13473", "CVE-2019-13474",
                 "CVE-2019-13484", "CVE-2019-13485", "CVE-2019-13486");

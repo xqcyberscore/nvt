@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1560_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for clamav openSUSE-SU-2014:1560-1 (clamav)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850622");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-12-06 06:47:37 +0100 (Sat, 06 Dec 2014)");
   script_cve_id("CVE-2013-6497", "CVE-2014-9050");
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,7 +42,7 @@ if(description)
 
   - Segmentation fault when processing certain files (CVE-2013-6497).
 
-  - Heap-based buffer overflow when scanning crypted PE files
+  - Heap-based buffer overflow when scanning encrypted PE files
   (CVE-2014-9050).
 
   The following non-security issues were fixed:

@@ -6,9 +6,6 @@
 # Authors:
 # Sooraj KS <kssooraj@secpod.com>
 #
-# Upadated By: Antu Sanadi <santu@secpod.com>  on 2010-08-16
-#  - Added the CVE-2010-3013.
-#
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -29,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801258");
-  script_version("2019-05-14T12:12:41+0000");
-  script_tag(name:"last_modification", value:"2019-05-14 12:12:41 +0000 (Tue, 14 May 2019)");
-  script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
+  script_version("2019-09-23T06:23:59+0000");
   script_cve_id("CVE-2010-2577", "CVE-2010-3013");
   script_bugtraq_id(42408);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-09-23 06:23:59 +0000 (Mon, 23 Sep 2019)");
+  script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_name("Pligg Multiple SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/40931");
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2010-111/");

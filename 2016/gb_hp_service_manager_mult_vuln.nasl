@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_mult_vuln.nasl 12365 2018-11-15 10:30:55Z ckuersteiner $
 #
 # HP Service Manager Multiple Vulnerabilities
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:hp:service_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106126");
-  script_version("$Revision: 12365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 11:30:55 +0100 (Thu, 15 Nov 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-07-11 15:18:31 +0700 (Mon, 11 Jul 2016)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -58,7 +57,7 @@ if (description)
   script_tag(name:"insight", value:"Remote authenticated users may obtain sensitive information, modify data,
 and conduct server-side request forgery (SSRF) attacks via unspecified vectors.");
 
-  script_tag(name:"impact", value:"Authenticated attackers may optain sensitive information, modify data
+  script_tag(name:"impact", value:"Authenticated attackers may obtain sensitive information, modify data
 or conduct server-side request forgery attacks.");
 
   script_tag(name:"affected", value:"Versions 9.30, 9.31, 9.32, 9.33, 9.34, 9.35, 9.40, and 9.41");

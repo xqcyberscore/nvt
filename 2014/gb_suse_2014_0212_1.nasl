@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0212_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2014:0212-1 (Mozilla)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850569");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-02-11 10:41:15 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2014-1477", "CVE-2014-1478", "CVE-2014-1479", "CVE-2014-1480",
                 "CVE-2014-1482", "CVE-2014-1483", "CVE-2014-1484", "CVE-2014-1485",
@@ -76,7 +75,7 @@ if(description)
   information leak through web workers
 
   * MFSA 2014-10/CVE-2014-1489 (bmo#959531) Firefox default
-  start page UI content invokable by script
+  start page UI content invocable by script
 
   * MFSA 2014-11/CVE-2014-1488 (bmo#950604) Crash when
   using web workers with asm.js

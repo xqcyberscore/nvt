@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_dir_trav_vuln.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Multiple Router Directory Traversal Vulnerability
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140448");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -92,7 +91,7 @@ if (cookie) {
     res = http_keepalive_send_recv(port: port, data: req, bodyonly: TRUE);
 
     if (egrep(string: res, pattern: pattern)) {
-      report = "It was possible to optain the '/" + file + "' file.\n\nResult:\n" + res;
+      report = "It was possible to obtain the '/" + file + "' file.\n\nResult:\n" + res;
       security_message(port: port, data: report);
       exit(0);
     }

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871491");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-11-20 06:21:32 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2014-3613", "CVE-2014-3707", "CVE-2014-8150", "CVE-2015-3143",
                 "CVE-2015-3148");
@@ -60,7 +60,7 @@ could use this flaw to inject additional headers to the request or
 construct additional requests. (CVE-2014-8150)
 
 It was discovered that libcurl implemented aspects of the NTLM and
-Negotatiate authentication incorrectly. If an application uses libcurl
+Negotiate authentication incorrectly. If an application uses libcurl
 and the affected mechanisms in a specific way, certain requests to a
 previously NTLM-authenticated server could appears as sent by the wrong
 authenticated user. Additionally, the initial set of credentials for HTTP

@@ -443,17 +443,17 @@ function mac_compute(data, type)
 
 
 #-----------------------------------------------------------------#
-# crypt data                                                      #
+# encrypt data                                                    #
 #-----------------------------------------------------------------#
-function crypt(data)
+function encrypt(data)
 {
- local_var crypted;
+ local_var encrypted;
 
- crypted = bf_cbc_encrypt(data:data, key:enc_keys[2], iv:enc_keys[0]);
+ encrypted = bf_cbc_encrypt(data:data, key:enc_keys[2], iv:enc_keys[0]);
 
- enc_keys[0] = crypted[1];
+ enc_keys[0] = encrypted[1];
 
- return crypted[0];
+ return encrypted[0];
 }
 
 #-----------------------------------------------------------------#
@@ -474,7 +474,7 @@ function decrypt(data)
 #-----------------------------------------------------------------#
 function send_ssh_packet(socket,payload,code)
 {
- local_var i, len, padding_len, full_len, buf, res, macbuf, crypted;
+ local_var i, len, padding_len, full_len, buf, res, macbuf, encrypted;
 
  len =
    # padding length
@@ -497,7 +497,6 @@ function send_ssh_packet(socket,payload,code)
  for (i=0;i<padding_len;i++)
     padding = padding + raw_int8(i:(rand() % 256));
 
-
  buf =
     # packet length
     raw_int32 (i:full_len) +
@@ -512,9 +511,9 @@ function send_ssh_packet(socket,payload,code)
 
  macbuf = mac_compute(data:buf, type:0);
 
- crypted = crypt(data:buf);
+ encrypted = encrypt(data:buf);
 
- buf = crypted + macbuf;
+ buf = encrypted + macbuf;
 
  send(socket:socket, data:buf);
 

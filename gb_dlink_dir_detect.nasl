@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103689");
-  script_version("2019-08-01T10:36:59+0000");
-  script_tag(name:"last_modification", value:"2019-08-01 10:36:59 +0000 (Thu, 01 Aug 2019)");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -177,7 +177,7 @@ if( "Server: Mathopd/" >< banner ) {
   # <td noWrap align="right">Hardware Version&nbsp;:&nbsp;rev A1&nbsp;</td>
   # <td noWrap align="right">Firmware Version&nbsp;:&nbsp;1.06&nbsp;</td>
   #
-  # DIR-605 with localization: (replace $localization with random name of the lanugage)
+  # DIR-605 with localization: (replace $localization with random name of the language)
   # <td noWrap align="right">$localizations&nbsp;:&nbsp;rev 2A1&nbsp;</td>
   # <td noWrap align="right">$localizations&nbsp;:&nbsp;2.01&nbsp;</td>
 

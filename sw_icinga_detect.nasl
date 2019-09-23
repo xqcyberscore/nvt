@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_icinga_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Icinga Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111026");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-08-21 14:00:00 +0200 (Fri, 21 Aug 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,7 +42,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The script sends a HTTP request
-  to the server and attempts to detect the applicaton from the reply.");
+  to the server and attempts to detect the application from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

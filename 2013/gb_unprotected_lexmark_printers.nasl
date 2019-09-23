@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103686");
-  script_version("2019-09-13T09:26:54+0000");
+  script_version("2019-09-20T07:49:38+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-09-13 09:26:54 +0000 (Fri, 13 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-20 07:49:38 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-03-28 11:51:27 +0100 (Thu, 28 Mar 2013)");
 
   script_name("Unprotected Lexmark Printer");
@@ -59,7 +59,6 @@ if(description)
 include("host_details.inc");
 include("lexmark_printers.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
 include("misc_func.inc");
 
 CPE_PREFIX = "cpe:/o:lexmark:";

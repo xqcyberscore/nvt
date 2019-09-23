@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_multiple_vuln_jan17.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # NTP Multiple Vulnerabilities - Jan 2017
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809779");
-  script_version("$Revision: 14175 $");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2014-9296", "CVE-2014-9295");
   script_bugtraq_id(71758, 71761);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-01-16 17:05:06 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP Multiple Vulnerabilities - Jan 2017");
@@ -47,16 +46,16 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws exists due to
 
   - An error in the 'receive' function in ntp_proto.c script within application
-    which continues to execute even after detecting a certain authentication error.
+  which continues to execute even after detecting a certain authentication error.
 
-  - Multiple erros in ntpd functions 'crypto_recv' (when using autokey
-    authentication), 'ctl_putdata', and 'configure'.");
+  - Multiple errors in ntpd functions 'crypto_recv' (when using autokey
+  authentication), 'ctl_putdata', and 'configure'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code and other unspecified effect on the affected
   system.");
 
-  script_tag(name:"affected", value:"NTP versions before 4.2.8");
+  script_tag(name:"affected", value:"NTP versions before 4.2.8.");
 
   script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8 or later.");
 

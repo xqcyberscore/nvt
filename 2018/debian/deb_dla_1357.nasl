@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1357.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1357-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891357");
-  script_version("$Revision: 14270 $");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2018-1000164");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1357-1] gunicorn security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-04-23 00:00:00 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -56,7 +55,7 @@ if(description)
 
 We recommend that you upgrade your gunicorn packages.");
   script_tag(name:"summary", value:"It was discovered that there was an issue in the gunicorn HTTP server for
-Python applicatons where CRLF sequences could result in an attacker tricking
+Python applications where CRLF sequences could result in an attacker tricking
 the server into returning arbitrary headers.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 

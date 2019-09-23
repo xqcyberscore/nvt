@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3389_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for libgd2 USN-3389-1
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843768");
-  script_version("$Revision: 14288 $");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2017-7890");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-10-26 06:17:14 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for libgd2 USN-3389-1");
   script_category(ACT_GATHER_INFO);
@@ -50,7 +49,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"A vulnerability was descovered in GD Graphics Library (aka libgd),
+  script_tag(name:"insight", value:"A vulnerability was discovered in GD Graphics Library (aka libgd),
 as used in PHP before that does not zero colorMap arrays before use.
 A specially crafted GIF image could use the uninitialized tables to
 read&#160 &#160 bytes from the top of the stack.");

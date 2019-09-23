@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842785");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-09-20T12:52:10+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 12:52:10 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-06-10 05:23:29 +0200 (Fri, 10 Jun 2016)");
   script_cve_id("CVE-2016-2815", "CVE-2016-2818", "CVE-2016-2819", "CVE-2016-2821", "CVE-2016-2822", "CVE-2016-2825", "CVE-2016-2828", "CVE-2016-2829", "CVE-2016-2831", "CVE-2016-2832", "CVE-2016-2833", "CVE-2016-2834");
   script_tag(name:"cvss_base", value:"9.3");
@@ -55,7 +55,7 @@ circumstances. If a user were tricked in to opening a specially crafted
 website, an attacker could potentially exploit this to cause a denial of
 service via application crash, or execute arbitrary code. (CVE-2016-2821)
 
-Jordi Chancel discovered a way to use a persistent menu within a  select
+Jordi Chancel discovered a way to use a persistent menu within a select
 element and place this in an arbitrary location. If a user were tricked in
 to opening a specially crafted website, an attacker could potentially
 exploit this to spoof the addressbar contents. (CVE-2016-2822)

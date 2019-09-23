@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_necko_dns_info_disc_vuln_lin.nasl 12720 2018-12-08 13:43:47Z cfischer $
 #
 # Mozilla Products Necko DNS Information Disclosure Vulnerability (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800456");
-  script_version("$Revision: 12720 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-08 14:43:47 +0100 (Sat, 08 Dec 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -51,9 +50,9 @@ if(description)
   Seamonkey with Mozilla Necko version 1.9.0 and prior on Linux.");
 
   script_tag(name:"insight", value:"The flaw exists while DNS prefetching, when the app type is 'APP_TYPE_MAIL'
-  or 'APP_TYPE_EDITOR'");
+  or 'APP_TYPE_EDITOR'.");
 
-  script_tag(name:"summary", value:"The host is installed with Thundebird/Seamonkey and is prone to
+  script_tag(name:"summary", value:"The host is installed with Thunderbird/Seamonkey and is prone to
   Information Disclosure vulnerability.");
 
   script_tag(name:"solution", value:"Apply the referenced updates or upgrade to Mozilla Necko version 1.9.1.");

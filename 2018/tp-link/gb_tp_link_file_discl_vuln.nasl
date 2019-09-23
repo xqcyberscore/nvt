@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141383");
-  script_version("2019-08-22T07:49:23+0000");
-  script_tag(name:"last_modification", value:"2019-08-22 07:49:23 +0000 (Thu, 22 Aug 2019)");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-08-20 15:05:36 +0700 (Mon, 20 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -41,7 +41,7 @@ if (description)
   script_mandatory_keys("tplink_httpd/banner");
 
   script_tag(name:"summary", value:"Multiple TP-Link devices are prone to a file disclosure vulnerability where
-an unauthenticated attacker may optain the configuration backup file which may contain sensitive data (e.g.
+an unauthenticated attacker may obtain the configuration backup file which may contain sensitive data (e.g.
 admin password) which could lead to complete compromise of the device.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");

@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811565");
-  script_version("2019-07-24T08:39:52+0000");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-08-09 16:24:37 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server 2016 CU Information Disclosure Vulnerability (KB4019086)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft KB4019086");
+  update according to Microsoft KB4019086.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -63,13 +63,11 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
@@ -111,7 +109,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
       continue;
     }
 
-    ## TODO: We have taken arch path for "x86" on assumtion and some google
+    ## TODO: We have taken arch path for "x86" on assumption and some google
     ## but not sure about the file path in case in "x86", we need to update the
     ## path if it's different.
     sql_path = sql_path - "Tools\" + "Setup Bootstrap\" + sql_ver_path + "\" + arch;

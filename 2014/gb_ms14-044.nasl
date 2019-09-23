@@ -26,31 +26,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802080");
-  script_version("2019-07-24T08:39:52+0000");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-08-13 17:35:15 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS14-044");
+  Microsoft Bulletin MS14-044.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Flaws are due to when,
+
+  script_tag(name:"insight", value:"Flaws are due to:
 
   - SQL Master Data Services (MDS) does not properly encode output.
 
   - SQL Server processes an incorrectly formatted T-SQL query.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a Denial
-of Service or elevation of privilege.");
+  of Service or elevation of privilege.");
+
   script_tag(name:"affected", value:"Microsoft SQL Server 2014 x64 Edition
-Microsoft SQL Server 2012 x86/x64 Edition Service Pack 1 and prior
-Microsoft SQL Server 2008 R2 x86/x64 Edition Service Pack 2 and prior
-Microsoft SQL Server 2008 x86/x64 Edition Service Pack 3 and prior");
+
+  Microsoft SQL Server 2012 x86/x64 Edition Service Pack 1 and prior
+
+  Microsoft SQL Server 2008 R2 x86/x64 Edition Service Pack 2 and prior
+
+  Microsoft SQL Server 2008 x86/x64 Edition Service Pack 3 and prior.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
   script_tag(name:"qod_type", value:"registry");
 
@@ -120,7 +127,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
       continue;
     }
 
-    ## We have taken arch path for "x86" on assumtion and some google
+    ## We have taken arch path for "x86" on assumption and some google
     ## but not sure about the file path in case in "x86", we need to update the
     ## path if it's different.
     sql_path = sql_path - "Tools\" + "Setup Bootstrap\" + sql_ver_path + "\" + arch;

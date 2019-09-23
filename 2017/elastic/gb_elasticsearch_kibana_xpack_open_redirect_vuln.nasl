@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_xpack_open_redirect_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Elasticsearch Kibana X-Pack Open Redirect Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812276");
-  script_version("$Revision: 11983 $");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2017-11482");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-12-20 15:25:49 +0530 (Wed, 20 Dec 2017)");
   script_name("Elasticsearch Kibana X-Pack Open Redirect Vulnerability");
 
@@ -43,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an insufficient validation
-  of user suppplied input via URL on the login page.");
+  of user supplied input via URL on the login page.");
 
   script_tag(name:"impact", value:"Successful exploitation will lead an attacker
   to craft a link that redirects to an arbitrary website.");

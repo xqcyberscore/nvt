@@ -29,7 +29,7 @@
 ###############################################################################
 
 #
-# An example SDDL (Security Descriptor Description Lanugage) looks like,
+# An example SDDL (Security Descriptor Description Language) looks like,
 # "O:BAG:SYD:PAI(A;;0x001200a9;;;S-1-5-32-545)(A;OICIIO;GRGX;;;S-1-5-32-545)(A;;0x001301bf;;;S-1-5-32-547)(A;OICIIO;SDGRGWGX;;;S-1-5-32-547)(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001f01ff;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;CO)"
 #
 # The below codes will help construct regular expressions like the above string to

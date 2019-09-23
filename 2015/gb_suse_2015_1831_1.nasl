@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1831_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for haproxy openSUSE-SU-2015:1831-1 (haproxy)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851120");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-10-28 07:18:30 +0100 (Wed, 28 Oct 2015)");
   script_cve_id("CVE-2015-3281");
   script_tag(name:"cvss_base", value:"5.0");
@@ -78,7 +77,7 @@ if(description)
 
   - MINOR: ssl: add statement to force some ssl options in global.
 
-  - MINOR: ssl: add fetchs 'ssl_c_der' and 'ssl_f_der' to return DER
+  - MINOR: ssl: add 'ssl_c_der' and 'ssl_f_der' to return DER
   formatted certs");
   script_tag(name:"affected", value:"haproxy on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00003.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870651");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-07-09 10:41:29 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-1184", "CVE-2011-2204", "CVE-2011-2526", "CVE-2011-3190");
   script_tag(name:"cvss_base", value:"7.5");
@@ -88,7 +88,7 @@ if(description)
   The HTTP blocking IO (BIO) connector, which is not vulnerable to this
   issue, is used by default in Red Hat Enterprise Linux 6. (CVE-2011-2526)
 
-  Red Hat would like to thank the Apach ...
+  Red Hat would like to thank the Apache ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

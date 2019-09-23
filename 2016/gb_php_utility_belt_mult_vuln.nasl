@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_utility_belt_mult_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Php Utility Belt Multiple Vulnerabilities
 #
@@ -28,15 +27,15 @@ CPE = "cpe:/a:php_utility_belt:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807614");
-  script_version("$Revision: 11523 $");
+  script_version("2019-09-16T06:54:58+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-03-16 10:38:20 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Php Utility Belt Multiple Vulnerabilities");
 
-  script_tag(name:"summary", value:"The host is installed with Php utilty belt
+  script_tag(name:"summary", value:"The host is installed with Php Utility Belt
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET
@@ -90,9 +89,9 @@ req =   'POST '+dir+'/ajax.php HTTP/1.1\r\n' +
 
 res = http_keepalive_send_recv(port:php_port, data:req);
 
-if(res && 'HTTP/1.1 200 OK' >< res)
+if(res && res =~ "^HTTP/1\.[01] 200")
 {
-   url = dir+ '/info.php';
+   url = dir + '/info.php';
 
    if(http_vuln_check(port:php_port, url:url,  pattern:">phpinfo\(\)<",
                       extra_check:make_list(">System", ">Configuration File")))

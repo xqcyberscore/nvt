@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1574_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for clamav SUSE-SU-2014:1574-1 (clamav)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850812");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-09-16T06:54:58+0000");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-6497", "CVE-2014-9050");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +45,7 @@ if(description)
   * Crash when scanning maliciously crafted yoda's crypter files
   (CVE-2013-6497).
 
-  * Heap-based buffer overflow when scanning crypted PE files
+  * Heap-based buffer overflow when scanning encrypted PE files
   (CVE-2014-9050).
 
   * Crash when using 'clamscan -a'.

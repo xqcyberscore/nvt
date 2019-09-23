@@ -28,11 +28,11 @@ CPE = "cpe:/a:oracle:jdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814407");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-09-16T06:54:58+0000");
   script_cve_id("CVE-2018-3150", "CVE-2018-3157");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-16 06:54:58 +0000 (Mon, 16 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-10-17 13:00:29 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle Java SE Security Updates-05 (oct2018-4428296) Linux");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Check if a vulnerable version is present
   on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to erros in 'Utility'
+  script_tag(name:"insight", value:"Multiple flaws are due to errors in 'Utility'
   and 'Sound' components.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html");
-  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/java/javase/downloads/index.html");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

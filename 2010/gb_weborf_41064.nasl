@@ -6,9 +6,6 @@
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
 #
-# Upadated By: Antu Sanadi <santu@secpod.com> on 2010-06-28
-# Added the related CVE
-#
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH
 #
@@ -29,8 +26,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100691");
-  script_version("2019-05-13T14:05:09+0000");
-  script_tag(name:"last_modification", value:"2019-05-13 14:05:09 +0000 (Mon, 13 May 2019)");
+  script_version("2019-09-23T06:23:59+0000");
+  script_tag(name:"last_modification", value:"2019-09-23 06:23:59 +0000 (Mon, 23 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-06-23 16:49:06 +0200 (Wed, 23 Jun 2010)");
   script_cve_id("CVE-2010-2435");
   script_bugtraq_id(41064);

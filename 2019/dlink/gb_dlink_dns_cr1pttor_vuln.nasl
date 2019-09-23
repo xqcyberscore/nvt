@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142167");
-  script_version("2019-03-26T10:36:32+0000");
-  script_tag(name:"last_modification", value:"2019-03-26 10:36:32 +0000 (Tue, 26 Mar 2019)");
+  script_version("2019-09-18T13:11:57+0000");
+  script_tag(name:"last_modification", value:"2019-09-18 13:11:57 +0000 (Wed, 18 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-03-26 10:13:52 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -55,6 +55,7 @@ vendor advisory for other solutions.");
 
   script_xref(name:"URL", value:"https://www.bleepingcomputer.com/news/security/cr1ptt0r-ransomware-infects-d-link-nas-devices-targets-embedded-systems/");
   script_xref(name:"URL", value:"https://securityadvisories.dlink.com/announcement/publication.aspx?name=SAP10110");
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DNS-320/REVA/DNS-320_REVA_RELEASE_NOTES_v2.06B01.pdf");
 
   exit(0);
 }
@@ -62,10 +63,10 @@ vendor advisory for other solutions.");
 include("host_details.inc");
 include("version_func.inc");
 
-cpe_list = make_list("cpe:/o:d-link:dns-320",
-                     "cpe:/o:d-link:dns-320l",
-                     "cpe:/o:d-link:dns-325",
-                     "cpe:/o:d-link:dns-327l");
+cpe_list = make_list("cpe:/o:d-link:dns-320_firmware",
+                     "cpe:/o:d-link:dns-320l_firmware",
+                     "cpe:/o:d-link:dns-325_firmware",
+                     "cpe:/o:d-link:dns-327l_firmware");
 
 if (!infos = get_all_app_ports_from_list(cpe_list: cpe_list))
   exit(0);
@@ -75,13 +76,13 @@ cpe = infos['cpe'];
 if (!version = get_app_version(cpe: cpe, nofork: TRUE))
   exit(0);
 
-if (cpe == "cpe:/o:d-link:dns-320") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if (cpe == "cpe:/o:d-link:dns-320_firmware") {
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.06B01");
   security_message(port: 0, data: report);
   exit(0);
 }
 
-if (cpe == "cpe:/o:d-link:dns-320l") {
+if (cpe == "cpe:/o:d-link:dns-320l_firmware") {
   if (version_is_less(version: version, test_version: "1.11")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "1.11");
     security_message(port: 0, data: report);
@@ -89,13 +90,13 @@ if (cpe == "cpe:/o:d-link:dns-320l") {
   }
 }
 
-if (cpe == "cpe:/o:d-link:dns-325") {
+if (cpe == "cpe:/o:d-link:dns-325_firmware") {
   report = report_fixed_ver(installed_version: version, fixed_version: "None");
   security_message(port: 0, data: report);
   exit(0);
 }
 
-if (cpe == "cpe:/o:d-link:dns-327l") {
+if (cpe == "cpe:/o:d-link:dns-327l_firmware") {
   if (version_is_less(version: version, test_version: "1.10")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "1.10");
     security_message(port: 0, data: report);
