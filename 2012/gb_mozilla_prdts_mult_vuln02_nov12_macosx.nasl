@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803058");
-  script_version("2019-07-17T11:14:11+0000");
-  script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
-                "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
-                "CVE-2012-5836", "CVE-2012-5838");
+  script_version("2019-09-20T11:01:01+0000");
+  script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
+                "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
+                "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5830", "CVE-2012-5833",
+                "CVE-2012-5835", "CVE-2012-5839", "CVE-2012-5840");
   script_bugtraq_id(56630, 56638, 56639, 56639, 56613, 56621,
                     56627, 56612, 56616, 56644);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-11-26 1:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-02 November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");

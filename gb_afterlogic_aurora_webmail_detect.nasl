@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_afterlogic_aurora_webmail_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # AfterLogic Aurora/WebMail Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140381");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-09-24T05:42:35+0000");
+  script_tag(name:"last_modification", value:"2019-09-24 05:42:35 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-09-20 16:49:11 +0700 (Wed, 20 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +39,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of AfterLogic Aurora/WebMail.
 
-The script sends a connection request to the server and attempts to detect AfterLogic Aurora/WebMail and to
-extract its version.");
+  The script sends a connection request to the server and attempts to detect AfterLogic Aurora/WebMail and to
+  extract its version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -71,27 +70,25 @@ foreach dir (make_list_unique("/", "/afterlogic", cgi_dirs(port: port))) {
   res = http_get_cache(port: port, item: dir + "/");
 
   if (("AfterLogic WebMail" >< res && "var EmptyHtmlUrl" >< res) ||
-      ("DemoWebMail" >< res && res =~'SiteName":".*","DefaultLanguage')) {
+      ("DemoWebMail" >< res && res =~'SiteName":".*","DefaultLanguage') ||
+      ('id="auroraContent"' >< res && "window.auroraAppData" >< res)) {
     version = "unknown";
 
     req = http_get(port: port, item: dir + "/VERSION");
     ver_res = http_keepalive_send_recv(port: port, data: req, bodyonly: TRUE);
 
-    vers = eregmatch(pattern: "^([0-9.]+)$", string: ver_res);
+    vers = eregmatch(pattern: "^([0-9.]+)(-build.*)?", string: ver_res);
     if (!isnull(vers[1])) {
       version = vers[1];
-      set_kb_item(name: "afterlogic_aurora_webmail/version", value: version);
       concUrl = dir + "/VERSION";
     }
     else {
       vers = eregmatch(pattern: "<!--([version ]+)?([0-9.]+)( )?-->", string: res);
-      if (!isnull(vers[2])) {
+      if (!isnull(vers[2]))
         version = vers[2];
-        set_kb_item(name: "afterlogic_aurora_webmail/version", value: version);
-      }
     }
 
-    set_kb_item(name: "afterlogic_aurora_webmail/installed", value: TRUE);
+    set_kb_item(name: "afterlogic_aurora_webmail/detected", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:afterlogic:aurora:");
     if (!cpe)

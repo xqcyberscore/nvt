@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815234");
-  script_version("2019-07-19T06:52:55+0000");
-  script_cve_id("CVE-2019-1110", "CVE-2019-1110");
+  script_version("2019-09-23T11:00:06+0000");
+  script_cve_id("CVE-2019-1110", "CVE-2019-1111");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2019-07-10 13:05:48 +0530 (Wed, 10 Jul 2019)");
-  script_tag(name:"last_modification", value:"2019-07-19 06:52:55 +0000 (Fri, 19 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-23 11:00:06 +0000 (Mon, 23 Sep 2019)");
   script_name("Microsoft Excel 2016 Remote Code Execution Vulnerabilities (KB4475513)");
 
   script_tag(name:"summary", value:"This host is missing an important security

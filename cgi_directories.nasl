@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("2019-09-07T14:49:34+0000");
-  script_tag(name:"last_modification", value:"2019-09-07 14:49:34 +0000 (Sat, 07 Sep 2019)");
+  script_version("2019-09-23T09:25:24+0000");
+  script_tag(name:"last_modification", value:"2019-09-23 09:25:24 +0000 (Mon, 23 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,7 +92,7 @@ function prepend_max_items_text( curReport, currentItems, maxItems ) {
 maxItems = int( script_get_preference( "Maximum number of items shown for each list" ) );
 if( maxItems <= 0 ) maxItems = 100;
 
-port = get_http_port( default:80 );
+port = get_http_port( default:80, ignore_broken:TRUE );
 host = http_host_name( dont_add_port:TRUE );
 
 cgiDirs          = cgi_dirs( port:port, host:host );
@@ -127,14 +127,19 @@ if( get_kb_item( "global_settings/disable_generic_webapp_scanning" ) ) {
 }
 
 if( http_get_is_marked_broken( port:port, host:host ) ) {
-  report += 'This service is marked as broken and no CGI scanning is launched against it.\n\n';
+  report += "This service is marked as broken and no CGI scanning is launched against it.";
+
+  if( reason = get_kb_item( "www/" + host + "/" + port + "/no404_slow_reason" ) ) {
+    report += ' Reason:\n-----\n' + reason + '\n-----';
+  }
+  report += '\n\n';
 }
 
 if( no404_string = http_get_no404_string( port:port, host:host ) ) {
   if( no404_string != "HTTP" ) { #nb: Set by no404.nasl if "generally" marked broken.
-    report += 'The service is responding with a 200 HTTP status code to non-existent files/urls. ';
-    report += 'The following pattern is used to work around possible false detections:\n\n';
-    report += no404_string + '\n\n';
+    report += "The service is responding with a 200 HTTP status code to non-existent files/urls. ";
+    report += "The following pattern is used to work around possible false detections:";
+    report += '\n-----\n' + no404_string + '\n-----\n\n';
   }
 }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anidos.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco IOS XE Software Autonomic Networking Infrastructure Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6663");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11977 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Cisco IOS XE Software Autonomic Networking Infrastructure Denial of Service Vulnerability");
 
@@ -58,7 +57,7 @@ affected system and consequently cause the affected device to reload, resulting 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-07-28 09:17:33 +0700 (Fri, 28 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -79,11 +78,11 @@ affected = make_list(
 		'16.6.1',
 		'3.10.4S',
 		'3.10.8S',
-		'3.10.8aS',
+		'3.10.8a.S',
 		'3.11.3S',
 		'3.11.4S',
 		'3.12.0S',
-		'3.12.0aS',
+		'3.12.0a.S',
 		'3.12.1S',
 		'3.12.2S',
 		'3.12.3S',
@@ -91,13 +90,13 @@ affected = make_list(
 		'3.13.0S',
 		'3.13.1S',
 		'3.13.2S',
-		'3.13.2aS',
+		'3.13.2a.S',
 		'3.13.4S',
 		'3.13.5S',
-		'3.13.5aS',
+		'3.13.5a.S',
 		'3.13.6S',
-		'3.13.6aS',
-		'3.13.7aS',
+		'3.13.6a.S',
+		'3.13.7a.S',
 		'3.13.8S',
 		'3.14.0S',
 		'3.14.1S',
@@ -110,30 +109,30 @@ affected = make_list(
 		'3.15.3S',
 		'3.15.4S',
 		'3.16.0S',
-		'3.16.1aS',
+		'3.16.1a.S',
 		'3.16.2S',
-		'3.16.2aS',
+		'3.16.2a.S',
 		'3.16.3S',
-		'3.16.3aS',
+		'3.16.3a.S',
 		'3.16.4S',
-		'3.16.4aS',
-		'3.16.4dS',
+		'3.16.4a.S',
+		'3.16.4d.S',
 		'3.16.6S',
 		'3.17.0S',
 		'3.17.1S',
-		'3.17.1aS',
+		'3.17.1a.S',
 		'3.17.2S',
 		'3.17.3S',
 		'3.17.4S',
 		'3.18.0S',
 		'3.18.0SP',
-		'3.18.0aS',
+		'3.18.0a.S',
 		'3.18.1S',
 		'3.18.1SP',
-		'3.18.1bSP',
+		'3.18.1b.SP',
 		'3.18.2S',
 		'3.18.2SP',
-		'3.18.2aSP',
+		'3.18.2a.SP',
 		'3.18.3S',
 		'3.18.3SP',
 		'3.7.0E',

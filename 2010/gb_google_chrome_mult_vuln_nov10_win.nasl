@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801540");
-  script_version("2019-07-17T08:15:16+0000");
-  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
-  script_cve_id("CVE-2010-4008", "CVE-2010-4198", "CVE-2010-4199", "CVE-2010-4197",
-                "CVE-2010-4201", "CVE-2010-4203", "CVE-2010-4202", "CVE-2010-4204",
-                "CVE-2010-4205", "CVE-2010-4206", "CVE-2010-4008");
+  script_cve_id("CVE-2010-4197", "CVE-2010-4198", "CVE-2010-4199", "CVE-2010-4201",
+                "CVE-2010-4202", "CVE-2010-4203", "CVE-2010-4204", "CVE-2010-4205",
+                "CVE-2010-4206", "CVE-2010-4008");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Google Chrome multiple vulnerabilities - November 10(Windows)");
@@ -44,11 +44,13 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
   in the context of the browser, cause denial-of-service condition, carry out
-  spoofing attacks, gain access to sensitive information, and bypass intended
-  security restrictions.");
-  script_tag(name:"affected", value:"Google Chrome version prior to 7.0.517.44 on windows");
+  spoofing attacks, gain access to sensitive information, and bypass intended security restrictions.");
+
+  script_tag(name:"affected", value:"Google Chrome version prior to 7.0.517.44 on Windows.");
+
   script_tag(name:"insight", value:"The flaws are due to
 
   - A use-after-free error related to text editing
@@ -69,16 +71,18 @@ if(description)
 
   - A type confusions with event objects
 
-  - An out-of-bounds array access when handling SVGs");
+  - An out-of-bounds array access when handling SVGs.");
+
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 7.0.517.44 or later.");
+
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 

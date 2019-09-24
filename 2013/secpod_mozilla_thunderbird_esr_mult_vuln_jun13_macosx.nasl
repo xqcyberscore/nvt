@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903221");
-  script_version("2019-06-25T08:25:15+0000");
+  script_version("2019-09-20T11:01:01+0000");
   script_cve_id("CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686", "CVE-2013-1687",
                  "CVE-2013-1690", "CVE-2013-1692", "CVE-2013-1693", "CVE-2013-1694",
-                 "CVE-2013-1697", "CVE-2013-1692");
+                 "CVE-2013-1697", "CVE-2013-1682");
   script_bugtraq_id(60766, 60773, 60774, 60777, 60778, 60783, 60787, 60776, 60784,
                     60765);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-06-26 18:40:17 +0530 (Wed, 26 Jun 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53970");

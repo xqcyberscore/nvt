@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20161012-cbr-8.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco cBR-8 Converged Broadband Router vty Integrity Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6438");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12431 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Cisco cBR-8 Converged Broadband Router vty Integrity Vulnerability");
 
@@ -55,7 +54,7 @@ targeted device.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-10-14 14:01:45 +0700 (Fri, 14 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -78,20 +77,20 @@ affected = make_list(
 		'3.18.0S',
 		'3.18.1S',
 		'3.18.0SP',
-		'3.17.1aS',
+		'3.17.1a.S',
 		'3.17.0S',
 		'3.17.2S',
 		'3.17.1S',
-		'3.16.2bS',
-		'3.16.3aS',
+		'3.16.2b.S',
+		'3.16.3a.S',
 		'3.16.3S',
 		'3.16.4S',
 		'3.16.0S',
-		'3.16.0cS',
+		'3.16.0c.S',
 		'3.16.1S',
-		'3.16.1aS',
+		'3.16.1a.S',
 		'3.16.2S',
-		'3.16.2aS' );
+		'3.16.2a.S' );
 
 foreach af ( affected )
 {

@@ -23,16 +23,16 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815226");
-  script_version("2019-07-05T10:16:38+0000");
+  script_version("2019-09-20T11:01:01+0000");
   script_cve_id("CVE-2019-6754", "CVE-2019-6755", "CVE-2019-6759", "CVE-2019-6753",
-                "CVE-2019-6757", "CVE-2019-6758", "CVE-2019-6758", "CVE-2019-6760",
+                "CVE-2019-6757", "CVE-2019-6758", "CVE-2019-6760",
                 "CVE-2019-6761", "CVE-2019-6763", "CVE-2019-6764", "CVE-2019-6766",
                 "CVE-2019-6767", "CVE-2019-6768", "CVE-2019-6769", "CVE-2019-6770",
-                "CVE-2019-6771", "CVE-2019-6772", "CVE-2019-6773", "CVE-2019-6753",
-                "CVE-2019-6756", "CVE-2019-6757");
+                "CVE-2019-6771", "CVE-2019-6772", "CVE-2019-6773",
+                "CVE-2019-6756");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 10:16:38 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-06-28 11:15:36 +0530 (Fri, 28 Jun 2019)");
   script_name("Foxit Reader Multiple Vulnerabilities June 2019 (Windows)-01");
 

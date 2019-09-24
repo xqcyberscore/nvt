@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anicrl.nasl 12109 2018-10-26 06:57:05Z cfischer $
 #
 # Cisco IOS XE Software Autonomic Networking Infrastructure Certificate Revocation Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6664");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12109 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Cisco IOS XE Software Autonomic Networking Infrastructure Certificate Revocation Vulnerability");
 
@@ -58,7 +57,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"Workaround");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:57:05 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-07-28 08:55:11 +0700 (Fri, 28 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -79,7 +78,7 @@ affected = make_list(
 		'16.5.1c',
 		'16.6.1',
 		'3.10.8S',
-		'3.10.8aS',
+		'3.10.8a.S',
 		'3.12.0S',
 		'3.12.1S',
 		'3.12.2S',
@@ -99,9 +98,9 @@ affected = make_list(
 		'3.15.2S',
 		'3.15.3S',
 		'3.16.0S',
-		'3.16.1aS',
+		'3.16.1a.S',
 		'3.16.2S',
-		'3.16.2aS',
+		'3.16.2a.S',
 		'3.17.0S',
 		'3.17.1S',
 		'3.18.0S');

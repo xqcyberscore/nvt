@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_38621.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # MediaWiki 'CSS validation' Information Disclosure Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100536");
-  script_version("$Revision: 14012 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
   script_bugtraq_id(38621);
-  script_cve_id("CVE-2010-1189", "CVE-2010-1189");
+  script_cve_id("CVE-2010-1189");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("MediaWiki 'CSS validation' Information Disclosure Vulnerability");
@@ -46,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38621");
   script_xref(name:"URL", value:"http://lists.wikimedia.org/pipermail/mediawiki-announce/2010-March/000088.html");
-  script_xref(name:"URL", value:"http://wikipedia.sourceforge.net/");
 
   script_tag(name:"impact", value:"An attacker can exploit this vulnerability to have users view remote
   images, which may aid in further attacks.");

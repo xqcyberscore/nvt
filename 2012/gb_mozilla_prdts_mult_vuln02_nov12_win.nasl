@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803057");
-  script_version("2019-07-17T11:14:11+0000");
-  script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
-                "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
-                "CVE-2012-5836", "CVE-2012-5838");
+  script_version("2019-09-20T11:01:01+0000");
+  script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
+                "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
+                "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5830", "CVE-2012-5833",
+                "CVE-2012-5835", "CVE-2012-5839", "CVE-2012-5840");
   script_bugtraq_id(56629, 56628, 56633, 56634, 56618, 56614, 56632, 56611,
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-11-26 12:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-02 November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -52,28 +53,32 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
-  certain security restrictions, execute arbitrary code in the context of the
-  browser.");
-  script_tag(name:"affected", value:"Mozilla Firefox version before 17.0 on Windows");
+  certain security restrictions, execute arbitrary code in the context of the browser.");
+
+  script_tag(name:"affected", value:"Mozilla Firefox version before 17.0 on Windows.");
+
   script_tag(name:"insight", value:"Multiple error exists
 
   - When combining SVG text with the setting of CSS properties.
 
   - Within the 'copyTexImage2D' implementation in the WebGL subsystem and
-    in the XrayWrapper implementation.
+  in the XrayWrapper implementation.
 
   - Within 'str_unescape' in the Javascript engin and in 'XMLHttpRequest'
-    objects created within sandboxes.");
+  objects created within sandboxes.");
+
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 

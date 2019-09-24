@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_257_02.nasl 14202 2019-03-15 09:16:15Z cfischer $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -29,11 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.57389");
   script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 10:16:15 +0100 (Fri, 15 Mar 2019) $");
-  script_cve_id("CVE-2006-4339", "CVE-2006-4339");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
+  script_cve_id("CVE-2006-4339");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 14202 $");
+  script_version("2019-09-20T11:01:01+0000");
   script_name("Slackware Advisory SSA:2006-257-02 openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");

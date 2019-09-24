@@ -26,22 +26,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803903");
-  script_version("2019-07-17T08:15:16+0000");
-  script_cve_id("CVE-2013-2880", "CVE-2013-2879", "CVE-2013-2878", "CVE-2013-2877",
-                "CVE-2013-2876", "CVE-2013-2875", "CVE-2013-2873", "CVE-2013-2872",
-                "CVE-2013-2871", "CVE-2013-2870", "CVE-2013-2869", "CVE-2013-2868",
-                "CVE-2013-2868", "CVE-2013-2867", "CVE-2013-2853");
+  script_version("2019-09-20T11:01:01+0000");
+  script_cve_id("CVE-2013-2867", "CVE-2013-2879", "CVE-2013-2868", "CVE-2013-2869", "CVE-2013-2870",
+                "CVE-2013-2853", "CVE-2013-2871", "CVE-2013-2873", "CVE-2013-2875", "CVE-2013-2876",
+                "CVE-2013-2877", "CVE-2013-2878", "CVE-2013-2880",
+                "CVE-2013-2872"); # nb: Mac only
   script_bugtraq_id(61046, 61052, 61055, 61047, 61059, 61061, 61057, 61051, 61056,
                     61060, 61053, 61054, 61058, 61050, 61049);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-07-16 19:10:22 +0530 (Tue, 16 Jul 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July13 (MAC OS X)");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-bypass security restrictions, disclose potentially sensitive data, or cause
-denial of service condition.");
+  bypass security restrictions, disclose potentially sensitive data, or cause denial of service condition.");
+
   script_tag(name:"affected", value:"Google Chrome version prior to 28.0.1500.71 on MAC OS X.");
+
   script_tag(name:"insight", value:"Multiple flaws due to,
 
   - Error exists when setting up sign-in and sync operations.
@@ -49,10 +51,10 @@ denial of service condition.");
   - An out-of-bounds read error exists within text handling.
 
   - 'parser.c in libxml2' has out-of-bounds read error, related to the lack of
-   checks for the XML_PARSER_EOF state.
+  checks for the XML_PARSER_EOF state.
 
   - 'browser/extensions/api/tabs/tabs_api.cc' does not enforce restrictions on
-   the capture of screenshots by extensions.
+  the capture of screenshots by extensions.
 
   - An out-of-bounds read error exists in SVG handling.
 
@@ -67,10 +69,14 @@ denial of service condition.");
   - Does not properly prevent pop.
 
   - HTTPS implementation does not ensure how headers are terminated.");
+
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 28.0.1500.71 or later.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
-vulnerabilities.");
+  vulnerabilities.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -84,7 +90,6 @@ vulnerabilities.");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 

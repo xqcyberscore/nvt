@@ -28,16 +28,16 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811531");
-  script_version("2019-07-05T09:12:25+0000");
+  script_version("2019-09-20T11:01:01+0000");
   script_cve_id("CVE-2017-10204", "CVE-2017-10129", "CVE-2017-10210", "CVE-2017-10233",
-                "CVE-2017-10236", "CVE-2017-10237", "CVE-2017-10238", "CVE-2017-10238",
+                "CVE-2017-10236", "CVE-2017-10237", "CVE-2017-10238", "CVE-2017-10239",
                 "CVE-2017-10240", "CVE-2017-10241", "CVE-2017-10242", "CVE-2017-10235",
                 "CVE-2017-10209", "CVE-2017-10187");
   script_bugtraq_id(99631, 99638, 99640, 99642, 99645, 99667, 99668, 99683, 99687, 99689,
                     99705, 99709, 99711);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 09:12:25 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-07-19 11:45:56 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Virtualbox Multiple Unspecified Vulnerabilities July17 (Mac OS X)");
 

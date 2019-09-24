@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_tns_2017_10.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Tenable Nessus 6.10.x < 6.10.5 Multiple Vulnerabilities
 #
@@ -29,11 +28,11 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108148");
-  script_version("$Revision: 12083 $");
-  script_cve_id("CVE-2017-7849", "CVE-2017-7849");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-09-24T10:10:52+0000");
+  script_cve_id("CVE-2017-7849", "CVE-2017-7850");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-09-24 10:10:52 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-04-20 08:08:04 +0200 (Thu, 20 Apr 2017)");
   script_name("Tenable Nessus 6.10.x < 6.10.5 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);

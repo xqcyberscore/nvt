@@ -26,11 +26,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100019");
-  script_version("2019-05-10T14:24:23+0000");
-  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(32352, 32349, 32353);
-  script_cve_id("CVE-2008-6255", "CVE-2008-6255", "CVE-2008-6255");
+  script_cve_id("CVE-2008-6255");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
@@ -67,11 +67,11 @@ if (isnull(version)) exit(0);
 matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$");
 
 if (!isnull(matches)) {
- ver = matches[1];
- if ( ver <= "3.7.4" ) {
-	security_message(port:port);
-	exit(0);
- }
+  ver = matches[1];
+  if (ver <= "3.7.4") {
+    security_message(port:port);
+    exit(0);
+  }
 }
 
 exit(0);

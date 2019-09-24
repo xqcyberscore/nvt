@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160323-smi.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS and IOS XE Software Smart Install Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1349");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12149 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Cisco IOS and IOS XE Software Smart Install Denial of Service Vulnerability");
 
@@ -62,7 +61,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-05-09 17:38:16 +0200 (Mon, 09 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -105,7 +104,7 @@ affected = make_list(
 		'3.5.3E',
 		'3.6.0E',
 		'3.6.1E',
-		'3.6.2aE',
+		'3.6.2a.E',
 		'3.6.2E',
 		'3.7.0E',
 		'3.7.1E',

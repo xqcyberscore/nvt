@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160420-libsrtp.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Multiple Cisco Products libSRTP Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-6360");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12051 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Multiple Cisco Products libSRTP Denial of Service Vulnerability");
 
@@ -55,7 +54,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-05-09 17:29:13 +0200 (Mon, 09 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -73,9 +72,9 @@ if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 affected = make_list(
 		'3.10.0S',
 		'3.10.1S',
-		'3.10.1xbS',
+		'3.10.1xb.S',
 		'3.10.2S',
-		'3.10.2tS',
+		'3.10.2t.S',
 		'3.10.4S',
 		'3.10.5S',
 		'3.10.6S',

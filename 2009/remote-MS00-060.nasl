@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS00-060.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Microsoft Security Bulletin (MS00-060)
 # 'IIS Cross-Site Scripting' Vulnerabilities
@@ -33,12 +32,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101000");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2009-03-08 14:50:37 +0100 (Sun, 08 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2000-0746", "CVE-2000-0746", "CVE-2000-1104");
+  script_cve_id("CVE-2000-0746", "CVE-2000-1104");
   script_bugtraq_id(1594, 1595);
   script_name("Microsoft MS00-060 security check");
   script_category(ACT_ATTACK);
@@ -48,8 +47,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 
-  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=FE95D9FC-D769-43F3-8376-FAA1D2ABC4F3&displaylang=en");
-  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=31734888-9C17-43F1-BFD9-FDA8FEAF6D68&displaylang=en");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2000/ms00-060");
 
   script_tag(name:"solution", value:"Microsoft has released a patch to correct these issues.
   Please see the references for more information.");
@@ -75,14 +73,14 @@ url = '/_vti_bin/shtml.dll/<script>alert(1)</script>';
 if( ! port = get_app_port( cpe:CPE ) )
   exit( 0 );
 
-if( ! get_app_location( cpe:CPE, port:port ) ) # To have a reference to the detection NVT
+if( ! get_app_location( cpe:CPE, port:port ) )
   exit( 0 );
 
 req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( res ) {
-  if( ( "Microsoft-IIS" >< res ) && ( egrep( pattern:"HTTP/1.[01] 200", string:res, icase:TRUE ) ) && ( "<script>(1)</script>" >< res ) ) {
+  if( ( "Microsoft-IIS" >< res ) && ( egrep( pattern:"^HTTP/1\.[01] 200", string:res, icase:TRUE ) ) && ( "<script>(1)</script>" >< res ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

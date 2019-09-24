@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_components_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Joomla Multiple Components SQL Injection Vulnerabilities
 #
@@ -29,13 +28,13 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802196");
-  script_version("$Revision: 11552 $");
+  script_version("2019-09-20T11:01:01+0000");
   script_cve_id("CVE-2010-4927", "CVE-2010-4928", "CVE-2010-4929", "CVE-2010-4937",
-                "CVE-2010-4945", "CVE-2010-4902", "CVE-2010-4865", "CVE-2010-4902");
-  script_bugtraq_id(43319, 33254, 43415, 42334, 42986, 43605, 42986);
+                "CVE-2010-4945", "CVE-2010-4902", "CVE-2010-4865", "CVE-2010-4904");
+  script_bugtraq_id(43319, 33254, 43415, 42334, 42986, 43605, 42986, 43014);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-11-03 15:42:01 +0200 (Thu, 03 Nov 2011)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -63,19 +62,19 @@ if(description)
   script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
-injecting arbitrary SQL code.");
+  injecting arbitrary SQL code.");
 
   script_tag(name:"affected", value:"Joomla Joostina component, Joomla sgicatalog component, Joomla Amblog
-component version 1.0, Joomla Clantools Component version 1.2.3, Joomla CamelcityDB component version 2.2, Joomla
-Clantools Component version 1.2.3, Joomla Restaurant Guide component version 1.0.0, Joomla Aardvertiser Component
-versions 2.1 and 2.1.1.");
+  component version 1.0, Joomla Clantools Component version 1.2.3, Joomla CamelcityDB component version 2.2, Joomla
+  Clantools Component version 1.2.3, Joomla Restaurant Guide component version 1.0.0, Joomla Aardvertiser Component
+  versions 2.1 and 2.1.1.");
 
   script_tag(name:"insight", value:"For more information about vulnerability refer the references section.");
 
   script_tag(name:"solution", value:"Update the components.");
 
   script_tag(name:"summary", value:"This host is running Joomla with multiple components and is prone to SQL
-injection vulnerabilities.");
+  injection vulnerabilities.");
 
   exit(0);
 }
@@ -99,7 +98,7 @@ pages = make_list("/index.php?option=com_restaurantguide&view=country&id='&Itemi
                   "/index.php?option=com_camelcitydb2&view=all&Itemid=15",
                   "/index.php?option=com_jeguestbook&view=item_detail&d_itemid='",
                   "/index.php?option=com_clantools&squad='",
-                  "'/index.php?option=com_sgicatalog&task=view&lang=en&id='",
+                  "/index.php?option=com_sgicatalog&task=view&lang=en&id='",
                   "/index.php?option=com_aardvertiser&amp;cat_name='x+AND+'1'='1&amp;task=view");
 
 foreach page (pages) {

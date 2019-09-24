@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876639");
-  script_version("2019-08-14T07:16:43+0000");
+  script_version("2019-09-24T10:10:52+0000");
   script_cve_id("CVE-2019-12449", "CVE-2019-12448", "CVE-2019-12447", "CVE-2019-12795");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-08-14 07:16:43 +0000 (Wed, 14 Aug 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-09-24 10:10:52 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-08-06 02:24:07 +0000 (Tue, 06 Aug 2019)");
   script_name("Fedora Update for gvfs FEDORA-2019-e6b02af8b8");
   script_category(ACT_GATHER_INFO);

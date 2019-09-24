@@ -27,10 +27,10 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-January/072190.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863814");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-03-19 12:19:32 +0530 (Mon, 19 Mar 2012)");
-  script_cve_id("CVE-2012-0030", "CVE-2011-4596", "CVE-2011-4076", "CVE-2011-4596");
+  script_cve_id("CVE-2012-0030", "CVE-2011-4596", "CVE-2011-4076");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
   script_xref(name:"FEDORA", value:"2012-0682");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: no404.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # No 404 check
 #
@@ -9,7 +8,7 @@
 # - rewritten in parts by H D Moore <hdmoore@digitaldefense.net>
 #
 # Copyright:
-# Copyright (C) 2000 RD / H D Moore
+# Copyright (C) 2006 RD / H D Moore
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -28,27 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10386");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("2019-09-23T10:11:11+0000");
+  script_tag(name:"last_modification", value:"2019-09-23 10:11:11 +0000 (Mon, 23 Sep 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("No 404 check");
+  script_name("Response Time / No 404 Error Code Check");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2000 RD / H D Moore");
+  script_copyright("This script is Copyright (C) 2006 RD / H D Moore");
   script_family("Web Servers");
   script_dependencies("http_login.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"insight", value:"This web server is [mis]configured in that it does not return
-  '404 Not Found' error codes when a non-existent file is requested, perhaps returning a site map,
-  search page or authentication page instead.
+  script_add_preference(name:"Maximum response time (in seconds)", type:"entry", value:"60", id:1);
 
-  The Scanner enabled some counter measures for that, however they might be insufficient. If a great
-  number of security holes are produced for this port, they might not all be accurate");
+  script_tag(name:"insight", value:"This web server might show the following issues:
 
-  script_tag(name:"summary", value:"Remote web server does not reply with 404 error code.");
+  - it is [mis]configured in that it does not return '404 Not Found' error codes when a non-existent
+  file is requested, perhaps returning a site map, search page or authentication page instead.
+
+  The Scanner might enabled some counter measures for that, however they might be insufficient. If a
+  great number of security issues are reported for this port, they might not all be accurate.
+
+  - it doesn't response in a reasonable amount of time to various HTTP requests sent by this VT.
+
+  In order to keep the scan total time to a reasonable amount, the remote web server might not be
+  tested. If the remote server should be tested it has to be fixed to have it reply to the scanners
+  requests in a reasonable amount of time.
+
+  Alternatively the 'Maximum response time (in seconds)' preference could be raised to a higher
+  value if longer scan times are accepted.");
+
+  script_tag(name:"summary", value:"This VT tests if the remote web server does not reply with a 404
+  error code and checks if it is replying to the scanners requests in a reasonable amount of time.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -62,7 +74,7 @@ include("http_func.inc");
 include("global_settings.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
-include("404.inc"); # For errmessages_404 list
+include("404.inc");
 
 counter = 0;
 
@@ -141,18 +153,27 @@ basename + ".cfm",
 "/scripts" + basename + ".php7",
 "/scripts" + basename + ".cfm" );
 
+max_response_time = int( script_get_preference( "Maximum response time (in seconds)", id:1 ) );
+if( max_response_time <= 0 )
+  max_response_time = 60;
+
 function my_exit( then, port, host ) {
 
   local_var now, then, port, host;
 
   now = unixtime();
-  if( now - then > 60 ) {
-    report = "The remote web server is very slow - it took " + int(now - then) + " seconds to " +
+  if( now - then > max_response_time ) {
+    report = "The remote web server is very slow - it took " + int(now - then) + " seconds " +
+             "(Maximum response time configured in 'Response Time / No 404 Error Code Check' " +
+             "(OID: 1.3.6.1.4.1.25623.1.0.10386) preferences: " + max_response_time + " seconds) to " +
              "execute the plugin no404.nasl (it usually only takes a few seconds)." + '\n\n' +
              "In order to keep the scan total time to a reasonable amount, the remote web server " +
              "has not been tested." + '\n\n' +
-             "If you want to test the remote server fix it to have it reply to the scanners requests " +
-             "in a reasonable amount of time.";
+             "If the remote server should be tested it has to be fixed to have it reply to the scanners " +
+             "requests in a reasonable amount of time. Alternatively the 'Maximum response time (in seconds)' " +
+             "preference could be raised to a higher value if longer scan times are accepted.";
+
+    set_kb_item( name:"www/" + host + "/" + port + "/no404_slow_reason", value:report );
 
     log_message( port:port, data:report );
     http_set_is_marked_broken( port:port, host:host );

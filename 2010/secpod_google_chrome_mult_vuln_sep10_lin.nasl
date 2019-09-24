@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901154");
-  script_version("2019-07-17T08:15:16+0000");
-  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-1825", "CVE-2010-1824", "CVE-2010-1823",
-                "CVE-2010-3411", "CVE-2010-3412", "CVE-2010-3413",
-                "CVE-2010-3415", "CVE-2010-3416", "CVE-2010-3417",
-                "CVE-2010-1823", "CVE-2010-1824", "CVE-2010-1825");
+                "CVE-2010-3417", "CVE-2010-3416", "CVE-2010-3415",
+                "CVE-2010-3414", "CVE-2010-3413", "CVE-2010-3412",
+                "CVE-2010-3411");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Google Chrome multiple vulnerabilities Sep-10 (Linux)");
@@ -47,9 +47,12 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to cause denial of service
   and possibly have unspecified other impact via unknown vectors.");
+
   script_tag(name:"affected", value:"Google Chrome version prior to 6.0.472.59 on Linux.");
+
   script_tag(name:"insight", value:"Multiple vulnerabilities are due to,
 
   - A use-after-free error exists when using document APIs during parsing.
@@ -69,15 +72,17 @@ if(description)
   - An unspecified error related to Khmer handling can be exploited to corrupt memory.
 
   - The application does not prompt for extension history access.");
+
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 6.0.472.59 or later.");
+
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 

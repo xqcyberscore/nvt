@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-smi.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco IOS XE Software Smart Install Memory Leak Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6385");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12338 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Cisco IOS XE Software Smart Install Memory Leak Vulnerability");
 
@@ -56,7 +55,7 @@ reload, resulting in a DoS condition.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-09-29 15:47:20 +0700 (Thu, 29 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -96,7 +95,7 @@ affected = make_list(
 		'3.6.4E',
 		'3.6.0E',
 		'3.6.1E',
-		'3.6.2aE',
+		'3.6.2a.E',
 		'3.6.2E',
 		'3.6.3E',
 		'3.7.3E',

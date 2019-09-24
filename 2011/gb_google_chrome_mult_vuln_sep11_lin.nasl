@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802327");
-  script_version("2019-07-17T08:15:16+0000");
-  script_tag(name:"last_modification", value:"2019-07-17 08:15:16 +0000 (Wed, 17 Jul 2019)");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
-  script_cve_id("CVE-2011-2823", "CVE-2011-2824", "CVE-2011-2825", "CVE-2011-2821",
-                "CVE-2011-2826", "CVE-2011-2826", "CVE-2011-2827", "CVE-2011-2828",
-                "CVE-2011-2829", "CVE-2011-2839");
+  script_cve_id("CVE-2011-2821", "CVE-2011-2823", "CVE-2011-2824", "CVE-2011-2825", "CVE-2011-2826",
+                "CVE-2011-2827", "CVE-2011-2828", "CVE-2011-2829",
+                "CVE-2011-2839"); # nb: Linux only
   script_bugtraq_id(49279);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,32 +44,36 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
-  the context of the browser, inject scripts, bypass certain security
-  restrictions, or cause a denial-of-service condition.");
+  the context of the browser, inject scripts, bypass certain security restrictions, or cause a denial-of-service condition.");
+
   script_tag(name:"affected", value:"Google Chrome version prior to 13.0.782.215 on Linux.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - Multiple use-after-free error exists within the handling of features like
-    line boxes, counter nodes, custom fonts and text searching.
+  line boxes, counter nodes, custom fonts and text searching.
 
   - A double free error exists in libxml when handling XPath expression.
 
   - An error related to empty origins allows attackers to violate the
-    cross-origin policy.
+  cross-origin policy.
 
   - An integer overflow error in uniform arrays.
 
   - Improper usage of memset() library function in the PDF implementation.");
+
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 13.0.782.215 or later.");
+
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
-
 
 include("version_func.inc");
 

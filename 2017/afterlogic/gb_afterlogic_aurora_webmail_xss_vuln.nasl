@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_afterlogic_aurora_webmail_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # AfterLogic Aurora/Webmail XSS Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:afterlogic:aurora';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140384");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-09-24T05:42:35+0000");
+  script_tag(name:"last_modification", value:"2019-09-24 05:42:35 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-09-21 12:49:43 +0700 (Thu, 21 Sep 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -49,7 +48,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_afterlogic_aurora_webmail_detect.nasl");
-  script_mandatory_keys("afterlogic_aurora_webmail/installed");
+  script_mandatory_keys("afterlogic_aurora_webmail/detected");
 
   script_tag(name:"summary", value:"AfterLogic Aurora and WebMail are prone to a cross-site scripting
 vulnerability.");

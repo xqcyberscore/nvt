@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-aaados.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IOS XE Software AAA Login Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6393");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12313 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Cisco IOS XE Software AAA Login Denial of Service Vulnerability");
 
@@ -57,7 +56,7 @@ condition.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-09-29 16:00:26 +0700 (Thu, 29 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -74,7 +73,7 @@ if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
 		'16.2.1',
-		'3.18.0aS',
+		'3.18.0a.S',
 		'3.18.0S',
 		'3.8.0E',
 		'3.8.1E',
@@ -104,13 +103,13 @@ affected = make_list(
 		'2.6.1',
 		'2.6.2',
 		'2.6.2a',
-		'3.1.3aS',
+		'3.1.3a.S',
 		'3.1.0S',
 		'3.1.1S',
 		'3.1.2S',
 		'3.1.3S',
 		'3.1.4S',
-		'3.1.4aS',
+		'3.1.4a.S',
 		'3.1.5S',
 		'3.1.6S',
 		'3.1.0SG',
@@ -154,7 +153,7 @@ affected = make_list(
 		'3.3.1XO',
 		'3.3.2XO',
 		'3.4.0S',
-		'3.4.0aS',
+		'3.4.0a.S',
 		'3.4.1S',
 		'3.4.2S',
 		'3.4.3S',
@@ -184,7 +183,7 @@ affected = make_list(
 		'3.6.4E',
 		'3.6.0E',
 		'3.6.1E',
-		'3.6.2aE',
+		'3.6.2a.E',
 		'3.6.2E',
 		'3.6.3E',
 		'3.6.0S',
@@ -195,15 +194,15 @@ affected = make_list(
 		'3.7.1E',
 		'3.7.2E',
 		'3.7.0S',
-		'3.7.0bS',
-		'3.7.0xaS',
+		'3.7.0b.S',
+		'3.7.0xa.S',
 		'3.7.1S',
-		'3.7.1aS',
+		'3.7.1a.S',
 		'3.7.2S',
-		'3.7.2tS',
+		'3.7.2t.S',
 		'3.7.3S',
 		'3.7.4S',
-		'3.7.4aS',
+		'3.7.4a.S',
 		'3.7.5S',
 		'3.7.6S',
 		'3.7.7S',
@@ -211,16 +210,16 @@ affected = make_list(
 		'3.8.1S',
 		'3.8.2S',
 		'3.9.0S',
-		'3.9.0aS',
+		'3.9.0a.S',
 		'3.9.1S',
-		'3.9.1aS',
+		'3.9.1a.S',
 		'3.9.2S',
 		'3.10.0S',
-		'3.10.0aS',
+		'3.10.0a.S',
 		'3.10.1S',
-		'3.10.1xbS',
+		'3.10.1xb.S',
 		'3.10.2S',
-		'3.10.2tS',
+		'3.10.2t.S',
 		'3.10.3S',
 		'3.10.4S',
 		'3.10.5S',
@@ -237,11 +236,11 @@ affected = make_list(
 		'3.12.4S',
 		'3.12.2S',
 		'3.12.3S',
-		'3.13.2aS',
-		'3.13.5aS',
+		'3.13.2a.S',
+		'3.13.5a.S',
 		'3.13.5S',
 		'3.13.0S',
-		'3.13.0aS',
+		'3.13.0a.S',
 		'3.13.1S',
 		'3.13.2S',
 		'3.13.3S',
@@ -250,23 +249,23 @@ affected = make_list(
 		'3.14.1S',
 		'3.14.2S',
 		'3.14.3S',
-		'3.15.1cS',
+		'3.15.1c.S',
 		'3.15.3S',
 		'3.15.0S',
 		'3.15.1S',
 		'3.15.2S',
-		'3.17.1aS',
+		'3.17.1a.S',
 		'3.17.0S',
 		'3.17.1S',
 		'16.1.1',
 		'16.1.2',
-		'3.16.2bS',
+		'3.16.2b.S',
 		'3.16.0S',
-		'3.16.0cS',
+		'3.16.0c.S',
 		'3.16.1S',
-		'3.16.1aS',
+		'3.16.1a.S',
 		'3.16.2S',
-		'3.16.2aS' );
+		'3.16.2a.S' );
 
 foreach af ( affected )
 {

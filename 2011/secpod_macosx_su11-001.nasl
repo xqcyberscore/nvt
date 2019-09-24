@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_su11-001.nasl 14307 2019-03-19 10:09:27Z cfischer $
 #
 # Mac OS X v10.6.6 Multiple Vulnerabilities (2011-001)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902470");
-  script_version("$Revision: 14307 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:09:27 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_cve_id("CVE-2011-0172", "CVE-2010-1452", "CVE-2010-2068", "CVE-2011-0173",
                 "CVE-2011-0174", "CVE-2011-0175", "CVE-2011-0176", "CVE-2011-0177",
@@ -39,7 +38,7 @@ if(description)
                 "CVE-2010-1324", "CVE-2010-4020", "CVE-2010-4021", "CVE-2011-0182",
                 "CVE-2011-0183", "CVE-2010-4008", "CVE-2010-4494", "CVE-2010-3089",
                 "CVE-2006-7243", "CVE-2010-2950", "CVE-2010-3709", "CVE-2010-3710",
-                "CVE-2010-4409", "CVE-2010-3436", "CVE-2010-3709", "CVE-2010-4150",
+                "CVE-2010-4409", "CVE-2010-3436",
                 "CVE-2011-0184", "CVE-2011-1417", "CVE-2011-0186", "CVE-2010-4009",
                 "CVE-2010-3801", "CVE-2011-0187", "CVE-2010-3802", "CVE-2011-0188",
                 "CVE-2010-3069", "CVE-2010-3315", "CVE-2011-0189", "CVE-2010-3814",
@@ -54,7 +53,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Mac OS X v10.6.6 Multiple Vulnerabilities (2011-001)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT1222");
-  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce//2011//Mar/msg00006.html");
+  script_xref(name:"URL", value:"https://lists.apple.com/archives/security-announce//2011//Mar/msg00006.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
   script_category(ACT_GATHER_INFO);
@@ -65,6 +64,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, inject scripts, bypass certain security
   restrictions or cause a denial-of-service condition.");
+
   script_tag(name:"affected", value:"X11,
 
   ATS,
@@ -116,9 +116,12 @@ if(description)
   AppleScript,
 
   File Quarantine");
+
   script_tag(name:"insight", value:"Please see the references for more information on the vulnerabilities.");
+
   script_tag(name:"solution", value:"Upgrade to Mac OS X 10.6.7 or Run Mac Updates and update the Security
   Update 2011-001");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Mac OS X 10.6.6 Update/Mac OS X Security Update 2011-001.");
 

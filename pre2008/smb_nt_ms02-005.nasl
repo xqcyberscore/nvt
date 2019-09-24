@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-005.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # IE 5.01 5.5 6.0 Cumulative patch (890923)
 #
@@ -31,14 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10861");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0842", "CVE-2004-0727", "CVE-2004-0216", "CVE-2004-0839",
                 "CVE-2004-0844", "CVE-2004-0843", "CVE-2004-0841", "CVE-2004-0845",
                 "CVE-2003-0814", "CVE-2003-0815", "CVE-2003-0816", "CVE-2003-0817",
                 "CVE-2003-0823", "CVE-2004-0549", "CVE-2004-0566", "CVE-2003-1048",
-                "CVE-2001-1325", "CVE-2001-0149", "CVE-2001-0727", "CVE-2001-0875",
                 "CVE-2001-1325", "CVE-2001-0149", "CVE-2001-0727", "CVE-2001-0875",
                 "CVE-2001-0339", "CVE-2001-0002", "CVE-2002-0190", "CVE-2002-0026",
                 "CVE-2003-1326", "CVE-2002-0027", "CVE-2002-0022", "CVE-2003-1328",
@@ -46,7 +44,7 @@ if(description)
                 "CVE-2003-0233", "CVE-2003-0309", "CVE-2003-0113", "CVE-2003-0114",
                 "CVE-2003-0115", "CVE-2003-0116", "CVE-2003-0531", "CVE-2003-0809",
                 "CVE-2003-0530", "CVE-2003-1025", "CVE-2003-1026", "CVE-2003-1027",
-                "CVE-2005-0554", "CVE-2005-0554", "CVE-2005-0555");
+                "CVE-2005-0553", "CVE-2005-0554", "CVE-2005-0555");
   script_bugtraq_id(11388, 11385, 11383, 11381, 11377, 11367, 11366, 10473, 8565,
                     9009, 9012, 9013, 9014, 9015, 9182, 9663, 9798, 12477, 12475,
                     12473, 12530, 13123, 13117, 13120);
@@ -68,7 +66,7 @@ if(description)
 
   script_tag(name:"solution", value:"The vendor has released updates, please see the references for more information.");
 
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms05-020.mspx");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2005/ms05-020");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

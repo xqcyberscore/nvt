@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-09-20T05:44:49+0000");
-  script_tag(name:"last_modification", value:"2019-09-20 05:44:49 +0000 (Fri, 20 Sep 2019)");
+  script_version("2019-09-23T08:13:09+0000");
+  script_tag(name:"last_modification", value:"2019-09-23 08:13:09 +0000 (Mon, 23 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1043,6 +1043,13 @@ function check_http_banner( port, banner ) {
     # nb: More detailed OS Detection covered in gsf/gb_ewon_flexy_cosy_http_detect.nasl
     if( egrep( pattern:"^Server: eWON", string:banner, icase:FALSE ) ) {
       register_and_report_os( os:"eWON Firmware", cpe:"cpe:/o:ewon:ewon_firmware", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
+
+    # Server: xxxxxxxx-xxxxx
+    # nb: On /remote/login?lang=en the service is also setting empty SVPNCOOKIE and SVPNNETWORKCOOKIE cookies.
+    if( egrep( pattern:"^Server: xxxxxxxx-xxxxx", string:banner, icase:FALSE ) ) {
+      register_and_report_os( os:"FortiOS", cpe:"cpe:/o:fortinet:fortios", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su12-004.nasl 14307 2019-03-19 10:09:27Z cfischer $
 #
 # Mac OS X v10.6.8 Multiple Vulnerabilities (2012-004)
 #
@@ -27,20 +26,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802968");
-  script_version("$Revision: 14307 $");
+  script_version("2019-09-20T11:01:01+0000");
   script_cve_id("CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053", "CVE-2012-0650",
                 "CVE-2012-1173", "CVE-2012-3719", "CVE-2012-0831", "CVE-2012-1172",
                 "CVE-2012-1823", "CVE-2012-2143", "CVE-2012-2311", "CVE-2012-2386",
                 "CVE-2012-2688", "CVE-2012-0671", "CVE-2012-0670", "CVE-2012-3722",
                 "CVE-2012-0668", "CVE-2011-3368", "CVE-2011-3607", "CVE-2011-4317",
-                "CVE-2011-3026", "CVE-2011-3048", "CVE-2011-4599", "CVE-2011-3048",
-                "CVE-2011-3389");
+                "CVE-2011-3026", "CVE-2011-3048", "CVE-2011-4599", "CVE-2011-3389",
+                "CVE-2012-1667", "CVE-2012-3718", "CVE-2012-3720");
   script_bugtraq_id(51705, 51407, 51706, 55623, 52891, 55623, 51954, 53403, 49778,
                     53388, 53729, 47545, 54638, 53584, 53582, 55612, 49957, 50494,
                     50802, 52049, 52830, 51006, 52830);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:09:27 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2012-09-25 19:33:16 +0530 (Tue, 25 Sep 2012)");
   script_name("Mac OS X v10.6.8 Multiple Vulnerabilities (2012-004)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5501");

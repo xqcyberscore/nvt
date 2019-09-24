@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160127-ntpd.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Multiple Vulnerabilities in Network Time Protocol Daemon Affecting Cisco Products: January 2016
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-7974", "CVE-2015-7975", "CVE-2015-7976", "CVE-2015-7978", "CVE-2015-7977", "CVE-2015-7979", "CVE-2015-8138", "CVE-2015-8139", "CVE-2015-8140", "CVE-2015-8158", "CVE-2015-7973");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_version("$Revision: 12149 $");
+  script_version("2019-09-24T04:41:47+0000");
 
   script_name("Multiple Vulnerabilities in Network Time Protocol Daemon Affecting Cisco Products: January 2016");
 
@@ -81,7 +80,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-05-09 17:40:21 +0200 (Mon, 09 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -204,7 +203,7 @@ affected = make_list(
 		'3.9.1S',
 		'3.9.2S',
 		'3.10.0S',
-		'3.10.0aS',
+		'3.10.0a.S',
 		'3.10.1S',
 		'3.10.2S',
 		'3.10.3S',

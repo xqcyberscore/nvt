@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2150_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for firefox USN-2150-1
 #
@@ -27,14 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841757");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-09-20T11:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-09-20 11:01:01 +0000 (Fri, 20 Sep 2019)");
   script_tag(name:"creation_date", value:"2014-03-20 09:49:40 +0530 (Thu, 20 Mar 2014)");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1497", "CVE-2014-1498",
                 "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1502", "CVE-2014-1504",
                 "CVE-2014-1505", "CVE-2014-1508", "CVE-2014-1509", "CVE-2014-1510",
-                "CVE-2014-1511", "CVE-2014-1512", "CVE-2014-1513", "CVE-2014-1514",
-                "CVE-2014-1508");
+                "CVE-2014-1511", "CVE-2014-1512", "CVE-2014-1513", "CVE-2014-1514");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for firefox USN-2150-1");

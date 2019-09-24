@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_info_disc_n_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Bugzilla Information Disclosure and Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:mozilla:bugzilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803173");
-  script_version("$Revision: 11336 $");
-  script_cve_id("CVE-2013-0785", "CVE-2013-0785");
+  script_version("2019-09-24T10:10:52+0000");
+  script_cve_id("CVE-2013-0785", "CVE-2013-0786");
   script_bugtraq_id(58060, 58001);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-09-24 10:10:52 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-03-01 10:58:42 +0530 (Fri, 01 Mar 2013)");
 
   script_name("Bugzilla Information Disclosure and Cross-Site Scripting Vulnerabilities");
