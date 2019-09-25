@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_ntp_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # EMC Isilon OneFS Devices Detection (NTP)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140232");
-  script_version("$Revision: 8142 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+  script_version("2019-09-24T10:41:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-24 10:41:39 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-03-31 13:50:07 +0200 (Fri, 31 Mar 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,23 +46,25 @@ This script performs NTP based detection of EMC Isilon OneFS devices.");
   script_family("Product detection");
   script_dependencies("ntp_open.nasl");
   script_require_udp_ports("Services/udp/ntp", 123);
-  script_mandatory_keys("Host/OS/ntp");
+  script_mandatory_keys("ntp/system_banner/available");
 
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-if( ! os = get_kb_item("Host/OS/ntp") ) exit( 0 );
+port = get_port_for_service(default: 123, ipproto: "udp", proto: "ntp");
 
-if( "Isilon OneFS" >< os )
-{
+if( ! os = get_kb_item("ntp/" + port + "/system_banner") )
+  exit( 0 );
+
+if( "Isilon OneFS" >< os ) {
   version = "unknown";
 
   vers = eregmatch( pattern:"Isilon OneFS/v([0-9.]+)", string:os );
-  if( ! isnull( vers[1] ) )
-  {
+  if( ! isnull( vers[1] ) ) {
     version = vers[1];
     set_kb_item(name: "emc_isilon_onefs/version", value: version);
   }
@@ -74,13 +75,12 @@ if( "Isilon OneFS" >< os )
   if (!cpe)
     cpe = 'cpe:/o:emc:isilon_onefs';
 
-  register_product(cpe: cpe, port: 123, proto:"udp", service: "ntp");
+  register_product(cpe: cpe, port: port, proto:"udp", service: "ntp");
 
   log_message(data: build_detection_report(app: "EMC Isilon OneFS", version: version, install: "123/udp",
                                            cpe: cpe, concluded: os),
-              port: 123, proto: 'udp');
+              port: port, proto: "udp");
   exit(0);
 }
 
 exit(0);
-

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_ntp_info.nasl 11966 2018-10-18 13:56:21Z cfischer $
 #
 # Wrapper for Nmap NTP Info NSE script.
 #
@@ -29,14 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801814");
-  script_version("$Revision: 11966 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_version("2019-09-24T10:41:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-24 10:41:39 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Nmap NSE: NTP Info");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
   script_dependencies("nmap_nse.nasl", "ntp_open.nasl");
@@ -48,18 +46,20 @@ if(description)
 
   This is a wrapper on the Nmap Security Scanner's ntp-info.nse.");
 
+  script_tag(name:"qod_type", value:"remote_analysis");
+
   exit(0);
 }
 
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
- exit(0);
+  exit(0);
 }
 
-port = get_kb_item("Services/udp/ntp");
-if(!port) port = 123;
-if(!get_udp_port_state(port)) exit(0);
+include("misc_func.inc");
+
+port = get_port_for_service(default:123, ipproto:"udp", proto:"ntp");
 
 argv = make_list("nmap", "-sU", "--script=ntp-info.nse", "-p", port, get_host_ip());
 
@@ -82,25 +82,25 @@ if(res)
 {
   foreach line (split(res))
   {
-    if(ereg(pattern:"^\|",string:line)) {
-      result +=  substr(chomp(line),2) + '\n';
+    if(ereg(pattern:"^\|", string:line)) {
+      result += substr(chomp(line), 2) + '\n';
     }
 
     error = eregmatch(string:line, pattern:"^nmap: (.*)$");
     if (error) {
       msg = string('Nmap command failed with following error message:\n', line);
-      log_message(data : msg, port:port);
+      log_message(data:msg, port:port, proto:"udp");
     }
   }
 
   if("ntp-info" >< result) {
     msg = string('Result found by Nmap Security Scanner (ntp-info.nse) ',
                 'http://nmap.org:\n\n', result);
-    log_message(data : msg, port:port);
+    log_message(data:msg, port:port, proto:"udp");
   }
 }
 else
 {
   msg = string('Nmap command failed entirely:\n');
-  log_message(data : msg, port:port);
+  log_message(data:msg, port:port, proto:"udp");
 }

@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140347");
-  script_version("2019-05-02T07:54:33+0000");
-  script_tag(name:"last_modification", value:"2019-05-02 07:54:33 +0000 (Thu, 02 May 2019)");
+  script_version("2019-09-24T10:41:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-24 10:41:39 +0000 (Tue, 24 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-09-04 15:55:36 +0700 (Mon, 04 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,15 +47,16 @@ This script performs NTP based detection of NetApp Data ONTAP devices.");
   script_family("Product detection");
   script_dependencies("ntp_open.nasl");
   script_require_udp_ports("Services/udp/ntp", 123);
-  script_mandatory_keys("Host/OS/ntp");
+  script_mandatory_keys("ntp/system_banner/available");
 
   exit(0);
 }
 
-if (!port = get_kb_item("Services/udp/ntp"))
-  exit(0);
+include("misc_func.inc");
 
-if (!os = get_kb_item("Host/OS/ntp"))
+port = get_port_for_service(default: 123, ipproto: "udp", proto: "ntp");
+
+if (!os = get_kb_item("ntp/" + port + "/system_banner"))
   exit(0);
 
 if ("Data ONTAP" >< os) {

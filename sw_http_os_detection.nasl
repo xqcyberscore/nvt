@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-09-23T08:13:09+0000");
-  script_tag(name:"last_modification", value:"2019-09-23 08:13:09 +0000 (Mon, 23 Sep 2019)");
+  script_version("2019-09-25T06:10:53+0000");
+  script_tag(name:"last_modification", value:"2019-09-25 06:10:53 +0000 (Wed, 25 Sep 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -709,67 +709,77 @@ function check_http_banner( port, banner ) {
     # Apache/2.2.3 (Debian) mod_python/3.2.10 Python/2.4.4 PHP/5.2.0-8+etch16 mod_perl/2.0.2 Perl/v5.8.8
     # nb: Basically those should be covered by the previous banner for Apache but there might be other banners for different products.
     # nb: Keep in sync with the PHP banner in check_php_banner()
-    if( "+buster" >< banner ) {
+    if( banner =~ "[+-~.]buster" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+stretch" >< banner ) {
+    } else if( banner =~ "[+-~.]stretch" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+jessie" >< banner ) {
+    } else if( banner =~ "[+-~.]jessie" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+wheezy" >< banner ) {
+    } else if( banner =~ "[+-~.]wheezy" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+squeeze" >< banner ) {
+    } else if( banner =~ "[+-~.]squeeze" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+lenny" >< banner ) {
+    } else if( banner =~ "[+-~.]lenny" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+etch" >< banner ) {
+    } else if( banner =~ "[+-~.]etch" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+sarge" >< banner ) {
+    } else if( banner =~ "[+-~.]sarge" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+woody" >< banner ) {
+    } else if( banner =~ "[+-~.]woody" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"3.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+potato" >< banner ) {
+    } else if( banner =~ "[+-~.]potato" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"2.2", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+slink" >< banner ) {
+    } else if( banner =~ "[+-~.]slink" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"2.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+hamm" >< banner ) {
+    } else if( banner =~ "[+-~.]hamm" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"2.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+bo" >< banner ) {
+    } else if( banner =~ "[+-~.]bo" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"1.3", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+rex" >< banner ) {
+    } else if( banner =~ "[+-~.]rex" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"1.2", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+buzz" >< banner ) {
+    } else if( banner =~ "[+-~.]buzz" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"1.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }
 
-    if( "+deb" >< banner || "~dotdeb+" >< banner || "~deb" >< banner || "~bpo" >< banner ) {
+    if( banner =~ "[+-~.](deb|dotdeb|bpo)" ) {
 
       # nb: The order matters in case of backports which might have something like +deb9~bpo8
       # nb: Keep in sync with the PHP banner in check_php_banner()
-      if( "+deb6" >< banner || "~deb6" >< banner || "~dotdeb+squeeze" >< banner || "~bpo6" >< banner ) {
+      # ~dotdeb+squeeze
+      # +deb6
+      # ~deb6
+      # ~bpo6
+      # ~dotdeb+8
+      # X-Powered-By: PHP/7.3.9-1~deb10u1
+      if( banner =~ "[+-~.](deb|dotdeb\+|bpo)4" ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( banner =~ "[+-~.](deb|dotdeb\+|bpo)5" ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( banner =~ "[+-~.](deb|dotdeb\+|bpo)6" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
-      } else if( "+deb7" >< banner || "~dotdeb+7" >< banner || "~bpo7" >< banner ) {
+      } else if( banner =~ "[+-~.](deb|dotdeb\+|bpo)7" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else if( "+deb8" >< banner || "~dotdeb+8" >< banner || "~bpo8" >< banner ) {
+      } else if( banner =~ "[+-~.](deb|dotdeb\+|bpo)8" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else if( "+deb9" >< banner ) {
+      } else if( banner =~ "[+-~.](deb|dotdeb\+|bpo)9" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else if( "+deb10" >< banner ) {
+      } else if( banner =~ "[+-~.](deb|dotdeb\+|bpo)10" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -1246,67 +1256,77 @@ function check_php_banner( port, host ) {
 
     # nb: The naming of the sury.org PHP banners have some special syntax like: PHP/7.1.7-1+0~20170711133844.5+jessie~1.gbp5284f4
     # nb: Keep in sync with the PHP banner in check_http_banner()
-    if( "+buster" >< phpBanner ) {
+    if( phpBanner =~ "[+-~.]buster" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+stretch" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]stretch" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+jessie" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]jessie" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+wheezy" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]wheezy" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+squeeze" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]squeeze" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+lenny" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]lenny" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+etch" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]etch" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+sarge" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]sarge" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+woody" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]woody" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"3.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+potato" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]potato" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"2.2", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+slink" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]slink" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"2.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+hamm" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]hamm" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"2.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+bo" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]bo" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"1.3", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+rex" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]rex" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"1.2", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
-    } else if( "+buzz" >< phpBanner ) {
+    } else if( phpBanner =~ "[+-~.]buzz" ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"1.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }
 
-    if( "+deb" >< phpBanner || "~dotdeb+" >< phpBanner || "~deb" >< phpBanner || "~bpo" >< phpBanner ) {
+    if( phpBanner =~ "[+-~.](deb|dotdeb|bpo)" ) {
 
       # nb: The order matters in case of backports which might have something like +deb9~bpo8
       # nb: Keep in sync with the PHP banner in check_http_banner()
-      if( "+deb6" >< phpBanner || "~deb6" >< phpBanner || "~dotdeb+squeeze" >< phpBanner || "~bpo6" >< phpBanner ) {
+      # ~dotdeb+squeeze
+      # +deb6
+      # ~deb6
+      # ~bpo6
+      # ~dotdeb+8
+      # X-Powered-By: PHP/7.3.9-1~deb10u1
+      if( phpBanner =~ "[+-~.](deb|dotdeb\+|bpo)(4|etch)" ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( phpBanner =~ "[+-~.](deb|dotdeb\+|bpo)5" ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( phpBanner =~ "[+-~.](deb|dotdeb\+|bpo)6" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
-      } else if( "+deb7" >< phpBanner || "~dotdeb+7" >< phpBanner || "~bpo7" >< phpBanner ) {
+      } else if( phpBanner =~ "[+-~.](deb|dotdeb\+|bpo)7" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else if( "+deb8" >< phpBanner || "~dotdeb+8" >< phpBanner || "~bpo8" >< phpBanner ) {
+      } else if( phpBanner =~ "[+-~.](deb|dotdeb\+|bpo)8" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else if( "+deb9" >< phpBanner ) {
+      } else if( phpBanner =~ "[+-~.](deb|dotdeb\+|bpo)9" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else if( "+deb10" >< phpBanner ) {
+      } else if( phpBanner =~ "[+-~.](deb|dotdeb\+|bpo)10" ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );

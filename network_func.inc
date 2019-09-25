@@ -31,10 +31,11 @@
 
 # @brief test if address is on a Private LAN, reserved or not routable address.
 #
-# @param addr the (optional IP address to test)
+# @param addr the (optional IPv4/IPv6 address to test)
 #
 # @return TRUE if the tested address is on a Private LAN, reserved or not routable address.
-#         FALSE otherwise.
+#         FALSE otherwise and NULL if an invalid IPv4/IPV6 address was passed to the addr
+#         parameter.
 #
 function is_private_addr( addr ) {
 
@@ -62,31 +63,43 @@ function is_private_addr( addr ) {
     a = get_host_ip();
   } else {
     a = addr;
+    if( a !~ "^[0-9a-z]+:" && a !~ "^0*[0-9]+\." ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#is_private_addr: Invalid IPv4/IPv6 address passed to 'addr' parameter: " + addr );
+      return NULL;
+    }
   }
 
   # nb: The next checks are for the "Mixed" configuration in network_type
 
-  # Localhost + RFC1918
-  if( a =~ "^0*(127|10)\.[0-9]+\.[0-9]+\.[0-9]+" )
-    return TRUE;
+  # nb: Don't use TARGET_IS_IPV6 because the IP address might be passed via the 'addr' parameter as well.
+  if( ":" >< a ) {
 
-  # RFC 1918 + Link local (RFC 3330)
-  if( a =~ "^0*(192\.0*168|169\.0*254)\.[0-9]+\.[0-9]+" )
-    return TRUE;
+    # Unique local address (ULA): https://en.wikipedia.org/wiki/Unique_local_address
+    if( a =~ "^f[cd][0-9a-f]+:" )
+      return TRUE;
 
-  # RFC 1918
-  if( a =~ "^0*172\.0*(1[6-9]|2[0-9]|3[01])\.[0-9]+\.[0-9]+" )
-    return TRUE;
+  } else {
 
-  # TEST-NET - RFC 3330
-  if( a =~ "^0*192\.0*0\.0*2\.[0-9]+" )
-    return TRUE;
+    # Localhost + RFC1918
+    if( a =~ "^0*(127|10)\.[0-9]+\.[0-9]+\.[0-9]+" )
+      return TRUE;
 
-  # RFC 2544
-  if( a =~ "^0*192\.0*1[89]\.[0-9]+\.[0-9]+" )
-    return TRUE;
+    # RFC 1918 + Link local (RFC 3330)
+    if( a =~ "^0*(192\.0*168|169\.0*254)\.[0-9]+\.[0-9]+" )
+      return TRUE;
 
-  # TODO: Add IPv6
+    # RFC 1918
+    if( a =~ "^0*172\.0*(1[6-9]|2[0-9]|3[01])\.[0-9]+\.[0-9]+" )
+      return TRUE;
+
+    # TEST-NET - RFC 3330
+    if( a =~ "^0*192\.0*0\.0*2\.[0-9]+" )
+      return TRUE;
+
+    # RFC 2544
+    if( a =~ "^0*192\.0*1[89]\.[0-9]+\.[0-9]+" )
+      return TRUE;
+  }
 
   return FALSE;
 }
@@ -278,15 +291,25 @@ function check_udp_port_status( dport ) {
   }
 }
 
-## This function will return TRUE if Radius Server is running,
-## return FALSE if Radius Server dead
+# @brief Tests if the remote Radius Server is alive.
+#
+# @param port The port of the remove Radius Server
+#
+# @return TRUE if the Radius Server is alive/available, FALSE otherwise
+#         and NULL if no port was passed to the port parameter.
 function is_radius_alive( port ) {
 
-  local_var port, username, data, soc, buf;
+  local_var port;
+  local_var vt_strings, username, data, soc, buf;
 
-  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#is_radius_alive" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#is_radius_alive" );
+    return NULL;
+  }
 
-  username = string( "OpenVAS" );
+  vt_strings = get_vt_strings();
+
+  username = vt_strings["default"];
   data = raw_string( 0x40, 0xfa, 0xb3, 0x17, 0x23, 0xfd, 0xe5, 0x7f, 0x4a, 0x02,
                      0x74, 0x55, 0x15, 0x0c, 0x45, 0xeb ) +
          raw_string( 0x01, ( strlen( username ) + 2 ) ) +
