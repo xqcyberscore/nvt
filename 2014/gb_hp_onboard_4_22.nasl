@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_onboard_4_22.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # HP BladeSystem c-Class Onboard Administrator (OA) running OpenSSL, Remote Disclosure of Information
 #
@@ -32,9 +31,9 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105056");
   script_bugtraq_id(67899);
   script_cve_id("CVE-2014-0224");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11867 $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_version("2019-10-02T07:08:50+0000");
 
   script_name("HP BladeSystem c-Class Onboard Administrator Remote Disclosure of Information");
 
@@ -42,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67899");
   script_xref(name:"URL", value:"http://h20566.www2.hp.com/portal/site/hpsc/template.PAGE/public/kb/docDisplay/?spf_p.tpst=kbDocDisplay&spf_p.prp_kbDocDisplay=wsrp-navigationalState%3DdocId%253Demr_na-c04351097-1%257CdocLocale%253D%257CcalledBy%253D&javax.portlet.begCacheTok=com.vignette.cachetoken&javax.portlet.endCacheTok=com.vignette.cachetoken");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_tag(name:"creation_date", value:"2014-07-04 10:53:22 +0200 (Fri, 04 Jul 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

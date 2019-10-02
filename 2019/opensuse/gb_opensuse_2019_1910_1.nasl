@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852658");
-  script_version("2019-08-20T10:47:01+0000");
+  script_version("2019-10-02T07:08:50+0000");
   script_cve_id("CVE-2018-11782", "CVE-2019-0203");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-20 10:47:01 +0000 (Tue, 20 Aug 2019)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-08-16 02:01:24 +0000 (Fri, 16 Aug 2019)");
   script_name("openSUSE Update for subversion openSUSE-SU-2019:1910-1 (subversion)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ELSA-2014-1653.nasl 11688 2018-09-28 13:36:28Z cfischer $
 #
 # Oracle Linux Local Check
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.123278");
-  script_version("$Revision: 11688 $");
+  script_version("2019-10-02T07:08:50+0000");
   script_tag(name:"creation_date", value:"2015-10-06 14:01:40 +0300 (Tue, 06 Oct 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_name("Oracle Linux Local Check: ELSA-2014-1653");
   script_tag(name:"insight", value:"ELSA-2014-1653 - openssl security update. Please see the references for more insight.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
@@ -37,8 +36,8 @@ if(description)
   script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2014-1653");
   script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2014-1653.html");
   script_cve_id("CVE-2014-3566", "CVE-2014-0221", "CVE-2014-3505", "CVE-2014-3506", "CVE-2014-3508", "CVE-2014-3510", "CVE-2014-0224");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux5");

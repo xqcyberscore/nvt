@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2014-0006.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # VMware Security Updates for vCenter Server (VMSA-2014-0006)
 #
@@ -29,15 +28,15 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105057");
   script_cve_id("CVE-2014-0224", "CVE-2014-0198", "CVE-2010-5298", "CVE-2014-3470");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11194 $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_version("2019-10-02T07:08:50+0000");
   script_name("VMware Security Updates for vCenter Server (VMSA-2014-0006)");
 
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0006.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_tag(name:"creation_date", value:"2014-07-04 11:04:01 +0100 (Fri, 04 Jul 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

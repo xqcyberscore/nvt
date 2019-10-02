@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852707");
-  script_version("2019-09-27T07:41:55+0000");
+  script_version("2019-10-02T07:08:50+0000");
   script_cve_id("CVE-2019-13627");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-27 07:41:55 +0000 (Fri, 27 Sep 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-25 02:01:24 +0000 (Wed, 25 Sep 2019)");
   script_name("openSUSE Update for libgcrypt openSUSE-SU-2019:2161-1 (libgcrypt)");
   script_category(ACT_GATHER_INFO);

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891900");
-  script_version("2019-08-29T02:00:13+0000");
+  script_version("2019-10-02T07:08:50+0000");
   script_cve_id("CVE-2019-10092", "CVE-2019-10098");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-29 02:00:13 +0000 (Thu, 29 Aug 2019)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-08-29 02:00:13 +0000 (Thu, 29 Aug 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1900-1] apache2 security update)");
   script_category(ACT_GATHER_INFO);

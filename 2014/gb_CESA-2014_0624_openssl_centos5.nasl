@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881943");
-  script_version("$Revision: 14222 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-10-02T07:08:50+0000");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_tag(name:"creation_date", value:"2014-06-09 12:27:31 +0530 (Mon, 09 Jun 2014)");
   script_cve_id("CVE-2014-0224");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("CentOS Update for openssl CESA-2014:0624 centos5");
 
   script_tag(name:"affected", value:"openssl on CentOS 5");

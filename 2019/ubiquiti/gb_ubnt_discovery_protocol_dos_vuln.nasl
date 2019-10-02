@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141956");
-  script_version("2019-09-17T09:03:12+0000");
-  script_tag(name:"last_modification", value:"2019-09-17 09:03:12 +0000 (Tue, 17 Sep 2019)");
+  script_version("2019-10-01T10:29:29+0000");
+  script_tag(name:"last_modification", value:"2019-10-01 10:29:29 +0000 (Tue, 01 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-02-04 15:09:35 +0700 (Mon, 04 Feb 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,18 +47,18 @@ if (description)
   script_mandatory_keys("ubnt_discovery_proto/detected", "keys/is_public_addr");
 
   script_tag(name:"summary", value:"A publicly access Ubiquity device exposing the UBNT Discovery Protocol can
-be exploited to participate in a Distributed Denial of Service (DDoS) attack.");
+  be exploited to participate in a Distributed Denial of Service (DDoS) attack.");
 
   script_tag(name:"insight", value:"There are reports that there are ongoing attacks against devices with UBNT
-Discovery Protocol reachable which either result in a loss of device management or are used as a weak DDoS
-amplificatior.
+  Discovery Protocol reachable which either result in a loss of device management or are used as a weak DDoS
+  amplificatior.
 
-The basic attack technique consists of an attacker sending a valid query request to a UBNT server with the source
-address spoofed to be the victim's address. Since UBNT Discovery Protocol uses UDP this is trivialy done.
-When the UBNT server sends the response, it is sent instead to the victim. Because the size of the response is
-typically considerably larger than the request, the attacker is able to amplify the volume of traffic directed at
-the victim (the amplification factor is around 30-35x). By leveraging a botnet to perform additional spoofed
-queries, an attacker can produce an overwhelming amount of traffic with little effort.");
+  The basic attack technique consists of an attacker sending a valid query request to a UBNT server with the source
+  address spoofed to be the victim's address. Since UBNT Discovery Protocol uses UDP this is trivialy done.
+  When the UBNT server sends the response, it is sent instead to the victim. Because the size of the response is
+  typically considerably larger than the request, the attacker is able to amplify the volume of traffic directed at
+  the victim (the amplification factor is around 30-35x). By leveraging a botnet to perform additional spoofed
+  queries, an attacker can produce an overwhelming amount of traffic with little effort.");
 
   script_tag(name:"vuldetect", value:"Checks if the UBNT Discovery Protocol is reachable.");
 
@@ -79,7 +79,7 @@ include("network_func.inc");
 if (!is_public_addr())
   exit(0);
 
-if (!port = get_port_for_service(default: 10001, ipproto: "udp", proto: "ubnt discovery"))
+if (!port = get_port_for_service(default: 10001, ipproto: "udp", proto: "ubnt_discovery"))
   exit(0);
 
 security_message(data: "The UBNT Discovery Protocol is reachable over this port which might be used as a DDoS " +

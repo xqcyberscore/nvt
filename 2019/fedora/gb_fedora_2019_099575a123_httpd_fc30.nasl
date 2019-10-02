@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876711");
-  script_version("2019-08-28T12:06:42+0000");
+  script_version("2019-10-02T07:08:50+0000");
   script_cve_id("CVE-2019-10098", "CVE-2019-10092", "CVE-2019-10097");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-08-28 12:06:42 +0000 (Wed, 28 Aug 2019)");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-10-02 07:08:50 +0000 (Wed, 02 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-08-23 02:24:03 +0000 (Fri, 23 Aug 2019)");
   script_name("Fedora Update for httpd FEDORA-2019-099575a123");
   script_category(ACT_GATHER_INFO);
