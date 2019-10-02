@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mort_bay_jetty_mult_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Mort Bay Jetty Multiple Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800286");
-  script_version("2019-03-27T10:04:16+0000");
-  script_tag(name:"last_modification", value:"2019-03-27 10:04:16 +0000 (Wed, 27 Mar 2019)");
+  script_version("2019-09-26T06:54:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-26 06:54:12 +0000 (Thu, 26 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,16 +45,16 @@ if(description)
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
+  script_family("Web Servers");
   script_dependencies("gb_jetty_detect.nasl");
-  script_family("Web application abuses");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("Jetty/installed");
+  script_mandatory_keys("jetty/detected");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   HTML and script code in a user's browser session and execute arbitrary commands or overwrite files in the context
   of an affected site.");
 
-  script_tag(name:"affected", value:"Jetty version 6.0.0 to 7.0.0");
+  script_tag(name:"affected", value:"Jetty version 6.0.0 to 7.0.0.");
 
   script_tag(name:"insight", value:"Inputs passed to the query string to 'jsp/dump.jsp' and to Name or Value
   parameter in 'Session Dump Servlet' is not properly sanitised before being returned to the user.");
@@ -72,12 +71,14 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
 if (!port = get_app_port(cpe :CPE))
+  exit(0);
+
+if (!get_app_location(cpe: CPE, port: port))
   exit(0);
 
 xss = '<script>alert(/vt-xss-test/)</script>';
@@ -88,14 +89,14 @@ urls = make_list("/jspsnoop/ERROR/",
                  "/test/jsp/dump.jsp?",
                  "/jsp/expr.jsp?A=");
 
-foreach url (urls) {
- url = url + xss;
+foreach url(urls) {
+  url = url + xss;
 
- if(http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
-   report = report_vuln_url(port: port, url: url);
-   security_message(port: port, data: report);
-   exit(0);
- }
+  if(http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
+    report = report_vuln_url(port: port, url: url);
+    security_message(port: port, data: report);
+    exit(0);
+  }
 }
 
 url = '/dump/';
@@ -107,4 +108,4 @@ if (http_vuln_check(port: port, url: url, pattern: "<th[^>]+>getPathTranslated:[
   exit(0);
 }
 
-exit(0);
+exit(99);

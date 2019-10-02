@@ -28,19 +28,18 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108145");
-  script_version("2019-07-05T10:04:07+0000");
+  script_version("2019-09-27T07:10:39+0000");
   script_cve_id("CVE-2017-7569");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-04-19 07:57:33 +0200 (Wed, 19 Apr 2017)");
   script_name("vBulletin 'parse_url' Server Side Request Forgery (SSRF) Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
-  script_mandatory_keys("vBulletin/installed");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vbulletin/detected");
 
   script_xref(name:"URL", value:"https://www.vbulletin.com/forum/forum/vbulletin-announcements/vbulletin-announcements_aa/4367744-vbulletin-5-3-0-connect-is-now-available");
 
@@ -65,11 +64,17 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos['version'];
+path = infos['location'];
 
 if( version_is_less( version:vers, test_version:"5.3.0" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"5.3.0" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.3.0", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

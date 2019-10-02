@@ -28,21 +28,20 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108501");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-09-26T06:54:12+0000");
   script_cve_id("CVE-2018-12536");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-26 06:54:12 +0000 (Thu, 26 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-05 12:17:02 +0530 (Thu, 05 Jul 2018)");
   script_name("Eclipse Jetty Server InvalidPathException Information Disclosure Vulnerability (Windows)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_dependencies("gb_jetty_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Jetty/installed", "Host/runs_windows");
+  script_mandatory_keys("jetty/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://bugs.eclipse.org/bugs/show_bug.cgi?id=535670");
-  script_xref(name:"URL", value:"https://www.eclipse.org/jetty/");
 
   script_tag(name:"summary", value:"The host is installed with Eclipse Jetty
   Server and is prone to information disclosure vulnerability.");
@@ -56,7 +55,7 @@ if(description)
   to disclose sensitive information.");
 
   script_tag(name:"affected", value:"Eclipse Jetty Server versions 9.2.x, 9.3.x
-  before 9.3.24.v20180605 and 9.4.x before 9.4.11.v20180605");
+  before 9.3.24.v20180605 and 9.4.x before 9.4.11.v20180605.");
 
   script_tag(name:"solution", value:"Upgrade to Eclipse Jetty Server version
   9.3.24.v20180605 or 9.4.11.v20180605 or later as per the series. Please see the references for more information.");
@@ -70,26 +69,27 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jPort = get_app_port(cpe:CPE))
+if(!port = get_app_port(cpe:CPE))
   exit(0);
 
-if(!infos = get_app_version_and_location( cpe:CPE, port:jPort, exit_no_version:TRUE))
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, version_regex:"^[0-9]+\.[0-9]+\.[0-9]+", exit_no_version:TRUE))
   exit(0);
 
-jVer = infos['version'];
-jPath = infos['location'];
+vers = infos['version'];
+path = infos['location'];
 
-if(version_in_range(version:jVer, test_version:"9.2.0", test_version2:"9.3.24.20180604")){
+if(version_in_range(version:vers, test_version:"9.2.0", test_version2:"9.3.24.20180604")) {
   fix = "9.3.24.v20180605";
 }
-else if(version_in_range(version:jVer, test_version:"9.4.0", test_version2:"9.4.11.20180604")){
+
+else if(version_in_range(version:vers, test_version:"9.4.0", test_version2:"9.4.11.20180604")) {
   fix = "9.4.11.v20180605";
 }
 
-if(fix){
-  report = report_fixed_ver(installed_version:jVer, fixed_version:fix, install_path:jPath);
-  security_message(data:report, port:jPort);
+if(fix) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
+  security_message(data:report, port:port);
   exit(0);
 }
 
-exit(0);
+exit(99);

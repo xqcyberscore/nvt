@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10884");
-  script_version("2019-09-24T10:41:39+0000");
+  script_version("2019-09-25T14:09:47+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-24 10:41:39 +0000 (Tue, 24 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-25 14:09:47 +0000 (Wed, 25 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("NTP(d) Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -207,7 +207,7 @@ if( r ) {
                                       cpe:CPE,
                                       concluded:vers[0] );
     report += '\n\nIt was possible to gather the following information from the remote NTP host:\n\n' + list;
-    log_message( port:0, proto:"udp", data:report );
+    log_message( port:port, proto:"udp", data:report );
     exit( 0 );
   }
 }

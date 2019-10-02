@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mort_bay_jetty_mult_xss_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # Mort Bay Jetty Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800285");
-  script_version("$Revision: 13962 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 15:14:42 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-09-26T06:54:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-26 06:54:12 +0000 (Thu, 26 Sep 2019)");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,23 +45,23 @@ if(description)
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
+  script_family("Web Servers");
   script_dependencies("gb_jetty_detect.nasl");
-  script_family("Web application abuses");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("Jetty/installed");
+  script_mandatory_keys("jetty/detected");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-HTML and script code in a user's browser session in the context of an affected site allowing Cross-Site Scripting
-attacks.");
+  HTML and script code in a user's browser session in the context of an affected site allowing Cross-Site Scripting
+  attacks.");
 
-  script_tag(name:"affected", value:"Jetty version 6.0.x to 6.1.21");
+  script_tag(name:"affected", value:"Jetty version 6.0.x to 6.1.21.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to error in 'PATH_INFO' parameter, it is not
-properly sanitised data before used via the default URI under 'jspsnoop/', 'jspsnoop/ERROR/',
-'jspsnoop/IOException/' and 'snoop.jsp'");
+  properly sanitised data before used via the default URI under 'jspsnoop/', 'jspsnoop/ERROR/',
+  'jspsnoop/IOException/' and 'snoop.jsp'");
 
   script_tag(name:"summary", value:"This host is running Mort Bay Jetty and is prone to multiple Cross Site
-Scripting vulnerabilities.");
+  Scripting vulnerabilities.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -73,21 +72,23 @@ Scripting vulnerabilities.");
   exit(0);
 }
 
-
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-if (!jettyPort = get_app_port(cpe:CPE))
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!get_app_location(cpe: CPE, port: port))
   exit(0);
 
 url = "/test/jsp/dump.jsp?<script>alert(document.cookie)</script>";
 
-if (http_vuln_check(port: jettyPort, url: url, pattern: "<script>alert\(document" + ".cookie\)</script>",
+if (http_vuln_check(port: port, url: url, pattern: "<script>alert\(document" + ".cookie\)</script>",
                     check_header: TRUE)) {
-  report = report_vuln_url(port: jettyPort, url: url);
-  security_message(port: jettyPort, data: report);
+  report = report_vuln_url(port: port, url: url);
+  security_message(port: port, data: report);
   exit(0);
 }
 
-exit(0);
+exit(99);

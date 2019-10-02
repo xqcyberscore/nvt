@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_vbtube_xss_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # vBulletin vBTube Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,9 +26,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802209");
-  script_version("$Revision: 13994 $");
+  script_version("2019-09-27T07:10:39+0000");
   script_bugtraq_id(48280);
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,7 +43,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("vBulletin/installed");
+  script_mandatory_keys("vbulletin/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in context of an affected site.");
@@ -71,7 +70,6 @@ include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 CPE = "cpe:/a:vbulletin:vbulletin";
 

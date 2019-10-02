@@ -23,15 +23,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE_PREFIX = "cpe:/o:dlink";
+CPE_PREFIX = "cpe:/o:d-link";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108458");
-  script_version("2019-09-05T08:03:34+0000");
+  script_version("2019-09-30T11:51:41+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-05 08:03:34 +0000 (Thu, 05 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-30 11:51:41 +0000 (Mon, 30 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-09-04 09:45:51 +0200 (Tue, 04 Sep 2018)");
 
   script_name("D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability");

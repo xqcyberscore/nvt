@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.3.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.2.3 Clients unter Windows 10
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109034");
-  script_version("$Revision: 12387 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-09-27T05:58:04+0000");
+  script_tag(name:"last_modification", value:"2019-09-27 05:58:04 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-12-13 07:42:28 +0200 (Wed, 13 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -119,7 +118,7 @@ SecurityCenter2 = split(SecurityCenter2, keep:FALSE);
 if( max_index(SecurityCenter2) <= 1 ){
   desc = 'Es konnte kein Viren-Schutzprogramm im Security Center gefunden werden.\n';
   desc += 'Stellen Sie sicher, dass gleich- oder höherwertige Maßnahmen zum Schutz des\n';
-  desc += 'IT-Sytems vor einer Infektion mit Schadsoftware getroffen wurde.\n';
+  desc += 'IT-Systems vor einer Infektion mit Schadsoftware getroffen wurde.\n';
   result = 'nicht erfüllt';
 }else{
   desc = 'Folgende Schutzprogramme sind installiert:\n';

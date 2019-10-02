@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_init_php_flaw.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: vBulletin Init.PHP unspecified vulnerability
 #
 # Authors:
@@ -22,50 +21,54 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-#  Ref: vBulletin team
+CPE = "cpe:/a:vbulletin:vbulletin";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16203");
-  script_version("$Revision: 14336 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-09-27T07:10:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12299);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("vBulletin Init.PHP unspecified vulnerability");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("http_version.nasl", "vbulletin_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("vBulletin/installed");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to vBulletin 3.0.5 or newer");
-  script_tag(name:"summary", value:"The remote host is running vBulletin, a web based bulletin board system written
-in PHP.
+  script_mandatory_keys("vbulletin/detected");
 
-The remote version of this software is vulnerable to an unspecified issue. It is
-reported that versions 3.0.0 through to 3.0.4 are prone to a security flaw
-in 'includes/init.php'. Successful exploitation requires that 'register_globals'
-is enabled.
+  script_tag(name:"solution", value:"Upgrade to vBulletin 3.0.5 or newer.");
 
-*** As the scanner solely relied on the banner of the remote host
-*** this might be a false positive");
+  script_tag(name:"summary", value:"It is reported that versions 3.0.0 through to 3.0.4 of
+  vBulletin are prone to a security flaw in 'includes/init.php'. Successful exploitation
+  requires that 'register_globals' is enabled.");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/13901/");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
-include("http_func.inc");
+include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
 
-install = get_kb_item(string("www/", port, "/vBulletin"));
-if (isnull(install)) exit(0);
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
-  ver = matches[1];
-  if ( ver =~ '3.0(\\.[0-4])?[^0-9]' ) security_message(port);
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(version_in_range(version:vers, test_version:"3.0.0", test_version2:"3.0.4")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"3.0.5", install_path:path);
+  security_message(data:report, port:port);
+  exit(0);
 }
+
+exit(99);

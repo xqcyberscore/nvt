@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_48106.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # vBulletin vBExperience 'sortorder' Parameter Cross Site Scripting Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103171");
-  script_version("$Revision: 13994 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
+  script_version("2019-09-27T07:10:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2011-06-06 13:42:32 +0200 (Mon, 06 Jun 2011)");
   script_bugtraq_id(48106);
   script_tag(name:"cvss_base", value:"4.3");
@@ -46,7 +45,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("vBulletin/installed");
+  script_mandatory_keys("vbulletin/detected");
 
   script_tag(name:"summary", value:"vBulletin vBExperience is prone to a cross-site scripting
   vulnerability because it fails to sufficiently sanitize user-supplied data.");
@@ -71,7 +70,6 @@ include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-include("version_func.inc");
 
 CPE = "cpe:/a:vbulletin:vbulletin";
 

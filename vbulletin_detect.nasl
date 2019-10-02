@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_detect.nasl 10852 2018-08-09 08:24:32Z cfischer $
 #
 # vBulletin Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17282");
-  script_version("$Revision: 10852 $");
+  script_version("2019-09-27T07:10:39+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:24:32 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("vBulletin Detection");
   script_category(ACT_GATHER_INFO);
@@ -58,30 +57,40 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", "/forum", "/vbulletin", "/vbulletin/forum", cgi_dirs( port:port ) ) ) {
 
   foreach file( make_list( "/index.php", "/content.php" ) ) {
 
     install = dir;
-    if( dir == "/" ) dir = "";
+    if( dir == "/" )
+      dir = "";
 
     res = http_get_cache( item:dir + file, port:port );
+    if( ! res )
+      continue;
 
-    if( res =~ "^HTTP/1\.[01] 200" && egrep( pattern:" content=.vBulletin ", string:res, icase:TRUE ) ) {
+    if( res =~ "^HTTP/1\.[01] 200" &&
+        egrep( pattern:'( content=.vBulletin |alt="Logo" title="Powered by vBulletin"|id="footer-vb-copyright">Powered by.+vBulletin|<meta name="generator" content="vBulletin)', string:res, icase:TRUE ) ) {
 
       version = "unknown";
 
-      ver = eregmatch( pattern:"vBulletin ([0-9.]+)", string:res, icase:TRUE );
+      ver = eregmatch( pattern:'<meta name="generator" content="vBulletin ([0-9.]+)', string:res );
+      if( isnull( ver[1] ) ) {
+        _ver = egrep( pattern:'Powered by.*vBulletin.*Version ([0-9.]+)', string:res );
+        if( _ver )
+          ver = eregmatch( pattern:'Powered by.*vBulletin.*Version ([0-9.]+)', string:_ver );
+      }
+
       if( isnull( ver[1] ) )
-        ver = eregmatch( pattern:'Powered by.*vBulletin.*Version ([0-9.]+)', string:res );
+        ver = eregmatch( pattern:"vBulletin ([0-9.]+)", string:res, icase:TRUE );
 
-      if( ! isnull( ver[1] ) ) version = ver[1];
-      tmp_version = version + " under " + install;
+      if( ! isnull( ver[1] ) )
+        version = ver[1];
 
-      set_kb_item( name:"www/" + port + "/vBulletin", value:tmp_version );
-      set_kb_item( name:"vBulletin/installed", value:TRUE );
+      set_kb_item( name:"vbulletin/detected", value:TRUE );
       set_kb_item( name:"www/can_host_tapatalk", value:TRUE ); # nb: Used in sw_tapatalk_detect.nasl for plugin scheduling optimization
 
       cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:vbulletin:vbulletin:" );
@@ -90,15 +99,15 @@ foreach dir( make_list_unique( "/", "/forum", "/vbulletin", "/vbulletin/forum", 
 
       register_product( cpe:cpe, location:install, port:port, service:"www" );
 
-      log_message(data:build_detection_report( app:"vBulletin",
-                                               version:version,
-                                               install:install,
-                                               cpe:cpe,
-                                               concluded:ver[0] ),
-                                               port:port );
+      log_message( data:build_detection_report( app:"vBulletin",
+                                                version:version,
+                                                install:install,
+                                                cpe:cpe,
+                                                concluded:ver[0] ),
+                   port:port );
       break;
     }
   }
 }
 
-exit(0);
+exit( 0 );

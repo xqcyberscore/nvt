@@ -28,12 +28,12 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809158");
-  script_version("2019-07-05T10:04:07+0000");
+  script_version("2019-09-27T07:10:39+0000");
   script_cve_id("CVE-2016-6483");
   script_bugtraq_id(92350);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2016-08-29 14:43:57 +0530 (Mon, 29 Aug 2016)");
   script_name("vBulletin Preauth Server Side Request Forgery (SSRF) Vulnerability");
 
@@ -50,13 +50,12 @@ if(description)
   perform unauthorized actions. This may aid in further attacks.");
 
   script_tag(name:"affected", value:"vBulletin versions 5.0 through 5.2.2,
-  and 4.0 through 4.2.3, and 3.0 through 3.8.9");
+  and 4.0 through 4.2.3, and 3.0 through 3.8.9.");
 
   script_tag(name:"solution", value:"Upgrade to vBulletin version 5.2.3,
   or 4.2.4 Beta, or 3.8.10 Beta, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Aug/68");
@@ -65,43 +64,42 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
-  script_mandatory_keys("vBulletin/installed");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vbulletin/detected");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!vPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!vVer = get_app_version(cpe:CPE, port:vPort)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
   exit(0);
-}
 
-if(version_in_range(version:vVer, test_version:"5.0.0", test_version2:"5.2.2"))
-{
+vers = infos['version'];
+path = infos['location'];
+
+if(version_in_range(version:vers, test_version:"5.0.0", test_version2:"5.2.2")) {
   fix = '5.2.3';
   VULN = TRUE;
 }
 
-else if(version_in_range(version:vVer, test_version:"4.0.0", test_version2:"4.2.3"))
-{
+else if(version_in_range(version:vers, test_version:"4.0.0", test_version2:"4.2.3")) {
   fix = '4.2.4 Beta';
   VULN = TRUE;
 }
 
-else if(version_in_range(version:vVer, test_version:"3.0.0", test_version2:"3.8.9"))
-{
+else if(version_in_range(version:vers, test_version:"3.0.0", test_version2:"3.8.9")) {
   fix = '3.8.10 Beta';
   VULN = TRUE;
 }
 
-if(VULN)
-{
-  report = report_fixed_ver(installed_version:vVer, fixed_version:fix);
-  security_message(data:report, port:vPort);
+if(VULN) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
+  security_message(data:report, port:port);
   exit(0);
 }
+
+exit(99);

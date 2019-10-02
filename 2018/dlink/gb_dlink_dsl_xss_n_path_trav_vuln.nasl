@@ -23,15 +23,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE_PREFIX = "cpe:/o:dlink";
+CPE_PREFIX = "cpe:/o:d-link";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813804");
-  script_version("2019-07-26T07:08:51+0000");
+  script_version("2019-09-30T11:51:41+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-26 07:08:51 +0000 (Fri, 26 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-30 11:51:41 +0000 (Mon, 30 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-07-25 10:11:37 +0530 (Wed, 25 Jul 2018)");
 
   script_name("D-Link DSL/DIR/DAP Devices Directory Traversal And Cross Site Scripting Vulnerabilities");

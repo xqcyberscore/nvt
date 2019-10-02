@@ -21,8 +21,8 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142313");
-  script_version("2019-04-30T06:00:47+0000");
-  script_tag(name:"last_modification", value:"2019-04-30 06:00:47 +0000 (Tue, 30 Apr 2019)");
+  script_version("2019-09-26T06:54:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-26 06:54:12 +0000 (Thu, 26 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-04-25 13:36:58 +0000 (Thu, 25 Apr 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_jetty_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Jetty/installed", "Host/runs_windows");
+  script_mandatory_keys("jetty/detected", "Host/runs_windows");
 
   script_tag(name:"summary", value:"Eclipse Jetty is vulnerable to XSS conditions if a remote client USES a
   specially formatted URL against the DefaultServlet or ResourceHandler that is configured for showing a Listing
@@ -64,7 +64,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, version_regex: "^[0-9]+\.[0-9]+\.[0-9]+", exit_no_version: TRUE))
   exit(0);
 
 version = infos['version'];

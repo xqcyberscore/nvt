@@ -23,16 +23,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE_PREFIX = "cpe:/o:dlink";
+CPE_PREFIX = "cpe:/o:d-link";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108487");
-  script_version("2019-05-09T15:03:03+0000");
+  script_version("2019-09-30T11:51:41+0000");
   script_cve_id("CVE-2018-10822", "CVE-2018-10823", "CVE-2018-10824");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-05-09 15:03:03 +0000 (Thu, 09 May 2019)");
+  script_tag(name:"last_modification", value:"2019-09-30 11:51:41 +0000 (Mon, 30 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 13:53:11 +0100 (Mon, 26 Nov 2018)");
 
   script_name("D-Link DIR/DWR Devices Multiple Vulnerabilities - Oct18");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_543_open_redirect_vuln.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # vBulletin 5.x < 5.4.4 Open Redirect Vulnerability
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112418");
-  script_version("$Revision: 12637 $");
+  script_version("2019-09-27T07:10:39+0000");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-11-08 09:07:22 +0100 (Thu, 08 Nov 2018)");
 
   script_cve_id("CVE-2018-15493");
@@ -52,15 +51,13 @@ if(description)
   script_tag(name:"solution", value:"Update vBulletin to version 5.4.4.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
-  script_mandatory_keys("vBulletin/installed");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vbulletin/detected");
 
   script_xref(name:"URL", value:"https://www.syss.de/fileadmin/dokumente/Publikationen/Advisories/SYSS-2018-017.txt");
 
@@ -72,11 +69,17 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE)) exit(0);
-if(!vers = get_app_version(cpe:CPE, port:port)) exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
 
 if(vers =~ "^5\.[0-4]\." && version_is_less(version:vers, test_version:"5.4.4")) {
-  report = report_fixed_ver(installed_version:vers, fixed_version:"5.4.4");
+  report = report_fixed_ver(installed_version:vers, fixed_version:"5.4.4", install_path:path);
   security_message(port:port, data:report);
   exit(0);
 }

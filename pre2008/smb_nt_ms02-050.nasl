@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-050.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Certificate Validation Flaw Could Enable Identity Spoofing (Q328145)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11145");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-10-01T09:25:33+0000");
+  script_tag(name:"last_modification", value:"2019-10-01 09:25:33 +0000 (Tue, 01 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5410);
   script_tag(name:"cvss_base", value:"7.5");
@@ -73,7 +72,7 @@ if(description)
 
   script_tag(name:"solution", value:"The vendor has released updates, please see the references for more information.");
 
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms02-050.mspx");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2002/ms02-050");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -86,4 +85,4 @@ include("secpod_reg.inc");
 if ( hotfix_check_sp(nt:7, win2k:4, xp:2) <= 0 ) exit(0);
 if ( hotfix_missing(name:"Q329115") > 0  )
   security_message(port:0);
- 
+

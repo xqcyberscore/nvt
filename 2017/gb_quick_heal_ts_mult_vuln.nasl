@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_ts_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Quick Heal Total Security Multiple Vulnerabilities
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:quick_heal:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811551");
-  script_version("$Revision: 11863 $");
+  script_version("2019-09-30T13:50:37+0000");
   script_cve_id("CVE-2017-8773", "CVE-2017-8774", "CVE-2017-8775", "CVE-2017-8776");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-09-30 13:50:37 +0000 (Mon, 30 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-08-02 12:24:09 +0530 (Wed, 02 Aug 2017)");
   script_name("Quick Heal Total Security Multiple Vulnerabilities");
 
@@ -45,13 +44,12 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - The PE files in the default installation do not use ASLR/DEP protection
-    mechanisms that provide sufficient defense against directed attacks against
-    the product.
+  mechanisms that provide sufficient defense against directed attacks against the product.
 
   - A Memory Corruption error while parsing a malformed Mach-O file.
 
   - An Out of Bounds Write on a Heap Buffer due to improper validation of
-    dwCompressionSize of Microsoft WIM Header WIMHEADER_V1_PACKED.
+  dwCompressionSize of Microsoft WIM Header WIMHEADER_V1_PACKED.
 
   - A Memory Corruption error while parsing a malformed Mach-O file.");
 
@@ -74,20 +72,20 @@ if(description)
   script_family("General");
   script_dependencies("gb_quick_heal_ts_detect.nasl");
   script_mandatory_keys("QuickHeal/TotalSecurity6432/Installed");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!quickVer = get_app_version(cpe:CPE)){
+if(!vers = get_app_version(cpe:CPE))
   exit(0);
-}
 
-if(version_is_less_equal(version:quickVer, test_version:"10.1.0.316"))
-{
-  report = report_fixed_ver(installed_version:quickVer, fixed_version:"Noneavailable");
+if(version_is_less_equal(version:vers, test_version:"10.1.0.316")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"See references");
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

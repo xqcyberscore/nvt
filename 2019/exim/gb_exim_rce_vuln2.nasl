@@ -48,8 +48,12 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"A local or remote attacker can execute programs with root privileges - if
-  you've an unusual configuration.");
+  script_tag(name:"insight", value:"The flaw exists if the configuration of Exim uses the ${sort } expansion
+  for items that can be controlled by an attacker (e.g. $local_part, $domain). The default
+  config, as shipped by the Exim developers, does not contain ${sort }.");
+
+  script_tag(name:"impact", value:"A local or remote attacker can execute programs with root privileges - if
+  the Exim server is using an unusual configuration.");
 
   script_tag(name:"affected", value:"Exim version 4.85 to 4.92.");
 

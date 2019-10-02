@@ -22,11 +22,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
+CPE = "cpe:/a:vbulletin:vbulletin";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14792");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-09-27T07:10:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10612, 10602);
   script_xref(name:"OSVDB", value:"7256");
@@ -38,8 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("vBulletin/installed");
+  script_mandatory_keys("vbulletin/detected");
 
   script_tag(name:"solution", value:"Upgrade to vBulletin 3.0.2 or newer.");
 
@@ -60,21 +61,22 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
+include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-
-install = get_kb_item(string("www/", port, "/vBulletin"));
-if (isnull(install))
+if(!port = get_app_port(cpe:CPE))
   exit(0);
 
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
-  ver = matches[1];
-  if( ver =~ '3.0(\\.[01])?[^0-9]' ) {
-    security_message(port:port);
-    exit(0);
-  }
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(version_in_range(version:vers, test_version:"3.0.0", test_version2:"3.0.1")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"3.0.2", install_path:path);
+  security_message(data:report, port:port);
+  exit(0);
 }
 
 exit(99);

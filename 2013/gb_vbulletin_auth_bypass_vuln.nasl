@@ -28,12 +28,12 @@ CPE = 'cpe:/a:vbulletin:vbulletin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804144");
-  script_version("2019-07-05T10:04:07+0000");
+  script_version("2019-09-27T07:10:39+0000");
   script_cve_id("CVE-2013-6129");
   script_bugtraq_id(62909);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2013-11-15 12:55:00 +0530 (Fri, 15 Nov 2013)");
   script_name("Vbulletin Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -41,18 +41,23 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("vBulletin/installed");
+  script_mandatory_keys("vbulletin/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass security
   restrictions.");
+
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is able to bypass authentication.");
+
   script_tag(name:"insight", value:"The flaw is due to the 'upgrade.php' script which does not require
   authentication, which allows to create administrative accounts via
   the customerid, htmldata[password], htmldata[confirmpassword], and
   htmldata[email] parameters.");
+
   script_tag(name:"solution", value:"Upgrade to version 4.2.2 or 5.0.5 or later.");
+
   script_tag(name:"summary", value:"This host is running vBulletin and is prone to security bypass vulnerability.");
+
   script_tag(name:"affected", value:"vBulletin version 4.1.x and 5.x.x are affected.");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/123811");
@@ -68,9 +73,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if( dir == "/" ) dir = "";
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 foreach dir2( make_list("", "/core" ) ) {
 
@@ -79,7 +89,7 @@ foreach dir2( make_list("", "/core" ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 
-  if( res && res =~ "HTTP/1.. 200 OK" &&
+  if( res && res =~ "^HTTP/1\.[01] 200" &&
       "vBulletin" >< res && "Customer Number<" >< res ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

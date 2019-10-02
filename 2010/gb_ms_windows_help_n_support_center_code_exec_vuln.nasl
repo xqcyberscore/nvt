@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_help_n_support_center_code_exec_vuln.nasl 12511 2018-11-23 12:41:39Z cfischer $
 #
 # MS Windows Help and Support Center Remote Code Execution Vulnerability
 #
@@ -33,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801358");
-  script_version("$Revision: 12511 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 13:41:39 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-10-01T09:25:33+0000");
+  script_tag(name:"last_modification", value:"2019-10-01 09:25:33 +0000 (Tue, 01 Oct 2019)");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-1885", "CVE-2010-2265");
   script_tag(name:"cvss_base", value:"9.3");
@@ -48,8 +47,8 @@ if(description)
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/59267");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/1417");
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/advisory/2219475.mspx");
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms10-042.mspx");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2010/2219475");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-042");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary code or compromise a vulnerable system.
@@ -83,4 +82,4 @@ if(description)
   exit(0);
 }
 
-exit(66); # This plugin is invalidated by secpod_ms10-042.nasl 
+exit(66); # This plugin is invalidated by secpod_ms10-042.nasl

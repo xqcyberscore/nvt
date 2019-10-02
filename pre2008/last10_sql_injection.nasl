@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: last10_sql_injection.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: vBulletin last10.php SQL Injection
 #
 # Authors:
@@ -22,13 +21,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-CPE = 'cpe:/a:vbulletin:vbulletin';
+CPE = "cpe:/a:vbulletin:vbulletin";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16043");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("2019-09-27T07:10:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,16 +37,14 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
-  script_mandatory_keys("vBulletin/installed");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vbulletin/detected");
 
-  script_tag(name:"solution", value:"Upgrade to the latest version of this software or disable it");
-  script_tag(name:"summary", value:"The remote host is running last10.php, an unofficial plugin
- for vBulletin which allows users to add a revolving ticker
- showing the last10 topics of his/her forum.
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software or disable it.");
 
- This set of script may allow an attacker to cause an SQL
- Injection vulnerability allowing an attacker to cause the
- program to execute arbitrary SQL statements.");
+  script_tag(name:"summary", value:"The installed version of last10.php may allow an attacker to cause
+  an SQL Injection vulnerability allowing an attacker to cause the program to execute arbitrary
+  SQL statements.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -58,19 +55,26 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
 
-if( dir == "/" ) dir = "";
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
 
-req = http_get(item:string(dir, "/last10.php?ftitle='"), port:port);
-res = http_keepalive_send_recv(port:port, data:req, bodyonly: TRUE);
-if( res == NULL )exit(0);
+if(dir == "/")
+  dir = "";
 
-if(("You have an error in your SQL syntax" >< res) ||
-  ("WHERE thread.lastposter=" >< res)) {
-    security_message(port:port);
-    exit(0);
+url = string(dir, "/last10.php?ftitle='");
+req = http_get(item:url, port:port);
+res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+if(!res)
+  exit(0);
+
+if("You have an error in your SQL syntax" >< res ||
+   "WHERE thread.lastposter=" >< res) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
 exit(99);

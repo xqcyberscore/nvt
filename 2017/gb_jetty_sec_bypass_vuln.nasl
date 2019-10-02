@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_sec_bypass_vuln.nasl 12711 2018-12-07 21:05:48Z cfischer $
 #
 # Jetty < 9.4.6.20170531 Security Bypass Vulnerability (Linux)
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140261");
-  script_version("$Revision: 12711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 22:05:48 +0100 (Fri, 07 Dec 2018) $");
+  script_version("2019-09-26T06:54:12+0000");
+  script_tag(name:"last_modification", value:"2019-09-26 06:54:12 +0000 (Thu, 26 Sep 2019)");
   script_tag(name:"creation_date", value:"2017-08-01 11:31:21 +0700 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -42,7 +41,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_jetty_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Jetty/installed", "Host/runs_unixoide");
+  script_mandatory_keys("jetty/detected", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"https://github.com/eclipse/jetty.project/issues/1556");
 
@@ -70,12 +69,15 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, version_regex: "^[0-9]+\.[0-9]+\.[0-9]+", exit_no_version: TRUE))
   exit(0);
+
+version = infos['version'];
+path = infos['location'];
 
 if (version =~ "^9\.4\.") {
   if (version_is_less(version: version, test_version: "9.4.6.20170531")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "9.4.6.20170531");
+    report = report_fixed_ver(installed_version: version, fixed_version: "9.4.6.20170531", install_path: path);
     security_message(port: port, data: report);
     exit(0);
   }

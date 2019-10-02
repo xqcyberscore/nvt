@@ -28,11 +28,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812677");
-  script_version("2019-07-05T10:04:07+0000");
+  script_version("2019-09-27T07:10:39+0000");
   script_cve_id("CVE-2018-6200");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 10:04:07 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-09-27 07:10:39 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2018-02-08 12:48:53 +0530 (Thu, 08 Feb 2018)");
   script_name("vBulletin 'url' GET Parameter Open Redirect Vulnerability");
 
@@ -49,7 +49,7 @@ if(description)
   attackers to redirect users to arbitrary web sites and conduct phishing attacks.");
 
   script_tag(name:"affected", value:"vBulletin versions 3.x.x and 4.2.x through
-  4.2.5");
+  4.2.5.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
-  script_mandatory_keys("vBulletin/installed");
+  script_mandatory_keys("vbulletin/detected");
   script_require_ports("Services/www", 80);
 
   exit(0);
@@ -75,13 +75,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if(!vPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!dir = get_app_location(cpe:CPE, port:vPort)){
+if(!dir = get_app_location(cpe:CPE, port:port))
   exit(0);
-}
 
 if( dir == "/" ) dir = "";
 
@@ -90,16 +88,17 @@ foreach sub_url(make_list("http://www.example.com/", "aHR0cDovL3d3dy5leGFtcGxlLm
 {
   url = dir + "/redirector.php?url=" + sub_url;
 
-  req = http_get_req(port: vPort, url: url);
-  res = http_keepalive_send_recv(port:vPort, data:req);
+  req = http_get_req(port: port, url: url);
+  res = http_keepalive_send_recv(port:port, data:req);
 
   if((res =~ "^HTTP/1\.[01] 200" && "invalid URL being redirected" >!< res) &&
      ((res =~ "title>.*Redirecting.*</title>" && res =~ '<meta.*URL=http://www.example.com/">' && ">Redirecting" >< res) ||
       (res =~ "<input.*url=aHR0cDovL3d3dy5leGFtcGxlLmNvbS8=" && res =~ '<meta http-equiv="refresh" content=".*URL=http.*www.example.com')))
   {
-    report = report_vuln_url(port:vPort, url:url);
-    security_message(port:vPort, data:report);
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
 }
-exit(0);
+
+exit(99);
