@@ -17,16 +17,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+
 CPE = "cpe:/a:microsoft:ie";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815621");
-  script_version("2019-09-25T12:48:23+0000");
+  script_version("2019-09-27T14:53:08+0000");
   script_cve_id("CVE-2019-1367");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-09-25 12:48:23 +0000 (Wed, 25 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-09-27 14:53:08 +0000 (Fri, 27 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-09-24 11:20:47 +0530 (Tue, 24 Sep 2019)");
   script_name("Microsoft Windows Scripting Engine Memory Corruption Vulnerability (KB4522007)");
 
@@ -62,12 +63,11 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
