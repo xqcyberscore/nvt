@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704536");
-  script_version("2019-09-29T02:00:08+0000");
+  script_version("2019-10-07T07:48:28+0000");
   script_cve_id("CVE-2019-16928");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-29 02:00:08 +0000 (Sun, 29 Sep 2019)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-10-07 07:48:28 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-29 02:00:08 +0000 (Sun, 29 Sep 2019)");
   script_name("Debian Security Advisory DSA 4536-1 (exim4 - security update)");
   script_category(ACT_GATHER_INFO);

@@ -165,7 +165,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.142733", # gsf/gb_inea_me-rtu_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108632", # gsf/gb_mult_vendors_wlan_controller_aps_detection.nasl
     "1.3.6.1.4.1.25623.1.0.142756", # gsf/gb_dell_emc_powerconnect_consolidation.nasl
-    "1.3.6.1.4.1.25623.1.0.142875", # gsf/gb_silverpeak_edgeconnect_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.142875", # gsf/gb_silverpeak_appliance_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.114106", # gsf/gb_synetica_datastream_devices_detect_telnet.nasl
@@ -301,7 +301,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.142733", # gsf/gb_inea_me-rtu_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108632", # gsf/gb_mult_vendors_wlan_controller_aps_detection.nasl
     "1.3.6.1.4.1.25623.1.0.142756", # gsf/gb_dell_emc_powerconnect_consolidation.nasl
-    "1.3.6.1.4.1.25623.1.0.142875", # gsf/gb_silverpeak_edgeconnect_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.142875", # gsf/gb_silverpeak_appliance_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
     "1.3.6.1.4.1.25623.1.0.105271", # gb_citrix_netscaler_version.nasl
@@ -550,7 +550,8 @@ function host_runs() {
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
                 'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward|' +
                 'tippingpoint(_| )operating(_| )system|data(_| )ontap|(zavio|tp-link|pearl|qsee)(:| )ip(_| )camera|riverbed(_| )optimization(_| )system|synetica(:| )datastream|' +
-                'ricoh(:| ).+_firmware|lexmark(:| ).+_firmware|:wlan_controller_ap_firmware|zyxel(:| ).+_firmware|toshiba(:| ).+_firmware|silver(-| )peak(:| )edgeconnect|ewon(:| ).+_firmware)';
+                'ricoh(:| ).+_firmware|lexmark(:| ).+_firmware|:wlan_controller_ap_firmware|zyxel(:| ).+_firmware|toshiba(:| ).+_firmware|' + 
+                'silver(-| )peak(:| )(unity_edgeconnect|nx|vx|unknown_model)_sd-wan_firmware|ewon(:| ).+_firmware)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

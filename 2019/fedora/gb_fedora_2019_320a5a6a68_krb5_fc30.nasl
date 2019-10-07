@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876858");
-  script_version("2019-10-01T10:38:58+0000");
+  script_version("2019-10-07T07:48:28+0000");
   script_cve_id("CVE-2019-14844");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-10-01 10:38:58 +0000 (Tue, 01 Oct 2019)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-10-07 07:48:28 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-01 02:25:35 +0000 (Tue, 01 Oct 2019)");
   script_name("Fedora Update for krb5 FEDORA-2019-320a5a6a68");
   script_category(ACT_GATHER_INFO);

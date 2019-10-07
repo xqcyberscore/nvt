@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142675");
-  script_version("2019-07-31T06:35:42+0000");
-  script_tag(name:"last_modification", value:"2019-07-31 06:35:42 +0000 (Wed, 31 Jul 2019)");
+  script_version("2019-10-07T07:43:09+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 07:43:09 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-07-30 07:34:56 +0000 (Tue, 30 Jul 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
 
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -54,6 +54,8 @@ fingerprint["72d41ed2fce5d8c0e117efff045c8d6c"] = "450E";
 port = get_http_port(default: 80);
 
 res = http_get_cache(port: port, item: "/");
+if (!res)
+  exit(0);
 
 # nb: For some reasons some non-german devices contains a non-breaking space here which
 # doesn't match our check below so we're just stripping it away.
