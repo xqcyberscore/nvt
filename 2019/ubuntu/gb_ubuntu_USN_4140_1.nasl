@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844187");
-  script_version("2019-09-27T07:41:55+0000");
+  script_version("2019-10-08T07:00:10+0000");
   script_cve_id("CVE-2019-11754");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-27 07:41:55 +0000 (Fri, 27 Sep 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-10-08 07:00:10 +0000 (Tue, 08 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-26 02:01:24 +0000 (Thu, 26 Sep 2019)");
   script_name("Ubuntu Update for firefox USN-4140-1");
   script_category(ACT_GATHER_INFO);

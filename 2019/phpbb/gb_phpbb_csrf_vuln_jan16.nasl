@@ -23,11 +23,11 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108656");
-  script_version("2019-09-23T13:33:30+0000");
-  script_tag(name:"last_modification", value:"2019-09-23 13:33:30 +0000 (Mon, 23 Sep 2019)");
+  script_version("2019-10-08T07:00:10+0000");
+  script_tag(name:"last_modification", value:"2019-10-08 07:00:10 +0000 (Tue, 08 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-01 05:49:54 +0000 (Tue, 01 Oct 2019)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2019-16993");
   script_name("phpBB < 3.1.7-PL1 CSRF Vulnerability");
   script_category(ACT_GATHER_INFO);

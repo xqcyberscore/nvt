@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("2019-09-23T08:17:18+0000");
-  script_tag(name:"last_modification", value:"2019-09-23 08:17:18 +0000 (Mon, 23 Sep 2019)");
+  script_version("2019-10-07T07:59:32+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 07:59:32 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -135,6 +135,9 @@ function add_auth_dir_list( dir, port, host, basic, realm ) {
 # TODO: Update list with directories
 testDirList = make_list(
 ".cobalt",
+".tools",
+".tools/phpMyAdmin",
+".tools/phpMyAdmin/current",
 # https://ma.ttias.be/well-known-directory-webservers-aka-rfc-5785/
 # https://tools.ietf.org/html/rfc5785
 # http://sabre.io/dav/service-discovery/
@@ -155,6 +158,9 @@ testDirList = make_list(
 "7",
 "8",
 "9",
+"3rdparty",
+"3rdparty/phpMyAdmin",
+"3rdparty/phpmyadmin",
 "AdminWeb",
 "Admin_files",
 "Administration",
@@ -669,6 +675,7 @@ testDirList = make_list(
 "phpldapadmin",
 "phpmyadmin",
 "phpMyAdmin",
+"PHPMyAdmin",
 "phpnuke",
 "phppgadmin",
 "phpPhotoAlbum",

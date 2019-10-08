@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 12573 2018-11-29 09:52:12Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("2019-03-27T07:53:00+0000");
-  script_tag(name:"last_modification", value:"2019-03-27 07:53:00 +0000 (Wed, 27 Mar 2019)");
+  script_version("2019-10-08T06:20:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-08 06:20:48 +0000 (Tue, 08 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -120,12 +119,12 @@ genericfiles = make_array(
 # e.g.
 # {"php":"7.2.4-1+ubuntu16.04.1+deb.sury.org+1","version":"2.11.1:v2.11.1#ad94441c17b8ef096e517acccdbf3238af8a2da8","rules":{"binary_operator_spaces":true,"blank_line_after_opening_tag":true,"blank_line_before_statement":{"statements":
 # {"php":"5.6.26-1+deb.sury.org~xenial+1","version":"2.0.0","rules":{"array_syntax":{"syntax":"short"},"combine_consecutive_unsets":true,"general_phpdoc_annotation_remove":
-"/.php_cs.cache", 'Cache file .php_cs.cache of PHP-CS-Fixer could expose a listing of PHP files.#-#^{"php":"#-#"(version|rules|binary_operator_spaces|blank_line_after_opening_tag|blank_line_before_statement|array_syntax|syntax|statements)":"'
+"/.php_cs.cache", 'Cache file .php_cs.cache of PHP-CS-Fixer could expose a listing of PHP files.#-#^\\{"php":"#-#"(version|rules|binary_operator_spaces|blank_line_after_opening_tag|blank_line_before_statement|array_syntax|syntax|statements)":"'
 );
 
 # https://doc.nette.org/en/configuring or https://github.com/nette/examples/blob/master/CD-collection/app/config.neon
 foreach nettedir( make_list( "/app/config", "/app", "" ) ) {
-  genericfiles[nettedir + "/config.neon"] = "Nette Framework config file is publicly accessible.#-#^(php:|application:|database:|services:|security:|# SECURITY WARNING: it is CRITICAL|latte:|session:|extensions:)#-#^ *(date.timezone:|mapping:|dsn:|- App\Model\|debugger:|users:|roles:|resources:|errorPresenter:|catchExceptions:|silentLinks:|user:|password:|macros:)";
+  genericfiles[nettedir + "/config.neon"] = "Nette Framework config file is publicly accessible.#-#^((php|application|database|services|security|latte|session|extensions):|# SECURITY WARNING: it is CRITICAL)#-#^ *((date\.timezone|mapping|dsn|debugger|users|roles|resources|errorPresenter|catchExceptions|silentLinks|user|password|macros):|- App)";
 }
 
 # Add domain specific key names and backup files from above

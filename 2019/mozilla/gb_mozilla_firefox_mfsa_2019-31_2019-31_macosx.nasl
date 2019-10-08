@@ -23,11 +23,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815474");
-  script_version("2019-09-20T05:25:28+0000");
+  script_version("2019-10-08T07:00:10+0000");
   script_cve_id("CVE-2019-11754");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-09-20 05:25:28 +0000 (Fri, 20 Sep 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-10-08 07:00:10 +0000 (Tue, 08 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-19 15:33:23 +0530 (Thu, 19 Sep 2019)");
   script_name("Mozilla Firefox Security Update(mfsa_2019-31_2019-31)-Mac OS X");
 

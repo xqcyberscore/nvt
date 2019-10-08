@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891942");
-  script_version("2019-10-01T02:00:16+0000");
+  script_version("2019-10-08T07:00:10+0000");
   script_cve_id("CVE-2019-16993");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-10-01 02:00:16 +0000 (Tue, 01 Oct 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-10-08 07:00:10 +0000 (Tue, 08 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-01 02:00:16 +0000 (Tue, 01 Oct 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1942-1] phpbb3 security update)");
   script_category(ACT_GATHER_INFO);
