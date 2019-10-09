@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: popserver_detect.nasl 13836 2019-02-25 07:35:49Z cfischer $
 # Description: POP3 Server type and version
 #
 # Authors:
@@ -7,7 +6,7 @@
 # Updated by Paul Johnston for Westpoint Ltd <paul@westpoint.ltd.uk>
 #
 # Copyright:
-# Copyright (C) 1999 SecuriTeam
+# Copyright (C) 2005 SecuriTeam
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -26,14 +25,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10185");
-  script_version("$Revision: 13836 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:35:49 +0100 (Mon, 25 Feb 2019) $");
+  script_version("2019-10-09T06:13:56+0000");
+  script_tag(name:"last_modification", value:"2019-10-09 06:13:56 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("POP3 Server type and version");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 1999 SecuriTeam");
+  script_copyright("This script is Copyright (C) 2005 SecuriTeam");
   script_family("Service detection");
   script_dependencies("find_service2.nasl");
   script_require_ports("Services/pop3", 110, 995);
@@ -53,6 +52,8 @@ include("pop3_func.inc");
 ports = pop3_get_ports();
 foreach port( ports ) {
 
+  # nb: get_pop3_banner() is verifying (via pop3_verify_banner) that we have
+  # received a POP3 banner here so it is safe to register the service below.
   banner = get_pop3_banner( port:port );
   if( ! banner )
     continue;
@@ -71,7 +72,10 @@ foreach port( ports ) {
   set_kb_item( name:"pop3/banner/available", value:TRUE );
   set_kb_item( name:"pop3_imap_or_smtp/banner/available", value:TRUE );
 
-  if( "Dovecot ready" >< banner ) {
+  # +OK Dovecot ready.
+  # +OK Dovecot (Debian) ready.
+  if( "Dovecot " >< banner && " ready" >< banner ) {
+    set_kb_item( name:"imap_or_pop3/dovecot/detected", value:TRUE );
     set_kb_item( name:"pop3/dovecot/detected", value:TRUE );
     set_kb_item( name:"pop3/" + port + "/dovecot/detected", value:TRUE );
     guess += '\n- Dovecot';

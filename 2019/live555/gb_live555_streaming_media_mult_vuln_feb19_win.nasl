@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112523");
-  script_version("$Revision: 14139 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:03:19 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-02-28 11:32:11 +0100 (Thu, 28 Feb 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,7 @@ if (description)
   script_mandatory_keys("live555_streaming_media/installed", "Host/runs_windows");
 
   script_tag(name:"summary", value:"Live555 Streaming Media is prone to multiple vulnerabilities.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - The function 'parseAuthorizationHeader()' could cause a memory access error for
   some malformed headers

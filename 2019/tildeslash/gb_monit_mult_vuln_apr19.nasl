@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113373");
-  script_version("2019-04-30T06:00:47+0000");
-  script_tag(name:"last_modification", value:"2019-04-30 06:00:47 +0000 (Tue, 30 Apr 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-04-24 13:32:43 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"summary", value:"Monit is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - Persistent Cross-Site Scripting (XSS) in http/cervlet.c allows a remote
     unauthenticated attacker to introduce arbitrary JavaScript via manipulation

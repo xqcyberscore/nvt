@@ -27,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113246");
-  script_version("2019-06-07T08:16:45+0000");
-  script_tag(name:"last_modification", value:"2019-06-07 08:16:45 +0000 (Fri, 07 Jun 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-08-07 12:27:08 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,7 @@ if( description )
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - An attacker can use the locale parameter to naivate to arbitrary directions.
 

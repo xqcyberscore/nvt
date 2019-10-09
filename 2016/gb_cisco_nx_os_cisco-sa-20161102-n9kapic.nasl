@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20161102-n9kapic.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Application Policy Infrastructure Controller Denial of Service Vulnerability (NX-OS)
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6457");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12149 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Application Policy Infrastructure Controller Denial of Service Vulnerability (NX-OS)");
 
@@ -57,7 +56,7 @@ device.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-03 13:46:04 +0700 (Thu, 03 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -81,24 +80,23 @@ if ( ! nx_model = get_kb_item( "cisco_nx_os/model" ) ) exit( 0 );
 if( nx_model =~ "^N9K" )
 {
   affected = make_list(
-			"11.2(2g)",
-			"11.2(2h)",
-			"11.2(2i)",
-			"11.2(3c)",
-			"11.2(3e)",
-			"11.2(3h)",
-			"11.3(1i)",
-			"11.3(2f)",
-			"11.3(2h)",
-			"11.3(2i)",
-			"12.0(1m)",
-			"12.0(1n)",
-			"12.0(1o)",
-			"12.0(1p)",
-			"12.0(1q)"
-		);
+    "11.2(2g)",
+    "11.2(2h)",
+    "11.2(2i)",
+    "11.2(3c)",
+    "11.2(3e)",
+    "11.2(3h)",
+    "11.3(1i)",
+    "11.3(2f)",
+    "11.3(2h)",
+    "11.3(2i)",
+    "12.0(1m)",
+    "12.0(1n)",
+    "12.0(1o)",
+    "12.0(1p)",
+    "12.0(1q)"
+  );
 }
-
 
 foreach af ( affected )
 {

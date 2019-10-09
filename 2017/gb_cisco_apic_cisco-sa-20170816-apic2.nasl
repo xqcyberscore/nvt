@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20170816-apic2.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Custom Binary Privilege Escalation Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:cisco:application_policy_infrastructure_controller";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140305");
-  script_version("$Revision: 14041 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-10-09T06:43:33+0000");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-08-17 08:59:24 +0700 (Thu, 17 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -79,16 +78,16 @@ if (!version = get_app_version(cpe: CPE))
   exit(0);
 
 affected = make_list(
-		'1.1(1j)',
-		'1.1(0.920a)',
-		'1.1(3f)',
-		'1.3(2f)',
-		'1.3(1)',
-		'1.3(2)',
-		'1.2.2',
-		'1.2(3)',
-		'1.2(2)',
-		'2.0(1)' );
+  '1.1(1j)',
+  '1.1(0.920a)',
+  '1.1(3f)',
+  '1.3(2f)',
+  '1.3(1)',
+  '1.3(2)',
+  '1.2.2',
+  '1.2(3)',
+  '1.2(2)',
+  '2.0(1)' );
 
 foreach af (affected) {
   if (version == af) {

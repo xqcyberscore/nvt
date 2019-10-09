@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113358");
-  script_version("2019-03-25T09:51:34+0000");
-  script_tag(name:"last_modification", value:"2019-03-25 09:51:34 +0000 (Mon, 25 Mar 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-03-20 14:31:01 +0100 (Wed, 20 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"summary", value:"rdesktop is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - Out-Of-Bounds Read in the function ui_clip_handle_data() that results in an information leak
 

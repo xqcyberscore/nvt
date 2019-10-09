@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_director_cisco-sa-20170215-ucs.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco UCS Director Privilege Escalation Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-3801");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco UCS Director Privilege Escalation Vulnerability");
 
@@ -57,7 +56,7 @@ workflow items, including actions affecting other tenants.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-02-16 15:15:33 +0700 (Thu, 16 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -75,8 +74,8 @@ if (!version = get_app_version(cpe:CPE))
   exit(0);
 
 affected = make_list(
-		'6.0.0.0',
-		'6.0.0.1');
+  '6.0.0.0',
+  '6.0.0.1');
 
 foreach af (affected) {
   if (version == af) {

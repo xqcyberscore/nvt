@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150923-sshpk.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco IOS and IOS XE Software SSH Version 2 RSA-Based User Authentication Bypass Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-6280");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11922 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS and IOS XE Software SSH Version 2 RSA-Based User Authentication Bypass Vulnerability");
 
@@ -70,7 +69,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-10 10:45:39 +0200 (Tue, 10 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -87,32 +86,32 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'3.6.0E',
-		'3.6.0E',
-		'3.6.0E',
-		'3.6.1E',
-		'3.6.2E',
-		'3.6.2E',
-		'3.7.0E',
-		'3.10.0S',
-		'3.10.0S',
-		'3.10.1S',
-		'3.10.2S',
-		'3.10.3S',
-		'3.10.4S',
-		'3.10.5S',
-		'3.10.01S',
-		'3.11.0S',
-		'3.11.1S',
-		'3.11.2S',
-		'3.11.3S',
-		'3.12.0S',
-		'3.12.1S',
-		'3.12.2S',
-		'3.13.0S',
-		'3.13.1S',
-		'3.13.2S',
-		'3.14.0S' );
+  '3.6.0E',
+  '3.6.0E',
+  '3.6.0E',
+  '3.6.1E',
+  '3.6.2E',
+  '3.6.2E',
+  '3.7.0E',
+  '3.10.0S',
+  '3.10.0S',
+  '3.10.1S',
+  '3.10.2S',
+  '3.10.3S',
+  '3.10.4S',
+  '3.10.5S',
+  '3.10.01S',
+  '3.11.0S',
+  '3.11.1S',
+  '3.11.2S',
+  '3.11.3S',
+  '3.12.0S',
+  '3.12.1S',
+  '3.12.2S',
+  '3.13.0S',
+  '3.13.1S',
+  '3.13.2S',
+  '3.14.0S' );
 
 foreach af ( affected )
 {

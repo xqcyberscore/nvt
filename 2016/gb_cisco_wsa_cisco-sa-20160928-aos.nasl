@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160928-aos.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco Web Security Appliance File Transfer Protocol Denial of Service Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/h:cisco:web_security_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106294");
-  script_version("$Revision: 12338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_version("2019-10-09T06:43:33+0000");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-29 12:29:18 +0700 (Thu, 29 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -76,12 +75,12 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'9.0.0-162',
-		'9.1.0-000',
-		'9.1.0-070',
-		'9.5.0-235',
-		'9.5.0-284',
-		'9.5.0-444' );
+  '9.0.0-162',
+  '9.1.0-000',
+  '9.1.0-070',
+  '9.5.0-235',
+  '9.5.0-284',
+  '9.5.0-444' );
 
 foreach af ( affected )
 {

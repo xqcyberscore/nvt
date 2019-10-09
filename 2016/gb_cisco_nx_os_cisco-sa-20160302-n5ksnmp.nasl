@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20160302-n5ksnmp.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco NX-OS Software SNMP Packet Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-6260");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12149 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco NX-OS Software SNMP Packet Denial of Service Vulnerability");
 
@@ -60,7 +59,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-12 15:59:00 +0200 (Thu, 12 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -84,17 +83,16 @@ if ( ! nx_model = get_kb_item( "cisco_nx_os/model" ) ) exit( 0 );
 if( nx_model =~ "^5[0-9]+" )
 {
   affected = make_list(
-			"7.1(1)N1(1)"
-		);
+    "7.1(1)N1(1)"
+  );
 }
 
 if( nx_model =~ "^6[0-9]+" )
 {
   affected = make_list(
-			"7.1(1)N1(1)"
-		);
+    "7.1(1)N1(1)"
+  );
 }
-
 
 foreach af ( affected )
 {

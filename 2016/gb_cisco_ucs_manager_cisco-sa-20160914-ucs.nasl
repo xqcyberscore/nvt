@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_manager_cisco-sa-20160914-ucs.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Unified Computing System Command Line Interface Privilege Escalation Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/a:cisco:unified_computing_system_software';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106254");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("2019-10-09T06:43:33+0000");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,33 +76,33 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'2.2(1b)',
-		'2.2(1c)',
-		'2.2(1d)',
- 		'2.2(1e)',
-		'2.2(1f)',
-		'2.2(1g)',
-		'2.2(1h)',
-		'2.2(2c)',
-		'2.2(2c)A',
-		'2.2(2d)',
-		'2.2(2e)',
-		'2.2(3a)',
-		'2.2(3b)',
-		'2.2(3c)',
-		'2.2(3d)',
-		'2.2(3e)',
-		'2.2(3f)',
-		'2.2(3g)',
-		'2.2(4b)',
-		'2.2(4c)',
-		'2.2(5a)',
-		'2.2(5b)A',
-		'3.0(1c)',
-		'3.0(1d)',
-		'3.0(1e)',
-		'3.0(2c)',
-		'3.0(2d)' );
+  '2.2(1b)',
+  '2.2(1c)',
+  '2.2(1d)',
+   '2.2(1e)',
+  '2.2(1f)',
+  '2.2(1g)',
+  '2.2(1h)',
+  '2.2(2c)',
+  '2.2(2c)A',
+  '2.2(2d)',
+  '2.2(2e)',
+  '2.2(3a)',
+  '2.2(3b)',
+  '2.2(3c)',
+  '2.2(3d)',
+  '2.2(3e)',
+  '2.2(3f)',
+  '2.2(3g)',
+  '2.2(4b)',
+  '2.2(4c)',
+  '2.2(5a)',
+  '2.2(5b)A',
+  '3.0(1c)',
+  '3.0(1d)',
+  '3.0(1e)',
+  '3.0(2c)',
+  '3.0(2d)' );
 
 foreach af ( affected )
 {

@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1459");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:N/A:C");
-  script_version("2019-09-24T04:41:47+0000");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XE Software Border Gateway Protocol Message Processing Denial of Service Vulnerability");
 
@@ -57,7 +57,7 @@ BGP MIBs.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-07-18 13:46:41 +0700 (Mon, 18 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -73,25 +73,25 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'3.13.5S',
-		'3.13.2S',
-		'3.13.3S',
-		'3.13.4S',
-		'3.14.0S',
-		'3.14.1S',
-		'3.14.2S',
-		'3.14.3S',
-		'3.14.4S',
-		'3.15.1c.S',
-		'3.15.3S',
-		'3.15.2S',
-		'3.17.0S',
-		'3.17.2S',
-		'3.17.1S',
-		'3.16.3S',
-		'3.16.0c.S',
-		'3.16.1a.S',
-		'3.16.2S' );
+  '3.13.5S',
+  '3.13.2S',
+  '3.13.3S',
+  '3.13.4S',
+  '3.14.0S',
+  '3.14.1S',
+  '3.14.2S',
+  '3.14.3S',
+  '3.14.4S',
+  '3.15.1c.S',
+  '3.15.3S',
+  '3.15.2S',
+  '3.17.0S',
+  '3.17.2S',
+  '3.17.1S',
+  '3.16.3S',
+  '3.16.0c.S',
+  '3.16.1a.S',
+  '3.16.2S' );
 
 foreach af ( affected )
 {

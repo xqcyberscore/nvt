@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln_may18_04_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Moodle 3.x Multiple Vulnerabilities - May'18 (Windows)
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113201");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-05-29 10:06:08 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -51,7 +50,7 @@ if( description )
 
   script_tag(name:"summary", value:"Moodle CMS is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - A Teacher creating a Calculated question can intentionally cause remote code execution on the server, aka eval injection.
 

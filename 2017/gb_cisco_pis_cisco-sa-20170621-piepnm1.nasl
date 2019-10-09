@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20170621-piepnm1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Prime Infrastructure XML Injection Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6662");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Prime Infrastructure XML Injection Vulnerability");
 
@@ -55,7 +54,7 @@ and write files and execute remote code within the application.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-06-22 12:07:33 +0700 (Thu, 22 Jun 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -73,27 +72,27 @@ if (!version = get_app_version(cpe:CPE))
   exit(0);
 
 affected = make_list(
-		'1.2.0',
-		'1.2.0.103',
-		'1.2.1',
-		'1.3.0',
-		'1.3.0.20',
-		'1.4.0',
-		'1.4.0.45',
-		'1.4.1',
-		'1.4.2',
-		'2.0.0',
-		'2.1.0',
-		'2.2.2',
-		'2.2.3',
-		'2.2.0',
-		'3.0.0',
-		'3.1.0.128',
-		'3.1.4.0',
-		'3.1.5.0',
-		'3.1.0',
-		'3.1.1',
-		'3.2.0.0');
+  '1.2.0',
+  '1.2.0.103',
+  '1.2.1',
+  '1.3.0',
+  '1.3.0.20',
+  '1.4.0',
+  '1.4.0.45',
+  '1.4.1',
+  '1.4.2',
+  '2.0.0',
+  '2.1.0',
+  '2.2.2',
+  '2.2.3',
+  '2.2.0',
+  '3.0.0',
+  '3.1.0.128',
+  '3.1.4.0',
+  '3.1.5.0',
+  '3.1.0',
+  '3.1.1',
+  '3.2.0.0');
 
 foreach af (affected) {
   if (version == af) {

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850158");
-  script_version("$Revision: 14114 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
 
   Also Mozilla Thunderbird and Seamonkey were updated on openSUSE.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
   MFSA 2010-74: Mozilla developers identified and fixed several
   memory safety bugs in the browser engine used in Firefox and other
   Mozilla-based products. Some of these bugs showed evidence of memory

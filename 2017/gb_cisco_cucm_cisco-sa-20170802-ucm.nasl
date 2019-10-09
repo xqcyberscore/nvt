@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170802-ucm.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Unified Communications Manager SQL Injection Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6757");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Unified Communications Manager SQL Injection Vulnerability");
 
@@ -56,7 +55,7 @@ database tables, affecting the integrity of the data.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-08-03 10:58:43 +0700 (Thu, 03 Aug 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -76,9 +75,9 @@ if (!version = get_app_version(cpe:CPE))
 version = str_replace(string: version, find: "-", replace: ".");
 
 affected = make_list(
-		'10.5.2.10000.5',
-		'11.0.1.10000.10',
-		'11.5.1.10000.6');
+  '10.5.2.10000.5',
+  '11.0.1.10000.10',
+  '11.5.1.10000.6');
 
 foreach af (affected) {
   if (version == af) {

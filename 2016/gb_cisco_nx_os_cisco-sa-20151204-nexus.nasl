@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20151204-nexus.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Nexus 5000 Series USB Driver Denial of Service Vulnerability
 #
@@ -33,12 +32,11 @@ if (description)
   script_cve_id("CVE-2015-6394");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12149 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Nexus 5000 Series USB Driver Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151204-nexus");
-
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -57,7 +55,7 @@ that mitigate this vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-12 16:00:56 +0200 (Thu, 12 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -81,10 +79,9 @@ if ( ! nx_model = get_kb_item( "cisco_nx_os/model" ) ) exit( 0 );
 if( nx_model =~ "^5[0-9]+" )
 {
   affected = make_list(
-			"5.2(9)N1(1)"
-		);
+    "5.2(9)N1(1)"
+  );
 }
-
 
 foreach af ( affected )
 {

@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113400");
-  script_version("2019-05-29T12:29:49+0000");
-  script_tag(name:"last_modification", value:"2019-05-29 12:29:49 +0000 (Wed, 29 May 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-05-29 13:51:40 +0000 (Wed, 29 May 2019)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"summary", value:"Cybozu Garoon is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - Remote authenticated attackers may bypass access restriction to change user information
     without access privileges via the Item function of User Information

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1273_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for graphite2 openSUSE-SU-2017:1273-1 (graphite2)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851552");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-05-16 06:53:08 +0200 (Tue, 16 May 2017)");
   script_cve_id("CVE-2017-5436");
   script_tag(name:"cvss_base", value:"6.8");
@@ -40,7 +39,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for graphite2 fixes one issue.
 
-  This security issues was fixed:
+  This security issue was fixed:
 
   - CVE-2017-5436: An out-of-bounds write triggered with a maliciously
   crafted Graphite font could lead to a crash or potentially code

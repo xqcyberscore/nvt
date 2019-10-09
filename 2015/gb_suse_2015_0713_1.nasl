@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0713_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Linux openSUSE-SU-2015:0713-1 (Linux)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850670");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-09-18 10:26:10 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2014-8134", "CVE-2014-8160", "CVE-2014-8559", "CVE-2014-9419", "CVE-2014-9420", "CVE-2014-9428", "CVE-2014-9529", "CVE-2014-9584", "CVE-2014-9585", "CVE-2015-0777", "CVE-2015-1421", "CVE-2015-1593", "CVE-2015-2150");
   script_tag(name:"cvss_base", value:"10.0");
@@ -40,7 +39,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The Linux kernel was updated to fix bugs and security issues:
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   - CVE-2015-1421: Use-after-free vulnerability in the sctp_assoc_update
   function in net/sctp/associola.c in the Linux kernel allowed remote

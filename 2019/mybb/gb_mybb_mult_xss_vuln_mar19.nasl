@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113372");
-  script_version("2019-04-15T13:17:48+0000");
-  script_tag(name:"last_modification", value:"2019-04-15 13:17:48 +0000 (Mon, 15 Apr 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-04-15 15:09:58 +0000 (Mon, 15 Apr 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"summary", value:"MyBB is prone to multiple cross-site scripting (XSS) vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - The ModCP Profile Editor allows remote attackers to inject JavaScript
     via the 'username' parameter

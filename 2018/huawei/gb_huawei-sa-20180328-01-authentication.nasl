@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei-sa-20180328-01-authentication.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Huawei Switches Improper Authorization Vulnerability
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112259");
-  script_version("$Revision: 14156 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-04-24 11:11:11 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -53,7 +52,7 @@ if( description )
   The system incorrectly performs an authorization check when a normal user attempts to access certain information which is supposed to be accessed only by authenticated user.");
   script_tag(name:"vuldetect", value:"The script checks if the target host is an affected product that has a vulnerable firmware version installed.");
   script_tag(name:"impact", value:"Successful exploit could cause information disclosure.");
-  script_tag(name:"affected", value:"Following Huawei Switch models and firmware versions are affected:
+  script_tag(name:"affected", value:"The following Huawei Switch models and firmware versions are affected:
 
   Huawei Switch S12700 versions: V200R005C00, V200R006C00, V200R006C01, V200R007C00, V200R007C01, V200R007C20, V200R008C00, V200R008C06, V200R009C00, V200R010C00
 

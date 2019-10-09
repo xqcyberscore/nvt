@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: imap4_banner.nasl 13637 2019-02-13 12:46:42Z cfischer $
 # Description: IMAP Server type and version
 #
 # Authors:
@@ -25,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11414");
-  script_version("$Revision: 13637 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:46:42 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-10-09T06:13:56+0000");
+  script_tag(name:"last_modification", value:"2019-10-09 06:13:56 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -53,7 +52,7 @@ ports = imap_get_ports();
 foreach port( ports ) {
 
   # nb: get_imap_banner() is verifying (via imap_verify_banner) that we have
-  # received an IMAP banner here so it is save to register the service below.
+  # received an IMAP banner here so it is safe to register the service below.
   banner = get_imap_banner( port:port );
   if( ! banner )
     continue;
@@ -72,8 +71,14 @@ foreach port( ports ) {
   set_kb_item( name:"imap/banner/available", value:TRUE );
   set_kb_item( name:"pop3_imap_or_smtp/banner/available", value:TRUE );
 
-  if( "Dovecot ready" >< banner ) {
+  id_banner = get_kb_item( "imap/fingerprints/" + port + "/id_banner" );
+
+  # Dovecot ready.
+  # Dovecot (Debian) ready.
+  # * ID ("name" "Dovecot")
+  if( ( "Dovecot " >< banner && " ready" >< banner ) || "Dovecot" >< id_banner ) {
     set_kb_item( name:"imap/dovecot/detected", value:TRUE );
+    set_kb_item( name:"imap_or_pop3/dovecot/detected", value:TRUE );
     set_kb_item( name:"imap/" + port + "/dovecot/detected", value:TRUE );
     guess += '\n- Dovecot';
   }

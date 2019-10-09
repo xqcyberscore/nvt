@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3368_1.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:3368-1 (wireshark)
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851997");
-  script_version("$Revision: 13209 $");
+  script_version("2019-10-07T14:34:48+0000");
   script_cve_id("CVE-2018-12086", "CVE-2018-18227");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-10-26 06:33:08 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for wireshark openSUSE-SU-2018:3368-1 (wireshark)");
   script_category(ACT_GATHER_INFO);
@@ -54,7 +53,7 @@ if(description)
 
   Wireshark was updated to 2.4.10 (bsc#1111647).
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   - CVE-2018-18227: MS-WSP dissector crash (wnpa-sec-2018-47)
 

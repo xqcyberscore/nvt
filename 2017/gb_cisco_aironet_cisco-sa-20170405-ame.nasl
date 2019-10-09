@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20170405-ame.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Aironet 1830 Series and 1850 Series Access Points Mobility Express Default Credential Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-3834");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Aironet 1830 Series and 1850 Series Access Points Mobility Express Default Credential Vulnerability");
 
@@ -58,7 +57,7 @@ device.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-04-07 08:38:56 +0200 (Fri, 07 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -80,13 +79,13 @@ if (!version = get_app_version(cpe:CPE))
   exit(0);
 
 affected = make_list(
-		'8.2.100.0',
-		'8.2.102.43',
-		'8.2.130.0',
-		'8.2.121.12',
-		'8.2.102.139',
-		'8.2.121.12',
-		'8.3.102.0',
+  '8.2.100.0',
+  '8.2.102.43',
+  '8.2.130.0',
+  '8.2.121.12',
+  '8.2.102.139',
+  '8.2.121.12',
+  '8.3.102.0',
                 '8.2.121.12');
 
 foreach af (affected) {

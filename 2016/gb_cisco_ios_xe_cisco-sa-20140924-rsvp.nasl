@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20140924-rsvp.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco IOS Software RSVP Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2014-3354");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12051 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS Software RSVP Vulnerability");
 
@@ -60,7 +59,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-10 11:06:48 +0200 (Tue, 10 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -76,65 +75,65 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'2.1.0',
-		'2.1.1',
-		'2.1.2',
-		'2.2.1',
-		'2.2.2',
-		'2.2.3',
-		'2.3.0',
-		'2.3.0t',
-		'2.3.1t',
-		'2.3.2',
-		'2.4.0',
-		'2.4.1',
-		'2.5.0',
-		'2.6.0',
-		'2.6.1',
-		'2.6.2',
-		'3.1.0S',
-		'3.1.1S',
-		'3.1.2S',
-		'3.1.3S',
-		'3.2.0S',
-		'3.2.1S',
-		'3.2.2S',
-		'3.2.0SE',
-		'3.2.1SE',
-		'3.3.0S',
-		'3.3.1S',
-		'3.3.2S',
-		'3.3.0SE',
-		'3.3.1SE',
-		'3.3.0SG',
-		'3.3.1SG',
-		'3.3.2SG',
-		'3.4.0S',
-		'3.4.1S',
-		'3.4.2S',
-		'3.4.3S',
-		'3.4.4S',
-		'3.4.5S',
-		'3.4.6S',
-		'3.4.0SG',
-		'3.4.1SG',
-		'3.4.2SG',
-		'3.5.0S',
-		'3.5.1S',
-		'3.5.2S',
-		'3.6.0S',
-		'3.6.1S',
-		'3.6.2S',
-		'3.7.0S',
-		'3.7.1S',
-		'3.7.2S',
-		'3.7.3S',
-		'3.8.0S',
-		'3.8.1S',
-		'3.8.2S',
-		'3.9.0S',
-		'3.9.1S',
-		'3.10.0S' );
+  '2.1.0',
+  '2.1.1',
+  '2.1.2',
+  '2.2.1',
+  '2.2.2',
+  '2.2.3',
+  '2.3.0',
+  '2.3.0t',
+  '2.3.1t',
+  '2.3.2',
+  '2.4.0',
+  '2.4.1',
+  '2.5.0',
+  '2.6.0',
+  '2.6.1',
+  '2.6.2',
+  '3.1.0S',
+  '3.1.1S',
+  '3.1.2S',
+  '3.1.3S',
+  '3.2.0S',
+  '3.2.1S',
+  '3.2.2S',
+  '3.2.0SE',
+  '3.2.1SE',
+  '3.3.0S',
+  '3.3.1S',
+  '3.3.2S',
+  '3.3.0SE',
+  '3.3.1SE',
+  '3.3.0SG',
+  '3.3.1SG',
+  '3.3.2SG',
+  '3.4.0S',
+  '3.4.1S',
+  '3.4.2S',
+  '3.4.3S',
+  '3.4.4S',
+  '3.4.5S',
+  '3.4.6S',
+  '3.4.0SG',
+  '3.4.1SG',
+  '3.4.2SG',
+  '3.5.0S',
+  '3.5.1S',
+  '3.5.2S',
+  '3.6.0S',
+  '3.6.1S',
+  '3.6.2S',
+  '3.7.0S',
+  '3.7.1S',
+  '3.7.2S',
+  '3.7.3S',
+  '3.8.0S',
+  '3.8.1S',
+  '3.8.2S',
+  '3.9.0S',
+  '3.9.1S',
+  '3.10.0S' );
 
 foreach af ( affected )
 {

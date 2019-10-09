@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150325-ani.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Multiple Vulnerabilities in Cisco IOS Software and IOS XE Software Autonomic Networking Infrastructure
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-0635", "CVE-2015-0636", "CVE-2015-0637");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_version("$Revision: 12431 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Multiple Vulnerabilities in Cisco IOS Software and IOS XE Software Autonomic Networking Infrastructure");
 
@@ -68,7 +67,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-10 10:44:03 +0200 (Tue, 10 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -84,21 +83,21 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'3.10.0S',
-		'3.10.1S',
-		'3.10.2S',
-		'3.10.3S',
-		'3.10.4S',
-		'3.10.5S',
-		'3.11.0S',
-		'3.11.1S',
-		'3.11.2S',
-		'3.11.3S',
-		'3.12.0S',
-		'3.12.1S',
-		'3.12.2S',
-		'3.12.3S',
-		'3.13.0S' );
+  '3.10.0S',
+  '3.10.1S',
+  '3.10.2S',
+  '3.10.3S',
+  '3.10.4S',
+  '3.10.5S',
+  '3.11.0S',
+  '3.11.1S',
+  '3.11.2S',
+  '3.11.3S',
+  '3.12.0S',
+  '3.12.1S',
+  '3.12.2S',
+  '3.12.3S',
+  '3.13.0S' );
 
 foreach af ( affected )
 {

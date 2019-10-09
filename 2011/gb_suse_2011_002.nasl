@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850156");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"insight", value:"This update of the openSUSE 11.2 kernel fixes various bugs
   and lots of security issues.
 
-  Following security issues have been fixed:
+  The following security issues have been fixed:
   CVE-2010-4258: A local attacker could use a Oops (kernel crash) caused
   by other flaws to write a 0 byte to a attacker controlled address in the
   kernel. This could lead to privilege escalation together with other issues.

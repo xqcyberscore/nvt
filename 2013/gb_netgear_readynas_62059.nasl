@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_readynas_62059.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # NetGear RAIDiator (ReadyNAS) Cross Site Request Forgery and Command Injection Vulnerabilities
 #
@@ -32,7 +31,7 @@ if (description)
   script_cve_id("CVE-2013-2751", "CVE-2013-2752");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11865 $");
+  script_version("2019-10-07T14:34:48+0000");
 
   script_name("NetGear RAIDiator (ReadyNAS) Cross Site Request Forgery and Command Injection Vulnerabilities");
 
@@ -40,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62059");
   script_xref(name:"URL", value:"http://www.netgear.com");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-10-25 15:00:37 +0200 (Fri, 25 Oct 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -51,24 +50,26 @@ if (description)
   script_mandatory_keys("apache/banner");
 
   script_tag(name:"impact", value:"Exploiting these issues may allow a remote attacker to perform certain
-administrative actions and execute arbitrary shell commands with root
-privileges. Other attacks are also possible.");
+  administrative actions and execute arbitrary shell commands with root
+  privileges. Other attacks are also possible.");
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request which tries to execute the 'id' command.");
   script_tag(name:"insight", value:"The NETGEAR ReadyNAS RAIDiator firmware prior to the 4.2.24
-release is prone to remote command execution through the FrontView web
-interface. An attacker can use an unauthenticated HTTP GET request to execute
-arbitrary commands as user 'admin' on the remote NAS device. This
-vulnerability exists due to a failure in /frontview/lib/np_handler.pl to
-sanitize user-input. Due to various improper file system permissions, the admin
-user can execute commands as root.");
+  release is prone to remote command execution through the FrontView web
+  interface. An attacker can use an unauthenticated HTTP GET request to execute
+  arbitrary commands as user 'admin' on the remote NAS device. This
+  vulnerability exists due to a failure in /frontview/lib/np_handler.pl to
+  sanitize user-input. Due to various improper file system permissions, the admin
+  user can execute commands as root.");
   script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
-for more information.");
+  for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"NetGear RAIDiator is prone to a cross-site request-forgery
-vulnerability and a command-injection vulnerability.");
-  script_tag(name:"affected", value:"Following are vulnerable:
-RAIDiator versions prior to 4.1.12 running on SPARC
-RAIDiator-x86 versions prior to 4.2.24");
+  vulnerability and a command-injection vulnerability.");
+  script_tag(name:"affected", value:"The following versions are vulnerable:
+
+  - RAIDiator versions prior to 4.1.12 running on SPARC
+
+  - RAIDiator-x86 versions prior to 4.2.24");
 
   exit(0);
 }

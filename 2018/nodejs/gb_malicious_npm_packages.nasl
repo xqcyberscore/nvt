@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_malicious_npm_packages.nasl 12541 2018-11-27 07:28:35Z cfischer $
 #
 # Malicious npm package detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113208");
-  script_version("$Revision: 12541 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-27 08:28:35 +0100 (Tue, 27 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-06-12 13:13:13 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +56,7 @@ if(description)
   script_tag(name:"impact", value:"The packages mostly extract information from environment variables,
   while some create a remote shell or a command-and-control infrastructure, completely comprising the target host.");
 
-  script_tag(name:"affected", value:"Following packages are affected:
+  script_tag(name:"affected", value:"The following packages are affected:
 
   - npm-script-demo
 

@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113535");
-  script_version("2019-09-30T11:07:12+0000");
-  script_tag(name:"last_modification", value:"2019-09-30 11:07:12 +0000 (Mon, 30 Sep 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-30 11:55:55 +0200 (Mon, 30 Sep 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   through a direct request to folder_view.php or category_view.php.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to access sensitive data
   or execute php code contained in files on the target machine.");
-  script_tag(name:"affected", value:"Following devices and firmwares are affected:
+  script_tag(name:"affected", value:"The following devices and firmwares are affected:
 
   - D-Link DIR-868L REVB through version 2.03
 

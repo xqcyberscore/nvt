@@ -21,8 +21,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113327");
-  script_version("2019-07-26T07:13:17+0000");
-  script_tag(name:"last_modification", value:"2019-07-26 07:13:17 +0000 (Fri, 26 Jul 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-01-22 15:55:07 +0200 (Tue, 22 Jan 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if( description )
 
   script_tag(name:"summary", value:"DomainMOD is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - Stored XSS in the '/settings/profile/index.php' new_first_name parameter
 

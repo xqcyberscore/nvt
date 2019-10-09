@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3946_1.nasl 12638 2018-12-04 08:40:36Z santu $
 #
 # SuSE Update for openssh openSUSE-SU-2018:3946-1 (openssh)
 #
@@ -29,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852151");
-  script_version("$Revision: 12638 $");
+  script_version("2019-10-07T14:34:48+0000");
   script_cve_id("CVE-2018-15473");
   script_bugtraq_id(106054);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:40:36 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:53 +0530 (Tue, 04 Dec 2018)");
   script_name("SuSE Update for openssh openSUSE-SU-2018:3946-1 (openssh)");
   script_category(ACT_GATHER_INFO);
@@ -53,7 +52,7 @@ if(description)
 
   script_tag(name:"insight", value:"This update for openssh fixes the following issues:
 
-  Following security issues have been fixed:
+  The following security issues have been fixed:
 
   - CVE-2018-15473: OpenSSH was prone to a user existence oracle
   vulnerability due to not delaying bailout for an invalid authenticating

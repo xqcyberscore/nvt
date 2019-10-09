@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6450");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("2019-09-24T04:41:47+0000");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XE Software Directory Traversal Vulnerability");
 
@@ -57,7 +57,7 @@ and compromise the integrity of the system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-16 09:08:57 +0700 (Wed, 16 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -79,16 +79,16 @@ if (model !~ '^WS-C3(6|8)50' && model !~ 'WS-C4500(E|X)' && model !~ "^AIR-CT576
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'16.2.1',
-		'16.2.2',
-		'16.3.1',
-		'3.8.1E',
-		'3.6.4E',
-		'3.6.2a.E',
-		'3.6.3E',
-		'16.1.3',
-		'16.1.1',
-		'16.1.2' );
+  '16.2.1',
+  '16.2.2',
+  '16.3.1',
+  '3.8.1E',
+  '3.6.4E',
+  '3.6.2a.E',
+  '3.6.3E',
+  '16.1.3',
+  '16.1.1',
+  '16.1.2' );
 
 foreach af ( affected )
 {

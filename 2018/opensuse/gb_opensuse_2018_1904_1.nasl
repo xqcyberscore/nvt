@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1904_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for ucode-intel openSUSE-SU-2018:1904-1 (ucode-intel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851811");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-07-07 05:53:44 +0200 (Sat, 07 Jul 2018)");
   script_cve_id("CVE-2018-3639", "CVE-2018-3640");
   script_tag(name:"cvss_base", value:"4.9");
@@ -46,7 +45,7 @@ if(description)
   helps mitigating CVE-2018-3639 (Spectre v4)  (bsc#1100147 bsc#1087082
   bsc#1087083).
 
-  Following chipsets are fixed in this round:
+  The following chipsets are fixed in this round:
 
   Model        Stepping F-MO-S/PI      Old- New
 

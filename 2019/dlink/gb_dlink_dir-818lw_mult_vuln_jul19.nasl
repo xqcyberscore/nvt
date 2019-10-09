@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113451");
-  script_version("2019-08-31T10:29:46+0000");
-  script_tag(name:"last_modification", value:"2019-08-31 10:29:46 +0000 (Sat, 31 Aug 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-07-31 12:01:18 +0000 (Wed, 31 Jul 2019)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"summary", value:"D-Link DIR-818LW devices are prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - There is a command injection in HNAP1 (exploitable with authentication)
     via shell metacharacters in the MTU field to SetWanSettings.

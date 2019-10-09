@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850165");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-05-06 16:22:00 +0200 (Fri, 06 May 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"insight", value:"The openSUSE 11.3 kernel was updated to 2.6.34.8 to fix various bugs
   and security issues.
 
-  Following security issues have been fixed:
+  The following security issues have been fixed:
   CVE-2011-1493: In the rose networking stack, when parsing the
   FAC_NATIONAL_DIGIS facilities field, it was possible for a remote
   host to provide more digipeaters than expected, resulting in heap

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ace_cisco-sa-20160908-ace.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco ACE 4710 Application Control Engine Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6399");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12096 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco ACE 4710 Application Control Engine Denial of Service Vulnerability");
 
@@ -57,7 +56,7 @@ device.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-16 11:53:36 +0700 (Fri, 16 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -75,35 +74,35 @@ if (!version = get_app_version(cpe:CPE))
   exit(0);
 
 affected = make_list(
-		'A1(7a)',
-		'A1(7b)',
-		'A1(8.0)',
-		'A1(8.0a)',
-		'A3(1.0)',
-		'A3(2.0)',
-		'A3(2.2)',
-		'A3(2.3)',
-		'A3(2.4)',
-		'A3(2.5)',
-		'A3(2.6)',
-		'A3(2.7)',
-		'A4(1.0)',
-		'A4(1.1)',
-		'A4(2.0)',
-		'A4(2.1a)',
-		'A4(2.2)',
-		'A4(2.3)',
-		'A5(1.0)',
-		'A5(1.1)',
-		'A5(1.2)',
-		'A5(2.0)',
-		'A5(2.1)',
-		'A5(2.1e)',
-		'A5(3.0)',
-		'A5(3.1a)',
-		'A5(3.1b)',
-		'A5(3.2)',
-		'A5(3.3)' );
+  'A1(7a)',
+  'A1(7b)',
+  'A1(8.0)',
+  'A1(8.0a)',
+  'A3(1.0)',
+  'A3(2.0)',
+  'A3(2.2)',
+  'A3(2.3)',
+  'A3(2.4)',
+  'A3(2.5)',
+  'A3(2.6)',
+  'A3(2.7)',
+  'A4(1.0)',
+  'A4(1.1)',
+  'A4(2.0)',
+  'A4(2.1a)',
+  'A4(2.2)',
+  'A4(2.3)',
+  'A5(1.0)',
+  'A5(1.1)',
+  'A5(1.2)',
+  'A5(2.0)',
+  'A5(2.1)',
+  'A5(2.1e)',
+  'A5(3.0)',
+  'A5(3.1a)',
+  'A5(3.1b)',
+  'A5(3.2)',
+  'A5(3.3)' );
 
 foreach af ( affected )
 {

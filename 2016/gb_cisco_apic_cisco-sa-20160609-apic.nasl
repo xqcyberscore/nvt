@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20160609-apic.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Binary Files Privilege Escalation Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1420");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 14041 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Application Policy Infrastructure Controller Binary Files Privilege Escalation Vulnerability");
 
@@ -56,7 +55,7 @@ vulnerability are not available.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-06-09 17:24:53 +0200 (Thu, 09 Jun 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -74,21 +73,21 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'1.0(1e)',
-		'1.0(1h)',
-		'1.0(1k)',
-		'1.0(1n)',
-		'1.0(2j)',
-		'1.0(2m)',
-		'1.0(3f)',
-		'1.0(3i)',
-		'1.0(3k)',
-		'1.0(3n)',
-		'1.0(4h)',
-		'1.0(4o)',
-		'1.1(0.920a)',
-		'1.1(1j)',
-		'1.1(3f)' );
+  '1.0(1e)',
+  '1.0(1h)',
+  '1.0(1k)',
+  '1.0(1n)',
+  '1.0(2j)',
+  '1.0(2m)',
+  '1.0(3f)',
+  '1.0(3i)',
+  '1.0(3k)',
+  '1.0(3n)',
+  '1.0(4h)',
+  '1.0(4o)',
+  '1.1(0.920a)',
+  '1.1(1j)',
+  '1.1(3f)' );
 
 foreach af ( affected )
 {

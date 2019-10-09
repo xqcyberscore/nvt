@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0702_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libXfont SUSE-SU-2015:0702-1 (libXfont)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850864");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-10-15 12:24:06 +0200 (Thu, 15 Oct 2015)");
   script_cve_id("CVE-2015-1802", "CVE-2015-1803", "CVE-2015-1804");
   script_tag(name:"cvss_base", value:"8.5");
@@ -40,7 +39,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"LibXFont was updated to fix security problems.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   - CVE-2015-1802: The bdf parser reads a count for the number of properties
   defined in a font from the font file, and allocates arrays with entries

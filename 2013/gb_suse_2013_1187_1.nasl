@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1187_1.nasl 14111 2019-03-12 09:34:48Z cfischer $
 #
 # SuSE Update for 3.0.80 openSUSE-SU-2013:1187-1 (3.0.80)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850509");
-  script_version("$Revision: 14111 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:34:48 +0100 (Tue, 12 Mar 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:47 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2012-6548", "CVE-2012-6549", "CVE-2013-0160", "CVE-2013-0268",
                 "CVE-2013-0311", "CVE-2013-0914", "CVE-2013-1772", "CVE-2013-1792",
@@ -44,7 +43,7 @@ if(description)
   script_tag(name:"insight", value:"The kernel was updated to Linux kernel 3.0.80, fixing
   various bugs and security issues.
 
-  Following security issues were fixed: CVE-2013-0160:
+  The following security issues were fixed: CVE-2013-0160:
   Timing side channel on attacks were possible on /dev/ptmx
   that could allow local attackers to predict keypresses like
   e.g. passwords. This has been fixed again by updating

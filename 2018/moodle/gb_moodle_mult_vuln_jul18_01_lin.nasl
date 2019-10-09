@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln_jul18_01_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Moodle CMS <= 3.1.12, 3.2.x, 3.3.x <= 3.3.6, 3.4.x <= 3.4.3, 3.5.0 Multiple Vulnerabilities (Linux)
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113228");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-07-12 10:10:32 +0200 (Thu, 12 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +50,7 @@ if( description )
 
   script_tag(name:"summary", value:"Moodle CMS is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - It's possible for the core_course_get_categories web service
     to return hidden categories, which should be omitted when fetching course categories.

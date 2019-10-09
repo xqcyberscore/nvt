@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806663");
-  script_version("2019-05-03T12:31:27+0000");
+  script_version("2019-10-07T14:34:48+0000");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-01-14 13:09:43 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Root Certificate Program SHA-1 Deprecation Advisory (3123479)");
@@ -95,7 +95,7 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, win8x64:1,
   exit(0);
 }
 
-## Following KBs already covered: KB3198585, KB3198586,
+## The following KBs already covered: KB3198585, KB3198586,
 ## KB3200970 in 2016/gb_ms16-129.nasl
 
 

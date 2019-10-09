@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1964_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2015:1964-1 (xen)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851133");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-11-13 06:32:23 +0100 (Fri, 13 Nov 2015)");
   script_cve_id("CVE-2014-0222", "CVE-2015-4037", "CVE-2015-5154", "CVE-2015-5165",
                 "CVE-2015-5166", "CVE-2015-5239", "CVE-2015-6815", "CVE-2015-7311",
@@ -80,7 +79,7 @@ if(description)
 
   - CVE-2015-5154: Host code execution via IDE subsystem CD-ROM (bsc#938344).
 
-  This non-security issues was fixed:
+  This non-security issue was fixed:
 
   - bsc#941074: VmError: Device 51728 (vbd) could not be connected. Hotplug
   scripts not working.");

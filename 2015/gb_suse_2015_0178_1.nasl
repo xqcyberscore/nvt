@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0178_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
 # SuSE Update for the Linux Kernel SUSE-SU-2015:0178-1 (kernel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850992");
-  script_version("$Revision: 13941 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-10-16 16:17:11 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3687", "CVE-2014-3690", "CVE-2014-8559", "CVE-2014-9420", "CVE-2014-9585");
   script_tag(name:"cvss_base", value:"7.8");
@@ -41,7 +40,7 @@ if(description)
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.36 to receive
   various security and bugfixes.
 
-  Following security bugs were fixed:
+  The following security bugs were fixed:
 
   - CVE-2014-8559: The d_walk function in fs/dcache.c in the Linux kernel
   through 3.17.2 did not properly maintain the semantics of rename_lock,

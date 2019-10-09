@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160620-iosxe.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IOS XE Software SNMP Subsystem Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1428");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_version("$Revision: 12313 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XE Software SNMP Subsystem Denial of Service Vulnerability");
 
@@ -57,7 +56,7 @@ vulnerability are not available.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-06-21 10:14:35 +0200 (Tue, 21 Jun 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -73,9 +72,9 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'3.15.0S',
-		'3.17.0S',
-		'3.16.0S' );
+  '3.15.0S',
+  '3.17.0S',
+  '3.16.0S' );
 
 foreach af ( affected )
 {

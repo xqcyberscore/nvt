@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20160922-esa.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco Email Security Appliance Internal Testing Interface Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6406");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11961 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Email Security Appliance Internal Testing Interface Vulnerability");
 
@@ -55,7 +54,7 @@ affected device with root-level privileges.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-23 16:22:13 +0700 (Fri, 23 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -71,14 +70,14 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'9.1.2-023',
-		'9.1.2-028',
-		'9.1.2-036',
-		'9.7.2-046',
-		'9.7.2-047',
-		'9.7.2-054',
-		'10.0.0-124',
-		'10.0.0-125' );
+  '9.1.2-023',
+  '9.1.2-028',
+  '9.1.2-036',
+  '9.7.2-046',
+  '9.7.2-047',
+  '9.7.2-054',
+  '10.0.0-124',
+  '10.0.0-125' );
 
 foreach af ( affected )
 {

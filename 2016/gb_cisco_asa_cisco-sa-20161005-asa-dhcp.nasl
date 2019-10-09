@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20161005-asa-dhcp.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco ASA Software DHCP Relay Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6424");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12096 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco ASA Software DHCP Relay Denial of Service Vulnerability");
 
@@ -58,7 +57,7 @@ by reloading the device.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-06 12:09:26 +0700 (Thu, 06 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -75,8 +74,8 @@ if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
 affected = make_list(
-		'8.4.7.29',
-		'9.1.7.4' );
+  '8.4.7.29',
+  '9.1.7.4' );
 
 foreach af ( affected )
 {

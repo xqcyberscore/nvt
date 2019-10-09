@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160127-rv220.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco RV220W Management Authentication Bypass Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-6319");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12313 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco RV220W Management Authentication Bypass Vulnerability");
 
@@ -60,7 +59,7 @@ if (description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-07-05 13:49:18 +0200 (Tue, 05 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -80,22 +79,21 @@ if( ! model = get_kb_item( "cisco/small_business/model" ) ) exit( 0 );
 if( model == 'RV220W' )
 {
   affected = make_list(
-			"1.0.0.2",
-			"1.0.0.30",
-			"1.0.1.9",
-			"1.0.2.6",
-			"1.0.3.10",
-			"1.0.4.10",
-			"1.0.4.14",
-			"1.0.5.4(GD)",
-			"1.0.5.6",
-			"1.0.5.8",
-			"1.0.6.6",
-			"1.1.0.9",
-			"1.2.0.2"
-		);
+    "1.0.0.2",
+    "1.0.0.30",
+    "1.0.1.9",
+    "1.0.2.6",
+    "1.0.3.10",
+    "1.0.4.10",
+    "1.0.4.14",
+    "1.0.5.4(GD)",
+    "1.0.5.6",
+    "1.0.5.8",
+    "1.0.6.6",
+    "1.1.0.9",
+    "1.2.0.2"
+  );
 }
-
 
 foreach af ( affected )
 {

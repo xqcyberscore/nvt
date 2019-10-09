@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160629-pi-epnm.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco Prime Infrastructure Authenticated Remote Code Execution Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1408");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 12051 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Prime Infrastructure Authenticated Remote Code Execution Vulnerability");
 
@@ -58,7 +57,7 @@ commands as the prime web user.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-06 09:23:28 +0700 (Thu, 06 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -74,21 +73,21 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 affected = make_list(
-		'1.2.0',
-		'1.2.1',
-		'1.2.0.103',
-		'1.3.0',
-		'1.3.0.20',
-		'1.4.0',
-		'1.4.1',
-		'1.4.2',
-		'1.4.0.45',
-		'2.0.0',
-		'2.1.0',
-		'2.2.0',
-		'2.2.2',
-		'3.0.0',
-		'3.1.0' );
+  '1.2.0',
+  '1.2.1',
+  '1.2.0.103',
+  '1.3.0',
+  '1.3.0.20',
+  '1.4.0',
+  '1.4.1',
+  '1.4.2',
+  '1.4.0.45',
+  '2.0.0',
+  '2.1.0',
+  '2.2.0',
+  '2.2.2',
+  '3.0.0',
+  '3.1.0' );
 
 foreach af ( affected )
 {

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3315_1.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # SuSE Update for clamav openSUSE-SU-2018:3315-1 (clamav)
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852069");
-  script_version("$Revision: 12637 $");
+  script_version("2019-10-07T14:34:48+0000");
   script_cve_id("CVE-2018-14680", "CVE-2018-14681", "CVE-2018-14682", "CVE-2018-15378");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-10-26 06:41:11 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for clamav openSUSE-SU-2018:3315-1 (clamav)");
   script_category(ACT_GATHER_INFO);
@@ -54,7 +53,7 @@ if(description)
 
   clamav was updated to version 0.100.2.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   - CVE-2018-15378: Vulnerability in ClamAV's MEW unpacking feature that
   could allow an unauthenticated, remote attacker to cause a denial of
@@ -63,7 +62,7 @@ if(description)
   - CVE-2018-14680, CVE-2018-14681, CVE-2018-14682: more fixes for embedded
   libmspack. (bsc#1103040)
 
-  Following non-security issues were addressed:
+  The following non-security issues were addressed:
 
   - Make freshclam more robust against lagging signature mirrors.
 

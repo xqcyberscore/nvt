@@ -20,8 +20,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113368");
-  script_version("2019-06-18T08:52:17+0000");
-  script_tag(name:"last_modification", value:"2019-06-18 08:52:17 +0000 (Tue, 18 Jun 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-04-08 10:45:55 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,7 +45,7 @@ if(description)
   By sending a specially-crafted request, an attacker could exploit this vulnerability
   to change configuration settings or gain administrative access.");
   script_tag(name:"vuldetect", value:"Tries to access administrative settings.");
-  script_tag(name:"affected", value:"Following HP Printers are affected:
+  script_tag(name:"affected", value:"The following HP Printers are affected:
 
   - LaserJet P4014
 

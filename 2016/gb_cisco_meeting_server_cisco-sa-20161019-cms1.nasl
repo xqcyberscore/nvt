@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_cisco-sa-20161019-cms1.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco Meeting Server Information Disclosure Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6446");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 12338 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Meeting Server Information Disclosure Vulnerability");
 
@@ -56,7 +55,7 @@ vulnerability are not available.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-02 16:19:35 +0100 (Wed, 02 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -72,15 +71,15 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'1.8.0',
-		'1.8.15',
-		'1.9.0',
-		'1.9.2',
-		'2.0.0',
-		'2.0.1',
-		'2.0.3',
-		'2.0.4',
-		'2.0.5' );
+  '1.8.0',
+  '1.8.15',
+  '1.9.0',
+  '1.9.2',
+  '2.0.0',
+  '2.0.1',
+  '2.0.3',
+  '2.0.4',
+  '2.0.5' );
 
 foreach af ( affected )
 {

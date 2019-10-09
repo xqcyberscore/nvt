@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161116-esa1.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco Email Security Appliance MIME Header Processing Filter Bypass Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6462");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 12338 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Email Security Appliance MIME Header Processing Filter Bypass Vulnerability");
 
@@ -58,7 +57,7 @@ configurations for the device.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-17 11:10:15 +0700 (Thu, 17 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -74,9 +73,9 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'9.7.1-066',
-		'10.0.0-125',
-		'10.0.0-082' );
+  '9.7.1-066',
+  '10.0.0-125',
+  '10.0.0-082' );
 
 foreach af ( affected )
 {

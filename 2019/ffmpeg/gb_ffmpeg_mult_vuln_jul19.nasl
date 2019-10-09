@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113425");
-  script_version("2019-07-15T08:38:57+0000");
-  script_tag(name:"last_modification", value:"2019-07-15 08:38:57 +0000 (Mon, 15 Jul 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-07-15 10:08:18 +0000 (Mon, 15 Jul 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"summary", value:"FFmpeg is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - block_cmp() in libavcodec/zmbvenc.c has a heap-based buffer over-read.
 

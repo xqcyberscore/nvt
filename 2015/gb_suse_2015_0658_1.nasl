@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0658_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Security SUSE-SU-2015:0658-1 (Security)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850900");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-10-16 13:49:50 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0777", "CVE-2015-2150");
   script_tag(name:"cvss_base", value:"4.9");
@@ -41,7 +40,7 @@ if(description)
   script_tag(name:"insight", value:"The SUSE Linux Enterprise Server 12 kernel was updated to 3.12.39 to
   receive various security and bugfixes.
 
-  Following security bugs were fixed:
+  The following security bugs were fixed:
 
   - CVE-2015-0777: The XEN usb backend could leak information to the guest
   system due to copying uninitialized memory.

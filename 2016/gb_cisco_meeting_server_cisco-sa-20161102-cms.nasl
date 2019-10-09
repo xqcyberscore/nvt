@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_cisco-sa-20161102-cms.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Meeting Server Buffer Underflow Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6447");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12096 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Meeting Server Buffer Underflow Vulnerability");
 
@@ -57,7 +56,7 @@ a reload of the device or execute arbitrary code with the privileges of the affe
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-03 14:19:37 +0700 (Thu, 03 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -73,9 +72,9 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'1.8.0',
-		'1.9.0',
-		'2.0.0' );
+  '1.8.0',
+  '1.9.0',
+  '2.0.0' );
 
 foreach af ( affected )
 {

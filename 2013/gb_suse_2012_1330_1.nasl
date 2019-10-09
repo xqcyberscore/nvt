@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1330_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2012:1330-1 (kernel)
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2012-10/msg00005.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850429");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:37 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-3412", "CVE-2012-3520");
   script_tag(name:"cvss_base", value:"7.8");
@@ -52,14 +51,14 @@ if(description)
   The changes up to 3.4.11 contain both security and bugfixes
   and are not explicitly listed here.
 
-  Following security issues were fixed: CVE-2012-3520: Force
+  The following security issues were fixed: CVE-2012-3520: Force
   passing credentials, otherwise local services could be
   fooled to assume requests coming from root.
 
   CVE-2012-3412: Do not allow extreme TSO parameters in the
   sfc driver and tcp stack.
 
-  Following non-security bugs were fixed:
+  The following non-security bugs were fixed:
 
   - nbd: clear waiting_queue on shutdown (bnc#778630).
 

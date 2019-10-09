@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_vpn_client_priv_escalation.nasl 11555 2018-09-22 15:24:22Z cfischer $
 # Description: Cisco VPN Client Privilege Escalation Vulnerability
 #
 # Authors:
@@ -22,10 +21,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-if (description) {
+if (description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.25550");
-  script_version("$Revision: 11555 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
+  script_version("2019-10-09T06:43:33+0000");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,16 +42,16 @@ if (description) {
 
   script_dependencies("cisco_vpn_client_detect.nasl");
   script_mandatory_keys("SMB/CiscoVPNClient/Version");
+
   script_tag(name:"solution", value:"Upgrade to version 4.8.01.0300 or a later.");
-  script_tag(name:"summary", value:"The remote windows host contains an application that is affected by a
-privilege escalation vulnerability.
 
-Description :
+  script_tag(name:"summary", value:"The installed Cisco VPN Client version is prone to a privilege
+  escalation attack.");
 
-The installed Cisco VPN Client version is prone to a privilege
-escalation attack.  By using the 'Start before logon' feature in the
-VPN client dialer, a local attacker may gain privileges and execute
-arbitrary commands with SYSTEM privileges.");
+  script_tag(name:"insight", value:"By using the 'Start before logon' feature in the
+  VPN client dialer, a local attacker may gain privileges and execute
+  arbitrary commands with SYSTEM privileges.");
+
   script_xref(name:"URL", value:"http://www.cisco.com/warp/public/707/cisco-sa-20060524-vpnclient.shtml");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -59,14 +59,19 @@ arbitrary commands with SYSTEM privileges.");
   exit(0);
 }
 
+include("version_func.inc");
+
 version = get_kb_item("SMB/CiscoVPNClient/Version");
 if (version) {
-	# These versions are reported vulnerable:
-	# - 2.x, 3.x, 4.0.x, 4.6.x, 4.7.x, 4.8.00.x
-	# Not vulnerable:
-	# - 4.7.00.0533
- 	if ("4.7.00.0533" >< version) exit(0);
-	if (egrep(pattern:"^([23]\.|4\.([067]\.|8\.00)).+", string:version)) {
-		security_message(port:get_kb_item("SMB/transport"));
-	}
+  # These versions are reported vulnerable:
+  # - 2.x, 3.x, 4.0.x, 4.6.x, 4.7.x, 4.8.00.x
+  # Not vulnerable:
+  # - 4.7.00.0533
+  if ("4.7.00.0533" >< version)
+    exit(0);
+
+  if (egrep(pattern:"^([23]\.|4\.([067]\.|8\.00)).+", string:version)) {
+    report = report_fixed_ver(installed_version:version, fixed_version:"4.8.01.0300");
+    security_message(port:0, data:report);
+  }
 }

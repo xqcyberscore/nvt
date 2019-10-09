@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1142_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2013:1142-1 (MozillaFirefox)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850497");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:39 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-1682", "CVE-2013-1683", "CVE-2013-1684", "CVE-2013-1685",
                 "CVE-2013-1686", "CVE-2013-1687", "CVE-2013-1688", "CVE-2013-1690",
@@ -40,7 +39,7 @@ if(description)
   script_tag(name:"affected", value:"MozillaFirefox on openSUSE 12.2");
   script_tag(name:"insight", value:"MozillaFirefox was updated to Firefox 22.0 (bnc#825935)
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   * MFSA 2013-49/CVE-2013-1682/CVE-2013-1683 Miscellaneous
   memory safety hazards

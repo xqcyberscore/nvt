@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1382_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
 # SuSE Update for the Linux Kernel openSUSE-SU-2015:1382-1 (kernel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850675");
-  script_version("$Revision: 13941 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-09-18 10:30:19 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2014-9728", "CVE-2014-9729", "CVE-2014-9730", "CVE-2014-9731", "CVE-2015-1420", "CVE-2015-1465", "CVE-2015-2041", "CVE-2015-2922", "CVE-2015-3212", "CVE-2015-3290", "CVE-2015-3339", "CVE-2015-3636", "CVE-2015-4001", "CVE-2015-4002", "CVE-2015-4003", "CVE-2015-4036", "CVE-2015-4167", "CVE-2015-4692", "CVE-2015-4700", "CVE-2015-5364", "CVE-2015-5366");
   script_tag(name:"cvss_base", value:"9.0");
@@ -41,7 +40,7 @@ if(description)
   script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to receive various security and
   bugfixes.
 
-  Following security bugs were fixed:
+  The following security bugs were fixed:
 
   - CVE-2015-3290: A flaw was found in the way the Linux kernels nested NMI
   handler and espfix64 functionalities interacted during NMI processing. A

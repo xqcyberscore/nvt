@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_http_iis_webdav_vuln.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap IIS WebDAV Vulnerability
 #
@@ -29,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801254");
-  script_version("2019-04-08T06:04:46+0000");
+  script_version("2019-10-07T14:34:48+0000");
   script_cve_id("CVE-2009-1122", "CVE-2009-1535");
-  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2010-08-10 12:08:05 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -143,6 +142,6 @@ if(res)
 }
 else
 {
-  msg = string('Following Nmap command failed entirely:\n', args);
+  msg = string('The following Nmap command failed entirely:\n', args);
   log_message(data : msg, port:port);
 }

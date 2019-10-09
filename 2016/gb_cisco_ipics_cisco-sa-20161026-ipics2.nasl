@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ipics_cisco-sa-20161026-ipics2.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco IP Interoperability and Collaboration System Command-Line Interface Privilege Escalation Vulnerability
 #
@@ -34,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6430");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11922 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IP Interoperability and Collaboration System Command-Line Interface Privilege Escalation Vulnerability");
 
@@ -56,7 +55,7 @@ address this vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-28 14:03:46 +0200 (Fri, 28 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -72,15 +71,15 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-                '4.0(1)',
-                '4.5(1)',
-                '4.6(1)',
-                '4.7(1)',
-                '4.8(1)',
-                '4.8(2)',
-                '4.9(1)',
-                '4.9(2)',
-                '4.10(1)' );
+  '4.0(1)',
+  '4.5(1)',
+  '4.6(1)',
+  '4.7(1)',
+  '4.8(1)',
+  '4.8(2)',
+  '4.9(1)',
+  '4.9(2)',
+  '4.10(1)' );
 
 foreach af ( affected )
 {

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3539_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for wpa_supplicant openSUSE-SU-2018:3539-1 (wpa_supplicant)
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852104");
-  script_version("$Revision: 12497 $");
+  script_version("2019-10-07T14:34:48+0000");
   script_cve_id("CVE-2018-14526");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-10-28 06:04:13 +0100 (Sun, 28 Oct 2018)");
   script_name("SuSE Update for wpa_supplicant openSUSE-SU-2018:3539-1 (wpa_supplicant)");
   script_category(ACT_GATHER_INFO);
@@ -52,7 +51,7 @@ if(description)
 
   script_tag(name:"insight", value:"This update for wpa_supplicant provides the following fixes:
 
-  This security issues was fixe:
+  This security issue was fixed:
 
   - CVE-2018-14526: Under certain conditions, the integrity of EAPOL-Key
   messages was not checked, leading to a decryption oracle. An attacker

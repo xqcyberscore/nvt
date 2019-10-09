@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0168_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
 # SuSE Update for the Linux Kernel SUSE-SU-2016:0168-1 (kernel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851159");
-  script_version("$Revision: 13941 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-01-20 06:16:51 +0100 (Wed, 20 Jan 2016)");
   script_cve_id("CVE-2015-7550", "CVE-2015-8539", "CVE-2015-8543", "CVE-2015-8550",
                 "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569", "CVE-2015-8575");
@@ -42,7 +41,7 @@ if(description)
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to receive various
   security and bugfixes.
 
-  Following security bugs were fixed:
+  The following security bugs were fixed:
 
   - CVE-2015-7550: A local user could have triggered a race between read and
   revoke in keyctl (bnc#958951).

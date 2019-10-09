@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160810-iosxr.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco IOS XR Software for Cisco ASR 9001 Aggregation Services Routers Fragmented Packet Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6355");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12051 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XR Software for Cisco ASR 9001 Aggregation Services Routers Fragmented Packet Denial of Service Vulnerability");
 
@@ -60,7 +59,7 @@ address this vulnerability. However, there are mitigations for this vulnerabilit
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-08-16 08:52:29 +0700 (Tue, 16 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -88,20 +87,20 @@ if ("ASR-9001" >!< chassis)
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'5.1.0',
-		'5.1.1',
-		'5.1.2',
-		'5.1.1.K9SEC',
-		'5.1.3',
-		'5.2.0',
-		'5.2.1',
-		'5.2.2',
-		'5.2.4',
-		'5.2.3',
-		'5.2.5',
-		'5.3.0',
-		'5.3.1',
-		'5.3.2' );
+  '5.1.0',
+  '5.1.1',
+  '5.1.2',
+  '5.1.1.K9SEC',
+  '5.1.3',
+  '5.2.0',
+  '5.2.1',
+  '5.2.2',
+  '5.2.4',
+  '5.2.3',
+  '5.2.5',
+  '5.3.0',
+  '5.3.1',
+  '5.3.2' );
 
 foreach af ( affected )
 {

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850166");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-05-10 14:04:15 +0200 (Tue, 10 May 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"affected", value:"MozillaFirefox, seamonkey, MozillaThunderbird on openSUSE 11.2, openSUSE 11.3");
   script_tag(name:"insight", value:"The Mozilla suite of browsers received security updates.
 
-  Following updates are included in this update:
+  The following updates are included in this update:
   Mozilla Firefox was updated on SUSE Linux Enterprise 10 and 11 to the 3.6.17 security release.
   Mozilla Firefox was updated on openSUSE 11.4 to the 4.0.1 security release.
   Mozilla Thunderbird was updated on openSUSE to the 3.1.10 security release.
@@ -54,7 +54,7 @@ if(description)
   Mozilla XULRunner 1.9.1 was updated to 1.9.1.19.
   Mozilla XULRunner 1.9.2 was updated to 1.9.2.17.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
   MFSA 2011-12:
   Mozilla developers identified and fixed several memory safety bugs in the
   browser engine used in Firefox and other Mozilla-based products. Some of these

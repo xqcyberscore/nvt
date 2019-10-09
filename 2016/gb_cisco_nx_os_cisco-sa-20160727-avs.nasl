@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20160727-avs.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Cisco Nexus 1000v Application Virtual Switch Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1465");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12363 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Nexus 1000v Application Virtual Switch Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability");
 
@@ -57,7 +56,7 @@ vulnerability are not available.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-07-29 18:14:02 +0200 (Fri, 29 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -81,30 +80,29 @@ if ( ! nx_model = get_kb_item( "cisco_nx_os/model" ) ) exit( 0 );
 if( "1000V" >< nx_model )
 {
   affected = make_list(
-			"4.0(4)SV1(1)",
-			"4.0(4)SV1(2)",
-			"4.0(4)SV1(3)",
-			"4.0(4)SV1(3a)",
-			"4.0(4)SV1(3b)",
-			"4.0(4)SV1(3c)",
-			"4.0(4)SV1(3d)",
-			"4.2(1)SV1(4)",
-			"4.2(1)SV1(4a)",
-			"4.2(1)SV1(4b)",
-			"4.2(1)SV1(5.1)",
-			"4.2(1)SV1(5.1a)",
-			"4.2(1)SV1(5.2)",
-			"4.2(1)SV1(5.2b)",
-			"4.2(1)SV2(1.1)",
-			"4.2(1)SV2(1.1a)",
-			"4.2(1)SV2(2.1)",
-			"4.2(1)SV2(2.1a)",
-			"5.2(1)SV3(1.1)",
-			"5.2(1)SV3(1.3)",
-			"5.2(1)SV3(1.4)"
-		);
+    "4.0(4)SV1(1)",
+    "4.0(4)SV1(2)",
+    "4.0(4)SV1(3)",
+    "4.0(4)SV1(3a)",
+    "4.0(4)SV1(3b)",
+    "4.0(4)SV1(3c)",
+    "4.0(4)SV1(3d)",
+    "4.2(1)SV1(4)",
+    "4.2(1)SV1(4a)",
+    "4.2(1)SV1(4b)",
+    "4.2(1)SV1(5.1)",
+    "4.2(1)SV1(5.1a)",
+    "4.2(1)SV1(5.2)",
+    "4.2(1)SV1(5.2b)",
+    "4.2(1)SV2(1.1)",
+    "4.2(1)SV2(1.1a)",
+    "4.2(1)SV2(2.1)",
+    "4.2(1)SV2(2.1a)",
+    "5.2(1)SV3(1.1)",
+    "5.2(1)SV3(1.3)",
+    "5.2(1)SV3(1.4)"
+  );
 }
-
 
 foreach af ( affected )
 {

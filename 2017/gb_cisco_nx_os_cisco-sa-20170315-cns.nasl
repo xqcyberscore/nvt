@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20170315-cns.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Nexus 7000 Series Switches Access-Control Filtering Mechanisms Bypass Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-3875");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Nexus 7000 Series Switches Access-Control Filtering Mechanisms Bypass Vulnerability");
 
@@ -57,7 +56,7 @@ Network Time Protocol (NTP) ACL.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-03-16 10:48:42 +0700 (Thu, 16 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -87,13 +86,13 @@ if (!version = get_app_version(cpe:CPE))
   exit(0);
 
 affected = make_list(
-		'5.2(4)',
-		'6.1(3)S5',
-		'6.1(3)S6',
-		'6.2(1.121)S0',
-		'7.2(1)D1(1)',
-		'7.3(0)ZN(0.161)',
-		'7.3(1)N1(0.1)');
+  '5.2(4)',
+  '6.1(3)S5',
+  '6.1(3)S6',
+  '6.2(1.121)S0',
+  '7.2(1)D1(1)',
+  '7.3(0)ZN(0.161)',
+  '7.3(1)N1(0.1)');
 
 foreach af (affected) {
   if (version == af) {

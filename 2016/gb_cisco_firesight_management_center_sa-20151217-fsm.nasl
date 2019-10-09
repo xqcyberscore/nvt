@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_sa-20151217-fsm.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-6427");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12338 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability");
 
@@ -53,7 +52,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-01-06 13:43:05 +0100 (Wed, 06 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -70,34 +69,31 @@ include("host_details.inc");
 if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 affected = make_list(
-                '5.3.0',
-                '5.3.0.1',
-                '5.3.0.2',
-                '5.3.1.1',
-                '5.3.1.2',
-                '5.3.1.3',
-                '5.3.1',
-                '5.3.1.5',
-                '5.3.1.4',
-                '5.3.1.7',
-                '5.4.0',
-                '5.4.1',
-                '5.4.1.2',
-                '5.4.0.1',
-                '5.4.0.4',
-                '5.4.1.3',
-                '5.4.1.4',
-                '6.0.0',
-                '6.0.0.1',
-                '6.0.1' );
+  '5.3.0',
+  '5.3.0.1',
+  '5.3.0.2',
+  '5.3.1.1',
+  '5.3.1.2',
+  '5.3.1.3',
+  '5.3.1',
+  '5.3.1.5',
+  '5.3.1.4',
+  '5.3.1.7',
+  '5.4.0',
+  '5.4.1',
+  '5.4.1.2',
+  '5.4.0.1',
+  '5.4.0.4',
+  '5.4.1.3',
+  '5.4.1.4',
+  '6.0.0',
+  '6.0.0.1',
+  '6.0.1' );
 
 foreach af (affected) {
   if (version == af) {
     report = 'Installed version: ' + version + '\n' +
-             'Fixed version:     No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.';
-
+             'Fixed version:     None';
     security_message( port:0, data:report );
     exit( 0 );
   }

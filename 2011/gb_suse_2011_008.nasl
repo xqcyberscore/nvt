@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850159");
-  script_version("$Revision: 14114 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-02-16 14:19:17 +0100 (Wed, 16 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"insight", value:"This patch updates the SUSE Linux Enterprise Server 9 kernel to fix
   various security issues and some bugs.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
   CVE-2010-4242: The hci_uart_tty_open function in the HCI UART driver
   (drivers/bluetooth/hci_ldisc.c) in the Linux kernel did not verify
   whether the tty has a write operation, which allowed local users

@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113449");
-  script_version("2019-07-24T12:19:51+0000");
-  script_tag(name:"last_modification", value:"2019-07-24 12:19:51 +0000 (Wed, 24 Jul 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-07-22 15:39:45 +0000 (Mon, 22 Jul 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"summary", value:"Knot Resolver is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - The NXDOMAIN answer could get passed through to the client
     if its DNSSEC validation failed, instead of sending a SERVFAIL packet.

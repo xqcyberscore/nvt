@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0205_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
 # SuSE Update for the Linux Kernel SUSE-SU-2016:0205-1 (kernel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851161");
-  script_version("$Revision: 13941 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-01-23 06:12:30 +0100 (Sat, 23 Jan 2016)");
   script_cve_id("CVE-2016-0728");
   script_tag(name:"cvss_base", value:"7.2");
@@ -40,7 +39,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to receive a security fix.
 
-  Following security bug was fixed:
+  The following security bug was fixed:
 
   - A reference leak in keyring handling with join_session_keyring() could
   lead to local attackers gain root privileges. (bsc#962075,

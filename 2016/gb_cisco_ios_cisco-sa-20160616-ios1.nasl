@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160616-ios1.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco IOS Software Link Layer Discovery Protocol Processing Code Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1425");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12096 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS Software Link Layer Discovery Protocol Processing Code Denial of Service Vulnerability");
 
@@ -55,7 +54,7 @@ address this vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-06-20 12:50:47 +0200 (Mon, 20 Jun 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -71,11 +70,11 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'15.0(2)SG5',
-		'15.1(2)SG3',
-		'15.2(1)E',
-		'15.3(3)S',
-		'15.4(1.13)S' );
+  '15.0(2)SG5',
+  '15.1(2)SG3',
+  '15.2(1)E',
+  '15.3(3)S',
+  '15.4(1.13)S' );
 
 foreach af ( affected )
 {

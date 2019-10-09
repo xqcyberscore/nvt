@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113410");
-  script_version("2019-06-17T13:10:14+0000");
-  script_tag(name:"last_modification", value:"2019-06-17 13:10:14 +0000 (Mon, 17 Jun 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-06-17 11:33:50 +0000 (Mon, 17 Jun 2019)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - An attacker can exploit a parsing flaw in the Private Message / Post renderer
   that leads to [video] BBCode persistent XSS to take over any forum account,

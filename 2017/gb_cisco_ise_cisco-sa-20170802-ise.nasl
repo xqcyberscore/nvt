@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20170802-ise.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Identity Services Engine Authentication Bypass Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6747");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Identity Services Engine Authentication Bypass Vulnerability");
 
@@ -57,7 +56,7 @@ ISE Admin portal.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-08-03 10:23:50 +0700 (Thu, 03 Aug 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -75,22 +74,22 @@ if (!version = get_app_version(cpe: CPE))
   exit(0);
 
 affected = make_list(
-		'1.3.0.722',
-		'1.3.0.876',
-		'1.3.0.909',
-		'1.3.106.146',
-		'1.3.120.135',
-		'1.4.0.109',
-		'1.4.0.181',
-		'1.4.0.253',
-		'1.4.0.908',
-		'2.0.0.147',
-		'2.0.0.169',
-		'2.0.0.222',
-		'2.0.1.130',
-		'2.1.0.474',
-		'2.1.0.800',
-		'2.1.102.101');
+  '1.3.0.722',
+  '1.3.0.876',
+  '1.3.0.909',
+  '1.3.106.146',
+  '1.3.120.135',
+  '1.4.0.109',
+  '1.4.0.181',
+  '1.4.0.253',
+  '1.4.0.908',
+  '2.0.0.147',
+  '2.0.0.169',
+  '2.0.0.222',
+  '2.0.1.130',
+  '2.1.0.474',
+  '2.1.0.800',
+  '2.1.102.101');
 
 foreach af (affected) {
   if (version == af) {

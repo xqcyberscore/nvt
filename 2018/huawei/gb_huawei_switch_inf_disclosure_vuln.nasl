@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switch_inf_disclosure_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Huawei Switches Information Disclosure Vulnerability
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113083");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-01-12 14:44:44 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -51,7 +50,7 @@ if( description )
 
   script_tag(name:"summary", value:"Multiple Huawei Campus switches allow remote attackers to enumerate usernames via vectors involving use of SSH by the maintenance terminal.");
   script_tag(name:"vuldetect", value:"The script checks if the target host is an affected product that has a vulnerable firmware version installed.");
-  script_tag(name:"affected", value:"Following Huawei Switch models and firmware versions are affected:
+  script_tag(name:"affected", value:"The following Huawei Switch models and firmware versions are affected:
 
   Huawei Campus Switch S9300/S9300E/S7700/S9700 versions: V200R001C00SPC300, V200R002C00SPC300, V200R003C00SPC500
 

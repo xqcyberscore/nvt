@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_mult_vuln_sep18_2.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey <= 3.14.7 Multiple Vulnerabilities
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113263");
-  script_version("$Revision: 13093 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-09-05 11:15:05 +0200 (Wed, 05 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,7 +50,7 @@ if( description )
 
   script_tag(name:"summary", value:"LimeSurvey is prone to multiple vulnerabilities.");
 
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - An admin user can leverage a file upload question to read an arbitrary file
 

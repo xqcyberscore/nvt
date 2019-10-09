@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0537_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
 # SuSE Update for the Linux Kernel openSUSE-SU-2016:0537-1 (kernel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851215");
-  script_version("$Revision: 13941 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-03-01 11:08:50 +0530 (Tue, 01 Mar 2016)");
   script_cve_id("CVE-2016-0723", "CVE-2016-2069");
   script_tag(name:"cvss_base", value:"5.6");
@@ -43,7 +42,7 @@ if(description)
   It also fixes a regression that caused the Chromium sandbox to no longer
   work (bsc#965356).
 
-  Following security bugs were fixed:
+  The following security bugs were fixed:
 
   - CVE-2016-2069: A flaw was discovered in a way the Linux deals with
   paging structures. When Linux invalidates a paging structure that is not

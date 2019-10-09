@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0553_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for compat-openssl098 SUSE-SU-2015:0553-2 (compat-openssl098)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850905");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-10-16 13:54:15 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2009-5146", "CVE-2015-0209", "CVE-2015-0286", "CVE-2015-0287", "CVE-2015-0288", "CVE-2015-0289", "CVE-2015-0292", "CVE-2015-0293");
   script_tag(name:"cvss_base", value:"7.5");
@@ -40,7 +39,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"OpenSSL was updated to fix various security issues.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   - CVE-2015-0209: A Use After Free following d2i_ECPrivatekey error was
   fixed which could lead to crashes for attacker supplied Elliptic Curve

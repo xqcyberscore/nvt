@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1727_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for kernel-source SUSE-SU-2015:1727-1 (kernel-source)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850904");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-10-16 13:54:05 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-5156", "CVE-2015-5157", "CVE-2015-5283", "CVE-2015-5697", "CVE-2015-6252", "CVE-2015-6937", "CVE-2015-7613");
   script_tag(name:"cvss_base", value:"7.2");
@@ -41,7 +40,7 @@ if(description)
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.48-52.27 to
   receive various security and bugfixes.
 
-  Following security bugs were fixed:
+  The following security bugs were fixed:
 
   * CVE-2015-7613: A flaw was found in the Linux kernel IPC code that could
   lead to arbitrary code execution. The ipc_addid() function initialized a

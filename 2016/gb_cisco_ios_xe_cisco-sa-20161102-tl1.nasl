@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20161102-tl1.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco ASR 900 Series Aggregation Services Routers Buffer Overflow Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6441");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12051 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco ASR 900 Series Aggregation Services Routers Buffer Overflow Vulnerability");
 
@@ -57,7 +56,7 @@ control of the system or cause a reload of the affected system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-03 15:29:27 +0700 (Thu, 03 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -77,11 +76,11 @@ if( ! model = get_kb_item("cisco_ios_xe/model") ) exit( 0 );
 if( model !~ '^ASR90(2|3|7)' ) exit( 99 );
 
 affected = make_list(
-		'3.18.0S',
-		'3.18.1S',
-		'3.17.0S',
-		'3.17.2S',
-		'3.17.1S' );
+  '3.18.0S',
+  '3.18.1S',
+  '3.17.0S',
+  '3.17.2S',
+  '3.17.1S' );
 
 foreach af ( affected )
 {

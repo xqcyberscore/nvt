@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_5_0_3_mult_vuln.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr 5.0.3 Multiple Vulnerabilities
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113154");
-  script_version("$Revision: 12936 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-04-11 13:19:33 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -52,7 +51,7 @@ if( description )
   script_tag(name:"summary", value:"Dolibarr ERP / CRM is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   Dolibarr ERP/CRM is affected by multiple reflected Cross-Site Scripting (XSS) vulnerabilities: index.php
   (leftmenu parameter), core/ajax/box.php (PATH_INFO), product/stats/card.php (type parameter), holiday/list.php

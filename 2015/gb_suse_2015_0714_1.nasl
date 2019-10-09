@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0714_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
 # SuSE Update for the Linux Kernel openSUSE-SU-2015:0714-1 (kernel)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850649");
-  script_version("$Revision: 13941 $");
+  script_version("2019-10-07T14:34:48+0000");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-04-14 07:15:09 +0200 (Tue, 14 Apr 2015)");
   script_cve_id("CVE-2014-7822", "CVE-2014-8134", "CVE-2014-8160", "CVE-2014-8173",
                 "CVE-2014-8559", "CVE-2014-9419", "CVE-2014-9420", "CVE-2014-9529",
@@ -42,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The Linux kernel was updated to fix various bugs and security issues.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   - CVE-2014-8173: A NULL pointer dereference flaw was found in the way the
   Linux kernels madvise MADV_WILLNEED functionality handled page table

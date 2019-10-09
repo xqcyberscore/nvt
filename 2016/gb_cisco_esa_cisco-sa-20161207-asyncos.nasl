@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161207-asyncos.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco Email Security Appliance AsyncOS Software Update Server Certificate Validation Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1411");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11922 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Email Security Appliance AsyncOS Software Update Server Certificate Validation Vulnerability");
 
@@ -56,7 +55,7 @@ attack (such as DNS hijacking) and impersonating the update server.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-12-08 11:24:12 +0700 (Thu, 08 Dec 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -72,13 +71,13 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'7.5.2-201',
-		'7.5.2-HP2-303',
-		'7.6.3-025',
-                '8.0.1-023',
-                '8.5.0-000',
-                '8.5.1-021',
-                '8.5.0-ER1-198' );
+  '7.5.2-201',
+  '7.5.2-HP2-303',
+  '7.6.3-025',
+  '8.0.1-023',
+  '8.5.0-000',
+  '8.5.1-021',
+  '8.5.0-ER1-198' );
 
 foreach af ( affected )
 {

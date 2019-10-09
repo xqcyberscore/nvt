@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ipics_cisco-sa-20161026-ipics1.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IP Interoperability and Collaboration System Cross-Site Scripting Vulnerability
 #
@@ -34,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6429");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12313 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IP Interoperability and Collaboration System Cross-Site Scripting Vulnerability");
 
@@ -59,7 +58,7 @@ that address this vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-28 13:58:43 +0200 (Fri, 28 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -75,7 +74,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-                '4.10(1)' );
+  '4.10(1)' );
 
 foreach af ( affected )
 {

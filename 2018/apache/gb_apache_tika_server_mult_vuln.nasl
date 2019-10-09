@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tika Server 1.17 Multiple Vulnerabilities
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113167");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-04-26 11:12:13 +0200 (Thu, 26 Apr 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -52,7 +51,7 @@ if( description )
   script_tag(name:"summary", value:"Apache Tika Server is prone to multiple vulnerabilities,
   including Command Execution and Denial of Service");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   In Apache Tika, clients could send carefully crafted headers to tika-server that could be used to inject commands
   into the command line of the server running tika-server.

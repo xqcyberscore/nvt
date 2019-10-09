@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20161005-otv.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco Nexus 7000 and 7700 Series Switches Overlay Transport Virtualization Buffer Overflow Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1453");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12431 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Nexus 7000 and 7700 Series Switches Overlay Transport Virtualization Buffer Overflow Vulnerability");
 
@@ -58,7 +57,7 @@ full control of the system or cause a reload of the OTV related process on the a
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-06 11:57:56 +0700 (Thu, 06 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -82,54 +81,53 @@ if ( ! nx_model = get_kb_item( "cisco_nx_os/model" ) ) exit( 0 );
 if( nx_model =~ "^7[0-9]+" )
 {
   affected = make_list(
-			"4.1.(2)",
-			"4.1.(3)",
-			"4.1.(4)",
-			"4.1.(5)",
-			"4.2(3)",
-			"4.2(4)",
-			"4.2(6)",
-			"4.2(8)",
-			"4.2.(2a)",
-			"5.0(2a)",
-			"5.0(3)",
-			"5.0(5)",
-			"5.1(1)",
-			"5.1(1a)",
-			"5.1(3)",
-			"5.1(4)",
-			"5.1(5)",
-			"5.1(6)",
-			"5.2(1)",
-			"5.2(3a)",
-			"5.2(4)",
-			"5.2(5)",
-			"5.2(7)",
-			"5.2(9)",
-			"6.0(1)",
-			"6.0(2)",
-			"6.0(3)",
-			"6.0(4)",
-			"6.1(1)",
-			"6.1(2)",
-			"6.1(3)",
-			"6.1(4)",
-			"6.1(4a)",
-			"6.1(5)",
-			"6.2(10)",
-			"6.2(12)",
-			"6.2(14)S1",
-			"6.2(2)",
-			"6.2(2a)",
-			"6.2(6)",
-			"6.2(6b)",
-			"6.2(8)",
-			"6.2(8a)",
-			"6.2(8b)",
-			"7.2(0)N1(0.1)"
-		);
+    "4.1.(2)",
+    "4.1.(3)",
+    "4.1.(4)",
+    "4.1.(5)",
+    "4.2(3)",
+    "4.2(4)",
+    "4.2(6)",
+    "4.2(8)",
+    "4.2.(2a)",
+    "5.0(2a)",
+    "5.0(3)",
+    "5.0(5)",
+    "5.1(1)",
+    "5.1(1a)",
+    "5.1(3)",
+    "5.1(4)",
+    "5.1(5)",
+    "5.1(6)",
+    "5.2(1)",
+    "5.2(3a)",
+    "5.2(4)",
+    "5.2(5)",
+    "5.2(7)",
+    "5.2(9)",
+    "6.0(1)",
+    "6.0(2)",
+    "6.0(3)",
+    "6.0(4)",
+    "6.1(1)",
+    "6.1(2)",
+    "6.1(3)",
+    "6.1(4)",
+    "6.1(4a)",
+    "6.1(5)",
+    "6.2(10)",
+    "6.2(12)",
+    "6.2(14)S1",
+    "6.2(2)",
+    "6.2(2a)",
+    "6.2(6)",
+    "6.2(6b)",
+    "6.2(8)",
+    "6.2(8a)",
+    "6.2(8b)",
+    "7.2(0)N1(0.1)"
+  );
 }
-
 
 foreach af ( affected )
 {

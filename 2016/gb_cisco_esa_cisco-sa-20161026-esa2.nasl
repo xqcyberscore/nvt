@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esa2.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Cisco Email Security Appliance Advanced Malware Protection Attachment Scanning Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1486");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12363 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Email Security Appliance Advanced Malware Protection Attachment Scanning Denial of Service Vulnerability");
 
@@ -61,7 +60,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-27 14:13:14 +0200 (Thu, 27 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -77,36 +76,36 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'8.5.0-000',
-		'8.5.0-ER1-198',
-		'8.5.6-052',
-		'8.5.6-073',
-		'8.5.6-074',
-		'8.5.6-106',
-		'8.5.6-113',
-		'8.5.7-042',
-		'8.6.0',
-		'8.6.0-011',
-		'8.9.0',
-		'8.9.1-000',
-		'8.9.2-032',
-		'9.0.0',
-		'9.0.0-212',
-		'9.0.0-461',
-		'9.0.5-000',
-		'9.1.0',
-		'9.1.0-011',
-		'9.1.0-101',
-		'9.1.0-032',
-		'9.1.1-000',
-		'9.4.0',
-		'9.4.4-000',
-		'9.5.0-000',
-		'9.5.0-201',
-		'9.6.0-000',
-		'9.6.0-042',
-		'9.6.0-051',
-		'9.7.0-125' );
+  '8.5.0-000',
+  '8.5.0-ER1-198',
+  '8.5.6-052',
+  '8.5.6-073',
+  '8.5.6-074',
+  '8.5.6-106',
+  '8.5.6-113',
+  '8.5.7-042',
+  '8.6.0',
+  '8.6.0-011',
+  '8.9.0',
+  '8.9.1-000',
+  '8.9.2-032',
+  '9.0.0',
+  '9.0.0-212',
+  '9.0.0-461',
+  '9.0.5-000',
+  '9.1.0',
+  '9.1.0-011',
+  '9.1.0-101',
+  '9.1.0-032',
+  '9.1.1-000',
+  '9.4.0',
+  '9.4.4-000',
+  '9.5.0-000',
+  '9.5.0-201',
+  '9.6.0-000',
+  '9.6.0-042',
+  '9.6.0-051',
+  '9.7.0-125' );
 
 foreach af ( affected )
 {

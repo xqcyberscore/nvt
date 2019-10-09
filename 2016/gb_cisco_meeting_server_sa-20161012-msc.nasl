@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_sa-20161012-msc.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Meeting Server Client Authentication Bypass Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6445");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 12313 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Meeting Server Client Authentication Bypass Vulnerability");
 
@@ -54,7 +53,7 @@ vulnerability in some environments are available. This advisory is available at 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-02 16:12:38 +0100 (Wed, 02 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -70,15 +69,15 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'1.8.0',
-		'1.8.15',
-		'1.9.0',
-		'1.9.2',
-		'2.0.0',
-		'2.0.1',
-		'2.0.3',
-		'2.0.4',
-		'2.0.5' );
+  '1.8.0',
+  '1.8.15',
+  '1.9.0',
+  '1.9.2',
+  '2.0.0',
+  '2.0.1',
+  '2.0.3',
+  '2.0.4',
+  '2.0.5' );
 
 foreach af ( affected )
 {

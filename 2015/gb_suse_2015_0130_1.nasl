@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0130_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2015:0130-1 (openssl)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850630");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-01-24 05:48:38 +0100 (Sat, 24 Jan 2015)");
   script_cve_id("CVE-2014-3569", "CVE-2014-3570", "CVE-2014-3571", "CVE-2014-3572", "CVE-2014-8275", "CVE-2015-0204", "CVE-2015-0205", "CVE-2015-0206");
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +38,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"openssl was updated to 1.0.1k to fix various security issues and bugs.
 
-  Following issues were fixed:
+  The following issues were fixed:
 
   * CVE-2014-3570 (bsc#912296): Bignum squaring (BN_sqr) may have produced
   incorrect results on some platforms, including x86_64.

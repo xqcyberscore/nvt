@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2194_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
 # SuSE Update for the Linux Kernel SUSE-SU-2015:2194-1 (kernel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851138");
-  script_version("$Revision: 13941 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-12-05 08:43:02 +0100 (Sat, 05 Dec 2015)");
   script_cve_id("CVE-2015-0272", "CVE-2015-2925", "CVE-2015-5283", "CVE-2015-5307",
                 "CVE-2015-7799", "CVE-2015-7872", "CVE-2015-7990", "CVE-2015-8104",
@@ -43,7 +42,7 @@ if(description)
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.51 to receive
   various security and bugfixes.
 
-  Following security bugs were fixed:
+  The following security bugs were fixed:
 
   - CVE-2015-7799: The slhc_init function in drivers/net/slip/slhc.c in the
   Linux kernel did not ensure that certain slot numbers were valid, which

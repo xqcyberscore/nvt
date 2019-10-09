@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_mult_vuln_jun18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Dovecot <= 2.2.34 and 2.3.0 Multiple Vulnerabilities
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113213");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-06-26 12:28:52 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,7 +50,7 @@ if( description )
 
   script_tag(name:"summary", value:"Dovecot is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - An attacker able to generate random SNI server names could exploit TLS SNI configuration lookups,
     leading to excessive memory usage and the process to restart.

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20150722-tftp.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS Software TFTP Server Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-0681");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12149 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS Software TFTP Server Denial of Service Vulnerability");
 
@@ -55,7 +54,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-03 18:13:02 +0200 (Tue, 03 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -71,15 +70,15 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'12.2(44)SQ1',
-		'12.2(33)XN1',
-		'12.4(25e)JAM1',
-		'12.4(25e)JAO5m',
-		'12.4(23)JY',
-		'15.0(2)ED1',
-		'15.0(2)EY3',
-		'15.1(3)SVF4a',
-		'15.2(2)JB1' );
+  '12.2(44)SQ1',
+  '12.2(33)XN1',
+  '12.4(25e)JAM1',
+  '12.4(25e)JAO5m',
+  '12.4(23)JY',
+  '15.0(2)ED1',
+  '15.0(2)EY3',
+  '15.1(3)SVF4a',
+  '15.2(2)JB1' );
 
 foreach af ( affected )
 {

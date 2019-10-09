@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switches_multiple_vulnerabilities.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Huawei Switches Multiple Vulnerabilities (sa-20171227-01-h323)
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113194");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-05-23 12:57:41 +0200 (Wed, 23 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -63,7 +62,7 @@ if( description )
 
   An attacker could send malformed packages to exploit these vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation could crash processes or render the product temporarily inaccessible.");
-  script_tag(name:"affected", value:"Following products and firmware versions are affected:
+  script_tag(name:"affected", value:"The following products and firmware versions are affected:
 
   - AR120-S / AR1200-S / AR200-S / AR2200-S / SRG3300: V200R006C10, V200R007C00, V200R008C20, V200R008C30
 
@@ -130,7 +129,7 @@ if( description )
   - ViewPoint 8660 V100R008C03
 
   - ViewPoint 9030 V100R011C02");
-  script_tag(name:"solution", value:"Following device/firmware combinations contain a fix:
+  script_tag(name:"solution", value:"The following device/firmware combinations contain a fix:
 
   - AR120-S / AR1200 / AR1200-S / AR150 / AR150-S / AR160 / AR200 / AR200-S / AR2200 / AR2200-S / AR3200 / AR3600 / AR510 / NetEngine16EX / SRG1300 / SRG2300 / SRG3300 : V200R009C00
 

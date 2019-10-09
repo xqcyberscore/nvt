@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0899_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2012:0899-1 (MozillaFirefox)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850265");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:24 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-1948", "CVE-2012-1949", "CVE-2012-1950", "CVE-2012-1951",
                 "CVE-2012-1952", "CVE-2012-1953", "CVE-2012-1954", "CVE-2012-1955",
@@ -53,7 +52,7 @@ if(description)
   and security issues.
 
 
-  Following security issues were fixed: MFSA 2012-42: Mozilla
+  The following security issues were fixed: MFSA 2012-42: Mozilla
   developers identified and fixed several memory safety bugs
   in the browser engine used in Firefox and other
   Mozilla-based products. Some of these bugs showed evidence

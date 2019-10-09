@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-3859");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("2019-09-24T04:41:47+0000");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XE Software for Cisco ASR 920 Series Routers Zero Touch Provisioning Denial of Service Vulnerability");
 
@@ -56,7 +56,7 @@ in a denial of service (DoS) condition.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-03-23 10:27:04 +0700 (Thu, 23 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -78,39 +78,39 @@ if (!model || model !~ "^920")
   exit(0);
 
 affected = make_list(
-		'3.13.4S',
-		'3.13.5S',
-		'3.13.5a.S',
-		'3.13.6S',
-		'3.13.6a.S',
-		'3.14.3S',
-		'3.14.4S',
-		'3.15.2S',
-		'3.15.3S',
-		'3.15.4S',
-		'3.16.0S',
-		'3.16.0c.S',
-		'3.16.1S',
-		'3.16.1a.S',
-		'3.16.2S',
-		'3.16.2a.S',
-		'3.16.2b.S',
-		'3.16.3S',
-		'3.16.3a.S',
-		'3.17.0S',
-		'3.17.1S',
-		'3.17.1a.S',
-		'3.17.2S',
-		'3.18.0S',
-		'3.18.0SP',
-		'3.18.0a.S',
-		'3.18.1S',
-		'3.18.1SP',
-		'3.18.1a.SP',
-		'3.18.1b.SP',
-		'3.18.1c.SP',
-		'3.18.2S',
-		'3.18.3v.S');
+  '3.13.4S',
+  '3.13.5S',
+  '3.13.5a.S',
+  '3.13.6S',
+  '3.13.6a.S',
+  '3.14.3S',
+  '3.14.4S',
+  '3.15.2S',
+  '3.15.3S',
+  '3.15.4S',
+  '3.16.0S',
+  '3.16.0c.S',
+  '3.16.1S',
+  '3.16.1a.S',
+  '3.16.2S',
+  '3.16.2a.S',
+  '3.16.2b.S',
+  '3.16.3S',
+  '3.16.3a.S',
+  '3.17.0S',
+  '3.17.1S',
+  '3.17.1a.S',
+  '3.17.2S',
+  '3.18.0S',
+  '3.18.0SP',
+  '3.18.0a.S',
+  '3.18.1S',
+  '3.18.1SP',
+  '3.18.1a.SP',
+  '3.18.1b.SP',
+  '3.18.1c.SP',
+  '3.18.2S',
+  '3.18.3v.S');
 
 foreach af (affected) {
   if (version == af) {

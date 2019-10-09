@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160916-ikev1.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco IOS XR Software IKEv1 Information Disclosure Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6415");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 12431 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XR Software IKEv1 Information Disclosure Vulnerability");
 
@@ -59,7 +58,7 @@ which could lead to the disclosure of confidential information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-19 09:23:33 +0700 (Mon, 19 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -76,13 +75,13 @@ if (!version = get_app_version(cpe: CPE))
   exit(0);
 
 affected = make_list(
-		'4.3.4',
-		'5.2.1',
-		'5.2.2',
-		'5.2.3',
-		'5.2.4',
-		'5.2.5',
-		'5.2.6' );
+  '4.3.4',
+  '5.2.1',
+  '5.2.2',
+  '5.2.3',
+  '5.2.4',
+  '5.2.5',
+  '5.2.6' );
 
 foreach af ( affected )
 {

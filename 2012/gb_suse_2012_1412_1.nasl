@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1412_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Mozilla Suite openSUSE-SU-2012:1412-1 (Mozilla Suite)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850356");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:56 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_tag(name:"cvss_base", value:"5.1");
@@ -50,7 +49,7 @@ if(description)
 
   Tracker bug: bnc#786522
 
-  A security issues was fixed:
+  A security issue was fixed:
 
   * MFSA 2012-90/CVE-2012-4194/CVE-2012-4195/CVE-2012-4196
   (bmo#800666, bmo#793121, bmo#802557) Fixes for Location

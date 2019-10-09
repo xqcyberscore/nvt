@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_multimedia_audio_prdts_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # MultiMedia Soft Audio Products Buffer Overflow Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900458");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -46,7 +45,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
-  script_tag(name:"affected", value:"Following components with AdjMmsEng.dll file version 7.11.2.7 and prior.
+  script_tag(name:"affected", value:"The following components with AdjMmsEng.dll file version 7.11.2.7 and prior.
 
   MultiMedia Soft Audio DJ Studio for .NET
 

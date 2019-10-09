@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113456");
-  script_version("2019-08-12T11:57:49+0000");
-  script_tag(name:"last_modification", value:"2019-08-12 11:57:49 +0000 (Mon, 12 Aug 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-08-12 13:46:35 +0000 (Mon, 12 Aug 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"summary", value:"Kibana is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - On a system with multiple users submitting requests, it could be possible for an attacker
     to gain access to a response header containing sensitive data from another user.

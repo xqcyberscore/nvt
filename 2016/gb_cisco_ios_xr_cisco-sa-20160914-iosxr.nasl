@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160914-iosxr.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco IOS XR Software for NCS 6000 Series Devices OSPF Packet Processing Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1433");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12051 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XR Software for NCS 6000 Series Devices OSPF Packet Processing Denial of Service Vulnerability");
 
@@ -58,7 +57,7 @@ and cause a limited DoS condition on the affected device.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-16 11:53:36 +0700 (Fri, 16 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -80,8 +79,8 @@ if ("NCS-600" >!< model)
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'6.0.0',
-		'6.0.1' );
+  '6.0.0',
+  '6.0.1' );
 
 foreach af ( affected )
 {

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160804-wedge.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Cisco IOS XE Software Crafted Network Time Protocol Packets Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1478");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 14117 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XE Software Crafted Network Time Protocol Packets Denial of Service Vulnerability");
 
@@ -58,7 +57,7 @@ address this vulnerability. However, there is a mitigation for this vulnerabilit
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-08-10 15:45:16 +0700 (Wed, 10 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -74,9 +73,9 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'3.16.3S',
-		'3.17.2S',
-		'3.18.1S' );
+  '3.16.3S',
+  '3.17.2S',
+  '3.18.1S' );
 
 foreach af ( affected )
 {

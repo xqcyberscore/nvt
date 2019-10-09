@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0236_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2012:0236-1 (kernel)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850211");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2012-08-02 20:47:46 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-1080", "CVE-2011-1170", "CVE-2011-1171", "CVE-2011-1172",
                 "CVE-2011-1173", "CVE-2011-1770", "CVE-2011-2203", "CVE-2011-2213",
@@ -51,7 +50,7 @@ if(description)
   script_tag(name:"insight", value:"The openSUSE 11.4 kernel was updated to fix bugs and
   security issues.
 
-  Following security issues have been fixed: CVE-2011-4604:
+  The following security issues have been fixed: CVE-2011-4604:
   If root does read() on a specific socket, it's possible to
   corrupt (kernel) memory over network, with an ICMP packet,
   if the B.A.T.M.A.N. mesh protocol is used.

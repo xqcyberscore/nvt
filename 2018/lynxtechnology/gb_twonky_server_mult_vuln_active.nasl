@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_mult_vuln_active.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
 #
 # Twonky Server <= 8.5 Multiple Vulnerabilities (Active Check)
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108436");
-  script_version("$Revision: 12356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-04-07 12:17:00 +0200 (Sat, 07 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +54,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check the response.");
 
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   Directory traversal vulnerability in Twonky Server allows remote attackers to share the contents of arbitrary directories
   via a .. (dot dot) in the contentbase parameter to rpc/set_all.

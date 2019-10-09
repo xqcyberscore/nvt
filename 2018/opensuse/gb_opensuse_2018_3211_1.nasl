@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3211_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2018:3211-1 (samba)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851940");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-10-18 06:30:24 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-10919");
   script_tag(name:"cvss_base", value:"4.0");
@@ -41,7 +40,7 @@ if(description)
   script_tag(name:"insight", value:"Samba was updated to 4.6.15, bringing
   bug and security fixes. (bsc#1110943)
 
-  Following security issues were fixed:
+  The following security issues were fixed:
 
   - CVE-2018-10919: Fix unauthorized attribute access via searches.
   (bsc#1095057)

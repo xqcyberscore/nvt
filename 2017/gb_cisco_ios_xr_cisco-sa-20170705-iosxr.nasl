@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20170705-iosxr.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco IOS XR Software Multicast Source Discovery Protocol Session Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6731");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XR Software Multicast Source Discovery Protocol Session Denial of Service Vulnerability");
 
@@ -58,7 +57,7 @@ MSDP session restarts.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-07-06 10:55:30 +0700 (Thu, 06 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -76,8 +75,8 @@ if (!version = get_app_version(cpe: CPE))
   exit(0);
 
 affected = make_list(
-		'4.3.2',
-		'6.0.2' );
+  '4.3.2',
+  '6.0.2' );
 
 foreach af (affected) {
   if (version == af) {

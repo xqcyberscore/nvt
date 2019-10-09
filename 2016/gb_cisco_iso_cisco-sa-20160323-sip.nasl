@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_iso_cisco-sa-20160323-sip.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS and IOS XE and Cisco Unified Communications Manager Software Session Initiation Protocol Memory Leak Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1350");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12149 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS and IOS XE and Cisco Unified Communications Manager Software Session Initiation Protocol Memory Leak Vulnerability");
 
@@ -62,7 +61,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-03 17:28:55 +0200 (Tue, 03 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -78,28 +77,28 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'15.3(3)M',
-		'15.3(3)M1',
-		'15.3(3)M2',
-		'15.3(1)S1',
-		'15.3(1)S2',
-		'15.3(2)S0a',
-		'15.3(2)S2',
-		'15.3(1)T',
-		'15.3(1)T1',
-		'15.3(1)T2',
-		'15.3(1)T3',
-		'15.3(1)T4',
-		'15.3(2)T',
-		'15.3(2)T1',
-		'15.3(2)T2',
-		'15.3(2)T3',
-		'15.3(2)T4',
-		'15.4(1)CG',
-		'15.4(2)CG',
-		'15.4(1)T',
-		'15.4(1)T1',
-		'15.4(2)T' );
+  '15.3(3)M',
+  '15.3(3)M1',
+  '15.3(3)M2',
+  '15.3(1)S1',
+  '15.3(1)S2',
+  '15.3(2)S0a',
+  '15.3(2)S2',
+  '15.3(1)T',
+  '15.3(1)T1',
+  '15.3(1)T2',
+  '15.3(1)T3',
+  '15.3(1)T4',
+  '15.3(2)T',
+  '15.3(2)T1',
+  '15.3(2)T2',
+  '15.3(2)T3',
+  '15.3(2)T4',
+  '15.4(1)CG',
+  '15.4(2)CG',
+  '15.4(1)T',
+  '15.4(1)T1',
+  '15.4(2)T' );
 
 foreach af ( affected )
 {

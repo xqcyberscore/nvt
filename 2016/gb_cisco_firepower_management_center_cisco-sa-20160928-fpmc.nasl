@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160928-fpmc.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Firepower Management Center SQL Injection Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6419");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 12313 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Firepower Management Center SQL Injection Vulnerability");
 
@@ -55,7 +54,7 @@ Firepower Management Center.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-29 14:43:52 +0700 (Thu, 29 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -71,11 +70,11 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'4.10.3',
-		'5.2.0',
-		'5.3.0',
-		'5.3.1',
-		'5.4.0' );
+  '4.10.3',
+  '5.2.0',
+  '5.3.0',
+  '5.3.1',
+  '5.4.0' );
 
 foreach af ( affected )
 {

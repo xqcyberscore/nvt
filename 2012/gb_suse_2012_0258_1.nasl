@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0258_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2012:0258-1 (MozillaFirefox)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850236");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2012-08-02 22:29:08 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2012-0452");
   script_tag(name:"cvss_base", value:"7.5");
@@ -48,7 +47,7 @@ if(description)
   script_tag(name:"insight", value:"MozillaFirefox was updated to 10.0.1 to fix critical bugs
   and security issue.
 
-  Following security issue was fixed: CVE-2012-0452: Mozilla
+  The following security issue was fixed: CVE-2012-0452: Mozilla
   developers Andrew McCreight and Olli Pettay found that
   ReadPrototypeBindings will leave a XBL binding in a hash
   table even when the function fails. If this occurs, when

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa3.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6360");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12051 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability ");
 
@@ -58,7 +57,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-27 13:46:30 +0200 (Thu, 27 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -74,12 +73,12 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'9.5.0-000',
-		'9.5.0-201',
-		'9.6.0-000',
-		'9.6.0-042',
-		'9.6.0-051',
-		'9.7.0-125' );
+  '9.5.0-000',
+  '9.5.0-201',
+  '9.6.0-000',
+  '9.6.0-042',
+  '9.6.0-051',
+  '9.7.0-125' );
 
 foreach af ( affected )
 {

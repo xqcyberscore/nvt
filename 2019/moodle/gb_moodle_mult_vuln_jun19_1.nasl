@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113419");
-  script_version("2019-07-01T11:42:50+0000");
-  script_tag(name:"last_modification", value:"2019-07-01 11:42:50 +0000 (Mon, 01 Jul 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-07-01 13:32:47 +0000 (Mon, 01 Jul 2019)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"summary", value:"Moodle is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - The form to upload cohorts contains a redirect field which is not restricted to internal URLs
 

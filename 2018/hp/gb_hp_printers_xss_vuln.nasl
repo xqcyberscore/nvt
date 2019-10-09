@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # HP Printers XSS Vulnerability
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113096");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-01-30 11:50:00 +0100 (Tue, 30 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,7 +50,7 @@ if( description )
 
   script_tag(name:"summary", value:"HP has identified a potential security vulnerability with certain HP printers. The vulnerability could be exploited to perform a cross site scripting (XSS) attack.");
   script_tag(name:"vuldetect", value:"The script if the target is vulnerable device running a vulnerable firmware version.");
-  script_tag(name:"affected", value:"Following devices and firmware versions are affected:
+  script_tag(name:"affected", value:"The following devices and firmware versions are affected:
 
   Firmware versions through 2308214_000900: HP Color LaserJet CM4540 MFP
 
@@ -108,7 +107,7 @@ if( description )
   Firmware versions through 2308214_000909: HP PageWide Enterprise Color X556
 
   Firmware versions through 2308214_000922: HP PageWide Enterprise Color MFP X586");
-  script_tag(name:"solution", value:"Following fixed versions exist:
+  script_tag(name:"solution", value:"The following fixed versions exist:
 
   Firmware version 2308214_000901 and above: HP Color LaserJet CM4540 MFP
 

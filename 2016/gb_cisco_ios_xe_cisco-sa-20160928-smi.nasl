@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6385");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("2019-09-24T04:41:47+0000");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS XE Software Smart Install Memory Leak Vulnerability");
 
@@ -55,7 +55,7 @@ reload, resulting in a DoS condition.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"2019-09-24 04:41:47 +0000 (Tue, 24 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-29 15:47:20 +0700 (Thu, 29 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -71,38 +71,38 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'3.2.0JA',
-		'3.8.0E',
-		'3.8.1E',
-		'3.8.2E',
-		'3.2.0SE',
-		'3.2.1SE',
-		'3.2.2SE',
-		'3.2.3SE',
-		'3.3.0SE',
-		'3.3.1SE',
-		'3.3.2SE',
-		'3.3.3SE',
-		'3.3.4SE',
-		'3.3.5SE',
-		'3.3.0XO',
-		'3.3.1XO',
-		'3.3.2XO',
-		'3.5.0E',
-		'3.5.1E',
-		'3.5.2E',
-		'3.5.3E',
-		'3.6.4E',
-		'3.6.0E',
-		'3.6.1E',
-		'3.6.2a.E',
-		'3.6.2E',
-		'3.6.3E',
-		'3.7.3E',
-		'3.7.5E',
-		'3.7.0E',
-		'3.7.1E',
-		'3.7.2E' );
+  '3.2.0JA',
+  '3.8.0E',
+  '3.8.1E',
+  '3.8.2E',
+  '3.2.0SE',
+  '3.2.1SE',
+  '3.2.2SE',
+  '3.2.3SE',
+  '3.3.0SE',
+  '3.3.1SE',
+  '3.3.2SE',
+  '3.3.3SE',
+  '3.3.4SE',
+  '3.3.5SE',
+  '3.3.0XO',
+  '3.3.1XO',
+  '3.3.2XO',
+  '3.5.0E',
+  '3.5.1E',
+  '3.5.2E',
+  '3.5.3E',
+  '3.6.4E',
+  '3.6.0E',
+  '3.6.1E',
+  '3.6.2a.E',
+  '3.6.2E',
+  '3.6.3E',
+  '3.7.3E',
+  '3.7.5E',
+  '3.7.0E',
+  '3.7.1E',
+  '3.7.2E' );
 
 foreach af ( affected )
 {

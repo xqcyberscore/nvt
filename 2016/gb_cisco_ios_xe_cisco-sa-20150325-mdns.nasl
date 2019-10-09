@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150325-mdns.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco IOS Software and IOS XE Software mDNS Gateway Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-0650");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12096 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS Software and IOS XE Software mDNS Gateway Denial of Service Vulnerability");
 
@@ -63,7 +62,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-10 10:18:10 +0200 (Tue, 10 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -79,22 +78,22 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'3.9.0S',
-		'3.9.1S',
-		'3.9.2S',
-		'3.10.0S',
-		'3.10.0S',
-		'3.10.1S',
-		'3.10.2S',
-		'3.10.3S',
-		'3.11.0S',
-		'3.11.1S',
-		'3.11.2S',
-		'3.12.0S',
-		'3.12.1S',
-		'3.13.0S',
-		'3.13.1S',
-		'3.13.2S' );
+  '3.9.0S',
+  '3.9.1S',
+  '3.9.2S',
+  '3.10.0S',
+  '3.10.0S',
+  '3.10.1S',
+  '3.10.2S',
+  '3.10.3S',
+  '3.11.0S',
+  '3.11.1S',
+  '3.11.2S',
+  '3.12.0S',
+  '3.12.1S',
+  '3.13.0S',
+  '3.13.1S',
+  '3.13.2S' );
 
 foreach af ( affected )
 {

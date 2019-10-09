@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_db_int_sql_inj_vul.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco Prime Infrastructure Database Interface SQL Injection Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6443");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"cvss_base", value:"6.5");
-  script_version("$Revision: 11922 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Prime Infrastructure Database Interface SQL Injection Vulnerability");
 
@@ -60,7 +59,7 @@ could allow an authenticated, remote attacker to impact system confidentiality."
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-13 05:15:37 +0200 (Thu, 13 Oct 2016)");
 
   script_category(ACT_GATHER_INFO);
@@ -78,22 +77,22 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-                '1.2.0',
-                '1.2.1',
-                '1.2.0.103',
-                '1.3.0',
-                '1.3.0.20',
-                '1.4.0',
-                '1.4.1',
-                '1.4.2',
-                '1.4.0.45',
-                '2.0.0',
-                '2.1.0',
-                '2.2.0',
-                '2.2.2',
-                '3.0.0',
-                '3.1.0',
-                '3.1.1' );
+  '1.2.0',
+  '1.2.1',
+  '1.2.0.103',
+  '1.3.0',
+  '1.3.0.20',
+  '1.4.0',
+  '1.4.1',
+  '1.4.2',
+  '1.4.0.45',
+  '2.0.0',
+  '2.1.0',
+  '2.2.0',
+  '2.2.2',
+  '3.0.0',
+  '3.1.0',
+  '3.1.1' );
 
 foreach af ( affected )
 {

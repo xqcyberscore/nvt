@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln_may18_03_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Moodle 3.x Multiple Vulnerabilities - Sep'17 (Windows)
 #
@@ -28,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113186");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-05-15 11:42:45 +0200 (Tue, 15 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -52,7 +51,7 @@ if( description )
 
   script_tag(name:"summary", value:"Moodle CMS is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   Form on the feedback 'non-respondents' page does not escape the value of subject thus creating self-XSS.
   This can be used to attack another user by tricking them into opening malicious URL whilst in an open Moodle session.

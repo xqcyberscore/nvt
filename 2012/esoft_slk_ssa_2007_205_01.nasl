@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_205_01.nasl 14202 2019-03-15 09:16:15Z cfischer $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -29,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.59010");
   script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 10:16:15 +0100 (Fri, 15 Mar 2019) $");
-  script_version("$Revision: 14202 $");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
+  script_version("2019-10-07T14:34:48+0000");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Slackware Advisory SSA:2007-205-01 thunderbird");
@@ -43,18 +42,18 @@ if(description)
   script_xref(name:"URL", value:"https://secure1.securityspace.com/smysecure/catid.html?in=SSA:2007-205-01");
 
   script_tag(name:"insight", value:"New Thunderbird packages are available for Slackware 11.0 and 12.0
-to fix two possible security issues.  This package may also be used
-on many older versions of Slackware (though we're not certain how far
-back...)
+  to fix two possible security issues.  This package may also be used
+  on many older versions of Slackware (though we're not certain how far
+  back...)
 
-More details about the issues is linked in the references.");
+  More details about the issues are linked in the references.");
 
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/security/known-vulnerabilities.html#thunderbird");
 
   script_tag(name:"solution", value:"Upgrade to the new package(s).");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced
-via advisory SSA:2007-205-01.");
+  via advisory SSA:2007-205-01.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

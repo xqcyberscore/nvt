@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160817-firepower.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Firepower Management Center Privilege Escalation Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1458");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 12149 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Firepower Management Center Privilege Escalation Vulnerability");
 
@@ -57,7 +56,7 @@ vulnerability are not available.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-08-18 14:53:04 +0700 (Thu, 18 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -73,11 +72,11 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'4.10.3',
-		'5.2.0',
-		'5.3.0',
-		'5.3.1',
-		'5.4.0' );
+  '4.10.3',
+  '5.2.0',
+  '5.3.0',
+  '5.3.1',
+  '5.4.0' );
 
 foreach af ( affected )
 {

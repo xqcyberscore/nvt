@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20151112-ios1.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco IOS Software Virtual PPP Interfaces Security Bypass Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-6365");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11961 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco IOS Software Virtual PPP Interfaces Security Bypass Vulnerability");
 
@@ -52,7 +51,7 @@ Cisco has released software updates that address this vulnerability. Workarounds
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-03 17:31:06 +0200 (Tue, 03 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -68,8 +67,8 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'15.2(4)M',
-		'15.4(3)M' );
+  '15.2(4)M',
+  '15.4(3)M' );
 
 foreach af ( affected )
 {

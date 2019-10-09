@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112610");
-  script_version("2019-07-30T07:04:43+0000");
-  script_tag(name:"last_modification", value:"2019-07-30 07:04:43 +0000 (Tue, 30 Jul 2019)");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-07-22 08:49:00 +0000 (Mon, 22 Jul 2019)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -44,7 +44,7 @@ if (description)
 
   script_tag(name:"summary", value:"The Wordpress plugin Adaptive Images is prone to multiple vulnerabilities.");
 
-  script_tag(name:"insight", value:"Following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - a local file inclusion vulnerability via the $REQUEST['adaptive-images-settings']['source_file']
   parameter in adaptive-images-script.php

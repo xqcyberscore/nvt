@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160615-rv2.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco RV110W, RV130W, and RV215W Routers HTTP Request Buffer Overflow Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1397");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_version("$Revision: 11961 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco RV110W, RV130W, and RV215W Routers HTTP Request Buffer Overflow Vulnerability");
 
@@ -57,7 +56,7 @@ unexpectedly and result in a DoS condition.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-06-17 13:57:06 +0200 (Fri, 17 Jun 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -77,33 +76,32 @@ if( ! model = get_kb_item( "cisco/small_business/model" ) ) exit( 0 );
 if( model == 'RV110W' )
 {
   affected = make_list(
-			"1.1.0.9",
-			"1.2.0.10",
-			"1.2.0.9",
-			"1.2.1.4"
-		);
+    "1.1.0.9",
+    "1.2.0.10",
+    "1.2.0.9",
+    "1.2.1.4"
+  );
 }
 
 if( model == 'RV130W' )
 {
   affected = make_list(
-			"1.0.0.21",
-			"1.0.1.3",
-			"1.0.2.7"
-		);
+    "1.0.0.21",
+    "1.0.1.3",
+    "1.0.2.7"
+  );
 }
 
 if( model == 'RV215W' )
 {
   affected = make_list(
-			"1.1.0.5",
-			"1.1.0.6",
-			"1.2.0.14",
-			"1.2.0.15",
-			"1.3.0.7"
-		);
+    "1.1.0.5",
+    "1.1.0.6",
+    "1.2.0.14",
+    "1.2.0.15",
+    "1.3.0.7"
+  );
 }
-
 
 foreach af ( affected )
 {

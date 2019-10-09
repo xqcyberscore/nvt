@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1172_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2012:1172-1 (Security)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850324");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:35 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-2625", "CVE-2012-3432", "CVE-2012-3433", "CVE-2012-3494",
                 "CVE-2012-3495", "CVE-2012-3496", "CVE-2012-3498", "CVE-2012-3515");
@@ -48,7 +47,7 @@ if(description)
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"insight", value:"Security Update for Xen
 
-  Following bug and security fixes were applied:
+  The following bug and security fixes were applied:
 
   - bnc#776995 - attaching scsi control luns with pvscsi
 

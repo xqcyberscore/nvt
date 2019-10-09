@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2513_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for qemu openSUSE-SU-2017:2513-1 (qemu)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851620");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-09-18 07:19:40 +0200 (Mon, 18 Sep 2017)");
   script_cve_id("CVE-2017-10664", "CVE-2017-10806", "CVE-2017-11334", "CVE-2017-11434");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +50,7 @@ if(description)
 
   * CVE-2017-11434: Fix OOB access parsing dhcp slirp options (bsc#1049381)
 
-  Following non-security issues were fixed:
+  The following non-security issues were fixed:
 
   - Postrequire acl for setfacl
 

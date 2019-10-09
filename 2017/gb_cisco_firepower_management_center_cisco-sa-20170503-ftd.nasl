@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170503-ftd.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Firepower Threat Defense and Cisco ASA with FirePOWER Module Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6625");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Firepower Threat Defense and Cisco ASA with FirePOWER Module Denial of Service Vulnerability");
 
@@ -56,7 +55,7 @@ through a targeted system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-05-10 21:52:03 +0700 (Wed, 10 May 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -74,20 +73,20 @@ if (!version = get_app_version(cpe:CPE))
   exit(0);
 
 affected = make_list(
-		'6.0.0',
-		'6.0.0',
-		'6.0.1',
-		'6.0.1',
-		'6.1.0',
-		'6.1.0',
-		'6.1.0.2',
-		'6.1.0.2',
-		'6.2.0',
-		'6.2.0',
-		'6.2.1',
-		'6.2.1',
-		'6.2.2',
-		'6.2.2');
+  '6.0.0',
+  '6.0.0',
+  '6.0.1',
+  '6.0.1',
+  '6.1.0',
+  '6.1.0',
+  '6.1.0.2',
+  '6.1.0.2',
+  '6.2.0',
+  '6.2.0',
+  '6.2.1',
+  '6.2.1',
+  '6.2.2',
+  '6.2.2');
 
 foreach af (affected) {
   if (version == af) {

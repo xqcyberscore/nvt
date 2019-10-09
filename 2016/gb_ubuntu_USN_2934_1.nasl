@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842723");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:31 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-1952", "CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1960",
 		"CVE-2016-1961", "CVE-2016-1964", "CVE-2016-1966", "CVE-2016-1974",
@@ -79,7 +79,7 @@ if(description)
   denial of service via application crash, or execute arbitrary code with
   the privileges of the user invoking Thunderbird. (CVE-2016-1964)
 
-  A memory corruption issues was discovered in the NPAPI subsystem. If
+  A memory corruption issue was discovered in the NPAPI subsystem. If
   a user were tricked in to opening a specially crafted website in a
   browsing context with a malicious plugin installed, an attacker could
   potentially exploit this to cause a denial of service via application

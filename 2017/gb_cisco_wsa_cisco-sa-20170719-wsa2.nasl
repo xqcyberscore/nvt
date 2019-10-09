@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20170719-wsa2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Web Security Appliance Authenticated Command Injection and Privilege Escalation Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2017-6748");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12106 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Web Security Appliance Authenticated Command Injection and Privilege Escalation Vulnerability");
 
@@ -57,7 +56,7 @@ execute system-level commands on the underlying operating system as root.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-07-20 14:18:58 +0700 (Thu, 20 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -75,15 +74,15 @@ if (!version = get_app_version(cpe:CPE))
   exit(0);
 
 affected = make_list(
-		'10.0.0-232',
-		'10.0.0-233',
-		'10.1.0',
-		'10.1.0-204',
-		'10.1.1-230',
-		'10.5.0',
-		'10.5.0-358',
-		'11.0.0',
-		'11.0.0-613');
+  '10.0.0-232',
+  '10.0.0-233',
+  '10.1.0',
+  '10.1.0-204',
+  '10.1.1-230',
+  '10.5.0',
+  '10.5.0-358',
+  '11.0.0',
+  '11.0.0-613');
 
 foreach af (affected) {
   if (version == af) {

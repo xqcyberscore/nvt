@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850163");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-04-22 16:44:44 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
   This will probably be the last 11.2 kernel update released by the
   SUSE Security Team, as our support for 11.2 ends in 1 month.
 
-  Following security issues were fixed:
+  The following security issues were fixed:
   CVE-2011-1493: In the rose networking stack, when parsing the
   FAC_NATIONAL_DIGIS facilities field, it was possible for a remote
   host to provide more digipeaters than expected, resulting in heap

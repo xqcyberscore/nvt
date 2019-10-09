@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20161102-n9kapic.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Denial of Service Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-6457");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 14041 $");
+  script_version("2019-10-09T06:43:33+0000");
 
   script_name("Cisco Application Policy Infrastructure Controller Denial of Service Vulnerability");
 
@@ -57,7 +56,7 @@ device.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-09 06:43:33 +0000 (Wed, 09 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-03 13:54:56 +0700 (Thu, 03 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -75,11 +74,11 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list(
-		'1.3(1)',
-		'1.3(2)',
-		'1.2(3)',
-		'1.2(2)',
-		'2.0(1)' );
+  '1.3(1)',
+  '1.3(2)',
+  '1.2(3)',
+  '1.2(2)',
+  '2.0(1)' );
 
 foreach af ( affected )
 {

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_sql_injection_cve_2015_7297.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Joomla Core SQL Injection Vulnerability
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105419");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-10-07T14:34:48+0000");
+  script_tag(name:"last_modification", value:"2019-10-07 14:34:48 +0000 (Mon, 07 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-10-22 19:38:14 +0200 (Thu, 22 Oct 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,7 +58,7 @@ if (description)
 Joomla installation.");
 
   script_tag(name:"impact", value:"CVE-2015-7857 enables an unauthorized remote user to gain administrator
-privileges by hijacking the administrator session. Following exploitation of the vulnerability, the attacker
+privileges by hijacking the administrator session. The following exploitation of the vulnerability, the attacker
 may gain full control of the web site and execute additional attacks.");
 
   script_tag(name:"affected", value:"Joomla CMS versions 3.2.0 through 3.4.4");
