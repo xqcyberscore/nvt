@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142868");
-  script_version("2019-09-10T04:44:13+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 04:44:13 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-10-10T08:11:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-10 08:11:06 +0000 (Thu, 10 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-10 03:01:53 +0000 (Tue, 10 Sep 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -35,7 +35,7 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_zyxel_ap_http_detect.nasl");
+  script_dependencies("gb_zyxel_ap_http_detect.nasl", "smtp_settings.nasl"); # nb: The setting for get_3rdparty_domain() is currently located in this VT.
   script_mandatory_keys("zyxel_ap/detected");
 
   script_tag(name:"summary", value:"Some Zyxel Access Points are prone to an information disclosure vulnerability

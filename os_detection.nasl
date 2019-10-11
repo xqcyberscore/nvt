@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-09-30T13:57:26+0000");
-  script_tag(name:"last_modification", value:"2019-09-30 13:57:26 +0000 (Mon, 30 Sep 2019)");
+  script_version("2019-10-01T13:57:53+0000");
+  script_tag(name:"last_modification", value:"2019-10-01 13:57:53 +0000 (Tue, 01 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   # nmap_net.nasl was not added as this is in ACT_SCANNER and doesn't use register_and_report_os yet
   # Keep in sync with os_fingerprint.nasl as well.
   script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl",
-                      "gb_ros_detect.nasl", "gb_apple_mobile_detect.nasl",
+                      "gb_apple_mobile_detect.nasl",
                       "gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl",
                       "gb_ssh_cisco_ios_get_version.nasl", "gb_cisco_cucmim_version.nasl",
                       "gb_cisco_cucm_version.nasl", "gb_cisco_nx_os_version.nasl",

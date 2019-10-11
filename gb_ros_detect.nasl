@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103633");
-  script_version("2019-06-06T07:39:31+0000");
-  script_tag(name:"last_modification", value:"2019-06-06 07:39:31 +0000 (Thu, 06 Jun 2019)");
+  script_version("2019-10-01T13:57:53+0000");
+  script_tag(name:"last_modification", value:"2019-10-01 13:57:53 +0000 (Tue, 01 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-01-04 12:11:14 +0100 (Fri, 04 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,12 +41,19 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Rugged Operating System.
   The script sends a connection request to the server and attempts to
-  extract the version number from the reply.");
+  extract the version number from the reply.
+
+  This VT has been replaced by VT 'Siemens RUGGEDCOM / Rugged Operating System Detection Consolidation'
+  (OID: 1.3.6.1.4.1.25623.1.0.140811).");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("http_func.inc");
 include("http_keepalive.inc");

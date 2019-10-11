@@ -360,6 +360,8 @@ function telnet_close_socket( socket, data ) {
     send( socket:socket, data:'exit\r\n' );
   } else if( "X - Exit Telnet Session" >< data ) { # nb: DataStream DS800
     send( socket:socket, data:'x\r\n' );
+  } else if( "<CTRL>" >< data && "X-Logout" >< data ) { # nb: Rugged Operating System
+    send( socket:socket, data:raw_string( 0x18 ) );
   }
 
   close( socket );
