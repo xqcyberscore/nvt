@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_improper_auth_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Elasticsearch Kibana Improper Authentication Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811410");
-  script_version("$Revision: 11863 $");
+  script_version("2019-10-14T10:09:25+0000");
   script_cve_id("CVE-2016-10364");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-10-14 10:09:25 +0000 (Mon, 14 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-07-03 20:27:52 +0530 (Mon, 03 Jul 2017)");
   script_name("Elasticsearch Kibana Improper Authentication Vulnerability");
 

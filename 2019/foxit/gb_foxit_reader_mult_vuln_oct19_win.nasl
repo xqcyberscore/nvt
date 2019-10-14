@@ -23,13 +23,13 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815477");
-  script_version("2019-10-11T07:39:42+0000");
+  script_version("2019-10-14T10:09:25+0000");
   script_cve_id("CVE-2019-5031", "CVE-2019-13123", "CVE-2019-13124", "CVE-2019-13326",
                 "CVE-2019-13327", "CVE-2019-13328", "CVE-2019-13329", "CVE-2019-13330",
                 "CVE-2019-13331", "CVE-2019-13332");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-10-11 07:39:42 +0000 (Fri, 11 Oct 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-10-14 10:09:25 +0000 (Mon, 14 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-04 19:05:15 +0530 (Fri, 04 Oct 2019)");
   script_name("Foxit Reader Multiple Vulnerabilities October 2019");
 

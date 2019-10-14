@@ -85,7 +85,7 @@ ce250226f7637da58088fc6c341e6ae9  famd_detect.nasl
 621c82afe9ee5776fa10af7aaba559ed  gb_electrasoft_32bit_ftp_detect.nasl
 d0650be849e3082f52141de38574444a  gb_ibm_bigfix_remote_control_detect.nasl
 db21c9bf43014308d1094de2f4839bbd  secpod_ghostscript_detect_win.nasl
-9edec6cba0cebaaf518fdf5944324897  find_service1.nasl
+a2938c12cf198b99304b916c5d28b80a  find_service1.nasl
 2c23af52b56ec572ab6ff75ad77c0f85  gb_phpnagios_detect.nasl
 c8e60b99eb653c13278fcc59e660686b  gb_coremailxt_detect.nasl
 f89049dd8ccf78418ce6f481a7a49362  secpod_postgresql_detect_win.nasl
@@ -7952,7 +7952,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 758b4dc1a2c186e45ba79aac6475197b  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-942652beb20eb8a36428ecfbabaa634c  plugin_feed_info.inc
+de5b2a4b63fb2a4897a8db20cc92f645  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -19239,7 +19239,7 @@ dfb69402c50a138359dad5c7dd0c3e64  2018/trendmicro/gb_trend_micro_officescan_mult
 10ed8fed22d1892aab370e45a2090fa5  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3831_win.nasl
 d508c7dcbf04a94c397557b23cc9331f  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3831_lin.nasl
 5121b6571a5125c998e0a2fdb491436c  2018/elasticsearch/gb_elasticsearch_eol.nasl
-e987116b1d6ea0c4382a35b741135c88  2018/elasticsearch/gb_elasticsearch_logstash_CVE-2016-10363_dos.nasl
+558d131424baf9c6076b4883d3f8de67  2018/elasticsearch/gb_elasticsearch_logstash_CVE-2016-10363_dos.nasl
 292ee58ad9ffb14b3d76869331afb2f0  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2016-1000218.nasl
 08dfc28677bfe5f12133b14f304eb425  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3818_win.nasl
 476d8fa681e84c0c6811301d389e95f0  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3820_lin.nasl
@@ -19261,7 +19261,7 @@ de39ab87c577390c46e9dc265fbd8a0d  2018/elasticsearch/gb_elasticsearch_snapshot_a
 ea3b8583a31b4d4faf1a3da6fe463cd6  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3820_win.nasl
 6c693981366cd9552d68bd13842d3337  2018/elasticsearch/gb_elasticsearch_CVE-2018-17244_lin.nasl
 c9a8e26684633ccbfafa7ff5419c3201  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3821_lin.nasl
-eb85f0469b26e216f29ac853026fa26c  2018/elasticsearch/gb_elasticsearch_logstash_CVE-2016-10362_info_discl.nasl
+5e51b6fd5409bbb5d6b0fa451a242326  2018/elasticsearch/gb_elasticsearch_logstash_CVE-2016-10362_info_discl.nasl
 9aace39a45329e54821513a7ab91f90b  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-1001002_lin.nasl
 ae6000fefbf5ddc4cf755c75adeab9ea  2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-1001002_win.nasl
 b929f37af631d2bfe46be674d657d25c  2018/elasticsearch/gb_elasticsearch_CVE-2015-4165.nasl
@@ -43597,7 +43597,7 @@ c60a844bd3d955d9db6939c7b8830d34  2017/gb_CESA-2017_0388_ipa-admintools_centos7.
 1e6d21203110b28f85ecf44a373df870  2017/gb_ubuntu_USN_3174_1.nasl
 0f4f6e7718997cffab06d12d73ad3f24  2017/gb_ubuntu_USN_3169_4.nasl
 b30ee9211d42757e744f75fc245f0597  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8450_lin.nasl
-6ce770ad717dae5d5056fb8c37362ba9  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2016-10364_win.nasl
+ce04a4ea5cdae6c6621e52fd3494e303  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2016-10364_win.nasl
 e541030304754d22057803032a04cda8  2017/elastic/gb_elasticsearch_kibana_xss_vuln.nasl
 dce62b8d5ed08b7ea1fce7e04ff36382  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8447_win.nasl
 ca68656481017a531ed426ba453809ad  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8443_lin.nasl
@@ -43605,7 +43605,7 @@ e958d6b82e4da6c31050bdb81c70b893  2017/elastic/gb_elasticsearch_kibana_xpack_ope
 5979f11e8f1521ed365ad030904f2e74  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8449_win.nasl
 b4cc72c4bc6d96e6e65d4b553ccaa821  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8451_lin.nasl
 13e21d6a93df9c5adf363972cc19d2f9  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8449_lin.nasl
-3824b1e2cb70e2837d74488d9c989a7a  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2016-10364_lin.nasl
+1eec989aea93cb56c448974e3febd677  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2016-10364_lin.nasl
 4b82d340b320869bde3d7b60596c8860  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8438_lin.nasl
 50c3f43ecff3781657e9bd0d9474fa2d  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8443_win.nasl
 11adc301f3a0be4509d1565302a27bd8  2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8446_lin.nasl
@@ -46425,7 +46425,7 @@ cc50ea172f83a4e2fa40ba75bd846b50  2017/gb_fedora_2017_9801754fd7_drupal8_fc25.na
 324eb49f3e157e8915ac8d83c34d5e9d  2017/gb_ubuntu_USN_3444_2.nasl
 8307d5ed3cf71b186b1b9e611f945a7f  2017/gb_webmin_mult_xss_vuln_jul17_win.nasl
 04e420c11c92bfc172f6da5b7322a792  2017/gb_apache_struts_dos_9_17_lin.nasl
-6af57e71f03b568a8962933480ba8b82  2017/gb_elasticsearch_kibana_improper_auth_vuln.nasl
+81ba6c5031b2b4a96031596c91908a98  2017/gb_elasticsearch_kibana_improper_auth_vuln.nasl
 80d70fd0d9a8ba3210b9c35233aeceac  2017/gb_vaadin_javascript_inj_vuln.nasl
 399d03b1b62c8e43bf33e8d6e927458d  2017/gb_ms_kb4011062.nasl
 5b6ab7f3beb2b0f6203366d44b122344  2017/gb_cisco_cucm_cisco-sa-20170215-cucm1.nasl
@@ -49029,7 +49029,7 @@ e0e6d0d553bb322a9f6f8927004c0cab  2019/mantisbt/gb_mantisbt_xss_vuln_lin.nasl
 631a725042ab26fdfc6166cc6f878616  2019/mantisbt/gb_mantisbt_view_n_edit_filters_xss_vuln_jun19.nasl
 66663e8c4cdfc2b1b62f2603ef9ece20  2019/gogs/gb_gogs_dir_trav_vuln_dec18.nasl
 ccee1dd239d99b709cb62a6550d5d55f  2019/gogs/gb_gogs_improper_access_vuln_aug19.nasl
-9d7d8600fe27650344cae20e98cc54c6  2019/foxit/gb_foxit_reader_mult_vuln_oct19_win.nasl
+4e6a684cdb64547ff973ff1a328b8363  2019/foxit/gb_foxit_reader_mult_vuln_oct19_win.nasl
 ffcad0455dc088c37c99ef75e482be6e  2019/foxit/gb_foxit_phantompdf_mult_vuln_july19_02_win.nasl
 be21b07c20f86d9071f5084b2b6c10f7  2019/foxit/gb_foxit_reader_mult_vuln_jan19_win.nasl
 6c5b9cc4b6c4575c78137b1d4b04dbed  2019/foxit/gb_foxit_phantompdf_mult_vuln_july19_01_win.nasl
@@ -49610,6 +49610,7 @@ f6b7e5469ed874bb915c2f4430cc624c  2019/debian/deb_dla_1897.nasl
 bf9604ba868b1b43cf170aab09f16b44  2019/debian/deb_dla_1728.nasl
 fe2df023432aa0fe4104e686d538e805  2019/debian/deb_dla_1851.nasl
 357ccea66e2ddb7296195a252b97919a  2019/debian/deb_4522.nasl
+72dcbd32995990279af8a786165f4ce3  2019/debian/deb_dla_1956.nasl
 f6fe89070eed3a70a33adaa8d514f863  2019/debian/deb_dla_1665.nasl
 41c564ab33e9706a248f1b16146f88ec  2019/debian/deb_dla_1687.nasl
 76d54e043bb0aa22322133ff41df81bd  2019/debian/deb_4475.nasl
@@ -49867,6 +49868,7 @@ e4b03c86ddd64d5513f5e03f5ce20a35  2019/debian/deb_dla_1697.nasl
 4b8c174b902a7e64acb8ef80820c0f49  2019/debian/deb_4536.nasl
 c334ae6df83c3f3cbccdacacce9e68e6  2019/debian/deb_dla_1825.nasl
 81309ed2757bde86db809f821ca16a52  2019/debian/deb_dla_1786.nasl
+c6a876a73e36d85ff7e353ec824ad219  2019/debian/deb_dla_1954.nasl
 dcdf7957cdbd4c5ae1ada1d7de251f2a  2019/debian/deb_dla_1747.nasl
 16cc927e994007732e58d3f1c1bff530  2019/debian/deb_dla_1870.nasl
 82631a2890db691e209c6cab658b8ff5  2019/debian/deb_dla_1913.nasl
@@ -49893,6 +49895,7 @@ c39e996e0684541fe2a9aa84429d95f9  2019/debian/deb_4382.nasl
 f821dfac207007ef4bd4f241124c018c  2019/debian/deb_dla_1861.nasl
 23abe0e5d650fa444cfe6bc6e18a0604  2019/debian/deb_dla_1792.nasl
 433bee3007dadc0f7035e9c1458f0793  2019/debian/deb_dla_1809.nasl
+cdd714a17b93ef9ecd3aa66f7e8137c5  2019/debian/deb_dla_1955.nasl
 d36a5a7ab8720a792f369e5991000d17  2019/debian/deb_dla_1673.nasl
 b191eec226dff569d6f4e7987e90bf41  2019/debian/deb_dla_1906.nasl
 6dc6fa70dec77064d1d94bfffc938502  2019/debian/deb_4478.nasl
@@ -49936,6 +49939,7 @@ a25899d727be0b4a34c2ba7c546218f5  2019/debian/deb_dla_1905.nasl
 6c75b6793c6e62c816a7d251159b6bcd  2019/debian/deb_4407.nasl
 510662dcc654bbf99df3321d8a2201c1  2019/debian/deb_4411.nasl
 b0c4c5d630c5e85080a6706eff27500e  2019/debian/deb_dla_1832.nasl
+05dcc449177e524c71e87d2bf9f98cc0  2019/debian/deb_dla_1953.nasl
 d263ea3c720d4152e95d8db4338dc7b4  2019/debian/deb_4445.nasl
 a490dec21255017634fb9e651e7fff48  2019/debian/deb_dla_1706.nasl
 afa2ecaf8aa02547c2a8a98548c75f20  2019/debian/deb_dla_1661.nasl
@@ -52784,7 +52788,7 @@ fd259a07eaffc96e586d5b6cf6ef2d87  2019/opensuse/gb_opensuse_2019_1144_1.nasl
 aaaa9c0ee83af8571d3c8d3f0386b96a  2019/opensuse/gb_opensuse_2019_1390_1.nasl
 d8015c7ae6c3550b540fabe7b8df3cdb  2019/opensuse/gb_opensuse_2019_1594_1.nasl
 dfaa8461ca1b8646418255abc541a581  2019/opensuse/gb_opensuse_2019_0274_1.nasl
-d0913a0265a250c02ca05eb35b6747b6  2019/opensuse/gb_opensuse_2019_2276_1.nasl
+9ed26c5f3aaf640dc790bc5826b83e04  2019/opensuse/gb_opensuse_2019_2276_1.nasl
 28d5d54009b701a4f40efb0e380b00ad  2019/opensuse/gb_opensuse_2019_1749_1.nasl
 fc9a2cbc3107519e20a63863156db97b  2019/opensuse/gb_opensuse_2019_0022_1.nasl
 64be97739f6fb14d1365a3e7db2bee98  2019/opensuse/gb_opensuse_2019_1914_1.nasl
