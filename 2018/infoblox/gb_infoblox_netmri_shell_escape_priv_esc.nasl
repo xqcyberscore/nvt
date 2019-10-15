@@ -21,8 +21,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107340");
-  script_version("2019-09-26T09:12:46+0000");
-  script_tag(name:"last_modification", value:"2019-09-26 09:12:46 +0000 (Thu, 26 Sep 2019)");
+  script_version("2019-10-14T10:37:18+0000");
+  script_tag(name:"last_modification", value:"2019-10-14 10:37:18 +0000 (Mon, 14 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-09-10 15:43:15 +0200 (Mon, 10 Sep 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -39,19 +39,20 @@ if( description )
   script_family("General");
   script_dependencies("gb_netmri_detect.nasl");
   script_mandatory_keys("netMRI/detected");
+
   script_tag(name:"summary", value:"The administrative shell of Infoblox NetMRI 7.1.2 through 7.1.4 is prone to a
-shell escape and privilege escalation vulnerabilities.");
+  shell escape and privilege escalation vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An authenticated user can escape the management shell and subsequently
-escalate to root via insecure file ownership and sudo permissions.");
+  escalate to root via insecure file ownership and sudo permissions.");
 
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain complete control over
-the target system.");
+  the target system.");
 
   script_tag(name:"affected", value:"Infoblox NetMRI version 7.1.2 through 7.1.4. Other versions might be affected
-as well.");
+  as well.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -67,10 +68,10 @@ CPE = "cpe:/a:infoblox:netmri";
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! port = get_app_port( cpe: CPE ) )
+if( ! port = get_app_port( cpe:CPE ) )
   exit( 0 );
 
-if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+if( ! infos = get_app_version_and_location( port:port, cpe:CPE, exit_no_version:TRUE ) )
   exit( 0 );
 
 version = infos['version'];

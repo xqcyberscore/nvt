@@ -785,7 +785,7 @@ function GetVer( file, share, prodvers ) {
   sections_cnt = bin_word( data:smb_read_file( share:share, file:file, offset:pe_offset + 6, count:2 ) );
   section_offset = pe_offset + bin_word( data:smb_read_file( share:share, file:file, offset:pe_offset + 20, count:2 ) ) + 24;
   rsrc_start = NULL;
-  max_recurs = 20;
+  max_recurs = 22;
 
   for( itr = 0; itr < sections_cnt; itr++ ) {
     sections_data = smb_read_file( share:share, file:file, offset:section_offset + itr * 40, count:40 );

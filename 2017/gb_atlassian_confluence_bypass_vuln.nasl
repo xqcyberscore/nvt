@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_bypass_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Atlassian Confluence Access Restriction Bypass Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106869");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-15T06:15:50+0000");
+  script_tag(name:"last_modification", value:"2019-10-15 06:15:50 +0000 (Tue, 15 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-06-14 09:24:05 +0700 (Wed, 14 Jun 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -49,19 +48,19 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_atlassian_confluence_detect.nasl");
-  script_mandatory_keys("atlassian_confluence/installed");
+  script_mandatory_keys("atlassian/confluence/detected");
 
   script_tag(name:"summary", value:"Atlassian Confluence is prone to a access restriction bypass vulnerability
-using watch notifications.");
+  using watch notifications.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Confluence does not check if a user had permission to view a page when
-creating a workbox notification about new comments. An attacker who can login to Confluence could receive workbox
-notifications, which contain the content of comments, for comments added to a page after they started watching it
-even if they do not have permission to view the page itself.");
+  creating a workbox notification about new comments. An attacker who can login to Confluence could receive workbox
+  notifications, which contain the content of comments, for comments added to a page after they started watching it
+  even if they do not have permission to view the page itself.");
 
-  script_tag(name:"affected", value:"Atlassian Confluence 4.3.0 until 6.1.1.");
+  script_tag(name:"affected", value:"Atlassian Confluence 4.3.0 up to 6.1.1.");
 
   script_tag(name:"solution", value:"Update to 6.2.1 or later versions.");
 
@@ -73,7 +72,7 @@ even if they do not have permission to view the page itself.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if (isnull(port = get_app_port(cpe: CPE)))
   exit(0);
 
 if (!version = get_app_version(cpe: CPE, port: port))
@@ -85,4 +84,4 @@ if (version_in_range(version: version, test_version: "4.3.0", test_version2: "6.
   exit(0);
 }
 
-exit(0);
+exit(99);

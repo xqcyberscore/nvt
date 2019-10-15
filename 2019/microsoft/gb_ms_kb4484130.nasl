@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815707");
-  script_version("2019-10-09T12:58:40+0000");
+  script_version("2019-10-15T07:58:18+0000");
   script_cve_id("CVE-2019-1327", "CVE-2019-1331");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2019-10-09 09:03:47 +0530 (Wed, 09 Oct 2019)");
-  script_tag(name:"last_modification", value:"2019-10-09 12:58:40 +0000 (Wed, 09 Oct 2019)");
+  script_tag(name:"last_modification", value:"2019-10-15 07:58:18 +0000 (Tue, 15 Oct 2019)");
   script_name("Microsoft Excel 2010 Service Pack 2 Multiple Vulnerabilities (KB4484130)");
 
   script_tag(name:"summary", value:"This host is missing an important security

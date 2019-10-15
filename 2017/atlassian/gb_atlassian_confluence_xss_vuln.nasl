@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Atlassian Confluence XSS Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140587");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-15T06:15:50+0000");
+  script_tag(name:"last_modification", value:"2019-10-15 06:15:50 +0000 (Tue, 15 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-12-07 11:09:51 +0700 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,16 +48,16 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_atlassian_confluence_detect.nasl");
-  script_mandatory_keys("atlassian_confluence/installed");
+  script_mandatory_keys("atlassian/confluence/detected");
 
   script_tag(name:"summary", value:"Atlassian Confluence is prone to a cross-site scripting vulnerability
-through various RSS properties in the RSS macro.");
+  through various RSS properties in the RSS macro.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The RSS Feed macro in Atlassian Confluence allows remote attackers to inject
-arbitrary HTML or JavaScript via cross site scripting (XSS) vulnerabilities in various rss properties which were
-used as links without restriction on their scheme.");
+  arbitrary HTML or JavaScript via cross site scripting (XSS) vulnerabilities in various rss properties which were
+  used as links without restriction on their scheme.");
 
   script_tag(name:"affected", value:"Atlassian Confluence prior to version 6.5.2.");
 
@@ -72,7 +71,7 @@ used as links without restriction on their scheme.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if (isnull(port = get_app_port(cpe: CPE)))
   exit(0);
 
 if (!version = get_app_version(cpe: CPE, port: port))
@@ -84,4 +83,4 @@ if (version_is_less(version: version, test_version: "6.5.2")) {
   exit(0);
 }
 
-exit(0);
+exit(99);

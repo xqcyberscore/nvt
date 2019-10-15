@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_55509.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Atlassian Confluence Error Page Cross Site Scripting Vulnerability
 #
@@ -31,25 +30,22 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103569");
   script_bugtraq_id(55509);
-  script_version("$Revision: 11435 $");
+  script_version("2019-10-15T06:15:50+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_name("Atlassian Confluence Error Page Cross Site Scripting Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55509");
-  script_xref(name:"URL", value:"http://www.atlassian.com/software/confluence/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-15 06:15:50 +0000 (Tue, 15 Oct 2019)");
   script_tag(name:"creation_date", value:"2012-09-18 11:53:40 +0200 (Tue, 18 Sep 2012)");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
-  script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_atlassian_confluence_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("atlassian_confluence/installed");
+  script_mandatory_keys("atlassian/confluence/detected");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
@@ -62,6 +58,9 @@ if(description)
 
   script_tag(name:"affected", value:"Atlassian Confluence versions prior to 4.1.9 are vulnerable.");
 
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
@@ -70,14 +69,20 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
 
-if(!port = get_app_port(cpe:CPE))exit(0);
-if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE, service:"www"))
+  exit(0);
 
-js = urlencode(str:'<IFRAME SRC="javascript:alert(/xss-test/)">',unreserved:':=/');
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
+
+js = urlencode(str:'<IFRAME SRC="javascript:alert(/xss-test/)">', unreserved:':=/');
 
 url = dir + '/pages/includes/status-list-mo' + js + '.vm';
 
-if(http_vuln_check(port:port, url:url,pattern:'<IFRAME SRC="javascript:alert\\(/xss-test/\\)">',check_header:TRUE)) {
+if(http_vuln_check(port:port, url:url, pattern:'<IFRAME SRC="javascript:alert\\(/xss-test/\\)">', check_header:TRUE)) {
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

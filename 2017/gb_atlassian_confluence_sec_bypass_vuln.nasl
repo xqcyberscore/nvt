@@ -28,8 +28,8 @@ CPE = "cpe:/a:atlassian:confluence";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107224");
-  script_version("2019-07-24T08:39:52+0000");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_version("2019-10-15T06:15:50+0000");
+  script_tag(name:"last_modification", value:"2019-10-15 06:15:50 +0000 (Tue, 15 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-06-19 17:36:44 +0200 (Mon, 19 Jun 2017)");
   script_cve_id("CVE-2017-9505");
 
@@ -53,7 +53,8 @@ if(description)
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass certain security
   restrictions and perform unauthorized actions.");
 
-  script_tag(name:"affected", value:"Atlassian Confluence 4.3.0 and later are vulnerable");
+  script_tag(name:"affected", value:"Atlassian Confluence 4.3.0 and later are vulnerable.");
+
   script_tag(name:"solution", value:"Update to Atlassian Confluence 6.2.1.");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Jun/17");
@@ -66,31 +67,9 @@ if(description)
   script_family("Web application abuses");
 
   script_dependencies("gb_atlassian_confluence_detect.nasl");
-  script_mandatory_keys("atlassian_confluence/installed");
-  script_require_ports("Services/www", 8080);
+  script_mandatory_keys("atlassian/confluence/detected");
 
   exit(0);
 }
 
 exit(66);
-
-include("host_details.inc");
-include("version_func.inc");
-
-if(!Port = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-if(!Ver = get_app_version(cpe:CPE, port:Port)){
-  exit(0);
-}
-
-if(Ver =~ "^4\." || Ver =~ "^5\." || Ver =~ "^6\."){
-  if(version_is_less(version: Ver, test_version:"6.2.1")){
-    report = report_fixed_ver(installed_version:Ver, fixed_version:"6.2.1");
-    security_message(port:Port, data:report);
-    exit(0);
-  }
-}
-
-exit(99);

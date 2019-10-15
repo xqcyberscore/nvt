@@ -21,8 +21,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107339");
-  script_version("2019-09-26T09:12:46+0000");
-  script_tag(name:"last_modification", value:"2019-09-26 09:12:46 +0000 (Thu, 26 Sep 2019)");
+  script_version("2019-10-14T10:46:44+0000");
+  script_tag(name:"last_modification", value:"2019-10-14 10:46:44 +0000 (Mon, 14 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-09-10 14:25:14 +0200 (Mon, 10 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -38,21 +38,21 @@ if( description )
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("gb_netmri_detect.nasl");
   script_mandatory_keys("netMRI/detected");
 
   script_tag(name:"summary", value:"Infoblox NetMRI 7.1.1 is prone to a reflected Cross-Site
-    Scripting vulnerability. This could allow an unauthenticated, remote attacker to conduct an attack");
+  Scripting vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of user-supplied input via
-the /api/docs/index.php query parameter. An attacker could exploit this vulnerability by persuading a user of the
-interface to click a crafted link.");
+  the /api/docs/index.php query parameter. An attacker could exploit this vulnerability by persuading a user of the
+  interface to click a crafted link.");
 
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary script code
-in the context of the interface or allow the attacker to access sensitive browser-based information.");
+  in the context of the interface or allow the attacker to access sensitive browser-based information.");
 
   script_tag(name:"affected", value:"Infoblox NetMRI version 7.1.1. Other versions might be affected as well.");
 
@@ -73,12 +73,11 @@ include( "version_func.inc" );
 if( ! port = get_app_port( cpe:CPE ) )
   exit( 0 );
 
-if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+if( ! infos = get_app_version_and_location( port:port, cpe:CPE, exit_no_version:TRUE ) )
   exit( 0 );
 
 version = infos['version'];
 path = infos['location'];
-
 
 if( version_is_less_equal( version:version, test_version:"7.1.1" ) ) {
   report = report_fixed_ver( installed_version:version, fixed_version:"None", install_path:path );

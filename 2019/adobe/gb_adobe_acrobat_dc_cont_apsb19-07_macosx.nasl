@@ -23,7 +23,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814844");
-  script_version("2019-07-05T08:29:17+0000");
+  script_version("2019-10-15T07:58:18+0000");
   script_cve_id("CVE-2018-19725", "CVE-2019-7018", "CVE-2019-7019", "CVE-2019-7020",
                 "CVE-2019-7021", "CVE-2019-7022", "CVE-2019-7023", "CVE-2019-7024",
                 "CVE-2019-7025", "CVE-2019-7026", "CVE-2019-7027", "CVE-2019-7028",
@@ -42,9 +42,9 @@ if(description)
                 "CVE-2019-7078", "CVE-2019-7079", "CVE-2019-7080", "CVE-2019-7081",
                 "CVE-2019-7082", "CVE-2019-7083", "CVE-2019-7084", "CVE-2019-7085",
                 "CVE-2019-7086", "CVE-2019-7087", "CVE-2019-7089");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-05 08:29:17 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-10-15 07:58:18 +0000 (Tue, 15 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-02-14 10:37:27 +0530 (Thu, 14 Feb 2019)");
   script_name("Adobe Acrobat DC (Continuous Track) Security Updates (apsb19-07) - Mac OS X");
 
