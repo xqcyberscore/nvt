@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10394");
-  script_version("2019-09-07T15:01:50+0000");
-  script_tag(name:"last_modification", value:"2019-09-07 15:01:50 +0000 (Sat, 07 Sep 2019)");
+  script_version("2019-10-16T06:21:07+0000");
+  script_tag(name:"last_modification", value:"2019-10-16 06:21:07 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -35,7 +35,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_name("SMB log in");
-  script_dependencies("smb_authorization.nasl", "netbios_name_get.nasl",
+  script_dependencies("smb_authorization.nasl", "netbios_name_get.nasl", "lsc_options.nasl",
                       "cifs445.nasl", "find_service.nasl", "logins.nasl", "global_settings.nasl");
   script_require_keys("SMB/name", "SMB/transport");
   script_exclude_keys("global_settings/authenticated_scans_disabled");

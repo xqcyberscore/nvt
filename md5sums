@@ -4508,7 +4508,7 @@ e17b94d0263eabb536fb6ef38473d8cf  2016/gb_CESA-2016_0465_openssh_centos7.nasl
 470ed913f02cb0ca86fad3b665f98ba6  2016/gb_fedora_2016_aa394a130e_nodejs-string-dot-prototype-dot-repeat_fc23.nasl
 f56b89e5675070ec9476f21c5505d19c  2016/gb_openssl_mult_vuln02_mar16_lin.nasl
 67d791cd6799f83d867f6fbcdb752b04  2016/alas-2016-705.nasl
-0cd4cd199638d4a2757220727b1edc2b  2016/gb_cloudbees_jenkins_mult_vuln_aug16_lin.nasl
+9c347b2bb345bb324195d4843abd9088  2016/gb_cloudbees_jenkins_mult_vuln_aug16_lin.nasl
 2b98f9aac6f4c9f63e1c3c35f375d7cd  2016/gb_cisco_ios_xe_cisco-sa-20161012-cbr-8.nasl
 4ae134356bbf194bfe4317a049a6e688  2016/gb_cisco_nx_os_Cisco-SA-20150327-CVE-2015-0658.nasl
 620f0f8af5b9ca300a50b1226873a78e  2016/glsa-201603-08.nasl
@@ -6333,7 +6333,7 @@ dca72e7133498c445989ae6bc1340058  gb_xcart_detect.nasl
 a00643934c7d04e201a485d86a70bbf1  esxi_login_failed.nasl
 5335673dc70977e1d0663513b510d49c  gb_vipa_opc_server_detect_win.nasl
 3c4896641a2d93726902aa614c8c0d01  mantis_detect.nasl
-9f106dcdcdc14a5ece0051f8212d3969  smb_login.nasl
+0435e4c49bdfd4dfc8a3e1ffa8514c9c  smb_login.nasl
 b6becb168212805800147c413ccf0491  gb_vibnode_ftp_detect.nasl
 95b5b30f293a54a6891d6fe5bba3404d  ldap.inc
 78cfa0295d4a578474fe264a641b50d9  gb_cisco_asa_version_snmp.nasl
@@ -7952,7 +7952,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 758b4dc1a2c186e45ba79aac6475197b  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-f71025ba9ce26b038cd5bc37cde6200b  plugin_feed_info.inc
+fae6a7e19f1e4a1d4916618dfd81d555  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -26992,7 +26992,7 @@ d1dd8a5d91cd9654fe70c31d94ceff1f  2015/gb_fedora_2015_4719_libxml2_fc20.nasl
 7e5bf12cc7de066da00e4c37d10b1a38  2015/gb_fedora_2014_15609_tcpdump_fc21.nasl
 6bb1cba85352bb79923a5b4d48c9c256  2015/gb_gogs_multiple_vuln.nasl
 55a9a10e32fceb7d766cdb66c8a5af50  2015/glsa-201507-02.nasl
-a8de96edb1ae0cb88693b78a44a87316  2015/gb_jenkins_cli_mult_vuln.nasl
+7df46ee86fe4702bef59ee072abbeadd  2015/gb_jenkins_cli_mult_vuln.nasl
 e64697216e4000b6cdc003bfd6fece37  2015/gb_java_mult_unspecified_vuln01_feb15.nasl
 ec18101e4a1b320ba991de38a17f359a  2015/gb_fedora_2015_3797_libssh2_fc21.nasl
 2db838705123a2e3e75826b394fa39ea  2015/ELSA-2011-0214.nasl
@@ -31759,7 +31759,7 @@ cf626f48755e89afffef4cc2c7018984  2015/gb_suse_2015_0392_1.nasl
 cb1790f886b90c132912269594eed4cf  2015/gb_ms15-080.nasl
 9a817e4e089d7fdb5c42b3a02f1d3ffe  2015/gb_fedora_2015_13157_rubygems_fc21.nasl
 e4d3650fcc7891dbb0757b2869547098  2015/gb_suse_2015_0613_1.nasl
-e7eaca5b1a6dde0436f09ad97c59ea26  2015/gb_cloudbees_jenkins_mult_vuln.nasl
+4aa7f283e016c832b2505dfc0b78b108  2015/gb_cloudbees_jenkins_mult_vuln.nasl
 60d9bcb770af87f0cddd6561194d75f7  2015/deb_3330.nasl
 285f4738e2ab49c8a89ab8c95f285474  2015/ELSA-2011-0839.nasl
 78dfc36682f64a50386a2af92847c24e  2015/gb_wordpress_wp_mobile_edition_remote_file_disc_vuln.nasl

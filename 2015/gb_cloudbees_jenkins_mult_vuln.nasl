@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CloudBees Jenkins Multiple Vulnerabilities
+# CloudBees Jenkins Multiple Vulnerabilities - Nov15 (Windows)
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -28,7 +28,7 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807001");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-15T07:48:22+0000");
   script_cve_id("CVE-2015-5317", "CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5324",
                 "CVE-2015-5325", "CVE-2015-5326", "CVE-2015-8103", "CVE-2015-7536",
@@ -36,10 +36,10 @@ if(description)
   script_bugtraq_id(77572, 77570, 77574, 77636, 77619);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-15 07:48:22 +0000 (Tue, 15 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-12-15 17:52:00 +0530 (Tue, 15 Dec 2015)");
 
-  script_name("CloudBees Jenkins Multiple Vulnerabilities");
+  script_name("CloudBees Jenkins Multiple Vulnerabilities - Nov15 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with CloudBees
   Jenkins and is prone to multiple vulnerabilities.");
@@ -62,7 +62,7 @@ if(description)
 
   - The directory traversal vulnerability in while requesting jnlpJars.
 
-  - An Improper restriction on access to API tokens.
+  - An improper restriction on access to API tokens.
 
   - The cross-site scripting vulnerability in the slave overview page.
 
@@ -73,15 +73,19 @@ if(description)
   gain elevated privileges, bypass intended access restrictions and execute
   arbitrary code.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.625.2 on Windows.");
+  script_tag(name:"affected", value:"All Jenkins main line releases up to and including 1.637,
+  all Jenkins LTS releases up to and including 1.625.1.");
 
-  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.625.2 or later.");
+  script_tag(name:"solution", value:"Jenkins main line users should update to 1.638,
+  Jenkins LTS users should update to 1.625.2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL", value:"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-11-11");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2015-11-11/");
+  script_xref(name:"URL", value:"https://jenkins.io/blog/2015/11/06/mitigating-unauthenticated-remote-code-execution-0-day-in-jenkins-cli/");
+  script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -101,15 +105,27 @@ if(!port = get_app_port(cpe:CPE))
 if(!infos = get_app_full(cpe:CPE, port:port))
   exit(0);
 
-if (!version = infos["version"])
+if(!version = infos["version"])
   exit(0);
 
 location = infos["location"];
 proto = infos["proto"];
 
-if(version_is_less(version:version, test_version:"1.625.2")) {
-  report = report_fixed_ver(installed_version:version, fixed_version:"1.625.2", install_path: location);
-  security_message(data:report, port:port, proto:proto);
+if(get_kb_item("jenkins/" + port + "/is_lts")) {
+  if(version_is_less(version:version, test_version:"1.625.2")) {
+    vuln = TRUE;
+    fix = "1.625.2";
+  }
+} else {
+  if(version_is_less(version:version, test_version:"1.638")) {
+    vuln = TRUE;
+    fix = "1.638";
+  }
+}
+
+if(vuln) {
+  report = report_fixed_ver(installed_version:version, fixed_version:fix, install_path:location);
+  security_message(port:port, data:report, proto:proto);
   exit(0);
 }
 

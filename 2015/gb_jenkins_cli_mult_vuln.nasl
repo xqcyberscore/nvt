@@ -28,20 +28,24 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806621");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-15T07:48:22+0000");
   script_cve_id("CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320", "CVE-2015-5324",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5325",
                 "CVE-2015-5326");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-15 07:48:22 +0000 (Tue, 15 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-11-17 12:48:36 +0530 (Tue, 17 Nov 2015)");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_name("Jenkins CLI Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"The host is installed with Jenkins and is
-  prone to multiple vulnerabilities.");
+  prone to multiple vulnerabilities.
+
+  This VT has been replaced by VTs 'CloudBees Jenkins Multiple Vulnerabilities - Nov15 (Linux)'
+  (OID: 1.3.6.1.4.1.25623.1.0.808269) and 'CloudBees Jenkins Multiple Vulnerabilities - Nov15 (Windows)'
+  (OID: 1.3.6.1.4.1.25623.1.0.807001).");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -82,16 +86,16 @@ if(description)
   attackers to gain access to sensitive information, conduct XXE, XSS and CSRF
   attacks, and execute arbitrary code on the affected system.");
 
-  script_tag(name:"affected", value:"All Jenkins main line releases up to and including 1.637
-  All Jenkins LTS releases up to and including 1.625.1.");
+  script_tag(name:"affected", value:"All Jenkins main line releases up to and including 1.637,
+  all Jenkins LTS releases up to and including 1.625.1.");
 
-  script_tag(name:"solution", value:"Jenkins main line users should update to 1.638
+  script_tag(name:"solution", value:"Jenkins main line users should update to 1.638,
   Jenkins LTS users should update to 1.625.2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-11-11");
-  script_xref(name:"URL", value:"https://jenkins-ci.org/content/mitigating-unauthenticated-remote-code-execution-0-day-jenkins-cli");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2015-11-11/");
+  script_xref(name:"URL", value:"https://jenkins.io/blog/2015/11/06/mitigating-unauthenticated-remote-code-execution-0-day-in-jenkins-cli/");
   script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability");
 
   script_category(ACT_GATHER_INFO);
@@ -100,44 +104,9 @@ if(description)
   script_dependencies("gb_jenkins_consolidation.nasl");
   script_mandatory_keys("jenkins/detected");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 
-include("version_func.inc");
-include("host_details.inc");
-
-if(!port = get_app_port(cpe:CPE))
-  exit(0);
-
-if(!infos = get_app_full(cpe:CPE, port:port))
-  exit(0);
-
-if (!version = infos["version"])
-  exit(0);
-
-location = infos["location"];
-proto = infos["proto"];
-
-##And Jenkins LTS users should update to 1.625.2
-##For main line releases: http://mirrors.jenkins-ci.org/war
-##For LTS releases: http://mirrors.jenkins-ci.org/war-stable
-if(version =~ "^1.[0-9][0-9][0-9].([0-9]+)") {
-  if(version_is_less(version:version, test_version:"1.625.2")) {
-    fix = "For Jenkins LTS update to 1.625.2 and for Jenkins main line update to 1.638";
-    VULN = TRUE;
-  }
-}
-else if(version =~ "^1.([0-9][0-9]([0-9])?)$") {
-  if(version_is_less(version:version, test_version:"1.638")) {
-    fix = "For Jenkins main line update to 1.638";
-    VULN = TRUE;
-  }
-}
-
-if(VULN) {
-  report = report_fixed_ver(installed_version: version, fixed_version: fix, install_path: location);
-  security_message(data:report, port:port, proto:proto);
-  exit(0);
-}
-
-exit(99);
+exit(66);
