@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107636");
-  script_version("2019-04-11T10:25:03+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 10:25:03 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-09-28T15:17:38+0000");
+  script_tag(name:"last_modification", value:"2019-09-28 15:17:38 +0000 (Sat, 28 Sep 2019)");
   script_tag(name:"creation_date", value:"2019-04-06 13:42:55 +0200 (Sat, 06 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,30 +62,34 @@ foreach key( key_list ) {
   foreach item( registry_enum_keys( key:key ) ) {
 
     appName = registry_get_sz( key:key + item, item:"DisplayName" );
-    if( appName && "WebAccess Node" >< appName ) {
+    if( ! appName || appName !~ "WebAccess Node" )
+      continue;
 
-      set_kb_item( name:"advantech/webaccess/detected", value:TRUE );
-      set_kb_item( name:"advantech/webaccess/smb/0/detected", value:TRUE );
+    set_kb_item( name:"advantech/webaccess/detected", value:TRUE );
+    set_kb_item( name:"advantech/webaccess/smb/0/detected", value:TRUE );
 
-      concluded = appName;
-      location = "unknown";
-      version = "unknown";
+    concluded  = '\n  Registry-Key:   ' + key + item + '\n';
+    concluded += "  DisplayName:    " + appName;
+    location = "unknown";
+    version = "unknown";
 
-      if( vers = registry_get_sz( key:key + item, item:"DisplayVersion" ) ) {
-        version = vers;
-        concluded = vers;
+    if( vers = registry_get_sz( key:key + item, item:"DisplayVersion" ) ) {
+      concluded += '\n  DisplayVersion: ' + vers;
+      match = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+)" );
+      if( match[1] ) {
+        version = match[1];
       }
-
-      set_kb_item( name:"advantech/webaccess/smb/0/concluded", value:concluded );
-      set_kb_item( name:"advantech/webaccess/smb/0/version", value:version );
-
-      loc = registry_get_sz( key:key + item, item:"InstallLocation" );
-      if( loc )
-        location = loc;
-
-      set_kb_item( name:"advantech/webaccess/smb/0/location", value:location );
-      exit( 0 );
     }
+
+    set_kb_item( name:"advantech/webaccess/smb/0/concluded", value:concluded );
+    set_kb_item( name:"advantech/webaccess/smb/0/version", value:version );
+
+    loc = registry_get_sz( key:key + item, item:"InstallLocation" );
+    if( loc )
+      location = loc;
+
+    set_kb_item( name:"advantech/webaccess/smb/0/location", value:location );
+    exit( 0 );
   }
 }
 

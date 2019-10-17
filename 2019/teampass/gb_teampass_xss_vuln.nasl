@@ -21,40 +21,46 @@ CPE = 'cpe:/a:teampass:teampass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142722");
-  script_version("2019-08-19T06:39:26+0000");
-  script_tag(name:"last_modification", value:"2019-08-19 06:39:26 +0000 (Mon, 19 Aug 2019)");
+  script_version("2019-10-16T12:22:04+0000");
+  script_tag(name:"last_modification", value:"2019-10-16 12:22:04 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-08-09 05:35:24 +0000 (Fri, 09 Aug 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
-  script_cve_id("CVE-2019-12950");
+  script_cve_id("CVE-2019-12950", "CVE-2019-16904");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_name("TeamPass <= 2.1.27.36 XSS Vulnerability");
+  script_name("TeamPass <= 2.1.27.36 XSS Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
-  script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
-  script_family("F5 Local Security Checks");
+  script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
+  script_family("Web application abuses");
   script_dependencies("gb_teampass_detect.nasl");
   script_mandatory_keys("teampass/installed");
 
-  script_tag(name:"summary", value:"TeamPass is prone to a cross-site scripting vulnerability.");
+  script_tag(name:"summary", value:"TeamPass is prone to cross-site scripting vulnerabilities.");
 
-  script_tag(name:"insight", value:"From the sources/items.queries.php 'Import items' feature, it is possible to
-  load a crafted CSV file with an XSS payload.");
+  script_tag(name:"insight", value:"These vulnerabilities exist:
+
+  - From the sources/items.queries.php 'Import items' feature, it is possible to
+    load a crafted CSV file with an XSS payload (CVE-2019-12950)
+
+  - Setting a crafted password for an item in a common available folder or sharing
+    the item with an admin allows stored XSS (CVE-2019-16904).");
 
   script_tag(name:"affected", value:"TeamPass version 2.1.27.36 and probably prior.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th August, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 16th October, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/nilsteampassnet/TeamPass/issues/2638");
+  script_xref(name:"URL", value:"https://github.com/nilsteampassnet/TeamPass/issues/2685");
 
   exit(0);
 }
@@ -65,11 +71,13 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
+version = infos['version'];
+path = infos['location'];
 
 if (version_is_less_equal(version: version, test_version: "2.1.27.36")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "None", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }
