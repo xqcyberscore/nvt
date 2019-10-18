@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft ASP.NET Core Elevation Of Privilege Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812098");
-  script_version("$Revision: 11983 $");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2017-11879");
   script_bugtraq_id(101713);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-11-20 14:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Elevation Of Privilege Vulnerability");
 
@@ -51,7 +50,7 @@ if(description)
   attackers to gain elevated privileges on affected system.");
 
   script_tag(name:"affected", value:"Microsoft ASP.NET Core 2.0 using packages
-  'Microsoft.AspNetCore.All' or 'Microsoft.AspNetCore.Mvc.Core' version 2.0.0");
+  'Microsoft.AspNetCore.All' or 'Microsoft.AspNetCore.Mvc.Core' version 2.0.0.");
 
   script_tag(name:"solution", value:"Upgrade Microsoft ASP.NET Core 2.0 to use
   package 'Microsoft.AspNetCore.All' version 2.0.3 and package
@@ -66,6 +65,7 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

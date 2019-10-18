@@ -28,16 +28,20 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809025");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-17T12:10:41+0000");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 12:10:41 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-08-31 12:50:25 +0530 (Wed, 31 Aug 2016)");
 
-  script_name("Jenkins CSRF And Code Execution Vulnerabilities Aug16");
+  script_name("Jenkins CSRF And Code Execution Vulnerabilities - Feb17");
 
-  script_tag(name:"summary", value:"This host is installed with CloudBees
-  Jenkins and is prone to cross-site request forgery and code execution vulnerabilities.");
+  script_tag(name:"summary", value:"This host is installed with Jenkins and is
+  is prone to cross-site request forgery and code execution vulnerabilities.
+
+  This VT has been replaced by VTs 'Jenkins Multiple Vulnerabilities - Feb17 (Linux)'
+  (OID: 1.3.6.1.4.1.25623.1.0.108095) and 'Jenkins Multiple Vulnerabilities - Feb17 (Windows)'
+  (OID: 1.3.6.1.4.1.25623.1.0.108096).");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -48,7 +52,7 @@ if(description)
   attackers to hijack the authentication of users for most request and to
   change specific settings or even execute code on os.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins version 1.626");
+  script_tag(name:"affected", value:"Jenkins version 1.626.");
 
   script_tag(name:"solution", value:"Updates are available to fix this issue.");
 
@@ -64,30 +68,11 @@ if(description)
   script_dependencies("gb_jenkins_consolidation.nasl");
   script_mandatory_keys("jenkins/detected");
 
-  script_xref(name:"URL", value:"https://www.cloudbees.com/cloudbees-security-advisory-2017-02-01");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-02-01/");
+
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }
 
-include("host_details.inc");
-include("version_func.inc");
-
-if(!port = get_app_port(cpe:CPE))
-  exit(0);
-
-if(!infos = get_app_full(cpe:CPE, port:port))
-  exit(0);
-
-if (!version = infos["version"])
-  exit(0);
-
-location = infos["location"];
-proto = infos["proto"];
-
-if (version_is_equal(version:version, test_version:"1.626")) {
-  report = report_fixed_ver(installed_version:version, fixed_version:"See advisory", install_path: location);
-  security_message(data:report, port:port, proto:proto);
-  exit(0);
-}
-
-exit(99);
+exit(66);

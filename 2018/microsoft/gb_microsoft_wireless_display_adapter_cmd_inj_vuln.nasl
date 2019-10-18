@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813702");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2018-8306");
   script_tag(name:"cvss_base", value:"5.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-07-17 15:16:38 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft Wireless Display Adapter Command Injection Vulnerability");
 
@@ -47,7 +47,7 @@ if(description)
   characters which could cause the MWDA to stop functioning correctly.");
 
   script_tag(name:"affected", value:"Microsoft Wireless Display Adapter V2
-  Software Version 2.0.8350, 2.0.8365 and 2.0.8372");
+  Software Version 2.0.8350, 2.0.8365 and 2.0.8372.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
@@ -61,6 +61,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
   script_require_ports(139, 445);
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

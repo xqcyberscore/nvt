@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103220");
-  script_version("2019-05-07T07:57:11+0000");
-  script_tag(name:"last_modification", value:"2019-05-07 07:57:11 +0000 (Tue, 07 May 2019)");
+  script_version("2019-10-10T08:00:28+0000");
+  script_tag(name:"last_modification", value:"2019-10-10 08:00:28 +0000 (Thu, 10 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -76,7 +76,7 @@ foreach source( make_list( "ssh", "http", "snmp" ) ) {
 
 if( detected_type != "unknown" ) {
   # nb: Those are "virtual" appliances so don't register a hardware CPE for these.
-  if( egrep( string:detected_type, pattern:"(ONE|MAVEN|150V|EXPO|25V|CE|CENO|DECA|TERA|PETA|EXA)", icase:TRUE ) )
+  if( egrep( string:detected_type, pattern:"(DEMO|ONE|MAVEN|150V|EXPO|25V|CE|CENO|DECA|TERA|PETA|EXA)", icase:TRUE ) )
     hw_app_cpe = "cpe:/a:greenbone:gsm_" + tolower( detected_type );
   else
     hw_app_cpe = "cpe:/h:greenbone:gsm_" + tolower( detected_type );

@@ -1,8 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mult_vuln_july08_win.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
-# Mozilla Firefox Multiple Vulnerability July-08 (Windows)
+# Mozilla Firefox Multiple Vulnerabilities July-08 (Windows)
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800011");
-  script_version("$Revision: 12623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-10-17T12:29:45+0000");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +37,7 @@ if(description)
                 "CVE-2008-2811");
   script_bugtraq_id(30038);
   script_xref(name:"CB-A", value:"08-0109");
-  script_name("Mozilla Firefox Multiple Vulnerability July-08 (Windows)");
+  script_name("Mozilla Firefox Multiple Vulnerabilities July-08 (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");

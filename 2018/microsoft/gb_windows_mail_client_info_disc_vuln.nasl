@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813701");
-  script_version("2019-05-03T10:54:50+0000");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2018-8305");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 10:54:50 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-07-16 18:16:53 +0530 (Mon, 16 Jul 2018)");
   script_name("Microsoft Windows Mail Client Information Disclosure Vulnerability");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to potentially gain access to sensitive information.");
 
-  script_tag(name:"affected", value:"Mail, Calendar, and People on Windows 8.1");
+  script_tag(name:"affected", value:"Mail, Calendar, and People on Windows 8.1.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
@@ -59,6 +59,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
   script_require_ports(139, 445);
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

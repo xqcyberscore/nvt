@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814211");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2018-8269");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-09-17 14:45:59 +0530 (Mon, 17 Sep 2018)");
   script_name("'Microsoft.Data.OData' Denial of Service Vulnerability Sep18 (Windows)");
 
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to cause a denial of service against an OData web application.");
 
-  script_tag(name:"affected", value:"Microsoft.Data.OData library");
+  script_tag(name:"affected", value:"Microsoft.Data.OData library.");
 
   script_tag(name:"solution", value:"Upgrade to Microsoft.Data.OData library to
   version 5.8.4 or later. Please see the references for more information.");
@@ -63,6 +63,7 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3214296.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810269");
-  script_version("$Revision: 11962 $");
+  script_version("2019-10-16T07:36:35+0000");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-01-12 18:49:43 +0530 (Thu, 12 Jan 2017)");
   script_name("Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -39,6 +38,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/3214296.aspx");
 

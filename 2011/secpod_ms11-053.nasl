@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902395");
-  script_version("2019-05-03T12:31:27+0000");
-  script_tag(name:"last_modification", value:"2019-05-03 12:31:27 +0000 (Fri, 03 May 2019)");
+  script_version("2019-10-16T07:36:35+0000");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_cve_id("CVE-2011-1265");
   script_bugtraq_id(48617);
@@ -39,6 +39,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2532531");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms11-053");
@@ -48,7 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Windows Vista Service Pack 2 and prior
 
-  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior");
+  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"insight", value:"The flaw is due to the way an object in memory is accessed when it has
   not been correctly initialized or has been deleted.");

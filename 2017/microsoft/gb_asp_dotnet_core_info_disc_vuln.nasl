@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_info_disc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft ASP.NET Core Information Disclosure Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812097");
-  script_version("$Revision: 11983 $");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2017-8700");
   script_bugtraq_id(101712);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-11-17 12:17:13 +0530 (Fri, 17 Nov 2017)");
   script_name("Microsoft ASP.NET Core Information Disclosure Vulnerability");
 
@@ -53,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft ASP.NET Core 1.0 and ASP.NET Core 1.1
   using 'Microsoft.AspNetCore.Mvc.Core' package or 'Microsoft.AspNetCore.Mvc.Cors'
   package versions 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5, 1.1.0, 1.1.1, 1.1.2,
-  1.1.3 and 1.1.4");
+  1.1.3 and 1.1.4.");
 
   script_tag(name:"solution", value:"Upgrade to Microsoft ASP.NET Core 2.0 or higher.
   For Microsoft ASP.NET Core 1.x upgrade 'Microsoft.AspNetCore.Mvc.Core' and
@@ -68,6 +67,7 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

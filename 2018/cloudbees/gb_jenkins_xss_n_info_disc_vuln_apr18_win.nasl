@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Windows)
+# Jenkins Cross Site Scripting And Information disclosure Vulnerabilities - Apr18 (Windows)
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -28,15 +28,15 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813315");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-17T11:27:19+0000");
   script_cve_id("CVE-2018-1000169", "CVE-2018-1000170");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 11:27:19 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-04-23 16:40:26 +0530 (Mon, 23 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Windows)");
+  script_name("Jenkins Cross Site Scripting And Information disclosure Vulnerabilities - Apr18 (Windows)");
 
   script_tag(name:"summary", value:"This host is running Jenkins and is prone
   to cross site scripting and information disclosure vulnerabilities.");
@@ -64,7 +64,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2018-04-11/#SECURITY-759");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2018-04-11/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

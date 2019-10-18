@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_cisco-sa-20160803-ucm.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Unified Communications Manager IM and Presence Service SIP Packet Processing Denial of Service Vulnerability
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:cisco:unified_communications_manager_im_and_presence_service";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106169");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-08-05 10:51:26 +0700 (Fri, 05 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12096 $");
+  script_version("2019-10-17T12:29:45+0000");
 
   script_cve_id("CVE-2016-1466");
 
@@ -90,7 +89,7 @@ version = str_replace( string:version, find:"-", replace:"." );
 
 if (version =~ "^9\.1\.1") {
   if (version_is_less_equal( version, test_version: "9.1.1.91900.1")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
     security_message(port: 0, data: report);
     exit( 0 );
   }
@@ -98,7 +97,7 @@ if (version =~ "^9\.1\.1") {
 
 if (version =~ "^10\.5\.2") {
   if (version_is_less_equal(version: version, test_version: "10.5.2.23900.4")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
     security_message(port: 0, data: report);
     exit( 0 );
   }
@@ -106,7 +105,7 @@ if (version =~ "^10\.5\.2") {
 
 if (version =~ "^11\.0\.1") {
   if (version_is_less_equal(version: version, test_version: "11.0.1.11900.4")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
     security_message(port: 0, data: report);
     exit( 0 );
   }
@@ -114,7 +113,7 @@ if (version =~ "^11\.0\.1") {
 
 if (version =~ "^11\.5\.1") {
   if (version_is_less(version: version, test_version: "11.5.1.11000.1")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+    report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
     security_message(port: 0, data: report);
     exit( 0 );
   }

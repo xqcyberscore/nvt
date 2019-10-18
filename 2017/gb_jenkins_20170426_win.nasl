@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Jenkins Security Advisory Apr17 - Multiple Vulnerabilities (Windows)
+# Jenkins Multiple Vulnerabilities - Apr17 (Windows)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -28,8 +28,8 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107157");
-  script_version("2019-07-30T03:00:13+0000");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_version("2019-10-17T11:27:19+0000");
+  script_tag(name:"last_modification", value:"2019-10-17 11:27:19 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-04-28 12:09:09 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-1000353", "CVE-2017-1000354", "CVE-2017-1000355", "CVE-2017-1000356");
   script_bugtraq_id(98056);
@@ -39,13 +39,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("Jenkins Security Advisory Apr17 - Multiple Vulnerabilities (Windows)");
+  script_name("Jenkins Multiple Vulnerabilities - Apr17 (Windows)");
 
-  script_tag(name:"summary", value:"Multiple Cross-Site Request Forgery vulnerabilities in Jenkins allow malicious users to perform several administrative actions by tricking a victim into opening a web page.");
+  script_tag(name:"summary", value:"Multiple Cross-Site Request Forgery vulnerabilities in Jenkins allow malicious users to
+  perform several administrative actions by tricking a victim into opening a web page.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to::
+  script_tag(name:"insight", value:"Multiple flaws are due to:
 
   - multiple Cross-Site Request Forgery vulnerabilities.
 
@@ -55,19 +56,20 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to:
 
-  - perform several administrative actions by tricking a victim into opening a web page.execute arbitrary code in the context of the affected application.
+  - perform several administrative actions by tricking a victim into opening a web page.execute arbitrary code in the context
+  of the affected application.
 
-  - to transfer a serialized Java SignedObject object to the remoting-based Jenkins CLI, that would be deserialized using a new ObjectInputStream, bypassing the existing blacklist-based protection mechanism.
+  - to transfer a serialized Java SignedObject object to the remoting-based Jenkins CLI, that would be deserialized using a new
+  ObjectInputStream, bypassing the existing blacklist-based protection mechanism.
 
   - impersonate any other Jenkins user on the same instance.
 
   - crash the Java process.");
 
-  script_tag(name:"affected", value:"The following products are vulnerable:
-    Jenkins LTS 2.46.1 and prior, Jenkins 2.56 and prior.");
+  script_tag(name:"affected", value:"Jenkins main line 2.56 and prior, Jenkins LTS 2.46.1 and prior.");
 
   script_tag(name:"solution", value:"Jenkins main line users should update to 2.57,
-    Jenkins LTS users should update to 2.46.2");
+  Jenkins LTS users should update to 2.46.2.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/98056");
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-04-26/");
@@ -86,32 +88,34 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( !port = get_app_port( cpe:CPE ) )
+if( ! port = get_app_port( cpe:CPE ) )
   exit(0);
 
-if(!infos = get_app_full(cpe:CPE, port:port))
+if( ! infos = get_app_full( cpe:CPE, port:port ) )
   exit(0);
 
-if (!version = infos["version"])
+if( ! version = infos["version"])
   exit(0);
 
 location = infos["location"];
 proto = infos["proto"];
 
-if(version_is_less(version:version, test_version:"2.46.2")){
-  vuln = TRUE;
-  fix = "2.46.2";
+if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
+  if( version_is_less( version:version, test_version:"2.46.2" ) ) {
+    vuln = TRUE;
+    fix = "2.46.2";
+  }
+} else {
+  if( version_is_less( version:version, test_version:"2.57" ) ) {
+    vuln = TRUE;
+    fix = "2.57";
+  }
 }
 
-if(version_in_range(version:version, test_version:"2.47", test_version2:"2.57")){
-  vuln = TRUE;
-  fix = "2.57";
+if( vuln ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
+  exit( 0 );
 }
 
-if(vuln){
-  report = report_fixed_ver(installed_version:version, fixed_version:fix, install_path:location);
-  security_message(port:port, data:report, proto:proto);
-  exit(0);
-}
-
-exit(99);
+exit( 99 );

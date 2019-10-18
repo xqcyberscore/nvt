@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814354");
-  script_version("2019-07-19T09:05:16+0000");
+  script_version("2019-10-16T07:36:35+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-19 09:05:16 +0000 (Fri, 19 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-12-06 18:01:43 +0530 (Thu, 06 Dec 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Zoom Client Version Detection (Windows)");
@@ -46,6 +46,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

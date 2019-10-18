@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_dos_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft ASP.NET Core Denial of Service Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812099");
-  script_version("$Revision: 11983 $");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2017-11883");
   script_bugtraq_id(101835);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-11-20 15:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Denial of Service Vulnerability");
 
@@ -74,6 +73,7 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

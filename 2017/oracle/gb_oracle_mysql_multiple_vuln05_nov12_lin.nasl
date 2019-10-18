@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Oracle MySQL Server Multiple Vulnerability-05 Nov12 (Linux)
+# Oracle MySQL Server Multiple Vulnerabilities-05 Nov12 (Linux)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -28,14 +28,14 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812194");
-  script_version("2019-07-24T11:36:46+0000");
+  script_version("2019-10-17T12:29:45+0000");
   script_cve_id("CVE-2012-3156");
   script_bugtraq_id(56013);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-24 11:36:46 +0000 (Wed, 24 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-11-23 14:42:41 +0530 (Thu, 23 Nov 2017)");
-  script_name("Oracle MySQL Server Multiple Vulnerability-05 Nov12 (Linux)");
+  script_name("Oracle MySQL Server Multiple Vulnerabilities-05 Nov12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51008/");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/51008");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");

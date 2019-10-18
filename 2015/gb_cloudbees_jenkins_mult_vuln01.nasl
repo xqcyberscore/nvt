@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CloudBees Jenkins Multiple Vulnerabilities -01 December15
+# Jenkins Multiple Vulnerabilities - Feb14 (Windows)
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -28,19 +28,19 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807012");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-17T11:27:19+0000");
   script_cve_id("CVE-2014-2068", "CVE-2014-2066", "CVE-2014-2065", "CVE-2014-2064",
                 "CVE-2014-2063", "CVE-2014-2062", "CVE-2014-2061", "CVE-2014-2060",
-                "CVE-2014-2058");
+                "CVE-2014-2058", "CVE-2013-7285", "CVE-2013-5573");
   script_bugtraq_id(65694, 65720);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 11:27:19 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-12-21 15:34:06 +0530 (Mon, 21 Dec 2015)");
 
-  script_name("CloudBees Jenkins Multiple Vulnerabilities -01 December15");
+  script_name("Jenkins Multiple Vulnerabilities - Feb14 (Windows)");
 
-  script_tag(name:"summary", value:"This host is installed with CloudBees
+  script_tag(name:"summary", value:"This host is installed with
   Jenkins and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
@@ -74,16 +74,17 @@ if(description)
   protection mechanism, gain elevated privileges, bypass intended access
   restrictions and execute arbitrary code.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.532.2 on Windows.");
+  script_tag(name:"affected", value:"Jenkins main line prior to 1.551, Jenkins LTS prior to 1.532.2.");
 
-  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.532.2 or later.");
+  script_tag(name:"solution", value:"Jenkins main line users should update to 1.551,
+  Jenkins LTS users should update to 1.532.2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2014/02/21/2");
-  script_xref(name:"URL", value:"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2014-02-14");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2014-02-14/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -97,22 +98,34 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE))
+if( ! port = get_app_port( cpe:CPE ) )
   exit(0);
 
-if(!infos = get_app_full(cpe:CPE, port:port))
+if( ! infos = get_app_full( cpe:CPE, port:port ) )
   exit(0);
 
-if (!version = infos["version"])
+if( ! version = infos["version"])
   exit(0);
 
 location = infos["location"];
 proto = infos["proto"];
 
-if(version_is_less(version:version, test_version:"1.532.2")) {
-  report = report_fixed_ver(installed_version:version, fixed_version:"1.532.2", install_path: location);
-  security_message(data:report, port:port, proto:proto);
-  exit(0);
+if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
+  if( version_is_less( version:version, test_version:"1.532.2" ) ) {
+    vuln = TRUE;
+    fix = "1.532.2";
+  }
+} else {
+  if( version_is_less( version:version, test_version:"1.551" ) ) {
+    vuln = TRUE;
+    fix = "1.551";
+  }
 }
 
-exit(99);
+if( vuln ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
+  exit( 0 );
+}
+
+exit( 99 );

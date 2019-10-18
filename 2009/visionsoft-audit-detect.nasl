@@ -1,8 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: visionsoft-audit-detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
-# Visionsoft Audit multiple vulnerability detection
+# Visionsoft Audit Multiple Vulnerabilities
 #
 # Authors:
 # Tim Brown <timb@openvas.org>
@@ -29,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100951");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-10-17T12:29:45+0000");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-07-10 19:42:14 +0200 (Fri, 10 Jul 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2007-4148", "CVE-2007-4149", "CVE-2007-4150", "CVE-2007-4151", "CVE-2007-4152");
-  script_name("Visionsoft Audit multiple vulnerability detection");
+  script_name("Visionsoft Audit Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("(c) Tim Brown, 2009");

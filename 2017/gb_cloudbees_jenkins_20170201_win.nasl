@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Windows)
+# Jenkins Multiple Vulnerabilities - Feb17 (Windows)
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -28,7 +28,7 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108096");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-17T11:27:19+0000");
   script_cve_id("CVE-2011-4969", "CVE-2015-0886", "CVE-2017-2598", "CVE-2017-2599",
                 "CVE-2017-2600", "CVE-2017-2601", "CVE-2017-2602", "CVE-2017-2603",
                 "CVE-2017-2604", "CVE-2017-2605", "CVE-2017-2606", "CVE-2017-2607",
@@ -36,10 +36,10 @@ if(description)
                 "CVE-2017-2612", "CVE-2017-2613", "CVE-2017-1000362");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 11:27:19 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-03-13 11:00:00 +0100 (Mon, 13 Mar 2017)");
 
-  script_name("CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Windows)");
+  script_name("Jenkins Multiple Vulnerabilities - Feb17 (Windows)");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -48,9 +48,8 @@ if(description)
   script_mandatory_keys("jenkins/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-02-01/");
-  script_xref(name:"URL", value:"https://www.cloudbees.com/cloudbees-security-advisory-2017-02-01");
 
-  script_tag(name:"summary", value:"This host is installed with CloudBees Jenkins and is prone to
+  script_tag(name:"summary", value:"This host is installed with Jenkins and is prone to
   multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
@@ -70,9 +69,9 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive information,
   to bypass intended access restrictions and execute arbitrary code.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins LTS 2.32.1 and prior, Jenkins main line 2.43 and prior.");
+  script_tag(name:"affected", value:"Jenkins LTS 2.32.1 and prior, Jenkins main line 2.43 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins main line to 2.44 or later / Jenkins LTS to 2.32.2 or
+  script_tag(name:"solution", value:"Upgrade to Jenkins main line to 2.44 or later / Jenkins LTS to 2.32.2 or
   later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -84,26 +83,28 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( !port = get_app_port( cpe:CPE ) )
+if( ! port = get_app_port( cpe:CPE ) )
   exit(0);
 
-if(!infos = get_app_full(cpe:CPE, port:port))
+if( ! infos = get_app_full( cpe:CPE, port:port ) )
   exit(0);
 
-if (!version = infos["version"])
+if( ! version = infos["version"])
   exit(0);
 
 location = infos["location"];
 proto = infos["proto"];
 
-if( version_is_less( version:version, test_version:"2.32.2" ) ) {
-  vuln = TRUE;
-  fix = "2.32.2";
-}
-
-if( version_in_range( version:version, test_version:"2.33", test_version2:"2.43" ) ) {
-  vuln = TRUE;
-  fix = "2.44";
+if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
+  if( version_is_less( version:version, test_version:"2.32.2" ) ) {
+    vuln = TRUE;
+    fix = "2.32.2";
+  }
+} else {
+  if( version_is_less( version:version, test_version:"2.44" ) ) {
+    vuln = TRUE;
+    fix = "2.44";
+  }
 }
 
 if( vuln ) {

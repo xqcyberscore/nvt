@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telegram_desktop_detect_win.nasl 13664 2019-02-14 11:13:52Z cfischer $
 #
 # Telegram Desktop Version Detection (Windows)
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814305");
-  script_version("$Revision: 13664 $");
+  script_version("2019-10-16T07:36:35+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 12:13:52 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-11-05 16:30:44 +0530 (Mon, 05 Nov 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Telegram Desktop Version Detection (Windows)");
@@ -39,7 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Detects the installed version of Telegram
   Desktop on Windows.
 
-  The script logs in via smb, searches for Telegram Desktop and gets the
+  The script logs in via WMI, searches for Telegram Desktop and gets the
   version from registry.");
 
   script_category(ACT_GATHER_INFO);
@@ -47,6 +46,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

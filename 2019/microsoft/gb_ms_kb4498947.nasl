@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815133");
-  script_version("2019-07-24T08:39:52+0000");
+  script_version("2019-10-16T07:36:35+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-05-16 11:38:35 +0530 (Thu, 16 May 2019)");
   script_name("Microsoft Windows Latest Servicing Stack Updates-Defense in Depth (KB4498947)");
 
@@ -44,7 +44,7 @@ if(description)
 
   Windows 10 Version 1607 for x64-based Systems
 
-  Windows Server 2016");
+  Windows Server 2016.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
@@ -58,6 +58,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

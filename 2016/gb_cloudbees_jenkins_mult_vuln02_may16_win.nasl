@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Windows)
+# Jenkins Multiple Vulnerabilities - Feb16 (Windows)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -28,18 +28,18 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807331");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-17T11:27:19+0000");
   script_cve_id("CVE-2016-0788", "CVE-2016-0789", "CVE-2016-0790", "CVE-2016-0791",
                 "CVE-2016-0792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 11:27:19 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-05-20 15:08:55 +0530 (Fri, 20 May 2016)");
 
-  script_name("CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Windows)");
+  script_name("Jenkins Multiple Vulnerabilities - Feb16 (Windows)");
 
-  script_tag(name:"summary", value:"This host is installed with CloudBees
-  Jenkins and is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"This host is installed with Jenkins and is prone to
+  multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -71,15 +71,16 @@ if(description)
   gain elevated privileges, bypass intended access restrictions and execute
   arbitrary code.");
 
-  script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.642.2 on Windows.");
+  script_tag(name:"affected", value:"Jenkins main line 1.649 and prior, Jenkins LTS 1.642.1 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.642.2 or later.");
+  script_tag(name:"solution", value:"Jenkins main line users should update to 1.650,
+  Jenkins LTS users should update to 1.642.2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL", value:"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-02-24");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2016-02-24/");
   script_xref(name:"URL", value:"https://www.contrastsecurity.com/security-influencers/serialization-must-die-act-2-xstream");
 
   script_category(ACT_GATHER_INFO);
@@ -94,22 +95,34 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE))
+if( ! port = get_app_port( cpe:CPE ) )
   exit(0);
 
-if(!infos = get_app_full(cpe:CPE, port:port))
+if( ! infos = get_app_full( cpe:CPE, port:port ) )
   exit(0);
 
-if (!version = infos["version"])
+if( ! version = infos["version"])
   exit(0);
 
 location = infos["location"];
 proto = infos["proto"];
 
-if(version_is_less(version:version, test_version:"1.642.2")) {
-  report = report_fixed_ver(installed_version:version, fixed_version:"1.642.2", install_path: location);
-  security_message(data:report, port:port, proto:proto);
-  exit(0);
+if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
+  if( version_is_less( version:version, test_version:"1.642.2" ) ) {
+    vuln = TRUE;
+    fix = "1.642.2";
+  }
+} else {
+  if( version_is_less( version:version, test_version:"1.650" ) ) {
+    vuln = TRUE;
+    fix = "1.650";
+  }
 }
 
-exit(99);
+if( vuln ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
+  security_message( port:port, data:report, proto:proto );
+  exit( 0 );
+}
+
+exit( 99 );

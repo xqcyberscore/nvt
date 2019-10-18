@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxmail_detect.nasl 11376 2018-09-13 12:51:39Z cfischer $
 #
 # FoxMail Version Detection
 #
@@ -28,8 +27,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800219");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11376 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
+  script_version("2019-10-16T07:36:35+0000");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FoxMail Version Detection");
@@ -82,7 +81,7 @@ foreach keypart( make_list_unique( "Foxmail_is1", "Foxmail", registry_enum_keys(
     usrname = kb_smb_login();
     passwd  = kb_smb_password();
 
-    if( host && usrname && passwd ) {
+    if( host && usrname && passwd && ! wmi_file_is_file_search_disabled() ) {
 
       domain = kb_smb_domain();
       if( domain ) usrname = domain + '\\' + usrname;
@@ -112,4 +111,5 @@ foreach keypart( make_list_unique( "Foxmail_is1", "Foxmail", registry_enum_keys(
                            insloc: loc );
   break;
 }
+
 exit(0);

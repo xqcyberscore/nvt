@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_cisco-sa-20161207-ucm.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco Unified Communications Manager IM and Presence Service Information Disclosure Vulnerability
 #
@@ -30,11 +29,11 @@ CPE = "cpe:/a:cisco:unified_communications_manager_im_and_presence_service";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106453");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-12-08 15:34:12 +0700 (Thu, 08 Dec 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11922 $");
+  script_version("2019-10-17T12:29:45+0000");
 
   script_cve_id("CVE-2016-6464");
 
@@ -82,25 +81,25 @@ if (!version = get_app_version(cpe:CPE))
 version = str_replace( string:version, find:"-", replace:"." );
 
 if (version =~ "^10\.5\.1") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
   security_message(port: 0, data: report);
   exit( 0 );
 }
 
 if (version =~ "^10\.5\.2") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
   security_message(port: 0, data: report);
   exit( 0 );
 }
 
 if (version =~ "^11\.0\.1") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
   security_message(port: 0, data: report);
   exit( 0 );
 }
 
 if (version =~ "^11\.5\.1") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisoriy.");
+  report = report_fixed_ver(installed_version: version, fixed_version: "See Advisory.");
   security_message(port: 0, data: report);
   exit( 0 );
 }

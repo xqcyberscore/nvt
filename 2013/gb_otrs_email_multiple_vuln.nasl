@@ -1,8 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_multiple_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
-# OTRS Email Multiple Vulnerability
+# OTRS Email Multiple Vulnerabilities
 #
 # Authors:
 # Shashi Kiran N <nskiran@secpod.com>
@@ -28,13 +27,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803915");
-  script_version("$Revision: 11865 $");
+  script_version("2019-10-17T12:29:45+0000");
   script_cve_id("CVE-2008-7280", "CVE-2008-7281");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-09-17 16:43:34 +0530 (Tue, 17 Sep 2013)");
-  script_name("OTRS Email Multiple Vulnerability");
+  script_name("OTRS Email Multiple Vulnerabilities");
 
 
   script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to

@@ -28,13 +28,13 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806621");
-  script_version("2019-10-15T07:48:22+0000");
+  script_version("2019-10-17T11:27:19+0000");
   script_cve_id("CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320", "CVE-2015-5324",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5325",
                 "CVE-2015-5326");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-10-15 07:48:22 +0000 (Tue, 15 Oct 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 11:27:19 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-11-17 12:48:36 +0530 (Tue, 17 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -43,8 +43,8 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Jenkins and is
   prone to multiple vulnerabilities.
 
-  This VT has been replaced by VTs 'CloudBees Jenkins Multiple Vulnerabilities - Nov15 (Linux)'
-  (OID: 1.3.6.1.4.1.25623.1.0.808269) and 'CloudBees Jenkins Multiple Vulnerabilities - Nov15 (Windows)'
+  This VT has been replaced by VTs 'Jenkins Multiple Vulnerabilities - Nov15 (Linux)'
+  (OID: 1.3.6.1.4.1.25623.1.0.808269) and 'Jenkins Multiple Vulnerabilities - Nov15 (Windows)'
   (OID: 1.3.6.1.4.1.25623.1.0.807001).");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");

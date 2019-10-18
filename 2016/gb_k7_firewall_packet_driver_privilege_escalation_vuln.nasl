@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_firewall_packet_driver_privilege_escalation_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # K7Firewall Packet Driver Privilege Escalation Vulnerability
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809088");
-  script_version("$Revision: 12051 $");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2014-7136");
   script_bugtraq_id(71611);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-07 14:25:26 +0530 (Mon, 07 Nov 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7Firewall Packet Driver Privilege Escalation Vulnerability");
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
   script_require_ports(139, 445);
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

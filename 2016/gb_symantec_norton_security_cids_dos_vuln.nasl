@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_security_cids_dos_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability
 #
@@ -29,12 +28,12 @@ CPE = "cpe:/a:symantec:norton_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808624");
-  script_version("$Revision: 11782 $");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2016-5308");
   script_bugtraq_id(91608);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-07 13:20:51 +0530 (Fri, 07 Oct 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability");
@@ -65,6 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_symantec_norton_security_detect.nasl");
   script_mandatory_keys("Symantec/Norton/Security/Ver");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

@@ -21,8 +21,8 @@ CPE = "cpe:/o:greenbone:greenbone_os";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142852");
-  script_version("2019-09-10T07:16:21+0000");
-  script_tag(name:"last_modification", value:"2019-09-10 07:16:21 +0000 (Tue, 10 Sep 2019)");
+  script_version("2019-10-10T08:00:28+0000");
+  script_tag(name:"last_modification", value:"2019-10-10 08:00:28 +0000 (Thu, 10 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-06 02:27:18 +0000 (Fri, 06 Sep 2019)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -31,7 +31,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("Greenbone OS 5.0.x < 5.0.10 XSS Vulnerability");
+  script_name("Greenbone OS 5.0.x < 5.0.10 XSS Vulnerability (Version Check)");
 
   script_category(ACT_GATHER_INFO);
 
@@ -50,9 +50,9 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
+  script_xref(name:"URL", value:"https://www.greenbone.net/en/roadmap-lifecycle/");
   script_xref(name:"URL", value:"https://github.com/greenbone/gsa/issues/1601");
   script_xref(name:"URL", value:"https://github.com/greenbone/gsa/pull/1603");
-  script_xref(name:"URL", value:"https://www.greenbone.net/en/roadmap-lifecycle/");
 
   exit(0);
 }

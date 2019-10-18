@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test Library functions
-# $Id: wmi_file.inc 11781 2018-10-08 12:34:17Z cfischer $
 #
 # WMI Client Functions for Directories and Files
 #
@@ -22,10 +21,33 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# $Revision: 11781 $
-#
 ###############################################################################
+
+# Global var to avoid that we're repeatedly asking redis for something we already know.
+global_var __wmi_file_search_disabled;
+
+# @brief Returns the info if "Disable file search via WMI on Windows" was enabled (win/lsc/disable_wmi_search of lsc_options.nasl)
+#        within the scan config. To avoid querying the KB for the same info again it will be cached within an internal variable.
+#
+# @return TRUE if WMI file search was disabled, FALSE otherwise.
+#
+function wmi_file_is_file_search_disabled() {
+
+  local_var is_file_search_disabled;
+  # nb: __wmi_file_search_disabled is a global var
+
+  if( ! isnull( __wmi_file_search_disabled ) ) {
+    is_file_search_disabled = __wmi_file_search_disabled;
+  } else {
+    is_file_search_disabled = get_kb_item( "win/lsc/disable_wmi_search" );
+    if( is_file_search_disabled )
+      __wmi_file_search_disabled = TRUE;
+    else
+      __wmi_file_search_disabled = FALSE;
+    is_file_search_disabled = __wmi_file_search_disabled;
+  }
+  return is_file_search_disabled;
+}
 
 ##############################################################################
 # CLASS: win32_Directory Functions
@@ -374,12 +396,16 @@ function wmi_file_check_file_exists( handle, filePath ) {
 # @param includeHeader if set to TRUE the header "Name" will be returned in the list
 #
 # @return A list of files matching the query, FALSE if no files exists matching the query or NULL
-#         if not all required information are passed or the target system has denied the access.
+#         if not all required information are passed, the target system has denied the access or
+#         the user has requested to disable WMI file search via lsc_options.nasl.
 #
 function wmi_file_file_search( handle, dirPath, dirPathLike, fileName, fileExtn, includeHeader ) {
 
   local_var handle, dirPath, fileName, fileExtn, includeHeader, query, queryres, splitList, _list, item;
   local_var kb_proxy_key, kb_proxy_key_list;
+
+  if( wmi_file_is_file_search_disabled() )
+    return NULL;
 
   if( isnull( handle ) ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#handle#-#wmi_file_file_search" );
@@ -519,7 +545,8 @@ function wmi_file_fileinfo( handle, filePath ) {
 # @param includeHeader if set to TRUE the headers "Name" and "Version" will be returned in the array
 #
 # @return An array of files as the key and the version of the file as a value, FALSE if the file doesn't
-#         exist and NULL if not all required information are passed or the target system has denied the access.
+#         exist and NULL if not all required information are passed, the target system has denied the access
+#         or the user has requested to disable WMI file search via lsc_options.nasl and filePath wasn't passed.
 #
 function wmi_file_fileversion( handle, filePath, dirPath, dirPathLike, fileName, fileExtn, includeHeader ) {
 
@@ -535,6 +562,10 @@ function wmi_file_fileversion( handle, filePath, dirPath, dirPathLike, fileName,
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#filePath, dirPath, dirPathLike, fileName and fileExtn#-#wmi_file_fileversion" );
     return NULL;
   }
+
+  # nb: If a full filePath is given no file search via WMI is done so we shouldn't return with NULL in this case.
+  if( ! filePath && wmi_file_is_file_search_disabled() )
+    return NULL;
 
   if( filePath && ( dirPath || dirPathLike || fileName || fileExtn ) ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#wmi_file_fileversion: filePath can be used only alone without other parameters" );

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800640");
-  script_version("2019-04-29T15:08:03+0000");
-  script_tag(name:"last_modification", value:"2019-04-29 15:08:03 +0000 (Mon, 29 Apr 2019)");
+  script_version("2019-10-17T12:29:45+0000");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2009-1836", "CVE-2009-1838", "CVE-2009-1840", "CVE-2009-1841",
                 "CVE-2009-1392");
   script_bugtraq_id(35326);
-  script_name("Mozilla Seamonkey Multiple Vulnerability Jun-09 (Windows)");
+  script_name("Mozilla Seamonkey Multiple Vulnerabilities Jun-09 (Windows)");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1572");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-24.html");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-25.html");

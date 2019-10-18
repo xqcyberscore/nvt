@@ -1,8 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_mult_vuln_july08_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
-# Mozilla Seamonkey Multiple Vulnerability July-08 (Linux)
+# Mozilla Seamonkey Multiple Vulnerabilities July-08 (Linux)
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800022");
-  script_version("$Revision: 12670 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
+  script_version("2019-10-17T12:29:45+0000");
+  script_tag(name:"last_modification", value:"2019-10-17 12:29:45 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +37,7 @@ if(description)
                 "CVE-2008-2811");
   script_bugtraq_id(30038);
   script_xref(name:"CB-A", value:"08-0109");
-  script_name("Mozilla Seamonkey Multiple Vulnerability July-08 (Linux)");
+  script_name("Mozilla Seamonkey Multiple Vulnerabilities July-08 (Linux)");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-21.html");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-22.html");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-23.html");

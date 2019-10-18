@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Jenkins Multiple Vulnerabilities Nov 17 (Linux)
+# Jenkins Multiple Vulnerabilities - Nov17 (Linux)
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -28,16 +28,16 @@ CPE = "cpe:/a:jenkins:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112130");
-  script_version("2019-07-30T03:00:13+0000");
+  script_version("2019-10-17T11:27:19+0000");
 
   script_cve_id("CVE-2017-1000391", "CVE-2017-1000392");
 
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-30 03:00:13 +0000 (Tue, 30 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-17 11:27:19 +0000 (Thu, 17 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-11-07 10:05:00 +0100 (Tue, 07 Nov 2017)");
 
-  script_name("Jenkins Multiple Vulnerabilities Nov 17 (Linux)");
+  script_name("Jenkins Multiple Vulnerabilities - Nov17 (Linux)");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -59,7 +59,7 @@ if(description)
   - a persisted XSS vulnerability in autocompletion suggestions");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to
-affect the integrity of the application.");
+  affect the integrity of the application.");
 
   script_tag(name:"affected", value:"Jenkins LTS 2.73.2 and prior, Jenkins weekly up to and including 2.88.");
 
@@ -74,30 +74,32 @@ affect the integrity of the application.");
 include("host_details.inc");
 include("version_func.inc");
 
-if( !port = get_app_port( cpe:CPE ) )
+if( ! port = get_app_port( cpe:CPE ) )
   exit(0);
 
-if(!infos = get_app_full(cpe:CPE, port:port))
+if( ! infos = get_app_full( cpe:CPE, port:port ) )
   exit(0);
 
-if (!version = infos["version"])
+if( ! version = infos["version"])
   exit(0);
 
 location = infos["location"];
 proto = infos["proto"];
 
-if( version_is_less( version:version, test_version:"2.73.3" ) ) {
-  vuln = TRUE;
-  fix = "2.73.3";
-}
-
-if( version_in_range( version:version, test_version:"2.74", test_version2:"2.88" ) ) {
-  vuln = TRUE;
-  fix = "2.89";
+if( get_kb_item( "jenkins/" + port + "/is_lts" ) ) {
+  if( version_is_less( version:version, test_version:"2.73.3" ) ) {
+    vuln = TRUE;
+    fix = "2.73.3";
+  }
+} else {
+  if( version_is_less( version:version, test_version:"2.89" ) ) {
+    vuln = TRUE;
+    fix = "2.89";
+  }
 }
 
 if( vuln ) {
-  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path: location );
+  report = report_fixed_ver( installed_version:version, fixed_version:fix, install_path:location );
   security_message( port:port, data:report, proto:proto );
   exit( 0 );
 }

@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814275");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2018-8566");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-11-14 10:23:34 +0530 (Wed, 14 Nov 2018)");
   script_name("MS Windows Security Bypass and Latest Servicing Stack Updates-Defense in Depth (KB4465659)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft KB4465659");
+  update according to Microsoft KB4465659.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
@@ -48,9 +48,9 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attackers
   to bypass a security control.");
 
-  script_tag(name:"affected", value:"Windows 10 version 1607 for 32-bit/x64,
+  script_tag(name:"affected", value:"Windows 10 version 1607 for 32-bit/x64
 
-  Microsoft Windows Server 2016");
+  Microsoft Windows Server 2016.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }

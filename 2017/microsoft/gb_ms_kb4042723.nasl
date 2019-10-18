@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811950");
-  script_version("2019-05-03T08:55:39+0000");
+  script_version("2019-10-16T07:36:35+0000");
   script_cve_id("CVE-2017-13080");
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-05-03 08:55:39 +0000 (Fri, 03 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-16 07:36:35 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-11-10 18:23:04 +0530 (Fri, 10 Nov 2017)");
   script_name("Windows Server 2008 Defense in Depth (KB4042723)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft KB4042723");
+  update according to Microsoft KB4042723.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -47,7 +47,7 @@ if(description)
   attackers to compromise integrity, availability, and confidentiality of the
   system.");
 
-  script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
+  script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2.");
 
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
@@ -59,6 +59,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }
