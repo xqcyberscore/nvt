@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_detect.nasl 10290 2018-06-21 14:28:42Z cfischer $
 #
 # Apache Web Server Detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900498");
-  script_version("$Revision: 10290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 16:28:42 +0200 (Thu, 21 Jun 2018) $");
+  script_version("2019-10-16T09:54:19+0000");
+  script_tag(name:"last_modification", value:"2019-10-16 09:54:19 +0000 (Wed, 16 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,7 +50,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
@@ -63,8 +61,8 @@ if( banner && "Apache" >< banner && "Apache-" >!< banner ) {
   version = "unknown";
   installed = TRUE;
 
-  vers = eregmatch( pattern:"Server: Apache/([0-9]\.[0-9]+\.[0-9][0-9]?)", string:banner );
-  if( ! isnull( vers[1] ) ) version = chomp( vers[1] );
+  vers = eregmatch( pattern:"Server: Apache/([0-9.]+(-(alpha|beta))?)", string:banner );
+  if( ! isnull( vers[1] ) ) version = vers[1];
 }
 
 if( ! version || version == "unknown" ) {
@@ -79,7 +77,7 @@ if( ! version || version == "unknown" ) {
     installed = TRUE;
     conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-    vers = eregmatch( pattern:"Server: Apache/([0-9]\.[0-9]+\.[0-9][0-9]?)", string:server_info );
+    vers = eregmatch( pattern:"Server: Apache/([0-9.]+(-(alpha|beta))?)", string:server_info );
     if( ! isnull( vers[1] ) ) {
       version = vers[1];
       replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache/" + version );
@@ -102,7 +100,7 @@ if( ! version || version == "unknown" ) {
     installed = TRUE;
     conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-    vers = eregmatch( pattern:"<address>Apache/([0-9]\.[0-9]+\.[0-9][0-9]?).* Server at .* Port ([0-9.]+)</address>", string:res );
+    vers = eregmatch( pattern:"<address>Apache/([0-9.]+(-(alpha|beta))?).* Server at .* Port ([0-9.]+)</address>", string:res );
     if( ! isnull( vers[1] ) ) {
       version = vers[1];
       replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache/" + version );
@@ -143,9 +141,9 @@ if( installed ) {
   set_kb_item( name:"www/" + port + "/Apache", value:version );
   set_kb_item( name:"apache/installed", value:TRUE );
 
-  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:http_server:" );
-  if( isnull( cpe ) )
-    cpe = "cpe:/a:apache:http_server";
+  baseCPE = "cpe:/a:apache:http_server:";
+  cpeVer = str_replace( string:version, find:"-", replace:":" );
+  cpe = baseCPE + cpeVer;
 
   register_product( cpe:cpe, location:install, port:port );
   log_message( data:build_detection_report( app:"Apache",

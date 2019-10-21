@@ -343,22 +343,24 @@ OS_TXT_SRC = make_list(
 
 # @brief Register the specified info as a "HostDetail" into the knowledge base for use by other VTs.
 #
-# @param name  The name of the HostDetail to register,
-# @param value The value to assign to the specified HostDetail name,
-# @param desc  A text description of the registered HostDetail,
+# @param name  The name of the HostDetail to register.
+# @param value The value to assign to the specified HostDetail name.
+# @param desc  A text description of the registered HostDetail.
 #
 # @return NULL
 #
 function register_host_detail( name, value, desc ) {
 
-  local_var name, value, desc, nvt, tokens;
+  local_var name, value, desc;
+  local_var nvt;
 
   if( ! name ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#register_host_detail" );
     return;
   }
 
-  if( ! value ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#value#-#register_host_detail" );
+  if( ! value )
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#value#-#register_host_detail" );
 
   nvt = get_script_oid();
   if( ! nvt )
@@ -373,14 +375,6 @@ function register_host_detail( name, value, desc ) {
 
   if( value )
     set_kb_item( name:"HostDetails/NVT/" + nvt + "/" + name, value:value );
-
-  # gather-package-list.nasl sets precise OS CPE keys that we use to efficiently schedule LSCs.
-  if( name == "OS" && "cpe:/o:" >< value && nvt == "1.3.6.1.4.1.25623.1.0.50282" ) {
-    tokens = split(value, sep:":", keep:FALSE);
-
-    if( tokens && tokens[0] && tokens[1] && tokens[2] && tokens[3] )
-      set_kb_item( name:string( "HostDetails/OS/", tokens[0], ":", tokens[1], ":", tokens[2], ":", tokens[3]), value:TRUE );
-  }
 }
 
 # @brief Registers a specific product as an "App" HostDetails to the scanner/manager for later

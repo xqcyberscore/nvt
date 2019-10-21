@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-10-07T12:17:23+0000");
-  script_tag(name:"last_modification", value:"2019-10-07 12:17:23 +0000 (Mon, 07 Oct 2019)");
+  script_version("2019-10-18T13:06:09+0000");
+  script_tag(name:"last_modification", value:"2019-10-18 13:06:09 +0000 (Fri, 18 Oct 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -431,6 +431,23 @@ function check_http_banner( port, banner ) {
     # Server: Jetty/3.1.8 (Windows 7 6.1 x86)
     # Server: Jetty/5.1.10 (Windows Server 2008 R2/6.1 amd64 java/1.6.0_31
     # Server: Jetty/5.1.15 (Linux/2.6.27.45-crl i386 java/1.5.0
+    # Server: Jetty/null (Windows Server 2008 6.0 x86)
+    # Server: Jetty/4.2.22 (Windows Server 2016/10.0 amd64 java/1.8.0_201)
+    # Server: Jetty/5.1.4 (Windows Server 2012/6.2 x86 java/1.7.0_76
+    # Server: Jetty/5.1.x (Windows Server 2008 R2/6.1 amd64 java/1.7.0_51
+    # Server: Jetty/5.1.11RC0 (Windows 8/6.2 x86 java/1.7.0_45
+    # Server: Jetty/4.2.12 (Windows XP/5.1 x86 java/1.4.1_02)
+    #
+    # Note that at least for Windows Vista the "real" version code 6.0 doesn't match the ones shown below.
+    # The Vista/6.2 was also observed on a Windows Server 2012 R2 (version code 6.3).
+    # Server: Jetty/4.2.9 (Windows Vista/6.1 x86 java/1.5.0_11)
+    # Server: Jetty/4.2.9 (Windows Vista/6.2 x86 java/1.5.0_11)
+    # Server: Jetty/5.1.x (Windows Vista/6.2 x86 java/1.6.0_03)
+    #
+    # Similar happen for Windows 2000:
+    # Server: Jetty/4.2.14 (Windows 2000/5.2 x86 java/1.3.1_02)
+    # This might be Windows XP 64bit or Windows Server 2003.
+
     if( "Jetty/" >< banner ) {
       if( "(Windows" >< banner ) {
         if( "(Windows Server 2016" >< banner ) {
@@ -469,7 +486,8 @@ function check_http_banner( port, banner ) {
           register_and_report_os( os:"Microsoft Windows Server 2008", cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
         }
-        if( "(Windows Vista" >< banner ) {
+        # nb: See note on the Jetty banners above.
+        if( "(Windows Vista" >< banner && "Vista/6.1" >!< banner && "Vista/6.2" >!< banner ) {
           register_and_report_os( os:"Microsoft Windows Vista", cpe:"cpe:/o:microsoft:windows_vista", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
         }
@@ -481,7 +499,7 @@ function check_http_banner( port, banner ) {
           register_and_report_os( os:"Microsoft Windows XP Professional", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
         }
-        if( "(Windows 2000" >< banner ) {
+        if( "(Windows 2000" >< banner && "2000/5.2" >!< banner ) {
           register_and_report_os( os:"Microsoft Windows 2000", cpe:"cpe:/o:microsoft:windows_2000", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
         }
@@ -490,9 +508,14 @@ function check_http_banner( port, banner ) {
         # Server: Jetty/5.1.4 (Windows NT (unknown)/6.2 x86 java/1.5.0_22
         # Server: Jetty/5.1.x (Windows NT (unknown)/10.0 amd64 java/1.8.0_121
 
+        # nb: We also want to report an unknown OS if none of the above patterns for Windows is matching. See note on the Jetty banners about Vista above.
+        if( "Vista" >!< banner && "Windows 2000" >!< banner )
+          register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
+        else
+          banner += '\nNote: 6.2 and 6.1 version codes in the Vista Banner are actually no Windows Vista. Same is valid for Windows 2000 banners having 5.2 as the version code';
+
         register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-        # nb: We also want to report an unknown OS if none of the above patterns for Windows is matching
-        register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
+
         return;
       }
       if( "(Linux" >< banner ) {

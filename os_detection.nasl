@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-10-01T13:57:53+0000");
-  script_tag(name:"last_modification", value:"2019-10-01 13:57:53 +0000 (Tue, 01 Oct 2019)");
+  script_version("2019-10-18T09:24:41+0000");
+  script_tag(name:"last_modification", value:"2019-10-18 09:24:41 +0000 (Fri, 18 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -142,7 +142,7 @@ found_os = ""; # nb: To make openvas-nasl-lint happy...
 foreach oid( OS_CPE_SRC ) {
   os = get_kb_list( "HostDetails/NVT/" + oid + "/OS" );
   if( ! isnull( os ) ) {
-    res =  make_list( os );
+    res = make_list( os );
     foreach entry( res ) {
       # Discard non CPE entries
       if( "cpe:/" >!< entry )

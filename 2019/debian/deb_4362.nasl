@@ -30,15 +30,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704362");
-  script_version("2019-07-04T09:25:28+0000");
+  script_version("2019-10-20T11:02:58+0000");
   script_cve_id("CVE-2018-17466", "CVE-2018-18492", "CVE-2018-18493", "CVE-2018-18494", "CVE-2018-18498",
                 "CVE-2018-12405");
   script_name("Debian Security Advisory DSA 4362-1 (thunderbird - security update)");
-  script_tag(name:"last_modification", value:"2019-07-04 09:25:28 +0000 (Thu, 04 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-20 11:02:58 +0000 (Sun, 20 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-01-01 00:00:00 +0100 (Tue, 01 Jan 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_method", value:"DebianAPTUpgrade");
   script_tag(name:"qod_type", value:"package");
 
   script_xref(name:"URL", value:"https://www.debian.org/security/2019/dsa-4362.html");
