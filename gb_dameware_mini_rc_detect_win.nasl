@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107378");
-  script_version("2019-07-03T14:16:41+0000");
-  script_tag(name:"last_modification", value:"2019-07-03 14:16:41 +0000 (Wed, 03 Jul 2019)");
+  script_version("2019-10-21T10:02:47+0000");
+  script_tag(name:"last_modification", value:"2019-10-21 10:02:47 +0000 (Mon, 21 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-11-24 12:42:01 +0100 (Sat, 24 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,6 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
-include("version_func.inc");
 
 os_arch = get_kb_item( "SMB/Windows/Arch" );
 if( ! os_arch )
@@ -63,7 +62,7 @@ if( isnull( key_list ) )
 foreach key( key_list ) {
   foreach item( registry_enum_keys( key:key ) ) {
 
-    # "DameWare" without any version
+    # "DameWare Mini Remote Control" without any version
     appName = registry_get_sz( key:key + item, item:"DisplayName" );
     version = "unknown";
     location = "unknown";
@@ -79,6 +78,7 @@ foreach key( key_list ) {
     loc = registry_get_sz( key:key + item, item:"InstallLocation" );
     if( loc )
       location = loc;
+    set_kb_item( name:"solarwinds/dameware_mini_remote_control/location", value:location );
 
     # 12.1.0.34
     if( vers = registry_get_sz( key:key + item, item:"DisplayVersion" ) ) {
@@ -86,10 +86,11 @@ foreach key( key_list ) {
       concluded += '\nDisplayVersion: ' + vers;
     }
 
-    set_kb_item( name:"dameware/mini_remote_control/detected", value:TRUE );
+    set_kb_item( name:"solarwinds/dameware_mini_remote_control/detected", value:TRUE );
 
-    register_and_report_cpe( app:appName , ver:version, concluded:concluded,
-                             base:"cpe:/a:dameware:mini_remote_control:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
+    register_and_report_cpe( app:appName, ver:version, concluded:concluded,
+                             base:"cpe:/a:solarwinds:dameware_mini_remote_control:", expr:"^([0-9.]+)",
+                             insloc:location, regService:"smb-login", regPort:0 );
     exit( 0 );
   }
 }

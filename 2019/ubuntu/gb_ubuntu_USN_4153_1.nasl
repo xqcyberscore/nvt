@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.844199");
-  script_version("2019-10-11T07:39:42+0000");
+  script_version("2019-10-21T09:23:32+0000");
   script_cve_id("CVE-2019-17134");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-10-11 07:39:42 +0000 (Fri, 11 Oct 2019)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-10-21 09:23:32 +0000 (Mon, 21 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-11 02:00:38 +0000 (Fri, 11 Oct 2019)");
   script_name("Ubuntu Update for octavia USN-4153-1");
   script_category(ACT_GATHER_INFO);

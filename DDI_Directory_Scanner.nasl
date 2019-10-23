@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("2019-10-07T07:59:32+0000");
-  script_tag(name:"last_modification", value:"2019-10-07 07:59:32 +0000 (Mon, 07 Oct 2019)");
+  script_version("2019-10-14T09:08:19+0000");
+  script_tag(name:"last_modification", value:"2019-10-14 09:08:19 +0000 (Mon, 14 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1028,9 +1028,24 @@ testDirList = make_list(
 "ocm-provider", #nb: OpenCloudMesh Endpoint
 # Tomcat
 "tomcat-docs", #nb: Will be ignored by default
+"manager",
 "manager/html",
+"manager/status",
+"host-manager",
 "host-manager/html",
-"manager/status" );
+"tomcat",
+"tomcat/manager",
+"tomcat/manager/html",
+"admin-console",
+"web-console",
+"web-console/Invoker",
+"jmx-console",
+"jmx-console/HtmlAdaptor",
+"invoker",
+"invoker/JMXInvokerServlet",
+"cognos_express",
+"cognos_express/manager",
+"cognos_express/manager/html" );
 #TODO: Fill the list with the directories used in the foreach( cgi_dirs ) loop of the Detection-NVTs
 
 # Add domain name parts, create_hostname_parts_list() always returns a list, even an empty one

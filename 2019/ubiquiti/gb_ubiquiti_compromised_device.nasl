@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108657");
-  script_version("2019-10-01T10:29:29+0000");
-  script_tag(name:"last_modification", value:"2019-10-01 10:29:29 +0000 (Tue, 01 Oct 2019)");
+  script_version("2019-10-08T14:13:49+0000");
+  script_tag(name:"last_modification", value:"2019-10-08 14:13:49 +0000 (Tue, 08 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-01 09:34:13 +0000 (Tue, 01 Oct 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -80,7 +80,7 @@ if( ! hostname = get_kb_item( "ubnt_discovery_proto/" + port + "/hostname/detect
 if( hostname == "HACKED" || egrep( string:hostname, pattern:"^HACKED-ROUTER-HELP-SOS", icase:FALSE ) ) {
   report  = 'The device reports the following hostname via the UBNT Discovery Protocol which indicates ';
   report += 'that the device was compromised by an attacker or a worm:\n\n' + hostname;
-  security_message( port: port, proto: "udp", data:report );
+  security_message( port:port, proto:"udp", data:report );
   exit( 0 );
 }
 

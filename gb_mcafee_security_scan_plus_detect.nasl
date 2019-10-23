@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_security_scan_plus_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Intel Security McAfee Security Scan Plus Version Detection (Windows)
 #
@@ -27,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810823");
-  script_version("$Revision: 11279 $");
+  script_version("2019-10-21T11:05:04+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-21 11:05:04 +0000 (Mon, 21 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-03-22 11:19:49 +0530 (Wed, 22 Mar 2017)");
   script_name("Intel Security McAfee Security Scan Plus Version Detection (Windows)");
 
   script_tag(name:"summary", value:"Detects the installed version of
   Intel Security McAfee Security Scan Plus.
 
-  The script logs in via smb, searches for string 'McAfee Security Scan Plus'
+  The script logs in via SMB, searches for string 'McAfee Security Scan Plus'
   in the registry and reads the version information from registry.");
 
   script_tag(name:"qod_type", value:"registry");
@@ -47,6 +46,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -55,37 +55,31 @@ include("cpe.inc");
 include("host_details.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch){
+if(!os_arch)
   exit(0);
-}
 
-if("x86" >< os_arch){
+if("x86" >< os_arch)
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\McAfee Security Scan\";
-}
-
-else if("x64" >< os_arch){
+else if("x64" >< os_arch)
   key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\McAfee Security Scan\";
-}
-
-if(isnull(key)){
+else
   exit(0);
-}
 
-prot_Name = registry_get_sz(key:key + item, item:"HideDisplayName");
+app_name = registry_get_sz(key:key, item:"HideDisplayName");
+if(!app_name || "McAfee Security Scan Plus" >!< app_name)
+  exit(0);
 
-if("McAfee Security Scan Plus" >< prot_Name)
-{
-  prot_Ver = registry_get_sz(key:key + item, item:"DisplayVersion");
-  prot_Path = registry_get_sz(key:key + item, item:"InstallDirectory");
+version = "unknown";
+location = "unknown";
 
-  if(!prot_Path){
-    prot_Path = "Couldn find the install location from registry";
-  }
+vers = registry_get_sz(key:key, item:"DisplayVersion");
+if(vers)
+  version = vers;
 
-  if(prot_Ver)
-  {
-    set_kb_item(name:"McAfee/SecurityScanPlus/Win/Ver", value:prot_Ver);
-    register_and_report_cpe( app:"Intel Security McAfee Security Scan Plus", ver:prot_Ver, base:"cpe:/a:intel:mcafee_security_scan_plus:", expr:"^([0-9.]+)", insloc:prot_Path );
-    exit(0);
-  }
-}
+path = registry_get_sz(key:key, item:"InstallDirectory");
+if(path)
+  location = path;
+
+set_kb_item(name:"McAfee/SecurityScanPlus/Win/Ver", value:version);
+register_and_report_cpe(app:"Intel Security McAfee Security Scan Plus", ver:version, base:"cpe:/a:intel:mcafee_security_scan_plus:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", port:0);
+exit(0);
