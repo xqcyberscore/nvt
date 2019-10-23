@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_os_eol.nasl 8927 2018-02-22 15:42:48Z cfischer $
 #
 # OS End Of Life Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103674");
-  script_version("$Revision: 8927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 16:42:48 +0100 (Thu, 22 Feb 2018) $");
+  script_version("2019-10-21T09:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-21 09:55:06 +0000 (Mon, 21 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-03-05 18:11:24 +0100 (Tue, 05 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,12 +37,15 @@ if(description)
   script_family("General");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("os_detection.nasl");
-  script_mandatory_keys("HostDetails/OS/BestMatch");
+  script_mandatory_keys("HostDetails/OS/BestMatchCPE");
 
-  script_tag(name:"summary", value:"OS End Of Life Detection
+  script_tag(name:"summary", value:"OS End Of Life Detection.
 
   The Operating System on the remote host has reached the end of life and should
   not be used anymore.");
+
+  script_tag(name:"solution", value:"Upgrade the Operating System on the remote host
+  to a version which is still supported and receiving security updates by the vendor.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -55,8 +57,8 @@ include("os_eol.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-os_cpe = best_os_cpe();
-if( ! os_cpe ) exit( 0 );
+if( ! os_cpe = best_os_cpe() )
+  exit( 0 );
 
 if( os_reached_eol( cpe:os_cpe ) ) {
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webplus_version.nasl 12001 2018-10-21 11:10:33Z cfischer $
 #
 # TalentSoft Web+ version detection
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10373");
-  script_version("$Revision: 12001 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-21 13:10:33 +0200 (Sun, 21 Oct 2018) $");
+  script_version("2019-10-21T09:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-21 09:55:06 +0000 (Mon, 21 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -38,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2000 SecuriTeam");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

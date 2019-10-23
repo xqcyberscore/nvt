@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("2019-09-02T12:59:02+0000");
+  script_version("2019-10-22T06:50:15+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-02 12:59:02 +0000 (Mon, 02 Sep 2019)");
+  script_tag(name:"last_modification", value:"2019-10-22 06:50:15 +0000 (Tue, 22 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -134,22 +134,22 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           if( vers[2] ) version += vers[2];
         }
 
-        samba = TRUE;
-        # nb: Used together with netbios_name_get.nasl (and kb_smb_is_samba) to just decide if
+        is_samba = TRUE;
+        # nb: Used together with netbios_name_get.nasl (and kb_smb_is_samba) to decide if
         # Samba is installed or not without any requirement that a version exists.
         set_kb_item( name:"SMB/samba", value:TRUE );
 
-        # nb: Used together with gb_samba_detect.nasl if the NVT needs an exposed version.
+        # nb: Used together with gb_samba_detect.nasl if the VT needs an exposed version.
         set_kb_item( name:"samba/smb_or_ssh/detected", value:TRUE );
 
-        # nb: Used if an NVT should do an active remote check.
+        # nb: Used if a VT should do an active remote check.
         set_kb_item( name:"samba/smb/detected", value:TRUE );
 
         cpe = build_cpe( value:version, exp:"([0-9.]+)(a|b|c|d|p[0-9]|rc[0-9])?", base:"cpe:/a:samba:samba:" );
         if( ! cpe )
           cpe = "cpe:/a:samba:samba";
 
-        register_product( cpe:cpe, location:install, port:port );
+        register_product( cpe:cpe, location:install, port:port, service:"smb" );
 
         log_message( data:build_detection_report( app:"Samba",
                                                   version:version,
@@ -170,125 +170,193 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         banner_type = "SMB/Samba banner";
         os_str_lo   = tolower( os_str );
 
-        # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian jessie and stretch has a os_str of "Windows 6.1"
+        # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian Jessie and Stretch has a os_str of "Windows 6.1"
         # but we can identify it from the smb_str: Samba 4.2.10-Debian, Samba 4.5.8-Debian
-        # Older Debian versions have "Unix" as os_str and smb_str: like Samba 3.0.20-Debian. nb: This isn't valid for at least etch (4.0)
+        # Older Debian versions have "Unix" as os_str and smb_str: like Samba 3.0.20-Debian. nb: This isn't valid for at least Etch (4.0)
         # Ubuntu 17.10: os_str: Windows 6.1 smb_str: Samba 4.6.7-Ubuntu
         # The same above is also valid for SLES:
         # SLES11: os_str: Unix, smb_str: Samba 3.6.3-0.58.1-3399-SUSE-CODE11-x86_64
         # SLES12: os_str: Windows 6.1, smb_str: Samba 4.4.2-29.4-3709-SUSE-SLE_12-x86_64
+        # openSUSE LEAP 42.2: os_str:  Windows 6.1, smb_str: Samba 4.4.2-11.9.1-3764-SUSE-SLE_12-x86_64
+        # SLES12: os_str: Windows 6.1, smb_str: Samba 4.6.16-git.166.8fb11cda2003.43.1-SUSE-SLE_12-x86_64
         # SL12: os_str: ?; smb_str: Samba 3.6.7-48.12.1-2831-SUSE-SL12.2-x86_64
-        if( samba && ( "windows" >< os_str_lo || ( "unix" >< os_str_lo && ( "debian" >< smb_str_lo || "SUSE" >< smb_str || "ubuntu" >< smb_str_lo ) ) ) ) {
-          if( "debian" >< smb_str_lo ) {
-            # 4.2.10 was up to 8.6 and 4.2.14 was 8.7 or later
-            # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
-            if( "Samba 4.2.10-Debian" >< smb_str || "Samba 4.2.14-Debian" >< smb_str ) {
-              os_str = "Debian GNU/Linux 8";
-            } else if( "Samba 4.5.8-Debian" >< smb_str || "Samba 4.5.12-Debian" >< smb_str || "Samba 4.5.16-Debian" >< smb_str ) {
-              os_str = "Debian GNU/Linux 9";
-            } else if( "Samba 4.9.5-Debian" >< smb_str ) {
-              os_str = "Debian GNU/Linux 10";
-            } else {
-              os_str = "Debian GNU/Linux";
-            }
-            os_str_lo = tolower( os_str ); # nb: The comparison to register the CPE below is using the "os_str_lo" variable
-          } else if( "SUSE" >< smb_str ) {
-            if( "CODE11" >< smb_str ) {
-              os_str = "SUSE Linux Enterprise Server 11";
-            } else if( "SLE_12" >< smb_str ) {
-              os_str = "SUSE Linux Enterprise Server 12";
-            } else {
-              sl_ver = eregmatch( pattern:"SUSE-SL([0-9.]+)", string:smb_str );
-              if( sl_ver[1] ) {
-                os_str = "SUSE Linux Enterprise " + sl_ver[1];
-              } else {
-                os_str = "Unknown SUSE Release";
-              }
-            }
-          # Ubuntu pattern for new releases last checked on 11/2017 (up to 17.10, LTS releases: 12.04 up to 12.04.5, 14.04 up to 14.04.5, 16.04 up to 16.04.3)
-          } else if( "ubuntu" >< smb_str_lo ) {
-            # Warty
-            if( "Samba 3.0.7-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 4.10";
-            # Hoary
-            } else if( "Samba 3.0.10-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 5.04";
-            # Breezy
-            } else if( "Samba 3.0.14a-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 5.10";
-            # Trusty
-            } else if( "Samba 4.1.6-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 14.04";
-            # Utopic
-            } else if( "Samba 4.1.11-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 14.10";
-            # Vivid
-            } else if( "Samba 4.1.13-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 15.04";
-            # Wily
-            } else if( "Samba 4.1.17-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 15.10";
-            # Xenial
-            } else if( "Samba 4.3.8-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 16.04";
-            # Trusty and Xenial had this versions, choose the highest Ubuntu version
-            } else if( "Samba 4.3.11-Ubuntu" >< smb_str || "Samba 4.3.9-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 14.04 or Ubuntu 16.04";
-            # Yakkety
-            } else if( "Samba 4.4.5-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 16.10";
-            # Zesty
-            } else if( "Samba 4.5.8-Ubuntu" >< smb_str || "Samba 4.5.4-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 17.04";
-            # Artful
-            } else if( "Samba 4.6.7-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 17.10";
-            # Bionic
-            } else if( "Samba 4.7.6-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 18.04";
-            # Cosmic
-            } else if( "Samba 4.8.4-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 18.10";
-            # Disco
-            } else if( "Samba 4.10.0-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 19.04";
-            } else {
-              # nb: Versions without the the -Ubuntu pattern:
-              # Dapper and Edgy: Samba 3.0.22
-              # Feisty: Samba 3.0.24
-              # Gutsy: Samba 3.0.26a
-              # Hardy: Samba 3.0.28a
-              # Intrepid: Samba 3.2.3
-              # Jaunty: Samba 3.3.2
-              # Karmic: Samba 3.4.0
-              # Lucid: Samba 3.4.7
-              # Maverick: Samba 3.5.4
-              # Natty: Samba 3.5.8
-              # Oneiric: Samba 3.5.11
-              # Precise: Samba 3.6.3
-              # Quantal: Samba 3.6.6
-              # Raring: Samba 3.6.9
-              # Saucy: Samba 3.6.18
-              # nb: Starting with Utopic / 14.10 we have a -Ubuntu pattern again
-              os_str = "Unknown Ubuntu Release";
-            }
-            os_str_lo = tolower( os_str ); # nb: The comparison to register the CPE below is using the "os_str_lo" variable
-          # On other reporting the same "Windows 6.1" or similar exit here for now with a generic OS registered
-          # TODO: Recheck with other OS
+
+        # Those verifications were added to check and to make sure we're not jumping into the "Windows" checks later.
+        # TODO: Recheck with other OS variants to apply a similar detection.
+        if( is_samba || smb_str =~ "(SUSE|Debian|Ubuntu|Unix|SunOS|vxworks|Native SMB service|Linux)" || os_str == "QTS" )
+          linux_found = TRUE;
+
+        banner  = '\nOS String:  ' + os_str;
+        banner += '\nSMB String: ' + smb_str;
+        if( "windows" >< os_str_lo && linux_found )
+          banner += '\nNote: The service is running on a Linux/Unix based OS but reporting itself with an Windows related OS string.';
+
+        if( "debian" >< smb_str_lo ) {
+          # 4.2.10 was up to 8.6 and 4.2.14 was 8.7 or later
+          # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+          if( "Samba 4.2.10-Debian" >< smb_str || "Samba 4.2.14-Debian" >< smb_str ) {
+            os_str = "Debian GNU/Linux 8";
+            register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "Samba 4.5.8-Debian" >< smb_str || "Samba 4.5.12-Debian" >< smb_str || "Samba 4.5.16-Debian" >< smb_str ) {
+            os_str = "Debian GNU/Linux 9";
+            register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "Samba 4.9.5-Debian" >< smb_str ) {
+            os_str = "Debian GNU/Linux 10";
+            register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
-            register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:smb_str, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            exit( 0 );
+            os_str = "Debian GNU/Linux";
+            register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
         }
 
-        set_kb_item( name:"Host/OS/smb", value:os_str );
-        set_kb_item( name:"SMB/OS", value:os_str );
-        info = "Detected OS: "+ os_str + '\n';
-        result += info;
-        report = TRUE;
-        banner = "OS String: " + os_str + "; SMB String: " + smb_str;
+        else if( "SUSE" >< smb_str ) {
+          if( "CODE11" >< smb_str ) {
+            os_str = "SUSE Linux Enterprise Server 11";
+            register_and_report_os( os:"SUSE Linux Enterprise Server", version:"11", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "SLE_12" >< smb_str ) {
+            os_str = "SUSE Linux Enterprise Server 12 / openSUSE LEAP 42.2";
+            register_and_report_os( os:"SUSE Linux Enterprise Server (or openSUSE LEAP 42.2)", version:"12", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            sl_ver = eregmatch( pattern:"SUSE-SL([0-9.]+)", string:smb_str );
+            if( sl_ver[1] ) {
+              os_str = "SUSE Linux Enterprise " + sl_ver[1];
+              register_and_report_os( os:"SUSE Linux Enterprise", version:sl_ver[1], cpe:"cpe:/o:suse:linux_enterprise", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+            } else {
+              os_str = "Unknown SUSE Release";
+              register_and_report_os( os:"Unknown SUSE Linux release", cpe:"cpe:/o:suse:unknown_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+              # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+              register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+            }
+          }
+        }
 
-        if( "windows" >< os_str_lo ) {
+        else if( "ubuntu" >< smb_str_lo ) {
+          # Warty
+          if( "Samba 3.0.7-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 4.10";
+            register_and_report_os( os:"Ubuntu", version:"4.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Hoary
+          } else if( "Samba 3.0.10-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 5.04";
+            register_and_report_os( os:"Ubuntu", version:"5.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Breezy
+          } else if( "Samba 3.0.14a-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 5.10";
+            register_and_report_os( os:"Ubuntu", version:"5.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Trusty
+          } else if( "Samba 4.1.6-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 14.04";
+            register_and_report_os( os:"Ubuntu", version:"14.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Utopic
+          } else if( "Samba 4.1.11-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 14.10";
+            register_and_report_os( os:"Ubuntu", version:"14.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Vivid
+          } else if( "Samba 4.1.13-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 15.04";
+            register_and_report_os( os:"Ubuntu", version:"15.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Wily
+          } else if( "Samba 4.1.17-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 15.10";
+            register_and_report_os( os:"Ubuntu", version:"15.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Xenial
+          } else if( "Samba 4.3.8-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 16.04";
+            register_and_report_os( os:"Ubuntu", version:"16.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Trusty and Xenial had this versions, choose the highest Ubuntu version
+          } else if( "Samba 4.3.11-Ubuntu" >< smb_str || "Samba 4.3.9-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 14.04 or Ubuntu 16.04";
+            register_and_report_os( os:"Ubuntu 14.04 or 16.04", cpe:"cpe:/o:canonical:ubuntu_linux:16.04", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Yakkety
+          } else if( "Samba 4.4.5-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 16.10";
+            register_and_report_os( os:"Ubuntu", version:"16.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Zesty
+          } else if( "Samba 4.5.8-Ubuntu" >< smb_str || "Samba 4.5.4-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 17.04";
+            register_and_report_os( os:"Ubuntu", version:"17.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Artful
+          } else if( "Samba 4.6.7-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 17.10";
+            register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Bionic
+          } else if( "Samba 4.7.6-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 18.04";
+            register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Cosmic
+          } else if( "Samba 4.8.4-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 18.10";
+            register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # Disco
+          } else if( "Samba 4.10.0-Ubuntu" >< smb_str ) {
+            os_str = "Ubuntu 19.04";
+            register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            # nb: Versions without the the -Ubuntu pattern:
+            # Dapper and Edgy: Samba 3.0.22
+            # Feisty: Samba 3.0.24
+            # Gutsy: Samba 3.0.26a
+            # Hardy: Samba 3.0.28a
+            # Intrepid: Samba 3.2.3
+            # Jaunty: Samba 3.3.2
+            # Karmic: Samba 3.4.0
+            # Lucid: Samba 3.4.7
+            # Maverick: Samba 3.5.4
+            # Natty: Samba 3.5.8
+            # Oneiric: Samba 3.5.11
+            # Precise: Samba 3.6.3
+            # Quantal: Samba 3.6.6
+            # Raring: Samba 3.6.9
+            # Saucy: Samba 3.6.18
+            # nb: Starting with Utopic / 14.10 we have a -Ubuntu pattern again
+            os_str = "Unknown Ubuntu Release";
+            register_and_report_os( os:"Unknown Ubuntu release", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+            # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+            register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+          }
+        }
+
+        else if( "vxworks" >< os_str_lo ) {
+          register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+
+        # OS String: QTS
+        # SMB String: Samba 4.4.14
+        else if( os_str == "QTS" ) {
+          register_and_report_os( os:"QNAP QTS", cpe:"cpe:/o:qnap:qts", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+
+        # OS String: SunOS 5.11 illumos-47b8d4b884
+        # SMB String: Native SMB service
+        else if( "SunOS" >< os_str ) {
+          sun_ver = eregmatch( pattern:"SunOS ([0-9.]+)", string:os_str );
+          if( sun_ver[1] ) {
+            register_and_report_os( os:"SunOS", version:sun_ver[1], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+        }
+
+        else if( "unix" >< os_str_lo || "linux" >< os_str_lo ) {
+          register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+          register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+        }
+
+        # Overwriting the "Windows 6.1" or similar OS string with Linux/Unix to not save it into the "SMB/OS" KB key later below.
+        else if( "windows" >< os_str_lo && linux_found ) {
+          os_str = "Linux/Unix";
+          register_and_report_os( os:os_str, cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+
+          # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+          # nb: Also only report if the banner is not Samba or Samba without a generic version like e.g. Samba 4.10.6 or Samba 3.0.26a
+          if( ! eregmatch( string:smb_str, pattern:"^Samba ([0-9.]+)(a|b|c|d|p[0-9]|rc[0-9])?$", icase:FALSE ) )
+            register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+        }
+
+        # nb: Note the comments about some Linux/Unix SMB installations reporting a "Windows String"
+        else if( "windows" >< os_str_lo && ! linux_found ) {
+
           #Example strings:
           #smb_str: Windows 10 Pro 6.3, os_str: Windows 10 Pro 10586
           #smb_str: Windows 10 Home 6.3, os_str: Windows 10 Home 10586
@@ -325,7 +393,9 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
               cpe += ":unknown_edition";
 
             register_and_report_os( os:os_str, cpe:cpe, banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows embedded" >< os_str_lo ) {
+          }
+
+          else if( "windows embedded" >< os_str_lo ) {
 
             cpe = "cpe:/o:microsoft:windows_embedded";
 
@@ -408,89 +478,17 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             register_unknown_os_banner( banner:banner, banner_type_name:SCRIPT_DESC, port:port, banner_type_short:"smb_nativelanman_banner" );
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           }
-        } else if( "vxworks" >< os_str_lo ) {
-          register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "debian" >< os_str_lo ) {
-          if( " 8" >< os_str ) {
-            # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
-            register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( " 9" >< os_str ) {
-            register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( " 10" >< os_str ) {
-            register_and_report_os( os:"Debian GNU/Linux", version:"10", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else {
-            register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          }
-        } else if( "ubuntu" >< os_str_lo ) {
-          if( "19.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "18.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "18.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "17.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "17.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"17.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "16.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"16.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          # nb: Trusty and Xenial had a same Samba string (see above), choose the highest Ubuntu version
-          } else if( "16.04" >< os_str && "14.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu 14.04 or 16.04", cpe:"cpe:/o:canonical:ubuntu_linux:16.04", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "16.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"16.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "15.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"15.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "15.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"15.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "14.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"14.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "14.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"14.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "5.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"5.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "5.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"5.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "4.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"4.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else {
-            register_and_report_os( os:"Unknown Ubuntu release", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            # nb: We want to report an unknown banner here as well to catch reports with more detailed info
-            register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
-          }
-        } else if( "SUSE" >< os_str ) {
-          if( "SUSE Linux Enterprise Server 11" >< os_str ) {
-            register_and_report_os( os:"SUSE Linux Enterprise Server", version:"11", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "SUSE Linux Enterprise Server 12" >< os_str ) {
-            register_and_report_os( os:"SUSE Linux Enterprise Server", version:"12", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else {
-            sl_ver = eregmatch( pattern:"SUSE Linux Enterprise ([0-9.]+)", string:os_str );
-            if( sl_ver[1] ) {
-              register_and_report_os( os:"SUSE Linux Enterprise", version:sl_ver[1], cpe:"cpe:/o:suse:linux_enterprise", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            } else {
-              register_and_report_os( os:"Unknown SUSE Linux release", cpe:"cpe:/o:suse:unknown_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-              # nb: We want to report an unknown banner here as well to catch reports with more detailed info
-              register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
-            }
-          }
-        # OS String: QTS; SMB String: Samba 4.4.14
-        } else if( os_str == "QTS" ) {
-          register_and_report_os( os:"QNAP QTS", cpe:"cpe:/o:qnap:qts", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "unix" >< os_str_lo ) {
-          register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          # nb: We want to report an unknown banner here as well to catch reports with more detailed info
-          register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
-        # OS String: SunOS 5.11 illumos-47b8d4b884; SMB String: Native SMB service
-        } else if( "SunOS" >< os_str ) {
-          sun_ver = eregmatch( pattern:"SunOS ([0-9.]+)", string:os_str );
-          if( sun_ver[1] ) {
-            register_and_report_os( os:"SunOS", version:sun_ver[1], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else {
-            register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          }
-        } else {
+        }
+
+        else {
           register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
         }
+
+        set_kb_item( name:"Host/OS/smb", value:os_str );
+        set_kb_item( name:"SMB/OS", value:os_str );
+        info = "Detected OS: "+ os_str + '\n';
+        result += info;
+        report = TRUE;
       }
 
       if( report_verbosity && report ) {

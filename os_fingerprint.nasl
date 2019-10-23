@@ -28,8 +28,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("2019-10-01T13:57:53+0000");
-  script_tag(name:"last_modification", value:"2019-10-01 13:57:53 +0000 (Tue, 01 Oct 2019)");
+  script_version("2019-10-22T09:18:17+0000");
+  script_tag(name:"last_modification", value:"2019-10-22 09:18:17 +0000 (Tue, 22 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -93,6 +93,7 @@ if(description)
                       "sw_http_os_detection.nasl", "sw_mail_os_detection.nasl",
                       "sw_telnet_os_detection.nasl", "gb_mysql_mariadb_os_detection.nasl",
                       "apcnisd_detect.nasl", "gb_dahua_devices_detect.nasl",
+                      "gb_pptp_os_detection.nasl",
                       "gb_ntp_os_detection.nasl", "remote-detect-MDNS.nasl",
                       "mssqlserver_detect.nasl", "gb_apple_tv_version.nasl",
                       "gb_apple_tv_detect.nasl", "gb_upnp_os_detection.nasl",

@@ -183,6 +183,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140184", # gb_dahua_devices_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108682", # gb_pptp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108590", # gb_ntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
@@ -318,6 +319,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140184", # gb_dahua_devices_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108682", # gb_pptp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108590", # gb_ntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
@@ -553,23 +555,18 @@ function host_runs() {
 
 # @brief Returns the CPE of the "best" determined operating system running on the remote host.
 #
+# @note You need to add a dependency to the VT "os_detection.nasl" for this function.
+#
 # @return A string containing the CPE of the "best" OS, NULL if it wasn't possible to determine the best one.
 #
 function best_os_cpe() {
 
-  local_var oid, res, entry;
+  local_var best_os_cpe;
 
-  foreach oid( OS_CPE_SRC ) {
-    res = get_kb_list( "HostDetails/NVT/" + oid + "/OS" );
-    if( ! isnull( res ) ) {
-      res = make_list( res );
-      foreach entry( res ) {
-        # both CPE and free-form entries can be registered under the "OS" banner
-        if( "cpe:/" >< entry )
-          return entry;
-      }
-    }
-  }
+  best_os_cpe = get_kb_item( "HostDetails/OS/BestMatchCPE" );
+  if( best_os_cpe )
+    return best_os_cpe;
+
   return NULL;
 }
 
@@ -579,69 +576,62 @@ function best_os_cpe() {
 #
 function best_os_txt() {
 
-  local_var oid, res, entry;
+  local_var best_os_txt;
 
-  foreach oid( OS_TXT_SRC ) {
-    res = get_kb_list( "HostDetails/NVT/" + oid + "/OS" );
-    if( ! isnull( res ) ) {
-      res = make_list( res );
-      foreach entry( res ) {
-        # both CPE and free-form entries can be registered under the "OS" banner
-        if( "cpe:/" >!< entry )
-          return entry;
-      }
-    }
-  }
+  best_os_txt = get_kb_item( "HostDetails/OS/BestMatchTXT" );
+  if( best_os_txt )
+    return best_os_txt;
+
   return NULL;
 }
 
 # @brief Registers the CPE of the "best" determined operating system running on the remote host as a HostDetail.
 #
+# @note You need to add a dependency to the VT "os_detection.nasl" for this function.
+#
 # @return NULL
 #
 function report_best_os_cpe() {
 
-  local_var best_os, desc;
+  local_var best_os_cpe, desc;
 
-  best_os = get_kb_item( "HostDetails/OS/BestMatch" );
-  if( best_os ) {
-    desc = get_kb_item( "HostDetails/OS/BestMatch/Details" );
+  best_os_cpe = get_kb_item( "HostDetails/OS/BestMatchCPE" );
+  if( best_os_cpe ) {
+    desc = get_kb_item( "HostDetails/OS/BestMatchCPE/Details" );
     desc = split( desc, sep:";" );
-    report_host_detail_single( name:"best_os_cpe", value:best_os, nvt:desc[0], desc:desc[1] );
-    return;
+    report_host_detail_single( name:"best_os_cpe", value:best_os_cpe, nvt:desc[0], desc:desc[1] );
   }
+
+  return NULL;
 }
 
 # @brief Registers the name (text form) of the "best" determined operating system running on the remote host as a HostDetail.
+#
+# @note You need to add a dependency to the VT "os_detection.nasl" for this function.
 #
 # @return NULL
 #
 function report_best_os_txt() {
 
-  local_var oid, res, best_os, desc;
+  local_var best_os_txt, desc;
 
-  foreach oid( OS_TXT_SRC ) {
-    res = get_kb_list( "HostDetails/NVT/" + oid + "/OS" );
-
-    if( ! isnull( res ) ) {
-      res = make_list( res );
-
-      foreach best_os( res ) {
-
-        # discard CPE entries
-        if( "cpe:/" >< best_os )
-          continue;
-
-        # in case we have several entries from this script...
-        if( os_conflict( oslist:res, bestos:best_os ) )
-          best_os = best_os + ' [possible conflict]';
-
-        desc = get_kb_item( "HostDetails/NVT/" + oid );
-        report_host_detail_single( name:"best_os_txt", value:best_os, nvt:oid, desc:desc );
-        return;
-      }
-    }
+  # TODO: In earlier versions of this function it was checked if there is a "os conflict" via a code like e.g.:
+  #
+  # if( os_conflict( oslist:res, bestos:best_os ) )
+  #   best_os = best_os + ' [possible conflict]';
+  #
+  # Once os_detection.nasl was updated to handle/register multiple OS detections from the same Detection-VT
+  # we should re-introduce such a "os_conflict" check again.
+  #
+  # nb: For some reason src/manage_sql.c of gvmd is only checking for the [possible conflict] text in best_os_txt.
+  best_os_txt = get_kb_item( "HostDetails/OS/BestMatchTXT" );
+  if( best_os_txt ) {
+    desc = get_kb_item( "HostDetails/OS/BestMatchTXT/Details" );
+    desc = split( desc, sep:";" );
+    report_host_detail_single( name:"best_os_txt", value:best_os_txt, nvt:desc[0], desc:desc[1] );
   }
+
+  return NULL;
 }
 
 # @brief Returns a list of CPEs containing all the registered entries for applications on the remote host.

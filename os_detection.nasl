@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-10-18T09:24:41+0000");
-  script_tag(name:"last_modification", value:"2019-10-18 09:24:41 +0000 (Fri, 18 Oct 2019)");
+  script_version("2019-10-22T09:18:17+0000");
+  script_tag(name:"last_modification", value:"2019-10-22 09:18:17 +0000 (Tue, 22 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,6 +94,7 @@ if(description)
                       "sw_http_os_detection.nasl", "sw_mail_os_detection.nasl",
                       "sw_telnet_os_detection.nasl", "gb_mysql_mariadb_os_detection.nasl",
                       "apcnisd_detect.nasl", "gb_dahua_devices_detect.nasl",
+                      "gb_pptp_os_detection.nasl",
                       "gb_ntp_os_detection.nasl", "remote-detect-MDNS.nasl",
                       "mssqlserver_detect.nasl", "gb_apple_tv_version.nasl",
                       "gb_apple_tv_detect.nasl", "gb_upnp_os_detection.nasl",
@@ -153,7 +154,8 @@ foreach oid( OS_CPE_SRC ) {
       if( ! found_best ) {
 
         os_reports = get_kb_list( "os_detection_report/reports/" + oid + "/*" );
-        if( ! os_reports ) continue;
+        if( ! os_reports )
+          continue;
 
         # Use keys to be able to extract the port and proto later
         foreach key( keys( os_reports ) ) {
@@ -167,13 +169,29 @@ foreach oid( OS_CPE_SRC ) {
           # so using get_kb_list instead() of get_kb_item() here.
           os_reports = get_kb_list( key );
           foreach os_report( os_reports ) {
+
+            # TODO: This is currently only reporting the very first entry of multiple OS detections from the same Detection-VT (e.g. http).
+            # We need to find a way to differ in such cases, maybe via a "found_best" list instead of a single variable? In addition there
+            # might be additional cases where one HTTP Detection is more detailed then another one.
             if( ! found_best ) {
               report = 'Best matching OS:\n\n' + os_report;
               found_best = TRUE;
-              best_match = entry;
+              best_match_cpe = entry;
               best_match_oid = oid;
               best_match_desc = desc;
               best_match_report = os_report; # To avoid that it will be added to the "Other OS detections" text (see the checks down below)
+
+              # TODO: register_and_report_os() should save this information (together with the CPE) into an own KB entry so that
+              # we can use it directly without extracting it from the os_detection_report().
+              _best_match_txt = egrep( string:os_report, pattern:'^OS: *[^\r\n]+', icase:FALSE );
+              _best_match_txt = chomp( _best_match_txt );
+              if( _best_match_txt ) {
+                _best_match_txt = eregmatch( string:_best_match_txt, pattern:"OS: *(.+)", icase:FALSE );
+                if( _best_match_txt[1] )
+                  best_match_txt = _best_match_txt[1];
+              } else {
+                best_match_txt = "N/A";
+              }
 
               host_runs_list = get_kb_list( "os_detection_report/host_runs/" + oid + "/" + port + "/" + proto );
 
@@ -216,14 +234,18 @@ if( ! found_best ) {
   # nb: Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
   set_kb_item( name:"Host/runs_unixoide", value:TRUE );
 } else {
+
   # TBD: Move into host_details.nasl?
-  set_kb_item( name:"HostDetails/OS/BestMatch", value:best_match );
-  set_kb_item( name:"HostDetails/OS/BestMatch/Details", value:best_match_oid + ';' + best_match_desc );
+  detail = best_match_oid + ";" + best_match_desc;
+  set_kb_item( name:"HostDetails/OS/BestMatchCPE", value:best_match_cpe );
+  set_kb_item( name:"HostDetails/OS/BestMatchCPE/Details", value:detail );
+  set_kb_item( name:"HostDetails/OS/BestMatchTXT", value:best_match_txt );
+  set_kb_item( name:"HostDetails/OS/BestMatchTXT/Details", value:detail );
 
   # Store link between os_detection.nasl and gb_os_eol.nasl
   # nb: We don't use the host_details.inc functions in both so we need to call this directly.
-  register_host_detail( name:"OS-Detection", value:best_match );
-  register_host_detail( name:best_match, value:"general/tcp" ); # the port:0 from below
+  register_host_detail( name:"OS-Detection", value:best_match_cpe );
+  register_host_detail( name:best_match_cpe, value:"general/tcp" ); # the port:0 from below
   register_host_detail( name:"port", value:"general/tcp" ); # the port:0 from below
 }
 

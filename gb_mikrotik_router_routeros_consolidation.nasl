@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_consolidation.nasl 13593 2019-02-12 07:36:53Z cfischer $
 #
 # MikroTik RouterOS Detection Consolidation
 #
@@ -28,17 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810608");
-  script_version("$Revision: 13593 $");
+  script_version("2019-10-22T09:18:17+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 08:36:53 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-22 09:18:17 +0000 (Tue, 22 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-03-09 15:28:48 +0530 (Thu, 09 Mar 2017)");
   script_name("MikroTik RouterOS Detection Consolidation");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_mikrotik_router_routeros_ftp_detect.nasl", "gb_mikrotik_router_routeros_telnet_detect.nasl",
-                      "gb_mikrotik_router_routeros_webui_detect.nasl", "gb_mikrotik_router_routeros_ssh_detect.nasl");
+                      "gb_mikrotik_router_routeros_webui_detect.nasl", "gb_mikrotik_router_routeros_ssh_detect.nasl",
+                      "gb_mikrotik_router_routeros_pptp_detect.nasl");
   script_mandatory_keys("mikrotik/detected");
 
   script_tag(name:"summary", value:"Detection of MikroTik RouterOS.
@@ -62,7 +62,7 @@ if( ! get_kb_item( "mikrotik/detected" ) )
 location = "/";
 detected_version = "unknown";
 
-foreach source( make_list( "ftp", "telnet", "webui", "ssh" ) ) {
+foreach source( make_list( "ftp", "telnet", "webui", "ssh", "pptp" ) ) {
 
   if( detected_version != "unknown" )
     break;
@@ -121,6 +121,17 @@ if( ssh_ports = get_kb_list( "mikrotik/ssh/port" ) ) {
       extra += 'Concluded from: ' + concluded + '\n';
     }
     register_product( cpe:CPE, location:location, port:port, service:"ssh" );
+  }
+}
+
+if( pptp_ports = get_kb_list( "mikrotik/pptp/port" ) ) {
+  foreach port( pptp_ports ) {
+    concluded = get_kb_item( "mikrotik/pptp/" + port + "/concluded" );
+    extra += "PPTP vendor string on port " + port + '/tcp\n';
+    if( concluded ) {
+      extra += 'Concluded from: ' + concluded + '\n';
+    }
+    register_product( cpe:CPE, location:location, port:port, service:"pptp" );
   }
 }
 

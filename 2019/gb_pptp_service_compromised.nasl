@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108661");
-  script_version("2019-10-08T14:13:49+0000");
-  script_tag(name:"last_modification", value:"2019-10-08 14:13:49 +0000 (Tue, 08 Oct 2019)");
+  script_version("2019-10-22T09:18:17+0000");
+  script_tag(name:"last_modification", value:"2019-10-22 09:18:17 +0000 (Tue, 22 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-08 13:56:07 +0000 (Tue, 08 Oct 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,7 +59,7 @@ include("misc_func.inc");
 if( ! port = get_port_for_service( default:1723, proto:"pptp" ) )
   exit( 0 );
 
-if( ! hostname = get_kb_item( "pptp/" + port + "/hostname/detected" ) )
+if( ! hostname = get_kb_item( "pptp/" + port + "/hostname" ) )
   exit( 0 );
 
 # Hostname:         HACKED

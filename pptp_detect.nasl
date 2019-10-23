@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10622");
-  script_version("2019-10-08T14:19:56+0000");
-  script_tag(name:"last_modification", value:"2019-10-08 14:19:56 +0000 (Tue, 08 Oct 2019)");
+  script_version("2019-10-22T09:18:17+0000");
+  script_tag(name:"last_modification", value:"2019-10-22 09:18:17 +0000 (Tue, 22 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -141,7 +141,9 @@ if((ord(rec_buffer[2]) == 0) && (ord(rec_buffer[3]) == 1)) { # Control Packet
 
     if(strlen(host_name) > 0) {
       set_kb_item(name:"pptp/hostname/detected", value:TRUE);
-      set_kb_item(name:"pptp/" + port + "/hostname/detected", value:host_name);
+      set_kb_item(name:"pptp/" + port + "/hostname", value:host_name);
+    } else {
+      host_name = "N/A";
     }
 
     vendor_string = "";
@@ -150,7 +152,9 @@ if((ord(rec_buffer[2]) == 0) && (ord(rec_buffer[3]) == 1)) { # Control Packet
 
     if(strlen(vendor_string) > 0) {
       set_kb_item(name:"pptp/vendor_string/detected", value:TRUE);
-      set_kb_item(name:"pptp/" + port + "/vendor_string/detected", value:host_name);
+      set_kb_item(name:"pptp/" + port + "/vendor_string", value:vendor_string);
+    } else {
+      vendor_string = "N/A";
     }
 
     report = string("A PPTP service is running on this port.\n\n",
