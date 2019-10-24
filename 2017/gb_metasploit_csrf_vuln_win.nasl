@@ -28,12 +28,12 @@ CPE = "cpe:/a:metasploit:metasploit_framework";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811589");
-  script_version("2019-05-16T08:02:32+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2017-5244");
   script_bugtraq_id(99082);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-05-16 08:02:32 +0000 (Thu, 16 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-08-30 17:12:23 +0530 (Wed, 30 Aug 2017)");
   script_name("Metasploit Cross Site Request Forgery Vulnerability - Windows");
 
@@ -79,7 +79,7 @@ if(!appVer = get_app_version(cpe:CPE)){
 
 if(version_is_less(version:appVer, test_version:"4.14.0"))
 {
-  report =  report_fixed_ver(installed_version:appVer, fixed_version:"4.14.0 (Update 2017061301)");
+  report = report_fixed_ver(installed_version:appVer, fixed_version:"4.14.0 (Update 2017061301)");
   security_message(data:report);
   exit(0);
 }

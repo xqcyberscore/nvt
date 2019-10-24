@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814680");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2019-7090");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 11:38:21 +0530 (Wed, 13 Feb 2019)");
   script_name("Adobe Flash Player Security Update(apsb19-06)-Linux");
 
@@ -71,7 +71,7 @@ path = infos['location'];
 
 if(version_is_less(version:vers, test_version:"32.0.0.142"))
 {
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"32.0.0.142", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"32.0.0.142", install_path:path);
   security_message(data:report);
   exit(0);
 }

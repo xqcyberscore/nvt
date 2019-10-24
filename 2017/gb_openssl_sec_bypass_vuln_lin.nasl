@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_sec_bypass_vuln_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Security Bypass Vulnerability - DEC 2017 (Linux)
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107260");
-  script_version("$Revision: 13898 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3737");
   script_bugtraq_id(102103);
@@ -86,7 +85,7 @@ if (vers =~ "^1\.0\.2")
 {
   if(version_in_range(version:vers, test_version:"1.0.2b", test_version2:"1.0.2m"))
   {
-    report =  report_fixed_ver(installed_version:vers, fixed_version:"1.0.2n", install_path:path);
+    report = report_fixed_ver(installed_version:vers, fixed_version:"1.0.2n", install_path:path);
     security_message(port:port, data:report);
     exit(0);
   }

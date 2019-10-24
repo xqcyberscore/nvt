@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_composr_cms_css_vuln.nasl 11916 2018-10-16 08:36:43Z asteins $
 #
 # Composr CMS v10.0.0 - Cross-Site Scripting Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:composr:cms';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107215");
-  script_version("$Revision: 11916 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-06-13 11:59:56 +0200 (Tue, 13 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -60,30 +59,26 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-
   script_family("Web application abuses");
-
   script_dependencies("gb_composr_cms_detect.nasl");
   script_mandatory_keys("composr_cms/installed");
-  script_require_ports("Services/www", 80);
 
-  script_xref(name:"URL", value:"https://compo.sr/start.htm");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe: CPE))
+if(!port = get_app_port(cpe: CPE))
   exit(0);
 
-if(!Ver = get_app_version(cpe: CPE, port: Port))
+if(!ver = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if(version_is_equal(version: Ver, test_version: "10.0.0"))
+if(version_is_equal(version: ver, test_version: "10.0.0"))
 {
-  report =  report_fixed_ver(installed_version: Ver, fixed_version: "WillNotFix");
-  security_message(data: report, port: Port);
+  report = report_fixed_ver(installed_version: ver, fixed_version: "WillNotFix");
+  security_message(data: report, port: port);
   exit(0);
 }
 

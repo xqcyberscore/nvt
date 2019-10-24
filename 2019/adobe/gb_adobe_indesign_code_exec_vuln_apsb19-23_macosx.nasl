@@ -23,12 +23,12 @@ CPE = "cpe:/a:adobe:indesign_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814966");
-  script_version("2019-07-05T08:56:43+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2019-7107");
   script_bugtraq_id(107821);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-05 08:56:43 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 14:57:12 +0530 (Thu, 11 Apr 2019)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Adobe InDesign Arbitrary Code Execution Vulnerability-APSB19-23 (Mac OS X)");
@@ -68,7 +68,7 @@ vers = infos['version'];
 path = infos['location'];
 if(version_is_less(version:vers, test_version:"14.0.2"))
 {
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"14.0.2", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"14.0.2", install_path:path);
   security_message(data:report);
   exit(0);
 }

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_heap_buf_ov_vuln_win.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # ImageMagick CVE-2017-14224 Heap Buffer Overflow Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107241");
-  script_version("$Revision: 12391 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-09-12 14:49:44 +0200 (Tue, 12 Sep 2017)");
   script_cve_id("CVE-2017-14224");
   script_bugtraq_id(100702);
@@ -74,7 +73,7 @@ if(!Ver = get_app_version(cpe:CPE)){
 
 if(version_is_equal(version: Ver, test_version:"7.0.6-8"))
 {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"See Vendor");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"See Vendor");
   security_message(data:report);
   exit(0);
 }

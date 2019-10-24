@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quickheal_dos_May_17.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # QuickHeal CVE-2015-8285 Denial of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:quickheal:antivirus_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107160");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-05-02 10:28:58 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2015-8285");
   script_bugtraq_id(97996);
@@ -71,7 +70,7 @@ if(!Ver = get_app_version(cpe:CPE)){
 
 if(version_is_equal(version: Ver, test_version:"16.00"))
 {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"See information supplied by the vendor");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"See information supplied by the vendor");
   security_message(data:report);
   exit( 0 );
 }

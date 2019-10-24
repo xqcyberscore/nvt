@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813209");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2018-4932", "CVE-2018-4933", "CVE-2018-4934", "CVE-2018-4935",
                 "CVE-2018-4936", "CVE-2018-4937");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-04-11 10:51:53 +0530 (Wed, 11 Apr 2018)");
   script_name("Adobe Flash Player Within Google Chrome Security Update(apsb18-08)- MAC OS X");
 
@@ -87,7 +87,7 @@ path = infos['location'];
 
 if(version_is_less(version:vers, test_version:"29.0.0.140"))
 {
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"29.0.0.140", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"29.0.0.140", install_path:path);
   security_message(data:report);
   exit(0);
 }

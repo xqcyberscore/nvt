@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mul_full_path_info_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Joomla! CVE-2017-8057 Multiple Full Path Information Disclosure Vulnerabilities
 #
@@ -28,8 +27,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107158");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-04-27 14:05:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2017-8057");
 
@@ -76,7 +75,7 @@ if(!Ver = get_app_version(cpe:CPE, port: Port)){
 
 if(version_in_range(version: Ver, test_version:"3.4.0", test_version2: "3.6.5"))
 {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"3.7.0");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"3.7.0");
   security_message(data:report, port: Port);
   exit(0);
 }

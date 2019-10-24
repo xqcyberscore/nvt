@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_edirectory_36902.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Novell eDirectory NULL Base DN Denial Of Service Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100340");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-11-09 11:17:02 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -37,7 +36,7 @@ if(description)
   script_name("Novell eDirectory NULL Base DN Denial Of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
-  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("novell_edirectory_detect.nasl");
   script_require_ports("Services/ldap", 389, 636);
   script_mandatory_keys("eDirectory/installed");
@@ -153,7 +152,7 @@ else if( major =~ "^[0-7]\." )
 
 if( vuln )
 {
-  report =  report_fixed_ver( installed_version:instver, fixed_version:"See advisory" );
+  report = report_fixed_ver( installed_version:instver, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit(0);
 }

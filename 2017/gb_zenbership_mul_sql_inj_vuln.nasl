@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_mul_sql_inj_vuln.nasl 11917 2018-10-16 08:38:33Z asteins $
 #
 # Zenbership 1.0.8 CMS - Multiple SQL Injection Vulnerabilities
 #
@@ -29,9 +28,9 @@ CPE = 'cpe:/a:castlamp:zenbership';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107222");
-  script_version("$Revision: 11917 $");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2017-9759");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:38:33 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-06-19 11:59:56 +0200 (Mon, 19 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"6.5");
@@ -82,7 +81,7 @@ if(!Ver = get_app_version(cpe:CPE, port:Port))
 
 if(version_is_equal(version:Ver, test_version:"108"))
 {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"Install the latest available version");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"Install the latest available version");
   security_message(data:report, port:Port);
   exit(0);
 }

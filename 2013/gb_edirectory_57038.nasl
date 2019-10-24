@@ -29,15 +29,15 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103630");
   script_bugtraq_id(57038);
   script_cve_id("CVE-2012-0428", "CVE-2012-0429", "CVE-2012-0430", "CVE-2012-0432");
-  script_version("2019-07-24T08:39:52+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_name("Novell eDirectory Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2013-01-02 11:38:11 +0100 (Wed, 02 Jan 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("novell_edirectory_detect.nasl");
   script_require_ports("Services/ldap", 389, 636);
   script_mandatory_keys("eDirectory/installed");
@@ -101,7 +101,7 @@ if( major =~ "^8\.8" )
 
 if( hole )
 {
-  report =  report_fixed_ver( installed_version:instvers, fixed_version:"See advisory" );
+  report = report_fixed_ver( installed_version:instvers, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit(0);
 }

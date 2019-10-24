@@ -23,12 +23,12 @@ CPE = "cpe:/a:adobe:dreamweaver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814964");
-  script_version("2019-07-05T09:29:25+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2019-7097");
   script_bugtraq_id(107825);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-07-05 09:29:25 +0000 (Fri, 05 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 13:56:56 +0530 (Thu, 11 Apr 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Information Disclosure Vulnerability(APSB19-21)-Windows");
@@ -66,7 +66,7 @@ vers = infos['version'];
 path = infos['location'];
 if(version_is_less(version:vers, test_version:"19.1"))
 {
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"19.1", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"19.1", install_path:path);
   security_message(data:report);
   exit(0);
 }

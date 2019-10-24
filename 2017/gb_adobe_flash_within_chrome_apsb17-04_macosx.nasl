@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_within_chrome_apsb17-04_macosx.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Security Update (apsb17-04) - Mac OS X
 #
@@ -29,7 +28,7 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810617");
-  script_version("$Revision: 14175 $");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2017-2982", "CVE-2017-2984", "CVE-2017-2985", "CVE-2017-2986",
                 "CVE-2017-2987", "CVE-2017-2988", "CVE-2017-2990", "CVE-2017-2991",
                 "CVE-2017-2992", "CVE-2017-2993", "CVE-2017-2994", "CVE-2017-2995",
@@ -37,7 +36,7 @@ if(description)
   script_bugtraq_id(96199, 96193, 96194, 96190, 96191, 96190);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-03-14 15:30:11 +0530 (Tue, 14 Mar 2017)");
   script_name("Adobe Flash Player Within Google Chrome Security Update (apsb17-04) - Mac OS X");
 
@@ -91,7 +90,7 @@ if(!playerVer = get_app_version(cpe:CPE)){
 
 if(version_is_less(version:playerVer, test_version:"24.0.0.221"))
 {
-  report =  report_fixed_ver(installed_version:playerVer, fixed_version:"24.0.0.221");
+  report = report_fixed_ver(installed_version:playerVer, fixed_version:"24.0.0.221");
   security_message(data:report);
   exit(0);
 }

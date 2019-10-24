@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107379");
-  script_version("2019-07-03T14:16:41+0000");
+  script_version("2019-10-24T10:02:05+0000");
   script_cve_id("CVE-2018-12897");
-  script_tag(name:"last_modification", value:"2019-07-03 14:16:41 +0000 (Wed, 03 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-24 10:02:05 +0000 (Thu, 24 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-11-24 13:15:04 +0100 (Sat, 24 Nov 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,14 +40,22 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_dameware_mini_rc_detect_win.nasl");
-  script_mandatory_keys("dameware/mini_remote_control/detected");
+  script_mandatory_keys("solarwinds/dameware_mini_remote_control/detected");
 
-  script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer overflow vulnerability.");
+  script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer
+  overflow vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"The flaw exists due to insecure handling of a user input buffer which ultimately allows
-  for overwriting Structured Exception Handler (SEH) addresses and the subsequent hijacking of execution flow.");
-  script_tag(name:"impact", value:"Successful exploitation will allow local attackers to conduct buffer overflow attacks on the affected system.");
+
+  script_tag(name:"insight", value:"The flaw exists due to insecure handling of a user input buffer
+  which ultimately allows for overwriting Structured Exception Handler (SEH) addresses and the
+  subsequent hijacking of execution flow.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow local attackers to conduct
+  buffer overflow attacks on the affected system.");
+
   script_tag(name:"affected", value:"DameWare Mini Remote Control before version 12.1.");
+
   script_tag(name:"solution", value:"Upgrade DameWare Mini Remote Control to version 12.1 or later.");
 
   script_xref(name:"URL", value:"https://labs.nettitude.com/blog/solarwinds-cve-2018-12897-dameware-mini-remote-control-local-seh-buffer-overflow/");
@@ -55,17 +63,16 @@ if(description)
   exit(0);
 }
 
-CPE = "cpe:/a:dameware:mini_remote_control";
+CPE = "cpe:/a:solarwinds:dameware_mini_remote_control";
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) {
-  exit (0);
-}
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-vers = infos['version'];
-path = infos['location'];
+vers = infos["version"];
+path = infos["location"];
 
 if(version_is_less(version:vers, test_version:"12.1")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"12.1", install_path:path);

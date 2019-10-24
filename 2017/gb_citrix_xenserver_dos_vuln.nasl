@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenserver_dos_vuln.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Citrix XenServer CVE-2017-5572 Denial of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:citrix:xenserver';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107212");
-  script_version("$Revision: 11959 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-05-31 19:18:23 +0200 (Wed, 31 May 2017)");
   script_cve_id("CVE-2017-5572");
 
@@ -75,7 +74,7 @@ if(!Ver = get_app_version(cpe:CPE, port:Port)){
 
 if (version_is_equal(version:Ver, test_version:"6.0.2") || version_is_equal(version:Ver, test_version:"6.5.2")
     || version_is_equal(version:Ver, test_version:"6.2") || version_is_equal(version:Ver, test_version:"7.0")) {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"Apply the specific hotfix supplied by the vendor.");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"Apply the specific hotfix supplied by the vendor.");
   security_message(port:Port, data:report);
   exit(0);
 }

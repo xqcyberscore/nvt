@@ -28,11 +28,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809462");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2016-7855");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-27 18:41:34 +0530 (Thu, 27 Oct 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-36 )-Windows");
 
@@ -78,7 +78,7 @@ if(!playerVer = get_app_version(cpe:CPE)){
 
 if(version_in_range(version:playerVer, test_version:"22", test_version2:"23.0.0.204"))
 {
-  report =  report_fixed_ver(installed_version:playerVer, fixed_version:"23.0.0.205");
+  report = report_fixed_ver(installed_version:playerVer, fixed_version:"23.0.0.205");
   security_message(data:report);
   exit(0);
 }

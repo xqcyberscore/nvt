@@ -23,11 +23,11 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815097");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2019-7845");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-06-12 11:58:05 +0530 (Wed, 12 Jun 2019)");
   script_name("Adobe Flash Player Within Google Chrome Security Update(apsb19-30)- Windows");
 
@@ -70,7 +70,7 @@ path = infos['location'];
 
 if(version_is_less(version:vers, test_version:"32.0.0.207"))
 {
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"32.0.0.207", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"32.0.0.207", install_path:path);
   security_message(data:report);
   exit(0);
 }

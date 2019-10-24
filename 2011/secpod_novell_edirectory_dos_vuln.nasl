@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902291");
-  script_version("2019-05-10T14:24:23+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2010-4327");
   script_bugtraq_id(46263);
-  script_tag(name:"last_modification", value:"2019-05-10 14:24:23 +0000 (Fri, 10 May 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -83,7 +83,7 @@ edirVer = major + '.' + sp;
 
 if(version_in_range(version:edirVer, test_version:"8.8.5", test_version2:"8.8.5.5") ||
    version_in_range(version:edirVer, test_version:"8.8.6", test_version2:"8.8.6.1")) {
-  report =  report_fixed_ver( installed_version:instvers, fixed_version:"See advisory" );
+  report = report_fixed_ver( installed_version:instvers, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit( 0 );
 }

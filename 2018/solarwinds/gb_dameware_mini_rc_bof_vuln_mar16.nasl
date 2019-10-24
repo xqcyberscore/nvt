@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107380");
-  script_version("2019-07-03T14:16:41+0000");
+  script_version("2019-10-24T10:02:05+0000");
   script_cve_id("CVE-2016-2345");
-  script_tag(name:"last_modification", value:"2019-07-03 14:16:41 +0000 (Wed, 03 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-24 10:02:05 +0000 (Thu, 24 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-11-26 11:55:31 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,16 +40,25 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_dameware_mini_rc_detect_win.nasl");
-  script_mandatory_keys("dameware/mini_remote_control/detected");
+  script_mandatory_keys("solarwinds/dameware_mini_remote_control/detected");
 
-  script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer overflow vulnerability.");
+  script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer
+  overflow vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"A certain message parsing function inside the Dameware Mini Remote Control service
-  does not properly validate the input size of an incoming string before passing it to wsprintfw.
-  As a result, a specially crafted message can overflow into the bordering format field and subsequently overflow the stack frame.");
-  script_tag(name:"impact", value:"Exploitation of this vulnerability does not require authentication and can lead to SYSTEM
-  level privilege on any system running the dwmrcs daemon.");
+
+  script_tag(name:"insight", value:"A certain message parsing function inside the Dameware Mini Remote
+  Control service does not properly validate the input size of an incoming string before passing it to
+  wsprintfw.
+
+  As a result, a specially crafted message can overflow into the bordering format field and subsequently
+  overflow the stack frame.");
+
+  script_tag(name:"impact", value:"Exploitation of this vulnerability does not require authentication and
+  can lead to SYSTEM level privilege on any system running the dwmrcs daemon.");
+
   script_tag(name:"affected", value:"DameWare Mini Remote Control before version 12.0.3.");
+
   script_tag(name:"solution", value:"Upgrade DameWare Mini Remote Control to version 12.0.3 or later.");
 
   script_xref(name:"URL", value:"https://support.solarwinds.com/Success_Center/DameWare_Remote_Support_Mini_Remote_Control/Knowledgebase_Articles/CVE-2016-2345_vulnerability");
@@ -57,17 +66,16 @@ if(description)
   exit(0);
 }
 
-CPE = "cpe:/a:dameware:mini_remote_control";
+CPE = "cpe:/a:solarwinds:dameware_mini_remote_control";
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) {
-  exit (0);
-}
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-vers = infos['version'];
-path = infos['location'];
+vers = infos["version"];
+path = infos["location"];
 
 if(version_is_less(version:vers, test_version:"12.0.3")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"12.0.3", install_path:path);

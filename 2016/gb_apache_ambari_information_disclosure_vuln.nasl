@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_information_disclosure_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Apache Ambari Information Disclosure Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808650");
-  script_version("$Revision: 12096 $");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2016-0707", "CVE-2015-5210");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-08-09 18:48:58 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Information Disclosure Vulnerability");
 
@@ -87,7 +86,7 @@ if(!amb_Ver = get_app_version(cpe:CPE, port:amb_Port)){
 
 if(version_in_range(version:amb_Ver, test_version:"1.7", test_version2:"2.1.1"))
 {
-  report =  report_fixed_ver(installed_version:amb_Ver, fixed_version:"2.1.2");
+  report = report_fixed_ver(installed_version:amb_Ver, fixed_version:"2.1.2");
   security_message(data:report, port:amb_Port);
   exit(0);
 }

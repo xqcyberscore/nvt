@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_ent_mem_corrupt_vul.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # McAfee VirusScan Enterprise CVE-2016-8030 Memory Corruption Vulnerability (Windows)
 #
@@ -29,8 +28,8 @@ CPE = 'cpe:/a:mcafee:virusscan_enterprise_for_windows';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107159");
-  script_version("$Revision: 11835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-04-27 13:33:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2016-8030");
 
@@ -78,7 +77,7 @@ if(!Ver = get_app_version(cpe:CPE)){
 
 if(version_is_less(version: Ver, test_version:"8.8.0.1804"))
 {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"8.8 patch 9(8.8.0.1804)");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"8.8 patch 9(8.8.0.1804)");
   security_message(data:report);
   exit(0);
 }

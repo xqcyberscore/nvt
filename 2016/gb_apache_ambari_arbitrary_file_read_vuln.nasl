@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_arbitrary_file_read_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Apache Ambari Arbitrary File Read Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808649");
-  script_version("$Revision: 11961 $");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2016-0731");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-08-09 18:48:58 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Arbitrary File Read Vulnerability");
 
@@ -81,7 +80,7 @@ if(!amb_Ver = get_app_version(cpe:CPE, port:amb_Port)){
 
 if(version_in_range(version:amb_Ver, test_version:"1.7.0", test_version2:"2.2.0"))
 {
-  report =  report_fixed_ver(installed_version:amb_Ver, fixed_version:"2.2.1");
+  report = report_fixed_ver(installed_version:amb_Ver, fixed_version:"2.2.1");
   security_message(data:report, port:amb_Port);
   exit(0);
 }

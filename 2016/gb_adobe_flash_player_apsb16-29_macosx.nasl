@@ -28,18 +28,18 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809223");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2016-4271", "CVE-2016-4272", "CVE-2016-4274", "CVE-2016-4275",
-		"CVE-2016-4276", "CVE-2016-4277", "CVE-2016-4278", "CVE-2016-4279",
-		"CVE-2016-4280", "CVE-2016-4281", "CVE-2016-4282", "CVE-2016-4283",
-		"CVE-2016-4284", "CVE-2016-4285", "CVE-2016-4287", "CVE-2016-6921",
-		"CVE-2016-6922", "CVE-2016-6923", "CVE-2016-6924", "CVE-2016-6925",
-		"CVE-2016-6926", "CVE-2016-6927", "CVE-2016-6929", "CVE-2016-6930",
-		"CVE-2016-6931", "CVE-2016-6932", "CVE-2016-4182", "CVE-2016-4237",
-		"CVE-2016-4238");
+                "CVE-2016-4276", "CVE-2016-4277", "CVE-2016-4278", "CVE-2016-4279",
+                "CVE-2016-4280", "CVE-2016-4281", "CVE-2016-4282", "CVE-2016-4283",
+                "CVE-2016-4284", "CVE-2016-4285", "CVE-2016-4287", "CVE-2016-6921",
+                "CVE-2016-6922", "CVE-2016-6923", "CVE-2016-6924", "CVE-2016-6925",
+                "CVE-2016-6926", "CVE-2016-6927", "CVE-2016-6929", "CVE-2016-6930",
+                "CVE-2016-6931", "CVE-2016-6932", "CVE-2016-4182", "CVE-2016-4237",
+                "CVE-2016-4238");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-09-14 08:15:14 +0530 (Wed, 14 Sep 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-29 )-MAC OS X");
 
@@ -83,7 +83,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -105,7 +104,7 @@ else if(version_is_less(version:playerVer, test_version:"18.0.0.375"))
 
 if(VULN)
 {
-  report =  report_fixed_ver(installed_version:playerVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:playerVer, fixed_version:fix);
   security_message(data:report);
   exit(0);
 }

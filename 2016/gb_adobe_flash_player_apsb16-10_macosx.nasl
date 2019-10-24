@@ -28,16 +28,16 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807655");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2016-1006", "CVE-2016-1011", "CVE-2016-1012", "CVE-2016-1013",
-		"CVE-2016-1014", "CVE-2016-1015", "CVE-2016-1016", "CVE-2016-1017",
-		"CVE-2016-1018", "CVE-2016-1019", "CVE-2016-1020", "CVE-2016-1021",
-		"CVE-2016-1022", "CVE-2016-1023", "CVE-2016-1024", "CVE-2016-1025",
-		"CVE-2016-1026", "CVE-2016-1027", "CVE-2016-1028", "CVE-2016-1029",
-		"CVE-2016-1030", "CVE-2016-1031", "CVE-2016-1032", "CVE-2016-1033");
+                "CVE-2016-1014", "CVE-2016-1015", "CVE-2016-1016", "CVE-2016-1017",
+                "CVE-2016-1018", "CVE-2016-1019", "CVE-2016-1020", "CVE-2016-1021",
+                "CVE-2016-1022", "CVE-2016-1023", "CVE-2016-1024", "CVE-2016-1025",
+                "CVE-2016-1026", "CVE-2016-1027", "CVE-2016-1028", "CVE-2016-1029",
+                "CVE-2016-1030", "CVE-2016-1031", "CVE-2016-1032", "CVE-2016-1033");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-04-12 18:40:50 +0530 (Tue, 12 Apr 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-10 )-MAC OS X");
 
@@ -83,7 +83,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -105,7 +104,7 @@ else if(version_is_less(version:playerVer, test_version:"18.0.0.343"))
 
 if(VULN)
 {
-  report =  report_fixed_ver(installed_version:playerVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:playerVer, fixed_version:fix);
   security_message(data:report);
   exit(0);
 }

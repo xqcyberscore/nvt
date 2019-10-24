@@ -28,8 +28,8 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107149");
-  script_version("2019-07-24T08:39:52+0000");
-  script_tag(name:"last_modification", value:"2019-07-24 08:39:52 +0000 (Wed, 24 Jul 2019)");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-04-19 14:53:28 +0200 (Wed, 19 Apr 2017)");
   script_cve_id("CVE-2017-2114", "CVE-2017-2115", "CVE-2017-2116", "CVE-2016-4449");
 
@@ -79,7 +79,7 @@ if(Ver =~ "^10\.")
 {
   if(version_is_less_equal(version: Ver, test_version: "10.5.0"))
   {
-    report =  report_fixed_ver(installed_version:Ver, fixed_version:"10.6.0");
+    report = report_fixed_ver(installed_version:Ver, fixed_version:"10.6.0");
     security_message(port: Port, data:report);
     exit(0);
   }

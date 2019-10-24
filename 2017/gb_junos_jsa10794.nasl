@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10794.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos MS-MPC or MS-MIC DoS Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106940");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-07-13 09:02:35 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -47,7 +46,7 @@ if (description)
   script_category(ACT_GATHER_INFO);
 
   script_family("JunOS Local Security Checks");
-  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
@@ -86,7 +85,7 @@ if (!version = get_app_version(cpe: CPE, nofork: TRUE))
 if (version =~ "^14\.1X55") {
   if ((revcomp(a: version, b: "14.1X55-D35") < 0) &&
       (revcomp(a: version, b: "14.1X55-D30") >= 0)) {
-    report =  report_fixed_ver(installed_version: version, fixed_version: "14.1X55-D35");
+    report = report_fixed_ver(installed_version: version, fixed_version: "14.1X55-D35");
     security_message(port: 0, data: report);
     exit(0);
   }

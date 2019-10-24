@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810668");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2016-1006", "CVE-2016-1011", "CVE-2016-1012", "CVE-2016-1013",
                 "CVE-2016-1014", "CVE-2016-1015", "CVE-2016-1016", "CVE-2016-1017",
                 "CVE-2016-1018", "CVE-2016-1019", "CVE-2016-1020", "CVE-2016-1021",
@@ -39,7 +39,7 @@ if(description)
                     96858, 96849, 85926, 85932, 96014, 95935);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-03-18 16:07:54 +0530 (Sat, 18 Mar 2017)");
   script_name("Adobe Flash Player Within Google Chrome Security Update (apsb16-10) - Linux");
 
@@ -93,7 +93,7 @@ if(!playerVer = get_app_version(cpe:CPE)){
 
 if(version_is_less(version:playerVer, test_version:"21.0.0.213"))
 {
-  report =  report_fixed_ver(installed_version:playerVer, fixed_version:"21.0.0.213");
+  report = report_fixed_ver(installed_version:playerVer, fixed_version:"21.0.0.213");
   security_message(data:report);
   exit(0);
 }

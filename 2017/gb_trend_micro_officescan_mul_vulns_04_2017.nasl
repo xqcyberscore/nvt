@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_mul_vulns_04_2017.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Trend Micro OfficeScan Multiple Privilege Escalation and Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +28,10 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107154");
-  script_version("$Revision: 11977 $");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2017-5481", "CVE-2017-8801");
   script_bugtraq_id(98007);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-04-26 11:00:00 +0200 (Wed, 26 Apr 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -96,7 +95,7 @@ if (Ver =~ "^12\.")
 
 if (VULN)
 {
-   report =  report_fixed_ver(installed_version:Ver, fixed_version:fix);
+   report = report_fixed_ver(installed_version:Ver, fixed_version:fix);
    security_message(data:report);
    exit(0);
 }

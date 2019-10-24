@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_garoon_mult_vuln_aug16.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Cybozu Garoon Multiple Vulnerabilities - Aug16
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:cybozu:garoon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107165");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-05-11 11:54:29 +0200 (Thu, 11 May 2017)");
   script_cve_id("CVE-2016-1213", "CVE-2016-1214", "CVE-2016-1215", "CVE-2016-1216", "CVE-2016-1217",
                 "CVE-2016-1218", "CVE-2016-1219", "CVE-2016-1220");
@@ -80,7 +79,7 @@ if(!Ver = get_app_version(cpe:CPE, port: Port)){
 }
 
 if(version_is_less(version: Ver, test_version:"4.2.2")){
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"4.2.2");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"4.2.2");
   security_message(data:report, port: Port);
   exit(0);
 }

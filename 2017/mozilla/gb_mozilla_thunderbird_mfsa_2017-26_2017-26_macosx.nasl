@@ -28,11 +28,11 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812404");
-  script_version("2019-06-25T08:25:15+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7826");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-25 08:25:15 +0000 (Tue, 25 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-12-07 11:21:51 +0530 (Thu, 07 Dec 2017)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2017-26_2017-26)-MAC OS X");
 
@@ -62,15 +62,12 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Thunderbird/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
+
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-tbVer = "";
 
 if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 tbVer = infos['version'];

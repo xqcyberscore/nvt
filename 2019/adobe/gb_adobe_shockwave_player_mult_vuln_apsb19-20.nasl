@@ -23,13 +23,13 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814963");
-  script_version("2019-06-03T07:01:53+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2019-7098", "CVE-2019-7099", "CVE-2019-7100", "CVE-2019-7101",
                 "CVE-2019-7102", "CVE-2019-7103", "CVE-2019-7104");
   script_bugtraq_id(107822);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-06-03 07:01:53 +0000 (Mon, 03 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 13:38:50 +0530 (Thu, 11 Apr 2019)");
   script_name("Adobe Shockwave Player Multiple Unspecified Memory Corruption Vulnerabilities(APSB19-20)");
 
@@ -73,7 +73,7 @@ vers = infos['version'];
 path = infos['location'];
 if(version_is_less(version:vers, test_version:"12.3.5.205"))
 {
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"12.3.5.205", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"12.3.5.205", install_path:path);
   security_message(data:report);
   exit(0);
 }

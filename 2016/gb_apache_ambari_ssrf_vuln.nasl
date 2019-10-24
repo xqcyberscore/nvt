@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_ssrf_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Apache Ambari Server Side Request Forgery Vulnerability
 #
@@ -29,11 +28,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809087");
-  script_version("$Revision: 12363 $");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2015-1775");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-11-04 16:26:03 +0530 (Fri, 04 Nov 2016)");
   script_name("Apache Ambari Server Side Request Forgery Vulnerability");
 
@@ -82,7 +81,7 @@ if(!amb_Ver = get_app_version(cpe:CPE, port:amb_Port)){
 
 if(version_in_range(version:amb_Ver, test_version:"1.5.0", test_version2:"2.0.2"))
 {
-  report =  report_fixed_ver(installed_version:amb_Ver, fixed_version:"2.1.0");
+  report = report_fixed_ver(installed_version:amb_Ver, fixed_version:"2.1.0");
   security_message(data:report, port:amb_Port);
   exit(0);
 }

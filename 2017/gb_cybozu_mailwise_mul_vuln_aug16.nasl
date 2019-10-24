@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_mailwise_mul_vuln_aug16.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Cybozu Mailwise Multiple Vulnerabilities Aug-2016
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:cybozu:mailwise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107163");
-  script_version("$Revision: 11835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-05-11 12:30:22 +0200 (Thu, 11 May 2017)");
   script_cve_id("CVE-2016-4842", "CVE-2016-4844", "CVE-2016-4843", "CVE-2016-4841");
 
@@ -77,7 +76,7 @@ if(!Ver = get_app_version(cpe:CPE, port: Port)){
 }
 
 if(version_is_less(version: Ver, test_version:"5.4.0")){
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"5.4.0");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"5.4.0");
   security_message(data:report, port: Port);
   exit(0);
 }

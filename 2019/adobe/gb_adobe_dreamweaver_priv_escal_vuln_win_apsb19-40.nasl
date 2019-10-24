@@ -23,12 +23,12 @@ CPE = "cpe:/a:adobe:dreamweaver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815250");
-  script_version("2019-07-23T06:55:12+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2019-7956");
   script_bugtraq_id(109088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-07-23 06:55:12 +0000 (Tue, 23 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-07-11 11:53:01 +0530 (Thu, 11 Jul 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Privilege Escalation Vulnerability(APSB19-40)-Windows");
@@ -80,7 +80,7 @@ if(!AppVer) exit(0);
 #Adobe Dreamweaver CC 2019 Release == 19.0.0.11193
 if(AppVer =~ "^19" && version_is_less(version:AppVer, test_version:"19.0.0.11193"))
 {
-  report =  report_fixed_ver(installed_version:AppVer, fixed_version:"2019 Release", install_path:path);
+  report = report_fixed_ver(installed_version:AppVer, fixed_version:"2019 Release", install_path:path);
   security_message(data:report);
   exit(0);
 }
@@ -88,7 +88,7 @@ if(AppVer =~ "^19" && version_is_less(version:AppVer, test_version:"19.0.0.11193
 #Adobe Dreamweaver CC 2018 Release == 18.0.0.10136
 else if(version_is_less(version:AppVer, test_version:"18.0.0.10136"))
 {
-  report =  report_fixed_ver(installed_version:AppVer, fixed_version:"2018 Release", install_path:path + "\Adobe Dreamweaver CC 2018");
+  report = report_fixed_ver(installed_version:AppVer, fixed_version:"2018 Release", install_path:path + "\Adobe Dreamweaver CC 2018");
   security_message(data:report);
   exit(0);
 }

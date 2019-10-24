@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_2017_04_Info_Disc_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # Cybozu Office CVE-2016-4871 Denial of Service Vulnerability
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107151");
-  script_version("$Revision: 11210 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_version("2019-10-23T10:55:06+0000");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-04-24 08:56:53 +0200 (Mon, 24 Apr 2017)");
   script_cve_id("CVE-2016-4871");
 
@@ -84,7 +83,7 @@ if(!Ver = get_app_version(cpe:CPE, port:Port)){
 
 if(version_in_range(version: Ver, test_version:"9.0.0", test_version2:"10.4.0"))
 {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"10.5.0");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"10.5.0");
   security_message(port:Port, data:report);
   exit(0);
 }

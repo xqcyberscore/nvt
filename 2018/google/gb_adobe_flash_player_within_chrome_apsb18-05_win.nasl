@@ -27,11 +27,11 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813027");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2018-4920", "CVE-2018-4919");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-03-14 11:17:28 +0530 (Wed, 14 Mar 2018)");
   script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities(apsb18-05)-Windows");
 
@@ -74,7 +74,7 @@ path = infos['location'];
 
 if(version_is_less_equal(version:vers, test_version:"28.0.0.161"))
 {
-  report =  report_fixed_ver(installed_version:vers, fixed_version:"29.0.0.113", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"29.0.0.113", install_path:path);
   security_message(data:report);
   exit(0);
 }

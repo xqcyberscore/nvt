@@ -28,19 +28,19 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808168");
-  script_version("2019-07-17T11:14:11+0000");
+  script_version("2019-10-23T10:55:06+0000");
   script_cve_id("CVE-2016-4122", "CVE-2016-4123", "CVE-2016-4124", "CVE-2016-4125",
-		"CVE-2016-4127", "CVE-2016-4128", "CVE-2016-4129", "CVE-2016-4130",
-		"CVE-2016-4131", "CVE-2016-4132", "CVE-2016-4133", "CVE-2016-4134",
-		"CVE-2016-4135", "CVE-2016-4136", "CVE-2016-4137", "CVE-2016-4138",
-		"CVE-2016-4139", "CVE-2016-4140", "CVE-2016-4141", "CVE-2016-4142",
-		"CVE-2016-4143", "CVE-2016-4144", "CVE-2016-4145", "CVE-2016-4146",
-		"CVE-2016-4147", "CVE-2016-4148", "CVE-2016-4149", "CVE-2016-4150",
-		"CVE-2016-4151", "CVE-2016-4152", "CVE-2016-4153", "CVE-2016-4154",
-		"CVE-2016-4155", "CVE-2016-4156", "CVE-2016-4166", "CVE-2016-4171");
+                "CVE-2016-4127", "CVE-2016-4128", "CVE-2016-4129", "CVE-2016-4130",
+                "CVE-2016-4131", "CVE-2016-4132", "CVE-2016-4133", "CVE-2016-4134",
+                "CVE-2016-4135", "CVE-2016-4136", "CVE-2016-4137", "CVE-2016-4138",
+                "CVE-2016-4139", "CVE-2016-4140", "CVE-2016-4141", "CVE-2016-4142",
+                "CVE-2016-4143", "CVE-2016-4144", "CVE-2016-4145", "CVE-2016-4146",
+                "CVE-2016-4147", "CVE-2016-4148", "CVE-2016-4149", "CVE-2016-4150",
+                "CVE-2016-4151", "CVE-2016-4152", "CVE-2016-4153", "CVE-2016-4154",
+                "CVE-2016-4155", "CVE-2016-4156", "CVE-2016-4166", "CVE-2016-4171");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-07-17 11:14:11 +0000 (Wed, 17 Jul 2019)");
+  script_tag(name:"last_modification", value:"2019-10-23 10:55:06 +0000 (Wed, 23 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-06-17 10:49:19 +0530 (Fri, 17 Jun 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-18 )-Windows");
 
@@ -86,7 +86,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -108,7 +107,7 @@ else if(version_is_less(version:playerVer, test_version:"18.0.0.360"))
 
 if(VULN)
 {
-  report =  report_fixed_ver(installed_version:playerVer, fixed_version:fix);
+  report = report_fixed_ver(installed_version:playerVer, fixed_version:fix);
   security_message(data:report);
   exit(0);
 }
