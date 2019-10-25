@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105936");
-  script_version("2019-05-08T08:20:56+0000");
-  script_tag(name:"last_modification", value:"2019-05-08 08:20:56 +0000 (Wed, 08 May 2019)");
+  script_version("2019-10-24T08:45:10+0000");
+  script_tag(name:"last_modification", value:"2019-10-24 08:45:10 +0000 (Thu, 24 Oct 2019)");
   script_tag(name:"creation_date", value:"2014-12-16 10:58:24 +0700 (Tue, 16 Dec 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,8 +73,12 @@ libssh_supported['kex_algorithms'] = make_list(
 "curve25519-sha256", # New alias for the one below, available in libssh >= 0.8.0 but requires libssh build against libnacl
 "curve25519-sha256@libssh.org", # Available in libssh >= 0.6.0 but requires libssh build against libnacl
 "ecdh-sha2-nistp256",
+"diffie-hellman-group18-sha512", # Available in libssh >= 0.8.3
+"diffie-hellman-group16-sha512", # Available in libssh >= 0.8.3
+"diffie-hellman-group-exchange-sha256", # Available in libssh >= 0.9.0
 "diffie-hellman-group1-sha1",
-"diffie-hellman-group14-sha1" );
+"diffie-hellman-group14-sha1",
+"diffie-hellman-group-exchange-sha1" ); # Available in libssh >= 0.9.0
 
 libssh_supported['server_host_key_algorithms'] = make_list(
 "ssh-ed25519", # Available in libssh >= 0.7.0
@@ -82,15 +86,15 @@ libssh_supported['server_host_key_algorithms'] = make_list(
 "ecdsa-sha2-nistp384",
 "ecdsa-sha2-nistp521",
 "ssh-rsa",
-# nb: Both seems to be only available as a patch: https://www.libssh.org/archive/libssh/2018-06/0000047.html
-# but not available yet in libssh up to 0.8.2 even if those are listed at the features page.
-# "rsa-sha2-512",
-# "rsa-sha2-256",
+"rsa-sha2-512", # Available in libssh >= 0.8.3
+"rsa-sha2-256", # Available in libssh >= 0.8.3
 "ssh-dss"
 );
 
 libssh_supported['encryption_algorithms_server_to_client'] = make_list(
 "chachae20-poly1305", # Available in libssh >= 0.8.0
+"aes256-gcm@openssh.com", # Available in libssh >= 0.9.0
+"aes128-gcm@openssh.com", # Available in libssh >= 0.9.0
 "aes256-ctr",
 "aes192-ctr",
 "aes128-ctr",
@@ -98,10 +102,13 @@ libssh_supported['encryption_algorithms_server_to_client'] = make_list(
 "aes192-cbc",
 "aes128-cbc",
 "3des-cbc",
-"blowfish-cbc"
+"blowfish-cbc" # Dropped/disabled by default in libssh >= 0.9.0
 );
 
 libssh_supported['mac_algorithms_server_to_client'] = make_list(
+"hmac-sha2-256-etm@openssh.com", # Available in libssh >= 0.9.0
+"hmac-sha2-512-etm@openssh.com", # Available in libssh >= 0.9.0
+"hmac-sha1-etm@openssh.com", # Available in libssh >= 0.9.0
 "hmac-sha2-512", # Available in libssh >= 0.7.0
 "hmac-sha2-256", # Available in libssh >= 0.7.0
 "hmac-sha1",
@@ -151,36 +158,57 @@ foreach check_type( check_types ) {
   # Those depends on the libssh version and partly if the libssh is built against libnacl or not.
   if( check_type == "kex_algorithms" && host_supported_items > 0 &&
       ( in_array( search:"curve25519-sha256@libssh.org", array:libssh_supported[check_type] ) ||
-        in_array( search:"curve25519-sha256", array:libssh_supported[check_type] ) ) ) {
+        in_array( search:"curve25519-sha256", array:libssh_supported[check_type] ) ||
+        in_array( search:"diffie-hellman-group18-sha512", array:libssh_supported[check_type] ) ||
+        in_array( search:"diffie-hellman-group16-sha512", array:libssh_supported[check_type] ) ||
+        in_array( search:"diffie-hellman-group-exchange-sha256", array:libssh_supported[check_type] ) ||
+        in_array( search:"diffie-hellman-group-exchange-sha1", array:libssh_supported[check_type] ) ) ) {
     version_dep_report += 'Current supported ' + check_type + ' of the scanner:\n\n';
     version_dep_report += join( list:sort( libssh_supported[check_type] ), sep:'\n' ) + '\n\n';
     version_dep_report = ereg_replace( string:version_dep_report, pattern:"curve25519-sha256(@libssh\.org)?", replace:"\0 (requires libssh >= 0.6.0 on the scanner and libssh built against libnacl)" );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:"diffie-hellman-group1[68]-sha512", replace:"\0 (requires libssh >= 0.8.3 on the scanner)" );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:"diffie-hellman-group-exchange-sha(1|256)", replace:"\0 (requires libssh >= 0.9.0 on the scanner and libssh built with GEX / 'Enable DH Group exchange mechanisms' support)" );
     version_dep_report += 'Current supported ' + check_type + ' of the remote host:\n\n';
     version_dep_report += join( list:sort( host_supported[check_type] ), sep:'\n' ) + '\n\n';
   }
 
-  if( check_type == "server_host_key_algorithms" && host_supported_items > 0 && in_array( search:"ssh-ed25519", array:libssh_supported[check_type] ) ) {
+  if( check_type == "server_host_key_algorithms" && host_supported_items > 0 &&
+      ( in_array( search:"ssh-ed25519", array:libssh_supported[check_type] ) ||
+        in_array( search:"rsa-sha2-512", array:libssh_supported[check_type] ) ||
+        in_array( search:"rsa-sha2-256", array:libssh_supported[check_type] ) ) ) {
     version_dep_report += 'Current supported ' + check_type + ' of the scanner:\n\n';
     version_dep_report += join( list:sort( libssh_supported[check_type] ), sep:'\n' ) + '\n\n';
     version_dep_report = str_replace( string:version_dep_report, find:"ssh-ed25519", replace:"ssh-ed25519 (requires libssh >= 0.7.0 on the scanner)" );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:"rsa-sha2-(512|256)", replace:"\0 (requires libssh >= 0.8.3 on the scanner)" );
     version_dep_report += 'Current supported ' + check_type + ' of the remote host:\n\n';
     version_dep_report += join( list:sort( host_supported[check_type] ), sep:'\n' ) + '\n\n';
   }
 
-  if( check_type == "encryption_algorithms_server_to_client" && host_supported_items > 0 && in_array( search:"chachae20-poly1305", array:libssh_supported[check_type] ) ) {
+  if( check_type == "encryption_algorithms_server_to_client" && host_supported_items > 0 &&
+      ( in_array( search:"chachae20-poly1305", array:libssh_supported[check_type] ) ||
+        in_array( search:"aes256-gcm@openssh.com", array:libssh_supported[check_type] ) ||
+        in_array( search:"aes128-gcm@openssh.com", array:libssh_supported[check_type] ) ||
+        in_array( search:"blowfish-cbc", array:libssh_supported[check_type] ) ) ) {
     version_dep_report += 'Current supported ' + check_type + ' of the scanner:\n\n';
     version_dep_report += join( list:sort( libssh_supported[check_type] ), sep:'\n' ) + '\n\n';
     version_dep_report = str_replace( string:version_dep_report, find:"chachae20-poly1305", replace:"chachae20-poly1305 (requires libssh >= 0.8.0 on the scanner)" );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:"aes(128|256)-gcm@openssh\.com", replace:"\0 (requires libssh >= 0.9.0 on the scanner)" );
+    version_dep_report = str_replace( string:version_dep_report, find:"blowfish-cbc", replace:"blowfish-cbc (disabled/unsupported in libssh >= 0.9.0 on the scanner)" );
     version_dep_report += 'Current supported ' + check_type + ' of the remote host:\n\n';
     version_dep_report += join( list:sort( host_supported[check_type] ), sep:'\n' ) + '\n\n';
   }
 
   if( check_type == "mac_algorithms_server_to_client" && host_supported_items > 0 &&
       ( in_array( search:"hmac-sha2-512", array:libssh_supported[check_type] ) ||
-        in_array( search:"hmac-sha2-256", array:libssh_supported[check_type] ) ) ) {
+        in_array( search:"hmac-sha2-256", array:libssh_supported[check_type] ) ||
+        in_array( search:"hmac-sha2-256-etm@openssh.com", array:libssh_supported[check_type] ) ||
+        in_array( search:"hmac-sha2-512-etm@openssh.com", array:libssh_supported[check_type] ) ||
+        in_array( search:"hmac-sha1-etm@openssh.com", array:libssh_supported[check_type] ) ) ) {
     version_dep_report += 'Current supported ' + check_type + ' of the scanner:\n\n';
     version_dep_report += join( list:sort( libssh_supported[check_type] ), sep:'\n' ) + '\n\n';
-    version_dep_report = ereg_replace( string:version_dep_report, pattern:"hmac-sha2-(256|512)", replace:"\0 (requires libssh >= 0.7.0 on the scanner)" );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:'(hmac-sha2-(256|512))\n', replace:'\\1 (requires libssh >= 0.7.0 on the scanner)\n' );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:"hmac-sha2-(256|512)-etm@openssh\.com", replace:"\0 (requires libssh >= 0.9.0 on the scanner)" );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:"hmac-sha1-etm@openssh\.com", replace:"\0 (requires libssh >= 0.9.0 on the scanner)" );
     version_dep_report += 'Current supported ' + check_type + ' of the remote host:\n\n';
     version_dep_report += join( list:sort( host_supported[check_type] ), sep:'\n' ) + '\n\n';
   }

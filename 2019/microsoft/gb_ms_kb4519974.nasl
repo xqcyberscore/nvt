@@ -23,12 +23,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815492");
-  script_version("2019-10-09T12:58:40+0000");
+  script_version("2019-10-25T10:01:14+0000");
   script_cve_id("CVE-2019-0608", "CVE-2019-1238", "CVE-2019-1357", "CVE-2019-1371",
                 "CVE-2019-1367", "CVE-2019-1192");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-10-09 12:58:40 +0000 (Wed, 09 Oct 2019)");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-10-25 10:01:14 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-09 10:13:33 +0530 (Wed, 09 Oct 2019)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4519974)");
 

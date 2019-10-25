@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891951");
-  script_version("2019-10-10T02:00:11+0000");
+  script_version("2019-10-25T10:01:14+0000");
   script_cve_id("CVE-2019-17362");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-10-10 02:00:11 +0000 (Thu, 10 Oct 2019)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-10-25 10:01:14 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-10 02:00:11 +0000 (Thu, 10 Oct 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1951-1] libtomcrypt security update)");
   script_category(ACT_GATHER_INFO);

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876773");
-  script_version("2019-09-10T08:05:24+0000");
+  script_version("2019-10-25T10:01:14+0000");
   script_cve_id("CVE-2019-6472", "CVE-2019-6473", "CVE-2019-6474");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-09-10 08:05:24 +0000 (Tue, 10 Sep 2019)");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"2019-10-25 10:01:14 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-09-09 02:22:49 +0000 (Mon, 09 Sep 2019)");
   script_name("Fedora Update for kea FEDORA-2019-0811a88d77");
   script_category(ACT_GATHER_INFO);

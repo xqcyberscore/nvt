@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_edr_devices_web_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Moxa EDR Detection
 #
@@ -28,20 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140015");
-  script_version("$Revision: 10896 $");
+  script_version("2019-10-25T09:02:17+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"2019-10-25 09:02:17 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-10-25 10:43:45 +0200 (Tue, 25 Oct 2016)");
+
   script_name("Moxa EDR Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl"); # nb: Don't use http_ver.nasl, can_host_asp required webmirror.nasl
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"This scriptperforms HTTP based detection of Moxa EDR devices.");
+  script_tag(name:"summary", value:"This script performs HTTP based detection of Moxa EDR devices.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -59,9 +60,12 @@ buf = http_get_cache( port:port, item:"/Login.asp" );
 
 if( ! buf || "<TITLE>Moxa EDR</TITLE>" >!< buf ) exit( 0 );
 
-cpe = 'cpe:/h:moxa:edr';
+hw_cpe = "cpe:/h:moxa:edr";
+os_cpe = "cpe:/o:moxa:edr";
 
 set_kb_item( name:"moxa_edr/detected", value:TRUE );
+
+version = "unknown";
 
 if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf ) {
   if( "var ProjectModel" >< buf ) {
@@ -72,11 +76,12 @@ if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf ) {
       if( typ == 1 )
         mod = 'G903';
       else if( typ  == 2 )
-         mod = 'G902';
+        mod = 'G902';
       else if( typ  == 3 )
-          mod = '810';
+        mod = '810';
 
-      cpe += '-' + mod;
+      hw_cpe += '-' + mod;
+      os_cpe += '_' + mod;
       model = 'EDR-' + mod;
       set_kb_item( name:"moxa_edr/model", value:model );
     }
@@ -86,10 +91,10 @@ if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf ) {
       model = mod[1];
       set_kb_item( name:"moxa_edr/model", value:model );
       cpe_mod = split( model, sep:'-', keep:FALSE );
-      if( ! isnull( cpe_mod[1] ) )
-      {
+      if( ! isnull( cpe_mod[1] ) ) {
         cpe_model = cpe_mod[1];
-        cpe += '-' + cpe_model;
+        hw_cpe += '-' + cpe_model;
+        os_cpe += '_' + cpe_model;
       }
     }
   }
@@ -108,7 +113,8 @@ if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf ) {
             cpe_mod = split( model, sep:'-', keep:FALSE );
             if( ! isnull( cpe_mod[1] ) ) {
               cpe_model = cpe_mod[1];
-              cpe += '-' + cpe_model;
+              hw_cpe += '-' + cpe_model;
+              os_cpe += '_' + cpe_model;
             }
           }
         }
@@ -117,12 +123,18 @@ if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf ) {
   }
 }
 
-register_product( cpe:cpe, location:"/", port:port, service:"www" );
+if( ! model ) {
+  model = "EDR Unknown Model";
+  os_cpe += "_unknown_model";
+}
 
-report = 'The remote Host is a Moxa EDR device.\nCPE: ' + cpe;
+os_cpe  += "_firmware";
 
-if( model ) report += '\nModel: ' + model;;
+register_and_report_os( os:"Moxa " + model + " Firmware", cpe:os_cpe, desc:"Moxa EDR Detection", runs_key:"unixoide" );
 
-log_message( port:port, data:report );
-exit( 0 );
+register_product( cpe:hw_cpe, location:"/", port:port, service:"www" );
 
+log_message( data:build_detection_report( app:"Moxa " + model, version:version, install:"/", cpe:hw_cpe ),
+             port:port );
+
+exit(0);

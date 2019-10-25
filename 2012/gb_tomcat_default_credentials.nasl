@@ -29,15 +29,15 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103550");
-  script_version("2019-10-14T09:34:28+0000");
+  script_version("2019-10-25T10:01:14+0000");
   script_cve_id("CVE-2010-4094", "CVE-2009-3548", "CVE-2009-4189", "CVE-2009-3099", "CVE-2009-3843",
                 "CVE-2009-4188", "CVE-2010-0557");
   script_bugtraq_id(44172, 36954, 79264, 79351, 37086, 36258, 38084);
   script_name("Apache Tomcat Manager/Host Manager/Server Status Default/Hardcoded Credentials");
-  script_tag(name:"last_modification", value:"2019-10-14 09:34:28 +0000 (Mon, 14 Oct 2019)");
+  script_tag(name:"last_modification", value:"2019-10-25 10:01:14 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2012-08-22 17:19:15 +0200 (Wed, 22 Aug 2012)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

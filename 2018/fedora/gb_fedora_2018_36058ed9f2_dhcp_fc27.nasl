@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_36058ed9f2_dhcp_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for dhcp FEDORA-2018-36058ed9f2
 #
@@ -27,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874479");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-10-25T10:01:14+0000");
+  script_tag(name:"last_modification", value:"2019-10-25 10:01:14 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-05-16 05:56:21 +0200 (Wed, 16 May 2018)");
   script_cve_id("CVE-2018-1111", "CVE-2018-5732", "CVE-2018-5733");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for dhcp FEDORA-2018-36058ed9f2");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'dhcp'

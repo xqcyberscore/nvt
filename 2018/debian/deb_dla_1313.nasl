@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1313.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1313-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891313");
-  script_version("$Revision: 14281 $");
+  script_version("2019-10-25T10:01:14+0000");
   script_cve_id("CVE-2018-5732", "CVE-2018-5733");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1313-1] isc-dhcp security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-10-25 10:01:14 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2018-03-27 00:00:00 +0200 (Tue, 27 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

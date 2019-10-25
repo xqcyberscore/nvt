@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe_inventory.nasl 14324 2019-03-19 13:31:53Z cfischer $
 #
 # CPE Inventory
 #
@@ -8,7 +7,7 @@
 # Michael Wiegand <michael.wiegand@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (C) 2009 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,21 +26,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810002");
-  script_version("$Revision: 14324 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:31:53 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-10-24T11:29:24+0000");
+  script_tag(name:"last_modification", value:"2019-10-24 11:29:24 +0000 (Thu, 24 Oct 2019)");
   script_tag(name:"creation_date", value:"2009-11-18 11:43:05 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CPE Inventory");
   script_category(ACT_END);
-  script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Service detection");
 
-  script_xref(name:"URL", value:"http://cpe.mitre.org/");
+  script_xref(name:"URL", value:"https://nvd.nist.gov/products/cpe");
 
   script_tag(name:"summary", value:"This routine uses information collected by other routines about
-  CPE identities of operating systems, services and
-  applications detected during the scan.");
+  CPE identities of operating systems, services and applications detected during the scan.
+
+  Note: Some CPEs for specific products might show up twice or more in the output. Background:
+
+  After a product got renamed or a specific vendor was acquired by another one it might happen that a
+  product gets a new CPE within the NVD CPE Dictionary but older entries are kept with the older CPE.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
