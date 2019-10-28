@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("2019-06-05T03:32:14+0000");
+  script_version("2019-10-28T08:49:03+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-06-05 03:32:14 +0000 (Wed, 05 Jun 2019)");
+  script_tag(name:"last_modification", value:"2019-10-28 08:49:03 +0000 (Mon, 28 Oct 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
@@ -201,6 +201,13 @@ if( egrep( pattern:"SSH.+Data ONTAP SSH", string:server_banner ) ) {
   set_kb_item( name:"ssh/netapp/data_ontap/detected", value:TRUE );
   set_kb_item( name:"ssh/netapp/data_ontap/" + port + "/detected", value:TRUE );
   guess += '\n- NetApp Data ONTAP';
+}
+
+# SSH-2.0-Greenbone_7.4p2gb Greenbone OS 6.0
+if( egrep( pattern:"SSH.+Greenbone OS", string:server_banner ) ) {
+  set_kb_item( name:"ssh/greenbone/gos/detected", value:TRUE );
+  set_kb_item( name:"ssh/greenbone/gos/" + port + "/detected", value:TRUE );
+  guess += '\n- Greenbone OS (GOS)';
 }
 
 if( login_banner && "Riverbed" >< login_banner ) {

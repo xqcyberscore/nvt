@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.876914");
-  script_version("2019-10-18T09:43:23+0000");
+  script_version("2019-10-28T07:58:00+0000");
   script_cve_id("CVE-2019-14287");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-10-18 09:43:23 +0000 (Fri, 18 Oct 2019)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-10-28 07:58:00 +0000 (Mon, 28 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-16 03:03:32 +0000 (Wed, 16 Oct 2019)");
   script_name("Fedora Update for sudo FEDORA-2019-9cb221f2be");
   script_category(ACT_GATHER_INFO);

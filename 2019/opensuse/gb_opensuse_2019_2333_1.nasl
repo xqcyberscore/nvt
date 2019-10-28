@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852742");
-  script_version("2019-10-18T09:43:23+0000");
+  script_version("2019-10-28T07:58:00+0000");
   script_cve_id("CVE-2019-14287");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-10-18 09:43:23 +0000 (Fri, 18 Oct 2019)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-10-28 07:58:00 +0000 (Mon, 28 Oct 2019)");
   script_tag(name:"creation_date", value:"2019-10-18 02:01:08 +0000 (Fri, 18 Oct 2019)");
   script_name("openSUSE Update for sudo openSUSE-SU-2019:2333-1 (sudo)");
   script_category(ACT_GATHER_INFO);

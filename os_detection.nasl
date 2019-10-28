@@ -29,8 +29,8 @@ include("plugin_feed_info.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-10-25T09:02:17+0000");
-  script_tag(name:"last_modification", value:"2019-10-25 09:02:17 +0000 (Fri, 25 Oct 2019)");
+  script_version("2019-10-25T13:19:13+0000");
+  script_tag(name:"last_modification", value:"2019-10-25 13:19:13 +0000 (Fri, 25 Oct 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -177,7 +177,6 @@ foreach oid( OS_CPE_SRC ) {
             if( ! found_best ) {
               report = 'Best matching OS:\n\n' + os_report;
               found_best = TRUE;
-              best_match_cpe = entry;
               best_match_oid = oid;
               best_match_desc = desc;
               best_match_report = os_report; # To avoid that it will be added to the "Other OS detections" text (see the checks down below)
@@ -192,6 +191,16 @@ foreach oid( OS_CPE_SRC ) {
                   best_match_txt = _best_match_txt[1];
               } else {
                 best_match_txt = "N/A";
+              }
+
+              _best_match_cpe = egrep( string:os_report, pattern:'^CPE: *[^\r\n]+', icase:FALSE );
+              _best_match_cpe = chomp( _best_match_cpe );
+              if( _best_match_cpe ) {
+                _best_match_cpe = eregmatch( string:_best_match_cpe, pattern:"CPE: *(.+)", icase:FALSE );
+                if( _best_match_cpe[1] )
+                  best_match_cpe = _best_match_cpe[1];
+              } else {
+                best_match_cpe = "N/A";
               }
 
               host_runs_list = get_kb_list( "os_detection_report/host_runs/" + oid + "/" + port + "/" + proto );
