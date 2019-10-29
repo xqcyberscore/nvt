@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("2019-10-28T08:49:03+0000");
+  script_version("2019-10-28T13:23:39+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-10-28 08:49:03 +0000 (Mon, 28 Oct 2019)");
+  script_tag(name:"last_modification", value:"2019-10-28 13:23:39 +0000 (Mon, 28 Oct 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
@@ -54,7 +54,8 @@ include("ssh_func.inc");
 include("host_details.inc");
 
 vt_strings = get_vt_strings();
-
+# nb: Those are passed globally to ssh_get_login_banner() of ssh_func.inc
+# so that we can use it later below for the reporting.
 CONNECT_LOGIN  = vt_strings["default"];
 CONNECT_PASSWD = vt_strings["default"];
 
@@ -64,22 +65,17 @@ if( ! server_banner )
   exit( 0 );
 
 soc = open_sock_tcp( port );
-if( ! soc )
-  exit( 0 );
-
-ssh_login( socket:soc, login:CONNECT_LOGIN, password:CONNECT_PASSWD,
-           pub:NULL, priv:NULL, passphrase:NULL );
-
-sess_id      = ssh_session_id_from_sock( soc );
-login_banner = get_ssh_banner( sess_id:sess_id );
-login_banner = chomp( login_banner );
-supported    = get_ssh_supported_authentication( sess_id:sess_id );
-close( soc );
+if( soc ) {
+  login_banner = ssh_get_login_banner( port:port, sock:soc );
+  sess_id      = ssh_session_id_from_sock( soc );
+  supported    = get_ssh_supported_authentication( sess_id:sess_id );
+  close( soc );
+}
 
 server_banner_lo = tolower( server_banner );
 
-set_kb_item( name:"ssh/server_banner/available", value:TRUE );
 set_kb_item( name:"ssh_or_telnet/banner/available", value:TRUE );
+set_kb_item( name:"ssh/server_banner/available", value:TRUE );
 set_kb_item( name:"ssh/server_banner/" + port + "/available", value:TRUE );
 
 text = 'Remote SSH server banner: ' + server_banner + '\n';
@@ -94,8 +90,9 @@ if( supported ) {
 
 text += 'Remote SSH text/login banner: ';
 if( login_banner ) {
-  set_kb_item( name:"SSH/textbanner/" + port, value:login_banner );
-  text += '\n' + login_banner + '\n\n';
+  text += '\n\n--- separator ---\n\n' + login_banner + '\n\n--- separator ---';
+  set_kb_item( name:"ssh/login_banner/available", value:TRUE );
+  set_kb_item( name:"ssh/login_banner/" + port + "/available", value:TRUE );
 } else {
   text += '(not available)';
 }
@@ -236,9 +233,6 @@ if( login_banner && "Riverbed" >< login_banner ) {
 
 if( strlen( guess ) > 0 )
   text += '\n\nThis is probably:\n' + guess;
-
-if( cpe )
-  text += '\n\nCPE: ' + cpe;
 
 text += '\n\nConcluded from remote connection attempt with credentials:\n';
 text += '\nLogin:    ' + CONNECT_LOGIN;

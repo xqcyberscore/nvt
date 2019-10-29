@@ -41,6 +41,7 @@ global_var _last_libssh_sess;
 global_var bugged_sshd, bugged_first, bugged_channels, bugged_rws, bugged_rps;
 global_var server_host_key_blob;
 global_var ssh_host_key_algos;
+global_var CONNECT_LOGIN, CONNECT_PASSWD;
 
 ssh_host_key_algos = make_list( "ssh-rsa",
                                 "ssh-dss",
@@ -143,22 +144,6 @@ function get_ssh_supported_authentication( sess_id ) {
 #-----------------------------------------------------------------#
 function get_ssh_server_version() {
   return _ssh_server_version;
-}
-
-#-----------------------------------------------------------------#
-# Get SSH banner                                                  #
-#                                                                 #
-# Please use ssh_get_session_banner directly for new code.        #
-# The saved session id is just a bad hack.                        #
-#-----------------------------------------------------------------#
-function get_ssh_banner( sess_id ) {
-
-  if( isnull( sess_id ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sess_id#-#get_ssh_banner" );
-
-  if( sess_id && int( sess_id ) > 0 )
-    _last_libssh_sess = sess_id;
-
-  return ssh_get_issue_banner( _last_libssh_sess );
 }
 
 #-----------------------------------------------------------------#
@@ -299,68 +284,85 @@ function ssh_recv(socket, length)
   return strcat(header, trailer);
 }
 
+# @brief Detect if remote SSH server is known to be bugged (SunSSH1.0).
+#
+# @param banner The SSH server banner to check.
+#
+# @return 1 if the SSH server is known to be bugged, 0 otherwise and NULL
+#         if the banner parameter wasn't passed.
+#
+function is_sshd_bugged(banner) {
 
-#-----------------------------------------------------------------#
-# Detect if remote ssh server is known to be bugged (SunSSH1.0)   #
-#-----------------------------------------------------------------#
-function is_sshd_bugged(banner)
-{
- if (ereg(string:banner, pattern:"^SSH-2\.0-Sun_SSH_1\.0"))
-   return 1;
+  local_var banner;
 
- return 0;
+  if(!banner) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#banner#-#is_sshd_bugged");
+    return;
+  }
+
+  if(ereg(string:banner, pattern:"^SSH-2\.0-Sun_SSH_1\.0"))
+    return 1;
+
+  return 0;
 }
 
+# @brief Waits for the server identification string, and sends our own
+#        identification string.
+#
+# @param socket The socket for the connection to the remote SSH service.
+#
+# @return The response to the SSH identification exchange request or 0 if
+#         if not all required parameters are passed, no connection could
+#         be opened to the target, the remote service is no SSH service or
+#         doesn't support version SSHv2.
+#
+function ssh_exchange_identification(socket) {
 
-#-----------------------------------------------------------------#
-# Waits for the server identification string, and sends our own   #
-# identification string.                                          #
-#-----------------------------------------------------------------#
-function ssh_exchange_identification(socket)
-{
- local_var buf, sshversion, num, prot;
+  local_var socket;
+  local_var buf, sshversion, num, vt_strings, prot;
 
- buf = recv_line(socket:socket, length:1024);
+  if(!socket) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_exchange_identification");
+    return;
+  }
 
- if (!buf)
- {
-   set_ssh_error(msg: "OpenVAS did not receive server's version");
-   return 0;
- }
+  buf = recv_line(socket:socket, length:1024);
+  if(!buf) {
+    set_ssh_error(msg:"The scanner did not receive the server's version.");
+    return 0;
+  }
 
- # server ident : SSH-%d.%d-servername #
- if (!ereg(string:buf, pattern:"^SSH-*[0-9]\.*[0-9]-*[^\n]"))
- {
-   set_ssh_error(msg: "Remote service is not a valid SSH service");
-   return 0;
- }
+  # server ident : SSH-%d.%d-servername #
+  if(!ereg(string:buf, pattern:"^SSH-*[0-9]\.*[0-9]-*[^\n]")) {
+    set_ssh_error(msg:"Remote service is not a valid SSH service.");
+    return 0;
+  }
 
- sshversion = split(buf, sep:"-", keep:0);
- num = split(sshversion[1], sep:".", keep:0);
+  sshversion = split(buf, sep:"-", keep:FALSE);
+  num = split(sshversion[1], sep:".", keep:FALSE);
 
- # version supported = 2 & 1.99
- if ((num[0] != 2) && !((num[0] == 1) && (num[1] == 99)))
- {
-   set_ssh_error(msg: "OpenVAS only supports SSHv2");
-   return 0;
- }
+  # version supported = 2 & 1.99
+  if((num[0] != 2) && !((num[0] == 1) && (num[1] == 99))) {
+    set_ssh_error(msg:"The scanner only supports SSHv2.");
+    return 0;
+  }
 
- # We use 2.0 protocol
- prot = "SSH-2.0-OpenVAS"+raw_string(0x0a);
- send(socket:socket, data:prot);
+  # We use 2.0 protocol
+  vt_strings = get_vt_strings();
+  prot = "SSH-2.0-" + vt_strings["default"] + raw_string(0x0a);
+  send(socket:socket, data:prot);
 
- if ( '\r\n' >< buf ) buf = buf - '\r\n';
-   else buf = buf - '\n';
+  if('\r\n' >< buf)
+    buf = buf - '\r\n';
+  else
+    buf = buf - '\n';
 
- if (is_sshd_bugged(banner:buf))
- {
-   bugged_sshd = 1;
- }
+  if(is_sshd_bugged(banner:buf))
+    bugged_sshd = 1;
 
- # all is correct
- return buf;
+  # all is correct
+  return buf;
 }
-
 
 #-----------------------------------------------------------------#
 # check pattern in buffer                                         #
@@ -665,7 +667,7 @@ function ssh_rsa_verify(e, n, signature, data)
    return 0;
 
  sigtype = getstring(buffer:signature, pos:0);
- if (sigtype >!< "ssh-rsa")
+ if ("ssh-rsa" >!< sigtype)
    return 0;
 
  nlen = strlen(n);
@@ -730,7 +732,7 @@ function ssh_dss_verify(p, q, g, pub, signature, data)
  local_var sigtype, next, tmp_sig, siglen, r, s, hash;
 
  sigtype = getstring(buffer:signature, pos:0);
- if (sigtype >!< "ssh-dss")
+ if ("ssh-dss" >!< sigtype)
    return 0;
 
  next = 4 + strlen(sigtype);
@@ -868,8 +870,8 @@ function ssh_kex2(socket,server_version)
  cmp_alg_server_to_client = "none";
 
  # version
- client_version = "SSH-2.0-OpenVAS";
-
+ vt_strings = get_vt_strings();
+ client_version = "SSH-2.0-" + vt_strings["default"];
 
 ### Key exchange send client Init ###
 
@@ -1097,7 +1099,7 @@ function ssh_kex2(socket,server_version)
  alg_type = getstring (buffer:server_host_key_blob, pos:0);
  next = 4 + strlen(alg_type);
 
- if (alg_type >< "ssh-rsa")
+ if ("ssh-rsa" >< alg_type)
   {
    # rsa type == 0
    type = 0;
@@ -1112,7 +1114,7 @@ function ssh_kex2(socket,server_version)
   }
  else
   {
-   if (alg_type >< "ssh-dss")
+   if ("ssh-dss" >< alg_type)
     {
      # dsa type == 1
      type = 1;
@@ -1303,7 +1305,7 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
  }
  else
  {
-   set_ssh_error(msg:"OpenVAS needs public and private keys or a password!");
+   set_ssh_error(msg:"The scanner needs public and private keys or a password!");
    return -1;
  }
 
@@ -1461,7 +1463,7 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
     privkey = pem_to_rsa(priv:priv, passphrase:passphrase);
     if (!privkey)
      {
-      set_ssh_error(msg:"OpenVAS failed to load SSH private key (RSA)");
+      set_ssh_error(msg:"The scanner failed to load SSH private key (RSA)");
       return -1;
      }
 
@@ -1503,7 +1505,7 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
     privkey = pem_to_dsa(priv:priv, passphrase:passphrase);
     if (!privkey)
     {
-      set_ssh_error(msg:"OpenVAS failed to load SSH private key (DSA)");
+      set_ssh_error(msg:"The scanner failed to load SSH private key (DSA)");
       return -1;
     }
 
@@ -1544,8 +1546,8 @@ function ssh_userauth2(socket, server_user, password, pub, priv, passphrase)
     {
       payload += '
 It seems you provided both public/private keys and password.
-In this case OpenVAS only use your public and private keys.
-OpenVAS did not try both. As password authentication is
+In this case the scanner only use your public and private keys.
+The scanner did not try both. As password authentication is
 vulnerable to Man-In-The-Middle attack, that implies your keys
 are useless (a "malicious server" will just reject your public
 key authentication and accept any provided password).
@@ -1753,7 +1755,7 @@ function update_window_size(socket,size)
  # Maximum allocated memory is 20 MB
  # A correct server will send 32768 bytes packet. So we stop before
  # to get data.
- # A non standard server will just be stopped by openvasd.
+ # A non standard server will just be stopped by openvassd.
  if (received_size > 19000000)
    return -1;
 
@@ -1981,7 +1983,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
  ret = ssh_open_channel(socket:socket);
  if(ret != 0)
  {
-   _ssh_cmd_error = "OpenVAS failed to open a new SSH channel. " + get_ssh_error();
+   _ssh_cmd_error = "The scanner failed to open a new SSH channel. " + get_ssh_error();
    return NULL;
  }
 
@@ -2049,7 +2051,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
  cret = ssh_close_channel(socket:socket, end:end);
  if (cret != 0)
  {
-   _ssh_cmd_error = "OpenVAS failed to close SSH channel. " + get_ssh_error();
+   _ssh_cmd_error = "The scanner failed to close SSH channel. " + get_ssh_error();
    return NULL;
  }
 
@@ -2210,7 +2212,7 @@ function ssh_hack_get_server_version( socket ) {
   buf = recv_line( socket:socket, length:1024 );
 
   if( ! buf ) {
-    set_ssh_error( msg:"OpenVAS did not receive server's version" );
+    set_ssh_error( msg:"The scanner did not receive server's version" );
     return 0;
   }
 
@@ -2573,11 +2575,11 @@ function get_bin_version( full_prog_name, version_argv, ver_pattern, sock ) {
   return( loc_version );
 }
 
-# @brief Checks if the "locate" command is available on the remote SSH server.
+# @brief Checks if the "locate" command is available on the remote SSH service.
 #        Additionally save the reason (namely the result of the SSH command)
 #        why the locate isn't available within the KB key ssh/locate/broken.
 #
-# @param sock the SSH socket of the connection to the remote SSH server.
+# @param sock the SSH socket of the connection to the remote SSH service.
 #
 # @return TRUE if the locate command is available, FALSE otherwise and NULL
 #              if no sock parameter was passed.
@@ -2775,4 +2777,99 @@ function ssh_check_file_readable( sock, file ) {
     return FALSE;
   else
     return;
+}
+
+# @brief Gets the SSH login banner shown when log into the remote SSH service.
+#
+# @param port The TCP port of the remote SSH service to check (mandatory).
+# @param sock The socket for the connection to the remote SSH service (optional).
+#             If given the function will re-use this socket instead of opening a
+#             new socket / connection to the remote SSH service.
+#
+# @note The SSH login banner is the banner which is e.g. configured in OpenSSH with
+#       the "Banner" configuration of the "sshd_config" config file.
+#
+# @note The function is not closing the passed socket (via the "sock" parameter). This is
+#       done to provide the possibility to gather / query additional information from the
+#       remote SSH service via the same session without doing another login / connection.
+#
+# @return The SSH login banner if provided by the remote SSH service, FALSE otherwise
+#         and NULL if not all required parameters are passed or no connection could be
+#         opened to the target.
+#
+function ssh_get_login_banner( port, sock ) {
+
+  # nb: The "old" get_ssh_banner() function had the following comment:
+  # ---
+  # Please use ssh_get_session_banner directly for new code.
+  # The saved session id is just a bad hack.
+  # ---
+  # It is currently unclear what this means. Additionally the text probably
+  # was referring to "ssh_get_issue_banner".
+
+  local_var port, sock;
+  local_var banner, nosock, vt_strings, sess_id;
+  # nb: CONNECT_LOGIN and CONNECT_PASSWD are global vars which can be passed globally
+  # by the calling to have them available in the VT (e.g. for reporting).
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ssh_get_login_banner" );
+    return;
+  }
+
+  banner = get_kb_item( "SSH/textbanner/" + port );
+  if( banner ) {
+
+    # nb: Used to avoid another connection to the service if there is no login banner
+    # available at all. We can't use "0" or "FALSE" for a KB entry (see note below).
+    if( banner != "None Available" )
+      return banner;
+    else
+      return FALSE;
+  }
+
+  if( ! sock ) {
+
+    if( ! get_port_state( port ) )
+      return;
+
+    sock = open_sock_tcp( port );
+    if( ! sock )
+      return;
+
+    nosock = TRUE;
+  }
+
+  if( ! CONNECT_LOGIN || ! CONNECT_PASSWD ) {
+
+    vt_strings = get_vt_strings();
+
+    if( ! CONNECT_LOGIN )
+      CONNECT_LOGIN = vt_strings["default"];
+
+    if( ! CONNECT_PASSWD )
+      CONNECT_PASSWD = vt_strings["default"];
+  }
+
+  ssh_login( socket:sock, login:CONNECT_LOGIN, password:CONNECT_PASSWD,
+             pub:NULL, priv:NULL, passphrase:NULL );
+
+  sess_id = ssh_session_id_from_sock( sock );
+  if( sess_id && int( sess_id ) > 0 )
+    _last_libssh_sess = sess_id;
+
+  banner = ssh_get_issue_banner( _last_libssh_sess );
+
+  # close socket only if it was opened by this function
+  if( nosock )
+    close( sock );
+
+  banner = chomp( banner );
+  if( strlen( banner ) > 0 ) {
+    set_kb_item( name:"SSH/textbanner/" + port, value:banner );
+    return banner;
+  } else {
+    set_kb_item( name:"SSH/textbanner/" + port, value:"None Available" ); # nb: We can't add 0 or FALSE here...
+    return FALSE;
+  }
 }

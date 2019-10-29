@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_nas_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # TerraMaster NAS Detection
 #
@@ -28,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106840");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-10-28T09:34:24+0000");
+  script_tag(name:"last_modification", value:"2019-10-28 09:34:24 +0000 (Mon, 28 Oct 2019)");
   script_tag(name:"creation_date", value:"2017-05-31 11:35:51 +0700 (Wed, 31 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,26 +54,39 @@ The script sends a connection request to the server and attempts to detect Terra
   exit(0);
 }
 
+include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 8181);
 
-res = http_get_cache(port: port, item: "/");
+url = "/tos/index.php?user/login";
 
-if ("<title>TerraMaster" >< res && 'name="minuser"' >< res && 'name="dataError"' >< res) {
-  version = "unknown";
-
-  set_kb_item(name: "terramaster_nas/detected", value: TRUE);
-
-  cpe = 'cpe:/a:noontec:terramaster';
-
-  register_product(cpe: cpe, location: "/", port: port, service: "www");
-
-  log_message(data: build_detection_report(app: "TerraMaster NAS", version: version, install: "/", cpe: cpe),
-              port: port);
-  exit(0);
+res = http_get_cache(port: port, item: url);
+if (">TerraMaster<" >!< res || "Tos_Check_Box" >!< res) {
+  res = http_get_cache(port: port, item: "/");
+  if ("<title>TerraMaster" >!< res || 'name="minuser"' >!< res || 'name="dataError"' >!< res)
+    exit(0);
 }
+
+version = "unknown";
+
+# href="/css/ctools.css?ver=TOS3_S2.0_4.1.06">
+vers = eregmatch(pattern: "ver=[^_]+_[^_]+_([0-9.]+)", string: res);
+if (!isnull(vers[1]))
+  version = vers[1];
+
+set_kb_item(name: "terramaster_nas/detected", value: TRUE);
+
+cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:noontec:terramaster");
+if (!cpe)
+  cpe = "cpe:/a:noontec:terramaster";
+
+register_product(cpe: cpe, location: "/", port: port, service: "www");
+
+log_message(data: build_detection_report(app: "TerraMaster NAS", version: version, install: "/", cpe: cpe,
+                                         concluded: vers[0]),
+            port: port);
 
 exit(0);

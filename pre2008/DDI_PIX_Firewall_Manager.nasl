@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_PIX_Firewall_Manager.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # PIX Firewall Manager Directory Traversal
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10819");
-  script_version("2019-04-11T14:06:24+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-10-28T10:54:26+0000");
+  script_tag(name:"last_modification", value:"2019-10-28 10:54:26 +0000 (Mon, 28 Oct 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(691);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,15 +44,9 @@ if(description)
   script_require_ports("Services/www", 8181);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"No solution was made available by the vendor. General solution options
-  are to upgrade to a newer release, disable respective features, remove the product or replace the
-  product by another one.
-
-  Note: Cisco originally recommended upgrading to version 4.1.6b or version 4.2, however the same
-  vulnerability has been found in version 4.3.
-
-  Cisco now recommends to disable the software completely and to migrate to the new PIX Device
-  Manager software.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"It is possible to read arbitrary files on the remote host
   through the remote web server.");
@@ -64,7 +57,13 @@ if(description)
   script_tag(name:"insight", value:"It is possible to read arbitrary files on this machine by using
   relative paths in the URL.
 
-  This vulnerability has been assigned Cisco Bug ID: CSCdk39378.");
+  This vulnerability has been assigned Cisco Bug ID: CSCdk39378.
+
+  Note: Cisco originally recommended upgrading to version 4.1.6b or version 4.2, however the same
+  vulnerability has been found in version 4.3.
+
+  Cisco now recommends to disable the software completely and to migrate to the new PIX Device
+  Manager software.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
