@@ -32,13 +32,13 @@ if(description)
   script_mandatory_keys("ossec_wazuh/authd/no_auth");
 
   script_tag(name:"summary", value:"The remote OSSEC/Wazuh ossec-authd service is not protected by password
-  authentication or client certificate verificiation.");
+  authentication or client certificate verification.");
 
   script_tag(name:"impact", value:"This issue may be misused by a remote attacker to register arbitrary agents
   at the remote service or overwrite the registration of existing ones taking them out of service.");
 
   script_tag(name:"vuldetect", value:"Evaluate if the remote OSSEC/Wazuh ossec-authd service is protected by password
-  authentication or client certificate verificiation.");
+  authentication or client certificate verification.");
 
   script_tag(name:"insight", value:"It was possible to connect to the remote OSSEC/Wazuh ossec-authd service without
   providing a password or a valid client certificate.");
